@@ -1,0 +1,44 @@
+{
+  "name": "oracode",
+  "version": "0.1.0",
+  "description": "AI governance framework for Claude Code — hooks, gates, and a nervous system that keeps your AI honest.",
+  "license": "MIT",
+  "author": "Fabio Cherici <info@florenceegi.com> (https://fabiocherici.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florenceegi/oracode.git"
+  },
+  "homepage": "https://github.com/florenceegi/oracode#readme",
+  "bugs": {
+    "url": "https://github.com/florenceegi/oracode/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "ai-governance",
+    "hooks",
+    "linting",
+    "code-quality",
+    "ai-safety",
+    "developer-tools",
+    "anthropic",
+    "claude",
+    "security"
+  ],
+  "bin": {
+    "oracode": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "hooks/",
+    "agents/",
+    "mission/",
+    "nervous-system/",
+    "docs/",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "type": "module"
+}

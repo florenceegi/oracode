@@ -1,0 +1,4 @@
+node_modules/
+.oracode/
+*.log
+.DS_Store
