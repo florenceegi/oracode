@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Oracode SSOT Registry",
+  "description": "Maps documentation files to the codebase files they describe. The nervous system uses this to detect when code changes but docs don't.",
+  "type": "object",
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" },
+        "updated": { "type": "string" }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ssot_id", "path", "title", "project", "watches"],
+        "properties": {
+          "ssot_id": { "type": "string", "description": "Unique identifier for this document" },
+          "path": { "type": "string", "description": "Path to the documentation file" },
+          "title": { "type": "string" },
+          "project": { "type": "string", "description": "Which project this doc describes" },
+          "doc_type": { "type": "string", "enum": ["architecture", "feature", "guide", "stato-dell-arte", "tracker"] },
+          "priority": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+          "check_frequency": { "type": "string", "enum": ["daily", "weekly", "on_demand"] },
+          "watches": {
+            "type": "object",
+            "properties": {
+              "repos": { "type": "array", "items": { "type": "string" } },
+              "paths": { "type": "array", "items": { "type": "string" }, "description": "Glob patterns for files this doc describes" }
+            }
+          },
+          "last_verified": { "type": ["string", "null"] },
+          "last_drift_score": { "type": ["number", "null"] },
+          "last_verified_by": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

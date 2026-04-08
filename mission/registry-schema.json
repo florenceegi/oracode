@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Oracode Mission Registry",
+  "description": "Tracks every significant change to the codebase with full traceability.",
+  "type": "object",
+  "properties": {
+    "counter": { "type": "integer", "description": "Next mission ID number" },
+    "last_updated": { "type": "string" },
+    "missions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mission_id"],
+        "properties": {
+          "mission_id": { "type": "string", "pattern": "^M-\\d{3}$" },
+          "title": { "type": "string" },
+          "date_opened": { "type": "string", "format": "date" },
+          "date_closed": { "type": ["string", "null"] },
+          "status": { "type": "string", "enum": ["in_progress", "completed", "suspended", "blocked"] },
+          "type": { "type": "string", "enum": ["feature", "bugfix", "refactor", "docsync", "audit"] },
+          "projects_involved": { "type": "array", "items": { "type": "string" } },
+          "doc_sync_executed": { "type": "boolean" },
+          "doc_verified": { "type": "boolean", "default": false },
+          "doc_verified_date": { "type": ["string", "null"] },
+          "files_modified": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
