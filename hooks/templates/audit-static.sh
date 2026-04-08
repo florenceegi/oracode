@@ -32,7 +32,8 @@ if grep -qE '(console\.log|var_dump|dd\(|print_r)' "$FILE" 2>/dev/null; then
 fi
 
 # Check: TODO/FIXME/HACK
-TODO_COUNT=$(grep -cE '(TODO|FIXME|HACK|XXX):' "$FILE" 2>/dev/null || echo 0)
+TODO_COUNT=$(grep -cE '(TODO|FIXME|HACK|XXX):' "$FILE" 2>/dev/null || echo "0")
+TODO_COUNT=$(echo "$TODO_COUNT" | tr -d '[:space:]')
 if [ "$TODO_COUNT" -gt 0 ]; then
   FINDINGS+=("INFO: ${TODO_COUNT} TODO/FIXME markers in ${BASENAME}")
 fi
