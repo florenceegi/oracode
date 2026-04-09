@@ -153,6 +153,7 @@ async function runInit() {
     { file: 'audit-static.sh', enabled: useAudit, trigger: 'PostToolUse', matcher: 'Write|Edit', msg: 'oracode: auditing file...' },
     { file: 'gate.sh', enabled: useGate, trigger: 'PreToolUse', matcher: 'Bash', msg: 'oracode: gate pre-push check...' },
     { file: 'ssot-reflex-guard.sh', enabled: useNervousSystem, trigger: 'PostToolUse', matcher: 'Write|Edit', msg: 'oracode: checking doc alignment...' },
+    { file: 'mission-stats-guard.sh', enabled: useMission, trigger: 'PostToolUse', matcher: 'Bash', msg: 'oracode: checking mission stats...' },
   ];
 
   const activeHooks = [];
