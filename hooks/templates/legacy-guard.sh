@@ -1,37 +1,53 @@
 #!/usr/bin/env bash
-# oracode legacy-guard — warns before modifying files marked as legacy
-# Trigger: PreToolUse Write|Edit
-# Config: reads legacy file patterns from .oracode/config.json
+# legacy-guard.sh — PreToolUse hook: richiede conferma prima di modificare file [LEGACY]
+# Matcher: Edit|Write
+# Usa permissionDecision: "ask" — non blocca, ma chiede conferma esplicita
 
-CONFIG="{{ORACODE_DIR}}/config.json"
 INPUT=$(cat)
-
 FILE=$(echo "$INPUT" | jq -r '.tool_input.file_path // empty' 2>/dev/null)
-[ -z "$FILE" ] && exit 0
-[ ! -f "$CONFIG" ] && exit 0
 
-# Read legacy patterns from config
-LEGACY_FILES=$(jq -r '.legacy_files[]?' "$CONFIG" 2>/dev/null)
-[ -z "$LEGACY_FILES" ] && exit 0
-
-BASENAME=$(basename "$FILE")
-MATCHED=""
-while IFS= read -r PATTERN; do
-  [ -z "$PATTERN" ] && continue
-  if echo "$FILE" | grep -qE "$PATTERN"; then
-    MATCHED="$PATTERN"
-    break
-  fi
-done <<< "$LEGACY_FILES"
-
-if [ -n "$MATCHED" ]; then
-  echo "ORACODE LEGACY-GUARD: ${BASENAME} is marked as LEGACY."
-  echo "Pattern matched: ${MATCHED}"
-  echo ""
-  echo "Legacy files require an approved plan before modification."
-  echo "Read the file first, understand the full impact, then proceed with caution."
-  # Exit 0 = warning only. Change to exit 2 for hard block.
+if [ -z "$FILE" ]; then
   exit 0
 fi
+
+BASENAME=$(basename "$FILE")
+
+# Lista file [LEGACY] critici da CLAUDE.md
+LEGACY_FILES=(
+  # Python
+  "pipeline.py"
+  "use_pipeline.py"
+  "strategic_queries.py"
+  "faro.py"
+  "retriever.py"
+  "query_analyzer.py"
+  "scanner.py"
+  "postgres_service.py"
+  "commands.py"
+  # Laravel PHP
+  "DataExportService.php"
+  "NatanChatService.php"
+  "ConsentService.php"
+  "PythonScraperService.php"
+  "GdprService.php"
+  "NatanScrapersController.php"
+  "AuditLogService.php"
+  # Frontend TS
+  "app.ts"
+  "Message.ts"
+  "ChatInterface.ts"
+  "prompt-builder.ts"
+  "ProjectDetail.ts"
+  "api.ts"
+)
+
+for LEGACY in "${LEGACY_FILES[@]}"; do
+  if [ "$BASENAME" = "$LEGACY" ]; then
+    LINE_COUNT=$(wc -l < "$FILE" 2>/dev/null || echo "?")
+    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"ask","permissionDecisionReason":"⚠️ LEGACY FILE: %s (%s righe). Regola OS3: applica SOLO fix minimo, nessun refactoring non richiesto. Hai dichiarato il piano?"},"systemMessage":"⚠️ legacy-guard: %s è un file [LEGACY] critico — conferma richiesta"}' \
+      "$BASENAME" "$LINE_COUNT" "$BASENAME"
+    exit 0
+  fi
+done
 
 exit 0

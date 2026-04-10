@@ -11,7 +11,7 @@
  * @license MIT
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, chmodSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, chmodSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { createInterface } from 'readline';
@@ -70,16 +70,23 @@ async function runInit() {
     projectDirs = ['.'];
   }
 
-  // Step 2: Features
+  // Step 2: Feature groups
   console.log('');
-  console.log('  Which features do you want to enable?');
-  const useEnvGuard = (await ask('  [1] Secrets protection (blocks .env exposure)? [Y/n] ')).trim().toLowerCase() !== 'n';
-  const useImmutableGuard = (await ask('  [2] Immutable values protection? [Y/n] ')).trim().toLowerCase() !== 'n';
-  const useLegacyGuard = (await ask('  [3] Legacy file warnings? [Y/n] ')).trim().toLowerCase() !== 'n';
-  const useAudit = (await ask('  [4] Static audit on every file write? [Y/n] ')).trim().toLowerCase() !== 'n';
-  const useGate = (await ask('  [5] Gate (pre-push validation)? [Y/n] ')).trim().toLowerCase() !== 'n';
-  const useNervousSystem = (await ask('  [6] Nervous system (doc drift detection)? [Y/n] ')).trim().toLowerCase() !== 'n';
-  const useMission = (await ask('  [7] Mission protocol (change tracking)? [Y/n] ')).trim().toLowerCase() !== 'n';
+  console.log('  Which feature groups do you want to enable?');
+  console.log('  (Each group installs multiple hooks automatically)');
+  console.log('');
+  const useSecurity = (await ask('  [1] Security (secrets, .env, rm protection, git-main guard)? [Y/n] ')).trim().toLowerCase() !== 'n';
+  const useCodeQuality = (await ask('  [2] Code quality (immutable values, legacy guard, MiCA-SAFE, P0-4 method check, i18n)? [Y/n] ')).trim().toLowerCase() !== 'n';
+  const useAudit = (await ask('  [3] Audit (static audit on write, audit on complete, deep audit)? [Y/n] ')).trim().toLowerCase() !== 'n';
+  const useNervousSystem = (await ask('  [4] Nervous system (SSOT reflex, living check, cross-project guard)? [Y/n] ')).trim().toLowerCase() !== 'n';
+  const useMission = (await ask('  [5] Mission protocol (tracking, report guard, stats guard, reinject)? [Y/n] ')).trim().toLowerCase() !== 'n';
+  const useDeploy = (await ask('  [6] Deploy pipeline guard (monitors push + deploy status)? [Y/n] ')).trim().toLowerCase() !== 'n';
+
+  // Backward compat
+  const useEnvGuard = useSecurity;
+  const useImmutableGuard = useCodeQuality;
+  const useLegacyGuard = useCodeQuality;
+  const useGate = useAudit;
 
   // Step 3: Configuration
   let immutableValues = [];
@@ -147,13 +154,29 @@ async function runInit() {
   const projectDirsStr = projectDirs.map(d => resolve(cwd, d)).join(' ');
 
   const hookMap = [
-    { file: 'env-guard.sh', enabled: useEnvGuard, trigger: 'PreToolUse', matcher: 'Bash', msg: 'oracode: checking secrets...' },
-    { file: 'immutable-values-guard.sh', enabled: useImmutableGuard, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: checking immutable values...' },
-    { file: 'legacy-guard.sh', enabled: useLegacyGuard, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: checking legacy files...' },
-    { file: 'audit-static.sh', enabled: useAudit, trigger: 'PostToolUse', matcher: 'Write|Edit', msg: 'oracode: auditing file...' },
-    { file: 'gate.sh', enabled: useGate, trigger: 'PreToolUse', matcher: 'Bash', msg: 'oracode: gate pre-push check...' },
+    // Security group
+    { file: 'env-guard.sh', enabled: useSecurity, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: checking secrets...' },
+    { file: 'rm-guard.sh', enabled: useSecurity, trigger: 'PreToolUse', matcher: 'Bash', msg: 'oracode: protecting active files...' },
+    { file: 'git-main-guard.sh', enabled: useSecurity, trigger: 'PreToolUse', matcher: 'Bash', msg: 'oracode: protecting main branch...' },
+    // Code quality group
+    { file: 'immutable-values-guard.sh', enabled: useCodeQuality, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: checking immutable values...' },
+    { file: 'legacy-guard.sh', enabled: useCodeQuality, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: checking legacy files...' },
+    { file: 'mica-guard.sh', enabled: useCodeQuality, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: MiCA-SAFE check...' },
+    { file: 'os3-preflight-guard.sh', enabled: useCodeQuality, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: preflight rules reminder...' },
+    { file: 'hardcoded-strings-guard.sh', enabled: useCodeQuality, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: checking i18n...' },
+    { file: 'p04-method-guard.sh', enabled: useCodeQuality, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: P0-4 method existence check...' },
+    // Audit group
+    { file: 'os3-audit-static.sh', enabled: useAudit, trigger: 'PostToolUse', matcher: 'Write|Edit', msg: 'oracode: auditing file...' },
+    { file: 'os3-audit-on-complete.sh', enabled: useAudit, trigger: 'PostToolUse', matcher: 'TodoWrite', msg: 'oracode: audit on task complete...' },
+    // Nervous system group
     { file: 'ssot-reflex-guard.sh', enabled: useNervousSystem, trigger: 'PostToolUse', matcher: 'Write|Edit', msg: 'oracode: checking doc alignment...' },
+    { file: 'cross-project-guard.sh', enabled: useNervousSystem, trigger: 'PreToolUse', matcher: 'Write|Edit', msg: 'oracode: cross-project context...' },
+    // Mission group
+    { file: 'mission-report-guard.sh', enabled: useMission, trigger: 'PostToolUse', matcher: 'Bash', msg: 'oracode: checking mission reports...' },
     { file: 'mission-stats-guard.sh', enabled: useMission, trigger: 'PostToolUse', matcher: 'Bash', msg: 'oracode: checking mission stats...' },
+    { file: 'os3-mission-reinject.sh', enabled: useMission, trigger: 'PreToolUse', matcher: 'Agent', msg: 'oracode: injecting mission context...' },
+    // Deploy group
+    { file: 'deploy-pipeline-guard.sh', enabled: useDeploy, trigger: 'PostToolUse', matcher: 'Bash', msg: 'oracode: monitoring deploy...' },
   ];
 
   const activeHooks = [];
@@ -175,15 +198,48 @@ async function runInit() {
     console.log(`  ✓ hooks/${hook.file}`);
   }
 
-  // Copy agent templates
+  // Copy agent templates (all 8)
   const agentsSrc = join(PKG_ROOT, 'agents', 'templates');
-  for (const agentFile of ['gate.md', 'audit-specialist.md']) {
-    const src = join(agentsSrc, agentFile);
+  const agentFiles = [
+    { file: 'os3-audit-specialist.md', enabled: useAudit },
+    { file: 'os3-gate.md', enabled: useAudit },
+    { file: 'organ-gap-scout.md', enabled: useNervousSystem },
+    { file: 'oracode-alignment-interpreter.md', enabled: useNervousSystem },
+    { file: 'oracode-specialist.md', enabled: true },
+    { file: 'ssot-living-agent.md', enabled: useNervousSystem },
+    { file: 'node-ts-specialist.md', enabled: true },
+    { file: 'corporate-finance-specialist.md', enabled: true },
+  ];
+
+  let agentCount = 0;
+  for (const agent of agentFiles) {
+    if (!agent.enabled) continue;
+    const src = join(agentsSrc, agent.file);
     if (!existsSync(src)) continue;
     let content = readFileSync(src, 'utf-8');
     content = content.replace(/\{\{MAX_FILE_LINES\}\}/g, String(maxFileLines));
-    writeFileSync(join(oracodeDir, 'agents', agentFile), content);
-    console.log(`  ✓ agents/${agentFile}`);
+    content = content.replace(/\{\{ORACODE_DIR\}\}/g, oracodeDir);
+    writeFileSync(join(oracodeDir, 'agents', agent.file), content);
+    agentCount++;
+    console.log(`  ✓ agents/${agent.file}`);
+  }
+
+  // Copy cron scripts (standalone, not Claude hooks)
+  const cronScripts = [
+    { file: 'os3-deep-audit.sh', enabled: useAudit },
+    { file: 'ssot-living-check.sh', enabled: useNervousSystem },
+  ];
+  mkdirSync(join(oracodeDir, 'cron'), { recursive: true });
+  for (const cs of cronScripts) {
+    if (!cs.enabled) continue;
+    const src = join(hooksDir, cs.file);
+    if (!existsSync(src)) continue;
+    let content = readFileSync(src, 'utf-8');
+    content = content.replace(/\{\{ORACODE_DIR\}\}/g, oracodeDir);
+    const dest = join(oracodeDir, 'cron', cs.file);
+    writeFileSync(dest, content);
+    chmodSync(dest, 0o755);
+    console.log(`  ✓ cron/${cs.file}`);
   }
 
   // Mission registry
@@ -255,6 +311,7 @@ async function runInit() {
   console.log('');
   console.log(`  Config:  ${oracodeDir}/config.json`);
   console.log(`  Hooks:   ${activeHooks.length} active`);
+  console.log(`  Agents:  ${agentCount} installed`);
   if (settingsUpdated) {
     console.log('  Claude:  hooks registered in settings.json');
   }
