@@ -14,6 +14,7 @@ from pathlib import Path
 
 from .config import ORGANS, SKIP_DIRS, FILE_TYPE_MAP, SKIP_EXTENSIONS
 from .extractors import extract_php_symbols, extract_python_symbols, extract_ts_symbols
+from .line_analyzer import analyze_lines
 
 
 def should_skip(dirpath: str) -> bool:
@@ -34,8 +35,8 @@ def _classify_file(filename: str) -> str | None:
 
 
 def count_lines_by_type(organ_path: str) -> dict:
-    """Count total lines per file type across an organ directory."""
-    counts: dict[str, dict[str, int]] = {}  # type → {files, lines}
+    """Count lines per file type with code/comment/blank breakdown."""
+    counts: dict[str, dict[str, int]] = {}
     if not os.path.isdir(organ_path):
         return counts
 
@@ -50,13 +51,18 @@ def count_lines_by_type(organ_path: str) -> dict:
             fpath = os.path.join(root, fname)
             try:
                 with open(fpath, "r", encoding="utf-8", errors="replace") as f:
-                    line_count = sum(1 for _ in f)
+                    content = f.read()
             except OSError:
                 continue
+            analysis = analyze_lines(content, ftype)
             if ftype not in counts:
-                counts[ftype] = {"files": 0, "lines": 0}
+                counts[ftype] = {"files": 0, "lines": 0,
+                                 "code": 0, "comment": 0, "blank": 0}
             counts[ftype]["files"] += 1
-            counts[ftype]["lines"] += line_count
+            counts[ftype]["lines"] += analysis["total"]
+            counts[ftype]["code"] += analysis["code"]
+            counts[ftype]["comment"] += analysis["comment"]
+            counts[ftype]["blank"] += analysis["blank"]
 
     return counts
 
@@ -147,9 +153,10 @@ def build_index(organs_filter: str | None = None) -> dict:
 
         for ftype, counts in lines_by_type.items():
             if ftype not in total_lines_by_type:
-                total_lines_by_type[ftype] = {"files": 0, "lines": 0}
-            total_lines_by_type[ftype]["files"] += counts["files"]
-            total_lines_by_type[ftype]["lines"] += counts["lines"]
+                total_lines_by_type[ftype] = {"files": 0, "lines": 0,
+                                               "code": 0, "comment": 0, "blank": 0}
+            for key in ("files", "lines", "code", "comment", "blank"):
+                total_lines_by_type[ftype][key] += counts[key]
 
     grand_total_lines = sum(v["lines"] for v in total_lines_by_type.values())
     grand_total_files = sum(v["files"] for v in total_lines_by_type.values())
@@ -272,17 +279,26 @@ def write_summary_md(index: dict, output_path: str) -> None:
 
 
 def _build_lines_table(label: str, lines_by_type: dict) -> list[str]:
-    """Build a markdown table of lines per file type."""
-    rows = ["", f"#### Lines by type", "", "| Type | Files | Lines | % |",
-            "|------|------:|------:|--:|"]
+    """Build a markdown table of lines per file type with code/comment/blank."""
+    rows = ["", "#### Lines by type", "",
+            "| Type | Files | Code | Comment | Blank | Total | % |",
+            "|------|------:|-----:|--------:|------:|------:|--:|"]
     total_lines = sum(v["lines"] for v in lines_by_type.values())
+    total_code = sum(v.get("code", 0) for v in lines_by_type.values())
+    total_comment = sum(v.get("comment", 0) for v in lines_by_type.values())
+    total_blank = sum(v.get("blank", 0) for v in lines_by_type.values())
     for ftype, counts in sorted(lines_by_type.items(),
                                  key=lambda x: -x[1]["lines"]):
         pct = (counts["lines"] / total_lines * 100) if total_lines else 0
         rows.append(
-            f"| {ftype} | {counts['files']:,} | {counts['lines']:,} | {pct:.1f}% |"
+            f"| {ftype} | {counts['files']:,} | {counts.get('code', 0):,} "
+            f"| {counts.get('comment', 0):,} | {counts.get('blank', 0):,} "
+            f"| {counts['lines']:,} | {pct:.1f}% |"
         )
-    rows.append(f"| **Total** | | **{total_lines:,}** | |")
+    rows.append(
+        f"| **Total** | | **{total_code:,}** | **{total_comment:,}** "
+        f"| **{total_blank:,}** | **{total_lines:,}** | |"
+    )
     rows.append("")
     return rows
 
