@@ -58,6 +58,12 @@ ORGANS: dict[str, dict[str, Any]] = {
         "ts_dirs": ["frontend/src"],
         "py_dirs": ["backend"],
     },
+    "YURI-BIAGINI": {
+        "path": "/home/fabio/YURI-BIAGINI",
+        "php_dirs": [],
+        "ts_dirs": ["app", "components", "lib"],
+        "py_dirs": [],
+    },
 }
 
 OUTPUT_JSON = "/home/fabio/EGI-DOC/docs/ecosistema/ORGAN_INDEX.json"
