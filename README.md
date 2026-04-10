@@ -28,25 +28,34 @@ Oracode solves all of these. Mechanically, not procedurally.
 You write code with Claude Code
         │
         ▼
-┌─────────────────────────────────┐
-│  PREVENTION (PreToolUse hooks)  │  Blocks dangerous actions BEFORE they happen
-│  env-guard          │ secrets   │
-│  immutable-guard    │ values    │
-│  legacy-guard       │ files     │
-│  gate               │ pre-push  │
-├─────────────────────────────────┤
-│  DETECTION (PostToolUse hooks)  │  Catches issues the moment code is written
-│  audit-static       │ patterns  │
-│  ssot-reflex        │ doc drift │
-├─────────────────────────────────┤
-│  TRACKING (Mission Protocol)    │  Full traceability of every change
-│  mission registry   │ who/what  │
-│  doc-sync tracking  │ verified? │
-├─────────────────────────────────┤
-│  NERVOUS SYSTEM (SSOT Living)   │  Docs that know when they're stale
-│  ssot-registry      │ mapping   │
-│  health-check       │ drift     │
-└─────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│  PREVENTION — 10 PreToolUse hooks                                │
+│  env-guard · rm-guard · git-main-guard · immutable-values-guard  │
+│  legacy-guard · mica-guard · os3-preflight-guard                 │
+│  hardcoded-strings-guard · p04-method-guard · cross-project-guard│
+├───────────────────────────────────────────────────────────────────┤
+│  DETECTION — 5 PostToolUse hooks                                 │
+│  os3-audit-static · os3-audit-on-complete · ssot-reflex-guard    │
+│  mission-report-guard · mission-stats-guard                      │
+├───────────────────────────────────────────────────────────────────┤
+│  DEPLOY — 1 PostToolUse hook + 1 PreToolUse                      │
+│  deploy-pipeline-guard · os3-mission-reinject                    │
+├───────────────────────────────────────────────────────────────────┤
+│  AGENTS — 8 specialized AI agents                                │
+│  os3-audit-specialist · os3-gate · organ-gap-scout               │
+│  oracode-alignment-interpreter · oracode-specialist              │
+│  ssot-living-agent · node-ts-specialist                          │
+│  corporate-finance-specialist                                    │
+├───────────────────────────────────────────────────────────────────┤
+│  CRON — 2 standalone scripts                                     │
+│  os3-deep-audit · ssot-living-check                              │
+├───────────────────────────────────────────────────────────────────┤
+│  NERVOUS SYSTEM — 4-layer doc drift detection                    │
+│  L0 SSOT Registry · L1 Reflex · L2 Proprioception · L3 Autonomic│
+├───────────────────────────────────────────────────────────────────┤
+│  MISSION PROTOCOL — full change traceability                     │
+│  registry · report guard · stats guard · reinject                │
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -74,19 +83,39 @@ It creates `.oracode/` in your workspace and registers hooks in Claude Code auto
 
 ```
 .oracode/
-├── config.json              ← your rules
-├── hooks/
-│   ├── env-guard.sh         ← blocks secret exposure
+├── config.json                  ← your rules
+├── hooks/                       ← 17 Claude Code hooks
+│   ├── env-guard.sh             ← blocks secret exposure
+│   ├── rm-guard.sh              ← protects active files from deletion
+│   ├── git-main-guard.sh        ← protects main branch
 │   ├── immutable-values-guard.sh
 │   ├── legacy-guard.sh
-│   ├── audit-static.sh      ← audits every file write
-│   ├── gate.sh              ← validates before push
-│   └── ssot-reflex-guard.sh ← nervous system reflex
-├── agents/
-│   ├── gate.md              ← AI-powered pre-push validator
-│   └── audit-specialist.md  ← deep code reviewer
-├── ssot-registry.json       ← doc-to-code mapping
-└── mission-registry.json    ← change tracking
+│   ├── mica-guard.sh            ← financial compliance
+│   ├── os3-preflight-guard.sh   ← contextual rules reminder
+│   ├── hardcoded-strings-guard.sh ← i18n enforcement
+│   ├── p04-method-guard.sh      ← method existence check
+│   ├── cross-project-guard.sh   ← multi-project awareness
+│   ├── os3-audit-static.sh      ← audits every file write
+│   ├── os3-audit-on-complete.sh ← task completion audit
+│   ├── ssot-reflex-guard.sh     ← nervous system reflex
+│   ├── mission-report-guard.sh  ← blocks push without reports
+│   ├── mission-stats-guard.sh   ← blocks push without stats
+│   ├── os3-mission-reinject.sh  ← injects mission context
+│   └── deploy-pipeline-guard.sh ← monitors deploy after push
+├── cron/                        ← 2 standalone scripts
+│   ├── os3-deep-audit.sh        ← full audit (run nightly)
+│   └── ssot-living-check.sh     ← doc drift check (run nightly)
+├── agents/                      ← 8 specialized AI agents
+│   ├── os3-audit-specialist.md  ← deep code reviewer
+│   ├── os3-gate.md              ← pre-push validator
+│   ├── organ-gap-scout.md       ← evolutionary gap detector
+│   ├── oracode-alignment-interpreter.md ← semantic truth checker
+│   ├── oracode-specialist.md    ← framework specialist
+│   ├── ssot-living-agent.md     ← autonomous doc verifier
+│   ├── node-ts-specialist.md    ← Node.js/TS code specialist
+│   └── corporate-finance-specialist.md ← financial docs
+├── ssot-registry.json           ← doc-to-code mapping
+└── mission-registry.json        ← change tracking
 ```
 
 That's it. Start using Claude Code — Oracode is watching.
@@ -250,7 +279,7 @@ The nervous system watches files across all projects and maps them to shared doc
 
 Oracode was created by [Fabio Cherici](https://fabiocherici.com) at [FlorenceEGI](https://florenceegi.com) to govern an AI-assisted development ecosystem spanning 7 production products, 500,000+ lines of code, and 88 living documentation files.
 
-It has been running in production since March 2026, enforcing rules across Laravel, Python/FastAPI, TypeScript/React, and Node.js codebases — processing 30+ tracked missions with zero undetected regressions.
+It has been running in production since March 2026, enforcing rules across Laravel, Python/FastAPI, TypeScript/React, and Node.js codebases — processing 40+ tracked missions with zero undetected regressions. v0.2.0 ships 19 hooks, 8 agents, 2 cron scripts, and a 4-layer nervous system.
 
 ---
 

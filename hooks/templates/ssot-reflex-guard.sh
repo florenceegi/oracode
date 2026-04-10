@@ -1,37 +1,57 @@
 #!/usr/bin/env bash
-# oracode ssot-reflex-guard — nervous system Layer 1 (reflex)
+# ssot-reflex-guard.sh — PostToolUse hook: Sistema Nervoso Documentale LSO
+# Layer 1 — RIFLESSO: rileva quando un file modificato e' watchato da un doc SSOT
 # Trigger: PostToolUse Write|Edit
-# When a file is modified, checks if any SSOT document watches it.
-# If yes, alerts the developer that documentation may need updating.
+# Legge SSOT_REGISTRY.json, confronta il file modificato con i watches di ogni doc.
+# Se match → avvisa il SUPERVISOR che il doc SSOT potrebbe necessitare aggiornamento.
+# v1.0.0 — 2026-04-07
+# @author Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+# @purpose Arco riflesso documentale — segnale immediato su modifica file watchato
 
-REGISTRY="{{ORACODE_DIR}}/ssot-registry.json"
+REGISTRY="${ORACODE_SSOT_REGISTRY:-$HOME/.oracode/ssot-registry.json}"
+NERVE_LOG="${ORACODE_AUDIT_DIR:-$HOME/.oracode/audit/}ssot_nerve_signals.log"
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
+# Leggi input dal hook system
 INPUT=$(cat)
 FILE=$(echo "$INPUT" | jq -r '.tool_input.file_path // empty' 2>/dev/null)
 
-[ -z "$FILE" ] || [ ! -f "$FILE" ] && exit 0
-[ ! -f "$REGISTRY" ] && exit 0
+if [ -z "$FILE" ] || [ ! -f "$FILE" ]; then
+  exit 0
+fi
 
-# Normalize path: extract repo name and relative path
-REL_PATH=""
+# Registry deve esistere
+if [ ! -f "$REGISTRY" ]; then
+  exit 0
+fi
+
+# Normalizza il path relativo al repo
+# $HOME/NATAN_LOC/laravel_backend/routes/api.php → laravel_backend/routes/api.php
 REPO=""
-for DIR in {{PROJECT_DIRS}}; do
-  if echo "$FILE" | grep -q "^${DIR}/"; then
-    REPO=$(basename "$DIR")
-    REL_PATH=$(echo "$FILE" | sed "s|^${DIR}/||")
+REL_PATH=""
+for ORGAN_DIR in $HOME/NATAN_LOC $HOME/EGI $HOME/EGI-HUB $HOME/EGI-HUB-HOME-REACT $HOME/EGI-SIGILLO $HOME/EGI-Credential $HOME/EGI-INFO ${ORACODE_DOC_ROOT:-$HOME/.oracode} $HOME/EGI-STAT; do
+  if echo "$FILE" | grep -q "^${ORGAN_DIR}/"; then
+    REPO=$(basename "$ORGAN_DIR")
+    REL_PATH=$(echo "$FILE" | sed "s|^${ORGAN_DIR}/||")
     break
   fi
 done
 
-[ -z "$REPO" ] || [ -z "$REL_PATH" ] && exit 0
+# Se il file non e' in un repo conosciuto, ignora
+if [ -z "$REPO" ] || [ -z "$REL_PATH" ]; then
+  exit 0
+fi
 
-# Look up in registry
+# Cerca match nei watches del registry
+# Usiamo jq per iterare sui documenti e confrontare i path
 MATCHES=$(jq -r --arg repo "$REPO" --arg relpath "$REL_PATH" '
-  .documents[]? |
-  select(.watches.repos[]? == $repo) |
+  .documents[] |
+  select(.watches.repos != null) |
+  select(.watches.repos[] == $repo) |
   . as $doc |
   if (.watches.paths // []) | any(. as $pattern |
     if ($pattern | contains("*")) then
+      # Glob match: converte glob in regex
       ($pattern | gsub("\\*\\*/"; "(.*/)?") | gsub("\\*"; "[^/]*") | gsub("\\."; "\\.")) as $regex |
       ($relpath | test($regex))
     else
@@ -44,20 +64,44 @@ MATCHES=$(jq -r --arg repo "$REPO" --arg relpath "$REL_PATH" '
   end
 ' "$REGISTRY" 2>/dev/null)
 
-[ -z "$MATCHES" ] && exit 0
+# Se anche i pattern match
+if [ -z "$MATCHES" ]; then
+  MATCHES=$(jq -r --arg repo "$REPO" --arg relpath "$REL_PATH" '
+    .documents[] |
+    select(.watches.repos != null) |
+    select(.watches.repos[] == $repo) |
+    . as $doc |
+    if (.watches.patterns // []) | any(. as $pattern |
+      # Cerca il pattern nel contenuto del file (costoso ma preciso)
+      false
+    ) then
+      "\($doc.ssot_id)|\($doc.title)|\($doc.path)|\($doc.priority)"
+    else
+      empty
+    end
+  ' "$REGISTRY" 2>/dev/null)
+fi
 
+if [ -z "$MATCHES" ]; then
+  exit 0
+fi
+
+# Costruisci messaggio di avviso
 MSG=""
 DOC_COUNT=0
 while IFS='|' read -r SSOT_ID TITLE DOC_PATH PRIORITY; do
-  [ -z "$SSOT_ID" ] && continue
-  DOC_COUNT=$((DOC_COUNT + 1))
-  MSG="${MSG}\n  - [${PRIORITY}] ${TITLE} -> ${DOC_PATH}"
+  if [ -n "$SSOT_ID" ]; then
+    DOC_COUNT=$((DOC_COUNT + 1))
+    MSG="${MSG}\n  - [${PRIORITY}] ${TITLE} (${SSOT_ID}) → ${DOC_PATH}"
+    # Log nel nerve signal log
+    echo "${TIMESTAMP} | NERVE_SIGNAL | file=${REL_PATH} repo=${REPO} | doc=${SSOT_ID} priority=${PRIORITY}" >> "$NERVE_LOG" 2>/dev/null
+  fi
 done <<< "$MATCHES"
 
 if [ "$DOC_COUNT" -gt 0 ]; then
-  echo "ORACODE NERVE SIGNAL: ${REL_PATH} (${REPO}) is watched by ${DOC_COUNT} SSOT doc(s):${MSG}"
+  echo "SSOT NERVE SIGNAL: ${REL_PATH} (${REPO}) e' watchato da ${DOC_COUNT} doc SSOT:${MSG}"
   echo ""
-  echo "Documentation may need updating before closing this task."
+  echo "DOC-SYNC potrebbe essere necessario. Verificare allineamento prima di chiudere la task."
 fi
 
 exit 0

@@ -1,53 +1,46 @@
 #!/usr/bin/env bash
-# oracode immutable-values-guard — blocks modification of business-critical values
-# Trigger: PreToolUse Write|Edit
-# Config: reads immutable values from .oracode/config.json
+# immutable-values-guard.sh — PreToolUse hook: blocca modifica valori immutabili ecosistema
+# Matcher: Write|Edit
 
-CONFIG="{{ORACODE_DIR}}/config.json"
 INPUT=$(cat)
+TOOL=$(echo "$INPUT" | jq -r '.tool_name // empty' 2>/dev/null)
 
-FILE=$(echo "$INPUT" | jq -r '.tool_input.file_path // empty' 2>/dev/null)
-OLD_CONTENT=$(echo "$INPUT" | jq -r '.tool_input.old_string // empty' 2>/dev/null)
-NEW_CONTENT=$(echo "$INPUT" | jq -r '.tool_input.content // .tool_input.new_string // empty' 2>/dev/null)
-
-[ -z "$FILE" ] && exit 0
-[ ! -f "$CONFIG" ] && exit 0
-
-# Read immutable values from config
-IMMUTABLES=$(jq -r '.immutable_values[]? | "\(.pattern)|\(.description)"' "$CONFIG" 2>/dev/null)
-[ -z "$IMMUTABLES" ] && exit 0
-
-# Check both: old_string being replaced (Edit) and full content being written (Write)
-# Also check if the target file already contains the pattern and would be overwritten
-CHECK_CONTENT="${OLD_CONTENT}${NEW_CONTENT}"
-if [ -z "$CHECK_CONTENT" ]; then
+if [ "$TOOL" = "Write" ]; then
+  CONTENT=$(echo "$INPUT" | jq -r '.tool_input.content // empty' 2>/dev/null)
+elif [ "$TOOL" = "Edit" ]; then
+  CONTENT=$(echo "$INPUT" | jq -r '.tool_input.new_string // empty' 2>/dev/null)
+else
   exit 0
 fi
 
-# For Write tool (full file replace), check if file has immutable value and content changes it
-if [ -z "$OLD_CONTENT" ] && [ -f "$FILE" ]; then
-  FILE_CONTENT=$(cat "$FILE" 2>/dev/null)
+if [ -z "$CONTENT" ]; then
+  exit 0
 fi
 
-BLOCKED=""
-while IFS='|' read -r PATTERN DESC; do
-  [ -z "$PATTERN" ] && continue
-  # Case 1: Edit tool — old_string contains the immutable pattern (someone is replacing it)
-  if [ -n "$OLD_CONTENT" ] && echo "$OLD_CONTENT" | grep -qF "$PATTERN"; then
-    BLOCKED="${BLOCKED}\n  - ${DESC} (pattern: ${PATTERN})"
-  fi
-  # Case 2: Write tool — file contains pattern but new content doesn't (would erase it)
-  if [ -n "$FILE_CONTENT" ] && echo "$FILE_CONTENT" | grep -qF "$PATTERN"; then
-    if [ -n "$NEW_CONTENT" ] && ! echo "$NEW_CONTENT" | grep -qF "$PATTERN"; then
-      BLOCKED="${BLOCKED}\n  - ${DESC} (pattern: ${PATTERN}) — would be removed by full file write"
-    fi
-  fi
-done <<< "$IMMUTABLES"
+VIOLATIONS=""
 
-if [ -n "$BLOCKED" ]; then
-  echo "ORACODE IMMUTABLE-GUARD: this edit touches protected values:${BLOCKED}"
-  echo ""
-  echo "These values require explicit approval before modification."
+# Funzione: verifica che un valore immutabile non sia cambiato
+check_immutable() {
+  local name="$1"
+  local expected="$2"
+  # Cerca assegnazioni del nome con un valore diverso dall'atteso
+  local wrong
+  wrong=$(echo "$CONTENT" | grep -iE "${name}\s*[=:]\s*[0-9][0-9.]*" | grep -vE "${name}\s*[=:]\s*${expected}(\s|$|[^0-9.])")
+  if [ -n "$wrong" ]; then
+    VIOLATIONS="${VIOLATIONS}${name}(atteso:${expected}); "
+  fi
+}
+
+check_immutable "tokens_per_egili"              "80"
+check_immutable "MIN_SIMILARITY"                "0\.45"
+check_immutable "advisory_elapsed_threshold"    "180"
+check_immutable "MIN_QUERY_CONFIDENCE"          "0\.1"
+check_immutable "egili_per_query"               "296"
+check_immutable "REASONABLE_LIMIT"              "5000"
+
+if [ -n "$VIOLATIONS" ]; then
+  printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"BLOCCO valori immutabili: %s— questi valori NON si modificano senza approvazione esplicita di Fabio. Vedi CLAUDE.md sezione Valori Immutabili."},"systemMessage":"🛑 immutable-values-guard: tentativo di modifica valori immutabili — BLOCCATO"}' \
+    "$VIOLATIONS"
   exit 2
 fi
 

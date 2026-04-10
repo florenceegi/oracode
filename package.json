@@ -1,6 +1,6 @@
 {
   "name": "oracode",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "AI governance framework for Claude Code — hooks, gates, and a nervous system that keeps your AI honest.",
   "license": "MIT",
   "author": "Fabio Cherici <info@florenceegi.com> (https://fabiocherici.com)",
