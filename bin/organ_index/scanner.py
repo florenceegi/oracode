@@ -12,7 +12,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from .config import ORGANS, SKIP_DIRS
+from .config import ORGANS, SKIP_DIRS, FILE_TYPE_MAP, SKIP_EXTENSIONS
 from .extractors import extract_php_symbols, extract_python_symbols, extract_ts_symbols
 
 
@@ -20,6 +20,45 @@ def should_skip(dirpath: str) -> bool:
     """Check if directory should be skipped."""
     parts = Path(dirpath).parts
     return any(part in SKIP_DIRS for part in parts)
+
+
+def _classify_file(filename: str) -> str | None:
+    """Classify a file by type. Returns None if should be skipped."""
+    if any(filename.endswith(ext) for ext in SKIP_EXTENSIONS):
+        return None
+    # Check compound extensions first (blade.php before .php)
+    for ext, ftype in sorted(FILE_TYPE_MAP.items(), key=lambda x: -len(x[0])):
+        if filename.endswith(ext):
+            return ftype
+    return None
+
+
+def count_lines_by_type(organ_path: str) -> dict:
+    """Count total lines per file type across an organ directory."""
+    counts: dict[str, dict[str, int]] = {}  # type → {files, lines}
+    if not os.path.isdir(organ_path):
+        return counts
+
+    for root, dirs, files in os.walk(organ_path):
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        if should_skip(root):
+            continue
+        for fname in files:
+            ftype = _classify_file(fname)
+            if ftype is None:
+                continue
+            fpath = os.path.join(root, fname)
+            try:
+                with open(fpath, "r", encoding="utf-8", errors="replace") as f:
+                    line_count = sum(1 for _ in f)
+            except OSError:
+                continue
+            if ftype not in counts:
+                counts[ftype] = {"files": 0, "lines": 0}
+            counts[ftype]["files"] += 1
+            counts[ftype]["lines"] += line_count
+
+    return counts
 
 
 def scan_organ(organ_name: str, config: dict) -> dict:
@@ -80,27 +119,48 @@ def build_index(organs_filter: str | None = None) -> dict:
 
     total_symbols = 0
     total_files = 0
+    total_lines_by_type: dict[str, dict[str, int]] = {}
 
     for organ_name, config in organs_to_scan.items():
         print(f"  Scanning {organ_name}...", end=" ", flush=True)
         files_index = scan_organ(organ_name, config)
         file_count = len(files_index)
         sym_count = sum(len(syms) for syms in files_index.values())
-        print(f"{file_count} files, {sym_count} symbols")
+
+        lines_by_type = count_lines_by_type(config["path"])
+        organ_total_lines = sum(v["lines"] for v in lines_by_type.values())
+        organ_total_files = sum(v["files"] for v in lines_by_type.values())
+        print(f"{sym_count} symbols, {organ_total_files} files, "
+              f"{organ_total_lines:,} lines")
 
         index["organs"][organ_name] = {
             "path": config["path"],
             "files": files_index,
             "file_count": file_count,
             "symbol_count": sym_count,
+            "lines_by_type": lines_by_type,
+            "total_lines": organ_total_lines,
+            "total_files_all": organ_total_files,
         }
         total_files += file_count
         total_symbols += sym_count
 
+        for ftype, counts in lines_by_type.items():
+            if ftype not in total_lines_by_type:
+                total_lines_by_type[ftype] = {"files": 0, "lines": 0}
+            total_lines_by_type[ftype]["files"] += counts["files"]
+            total_lines_by_type[ftype]["lines"] += counts["lines"]
+
+    grand_total_lines = sum(v["lines"] for v in total_lines_by_type.values())
+    grand_total_files = sum(v["files"] for v in total_lines_by_type.values())
+
     index["stats"] = {
         "total_organs": len(organs_to_scan),
-        "total_files": total_files,
+        "total_symbol_files": total_files,
         "total_symbols": total_symbols,
+        "total_files": grand_total_files,
+        "total_lines": grand_total_lines,
+        "lines_by_type": total_lines_by_type,
     }
 
     return index
@@ -148,20 +208,33 @@ def write_summary_md(index: dict, output_path: str) -> None:
         "",
         f"> Auto-generated on {index['generated_at']} by `organ_index.py`",
         f"> **{index['stats']['total_organs']}** organs | "
-        f"**{index['stats']['total_files']}** files | "
+        f"**{index['stats'].get('total_files', 0):,}** files | "
+        f"**{index['stats'].get('total_lines', 0):,}** lines | "
         f"**{index['stats']['total_symbols']}** symbols",
         "",
-        "---",
-        "",
     ]
+
+    # Global line breakdown
+    global_lbt = index["stats"].get("lines_by_type", {})
+    if global_lbt:
+        lines.extend(_build_lines_table("Ecosystem", global_lbt))
+
+    lines.extend(["---", ""])
 
     for organ_name, organ_data in sorted(index["organs"].items()):
         lines.append(f"## {organ_name}")
         lines.append("")
+        total_l = organ_data.get("total_lines", 0)
+        total_f = organ_data.get("total_files_all", 0)
         lines.append(
-            f"**{organ_data['file_count']}** files | "
+            f"**{total_f:,}** files | "
+            f"**{total_l:,}** lines | "
             f"**{organ_data['symbol_count']}** symbols"
         )
+
+        organ_lbt = organ_data.get("lines_by_type", {})
+        if organ_lbt:
+            lines.extend(_build_lines_table(organ_name, organ_lbt))
         lines.append("")
 
         type_groups: dict[str, list[tuple[str, str, int]]] = {}
@@ -196,6 +269,22 @@ def write_summary_md(index: dict, output_path: str) -> None:
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
     print(f"  Markdown → {output_path}")
+
+
+def _build_lines_table(label: str, lines_by_type: dict) -> list[str]:
+    """Build a markdown table of lines per file type."""
+    rows = ["", f"#### Lines by type", "", "| Type | Files | Lines | % |",
+            "|------|------:|------:|--:|"]
+    total_lines = sum(v["lines"] for v in lines_by_type.values())
+    for ftype, counts in sorted(lines_by_type.items(),
+                                 key=lambda x: -x[1]["lines"]):
+        pct = (counts["lines"] / total_lines * 100) if total_lines else 0
+        rows.append(
+            f"| {ftype} | {counts['files']:,} | {counts['lines']:,} | {pct:.1f}% |"
+        )
+    rows.append(f"| **Total** | | **{total_lines:,}** | |")
+    rows.append("")
+    return rows
 
 
 def _build_duplicates_section(index: dict) -> list[str]:
