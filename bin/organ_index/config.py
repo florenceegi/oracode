@@ -64,6 +64,35 @@ OUTPUT_JSON = "/home/fabio/EGI-DOC/docs/ecosistema/ORGAN_INDEX.json"
 OUTPUT_MD = "/home/fabio/EGI-DOC/docs/ecosistema/ORGAN_INDEX_SUMMARY.md"
 
 SKIP_DIRS = {
-    "node_modules", "vendor", ".git", "__pycache__", ".venv",
+    "node_modules", "vendor", ".git", "__pycache__", ".venv", "venv",
     "dist", "build", "storage", "cache", ".next", "coverage",
+    "bootstrap", "public", ".history", ".idea", ".vscode",
+}
+
+# File type classification for line counting
+FILE_TYPE_MAP = {
+    ".blade.php": "blade",
+    ".php": "php",
+    ".py": "python",
+    ".ts": "typescript",
+    ".tsx": "tsx",
+    ".js": "javascript",
+    ".jsx": "jsx",
+    ".css": "css",
+    ".scss": "scss",
+    ".json": "json",
+    ".yaml": "yaml",
+    ".yml": "yaml",
+    ".md": "markdown",
+    ".html": "html",
+    ".sql": "sql",
+    ".sh": "shell",
+    ".env": "env",
+}
+
+# Extensions to skip entirely for line counting
+SKIP_EXTENSIONS = {
+    ".lock", ".map", ".min.js", ".min.css", ".ico", ".png",
+    ".jpg", ".jpeg", ".gif", ".svg", ".woff", ".woff2", ".ttf",
+    ".eot", ".pdf", ".zip", ".tar", ".gz", ".log",
 }
