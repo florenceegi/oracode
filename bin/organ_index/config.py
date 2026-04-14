@@ -64,6 +64,12 @@ ORGANS: dict[str, dict[str, Any]] = {
         "ts_dirs": ["app", "components", "lib"],
         "py_dirs": [],
     },
+    "LA-BOTTEGA": {
+        "path": "/home/fabio/LA-BOTTEGA",
+        "php_dirs": ["laravel_backend/app"],
+        "ts_dirs": ["laravel_backend/resources/js/src"],
+        "py_dirs": [],
+    },
 }
 
 OUTPUT_JSON = "/home/fabio/EGI-DOC/docs/ecosistema/ORGAN_INDEX.json"
