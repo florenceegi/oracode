@@ -26,9 +26,25 @@ One file at a time. Verify file size limits. Build if frontend.
 ### Phase 5 — Closure
 List files created/modified. Document next steps.
 
-### Phase 6 — Report and Stats (mandatory)
+### Phase 6 — Report, DOC-SYNC and Stats (mandatory)
 
-#### 6a. Update mission registry
+#### 6a. DOC-SYNC v2 (automatic SSOT synchronization)
+
+Spawn the `doc-sync-v2` agent with:
+- `mission_id`: the mission ID
+- `files_modified`: list of files touched by the mission (from Phase 5)
+- `diff`: unified diff of the mission (from commit hashes)
+
+The agent performs semantic analysis, identifies impacted SSOT documents (direct + lateral via RAG),
+discriminates additive vs substitutive changes, applies patches (with human approval for substitutive),
+re-indexes the RAG piattaforma, and writes a complete audit trail.
+
+The agent returns a `doc_sync_log` JSON. Write it into the mission registry entry.
+
+If the agent reports `outcome: "failed"` or requires human resolution (`awaiting_doc_sync_resolution`),
+the mission stays in `closing` until resolved. Do NOT proceed to `closed` without a resolved doc_sync_log.
+
+#### 6b. Update mission registry
 ```json
 {
   "mission_id": "M-XXX",
@@ -39,12 +55,14 @@ List files created/modified. Document next steps.
   "type": "feature | bugfix | refactor | docsync | audit",
   "projects_involved": ["..."],
   "doc_sync_executed": true,
+  "doc_sync_version": "2.0.0",
+  "doc_sync_log": { "version": "2.0.0", "outcome": "success", "..." : "..." },
   "doc_verified": false,
   "files_modified": ["path/to/file1", "path/to/file2"]
 }
 ```
 
-#### 6b. Calculate and write stats
+#### 6c. Calculate and write stats
 
 ```bash
 node mission/stats-calculator.js .oracode/mission-registry.json .oracode/config.json
@@ -74,7 +92,7 @@ The stats field looks like:
 }
 ```
 
-#### 6c. Commit and push
+#### 6d. Commit and push
 
 ```bash
 git add .oracode/mission-registry.json
@@ -84,7 +102,7 @@ git push
 
 ## Guard hook
 
-The `mission-stats-guard` hook runs on every `git push` and warns if any completed mission is missing stats. This is the safety net — Phase 6b is the first line of defense.
+The `mission-stats-guard` hook runs on every `git push` and warns if any completed mission is missing stats. This is the safety net — Phase 6c is the first line of defense.
 
 ## Registry schema
 
