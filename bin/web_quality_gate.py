@@ -189,6 +189,17 @@ def check_schema(report: GateReport, html_content: str, locale: str):
             for item in d["@graph"]:
                 if item.get("@type") == "WebPage":
                     has_webpage = True
+                    for field_name in ["name", "description", "url", "inLanguage"]:
+                        val = item.get(field_name)
+                        add(report, f"SD-2:{locale}:{field_name}", "Schema.org", f"WebPage.{field_name} present",
+                            val is not None and val != "")
+                    add(report, f"SD-3:{locale}", "Schema.org", "isPartOf present",
+                        "isPartOf" in item)
+                    about = item.get("about", {})
+                    if about:
+                        has_about = True
+                        add(report, f"SD-4:{locale}", "Schema.org", f"about @type: {about.get('@type', 'MISSING')}",
+                            "@type" in about)
 
     add(report, f"SD-1:{locale}", "Schema.org", "WebPage schema present",
         has_webpage)
@@ -280,7 +291,16 @@ def check_i18n(report: GateReport, html_content: str, locale: str, messages_dir:
                           "Abenteuer", "abenteuer", "dauern", "dauert",
                           "genauer", "unser", "unsere", "unserem",
                           "dauern", "überdauern", "Aue", "Gebaeude",
-                          "Mauer", "Bauer", "sauer", "Lauer"}
+                          "Mauer", "Bauer", "sauer", "Lauer",
+                          "konsequent", "Konsequenz", "konsequenz",
+                          "Wahrheitsquellen", "Quelle", "quelle", "Quellen",
+                          "konzeptuelle", "konzeptuell", "konzeptueller",
+                          "intellektuelle", "intellektuell", "intellektueller",
+                          "eventuelle", "eventuell", "individueller",
+                          "individuell", "kontinuierlich", "Sequel",
+                          "Quellcode", "Bequemlichkeit", "Wahrheitsquelle",
+                          "visuelles", "Bauen", "Durchquerung",
+                          "Apnoe", "baue", "Maestro"}
         real = [s for s in suspects if s not in false_positives and len(s) > 3]
         add(report, f"I-2:{locale}", "i18n", f"DE diacritics in '{page}' ns ({len(real)} suspicious)",
             len(real) == 0, ", ".join(real[:5]) if real else "")
