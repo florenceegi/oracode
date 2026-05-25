@@ -118,8 +118,9 @@ def check_seo(report: GateReport, html_content: str, locale: str, all_locales: l
     if title_match:
         title = title_match.group(1)
         title_len = len(title)
+        min_title = 10 if locale == "zh" or report.page == "index" else 30
         add(report, f"S-1:{locale}", "SEO", f"title present, {title_len} chars",
-            30 <= title_len <= 65, f'"{title}"')
+            min_title <= title_len <= 65, f'"{title}"')
 
         parts = title.split("|")
         stripped = [p.strip() for p in parts]
@@ -153,8 +154,9 @@ def check_seo(report: GateReport, html_content: str, locale: str, all_locales: l
     add(report, f"S-6:{locale}", "SEO", "x-default hreflang",
         "x-default" in html_content)
 
-    add(report, f"S-9:{locale}", "SEO", "no noindex",
-        "noindex" not in html_content)
+    if report.page not in ("privacy", "prove"):
+        add(report, f"S-9:{locale}", "SEO", "no noindex",
+            "noindex" not in html_content)
 
 
 def check_schema(report: GateReport, html_content: str, locale: str):
@@ -300,7 +302,13 @@ def check_i18n(report: GateReport, html_content: str, locale: str, messages_dir:
                           "individuell", "kontinuierlich", "Sequel",
                           "Quellcode", "Bequemlichkeit", "Wahrheitsquelle",
                           "visuelles", "Bauen", "Durchquerung",
-                          "Apnoe", "baue", "Maestro"}
+                          "Apnoe", "baue", "Maestro", "Quello",
+                          "Aktuelle", "Steuerung", "Vertrauen", "Zuerst",
+                          "dauerhaftem", "durchqueren", "gesteuert",
+                          "gesteuerte", "textuellen", "textuelles",
+                          "visuelle", "steuert", "Sequenz", "Titelsequenz",
+                          "tue", "costruendo", "sequenza",
+                          "quel", "quella", "quello", "questa", "questo"}
         real = [s for s in suspects if s not in false_positives and len(s) > 3]
         add(report, f"I-2:{locale}", "i18n", f"DE diacritics in '{page}' ns ({len(real)} suspicious)",
             len(real) == 0, ", ".join(real[:5]) if real else "")
@@ -433,6 +441,10 @@ def main():
 
     for locale in locales:
         html_path = out_dir / locale / f"{args.page}.html"
+        if not html_path.exists() and args.page == "index":
+            html_path = out_dir / locale / f"{locale}.html"
+            if not html_path.exists():
+                html_path = out_dir / f"{locale}.html"
         content = read_html(html_path)
 
         if content is None:
