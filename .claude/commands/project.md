@@ -19,12 +19,18 @@ Se trovato: "Oracode paradigma rilevato in [path]."
 Se non trovato: "Oracode paradigma non rilevato. Vuoi installarlo ora?" → procedi a Fase 2.
 
 **0.2 OS3 Matrix**
-Cerca file di licenza OS3 Matrix in:
-- `~/.oracode/license` (path convenzionale — da formalizzare)
-- Variabile ambiente `ORACODE_LICENSE_PATH`
+Cerca file di licenza OS3 Matrix in questo ordine:
+1. Variabile ambiente `ORACODE_LICENSE_PATH` (se definita, usa quel path)
+2. `~/.oracode/license.json` (path convenzionale)
 
-Se trovato: "OS3 Matrix con licenza valida rilevato."
-Se non trovato: segnala assenza ma non bloccare — l'utente potrebbe voler operare solo con paradigma.
+Se trovato, leggi il file JSON e verifica:
+- `product` deve essere `"os3-matrix"`
+- `expires` deve essere una data futura (non scaduta)
+- `repo` contiene l'URL del repo da cui clonare Matrix
+
+Se licenza valida: "OS3 Matrix — licenza valida (scade [data]). Licensee: [name], [company]."
+Se licenza scaduta: "OS3 Matrix — licenza SCADUTA il [data]. Rinnova per utilizzare Matrix."
+Se non trovato: "OS3 Matrix non rilevato. Puoi operare con il paradigma (livello 1) o acquistare una licenza su [URL]."
 
 **0.3 Librerie LSO installate**
 Cerca librerie LSO gia presenti nel sistema. Librerie note:
@@ -67,21 +73,32 @@ Chiedi conferma scelte prima di procedere.
 ## Fase 2 — Licenza e Installazione infrastruttura
 
 **2.1 Se OS3 Matrix selezionato**
-Verifica licenza. Se non presente: "Licenza OS3 Matrix non trovata. Inserisci il path del file di licenza o procedi senza Matrix."
-<!-- Formato licenza e validazione: da formalizzare -->
+Rileggi `~/.oracode/license.json`. Se licenza valida:
+- Usa il campo `repo` per clonare os3-matrix in una directory temporanea
+- Se il clone fallisce (credenziali, rete): segnala e chiedi se procedere senza Matrix
+
+Se licenza non presente o scaduta: "Licenza OS3 Matrix non valida. Procedi senza Matrix o inserisci il path di un file di licenza valido."
 
 **2.2 Installa paradigma**
-Copia `CLAUDE_ORACODE_CORE.md` nella root del futuro progetto.
+Copia `CLAUDE_ORACODE_CORE.md` dal repo oracode nella root del futuro progetto.
 
 **2.3 Se Matrix: installa enforcement**
-Copia/configura:
-- Hook bloccanti base in `.claude/hooks/`
-- Agent definitions base in `.claude/agents/`
-- Template OS3 Matrix compilato
+Dal clone temporaneo di os3-matrix, copia nel progetto:
+- `hooks/` → `.claude/hooks/` del progetto (o `~/.claude/hooks/` se globale)
+- `agents/` → `.claude/agents/` del progetto (o `~/.claude/agents/` se globale)
+- `CLAUDE_OS3_MATRIX_TEMPLATE.md` → root del progetto
+- `bin/` → `.oracode/bin/` del progetto
+- `mission/` → `.oracode/mission/` del progetto
+- `nervous-system/` → `.oracode/nervous-system/` del progetto
+
+Chiedi all'utente: "Installare hook/agenti a livello progetto o globale (~/.claude/)?"
+Rimuovi il clone temporaneo dopo la copia.
 
 **2.4 Installa librerie LSO selezionate**
-Per ogni libreria scelta, installa nel progetto tramite package manager appropriato allo stack.
-<!-- Metodo di installazione per libreria: da formalizzare quando i package saranno pubblicati -->
+Per ogni libreria scelta, installa tramite package manager appropriato allo stack:
+- PHP: `composer require autobooknft/ultra-error-manager` (ecc.)
+- Node/TS: `npm install @autobooknft/ultra-error-manager` (ecc.)
+- Se il package manager non e ancora inizializzato, segnala che sara installabile dopo la creazione del progetto
 
 ---
 
