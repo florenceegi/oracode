@@ -7,7 +7,9 @@
 
 Oracode è un paradigma di sviluppo software AI-native E un framework.
 - **Paradigma**: regole, pilastri, disciplina — in `templates/CLAUDE_ORACODE_CORE.md`
-- **Framework**: librerie LSO (Ultra), enforcement (OS3 Matrix), tooling (hook, agenti, CLI)
+- **Framework**: librerie LSO (Ultra, pubbliche), enforcement (OS3 Matrix, commerciale — repo separato)
+
+Questo repo contiene SOLO il paradigma (MIT). L'enforcement vive in `os3-matrix` (privato, licenza commerciale).
 
 ## Comando principale
 
@@ -16,8 +18,8 @@ Oracode è un paradigma di sviluppo software AI-native E un framework.
 ```
 
 Flusso:
-1. Rileva cosa è disponibile sul sistema (paradigma, Matrix, librerie)
-2. Propone opzioni in base a cosa c'è
+1. Rileva cosa e disponibile sul sistema (paradigma, Matrix, librerie)
+2. Propone opzioni in base a cosa c'e
 3. Installa infrastruttura scelta (paradigma + Matrix se licenziato + librerie LSO)
 4. Configura il progetto (dominio, stack, livello)
 5. Genera scaffold pronto all'uso
@@ -26,23 +28,23 @@ Flusso:
 
 ```
 templates/
-  CLAUDE_ORACODE_CORE.md          — paradigma (MIT)
-  CLAUDE_OS3_MATRIX_TEMPLATE.md   — enforcement (commerciale, richiede licenza)
-  CLAUDE_PROJECT_TEMPLATE.md      — template istanza progetto
-  PROJECT-DOC/                    — scaffold vuoto per nuovo progetto
+  CLAUDE_ORACODE_CORE.md       — boot context paradigma (MIT)
+  CLAUDE_PROJECT_TEMPLATE.md   — template istanza progetto
+  PROJECT-DOC/                 — scaffold vuoto per nuovo progetto
 
-hooks/templates/                  — hook OS3 Matrix (commerciale)
-agents/templates/                 — agenti specializzati (commerciale)
-bin/                              — CLI e utility
-mission/                          — mission protocol
-nervous-system/                   — infrastruttura SSOT
+.claude/commands/project.md    — skill /project
+```
 
-.claude/commands/project.md       — skill /project
+## Ecosistema Oracode
+
+```
+oracode (questo repo)          — paradigma MIT, pubblico
+os3-matrix                     — enforcement commerciale, privato (Florence EGI S.R.L.)
+ultra-* (AutobookNft)          — librerie LSO, pubbliche
 ```
 
 ## Regole per chi lavora SU questo repo
 
-Chi modifica il repo oracode stesso (non chi lo usa per creare progetti) segue queste regole:
-- Il contenuto di `templates/CLAUDE_ORACODE_CORE.md` è MIT. Nessun riferimento a progetti specifici.
-- Il contenuto di `hooks/` e `agents/` è commerciale (OS3 Matrix). Nessun leak nel paradigma.
-- Ogni modifica a template o skill richiede test su scenario reale (bootstrap progetto di prova).
+- Contenuto MIT. Nessun riferimento a progetti specifici o a codice commerciale.
+- Nessun file di os3-matrix deve finire qui.
+- Ogni modifica a template o skill richiede test su scenario reale.
