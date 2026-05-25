@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "description": "Mission Registry — tracking delle mission del progetto",
+    "version": "1.0.0",
+    "created": "{{DATE}}",
+    "updated": "{{DATE}}",
+    "author": "{{CTO_NAME}} for {{CEO_NAME}}",
+    "purpose": "Registro SSOT delle mission. Ogni modifica strutturale passa da qui."
+  },
+  "counter": 0,
+  "missions": []
+}

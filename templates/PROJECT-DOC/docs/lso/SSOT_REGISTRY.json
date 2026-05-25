@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "description": "SSOT Registry — mapping documenti SSOT e file codebase",
+    "version": "1.0.0",
+    "created": "{{DATE}}",
+    "updated": "{{DATE}}",
+    "author": "{{CTO_NAME}} for {{CEO_NAME}}",
+    "purpose": "Layer 0 MIELINA: ogni entry mappa un documento SSOT ai file sorgente che descrive."
+  },
+  "documents": []
+}
