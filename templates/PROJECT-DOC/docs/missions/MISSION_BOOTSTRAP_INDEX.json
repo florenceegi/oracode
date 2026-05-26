@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "description": "Bootstrap mirato — quali moduli caricare per tipo_missione + organi_coinvolti",
+    "version": "1.0.0",
+    "created": "{{DATE}}",
+    "updated": "{{DATE}}",
+    "author": "{{CTO_NAME}} for {{CEO_NAME}}",
+    "purpose": "MISSION_PROTOCOL.md v2.0.0 §4.3 — SSOT per bootstrap calibrato per tipo mission. Riduce token al boot + aumenta attention sui contenuti rilevanti.",
+    "instance": "{{INSTANCE_NAME}}",
+    "update_policy": "Solo via approvazione esplicita CEO. Proposte emergono da retrospective FASE 6 in BOOTSTRAP_DRIFT_LOG.md"
+  },
+  "always_loaded": [
+    "CLAUDE.md",
+    "CLAUDE_ORACODE_CORE.md"
+  ],
+  "by_mission_type": {
+    "feature": [],
+    "fix": [],
+    "refactor": [],
+    "doc-sync": [
+      "docs/lso/SSOT_REGISTRY.json"
+    ],
+    "guard": [],
+    "infrastructure": [],
+    "migration": [],
+    "compliance": [],
+    "bootstrap": [],
+    "epic": [],
+    "oracode-audit": [
+      "docs/missions/MISSION_TYPES.json"
+    ]
+  },
+  "by_organ": {}
+}
