@@ -138,13 +138,33 @@ Nota: se l'utente sceglie livello 2+ ma non ha OS3 Matrix installato, segnala l'
 
 **Domande condizionali per livello:**
 
-Se livello 3+:
-- Conferma mission protocol e DOC-SYNC attivi
+Se livello 3+ (LSO mono-organo o multi-organo) — SISTEMA CIRCOLATORIO completo richiesto:
+
+Conferma con CEO che il progetto sara setuppato con sistema circolatorio mono-organo
+completo (per §1.1.A LSO_NOMENCLATURE_v2: Mission Protocol + DOC-SYNC v2 + RAG + AI Helping):
+
+- **Q7.1: Backend runtime per RAG**
+  Chiedi: "Quale stack runtime puo ospitare RAG (PostgreSQL+pgvector / managed vector DB / nessuno)?"
+  Se nessuno (es. progetti static): segnala "LSO ridotto" (§2.6) — infrastruttura completa
+  ma RAG resta inattivo finche non c'e runtime. Procedi comunque con registry + audit + agent.
+
+- **Q7.2: Schema RAG name** (solo se Q7.1 ha runtime)
+  Default: `rag_<nome_progetto_normalizzato>`. CEO conferma o overrida.
+
+- **Q7.3: AI Helping conversazionale**
+  Conferma intenzione di esporre RAG via interfaccia conversazionale (sidebar AI, chat).
+  Pattern documentato in `LSO_NOMENCLATURE_v2 §1.1.A`. Implementazione e mission separata
+  per istanze nuove (impl. di riferimento ancora in maturazione su FlorenceEGI).
 
 Se livello 4:
 - Mappa organi (nomi, funzioni, URL)
-- Sistema circolatorio (se esiste)
+- Sistema circolatorio cross-organo (organ index, contracts)
 - Database condiviso
+
+Se livello 1 o 2 (NON-LSO):
+Nessun sistema circolatorio. CLAUDE.md include solo paradigma + P0. Niente DOC-SYNC v2,
+niente RAG, niente Helping. Spiegare al CEO che alcune features Oracode (es. retrospective
+mission, propriocezione documentale) richiedono livello 3+.
 
 Per tutti i livelli:
 - Stack bannati
@@ -161,12 +181,27 @@ Dopo tutte le risposte:
 
 1. **Crea directory progetto**: `<CWD>/NOME-DOC/`
 2. **Copia scaffold base**: da `/home/fabio/oracode/templates/PROJECT-DOC/`
+   Include automaticamente: `docs/missions/MISSION_BOOTSTRAP_INDEX.json`,
+   `docs/missions/BOOTSTRAP_DRIFT_LOG.md`, `audit/doc_sync/.gitkeep`.
 3. **Compila CLAUDE.md**: sostituisci tutti i placeholder `{{...}}` con le risposte raccolte
 4. **Compila MISSION_REGISTRY.json**: inserisci dati progetto, counter=0
 5. **Compila SSOT_REGISTRY.json**: inserisci dati progetto, documents vuoto
 6. **Se livello 2+**: includi configurazione OS3 Matrix nel boot context
-7. **Se livello 4**: includi sezione organi e sistema circolatorio
-8. **Registra librerie installate**: nel boot context, sezione dipendenze
+7. **Se livello 3+ (LSO mono-organo)**: sistema circolatorio completo
+   - Crea `docs/missions/MISSION_TYPES.json` che estende
+     `/home/fabio/oracode/templates/MISSION_TYPES_BASE.json` (tassonomia ibrida — Opzione 3)
+   - Compila `docs/missions/MISSION_BOOTSTRAP_INDEX.json` sostituendo placeholder
+     `{{DATE}}`, `{{INSTANCE_NAME}}`, `{{CEO_NAME}}`, `{{CTO_NAME}}`
+   - Inserisci nel CLAUDE.md istanza la convenzione `instance_root` (path assoluto)
+     usata da agent `doc-sync-v2`
+   - Se Q7.1 ha runtime RAG: prepara `bin/apply-rag-schema.sh` che applica
+     `/home/fabio/os3-matrix/nervous-system/rag-schema-template.sql` con
+     placeholder risolti (`{{RAG_SCHEMA}}` da Q7.2, `{{TS_LANGUAGE}}` mappato da
+     locale principale Q5, `{{LANGUAGES_CHECK}}` derivato da Q5,
+     `{{EMBEDDING_DIM}}=1536`, `{{IVFFLAT_LISTS}}=100`)
+   - Se Q7.1 = nessuno runtime: annota `LSO ridotto — RAG offline` nel CLAUDE.md
+8. **Se livello 4**: includi sezione organi e sistema circolatorio cross-organo
+9. **Registra librerie installate**: nel boot context, sezione dipendenze
 
 <!-- Fase 4 sara espansa con step aggiuntivi futuri -->
 
