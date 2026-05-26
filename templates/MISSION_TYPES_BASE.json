@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "description": "Mission Types Base — Tassonomia universale tipi mission per Oracode",
+    "version": "1.0.0",
+    "created": "2026-05-26",
+    "updated": "2026-05-26",
+    "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
+    "purpose": "Set base universale di tipi mission. Ogni istanza LSO estende questo file via MISSION_TYPES.json (approccio ibrido — Opzione 3).",
+    "scope": "universal",
+    "extension_pattern": "Ogni istanza ha <INSTANCE>-DOC/docs/missions/MISSION_TYPES.json con campo 'extends' che referenzia questo file. Tipi custom per dominio si aggiungono alla 'types' dell'istanza.",
+    "promotion_policy": "Tipi custom emergenti da istanze possono essere promossi a base via mission tipo 'oracode-audit' (decisione CEO esplicita).",
+    "added_in_first_appearance": "ORACODE-DOC M-ORACODE-001 D0 (2026-05-26)"
+  },
+  "types": [
+    {
+      "id": "feature",
+      "label": "Feature",
+      "description": "Nuova funzionalità",
+      "scope": "universal",
+      "deliverable_typical": ["code", "tests", "doc-sync"]
+    },
+    {
+      "id": "fix",
+      "label": "Fix",
+      "description": "Correzione bug",
+      "scope": "universal",
+      "deliverable_typical": ["code-patch", "test-red", "doc-sync"]
+    },
+    {
+      "id": "refactor",
+      "label": "Refactor",
+      "description": "Ristrutturazione codice senza cambio comportamento",
+      "scope": "universal",
+      "deliverable_typical": ["code", "tests-baseline-green", "doc-sync"]
+    },
+    {
+      "id": "doc-sync",
+      "label": "Doc-Sync",
+      "description": "Allineamento documentazione SSOT ↔ codice",
+      "scope": "universal",
+      "deliverable_typical": ["doc-updates", "ssot-registry-updates"]
+    },
+    {
+      "id": "guard",
+      "label": "Guard",
+      "description": "Testing e protezione (vedi LSO_GUARD_TESTING_PROTOCOL)",
+      "scope": "universal",
+      "deliverable_typical": ["test-files", "hook-files"]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastructure",
+      "description": "Setup/configurazione runtime (deploy, CI, hosting)",
+      "scope": "universal",
+      "deliverable_typical": ["config-files", "deploy-scripts"]
+    },
+    {
+      "id": "migration",
+      "label": "Migration",
+      "description": "Migrazione dati o schema DB",
+      "scope": "universal",
+      "deliverable_typical": ["migration-files", "data-scripts", "rollback-plan"]
+    },
+    {
+      "id": "compliance",
+      "label": "Compliance",
+      "description": "GDPR/legal/regulatory",
+      "scope": "universal",
+      "deliverable_typical": ["legal-docs", "code-updates", "ceo-approval"]
+    },
+    {
+      "id": "bootstrap",
+      "label": "Bootstrap",
+      "description": "Apertura istanza, organo, o componente nuovo",
+      "scope": "universal",
+      "deliverable_typical": ["scaffold", "registry-init", "claude-md"]
+    },
+    {
+      "id": "epic",
+      "label": "Epic",
+      "description": "Mission contenitore con sub-mission",
+      "scope": "universal",
+      "deliverable_typical": ["sub-missions", "aggregate-report"]
+    },
+    {
+      "id": "oracode-audit",
+      "label": "Oracode Audit",
+      "description": "Audit del paradigma Oracode o di OS3 Matrix per vincolo spin-off o emergenze framework",
+      "scope": "framework",
+      "deliverable_typical": ["paradigm-patches", "matrix-patches", "ssot-updates"]
+    }
+  ]
+}
