@@ -1,0 +1,38 @@
+{
+  "mission_id": "M-OS3-024",
+  "instance_root": "/home/fabio/oracode",
+  "trigger_matrix": 3,
+  "doc_only_mission": false,
+  "infrastructure_mission": true,
+  "new_functions_classes": [],
+  "removed_functions": [],
+  "behaviors_changed": [],
+  "new_artifacts": [
+    {
+      "path": "docs/missions/MISSION_REGISTRY.json",
+      "type": "created",
+      "semantic_role": "Mission Registry canonical repo-versioned per paradigma Oracode. Schema canonical-english. Chiude dual-tracking gap: engine HOME (~/.oracode/missions/state.json, state machine runtime) vs vista repo persistente versionata.",
+      "key_concepts": [
+        "mission registry",
+        "dual-tracking",
+        "canonical-english schema",
+        "counter_semantics (counter=ultimo ID, non conteggio)",
+        "mission engine HOME vs repo registry",
+        "retroactive registration session 3 (M-OS3-016/018/020)"
+      ],
+      "entries": 7,
+      "counter": 23
+    },
+    {
+      "path": "tests/m-os3-024/test_mission_registry_bootstrap.sh",
+      "type": "created",
+      "semantic_role": "Test bootstrap MISSION_REGISTRY (PASSED). P0-13 Test-First.",
+      "key_concepts": ["test", "bootstrap validation"]
+    }
+  ],
+  "narrative_content_new": [],
+  "narrative_content_modified": [],
+  "notes": "Mission infrastrutturale self-registering. Crea l'artefatto MISSION_REGISTRY repo canonical che istituisce la doppia traccia per le mission paradigma (M-OS3-NNN). Nessuna modifica a codice/funzioni. Audit OS3 GREEN con 2 fix minori pre-applicati (commits.oracode su M-OS3-023=f893eee + counter_semantics in _meta).",
+  "outcome": "success",
+  "failure_reason": null
+}

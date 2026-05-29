@@ -1,0 +1,159 @@
+{
+  "_meta": {
+    "description": "Mission Registry canonical — paradigma Oracode (repo florenceegi/oracode). Traccia le mission Oracode Nexus (M-OS3-NNN) che evolvono paradigma + enforcement os3-matrix.",
+    "version": "1.0.0",
+    "created": "2026-05-29",
+    "updated": "2026-05-29",
+    "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
+    "purpose": "Registro SSOT delle mission del paradigma. Schema chiavi inglese (allineato fabiocherici.com, prodotto da doc-sync-v2). Chiude il dual-tracking gap HOME-engine vs repo-registry: questo è il registro repo canonical, l'engine HOME (~/.oracode/missions/) resta state machine runtime.",
+    "schema": "canonical-english",
+    "repo": "florenceegi/oracode",
+    "level": 1,
+    "organ_type": "Paradigma SSOT (Livello 1 §1.1 LSO_NOMENCLATURE_v2)",
+    "id_convention": "M-OS3-NNN (Oracode Nexus / OS3 Matrix evolution missions)",
+    "bootstrap_mission": "M-OS3-024",
+    "dual_tracking_note": "Mission engine HOME (~/.oracode/missions/<ID>/state.json) = state machine runtime con firma hash-chain. Questo registry = vista repo persistente versionata. Sync manuale a chiusura mission finché bin/mission v0.4 (M-OS3-025 futura) non automatizza il propagamento via .oracode/project.json descrittore.",
+    "counter_semantics": "counter = ultimo ID numerico assegnato (non conteggio mission). Prossima mission incrementa. Self-registering mission non incrementa fino a chiusura."
+  },
+  "counter": 23,
+  "missions": [
+    {
+      "id": "M-OS3-024",
+      "title": "MISSION_REGISTRY canonical bootstrap paradigma (chiude dual-tracking HOME-vs-repo)",
+      "tipo_missione": "infrastructure",
+      "organi_coinvolti": [
+        "oracode"
+      ],
+      "priority": "P1",
+      "trigger_matrix": 3,
+      "status": "closed",
+      "date_open": "2026-05-29",
+      "date_close": "2026-05-29",
+      "found_by": "DOC-SYNC v2 M-OS3-023 — proposta step successivo logico",
+      "scope_hash": "157f9d8cc812aaeb00c235b07cec22bf333e36c9d1bb18c2b440b493684f2e1e",
+      "file": "docs/missions/MISSION_REGISTRY.json",
+      "doc_sync_executed": true,
+      "doc_sync_outcome": "success",
+      "audit_findings": "GREEN (2 fix minori pre-applicati: commits.oracode M-OS3-023=f893eee + counter_semantics in _meta)",
+      "test_file": "tests/m-os3-024/test_mission_registry_bootstrap.sh",
+      "note": "Self-registering bootstrap. FASE 6 self-close via DOC-SYNC v2. Istituisce dual-tracking: engine HOME (state machine runtime) + questo registry repo canonical (vista versionata)."
+    },
+    {
+      "id": "M-OS3-023",
+      "title": "SSOT_REGISTRY canonical bootstrap paradigma (Layer 0 Mielina, 39 doc)",
+      "tipo_missione": "infrastructure",
+      "organi_coinvolti": [
+        "oracode"
+      ],
+      "priority": "P1",
+      "trigger_matrix": 3,
+      "status": "closed",
+      "date_open": "2026-05-29",
+      "date_close": "2026-05-29",
+      "found_by": "DOC-SYNC v2 M-OS3-022 — proposta step successivo",
+      "scope_hash": "64dd2dbdf4a2",
+      "file": "docs/lso/SSOT_REGISTRY.json",
+      "doc_sync_executed": true,
+      "doc_sync_outcome": "success",
+      "audit_findings": "YELLOW→GREEN (P0-12 3 path-fantasma fixati in-mission)",
+      "test_file": "tests/m-os3-023/test_ssot_registry_bootstrap.sh",
+      "note": "39 doc registrati (28 concept-ssot + 11 spec-ssot). update_policy immutable su 6 entry costituzionali.",
+      "commits": {
+        "oracode": "f893eee"
+      }
+    },
+    {
+      "id": "M-OS3-022",
+      "title": "Paradigm relocation — 39 doc EGI-DOC → oracode/docs/paradigm/ paradigma-nativa",
+      "tipo_missione": "migration",
+      "organi_coinvolti": [
+        "oracode",
+        "EGI-DOC"
+      ],
+      "priority": "P0",
+      "trigger_matrix": 6,
+      "status": "closed",
+      "date_open": "2026-05-29",
+      "date_close": "2026-05-29",
+      "found_by": "CEO — Oracode Nexus disaccoppiamento step 1 (decisione: sede SSOT in /home/fabio/oracode/docs/)",
+      "scope_hash": "338b658a9731",
+      "file": "docs/paradigm/",
+      "doc_sync_executed": true,
+      "doc_sync_outcome": "success",
+      "audit_findings": "YELLOW→GREEN (oracode-specialist MANUALE_OPERATIVO_LSO fix)",
+      "test_file": "tests/m-os3-022/test_paradigm_relocation.sh",
+      "commits": {
+        "oracode": "9e3e5a2",
+        "EGI-DOC": "f9329b0"
+      },
+      "note": "38 doc da EGI-DOC + 1 Oracode-Nexus-index. Redirect notice MOVED_TO_ORACODE_REPO.md in EGI-DOC."
+    },
+    {
+      "id": "M-OS3-021",
+      "title": "ORACODE-DOC scaffold (sede SSOT paradigma) — SOSPESA",
+      "tipo_missione": "infrastructure",
+      "organi_coinvolti": [
+        "oracode"
+      ],
+      "priority": "P0",
+      "trigger_matrix": 6,
+      "status": "suspended",
+      "date_open": "2026-05-29",
+      "date_close": null,
+      "found_by": "CEO — riprende Oracode Nexus (Opzione A)",
+      "scope_hash": "87c63988378f",
+      "suspend_reason": "Premise errata: ORACODE-DOC esisteva già come laboratorio L3 (M-ORACODE-001 closed). Scope ridefinito → M-OS3-022 (target /home/fabio/oracode/docs/). Recovery non necessario.",
+      "note": "Superata da M-OS3-022. Mantenuta come traccia del cambio premise (REGOLA ZERO sul rilevamento dual-state ORACODE-DOC)."
+    },
+    {
+      "id": "M-OS3-020",
+      "title": "DOC-SYNC v2 audit path whitelist v0.3.1 (FINDING-S3-4)",
+      "tipo_missione": "fix",
+      "organi_coinvolti": [
+        "os3-matrix"
+      ],
+      "priority": "P1",
+      "trigger_matrix": 6,
+      "status": "closed",
+      "date_open": "2026-05-27",
+      "date_close": "2026-05-27",
+      "found_by": "Session 3 — FINDING-S3-4 (DOC-SYNC v2 audit path bloccato da mission-state-guard)",
+      "doc_sync_executed": true,
+      "audit_findings": "GREEN (4/4 + self-test produzione live)",
+      "note": "Mission session 3. FASE 6 parziale (mission fantasma — 5/8 step saltati). Recovery completo pendente (M-OS3-025 bin/mission v0.4). Deliverable: os3-matrix/docs/design/M-OS3-020_DELIVERABLE.md. Registrazione retroattiva storica."
+    },
+    {
+      "id": "M-OS3-018",
+      "title": "SSOT Oracode realignment (MISSION_PROTOCOL v3.0.0 + 00_ORACODE_SYSTEM_SSOT v1.2.0)",
+      "tipo_missione": "doc-sync",
+      "organi_coinvolti": [
+        "oracode"
+      ],
+      "priority": "P2",
+      "trigger_matrix": 2,
+      "status": "closed",
+      "date_open": "2026-05-27",
+      "date_close": "2026-05-27",
+      "found_by": "CEO (chat parallela session 3) — realignment SSOT paradigma",
+      "doc_sync_executed": true,
+      "note": "Mission session 3. FASE 6 parziale (mission fantasma). Prodotto MISSION_PROTOCOL v3.0.0 + 00_ORACODE_SYSTEM_SSOT v1.2.0 (ora in docs/paradigm/ via M-OS3-022). Registrazione retroattiva storica."
+    },
+    {
+      "id": "M-OS3-016",
+      "title": "Multi-write concurrency v0.3 per session_id (FINDING-S3-1)",
+      "tipo_missione": "feature",
+      "organi_coinvolti": [
+        "os3-matrix"
+      ],
+      "priority": "P0",
+      "trigger_matrix": 6,
+      "status": "closed",
+      "date_open": "2026-05-27",
+      "date_close": "2026-05-27",
+      "found_by": "Session 3 — FINDING-S3-1 (focus.json single-slot blocca Write paralleli multi-chat)",
+      "doc_sync_executed": true,
+      "audit_findings": "GREEN (21/21 test, 5 CRITICI fix in-mission, AMENDMENT 1 CEO)",
+      "note": "Mission session 3. FASE 6 parziale (mission fantasma). bin/mission v0.3 multi-write per CLAUDE_CODE_SESSION_ID → ~/.oracode/focus/<session_id>.json. Sblocca multi-chat parallel. Deliverable: os3-matrix/docs/design/M-OS3-016_DELIVERABLE.md. Registrazione retroattiva storica."
+    }
+  ]
+}

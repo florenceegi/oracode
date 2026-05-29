@@ -1,0 +1,8 @@
+{
+  "mission_id": "M-OS3-024",
+  "instance_root": "/home/fabio/oracode",
+  "rag_mode": "skipped_no_schema",
+  "reason": "Nessun RAG_SCHEMA configurato nel CLAUDE.md istanza ne in env ORACODE_RAG_SCHEMA. Paradigma Oracode in modalita LSO ridotto (verification_mode=registry_only). Step 3 discovery laterale skippato per design.",
+  "laterally_impacted": [],
+  "count": 0
+}

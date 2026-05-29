@@ -1,0 +1,8 @@
+{
+  "mission_id": "M-OS3-024",
+  "rag_mode": "skipped_no_schema",
+  "reason": "Nessun RAG_SCHEMA in CLAUDE.md istanza ne in env ORACODE_RAG_SCHEMA. Paradigma Oracode = LSO ridotto (registry_only). Step 5 e Step 5b RAG-dependent skippati per design.",
+  "reindexed": [],
+  "rag_chunks_reindexed": null,
+  "sanity_checks": []
+}

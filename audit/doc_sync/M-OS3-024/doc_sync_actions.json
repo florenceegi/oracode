@@ -1,0 +1,27 @@
+{
+  "mission_id": "M-OS3-024",
+  "instance_root": "/home/fabio/oracode",
+  "actions": [
+    {
+      "ssot_path": "docs/missions/MISSION_REGISTRY.json",
+      "ssot_type": "operational-tracker (mission registry)",
+      "mode": "substitutive",
+      "status": "applied",
+      "ssot_content_hash_before": "aacfefe6d51f3b174603684b62261e9fbd20a50708890aa51076bd5596a77b74",
+      "ssot_content_hash_after": "3337962e6948fad1c6096567e21652fe035790d866970c048b622220d3fd61eb",
+      "diff_path": "diffs/MISSION_REGISTRY.md",
+      "resolution_method": "self_close_fase_6_auto",
+      "justification": "FASE 6 self-close della mission self-registering M-OS3-024. Aggiornamento sezione operativa del tracker (entry M-OS3-024): status closing->closed, date_close 2026-05-29, campi chiusura DOC-SYNC allineati allo schema M-OS3-023. Corretto campo 'file' (puntava al test invece che all'artefatto registry). Sezione operativa auto-update consentita; nessun campo _meta manuale alterato. Approvazione non richiesta: e la chiusura autoreferenziale prevista, non patch distruttiva su contenuto altrui.",
+      "approval_required": false,
+      "timestamp": "2026-05-29T21:11:59Z"
+    }
+  ],
+  "summary": {
+    "additive": 0,
+    "substitutive": 1,
+    "no_change": 0,
+    "applied": 1,
+    "awaiting_approval": 0,
+    "flagged_for_rewrite": 0
+  }
+}

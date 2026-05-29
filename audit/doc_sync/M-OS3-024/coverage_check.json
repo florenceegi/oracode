@@ -1,0 +1,28 @@
+{
+  "mission_id": "M-OS3-024",
+  "instance_root": "/home/fabio/oracode",
+  "check": "v2.1+ coverage — file nuovi della mission coperti da watch in SSOT_REGISTRY?",
+  "new_files": [
+    {
+      "path": "docs/missions/MISSION_REGISTRY.json",
+      "covered_by_ssot_watch": false,
+      "registered_as_ssot": false,
+      "classification": "infrastruttura SSOT non auto-coperta",
+      "note": "Artefatto infrastrutturale (mission registry repo canonical). Nessun SSOT lo watcha; non e esso stesso un SSOT registrato. Gap di auto-coverage infrastrutturale."
+    },
+    {
+      "path": "tests/m-os3-024/test_mission_registry_bootstrap.sh",
+      "covered_by_ssot_watch": false,
+      "registered_as_ssot": false,
+      "classification": "test file",
+      "note": "Test file, copertura SSOT non attesa."
+    }
+  ],
+  "uncovered_infrastructure_ssots": [
+    "docs/missions/MISSION_REGISTRY.json",
+    "docs/lso/SSOT_REGISTRY.json"
+  ],
+  "blocking": false,
+  "informational": true,
+  "recommendation": "Vedi raccomandazione finale: registrare i due registry infrastrutturali (MISSION_REGISTRY + SSOT_REGISTRY self-reference) come meta-SSOT nel SSOT_REGISTRY, mission futura."
+}
