@@ -1,0 +1,18 @@
+{
+  "mission_id": "M-OS3-024",
+  "instance_root": "/home/fabio/oracode",
+  "registry": "docs/lso/SSOT_REGISTRY.json",
+  "scan_method": "deterministic fnmatch over watches.paths[] + watches.patterns[] for each SSOT (no LLM)",
+  "files_scanned": [
+    "docs/missions/MISSION_REGISTRY.json",
+    "tests/m-os3-024/test_mission_registry_bootstrap.sh"
+  ],
+  "directly_impacted": [],
+  "analysis": {
+    "mission_protocol_ssot": "watches os3-matrix [bin/mission, hooks/mission-state-guard.sh, ...] — codice enforcement, NON l'artefatto repo docs/missions/MISSION_REGISTRY.json. Nessun match.",
+    "mission_registry_self": "docs/missions/MISSION_REGISTRY.json NON registrato come SSOT nel SSOT_REGISTRY → nessun watcher. Vedi raccomandazione auto-coverage.",
+    "ssot_registry_self": "docs/lso/SSOT_REGISTRY.json NON registra se stesso come SSOT → nessun watcher."
+  },
+  "count": 0,
+  "note": "Zero SSOT impattati direttamente. Non e errore (procedi con lista vuota). Coverage gap infrastrutturale rilevato — vedi coverage_check.json e raccomandazione finale."
+}
