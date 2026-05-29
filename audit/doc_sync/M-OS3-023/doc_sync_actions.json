@@ -1,0 +1,26 @@
+{
+  "mission_id": "M-OS3-023",
+  "instance_root": "/home/fabio/oracode",
+  "step": 4,
+  "mode_global": "bootstrap_infrastructure",
+  "actions": [
+    {
+      "ssot_path": "docs/lso/SSOT_REGISTRY.json",
+      "mode": "no_change",
+      "status": "no_change",
+      "ssot_content_hash": "b95435dc80f5abe57d1b9398b093530bd88d38f0e85ba4bcbe928c31f6e5c158",
+      "diff_path": null,
+      "proposed_patch": null,
+      "justification": "Questo file E' il SSOT Registry stesso (Layer 0 Mielina), prodotto integralmente dalla mission M-OS3-023. Non e' un SSOT documentale impattato da modificare — e' l'oggetto bootstrappato. Nessuna discriminazione additive/substitutive applicabile: non esiste contenuto SSOT preesistente da confrontare. Le 39 entry sono gia coerenti col paradigma relocato in M-OS3-022 (path 39/39 risolti). Audit OS3 YELLOW gia fixato in-mission (3 path-fantasma P0-12 corretti, organ aggiunto, cross-repo gap dichiarato).",
+      "resolution_method": "self_referential_bootstrap_no_op",
+      "timestamp": "2026-05-29T20:51:52Z"
+    }
+  ],
+  "additive_count": 0,
+  "substitutive_count": 0,
+  "no_change_count": 1,
+  "approvals_required": 0,
+  "approvals_received": 0,
+  "cascading_substitutive": false,
+  "rejections": []
+}

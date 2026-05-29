@@ -1,0 +1,41 @@
+{
+  "version": "2.2.0",
+  "doc_sync_version": "2.2.0",
+  "instance_root": "/home/fabio/oracode",
+  "mission_id": "M-OS3-023",
+  "timestamp_start": "2026-05-29T20:51:52Z",
+  "timestamp_end": "2026-05-29T20:52:30Z",
+  "duration_seconds": 38,
+  "ssots_impacted_direct": 0,
+  "ssots_impacted_lateral": 0,
+  "ssots_modified_additive": 0,
+  "ssots_modified_substitutive": 0,
+  "ssots_no_change": 1,
+  "rag_chunks_reindexed": null,
+  "rag_mode": "skipped_no_schema",
+  "approvals_required": 0,
+  "approvals_received": 0,
+  "outcome": "success",
+  "failure_reason": null,
+  "steps_completed": ["step_1", "step_2", "step_3", "step_4", "step_5", "step_5b", "step_6"],
+  "ssot_details": [
+    {
+      "path": "docs/lso/SSOT_REGISTRY.json",
+      "mode": "no_change",
+      "status": "no_change"
+    }
+  ],
+  "rewrite_flagged": [],
+  "uncovered_new_files": [],
+  "audit_path": "audit/doc_sync/M-OS3-023/",
+  "notes": {
+    "self_referential_bootstrap": "Il file prodotto E' il Layer 0 Mielina del paradigma. Nessun meta-registry sopra di esso, nessun SSOT padre da sincronizzare. Azione no_change giustificata.",
+    "acceptance_test": "tests/m-os3-023/test_ssot_registry_bootstrap.sh PASSED (exit 0)",
+    "documents_registered": 39,
+    "concept_ssot": 28,
+    "spec_ssot": 11,
+    "audit_os3_yellow_fixed_in_mission": true,
+    "p0_12_path_fixes_verified": ["bin/web_quality_gate.py", "hooks/legacy-guard.sh", "mission-read-tracker enforcement_note"],
+    "successor_mission": "M-OS3-024 — MISSION_REGISTRY canonical (docs/missions/MISSION_REGISTRY.json)"
+  }
+}

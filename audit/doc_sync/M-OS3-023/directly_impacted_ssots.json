@@ -1,0 +1,14 @@
+{
+  "mission_id": "M-OS3-023",
+  "instance_root": "/home/fabio/oracode",
+  "step": 2,
+  "method": "deterministic_glob_no_llm",
+  "scanned_registry": "docs/lso/SSOT_REGISTRY.json",
+  "mission_files": [
+    {"path": "docs/lso/SSOT_REGISTRY.json", "change_type": "created"},
+    {"path": "tests/m-os3-023/test_ssot_registry_bootstrap.sh", "change_type": "created"}
+  ],
+  "impacted_ssots": [],
+  "note": "Self-referential bootstrap. I file della mission SONO il sistema SSOT (il registry stesso) + il suo acceptance test. Nessuna entry del registry watcha docs/lso/SSOT_REGISTRY.json ne tests/m-os3-023/ — corretto: il Layer 0 Mielina non si auto-watcha e non esiste meta-registry sopra di esso. Lista impatti diretti vuota (non e' errore, da spec Step 2).",
+  "self_watch_check": "0 entry watchano il registry stesso (verificato)"
+}

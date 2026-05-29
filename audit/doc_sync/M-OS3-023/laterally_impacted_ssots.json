@@ -1,0 +1,8 @@
+{
+  "mission_id": "M-OS3-023",
+  "instance_root": "/home/fabio/oracode",
+  "step": 3,
+  "rag_mode": "skipped_no_schema",
+  "reason": "Nessun RAG_SCHEMA in CLAUDE.md istanza e nessuna env ORACODE_RAG_SCHEMA. Modalita LSO ridotto (registry+audit, no RAG). Step 3 e Step 5 skippati da spec.",
+  "impacted_ssots": []
+}

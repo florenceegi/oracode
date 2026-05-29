@@ -1,0 +1,60 @@
+{
+  "mission_id": "M-OS3-023",
+  "instance_root": "/home/fabio/oracode",
+  "trigger_type": 3,
+  "trigger_label": "architetturale — nuova infrastruttura LSO (SSOT Registry = Layer 0 Mielina)",
+  "doc_only_mission": false,
+  "infrastructure_bootstrap": true,
+  "self_referential": true,
+  "new_functions_classes": [],
+  "removed_functions": [],
+  "modified_behaviors": [],
+  "new_narrative_content": [],
+  "modified_narrative_content": [],
+  "new_infrastructure": [
+    {
+      "artifact": "docs/lso/SSOT_REGISTRY.json",
+      "kind": "ssot_registry_layer0_mielina",
+      "schema": "canonical-paradigm",
+      "level": 1,
+      "documents_registered": 39,
+      "concept_ssot": 28,
+      "spec_ssot": 11,
+      "organ": "oracode-paradigm",
+      "semantic_role": "Layer 0 Mielina del paradigma Oracode. E' ESSO STESSO il sistema SSOT — non esiste meta-registry sopra di esso. Mappa 39 documenti SSOT del paradigma ai file enforcement os3-matrix (spec-ssot, cross-repo) o li marca come documenti concettuali costituzionali (concept-ssot)."
+    },
+    {
+      "artifact": "tests/m-os3-023/test_ssot_registry_bootstrap.sh",
+      "kind": "acceptance_test",
+      "result": "PASSED",
+      "asserts": "esistenza, JSON valido, _meta canonical level 1, 39 doc, 39/39 path risolvono, campi obbligatori, ssot_id univoci, spec-ssot watch enforcement"
+    }
+  ],
+  "audit_os3_yellow_fixes_in_mission": [
+    {
+      "issue": "P0-12 path-fantasma — web-quality-gate-guard.sh non versionato os3-matrix",
+      "resolution": "watch corretto a bin/web_quality_gate.py (verificato presente os3-matrix)"
+    },
+    {
+      "issue": "P0-12 path-fantasma — check-no-legacy-stack.sh non versionato os3-matrix",
+      "resolution": "watch corretto a hooks/legacy-guard.sh (verificato presente os3-matrix)"
+    },
+    {
+      "issue": "P0-12 path-fantasma — mission-read-tracker.sh non versionato os3-matrix",
+      "resolution": "watches.paths svuotato + enforcement_note esplicita (deploy ~/.claude/hooks/ non versionato, drift M-OS3-022)"
+    },
+    {
+      "issue": "organ field assente",
+      "resolution": "organ=oracode-paradigm aggiunto su tutte le 39 entry"
+    },
+    {
+      "issue": "cross-repo gap non dichiarato",
+      "resolution": "_meta.cross_repo_watches_gap + _meta.enforcement_unversioned documentati"
+    }
+  ],
+  "key_concepts": [
+    "SSOT Registry", "Layer 0 Mielina", "concept-ssot", "spec-ssot",
+    "canonical-paradigm", "cross-repo watches", "oracode-paradigm organ"
+  ],
+  "outcome": "success"
+}
