@@ -1,0 +1,10 @@
+{
+  "mission_id": "M-OS3-023",
+  "instance_root": "/home/fabio/oracode",
+  "step": 5,
+  "rag_mode": "skipped_no_schema",
+  "reason": "LSO ridotto — nessun RAG_SCHEMA configurato per il paradigma. Re-indexing non eseguito. _meta.note_rag del registry conferma: verification_mode=registry_only su tutte le entry, decisione RAG paradigma rinviata a mission futura.",
+  "ssots_reindexed": [],
+  "rag_chunks_reindexed": null,
+  "sanity_checks": []
+}

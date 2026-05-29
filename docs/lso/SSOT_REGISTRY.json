@@ -1,0 +1,824 @@
+{
+  "_meta": {
+    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 39 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
+    "version": "1.0.0",
+    "created": "2026-05-29",
+    "updated": "2026-05-29",
+    "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
+    "purpose": "Layer 0 MIELINA paradigma. concept-ssot = documenti concettuali (kernel, moduli, manifesti, identità) senza file codice da watchare. spec-ssot = specifiche che descrivono enforcement implementato in os3-matrix (cross-repo watches).",
+    "schema": "canonical-paradigm",
+    "repo": "florenceegi/oracode",
+    "level": 1,
+    "organ_type": "Paradigma SSOT (Livello 1 §1.1 LSO_NOMENCLATURE_v2)",
+    "bootstrap_mission": "M-OS3-023",
+    "relocation_mission": "M-OS3-022",
+    "note_rag": "RAG schema non istituito per il paradigma (LSO ridotto). verification_mode=registry_only su tutte le entry. Decisione RAG paradigma rinviata a mission futura.",
+    "cross_repo_watches_gap": "spec-ssot con watches.repos=[\"os3-matrix\"] sono cross-repo. DOC-SYNC v2 opera repo-singolo: il watch cross-repo è informativo (audit manuale), non auto-triggerato. Gap noto — risoluzione futura (DOC-SYNC v2 multi-repo).",
+    "enforcement_unversioned": "Alcuni hook enforcement (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) sono deployati in ~/.claude/hooks/ ma NON versionati in os3-matrix repo. Drift noto M-OS3-022. Le entry relative watchano solo i file effettivamente versionati."
+  },
+  "check_frequencies": {
+    "on_commit": "Dopo ogni commit che tocca file watchati (Layer 1 — Riflesso)",
+    "on_demand": "Solo su richiesta esplicita",
+    "constitutional": "concept-ssot kernel: modifica richiede approvazione CEO esplicita (clausola immutabilità)"
+  },
+  "documents": [
+    {
+      "ssot_id": "osz-kernel",
+      "path": "docs/paradigm/kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md",
+      "title": "OSZ — Oracode System Zero (kernel costituzionale)",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os3-executive-summary",
+      "path": "docs/paradigm/execution/OS3/00_OS3_Executive_Summary.md",
+      "title": "OS3 — Executive Summary",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os3-modulo-0-manifesto",
+      "path": "docs/paradigm/execution/OS3/01_Modulo_0_Il_Manifesto_OS3.md",
+      "title": "OS3 Modulo 0 — Il Manifesto OS3",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os3-modulo-1-pilastri",
+      "path": "docs/paradigm/execution/OS3/02_Modulo_1_I_6_Pilastri_Cardinali.md",
+      "title": "OS3 Modulo 1 — I 6 Pilastri Cardinali",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os3-modulo-2-regola-zero",
+      "path": "docs/paradigm/execution/OS3/03_Modulo_2_REGOLA_ZERO.md",
+      "title": "OS3 Modulo 2 — REGOLA ZERO",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os3-modulo-3-priorita-p0-p3",
+      "path": "docs/paradigm/execution/OS3/04_Modulo_3_Sistema_Priorita_P0_P3.md",
+      "title": "OS3 Modulo 3 — Sistema Priorità P0-P3",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os3-modulo-4-toon-format",
+      "path": "docs/paradigm/execution/OS3/05_Modulo_4_TOON_Format_Standard.md",
+      "title": "OS3 Modulo 4 — TOON Format Standard",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "os4-foundation",
+      "path": "docs/paradigm/education/OS4_FOUNDATION_DOCUMENT.md",
+      "title": "OS4 — Foundation Document (educazione epistemica umano)",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "lso-manifesto",
+      "path": "docs/paradigm/lso/MANIFESTO_LSO.md",
+      "title": "Manifesto LSO — nuova categoria di software",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "lso-living-software-organism",
+      "path": "docs/paradigm/lso/00_LSO_LIVING_SOFTWARE_ORGANISM.md",
+      "title": "LSO — Living Software Organism (6 principi + Layer Stack)",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "lso-guard-testing-protocol",
+      "path": "docs/paradigm/lso/LSO_GUARD_TESTING_PROTOCOL_v1.md",
+      "title": "LSO Guard Testing Protocol v1",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "hooks/",
+          "docs/tests/"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "lso-guard-testing-index",
+      "path": "docs/paradigm/lso/LSO_GUARD_TESTING_PROTOCOL_INDEX.md",
+      "title": "LSO Guard Testing Protocol — Index",
+      "doc_type": "spec-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "hooks/"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "lso-nomenclature-v2",
+      "path": "docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md",
+      "title": "LSO Nomenclature v2 — 4 livelli concettuali",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "lso-nomenclature-index",
+      "path": "docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md",
+      "title": "LSO Nomenclature — Index",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "nomencl-osmx-002-delta",
+      "path": "docs/paradigm/nomenclature/proposals/M-NOMENCL-OSMX-002_DELTA.md",
+      "title": "Proposal — distinzione §1.1.A paradigma vs §1.1.B Matrix",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "mission-protocol",
+      "path": "docs/paradigm/missions/MISSION_PROTOCOL.md",
+      "title": "Mission Protocol v3.0.0 — FASE 0-6 state machine",
+      "doc_type": "spec-ssot",
+      "priority": "critical",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "bin/mission",
+          "hooks/mission-state-guard.sh",
+          "hooks/spawn-fingerprint-logger.sh",
+          "hooks/trigger-matrix-classifier.sh"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "oracode-system-ssot",
+      "path": "docs/paradigm/ssot/00_ORACODE_SYSTEM_SSOT.md",
+      "title": "Oracode System SSOT consolidato",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-index",
+      "path": "docs/paradigm/padmin/PADMIN_INDEX.md",
+      "title": "Padmin Index — briefing executive identità AI",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-onboarding",
+      "path": "docs/paradigm/padmin/PADMIN_ONBOARDING.md",
+      "title": "Padmin Onboarding — manuale operativo esteso",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-ai-identity",
+      "path": "docs/paradigm/padmin/PADMIN_AI_IDENTITY.md",
+      "title": "Padmin AI Identity — identità sostantiva",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-partner-memory",
+      "path": "docs/paradigm/padmin/padmin_partner_memory.md",
+      "title": "Padmin Partner Memory — memoria CEO",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-identity-os3-core",
+      "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_CORE.md",
+      "title": "Padmin Identity OS3 — Core",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-identity-os3-index",
+      "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_INDEX.md",
+      "title": "Padmin Identity OS3 — Index",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-identity-os3-integration-guide",
+      "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_INTEGRATION_GUIDE.md",
+      "title": "Padmin Identity OS3 — Integration Guide",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-identity-os3-p1-principles",
+      "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_P1_PRINCIPLES.md",
+      "title": "Padmin Identity OS3 — P1 Principles",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-identity-os3-p2-patterns",
+      "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_P2_PATTERNS.md",
+      "title": "Padmin Identity OS3 — P2 Patterns",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "padmin-identity-os3-p3-reference",
+      "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_P3_REFERENCE.md",
+      "title": "Padmin Identity OS3 — P3 Reference",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "pdtdp-torre-di-pisa",
+      "path": "docs/paradigm/padmin/PDTDP_Paradigma_Torre_di_Pisa.md",
+      "title": "PDTDP — Paradigma Torre di Pisa",
+      "doc_type": "concept-ssot",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "naming-standard-code",
+      "path": "docs/paradigm/standards/NAMING_STANDARD_CODE.md",
+      "title": "Naming Standard Code — PHP/Python/TS",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "hooks/hardcoded-strings-guard.sh",
+          "hooks/p04-method-guard.sh"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "web-page-quality-gate",
+      "path": "docs/paradigm/standards/WEB_PAGE_QUALITY_GATE.md",
+      "title": "Web Page Quality Gate — disciplina pagine pubbliche",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "bin/web_quality_gate.py"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "legacy-stack-policy",
+      "path": "docs/paradigm/standards/LEGACY_STACK_POLICY.md",
+      "title": "Legacy Stack Policy — Strategia Delta concretizzata",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "hooks/legacy-guard.sh"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "read-tracking-tech-spec",
+      "path": "docs/paradigm/tech-specs/READ_TRACKING_TECH_SPEC.md",
+      "title": "Read Tracking Tech Spec",
+      "doc_type": "spec-ssot",
+      "priority": "medium",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0,
+      "enforcement_note": "mission-read-tracker.sh deployato ~/.claude/hooks/ non versionato os3-matrix (drift M-OS3-022)"
+    },
+    {
+      "ssot_id": "retrospective-tech-spec",
+      "path": "docs/paradigm/tech-specs/RETROSPECTIVE_TECH_SPEC.md",
+      "title": "Retrospective Tech Spec",
+      "doc_type": "spec-ssot",
+      "priority": "medium",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "bin/mission_retrospective.py"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "doc-sync-v2-specifica-operativa",
+      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md",
+      "title": "DOC-SYNC v2 — Specifica Operativa",
+      "doc_type": "spec-ssot",
+      "priority": "critical",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "agents/doc-sync-v2.md",
+          "bin/rag_query.py",
+          "bin/rag_reindex.py"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "doc-sync-v2-piano-implementativo",
+      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_PIANO_IMPLEMENTATIVO.md",
+      "title": "DOC-SYNC v2 — Piano Implementativo",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "agents/doc-sync-v2.md",
+          "bin/docsync_weekly_reglob.py"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "doc-sync-v2-stato-dellarte",
+      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_STATO_DELLARTE.md",
+      "title": "DOC-SYNC v2 — Stato dell'Arte",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "agents/doc-sync-v2.md"
+        ]
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "roadmap-oracode",
+      "path": "docs/paradigm/roadmap/ROADMAP_ORACODE.md",
+      "title": "Roadmap Oracode — disaccoppiamento 4 aree",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "oracode-paradigm-v2-draft",
+      "path": "docs/paradigm/roadmap/ORACODE_PARADIGM_v2_draft.md",
+      "title": "Oracode Paradigm v2 — draft",
+      "doc_type": "concept-ssot",
+      "priority": "medium",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "oracode-nexus-index",
+      "path": "docs/paradigm/index/Oracode-Nexus-index.md",
+      "title": "Oracode Nexus Index — indice navigabile anti-degradazione",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-023",
+      "last_verified": "2026-05-29",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-022",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    }
+  ]
+}
