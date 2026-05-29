@@ -1,0 +1,19 @@
+{
+  "mission_id": "M-OS3-022",
+  "timestamp": "2026-05-29T00:00:00Z",
+  "actions": [],
+  "count": 0,
+  "discrimination_outcome": "NO_ACTIONS_REQUIRED",
+  "rationale": [
+    "Nessun SSOT_REGISTRY in oracode/ → nessun SSOT formalmente tracciato da aggiornare/modificare.",
+    "I 39 doc paradigma riposizionati SONO il paradigma stesso — la loro relocazione e' gia' avvenuta direttamente nella mission (non sono target di patch DOC-SYNC, sono il soggetto).",
+    "I 17 file vivi con link cross-progetto aggiornati sono stati modificati durante la mission via sed (non sono SSOT documentali, sono codice/config vivo).",
+    "MISSION_REGISTRY assente in oracode/ → nessun aggiornamento metadati possibile (vedi raccomandazioni Step 6 per creazione canonical).",
+    "Discriminazione paradosso: 'il paradigma diventa SSOT di se stesso' — DOC-SYNC v2 non puo' patchare se stesso retroattivamente per una mission che ha definito la propria sede. Risoluzione: registrazione canonical in mission FUTURA dedicata."
+  ],
+  "future_doc_sync_target": {
+    "trigger": "Creazione SSOT_REGISTRY.json canonical in oracode/docs/lso/",
+    "expected_mission": "M-OS3-023 (proposta) — Bootstrap SSOT_REGISTRY canonical paradigma con watch su docs/paradigm/**",
+    "expected_action_at_that_time": "Registrazione retroattiva di M-OS3-022 come mission origine della struttura paradigm/, con metadati last_verified=2026-05-29 verified_in_mission=M-OS3-022"
+  }
+}

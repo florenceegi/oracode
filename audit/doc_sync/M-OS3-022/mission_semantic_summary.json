@@ -1,0 +1,63 @@
+{
+  "mission_id": "M-OS3-022",
+  "title": "Paradigm relocation: 39 doc → oracode/docs/paradigm/ canonical SSOT",
+  "timestamp": "2026-05-29T00:00:00Z",
+  "trigger_matrix_type": 6,
+  "trigger_classification": "cross-organism (oracode paradigm + EGI-DOC instance + os3-matrix runtime + global hooks)",
+  "semantic_nature": "structural_relocation",
+  "modes": {
+    "additive": [
+      "13 nuove sottodirectory tematiche sotto docs/paradigm/ (kernel, execution/OS3, execution/OSMx, education, lso, nomenclature, nomenclature/proposals, missions, padmin, ssot, standards, tech-specs, doc-sync, roadmap, index)",
+      "MOVED_TO_ORACODE_REPO.md in EGI-DOC/docs/oracode/ (redirect notice cross-organismo)",
+      "tests/m-os3-022/test_paradigm_relocation.sh (acceptance test PASSED)",
+      "Sezione 'Paradigm SSOT' in oracode/README.md"
+    ],
+    "substitutive": [
+      "39 doc paradigma riposizionati: EGI-DOC/docs/oracode/* + oracode/docs/* → oracode/docs/paradigm/{categoria}/",
+      "17 file vivi con link cross-progetto aggiornati via sed: 5 .claude/hooks globali, 1 os3-matrix/bin tool, 1 .claude/agents/, 10 doc paradigma con link interni",
+      "oracode-specialist.md: MANUALE_OPERATIVO_LSO.md → MANIFESTO_LSO.md (correzione riferimento doc inesistente)"
+    ],
+    "no_change": []
+  },
+  "entities_created": {
+    "structural": [
+      "docs/paradigm/kernel/ (OSZ kernel doc)",
+      "docs/paradigm/execution/OS3/ (5 moduli OS3)",
+      "docs/paradigm/execution/OSMx/ (riservato OS3 Matrix runtime)",
+      "docs/paradigm/education/ (OS4 foundation)",
+      "docs/paradigm/lso/ (manifesto + guard testing protocol)",
+      "docs/paradigm/padmin/ (identita Padmin OS3 P1/P2/P3 + onboarding + AI identity)",
+      "docs/paradigm/ssot/ (canonical SSOT system)",
+      "docs/paradigm/nomenclature/ (LSO v2 + index + proposals)",
+      "docs/paradigm/missions/ (Mission Protocol)",
+      "docs/paradigm/standards/ (Web Quality Gate + Legacy Stack + Naming)",
+      "docs/paradigm/tech-specs/ (Read Tracking + Retrospective)",
+      "docs/paradigm/doc-sync/ (DOC-SYNC v2 specifica + stato + piano)",
+      "docs/paradigm/roadmap/ (Roadmap Oracode + Paradigm v2 draft)",
+      "docs/paradigm/index/ (Oracode-Nexus-index)"
+    ]
+  },
+  "entities_removed_from_origin": {
+    "EGI-DOC": "39 doc paradigma migrati fuori da EGI-DOC (paradigma non-pertinente all'istanza LSO)",
+    "oracode_docs_root": "doc precedentemente in /home/fabio/oracode/docs/ ora consolidati in subdir paradigm/"
+  },
+  "behavior_changes": {
+    "doc_resolution": "Path canonical paradigma cambia: chi cercava OSZ in EGI-DOC ora lo trova in oracode/docs/paradigm/kernel/",
+    "cross_references": "17 file vivi (hooks, agent, tool, doc) aggiornati per puntare ai nuovi path",
+    "egi_doc_isolation": "EGI-DOC torna istanza LSO pura — non piu deposito misto paradigma+istanza",
+    "redirect_notice": "MOVED_TO_ORACODE_REPO.md in EGI-DOC funge da forwarding pointer per chi cerca paradigma nel posto vecchio"
+  },
+  "narrative_content_changes": {
+    "scope": "Nessuna modifica al contenuto semantico dei 39 doc paradigma — solo riposizionamento strutturale",
+    "exception": "oracode-specialist.md: correzione riferimento doc (MANUALE_OPERATIVO_LSO.md → MANIFESTO_LSO.md). Cambio semantico minore: il nome corretto del doc esistente."
+  },
+  "ssot_impact_classification": {
+    "paradigm_repo_becomes_ssot": true,
+    "rationale": "oracode/docs/paradigm/ e' ora la sede canonica del paradigma. Nessun SSOT_REGISTRY esiste ancora — il paradigma STESSO sta diventando SSOT registrabile. Future M-OS3-* dovranno creare SSOT_REGISTRY canonical paradigma con watch su questa directory.",
+    "current_registries_impacted": "NESSUNO (no SSOT_REGISTRY in oracode/, no MISSION_REGISTRY in oracode/)"
+  },
+  "uncertainty_flags": [
+    "[NOT_FOUND≠NOT_EXIST] MISSION_REGISTRY.json non esiste in oracode/docs/missions/. Mission tracking attualmente in mission engine HOME (focus.json + state.json).",
+    "[NOT_FOUND≠NOT_EXIST] SSOT_REGISTRY.json non esiste in oracode/docs/lso/. Paradigma non ancora autoregistrato come SSOT."
+  ]
+}
