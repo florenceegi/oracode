@@ -1,0 +1,14 @@
+{
+  "mission_id": "M-OS3-022",
+  "timestamp": "2026-05-29T00:00:00Z",
+  "ssot_registry_path": "docs/lso/SSOT_REGISTRY.json",
+  "ssot_registry_status": "not_found",
+  "ssot_registry_resolution": "Repo oracode/ paradigma MIT — nessun SSOT_REGISTRY esiste. Step 2 produce lista vuota legittima (non e' errore).",
+  "directly_impacted_ssots": [],
+  "count": 0,
+  "notes": [
+    "Anti-pattern 9 rispettato: scan limitato a watches dichiarati (qui assenti).",
+    "Mission ha creato strutturalmente il sostrato per FUTURO SSOT_REGISTRY canonical paradigma — vedi raccomandazioni Step 6.",
+    "EGI-DOC SSOT_REGISTRY (se esiste) NON e' impattato: la mission rimuove paradigma da EGI-DOC, non aggiunge SSOT nuovi alla sua sede."
+  ]
+}

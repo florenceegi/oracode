@@ -1,0 +1,63 @@
+{
+  "version": "2.2.0",
+  "doc_sync_version": "2.2.0",
+  "instance_root": "/home/fabio/oracode",
+  "instance_kind": "paradigm_repo_mit",
+  "execution_mode": "special_bootstrap_no_registries",
+  "mission_id": "M-OS3-022",
+  "mission_title": "Paradigm relocation 39 doc Oracode Nexus → oracode/docs/paradigm/",
+  "trigger_matrix_type": 6,
+  "timestamp_start": "2026-05-29T00:00:00Z",
+  "timestamp_end": "2026-05-29T00:00:30Z",
+  "duration_seconds": 30,
+  "ssots_impacted_direct": 0,
+  "ssots_impacted_lateral": 0,
+  "ssots_modified_additive": 0,
+  "ssots_modified_substitutive": 0,
+  "ssots_no_change": 0,
+  "rag_chunks_reindexed": null,
+  "rag_mode": "skipped_no_schema",
+  "approvals_required": 0,
+  "approvals_received": 0,
+  "outcome": "success",
+  "failure_reason": null,
+  "steps_completed": [
+    "step_1_semantic_analysis",
+    "step_2_directly_impacted_empty_legitimate",
+    "step_3_lateral_discovery_skipped_no_rag",
+    "step_4_actions_empty_paradox_resolution",
+    "step_5_rag_reindex_skipped",
+    "step_5b_metadata_update_skipped_no_registry",
+    "step_6_audit_trail_complete"
+  ],
+  "ssot_details": [],
+  "rewrite_flagged": [],
+  "uncovered_new_files": [
+    "39 paradigm docs in docs/paradigm/{kernel,execution/OS3,execution/OSMx,education,lso,padmin,ssot,nomenclature,nomenclature/proposals,missions,standards,tech-specs,doc-sync,roadmap,index}/",
+    "13 new directories under docs/paradigm/",
+    "tests/m-os3-022/test_paradigm_relocation.sh",
+    "EGI-DOC/docs/oracode/MOVED_TO_ORACODE_REPO.md (cross-organism redirect)"
+  ],
+  "uncovered_rationale": "SSOT_REGISTRY.json non esiste in oracode/docs/lso/ — non e' errore, e' condizione di bootstrap. Future M-OS3-023 (proposta) creera' il registry con watch su questi file.",
+  "audit_path": "audit/doc_sync/M-OS3-022/",
+  "registries_status": {
+    "ssot_registry": {"exists": false, "expected_path": "docs/lso/SSOT_REGISTRY.json", "to_be_created_in": "M-OS3-023 (proposta)"},
+    "mission_registry": {"exists": false, "expected_path": "docs/paradigm/missions/MISSION_REGISTRY.json", "to_be_created_in": "M-OS3-024 (proposta)"},
+    "mission_tracking_current": "mission engine HOME (focus.json + state.json)"
+  },
+  "anti_pattern_compliance": {
+    "ap1_metadata_only": "respected",
+    "ap2_unresolved_rejections": "respected (none)",
+    "ap3_rag_sync": "n/a (RAG skipped)",
+    "ap4_sanity_check_blocking": "n/a (RAG skipped)",
+    "ap5_idempotency": "respected",
+    "ap6_scope_mission_files_only": "respected",
+    "ap7_diff_per_modification": "n/a (zero actions)",
+    "ap8_coverage_check": "informative — 55 new entities uncovered (acceptable bootstrap state)",
+    "ap9_universality": "respected (instance_root parametric, no hardcoded paths)"
+  },
+  "uncertainty_flags": [
+    "[NOT_FOUND≠NOT_EXIST] MISSION_REGISTRY.json non esiste in oracode/",
+    "[NOT_FOUND≠NOT_EXIST] SSOT_REGISTRY.json non esiste in oracode/"
+  ]
+}

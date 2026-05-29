@@ -1,0 +1,10 @@
+{
+  "mission_id": "M-OS3-022",
+  "timestamp": "2026-05-29T00:00:00Z",
+  "rag_mode": "skipped_no_schema",
+  "skip_reason": "Nessuno schema RAG configurato per oracode/ repo paradigma. Step 5 skip legittimo (modalita' LSO ridotto).",
+  "rag_chunks_reindexed": null,
+  "sanity_check_passed": null,
+  "files_that_would_have_been_indexed_if_rag_active": [],
+  "rationale_zero_files": "Step 4 ha prodotto 0 azioni applicate → 0 file da re-indicizzare anche in modalita' RAG attiva."
+}

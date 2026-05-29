@@ -275,6 +275,33 @@ The nervous system watches files across all projects and maps them to shared doc
 
 ---
 
+## Paradigm SSOT
+
+The full Oracode paradigm documentation lives in [`docs/paradigm/`](docs/paradigm/):
+
+```
+docs/paradigm/
+├── kernel/              OSZ — Oracode System Zero (constitutional kernel)
+├── execution/OS3/       6 modules — REGOLA ZERO, 6+1 Pillars, P0-P3, TOON format
+├── education/           OS4 — human-side framework (TSM, RI, axioms)
+├── lso/                 LSO Manifesto + Living Software Organism + Guard Testing Protocol
+├── nomenclature/        LSO_NOMENCLATURE_v2 (4 levels: paradigm/library/organism/FlorenceEGI)
+├── missions/            Mission Protocol v3.0.0
+├── padmin/              Padmin AI identity (10 docs)
+├── ssot/                Oracode System SSOT consolidated
+├── standards/           Naming + Web Quality Gate + Legacy Stack Policy
+├── tech-specs/          Read Tracking + Retrospective specs
+├── doc-sync/            DOC-SYNC v2 (Spec + Plan + Stato dell'Arte)
+├── roadmap/             Roadmap + Paradigm v2 draft
+└── index/               Oracode-Nexus-index (navigable anti-degradation index)
+```
+
+Start with [`docs/paradigm/index/Oracode-Nexus-index.md`](docs/paradigm/index/Oracode-Nexus-index.md) for a navigable map.
+
+Para enforcement runtime (hooks, agents, mission CLI) → see commercial repo [`florenceegi/os3-matrix`](https://github.com/florenceegi/os3-matrix) (OS3 Matrix, §1.1.B of LSO_NOMENCLATURE_v2).
+
+---
+
 ## Origin
 
 Oracode was created by [Fabio Cherici](https://fabiocherici.com) at [FlorenceEGI](https://florenceegi.com) to govern an AI-assisted development ecosystem spanning 7 production products, 500,000+ lines of code, and 88 living documentation files.
