@@ -13,15 +13,18 @@
     "id_convention": "M-OS3-NNN (Oracode Nexus / OS3 Matrix evolution missions)",
     "bootstrap_mission": "M-OS3-024",
     "dual_tracking_note": "Mission engine HOME (~/.oracode/missions/<ID>/state.json) = state machine runtime con firma hash-chain. Questo registry = vista repo persistente versionata. Sync manuale a chiusura mission finché bin/mission v0.4 (M-OS3-025 futura) non automatizza il propagamento via .oracode/project.json descrittore.",
-    "counter_semantics": "counter = ultimo ID numerico assegnato (non conteggio mission). Prossima mission incrementa. Self-registering mission non incrementa fino a chiusura."
+    "counter_semantics": "counter = ultimo ID numerico assegnato (non conteggio mission). Prossima mission incrementa. Self-registering mission non incrementa fino a chiusura.",
+    "finalize_note": "Stats da bin/mission finalize (M-OS3-025 v0.4 Fase 1, enrich_registry.py grep-by-ID post-commit). retrospective skipped best-effort (instance senza read_log/bootstrap_index). Ghost 016/018/020 stats irrecuperabili. Over-attribution grep-by-ID nota su 023/024.",
+    "keys_language": "english",
+    "keys_converted_mission": "M-OS3-025 (CEO 2026-05-31: tipo_missione→type, organi_coinvolti→organs)"
   },
   "counter": 23,
   "missions": [
     {
       "id": "M-OS3-024",
       "title": "MISSION_REGISTRY canonical bootstrap paradigma (chiude dual-tracking HOME-vs-repo)",
-      "tipo_missione": "infrastructure",
-      "organi_coinvolti": [
+      "type": "infrastructure",
+      "organs": [
         "oracode"
       ],
       "priority": "P1",
@@ -36,13 +39,49 @@
       "doc_sync_outcome": "success",
       "audit_findings": "GREEN (2 fix minori pre-applicati: commits.oracode M-OS3-023=f893eee + counter_semantics in _meta)",
       "test_file": "tests/m-os3-024/test_mission_registry_bootstrap.sh",
-      "note": "Self-registering bootstrap. FASE 6 self-close via DOC-SYNC v2. Istituisce dual-tracking: engine HOME (state machine runtime) + questo registry repo canonical (vista versionata)."
+      "note": "Self-registering bootstrap. FASE 6 self-close via DOC-SYNC v2. Istituisce dual-tracking: engine HOME (state machine runtime) + questo registry repo canonical (vista versionata).",
+      "stats": {
+        "total_commits": 3,
+        "lines_added": 16763,
+        "lines_deleted": 0,
+        "lines_net": 16763,
+        "lines_touched": 16763,
+        "files_touched": 47,
+        "weighted_commits": 4.8,
+        "cognitive_load": 3.5,
+        "productivity_index": 70.91,
+        "tags_breakdown": {
+          "ARCH": 3
+        },
+        "commit_hashes": [
+          "9e3e5a261398284849d4d8292ccea8df2580ab63",
+          "c1706efa1fa1e87d2701cde3052db827e50ebb54",
+          "f893eee11239fe9602d5f104e1156cc4277b057a"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-05-29",
+            "commits": 3,
+            "lines_added": 16763,
+            "lines_deleted": 0,
+            "files_touched": 47,
+            "tags": {
+              "ARCH": 3
+            }
+          }
+        ],
+        "calculated_at": "2026-05-29"
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking",
+      "stats_caveat": "grep-by-ID over-attribution: commit cross-referenziano altri ID Nexus → stats parzialmente gonfiate (condivise con commit citanti). Limitazione nota metodo grep-by-ID (Fase 1)."
     },
     {
       "id": "M-OS3-023",
       "title": "SSOT_REGISTRY canonical bootstrap paradigma (Layer 0 Mielina, 39 doc)",
-      "tipo_missione": "infrastructure",
-      "organi_coinvolti": [
+      "type": "infrastructure",
+      "organs": [
         "oracode"
       ],
       "priority": "P1",
@@ -60,13 +99,49 @@
       "note": "39 doc registrati (28 concept-ssot + 11 spec-ssot). update_policy immutable su 6 entry costituzionali.",
       "commits": {
         "oracode": "f893eee"
-      }
+      },
+      "stats": {
+        "total_commits": 3,
+        "lines_added": 16763,
+        "lines_deleted": 0,
+        "lines_net": 16763,
+        "lines_touched": 16763,
+        "files_touched": 47,
+        "weighted_commits": 4.8,
+        "cognitive_load": 3.5,
+        "productivity_index": 70.91,
+        "tags_breakdown": {
+          "ARCH": 3
+        },
+        "commit_hashes": [
+          "9e3e5a261398284849d4d8292ccea8df2580ab63",
+          "c1706efa1fa1e87d2701cde3052db827e50ebb54",
+          "f893eee11239fe9602d5f104e1156cc4277b057a"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-05-29",
+            "commits": 3,
+            "lines_added": 16763,
+            "lines_deleted": 0,
+            "files_touched": 47,
+            "tags": {
+              "ARCH": 3
+            }
+          }
+        ],
+        "calculated_at": "2026-05-29"
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking",
+      "stats_caveat": "grep-by-ID over-attribution: commit cross-referenziano altri ID Nexus → stats parzialmente gonfiate (condivise con commit citanti). Limitazione nota metodo grep-by-ID (Fase 1)."
     },
     {
       "id": "M-OS3-022",
       "title": "Paradigm relocation — 39 doc EGI-DOC → oracode/docs/paradigm/ paradigma-nativa",
-      "tipo_missione": "migration",
-      "organi_coinvolti": [
+      "type": "migration",
+      "organs": [
         "oracode",
         "EGI-DOC"
       ],
@@ -86,30 +161,77 @@
         "oracode": "9e3e5a2",
         "EGI-DOC": "f9329b0"
       },
-      "note": "38 doc da EGI-DOC + 1 Oracode-Nexus-index. Redirect notice MOVED_TO_ORACODE_REPO.md in EGI-DOC."
+      "note": "38 doc da EGI-DOC + 1 Oracode-Nexus-index. Redirect notice MOVED_TO_ORACODE_REPO.md in EGI-DOC.",
+      "stats": {
+        "total_commits": 4,
+        "lines_added": 16824,
+        "lines_deleted": 15469,
+        "lines_net": 1355,
+        "lines_touched": 32293,
+        "files_touched": 86,
+        "weighted_commits": 6.4,
+        "cognitive_load": 3.5,
+        "productivity_index": 74.1,
+        "tags_breakdown": {
+          "ARCH": 4
+        },
+        "commit_hashes": [
+          "9e3e5a261398284849d4d8292ccea8df2580ab63",
+          "c1706efa1fa1e87d2701cde3052db827e50ebb54",
+          "f893eee11239fe9602d5f104e1156cc4277b057a",
+          "f9329b087a5267a024441f58503fc015966a26ff"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/EGI-DOC",
+            "date": "2026-05-29",
+            "commits": 1,
+            "lines_added": 61,
+            "lines_deleted": 15469,
+            "files_touched": 39,
+            "tags": {
+              "ARCH": 1
+            }
+          },
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-05-29",
+            "commits": 3,
+            "lines_added": 16763,
+            "lines_deleted": 0,
+            "files_touched": 47,
+            "tags": {
+              "ARCH": 3
+            }
+          }
+        ],
+        "calculated_at": "2026-05-29"
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
     },
     {
       "id": "M-OS3-021",
       "title": "ORACODE-DOC scaffold (sede SSOT paradigma) — SOSPESA",
-      "tipo_missione": "infrastructure",
-      "organi_coinvolti": [
+      "type": "infrastructure",
+      "organs": [
         "oracode"
       ],
       "priority": "P0",
       "trigger_matrix": 6,
-      "status": "suspended",
+      "status": "aborted",
       "date_open": "2026-05-29",
-      "date_close": null,
+      "date_close": "2026-05-30",
       "found_by": "CEO — riprende Oracode Nexus (Opzione A)",
       "scope_hash": "87c63988378f",
-      "suspend_reason": "Premise errata: ORACODE-DOC esisteva già come laboratorio L3 (M-ORACODE-001 closed). Scope ridefinito → M-OS3-022 (target /home/fabio/oracode/docs/). Recovery non necessario.",
-      "note": "Superata da M-OS3-022. Mantenuta come traccia del cambio premise (REGOLA ZERO sul rilevamento dual-state ORACODE-DOC)."
+      "note": "Superata da M-OS3-022. Mantenuta come traccia del cambio premise (REGOLA ZERO sul rilevamento dual-state ORACODE-DOC).",
+      "abort_reason": "Premise errata: ORACODE-DOC esisteva già come laboratorio L3 (M-ORACODE-001 closed). Scope ridefinito → M-OS3-022 (target /home/fabio/oracode/docs/). Recovery non necessario."
     },
     {
       "id": "M-OS3-020",
       "title": "DOC-SYNC v2 audit path whitelist v0.3.1 (FINDING-S3-4)",
-      "tipo_missione": "fix",
-      "organi_coinvolti": [
+      "type": "fix",
+      "organs": [
         "os3-matrix"
       ],
       "priority": "P1",
@@ -120,13 +242,15 @@
       "found_by": "Session 3 — FINDING-S3-4 (DOC-SYNC v2 audit path bloccato da mission-state-guard)",
       "doc_sync_executed": true,
       "audit_findings": "GREEN (4/4 + self-test produzione live)",
-      "note": "Mission session 3. FASE 6 parziale (mission fantasma — 5/8 step saltati). Recovery completo pendente (M-OS3-025 bin/mission v0.4). Deliverable: os3-matrix/docs/design/M-OS3-020_DELIVERABLE.md. Registrazione retroattiva storica."
+      "note": "Mission session 3. FASE 6 parziale (mission fantasma — 5/8 step saltati). Recovery completo pendente (M-OS3-025 bin/mission v0.4). Deliverable: os3-matrix/docs/design/M-OS3-020_DELIVERABLE.md. Registrazione retroattiva storica.",
+      "stats_status": "unrecoverable",
+      "stats_unrecoverable_reason": "Mission session 3: commit non portano l ID nel messaggio. enrich_registry.py grep-by-ID ritorna 0 commit. Stats non ricostruibili. Stub storico permanente."
     },
     {
       "id": "M-OS3-018",
       "title": "SSOT Oracode realignment (MISSION_PROTOCOL v3.0.0 + 00_ORACODE_SYSTEM_SSOT v1.2.0)",
-      "tipo_missione": "doc-sync",
-      "organi_coinvolti": [
+      "type": "doc-sync",
+      "organs": [
         "oracode"
       ],
       "priority": "P2",
@@ -136,13 +260,15 @@
       "date_close": "2026-05-27",
       "found_by": "CEO (chat parallela session 3) — realignment SSOT paradigma",
       "doc_sync_executed": true,
-      "note": "Mission session 3. FASE 6 parziale (mission fantasma). Prodotto MISSION_PROTOCOL v3.0.0 + 00_ORACODE_SYSTEM_SSOT v1.2.0 (ora in docs/paradigm/ via M-OS3-022). Registrazione retroattiva storica."
+      "note": "Mission session 3. FASE 6 parziale (mission fantasma). Prodotto MISSION_PROTOCOL v3.0.0 + 00_ORACODE_SYSTEM_SSOT v1.2.0 (ora in docs/paradigm/ via M-OS3-022). Registrazione retroattiva storica.",
+      "stats_status": "unrecoverable",
+      "stats_unrecoverable_reason": "Mission session 3: commit non portano l ID nel messaggio. enrich_registry.py grep-by-ID ritorna 0 commit. Stats non ricostruibili. Stub storico permanente."
     },
     {
       "id": "M-OS3-016",
       "title": "Multi-write concurrency v0.3 per session_id (FINDING-S3-1)",
-      "tipo_missione": "feature",
-      "organi_coinvolti": [
+      "type": "feature",
+      "organs": [
         "os3-matrix"
       ],
       "priority": "P0",
@@ -153,7 +279,9 @@
       "found_by": "Session 3 — FINDING-S3-1 (focus.json single-slot blocca Write paralleli multi-chat)",
       "doc_sync_executed": true,
       "audit_findings": "GREEN (21/21 test, 5 CRITICI fix in-mission, AMENDMENT 1 CEO)",
-      "note": "Mission session 3. FASE 6 parziale (mission fantasma). bin/mission v0.3 multi-write per CLAUDE_CODE_SESSION_ID → ~/.oracode/focus/<session_id>.json. Sblocca multi-chat parallel. Deliverable: os3-matrix/docs/design/M-OS3-016_DELIVERABLE.md. Registrazione retroattiva storica."
+      "note": "Mission session 3. FASE 6 parziale (mission fantasma). bin/mission v0.3 multi-write per CLAUDE_CODE_SESSION_ID → ~/.oracode/focus/<session_id>.json. Sblocca multi-chat parallel. Deliverable: os3-matrix/docs/design/M-OS3-016_DELIVERABLE.md. Registrazione retroattiva storica.",
+      "stats_status": "unrecoverable",
+      "stats_unrecoverable_reason": "Mission session 3: commit non portano l ID nel messaggio. enrich_registry.py grep-by-ID ritorna 0 commit. Stats non ricostruibili. Stub storico permanente."
     }
   ]
 }

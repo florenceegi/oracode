@@ -104,7 +104,7 @@ Top-level registry: `counter, last_updated, _nervous_system, missions[]`.
 Quindi:
 - I **campi** sono quelli provati in EGI-DOC (sopra), ma con **chiavi in inglese**: `id, title, date_open, date_close, status, tipo_missione→type, organi_coinvolti→organs, report_tecnico→report_technical, report_esteso→report_extended, files_modified, stats{...}`.
 - **EGI-DOC** (chiavi italiane) = **legacy**, migra gradualmente all'inglese. Non è il modello per le istanze nuove.
-- Il registry `oracode` (M-OS3-024, già inglese) è coerente con questa decisione.
+- Il registry `oracode` aveva entry MISTE (alcune chiavi italiane: `tipo_missione`, `organi_coinvolti`). **DECISIONE CEO 2026-05-31: convertire ORA a inglese** le entry M-OS3-022/023/024. Dopo la conversione il registry oracode è interamente inglese.
 
 ---
 
@@ -113,17 +113,24 @@ Quindi:
 | Livello | Cos'è | MISSION_REGISTRY | Statistiche | Numerazione |
 |---|---|---|---|---|
 | **1 — GLOBALE** | macchina / paradigma, cartella **visibile** | stato runtime (state machine) | — | — |
-| **2 — HUB** | softwarehouse acquirente | **SÌ — file unico** che raduna tutto | **calcolate qui** (su decine di cartelle) | **qui** (centrale) |
+| **2 — HUB** | softwarehouse acquirente | **SÌ — file unico** che raduna tutto | **calcolate qui** (su decine di cartelle) | **GLOBALE UNICA** (contatore centrale, no ripetizioni cross-istanza) |
 | **3 — ISTANZA LSO** | singolo progetto | **SÌ — proprio**, nel repo (schema EGI-DOC provato) | no (solo dati grezzi) | no |
 
 ---
 
-## Punti aperti — TUTTI RISOLTI (CEO 2026-05-30)
+## Decisioni CEO 2026-05-30
 
 1. ~~Nome cartella globale visibile~~ → **RISOLTO: `~/oracode-engine/`**.
 2. ~~Lingua chiavi registry~~ → **RISOLTO: INGLESE** (italiano EGI-DOC = legacy, migrazione graduale).
 
-L'SSOT (le **decisioni**) è completo. Resta l'**implementazione**.
+## Decisioni CEO 2026-05-31 (post-audit roadmap — emerse dal doppio audit del team)
+
+3. **Chiavi entry M-OS3-022/023/024** → **convertire ORA a inglese** (il registry oracode era misto; la riga sopra "già inglese" era falsa, corretta).
+4. **Status mission in corso nel registry repo (L3)** → **stato grezzo 1:1** dall'engine (`planned`/`executing`/`auditing`/...), non collassato. Il registry rispecchia fedelmente lo stato della state machine.
+5. **Numerazione mission (L2 HUB)** → **GLOBALE UNICA**: contatore centrale al HUB, nessun numero si ripete mai tra istanze. ⚠ Implica riconciliare la numerazione storica esistente (es. M-005 esiste sia in EGI sia in fabiocherici) — lavoro di Unità 4 HUB.
+6. **Path del file unico HUB (L2)** → **RIMANDATO** (CEO ha dubbi da chiarire). `[CEO: da decidere prima di Unità 4]`
+
+L'SSOT (le **decisioni**) è completo salvo il punto 6 (path L2, rimandato). Resta l'**implementazione**.
 
 ---
 
