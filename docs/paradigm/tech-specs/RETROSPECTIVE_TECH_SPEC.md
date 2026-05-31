@@ -22,15 +22,36 @@ source: docs/oracode/MISSION_PROTOCOL.md § 6.2
 
 ---
 
+## 0. Inquadramento Oracode Nexus
+
+Nel modello **Oracode Nexus** a 3 livelli (vedi
+`docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`), il retrospective è uno
+**step di finalize del motore L1** (`bin/mission` in `os3-matrix`, parte del
+`~/oracode-engine`):
+
+- **Consuma** il read-log d'istanza (**L3**) via `.oracode/project.json`
+  (`read_log_path`, `bootstrap_index_path`, registry inglese del progetto).
+- **Produce** proposte **locali** all'istanza (entry nel `BOOTSTRAP_DRIFT_LOG`
+  del progetto). È un'osservazione per-mission, per-istanza.
+- **NON** aggrega statistiche cross-istanza: l'aggregazione statistica e i
+  pattern ricorrenti su larga scala sono responsabilità del **HUB (L2)**
+  (Unità 4/5 del backlog 3-TIER, attualmente differite finché la softwarehouse
+  ha una sola commessa). Il retrospective alimenta i dati grezzi che il HUB
+  consoliderà.
+
+---
+
 ## 1. Architettura
 
-**Script**: `/home/fabio/oracode/bin/mission_retrospective.py`
+**Script**: `/home/fabio/os3-matrix/bin/mission_retrospective.py`
 **Invocazione**: `python3 mission_retrospective.py [--mission M-NNN]`
-**Trigger**: comando esplicito in FASE 6 (non hook automatico)
+**Trigger**: step automatico di `mission finalize` (FASE 6), orchestrato da `bin/mission` via il descrittore `.oracode/project.json` (`finalize_steps.retrospective`, best-effort). Non è un comando manuale né un hook PostToolUse.
 **Dipendenze**: Python 3.10+ (stdlib only, zero pip install)
 
+> **Nota — appartenenza.** Lo script è parte dell'**enforcement `os3-matrix`** (L1 motore, repo commerciale), NON del repo paradigma `oracode` (MIT). Vive accanto a `bin/mission` in `os3-matrix/bin/` e viene risolto come sibling di `bin/mission` durante il finalize. Il descrittore `.oracode/project.json` lo punta via `finalize_steps.retrospective.tool = mission_retrospective.py`.
+
 Input:
-- `MISSION_REGISTRY.json` → tipo_missione, organi_coinvolti
+- `MISSION_REGISTRY.json` (registry inglese del progetto, letto via `.oracode/project.json`) → `type`, `organs`
 - `MISSION_BOOTSTRAP_INDEX.json` → moduli pre-allocati
 - `MISSION_READ_LOG.jsonl` → accessi reali (da M-158)
 
@@ -42,22 +63,32 @@ Output:
 
 ## 2. Ordine di esecuzione in FASE 6
 
-Il retrospective viene eseguito **PRIMA** della chiusura stato a "completed".
+Il retrospective è uno **step automatico di `mission finalize`** (orchestrato da
+`bin/mission` via `.oracode/project.json`), eseguito **PRIMA** della chiusura
+stato a "completed". Non è un comando manuale da digitare: il finalize lo invoca
+in ordine, best-effort.
 
 ```
-FASE 6 — Chiusura mission (ordine obbligatorio):
+FASE 6 — Chiusura mission (ordine garantito da `mission finalize`):
   1. DOC-SYNC (allineamento codice ↔ SSOT)
   2. Retrospective bootstrap (mission ancora in_progress)
-     python3 /home/fabio/oracode/bin/mission_retrospective.py
+     → step automatico del finalize: bin/mission risolve e invoca
+       os3-matrix/bin/mission_retrospective.py (best-effort)
   3. Aggiornamento stato → "completed"
   4. retrospective_executed: true nel registry
   5. Mission report (tecnico + esteso)
   6. Commit + push
 ```
 
-**Vincolo**: se il retrospective viene eseguito dopo la chiusura stato,
-il comando non trovera la mission corrente e operera sulla mission
-in_progress piu recente (comportamento errato). L'ordine e obbligatorio.
+**Best-effort**: se le dipendenze del retrospective (`read_log_path` /
+`bootstrap_index_path` del descrittore) sono assenti, il finalize **salta** lo step
+e marca `retrospective_executed: false` con `retrospective_skipped_reason` nel
+registry (caso tipico: istanza laboratorio senza read tracking).
+
+**Vincolo d'ordine**: il finalize garantisce che il retrospective giri **prima**
+della chiusura stato. Eseguito dopo, non troverebbe la mission corrente e opererebbe
+sulla mission `in_progress` più recente (comportamento errato). L'orchestrazione del
+finalize tiene questo vincolo automaticamente.
 
 ---
 
@@ -66,7 +97,7 @@ in_progress piu recente (comportamento errato). L'ordine e obbligatorio.
 ### Step 1 — Expected (moduli pre-allocati)
 
 ```
-expected = by_mission_type[tipo_missione] + by_organ[organo] per ogni organo
+expected = by_mission_type[type] + by_organ[organo] per ogni organo
 ```
 
 I moduli `always_loaded` sono ESCLUSI da expected (vincolo M-158 R1).
@@ -77,7 +108,10 @@ Dal `MISSION_READ_LOG.jsonl`, filtrato per:
 - `mission == mission_id`
 - `action` contiene "read" (include "read" e "read+write")
 
-Path normalizzati: prefisso `/home/fabio/` e `EGI-DOC/` rimossi.
+Path normalizzati: il prefisso dell'istanza è risolto via `instance_root` del
+descrittore `.oracode/project.json` (non hardcoded per una singola istanza). Lo
+script normalizza i path rendendoli relativi all'`instance_root` del progetto su
+cui sta operando.
 
 Solo path che passano il filtro pool SSOT (§4) sono candidati per `used_unloaded`.
 
@@ -195,8 +229,8 @@ naturalmente dal DRIFT_LOG.
 
 | Caso | Comportamento |
 |------|---------------|
-| `tipo_missione` non in BOOTSTRAP_INDEX | `expected` = solo by_organ |
-| `organi_coinvolti` vuoto o `["oracode"]` | `expected` = solo by_mission_type |
+| `type` non in BOOTSTRAP_INDEX | `expected` = solo by_organ |
+| `organs` vuoto o `["oracode"]` | `expected` = solo by_mission_type |
 | Organo non in by_organ | Organo ignorato |
 | Mission senza entry nel read_log | `actual` vuoto → tutti i pre-allocati in loaded_unused |
 | Path non normalizzabili | Esclusi da used_unloaded |
@@ -219,8 +253,8 @@ naturalmente dal DRIFT_LOG.
 
 **Versione**: 1.0.0
 **Data**: 2026-05-08
-**Mission di riferimento**: M-159
-**Prerequisito**: M-158 (tracking accessi filesystem)
+**Mission di riferimento**: M-159 (riferimento storico EGI)
+**Prerequisito**: M-158 (tracking accessi filesystem — riferimento storico EGI)
 **Consumato da**: MISSION_PROTOCOL.md FASE 6 (§ 6.2)
 
 *Per il tracking accessi: `docs/oracode/READ_TRACKING_TECH_SPEC.md`*

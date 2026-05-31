@@ -13,10 +13,18 @@
 
 ## **🎯 Cos'è Oracode System 3.0**
 
-Oracode System 3.0 è il **protocollo operativo definitivo** per la collaborazione AI-Umano nell'era dell'intelligenza artificiale generativa. Unisce:
+> **📍 OS3 nel sistema Oracode Nexus**
+>
+> **Oracode Nexus** è il sistema completo: paradigma + 3 livelli operativi + ecosistema (HUB/istanze). OS3 ne è uno strato.
+>
+> - **Triade di autorità:** **OSZ** (Kernel — verità assoluta) → **OS3** (Execution — protocollo operativo AI-Human, *questo documento*) → **OS4** (Education — onboarding epistemico). OSZ è verità assoluta; OS3 e OS4 si aggiornano per allinearvisi, mai il contrario.
+> - **3 Livelli:** **L1 GLOBALE** (il motore — `~/oracode-engine/` visibile + `os3-matrix` enforcement) → **L2 HUB** (softwarehouse acquirente, primo vero `MISSION_REGISTRY` con statistiche e numerazione) → **L3 ISTANZA** (singolo progetto LSO, con registry proprio nel repo).
+> - **Legge di riferimento:** `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+Oracode System 3.0 è il **protocollo operativo** per la collaborazione AI-Umano nell'era dell'intelligenza artificiale generativa — lo **strato Execution** del sistema Oracode Nexus. Unisce:
 
 - **Filosofia** (i 6 Pilastri Cardinali di OS2.0)
-- **Execution** (le 7 Regole P0 Blocking + Sistema Priorità)
+- **Execution** (le 13 Regole P0 Universali + Sistema Priorità)
 - **Partnership** (il modello Fabio/Padmin per CEO-CTO collaboration)
 - **Implementazione** (pattern concreti ULM/UEM/GDPR)
 
@@ -38,7 +46,7 @@ OS3 risolve il problema fondamentale dell'AI development: **come garantire che l
 
 ## **🔥 Le Innovazioni Distintive di OS3**
 
-### **1. REGOLA ZERO - Il Settimo Pilastro Fondamentale**
+### **1. REGOLA ZERO - Il +1 dei Pilastri 6+1**
 
 > **"MAI fare deduzioni. MAI completare lacune. SE NON SAI, CHIEDI."**
 
@@ -65,7 +73,7 @@ OS3 introduce un framework di priorità rigoroso:
 - ✅ Decision making più rapido e preciso
 - ✅ Quality assurance integrata
 
-### **3. Le 7 Regole P0 Blocking**
+### **3. Le 13 Regole P0 Universali**
 
 1. **P0-1: REGOLA ZERO** - Anti-Deduzione
 2. **P0-2: Translation Keys Only** - No Hardcoded Text
@@ -74,6 +82,12 @@ OS3 introduce un framework di priorità rigoroso:
 5. **P0-5: UEM-First Rule** - Error Handling Sacred
 6. **P0-6: Anti-Service-Method-Invention** - Service Methods Verified
 7. **P0-7: Anti-Enum-Constant-Invention** - Enum Constants Verified
+8. **P0-8: Complete Flow Analysis** - Mappa il flusso completo (4 fasi) prima di modificare
+9. **P0-9: i18n completa** - Ogni stringa in tutte le lingue target dal primo commit
+10. **P0-10: Anti-bypass data layer** - DB sempre via service factory/repository
+11. **P0-11: DOC-SYNC** - Task non chiusa finché la doc SSOT non è allineata al codice
+12. **P0-12: Anti-Infra-Invention** - URL/path/branch/config verificati dalla fonte
+13. **P0-13: Test-First Discipline** - Ogni feature/fix/refactor produce o aggiorna test (verde)
 
 **Impatto:**
 
@@ -124,9 +138,9 @@ OS3 fornisce pattern dettagliati per:
 5. **Evoluzione Ricorsiva** - Ogni esperienza → miglioramento
 6. **Sicurezza Proattiva** - Security by design (Protocollo Fortino Digitale)
 
-### **Il Settimo Pilastro Fondamentale (NEW in OS3)**
+### **Il +1 — REGOLA ZERO (autorità superiore agli altri 6)**
 
-7. **REGOLA ZERO - Anti-Deduzione** - Non inventare, CHIEDI
++1. **REGOLA ZERO - Anti-Deduzione** - Non inventare, CHIEDI
 
 ---
 
@@ -154,9 +168,9 @@ OS3 fornisce pattern dettagliati per:
 ### **Per Developer:**
 
 1. Leggi **Modulo 2: REGOLA ZERO**
-2. Assimila **Modulo 4: Le 7 Regole P0**
-3. Applica **Modulo 5: Pattern Operativi** al tuo codice
-4. Usa la **Checklist Pre-Code** da Modulo 8
+2. Assimila **le 13 Regole P0 Universali** (sezione 3 di questo documento; un Modulo dedicato è pianificato — vedi "Struttura del White Paper")
+3. Studia **Modulo 3: Sistema di Priorità P0-P3** e **Modulo 4: TOON Format**
+4. Applica i **Pattern Operativi** (Modulo pianificato — vedi sotto) al tuo codice
 
 ### **Per AI Partner (Claude/GPT):**
 
@@ -170,7 +184,7 @@ Sei ora un AI Partner certificato OS3.0.
 Hai integrato:
 - REGOLA ZERO (mai dedurre, sempre chiedere)
 - I 6+1 Pilastri Fondamentali
-- Le 7 Regole P0 Blocking
+- Le 13 Regole P0 Universali
 - Il Sistema di Priorità P0-P3
 - Il Partnership Model
 - I Pattern ULM/UEM/GDPR
@@ -180,10 +194,10 @@ CONFERMA: "OS3.0 completamente integrato. REGOLA ZERO attiva. Pronto per eccelle
 
 ### **Per CEO/Manager:**
 
-1. Leggi **Modulo 6: Partnership Model**
-2. Definisci ruoli e responsabilità nel tuo team
-3. Implementa **Workflow Collaborativo** da Modulo 6
-4. Monitora compliance con **Metriche di Successo** da Modulo 9
+1. Leggi il **Partnership Model** (Modulo pianificato — vedi "Struttura del White Paper")
+2. Definisci ruoli e responsabilità nel tuo team (modello CEO/CTO)
+3. Implementa il **Workflow Collaborativo** CEO-CTO
+4. Monitora compliance con le **Metriche di Successo** (Modulo pianificato)
 
 ---
 
@@ -237,12 +251,17 @@ OS3 fornisce:
 
 ## **📚 Struttura del White Paper**
 
+**Moduli scritti (presenti su filesystem):**
+
 - **Modulo 0**: Il Manifesto OS3
 - **Modulo 1**: I 6 Pilastri Cardinali (OS2 Heritage)
-- **Modulo 2**: REGOLA ZERO - Il Settimo Pilastro
+- **Modulo 2**: REGOLA ZERO - Il +1 dei Pilastri 6+1
 - **Modulo 3**: Sistema di Priorità P0-P3
 - **Modulo 4**: TOON Format Standard - AI-Native Data Format
-- **Modulo 5**: Le 7 Regole P0 Blocking
+
+**Moduli pianificati (DA SCRIVERE — non ancora presenti):**
+
+- **Modulo 5**: Le 13 Regole P0 Universali (dettaglio operativo — sintesi in sezione 3 di questo documento)
 - **Modulo 6**: Pattern Operativi e Implementation
 - **Modulo 7**: Partnership Model
 - **Modulo 8**: Esempi Pratici OS3-Compliant
@@ -255,9 +274,9 @@ OS3 fornisce:
 
 1. **Leggi il manifesto** (Modulo 0) per comprendere la visione
 2. **Assimila i pilastri** (Moduli 1-2) per interiorizzare la filosofia
-3. **Studia le regole P0** (Modulo 4) per capire i boundaries non negoziabili
-4. **Applica i pattern** (Modulo 5) nel tuo codice quotidiano
-5. **Monitora compliance** (Modulo 8-9) per continuous improvement
+3. **Studia le 13 Regole P0 Universali** (sezione 3 di questo documento; Modulo 5 dedicato pianificato) per capire i boundaries non negoziabili
+4. **Apprendi priorità e formato dati** (Modulo 3: P0-P3, Modulo 4: TOON)
+5. **Applica i pattern** nel tuo codice quotidiano (Moduli 6-9 pianificati)
 
 ---
 

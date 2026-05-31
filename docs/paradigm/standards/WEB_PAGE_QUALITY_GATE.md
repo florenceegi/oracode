@@ -23,7 +23,11 @@ priority: high
 
 Questo protocollo si attiva **automaticamente** quando una mission ha come deliverable una pagina web pubblica (nuova o modifica significativa). Si integra nel Mission Protocol v2.0.0 come gate obbligatorio tra FASE 4 (esecuzione) e FASE 5 (review).
 
-**Trigger**: `tipo_missione` in [feature, refactor] AND deliverable include file `.tsx`/`.html`/`.blade.php` serviti su URL pubblico.
+> **Inquadramento Oracode Nexus.** Il gate si attiva nel ciclo mission del flusso Oracode Nexus (`/discovery` → `/project` → `/mission`, context-aware). La mission è auto-registrata nel `MISSION_REGISTRY` dell'istanza (Livello 3) tramite il ponte automatico L1→L3 risolto via `.oracode/project.json` dal CWD; il campo `standards_check` (vedi §1) va nella entry di quel registry. SSOT livelli: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+**Trigger**: `type` in [feature, refactor] AND deliverable include file `.tsx`/`.html`/`.blade.php` serviti su URL pubblico.
+
+> Nota chiavi: `type` è la chiave inglese canonica del MISSION_REGISTRY (decisione CEO 2026-05-30, vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`). La chiave italiana `tipo_missione` è legacy EGI-DOC.
 
 ---
 
@@ -220,6 +224,20 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 
 ## 4. Processo di verifica — Quality Gate
 
+L'enforcement è **automatizzato** da `os3-matrix/bin/web_quality_gate.py` (Gate automatico pre-commit per pagine web pubbliche — 90 criteri, 12 categorie; exit code `0 = PASS`, `1 = FAIL` su almeno un criterio obbligatorio fallito). Lo snippet bash di §4.2 è la **logica di riferimento**; in pratica si invoca il gate:
+
+```bash
+python3 os3-matrix/bin/web_quality_gate.py \
+  --dir out/ \
+  --page <nome-pagina> \
+  --locales it,en,de,es,fr,pt,zh \
+  [--url https://<dominio>] \
+  [--messages messages/] \
+  [--report /tmp/web-quality-gate-report.json] [--quiet]
+```
+
+Argomenti (da `argparse`): `--dir` (directory HTML generato, es. `out/`) e `--page` e `--locales` sono **obbligatori**; `--url` abilita i check post-deploy; `--messages` punta ai file i18n JSON; `--report` definisce il path del report JSON (default `/tmp/web-quality-gate-report.json`); `--quiet` mostra solo l'output finale.
+
 ### 4.1 Durante la creazione (FASE 4)
 
 Ogni file prodotto viene verificato **prima di passare al successivo**:
@@ -245,7 +263,7 @@ VERIFICA i18n (dopo ogni file di traduzione):
 
 ### 4.2 Pre-deploy (dopo build, prima di S3 sync)
 
-Script automatico sul HTML generato in `out/`:
+In pratica si invoca `os3-matrix/bin/web_quality_gate.py` (vedi §4). Lo snippet sotto resta come **logica di riferimento** dei controlli sul HTML generato in `out/`:
 
 ```bash
 # Eseguire per ogni locale

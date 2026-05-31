@@ -40,6 +40,8 @@ Un **Living Software Organism** si auto-corregge, si auto-documenta, mantiene la
 
 LSO è ciò che implementa questa proprietà. Non è un singolo componente — è uno **strato trasversale** che avvolge l'intero organismo in produzione.
 
+> **Inquadramento Oracode Nexus.** Un LSO è un'**ISTANZA di Livello 3** nella gerarchia a 3 livelli di Oracode Nexus: **L1 GLOBALE** (motore + paradigma: `oracode` + `os3-matrix` + `~/oracode-engine`) / **L2 HUB** (softwarehouse acquirente, primo vero `MISSION_REGISTRY` con statistiche e numerazione) / **L3 ISTANZA LSO** (singolo progetto, con il proprio `MISSION_REGISTRY` e doc-sync proprio). Ogni istanza LSO ha il proprio Mission Registry versionato nel repo del progetto — è la condizione per *essere* un LSO (vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`). **FlorenceEGI è la prima istanza LSO emersa in produzione, non l'unica possibile**: i meccanismi descritti qui sono universali, FlorenceEGI ne è il caso esemplare.
+
 ---
 
 ## I 5 Principi LSO
@@ -378,6 +380,16 @@ LAYER 2 — PROPRIOCEZIONE (Mission Registry + DOC-SYNC v2)
     Step 5b: Aggiornamento metadati SSOT_REGISTRY (last_verified, verified_in_mission) →
     Step 6: Audit trail completo
 
+  PONTE AUTOMATICO L1→L3 (FATTO): la registrazione mission→registry non
+  dipende più dalla disciplina dell'operatore. `bin/mission` auto-registra
+  ogni mission nel MISSION_REGISTRY dell'istanza (L3), risolvendo
+  `.oracode/project.json` risalendo dal CWD (`syncToRepoRegistry`). Lo stato
+  della state machine in `~/oracode-engine/` (L1) viene propagato 1:1 nel
+  registry del progetto a ogni transizione. La vecchia sincronizzazione
+  manuale state↔registry e le "mission fantasma" sono SUPERATE; il ponte è
+  parallel-safe via lockfile. Chiavi del registry in INGLESE
+  (`id/title/type/organs/status/date_open/date_close`).
+
 LAYER 3 — RETE DI SICUREZZA (asincrono, cron/manuale)
   ssot-living-check.sh → verifica leggera basata su timestamp e git log
   doc-sync-v2-guard.sh → blocca push EGI-DOC se mission senza doc_sync_log
@@ -415,14 +427,16 @@ Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 | `EGI-DOC/docs/lso/SSOT_REGISTRY.json` | Registry | Mapping doc→file watchati (Layer 0) |
 | `~/.claude/hooks/ssot-reflex-guard.sh` | Hook | Segnale riflesso passivo PostToolUse (Layer 1, secondario) |
 | `~/.claude/agents/doc-sync-v2.md` | Agente | DOC-SYNC v2: sincronizzazione automatica SSOT (Layer 2, primario) |
-| `~/oracode/bin/rag_natan_reindex.py` | CLI Python | Re-indexing SSOT in RAG piattaforma (Layer 2) |
-| `~/oracode/bin/rag_natan_query.py` | CLI Python | Discovery laterale SSOT via query vettoriale (Layer 2) |
+| `os3-matrix/bin/rag_reindex.py` | CLI Python | Re-indexing SSOT in RAG piattaforma (Layer 2) |
+| `os3-matrix/bin/rag_query.py` | CLI Python | Discovery laterale SSOT via query vettoriale (Layer 2) |
 | `~/.claude/hooks/doc-sync-v2-guard.sh` | Hook | Blocca push EGI-DOC senza doc_sync_log (Layer 3) |
 | `~/.claude/hooks/ssot-living-check.sh` | Script | Check leggero cron/manuale (Layer 3, rete sicurezza) |
 | `EGI-DOC/docs/missions/MISSION_REGISTRY.json` | Registry | Propriocezione (Layer 2) |
 | `EGI-DOC/audit/doc_sync/<mission_id>/` | Audit | Audit trail DOC-SYNC v2 per mission |
 | `EGI-DOC/audit/drift/` | Report | Storico drift report |
 | `EGI-DOC/audit/ssot_nerve_signals.log` | Log | Storico segnali nervosi |
+
+> **Collocazione tool (Oracode Nexus).** I tool Python (`rag_reindex.py`, `rag_query.py`, `mission`) vivono in `os3-matrix/bin/` (repo enforcement, L1), **non** in `~/oracode/bin/` (paradigma: regole, docs, templates). Il Mission Engine (`bin/mission`) tiene lo stato runtime in `~/oracode-engine/` — la cartella globale **visibile** di Livello 1 (`ORACODE_HOME`), non un registro versionato. Il symlink di compat `~/.oracode → ~/oracode-engine` resta per retrocompatibilità.
 
 ### Componenti archiviati (v1 → v2 migration, 2026-04-30)
 

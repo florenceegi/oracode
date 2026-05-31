@@ -1,7 +1,7 @@
 # PADMIN_INDEX.md
 
-> **Versione**: 1.0.0
-> **Data**: 2026-05-07
+> **Versione**: 1.2.0
+> **Data**: 2026-05-31
 > **Sede**: parte di Oracode (livello universale, non specifico a FlorenceEGI)
 > **Nomenclatura di riferimento**: `LSO_NOMENCLATURE_v1.md`
 > **Scopo**: mappa di entrata + briefing executive per nuove istanze di Padmin (Supervisor e Watchdog)
@@ -73,7 +73,7 @@ Mission strutturali = riguardano hook, guard, SSOT, organi LSO core, protocolli,
 7. Supervisor presenta deliverable
 8. Watchdog esegue review del deliverable
 9. CEO approva ESPLICITAMENTE il deliverable
-10. Mission chiusa, registrata in MISSION_REGISTRY
+10. Mission chiusa, registrata automaticamente nel MISSION_REGISTRY L3 dell'istanza via `bin/mission` (ponte L1→L3, non manualmente)
 ```
 
 ### Punti dove il flusso si è rotto in passato (e non deve più rompersi)
@@ -149,7 +149,7 @@ Quando emerge una situazione che richiede dettaglio oltre il briefing executive,
 | `LSO_GUARD_TESTING_PROTOCOL_v1.md` | Oracode | Quando si lavora su guard, hook, sistema di test (universale per qualsiasi istanza LSO) |
 | Memoria-CEO specifica dell'istanza | Persona-CEO (ortogonale ai 4 livelli) | Chi è il CEO, persone del cerchio, decisioni operative correnti, zone sensibili |
 | Documento di binding dell'istanza corrente | FlorenceEGI / istanza specifica | Quale istanza è attiva, suoi organi, suo dominio, suo sistema circolatorio |
-| `MISSION_REGISTRY.json` | Specifico dell'istanza | Stato delle mission attive, mission completate, dipendenze |
+| `MISSION_REGISTRY.json` | L3 (istanza), nel repo del progetto | Stato delle mission attive, mission completate, dipendenze. **Auto-popolato dall'engine L1** via il ponte `.oracode/project.json` (`bin/mission`). Statistiche e numerazione globale sono responsabilità del HUB (L2). Vedi `ORACODE_NEXUS_3_TIER.md` |
 | `CLAUDE_ECOSYSTEM_CORE.md` | Da auditare (livello misto) | Regole P0-P3, architettura, principi fondanti — attualmente accoppia Oracode e istanza |
 
 ### Ordine di lettura per nuove istanze
@@ -176,20 +176,24 @@ Quando emerge una situazione che richiede dettaglio oltre il briefing executive,
 
 ## 5bis. Multi-write concurrency (M-OS3-016 v0.3)
 
-> Aggiornato 2026-05-27 — Update manuale workaround pre-DOC-SYNC sistemico (M-OS3-017 tracked in BACKLOG).
+> Aggiornato 2026-05-31 — § 5bis allineato al ponte L1→L3 automatico (M-OS3-025) e alla cartella visibile `~/oracode-engine/`.
 
-Ogni chat Claude Code ha env `CLAUDE_CODE_SESSION_ID` univoca. `bin/mission` v0.3.0+ usa questa env per scrivere/leggere focus per-session in `~/.oracode/focus/<session_id>.json`.
+> **Cartella globale dell'engine:** è `~/oracode-engine/` (L1, **visibile** — M-OS3-025 Unità 1). `~/.oracode` resta come symlink di compat, rimovibile. Tutti i path di stato runtime (`missions/`, `focus/`, `audit/`, `state/`, `license.json`) vivono qui.
 
-**Principio (AMENDMENT 1 CEO):** se sai che sei in una session, DEVI avere il tuo file focus. Niente eredità implicita dalla legacy. `~/.oracode/focus.json` (single-slot v0.2) e `active-mission.lock` (v0.1) sono solo fallback per terminale standalone (no env Claude Code).
+> **Ponte L1→L3 automatico (in produzione):** `bin/mission` AUTO-registra le mission nel `MISSION_REGISTRY` del progetto (L3) via il descrittore `<progetto>/.oracode/project.json` risolto dal CWD (M-OS3-025 Unità 3, `syncToRepoRegistry`, parallel-safe con lockfile). La vecchia sincronizzazione manuale `state.json`↔registry e le "mission fantasma" sono **superate**.
+
+Ogni chat Claude Code ha env `CLAUDE_CODE_SESSION_ID` univoca. `bin/mission` v0.3.0+ usa questa env per scrivere/leggere focus per-session in `~/oracode-engine/focus/<session_id>.json`.
+
+**Principio (AMENDMENT 1 CEO):** se sai che sei in una session, DEVI avere il tuo file focus. Niente eredità implicita dalla legacy. `~/oracode-engine/focus.json` (single-slot v0.2) e `active-mission.lock` (v0.1) sono solo fallback per terminale standalone (no env Claude Code).
 
 **Pattern operativo multi-chat:**
 ```
-Chat A (session_id = AAA): bin/mission focus M-A → focus/AAA.json
-Chat B (session_id = BBB): bin/mission focus M-B → focus/BBB.json
+Chat A (session_id = AAA): bin/mission focus M-A → ~/oracode-engine/focus/AAA.json
+Chat B (session_id = BBB): bin/mission focus M-B → ~/oracode-engine/focus/BBB.json
 Entrambe lavorano in parallelo, 0 collision.
 ```
 
-**Comando nuovo:** `bin/mission gc-focus [--dry-run] [--older-than=N]` per cleanup file orfani (chat chiuse non puliscono). Default `--older-than=7`. Esecuzione manuale CEO finché FINDING-S3-2 (automation gc-focus) non viene risolto in mission dedicata.
+**Comando di cleanup:** `bin/mission gc-focus [--dry-run] [--older-than=N]` per i file `focus/` orfani (chat chiuse non puliscono). Default `--older-than=7`. Esecuzione manuale finché FINDING-S3-2 (automation gc-focus) non viene risolto in mission dedicata. (Questo riguarda SOLO il garbage-collect dei focus di sessione; è separato dal ponte L1→L3 registry, che è automatico — vedi header.)
 
 **Versioni componenti core:**
 - `bin/mission` v0.3.0
@@ -252,7 +256,7 @@ Aggiornamenti a questo file sono atto formale. Richiedono:
 4. Update del campo Versione e Data
 5. Registrazione nel log operativo
 
-Versione corrente: 1.1.0. Data: 2026-05-27 (M-OS3-016 multi-write addendum § 5bis — update manuale workaround pre-M-OS3-017 DOC-SYNC sistemico).
+Versione corrente: 1.2.0. Data: 2026-05-31 (§ 5bis aggiornato al ponte L1→L3 automatico — M-OS3-025 — e alla cartella visibile `~/oracode-engine/`; framing Oracode Nexus a 3 livelli nel MISSION_REGISTRY L3).
 
 Questo documento è **Oracode-puro**: deve reggere per qualsiasi istanza di LSO costruita con Oracode, non solo FlorenceEGI. Modifiche che lo accoppiano a un'istanza specifica sono violazioni del vincolo di coerenza dichiarato in header.
 

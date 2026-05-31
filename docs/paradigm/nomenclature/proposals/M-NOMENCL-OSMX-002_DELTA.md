@@ -8,6 +8,8 @@
 > **Status:** IN ATTESA APPROVAZIONE CEO
 > **Sostituisce:** DELTA v1 (archiviato in `proposals/archived/`, collocazione sbagliata)
 
+> ⚠ **Superseded-context.** Questa proposal (2026-05-22) precede la gerarchia **Oracode Nexus a 3 livelli** (`../ORACODE_NEXUS_3_TIER.md`, decisioni CEO 2026-05-30/31) e il **Ponte L1→L3 automatico** (M-OS3-025 Unità 3, `bin/mission syncToRepoRegistry`, parallel-safe — già FATTO). La descrizione «Mission Protocol enforcement automatico / registry JSON come SSOT con commit+push immediato» va letta alla luce della separazione: **L1** = motore (scratch runtime in `~/oracode-engine`, NON un registro) / **L2 HUB** = primo vero `MISSION_REGISTRY` (statistiche + numerazione globale unica, versionato in HUB-DOC) / **L3 ISTANZA** = registry proprio del progetto (ponte L1→L3 automatico via `.oracode/project.json` risolto dal CWD; chiavi in INGLESE — `id/title/type/organs/status/date_open/date_close` —, l'italiano EGI-DOC è legacy). Quando la proposal verrà applicata a `LSO_NOMENCLATURE_v2.md`, allineare a quella gerarchia.
+
 ---
 
 ## Correzione rispetto al DELTA v1

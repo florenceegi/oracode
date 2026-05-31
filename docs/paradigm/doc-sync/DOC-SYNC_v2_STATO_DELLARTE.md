@@ -16,6 +16,14 @@ DOC-SYNC v2 è il closing hook semantico della Mission Engine. Alla chiusura di 
 
 ---
 
+### Collocazione Oracode Nexus
+
+> DOC-SYNC v2 è un meccanismo di **LIVELLO 3 (istanza LSO)** della gerarchia Oracode Nexus (paradigma + 3 livelli + ecosistema HUB/istanze): opera alla **chiusura mission del singolo progetto**, allineando il suo `MISSION_REGISTRY.json` e il suo RAG. Si innesta sul **ponte L1→L3** (`bin/mission` auto-registra/propaga lo stato via `<progetto>/.oracode/project.json`, FATTO con M-OS3-025 Unità 3).
+>
+> Le metriche di copertura/organi riportate in §3 sono dell'**istanza FlorenceEGI** (EGI-DOC), un'**istanza accoppiata HUB+istanza** ("caso unico" al 2026, perché ad oggi serve un solo cliente). Per **istanze nuove** la coverage è **per-progetto** e i path `~/.claude/...` / `EGI-DOC/...` qui citati vanno letti come **esempi d'istanza**, non come canone universale. Riferimento: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+---
+
 ## 2. Componenti — Mappa operativa
 
 | Componente | Path | Versione | Stato | Note |
@@ -129,7 +137,7 @@ Mission chiusa da operatore
 | 50 SSOT senza watches | Media | 50/149 SSOT non hanno `watches.paths`. Non partecipano alla detection automatica |
 | 94 pattern broken | Bassa | 19.5% dei pattern non matcha alcun file. Sotto soglia 25% ma indica drift nei watch |
 | Coverage ecosistema 39.3% | Informativo | 60.7% dei file non è osservato da alcun SSOT. Deliberato per EGI legacy (Strategia Delta) |
-| Mission registry dual-tracking sincronizzazione manuale | Media | Dal bootstrap OS3 Matrix (M-OS3-001, 25 maggio 2026) il Mission Engine usa due fonti dati distinte per il ciclo di vita di una mission. La `state machine` di `bin/mission` scrive in `~/.oracode/missions/<ID>/state.json` (in HOME, condivisa fra progetti); il Mission Registry del progetto applicativo vive invece in `<progetto-DOC>/docs/missions/MISSION_REGISTRY.json` (versionato col repo). DOC-SYNC v2 al passo 6 aggiorna il blocco `doc_sync` dentro `MISSION_REGISTRY.json`, ma NON ricalcola `state.json`: la coerenza fra i due registri è oggi responsabilità dell'operatore (Edit manuale del registry a ogni transizione). Drift rilevato in sessione 2 Poli (M-002 dichiarata closed nel report ma `in_progress` nel registry — caso documentato in `os3-matrix/docs/design/BACKLOG.md` SEZIONE 9, finding S2-1). Fix architetturale candidato: M-OS3-014 — `bin/mission` legge `.oracode/project.json` del progetto attivo e propaga automaticamente le transizioni di stato al `MISSION_REGISTRY.json` corrispondente. Fino ad allora, ogni mission applicativa richiede sincronizzazione esplicita post-`advance` / post-`close`. |
+| Mission registry dual-tracking sincronizzazione manuale | **Risolto/Storico** | **SUPERATO (M-OS3-025 Unità 3, commit ponte L1→L3).** Contesto storico: dal bootstrap OS3 Matrix (M-OS3-001, 25 maggio 2026) il Mission Engine usava due fonti dati distinte. La `state machine` di `bin/mission` scrive in `~/oracode-engine/missions/<ID>/state.json` (cartella globale **VISIBILE**, Unità 1; `~/.oracode` resta symlink di compat — condivisa fra progetti); il Mission Registry del progetto applicativo vive in `<progetto-DOC>/docs/missions/MISSION_REGISTRY.json` (versionato col repo). In origine la coerenza fra i due registri era responsabilità dell'operatore (Edit manuale del registry a ogni transizione), con drift rilevato in sessione 2 Poli (M-002 — finding S2-1, `os3-matrix/docs/design/BACKLOG.md` SEZIONE 9). **Oggi il ponte automatico L1→L3 è FATTO**: `bin/mission` auto-registra/propaga lo stato della state machine nel `MISSION_REGISTRY.json` del progetto risolvendo il descrittore `<progetto>/.oracode/project.json` dal CWD (funzione `syncToRepoRegistry`, `os3-matrix/bin/mission`), parallel-safe con lockfile per-registry (`withRegistryLock`). La vecchia sincronizzazione manuale `state.json`↔`registry` e le mission fantasma (finding S2-1) **non sono più stato attuale**. Il riferimento storico al "fix candidato M-OS3-014" è superato da **M-OS3-025 Unità 3 (FATTO)**. |
 
 ---
 

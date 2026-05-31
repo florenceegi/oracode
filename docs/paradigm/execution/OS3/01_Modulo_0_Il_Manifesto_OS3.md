@@ -97,7 +97,7 @@ Attraverso la **REGOLA ZERO** e il **Sistema P0-P3**, OS3 dimostra che puoi aver
 
 - **REGOLA ZERO** come pilastro fondamentale
 - **Sistema P0-P3** (prioritization rigorosa)
-- **7 Regole P0 Blocking** (violation = STOP)
+- **13 Regole P0 Universali** (violation = STOP)
 - **Partnership Model** strutturato (CEO/CTO roles)
 - **Implementation Patterns** concreti (ULM/UEM/GDPR)
 - Focus: **Da principi a operational protocol**
@@ -158,7 +158,7 @@ OS3 introduce un sistema di priorità cristallino:
 - Violazione → STOP totale
 - Non negoziabile
 - Enforcement automatico
-- 7 regole fondamentali
+- 13 Regole P0 Universali
 
 **P1 = MUST**
 - Core principles da seguire sempre
@@ -182,24 +182,24 @@ OS3 introduce un sistema di priorità cristallino:
 
 ### **3. Partnership Model - Human-AI Collaboration Structured**
 
-OS3 codifica esplicitamente come CEO e CTO devono collaborare con AI:
+OS3 codifica esplicitamente come i ruoli CEO e CTO collaborano con l'AI. Il modello è astratto e riusabile da qualsiasi softwarehouse: i ruoli sono definiti dalla funzione, non dalle persone. Fabio Cherici (CEO) e Padmin D. Curtis (CTO) sono citati come istanza di riferimento e autori, non come definizione del ruolo.
 
-**FABIO CHERICI (CEO & Standards Architect)**
+**CEO — Standards Architect**
 - Defines: Vision, Standards, Architecture, Requirements
-- Authority: Final decision on scope, priorities, tech stack
+- Authority: visione, standard, approvazione architetturale, valori immutabili, decisione finale su scope/priorità/tech stack
 
-**PADMIN D. CURTIS (CTO & Technical Lead)**
+**CTO — Technical Lead**
 - Implements: Standards compliance, Code execution, Best practices
-- Constraints: MUST follow OS3, MUST apply REGOLA ZERO
+- Constraints: esecuzione, enforcement, delivery — MUST follow OS3, MUST apply REGOLA ZERO
 
 **WORKFLOW:**
 ```
-CEO (Fabio)
+CEO (Standards Architect)
   ↓ Provides: Requirements + Standards + Examples
-CTO (Padmin)
-  ↓ Applies: REGOLA ZERO + P0-P7 + Patterns
+CTO (Technical Lead)
+  ↓ Applies: REGOLA ZERO + P0-P3 + Patterns
   ↓ Delivers: Production-ready code
-CEO (Fabio)
+CEO (Standards Architect)
   ↓ Validates: Alignment + Quality
   ↓ DEPLOYMENT
 ```
@@ -229,7 +229,7 @@ CEO (Fabio)
 
 **REGOLA ZERO** → Elimina errori da assunzione  
 **Sistema P0-P3** → Enforce standard automaticamente  
-**7 Regole Blocking** → Zero tolerance per violazioni critiche  
+**13 Regole P0 Universali** → Zero tolerance per violazioni critiche  
 **Partnership Model** → Human oversight strutturato  
 **Pattern Library** → Da principi astratti a codice concreto
 
@@ -289,7 +289,7 @@ OS3 è la risposta:
 Questo White Paper ti guiderà attraverso:
 
 - **Moduli 1-2**: I Pilastri Fondamentali (filosofia + REGOLA ZERO)
-- **Moduli 3-4**: Il Sistema Operativo (P0-P3 + 7 Regole Blocking)
+- **Moduli 3-4**: Il Sistema Operativo (P0-P3 + 13 Regole P0 Universali)
 - **Moduli 5-6**: L'Implementazione (Pattern + Partnership Model)
 - **Moduli 7-9**: L'Applicazione (Examples + Toolkit + Metrics)
 

@@ -1,10 +1,12 @@
-# Legacy Stack Policy — FlorenceEGI Ecosystem
+# Legacy Stack Policy — Paradigma Oracode Nexus (Livello 1)
 
 > **Chi**: CEO Fabio Cherici · CTO Padmin D. Curtis (AI)
 > **Quando**: 2026-04-22
 > **Versione**: 1.0.0
 > **Mission**: M-094 (child di M-094-SUPERVISOR, parent M-093 Ultra Excellence Audit)
-> **Enforcement**: hook `~/.claude/hooks/check-no-legacy-stack.sh` (PreToolUse Write|Edit)
+> **Enforcement**: hook `~/.claude/hooks/check-no-legacy-stack.sh` (PreToolUse Write|Edit) — meccanismo L1 riusabile, non specifico FlorenceEGI
+
+> **Inquadramento Oracode Nexus (Livello 1).** Il ban stack (Alpine/Livewire/Filament per codice nuovo) è **policy di paradigma**: vale per ogni istanza LSO generata via `/project`. L'hook `check-no-legacy-stack.sh` è il meccanismo di enforcement L1, ereditabile da ogni HUB/istanza. Le **tabelle per-organo** e i **path EGI-DOC** sotto sono l'**applicazione concreta nell'ecosistema FlorenceEGI** (HUB/istanza accoppiato, caso unico) — esempio di istanza L2/L3, non parte normativa del paradigma.
 
 ---
 
@@ -95,27 +97,41 @@ Hook skippa file preesistenti in:
 File NUOVI sono sempre sotto enforcement, anche su EGI.
 
 ### 4.4 Bypass emergenza
-Solo con approvazione CEO via protocollo `EGI-DOC/docs/oracode/05_PROTOCOLLO_CEO_CTO.md`:
+Solo con approvazione CEO via protocollo CEO/CTO dell'istanza (esempio FlorenceEGI: `EGI-DOC/docs/oracode/05_PROTOCOLLO_CEO_CTO.md`):
 - `git commit --no-verify` (dopo aver mitigato o documentato la violazione)
-- Entry audit in `EGI-DOC/docs/oracode/audit/bypass_log.md`
+- Entry audit nel bypass log dell'istanza (esempio FlorenceEGI: `EGI-DOC/docs/oracode/audit/bypass_log.md`)
 
 ---
 
 ## 5. Cross-reference
 
+### 5.1 Paradigma (Livello 1) — riferimenti normativi
+
 | Documento | Path |
 |-----------|------|
-| Ecosystem Core (regole P0) | `CLAUDE_ECOSYSTEM_CORE.md` (root ogni organo) |
+| Oracode Core (boot context, 13 P0) | `oracode/templates/CLAUDE_ORACODE_CORE.md` |
+| Standard di paradigma rilocati (M-OS3-022) | `oracode/docs/paradigm/` |
+| Gerarchia 3 livelli (SSOT) | `oracode/docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` |
+
+### 5.2 Istanza FlorenceEGI (Livello 2/3) — esempio applicativo
+
+> EGI-DOC è il caso HUB/istanza **accoppiato** (caso unico). I path sotto sono l'applicazione concreta nell'ecosistema FlorenceEGI, NON riferimento normativo del paradigma.
+
+| Documento | Path |
+|-----------|------|
+| Ecosystem Core FlorenceEGI (regole P0 istanza) | `CLAUDE_ECOSYSTEM_CORE.md` (root ogni organo) |
 | NATAN_LOC P0-0 specifico | `NATAN_LOC/CLAUDE.md` |
 | Memory CEO (Filament) | `~/.claude/projects/-home-fabio-NATAN-LOC/memory/feedback_filament_banned.md` |
 | Memory CEO (framework rules) | `~/.claude/projects/-home-fabio-NATAN-LOC/memory/feedback_frontend_framework_rules.md` |
 | Audit M-093 (F-C2 finding) | `EGI-DOC/audit/M-093_ULTRA_EXCELLENCE_AUDIT_2026-04-20.md` riga 137 |
 | Mission M-094 report | `EGI-DOC/docs/missions/M-094_LEGACY_STACK_POLICY.md` |
-| Mission registry | `EGI-DOC/docs/missions/MISSION_REGISTRY.json` entry M-094 |
+| Mission registry istanza (L3) | `EGI-DOC/docs/missions/MISSION_REGISTRY.json` entry M-094 — chiavi italiane = legacy, migrazione graduale all'inglese |
 
 ---
 
 ## 6. Storico decisioni
+
+> Storico dell'**istanza FlorenceEGI** (HUB/istanza accoppiato). Le fonti `CLAUDE_ECOSYSTEM_CORE.md` sono il boot context dell'istanza FlorenceEGI, non del paradigma (boot context paradigma: `oracode/templates/CLAUDE_ORACODE_CORE.md`, vedi §5.1).
 
 | Data | Evento | Fonte |
 |------|--------|-------|

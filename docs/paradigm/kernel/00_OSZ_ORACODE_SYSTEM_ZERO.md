@@ -1,7 +1,7 @@
 # OSZ - ORACODE SYSTEM ZERO
 
-> **Versione**: 1.0  
-> **Data**: 2026-01-14  
+> **Versione**: 1.1  
+> **Data**: 2026-05-31 (storia: v1.0 — 2026-01-14)  
 > **Autore**: Fabio Cherici + Antigravity AI  
 > **Stato**: ✅ MASTER REFERENCE - Single Source of Truth  
 > **Scopo**: Documento di ingresso unico per comprendere l'intero sistema Oracode
@@ -23,11 +23,21 @@ Questi documenti riflettono un **processo di crescita continua**. Durante gli ag
 
 ## 🧬 COS'È OSZ
 
-**OSZ (Oracode System Zero)** è il **kernel concettuale** su cui si fonda l'intero ecosistema FlorenceEGI.
+**OSZ (Oracode System Zero)** è il **kernel concettuale** su cui si fonda ogni organismo software costruito col paradigma Oracode (FlorenceEGI come istanza/HUB di riferimento).
 
 Non è un framework. Non è una libreria. Non è documentazione.
 
 **OSZ è il sistema operativo di un organismo economico-cognitivo.**
+
+### OSZ dentro Oracode Nexus
+
+OSZ è il kernel del paradigma Oracode, che vive dentro **Oracode Nexus** — il sistema completo (paradigma + 3 livelli + ecosistema HUB/istanze), articolato su 3 livelli operativi:
+
+- **L1 GLOBALE** — motore + paradigma (`oracode` + `os3-matrix`); la cartella globale visibile `~/oracode-engine/` tiene solo lo scratch runtime del motore, NON un registro.
+- **L2 HUB** — softwarehouse acquirente; primo vero `MISSION_REGISTRY` consolidato (statistiche + numerazione globale unica), versionato nel suo `HUB-DOC`.
+- **L3 ISTANZA LSO** — singolo progetto/cliente, con `MISSION_REGISTRY` proprio nel repo dell'istanza.
+
+Nella **triade di autorità** — OSZ (kernel, verità assoluta) → OS3 (execution, disciplina AI) → OS4 (education, coscienza epistemica umana) — OS3 e OS4 si allineano a OSZ, mai il contrario. FlorenceEGI è oggi **caso unico** di HUB+istanza accoppiati. SSOT della gerarchia: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
 
 ---
 
@@ -129,20 +139,20 @@ OSZ definisce **COSA** stiamo costruendo (l'organismo).
 
 **Funzione**: Impedire all'AI di "inventarsi" metodi, classi, logiche che violano l'architettura OSZ.
 
-**Innovazione chiave**: **REGOLA ZERO** (Il Settimo Pilastro)
+**Innovazione chiave**: **REGOLA ZERO** (il +1 dei Pilastri Cardinali 6+1, autorità superiore agli altri 6)
 
 > **"MAI dedurre. MAI riempire vuoti. SE NON SAI, CHIEDI."**
 
 **Sistema di priorità**:
-- **P0 (BLOCKING)**: 7 regole sacre. Violazione = STOP.
+- **P0 (BLOCKING)**: 13 Regole P0 Universali. Violazione = STOP.
 - **P1 (MUST)**: Principi core per codice production-ready.
 - **P2 (SHOULD)**: Best practices.
 - **P3 (REFERENCE)**: Contesto e informazioni.
 
 **Documenti di riferimento**:
-- `/docs/Oracode_Systems/OS3/03_Modulo_2_REGOLA_ZERO.md`
-- `/docs/Oracode_Systems/OS3/04_Modulo_3_Sistema_Priorita_P0_P3.md`
-- `/docs/Oracode_Systems/OS3/00_OS3_Executive_Summary.md`
+- `docs/paradigm/execution/OS3/03_Modulo_2_REGOLA_ZERO.md`
+- `docs/paradigm/execution/OS3/04_Modulo_3_Sistema_Priorita_P0_P3.md`
+- `docs/paradigm/execution/OS3/00_OS3_Executive_Summary.md`
 
 ### 🔶 OS4 - La Spalletta Lato Umano
 
@@ -167,7 +177,7 @@ OSZ definisce **COSA** stiamo costruendo (l'organismo).
 - **Modulo Educativo**: Training per utenti
 
 **Documenti di riferimento**:
-- `/docs/Oracode_Systems/OS4/OS4_FOUNDATION_DOCUMENT.md`
+- `docs/paradigm/education/OS4_FOUNDATION_DOCUMENT.md`
 
 ---
 
@@ -208,28 +218,28 @@ OSZ definisce **COSA** stiamo costruendo (l'organismo).
 ## 📖 DOCUMENTI FONDAMENTALI
 
 ### 1. Questo Documento (OSZ)
-**Percorso**: `/docs/00_OSZ_ORACODE_SYSTEM_ZERO.md`  
+**Percorso**: `docs/paradigm/kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md`  
 **Scopo**: Single Source of Truth iniziale
 
 ### 2. La Specifica dell'Organismo
-**Percorso**: `/docs/00_ECOSISTEMA.md`  
-**Scopo**: Dettaglio della bio-architettura OSZ (wrapper, giunture, organi, nervi)
+**Percorso**: `EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md` (istanza FlorenceEGI accoppiata)  
+**Scopo**: Dettaglio della bio-architettura dell'organismo (wrapper, giunture, organi, nervi) — vive nell'istanza FlorenceEGI di riferimento, non nel paradigma neutro
 
 ### 3. OS3 - Execution Engine (AI Side)
-**Percorso base**: `/docs/Oracode_Systems/OS3/`  
+**Percorso base**: `docs/paradigm/execution/OS3/`  
 **Documenti chiave**:
 - `00_OS3_Executive_Summary.md` (panoramica)
 - `03_Modulo_2_REGOLA_ZERO.md` (il breakthrough)
 - `04_Modulo_3_Sistema_Priorita_P0_P3.md` (regole operative)
 
 ### 4. OS4 - Epistemic Education (Human Side)
-**Percorso base**: `/docs/Oracode_Systems/OS4/`  
+**Percorso base**: `docs/paradigm/education/`  
 **Documento chiave**:
 - `OS4_FOUNDATION_DOCUMENT.md` (framework completo)
 
-### 5. Reference Guide OS3/OS4
-**Percorso**: `/docs/Oracode_Systems/_archive/OS3_OS4_REFERENCE_GUIDE.md`  
-**Scopo**: Comparazione dettagliata, FAQ, learning path
+### 5. Reference Guide OS3/OS4 (legacy/archiviato)
+**Percorso**: `EGI-DOC/docs/oracode/Oracode_Systems/_archive/OS3_OS4_REFERENCE_GUIDE.md`  
+**Stato**: legacy — vive in `_archive`, non è riferimento vivo. Consultare i Moduli OS3/OS4 sopra come fonte corrente.
 
 ---
 
@@ -238,8 +248,8 @@ OSZ definisce **COSA** stiamo costruendo (l'organismo).
 ### Passo 1: Leggi Questo Documento (OSZ)
 Capire l'organismo che stiamo costruendo.
 
-### Passo 2: Leggi `/docs/00_ECOSISTEMA.md`
-Approfondire wrapper, giunture, istanze, sistema nervoso.
+### Passo 2: Leggi `EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md` (istanza FlorenceEGI)
+Approfondire wrapper, giunture, istanze, sistema nervoso. La bio-architettura concreta vive nell'istanza FlorenceEGI accoppiata; il paradigma neutro resta qui.
 
 ### Passo 3: Leggi OS3 Executive Summary
 Capire come disciplinare l'AI durante lo sviluppo.
@@ -254,7 +264,7 @@ Capire come disciplinare l'AI durante lo sviluppo.
 
 ### Per Chi Aggiorna Documenti
 
-1. **OSZ è il master**: Se un concetto evolve, si aggiorna prima in `00_OSZ_ORACODE_SYSTEM_ZERO.md` o `00_ECOSISTEMA.md`.
+1. **OSZ è il master**: Se un concetto evolve, si aggiorna prima in `docs/paradigm/kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md` (kernel) o nella specifica dell'organismo dell'istanza (`EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md`).
 
 2. **OS3/OS4 si allineano a OSZ**: Mai il contrario. Se OS3 dice qualcosa che contraddice OSZ, OS3 va corretto.
 
@@ -265,7 +275,7 @@ Capire come disciplinare l'AI durante lo sviluppo.
 ### Per Chi Legge Documenti
 
 Se trovi contraddizioni:
-1. **OSZ ha sempre ragione** (questo documento + `00_ECOSISTEMA.md`)
+1. **OSZ ha sempre ragione** (questo documento + la specifica dell'organismo `EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md`)
 2. Segnala la contraddizione per pulizia futura
 3. Interpreta sempre alla luce della bio-architettura OSZ
 
@@ -295,12 +305,18 @@ Se trovi contraddizioni:
 
 ---
 
-## 📌 STATO DELL'ARTE (Gennaio 2026)
+## 📌 STATO DELL'ARTE (Maggio 2026)
 
 - ✅ **OS1/OS2**: Obsoleti (fondamenta filosofiche storicizzate)
 - ✅ **OS3**: Operativo, standard corrente per sviluppo AI-assisted
 - ✅ **OS4**: Operativo, framework parallelo per educazione utenti
 - ✅ **OSZ**: In implementazione continua (l'organismo cresce)
+- ✅ **Doc paradigma rilocati** (M-OS3-022): i 39 doc del paradigma vivono ora in `docs/paradigm/` come materiale universale neutro
+- ✅ **Oracode Nexus 3-livelli formalizzato** (SSOT 🔒 LOCKED, `ORACODE_NEXUS_3_TIER.md`, decisioni CEO 2026-05-30/31): L1 GLOBALE / L2 HUB / L3 ISTANZA
+- ✅ **`~/oracode-engine/` attivo**: cartella globale visibile dell'engine (`~/.oracode` resta come symlink di compat)
+- ✅ **Ponte automatico L1→L3** (M-OS3-025 Unità 3, commit 8760c5d, parallel-safe): `bin/mission` auto-registra/propaga lo stato nel `MISSION_REGISTRY` dell'istanza via `.oracode/project.json` risolto dal CWD
+
+> Storia: lo stato dell'arte v1.0 era datato Gennaio 2026, antecedente alla formalizzazione di Oracode Nexus.
 
 ---
 

@@ -46,6 +46,8 @@ Opera in tre dimensioni:
 
 La Mission Engine è il sistema operativo di LSO. Ogni unità di lavoro è una **mission** con stati definiti: `created → planned → executing → review → closing → closed`. DOC-SYNC v2 si aggancia alla transizione **review → closing**, e governa la transizione **closing → closed**.
 
+> **Nota (Oracode Nexus):** in Oracode Nexus, DOC-SYNC opera a livello **ISTANZA (L3)**. Gli stati mission canonici dello state machine sono quelli grezzi di `bin/mission` (`planned`/`executing`/`auditing`/`closing`/`closed`/`aborted`), registrati 1:1 nel `MISSION_REGISTRY.json` del progetto via il **ponte L1→L3 automatico** (descrittore `.oracode/project.json` risolto dal CWD; vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`). Gli stati narrativi qui descritti (`review → closing → closed`) sono il modello concettuale del ciclo DOC-SYNC; lo stato grezzo dell'engine è la fonte canonica del registry.
+
 Una mission non passa a `closed` se DOC-SYNC v2 non ha completato con successo il proprio ciclo. Questo è non negoziabile. Il fallimento di DOC-SYNC v2 mantiene la mission in `closing` con stato `doc_sync_failed`, fino a intervento dell'operatore.
 
 ### 1.3 Differenza categoriale rispetto a DOC-SYNC v1
@@ -275,7 +277,7 @@ Se qualunque fase fallisce, la mission resta in `closing` con sub-stato che iden
 
 ## 6. Output verificabili
 
-Ogni esecuzione di DOC-SYNC v2 produce un set di output verificabili, archiviati in `EGI-DOC/audit/doc_sync/<mission_id>/`. Questi output sono il materiale d'audit con cui si verifica che DOC-SYNC v2 abbia effettivamente fatto il suo lavoro.
+Ogni esecuzione di DOC-SYNC v2 produce un set di output verificabili, archiviati in `<istanza-DOC>/audit/doc_sync/<mission_id>/` (EGI-DOC è l'istanza di riferimento legacy). Questi output sono il materiale d'audit con cui si verifica che DOC-SYNC v2 abbia effettivamente fatto il suo lavoro.
 
 ### 6.1 Output per fase
 

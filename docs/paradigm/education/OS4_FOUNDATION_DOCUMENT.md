@@ -19,6 +19,11 @@ Non tenta più di "imbrigliare" l'IA, ma di creare **coscienza epistemica nell'u
 > "L'IA non pensa, ma completa; l'uomo pensa attraverso di essa solo se mantiene la verifica."  
 > — _Assioma fondativo di OS4_
 
+> **Inquadramento Oracode Nexus**  
+> OS4 è il tier **EDUCATION** del paradigma Oracode, parte di **Oracode Nexus** — il sistema completo (paradigma + gerarchia a 3 livelli L1 GLOBALE / L2 HUB / L3 ISTANZA + ecosistema HUB/istanze).  
+> Nella triade di autorità **OSZ** (kernel, verità assoluta) → **OS3** (execution, disciplina AI) → **OS4** (education, coscienza epistemica umana), OS4 si allinea a OSZ, mai il contrario.  
+> OS4 vive nel **Livello 1 GLOBALE** in quanto componente del paradigma (repo `oracode`), non nei registri L2/L3. Riferimento: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
 ---
 
 ## 2️⃣ Scopo del sistema
@@ -314,6 +319,8 @@ Questo è misurabile, quindi verificabile come vero.
 > **OS4 è il primo sistema che non insegna alla macchina, ma all'uomo.**
 
 **E lo fa attraverso l'Assioma 0**: Insegna ciò che funziona, non ciò che è teoricamente elegante.
+
+**Due assi di lettura.** La tabella sopra traccia la **lineage storica** OS1 → OS2 → OS3 → OS4 (evoluzione nel tempo). La **triade di autorità** di Oracode Nexus è invece sincronica: **OSZ** (kernel — verità assoluta, principi costituzionali) → **OS3** (execution — disciplina operativa AI) → **OS4** (education — coscienza epistemica umana). OS3 e OS4 si aggiornano per allinearsi a OSZ, mai il contrario. OS4 è il tier EDUCATION del paradigma, residente nel Livello 1 GLOBALE di Oracode Nexus.
 
 ---
 
