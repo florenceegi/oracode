@@ -385,7 +385,7 @@ TOON Format incarna i principi fondamentali di Oracode System 3.0:
 ---
 
 **Autori**: Oracode Standards Committee  
-**Mantainer**: Fabio Cherici (fabio@oracode.com)  
+**Mantainer**: Fabio Cherici (fabio@florenceegi.com)  
 **Versione documento**: 1.0.0  
 **Ultima modifica**: 2025-11-24
 
