@@ -8,3 +8,7 @@ __pycache__/
 # Template descriptor (tracciato — non è runtime state)
 !templates/PROJECT-DOC/.oracode/
 !templates/PROJECT-DOC/.oracode/project.json
+
+# Export flat SSOT (snapshot rigenerabile dal cron, non versionare)
+tmp/nexus-ssot-export/
+tmp/nexus-ssot-export.log
