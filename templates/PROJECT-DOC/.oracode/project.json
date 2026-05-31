@@ -1,0 +1,14 @@
+{
+  "_meta": {
+    "description": "Descrittore progetto Oracode — ponte L1→L3. Letto da bin/mission (engine, L1) per auto-registrare le mission nel MISSION_REGISTRY di questa istanza (L3). Compilato da /project.",
+    "version": "1.0.0",
+    "created": "{{DATE}}"
+  },
+  "project": "{{PROJECT_NAME}}",
+  "level": {{ORACODE_LEVEL}},
+  "instance_root": "{{INSTANCE_ROOT}}",
+  "registry_path": "{{INSTANCE_ROOT}}/docs/missions/MISSION_REGISTRY.json",
+  "repo_map_path": "{{INSTANCE_ROOT}}/docs/missions/REPO_MAP.json",
+  "read_log_path": "{{INSTANCE_ROOT}}/audit/MISSION_READ_LOG.jsonl",
+  "bootstrap_index_path": "{{INSTANCE_ROOT}}/docs/missions/MISSION_BOOTSTRAP_INDEX.json"
+}

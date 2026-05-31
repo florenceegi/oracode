@@ -4,3 +4,7 @@ node_modules/
 .DS_Store
 tmp/
 __pycache__/
+
+# Template descriptor (tracciato — non è runtime state)
+!templates/PROJECT-DOC/.oracode/
+!templates/PROJECT-DOC/.oracode/project.json
