@@ -8,6 +8,16 @@
 
 ---
 
+## 🔒 LEGGI PER PRIMO — Decisioni LOCKED (anti-deriva)
+
+Prima di qualsiasi mission strutturale, leggi questi SSOT autoritativi. Sono **legge**, si rileggono, non si reinventano.
+
+| SSOT locked | Path | Cosa fissa |
+|---|---|---|
+| **Gerarchia a 3 Livelli** | `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` | Mission tracking su 3 livelli (GLOBALE visibile / HUB aggregatore / ISTANZA repo). **Mai collassare in 2. Globale mai nascosto.** Ponte L1→L3 via `.oracode/project.json`. |
+
+---
+
 ## Stato di lettura (tracking onesto)
 
 Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ skip (non vitale per ora)
