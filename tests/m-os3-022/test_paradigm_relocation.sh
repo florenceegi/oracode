@@ -44,7 +44,7 @@ echo "── Missions (1) ──"
 check "missions/MISSION_PROTOCOL.md"
 
 echo "── SSOT (1) ──"
-check "ssot/00_ORACODE_SYSTEM_SSOT.md"
+check "ssot/ORACODE_NEXUS_SYSTEM_REFERENCE.md"
 
 echo "── Padmin (10) ──"
 for f in PADMIN_INDEX PADMIN_ONBOARDING PADMIN_AI_IDENTITY; do

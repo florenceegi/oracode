@@ -65,8 +65,8 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Versione/data**: v2 draft
 - **Sintesi**: TBD — definizione integrale paradigma v2
 
-### `00_ORACODE_SYSTEM_SSOT.md`
-- **Path**: `/home/fabio/oracode/docs/paradigm/ssot/00_ORACODE_SYSTEM_SSOT.md`
+### `ORACODE_NEXUS_SYSTEM_REFERENCE.md`
+- **Path**: `/home/fabio/oracode/docs/paradigm/ssot/ORACODE_NEXUS_SYSTEM_REFERENCE.md`
 - **Status**: 🟡 (letto top 80 righe)
 - **Versione/data**: v1.2.0 — 2026-05-27 (aggiornato da CEO altra chat M-OS3-018)
 - **Sintesi**: SSOT consolidato Oracode. Triade OSZ/OS3/OS4. LSO 6 principi. Open source MIT. Dati produzione 7 organi 500k LOC 34+ mission.
@@ -578,7 +578,7 @@ Archive (storico):
 4. `Oracode_Systems/PADMIN_IDENTITY_OS3_*` (5 file)
 
 ### Triade OSZ → OS3 → OS4
-1. `00_ORACODE_SYSTEM_SSOT.md` (§1 sintesi)
+1. `ORACODE_NEXUS_SYSTEM_REFERENCE.md` (§1 sintesi)
 2. `Oracode_Systems/00_OSZ_ORACODE_SYSTEM_ZERO.md` (OSZ kernel)
 3. `Oracode_Systems/OS3/` (livello execution)
 4. `Oracode_Systems/OS4/` (livello educazione)
