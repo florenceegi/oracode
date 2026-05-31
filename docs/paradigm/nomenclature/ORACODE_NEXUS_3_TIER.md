@@ -85,7 +85,7 @@ Il **primo vero MISSION_REGISTRY è L2** (il HUB). Era l'errore di mettere "stat
 
 **Dove vive:** `<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`, versionato col repo del progetto.
 
-**Cosa memorizza — schema PROVATO** (riferimento CEO: EGI-DOC accoppiato, **209 mission, counter 213, funzionato benissimo per oltre 200 mission**). Per ogni mission:
+**Cosa memorizza — schema PROVATO** (riferimento CEO: EGI-DOC accoppiato (istanza FlorenceEGI), **209 mission, counter 213, funzionato benissimo per oltre 200 mission**). Per ogni mission:
 
 ```
 mission_id, titolo, data_apertura, data_chiusura, stato,
@@ -110,8 +110,8 @@ Top-level registry: `counter, last_updated, _nervous_system, missions[]`.
 > "Fino ad ora si usa italiano, ma per iniziare a conformarmi per eleggere Oracode come paradigma occorrerà passare gradualmente all'inglese. Quindi per ora iniziamo: crea le chiavi in **inglese**."
 
 Quindi:
-- I **campi** sono quelli provati in EGI-DOC (sopra), ma con **chiavi in inglese**: `id, title, date_open, date_close, status, tipo_missione→type, organi_coinvolti→organs, report_tecnico→report_technical, report_esteso→report_extended, files_modified, stats{...}`.
-- **EGI-DOC** (chiavi italiane) = **legacy**, migra gradualmente all'inglese. Non è il modello per le istanze nuove.
+- I **campi** sono quelli provati in EGI-DOC (sopra) (istanza FlorenceEGI), ma con **chiavi in inglese**: `id, title, date_open, date_close, status, tipo_missione→type, organi_coinvolti→organs, report_tecnico→report_technical, report_esteso→report_extended, files_modified, stats{...}`.
+- **EGI-DOC** (istanza FlorenceEGI, chiavi italiane) = **legacy**, migra gradualmente all'inglese. Non è il modello per le istanze nuove.
 - Il registry `oracode` aveva entry MISTE (alcune chiavi italiane: `tipo_missione`, `organi_coinvolti`). **DECISIONE CEO 2026-05-31: convertire ORA a inglese** le entry M-OS3-022/023/024. Dopo la conversione il registry oracode è interamente inglese.
 
 ---

@@ -301,7 +301,7 @@ Ogni modulo ti porterà più vicino a padroneggiare l'arte dell'AI-Human Excelle
 
 _Da Fabio Cherici:_
 
-> "Ho costruito OS3 perché ho bisogno di fidarmi dell'AI. Nel mio lavoro, in FlorenceEGI, in ogni progetto mission-critical, l'errore non è un'opzione. L'AI è uno strumento potentissimo, ma senza controllo è una bomba a orologeria. OS3 è il sistema che mi permette di dormire la notte sapendo che il codice prodotto oggi reggerà domani, dopodomani, e nei prossimi 10 anni. Se anche tu hai questa esigenza, OS3 è per te."_
+> "Ho costruito OS3 perché ho bisogno di fidarmi dell'AI. Nel mio lavoro, in FlorenceEGI (la mia istanza di riferimento), in ogni progetto mission-critical, l'errore non è un'opzione. L'AI è uno strumento potentissimo, ma senza controllo è una bomba a orologeria. OS3 è il sistema che mi permette di dormire la notte sapendo che il codice prodotto oggi reggerà domani, dopodomani, e nei prossimi 10 anni. Se anche tu hai questa esigenza, OS3 è per te."_
 
 ---
 

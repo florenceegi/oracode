@@ -29,12 +29,12 @@ DOC-SYNC v2 è il closing hook semantico della Mission Engine. Alla chiusura di 
 | Componente | Path | Versione | Stato | Note |
 |-----------|------|----------|-------|------|
 | **Agent semantico** | `~/.claude/agents/doc-sync-v2.md` | v2.1.0 | Operativo | Spawned da Mission Phase 6 |
-| **Guard enforcement** | `~/.claude/hooks/doc-sync-v2-guard.sh` | v4.0.0 | Operativo | Blocca push EGI-DOC senza doc_sync. 2 livelli |
+| **Guard enforcement** | `~/.claude/hooks/doc-sync-v2-guard.sh` | v4.0.0 | Operativo | Blocca push del repo-DOC dell'istanza (es. EGI-DOC su FlorenceEGI) senza doc_sync. 2 livelli |
 | **Coverage hook** | `~/.claude/hooks/coverage-check-precheck.sh` | v2.1.0 | Operativo | Wired in settings.json M-189 (2026-05-15) |
-| **CLI reindex** | `/home/fabio/oracode/bin/rag_natan_reindex.py` | — | Operativo | RAG re-indexing sincrono bloccante |
-| **CLI query** | `/home/fabio/oracode/bin/rag_natan_query.py` | — | Operativo | Discovery laterale via RAG piattaforma |
+| **CLI reindex** | `/home/fabio/os3-matrix/bin/rag_reindex.py` | — | Operativo | RAG re-indexing sincrono bloccante |
+| **CLI query** | `/home/fabio/os3-matrix/bin/rag_query.py` | — | Operativo | Discovery laterale via RAG piattaforma |
 | **CLI coverage** | `/home/fabio/oracode/bin/rag_natan_coverage.py` | v2.1.0 | Operativo | Misura copertura watch per organo |
-| **Config soglie** | `EGI-DOC/docs/lso/COVERAGE_CONFIG.json` | — | Operativo | Soglie per organo + esclusioni |
+| **Config soglie** | `<DOC-istanza>/docs/lso/COVERAGE_CONFIG.json` (es. EGI-DOC su FlorenceEGI) | — | Operativo | Soglie per organo + esclusioni |
 | **Coverage history** | `~/.local/state/docsync_coverage_history.jsonl` | — | Operativo | Append-only, snapshot per run |
 | **Cron settimanale** | `/home/fabio/oracode/bin/docsync_weekly_reglob.py` | — | **Non schedulato** | Script esiste, crontab vuoto |
 | **Specifica** | `oracode/docs/paradigm/doc-sync/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md` | v2.1.0 | Aggiornato | Documento autoritativo |
@@ -71,7 +71,7 @@ DOC-SYNC v2 è il closing hook semantico della Mission Engine. Alla chiusura di 
 
 ### Gap storico M-148..M-159
 
-12 mission nel periodo 2026-04-30 → 2026-05-08 hanno `doc_sync_executed: true` senza `doc_sync_log` strutturato. Analizzate in M-189: 7 meta-mission LSO, 2 feature EGI-Credential in costruzione, 1 bugfix puntuale. Decisione CEO: gap accettabile, nessuna retroazione.
+12 mission nel periodo 2026-04-30 → 2026-05-08 hanno `doc_sync_executed: true` senza `doc_sync_log` strutturato. Analizzate in M-189: 7 meta-mission LSO, 2 feature di un organo dell'istanza (es. EGI-Credential su FlorenceEGI) in costruzione, 1 bugfix puntuale. Decisione CEO: gap accettabile, nessuna retroazione.
 
 ### Coverage ecosistema
 
@@ -106,14 +106,14 @@ Mission chiusa da operatore
   │   └─ spawn agent doc-sync-v2
   │       ├─ Step 1: Analisi semantica diff (LLM)
   │       ├─ Step 2: Match diretto via SSOT_REGISTRY watches
-  │       ├─ Step 3: Discovery laterale via RAG (LLM + rag_natan_query.py)
+  │       ├─ Step 3: Discovery laterale via RAG (LLM + rag_query.py)
   │       ├─ Step 4: Genera patch (additive = applica, substitutive = chiede approvazione)
-  │       ├─ Step 5: RAG re-indexing sincrono (rag_natan_reindex.py + sanity check)
+  │       ├─ Step 5: RAG re-indexing sincrono (rag_reindex.py + sanity check)
   │       ├─ Step 5b: Aggiornamento metadati SSOT_REGISTRY (last_verified, verified_in_mission)
   │       └─ Step 6: Audit trail → doc_sync_log nel MISSION_REGISTRY
   │
   ├─ Guard enforcement (doc-sync-v2-guard.sh)
-  │   └─ PreToolUse Bash su git push EGI-DOC
+  │   └─ PreToolUse Bash su git push del repo-DOC dell'istanza (es. EGI-DOC su FlorenceEGI)
   │       ├─ Livello 1: mission post 2026-04-30 senza doc_sync_executed → BLOCK
   │       └─ Livello 2: mission post 2026-05-09 senza doc_sync_log strutturato → BLOCK
   │
@@ -136,7 +136,7 @@ Mission chiusa da operatore
 | Cron settimanale non schedulato | Bassa | Script `docsync_weekly_reglob.py` esiste ma nessun crontab entry. Safety net secondaria assente |
 | 50 SSOT senza watches | Media | 50/149 SSOT non hanno `watches.paths`. Non partecipano alla detection automatica |
 | 94 pattern broken | Bassa | 19.5% dei pattern non matcha alcun file. Sotto soglia 25% ma indica drift nei watch |
-| Coverage ecosistema 39.3% | Informativo | 60.7% dei file non è osservato da alcun SSOT. Deliberato per EGI legacy (Strategia Delta) |
+| Coverage ecosistema 39.3% | Informativo | 60.7% dei file non è osservato da alcun SSOT. Deliberato per il legacy dell'istanza (es. EGI su FlorenceEGI) (Strategia Delta) |
 | Mission registry dual-tracking sincronizzazione manuale | **Risolto/Storico** | **SUPERATO (M-OS3-025 Unità 3, commit ponte L1→L3).** Contesto storico: dal bootstrap OS3 Matrix (M-OS3-001, 25 maggio 2026) il Mission Engine usava due fonti dati distinte. La `state machine` di `bin/mission` scrive in `~/oracode-engine/missions/<ID>/state.json` (cartella globale **VISIBILE**, Unità 1; `~/.oracode` resta symlink di compat — condivisa fra progetti); il Mission Registry del progetto applicativo vive in `<progetto-DOC>/docs/missions/MISSION_REGISTRY.json` (versionato col repo). In origine la coerenza fra i due registri era responsabilità dell'operatore (Edit manuale del registry a ogni transizione), con drift rilevato in sessione 2 Poli (M-002 — finding S2-1, `os3-matrix/docs/design/BACKLOG.md` SEZIONE 9). **Oggi il ponte automatico L1→L3 è FATTO**: `bin/mission` auto-registra/propaga lo stato della state machine nel `MISSION_REGISTRY.json` del progetto risolvendo il descrittore `<progetto>/.oracode/project.json` dal CWD (funzione `syncToRepoRegistry`, `os3-matrix/bin/mission`), parallel-safe con lockfile per-registry (`withRegistryLock`). La vecchia sincronizzazione manuale `state.json`↔`registry` e le mission fantasma (finding S2-1) **non sono più stato attuale**. Il riferimento storico al "fix candidato M-OS3-014" è superato da **M-OS3-025 Unità 3 (FATTO)**. |
 
 ---

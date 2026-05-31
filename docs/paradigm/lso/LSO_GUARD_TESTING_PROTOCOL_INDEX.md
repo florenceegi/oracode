@@ -57,7 +57,7 @@ Eccezione: guard **passivi** (sola segnalazione) ammessi se dichiarati esplicita
 
 ## 4. Policy naming SSOT
 
-Tutti i nuovi SSOT registry/log di Oracode Nexus usano chiavi in **inglese** (`id`, `title`, `date_open`, `date_close`, `status`, `type`, `organs`, ...), come da SSOT `ORACODE_NEXUS_3_TIER.md` (decisione CEO 2026-05-30). I termini tecnici propri (commit, branch, webhook) restano in inglese. SSOT esistenti in italiano (EGI-DOC: `tipo_missione`, `organi_coinvolti`, `data_chiusura`) = **LEGACY**: migrazione lazy verso inglese quando toccati per altra ragione. Guard aggiornati atomicamente con la migrazione del SSOT.
+Tutti i nuovi SSOT registry/log di Oracode Nexus usano chiavi in **inglese** (`id`, `title`, `date_open`, `date_close`, `status`, `type`, `organs`, ...), come da SSOT `ORACODE_NEXUS_3_TIER.md` (decisione CEO 2026-05-30). I termini tecnici propri (commit, branch, webhook) restano in inglese. SSOT esistenti in italiano (es. istanza FlorenceEGI, EGI-DOC: `tipo_missione`, `organi_coinvolti`, `data_chiusura`) = **LEGACY**: migrazione lazy verso inglese quando toccati per altra ragione. Guard aggiornati atomicamente con la migrazione del SSOT.
 
 ---
 
@@ -87,7 +87,7 @@ Gate CEO esplicito prima del deploy. Review positiva ≠ approvazione. Test end-
 | 2 | Header dichiarativo non verificato | Campi dichiarati ≠ campi reali nel SSOT |
 | 3 | 8/8 PASS senza flusso reale | Suite isolata 100% ≠ evidenza operativa |
 | 4 | Approvazione implicita da review | Review positiva ≠ approvazione CEO |
-| 5 | Naming italiano in nuovi SSOT | Vietato — eredità EGI-DOC, non modello per istanze nuove (§4) |
+| 5 | Naming italiano in nuovi SSOT | Vietato — eredità di un'istanza (es. EGI-DOC su FlorenceEGI), non modello per istanze nuove (§4) |
 | 6 | Guard bloccante che e passivo | Dichiara blocco, solo segnala = rotto |
 | 7 | Modifica senza re-test | Anche cosmetica → re-test obbligatorio |
 

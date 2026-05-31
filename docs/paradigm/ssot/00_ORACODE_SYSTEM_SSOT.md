@@ -33,9 +33,9 @@ priority: critical
 
 Oracode e una **metodologia formale** per governare ecosistemi software complessi dove agenti AI scrivono codice in produzione. Non e un framework, non e un linter, non e una pipeline CI/CD. E un sistema di regole, hook meccanici, agenti specializzati e audit che garantiscono coerenza, sicurezza e tracciabilita quando l'AI e co-autore del codice.
 
-**Dati di produzione (aprile 2026):** 7 organi online, ~500k LOC, 34+ missioni completate, zero regressioni non rilevate.
+**Dati di produzione (caso esemplare: istanza FlorenceEGI, aprile 2026):** 7 organi online, ~500k LOC, 34+ missioni completate, zero regressioni non rilevate.
 
-**Nasce da FlorenceEGI**, marzo 2026: un ecosistema software trattato come organismo vivente. Ogni regola del sistema nasce da un incidente reale — non da precauzione teorica.
+**Nasce da un'istanza reale (la prima: FlorenceEGI)**, marzo 2026: un ecosistema software trattato come organismo vivente. Ogni regola del sistema nasce da un incidente reale — non da precauzione teorica.
 
 ### Architettura a livelli
 
@@ -79,7 +79,7 @@ Oracode nasce dall'esperienza di FlorenceEGI ma e progettato per essere usato da
 
 ## 2. Il Living Software Organism (LSO)
 
-FlorenceEGI non e una piattaforma: e un **organismo software vivente**. Ogni progetto e un organo con funzione propria, identita codificata, sistema immunitario attivo e memoria persistente.
+Un organismo Oracode (caso esemplare: FlorenceEGI) non e una piattaforma: e un **organismo software vivente**. Ogni progetto e un organo con funzione propria, identita codificata, sistema immunitario attivo e memoria persistente.
 
 Un software tradizionale e statico: il codice fa cio che scrivi, non di piu. Un **LSO** si auto-corregge, si auto-documenta, mantiene la propria coerenza interna nel tempo — e ha una **mente interrogabile**: chiunque puo parlare con l'organismo e ottenere risposte fondate sulla documentazione reale.
 
@@ -90,8 +90,8 @@ Un software tradizionale e statico: il codice fa cio che scrivi, non di piu. Un 
 | 1 | **Awareness** | Ogni agente sa dove si trova e in quale organismo | `CLAUDE_ECOSYSTEM_CORE.md` caricato via `@` in ogni `CLAUDE.md` |
 | 2 | **Prevention** | Le regole si applicano prima che il codice errato venga scritto | Hook `PreToolUse` (9 guard) |
 | 3 | **Detection** | Le violazioni vengono rilevate nel momento in cui accadono | Hook `PostToolUse` (audit statico + reflex) |
-| 4 | **Evolution** | Il sistema accumula conoscenza e migliora le regole | Report audit in `EGI-DOC/audit/` + agente `os3-audit-specialist` |
-| 5 | **Consciousness** | L'organismo ha una mente interrogabile | SSOT → RAG piattaforma (`rag_natan.*`) → `ai_sidebar` in ogni organo |
+| 4 | **Evolution** | Il sistema accumula conoscenza e migliora le regole | Report audit in `<istanza>-DOC/audit/` (es. EGI-DOC su FlorenceEGI) + agente `os3-audit-specialist` |
+| 5 | **Consciousness** | L'organismo ha una mente interrogabile | SSOT → RAG piattaforma (`rag_<istanza>.*`, es. rag_natan su FlorenceEGI) → `ai_sidebar` in ogni organo |
 | 6 | **Nervous System** | L'organismo percepisce il disallineamento doc/codice | SSOT Registry + reflex hook + living agent + cron |
 
 ---
@@ -105,7 +105,7 @@ Un software tradizionale e statico: il codice fa cio che scrivi, non di piu. Un 
 │  4 sub-layer ispirati al sistema nervoso umano               │
 ├──────────────────────────────────────────────────────────────┤
 │  L7 — CONTRACTS                                              │
-│  EGI-DOC/contracts/*.json — 7 contratti machine-readable     │
+│  <istanza>-DOC/contracts/*.json (es. EGI-DOC) — 7 contratti  │
 │  Validabili da GATE e agenti                                 │
 ├──────────────────────────────────────────────────────────────┤
 │  L6 — GATE                                                   │
@@ -125,7 +125,7 @@ Un software tradizionale e statico: il codice fa cio che scrivi, non di piu. Un 
 │  os3-deep-audit.sh + agenti diagnostici + report storicizzati│
 ├──────────────────────────────────────────────────────────────┤
 │  L1 — SYNC (post-task)                                       │
-│  doc-sync-guardian → EGI-DOC/docs/ (SSOT ecosistema)         │
+│  doc-sync-guardian → <istanza>-DOC/docs/ (es. EGI-DOC)       │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -247,7 +247,7 @@ Obbligatoria (P1) su ogni file nuovo o significativamente modificato.
 ## 9. Strategia Delta
 
 ```
-NUOVO CODICE  → TUTTE le regole OS3. Config → nasce su EGI-HUB.
+NUOVO CODICE  → TUTTE le regole OS3. Config → nasce sull'HUB (es. EGI-HUB su FlorenceEGI).
                 File max 500 righe tassativo. DOC-SYNC P0.
 
 CODICE LEGACY → Resta dove e. Si migra SOLO quando si tocca per altra ragione.
@@ -323,7 +323,7 @@ Oltre ai 14 hook globali, esistono **2 hook progetto-specifici** che bloccano me
 
 **Principio:** un falso negativo e preferibile a un falso positivo. Gli hook assistono la review, non la sostituiscono.
 
-### Attivi su: NATAN_LOC, EGI-HUB, EGI.
+### Attivi su: gli organi dell'istanza (es. NATAN_LOC, EGI-HUB, EGI su FlorenceEGI).
 
 ### Come aggiungere un nuovo hook
 
@@ -334,7 +334,7 @@ Oltre ai 14 hook globali, esistono **2 hook progetto-specifici** che bloccano me
 ### Come aggiungere un nuovo progetto
 
 1. `mkdir -p /home/fabio/PROGETTO/.claude/hooks`
-2. Copiare i 3 file hook da NATAN_LOC
+2. Copiare i 3 file hook da un organo di riferimento (es. NATAN_LOC)
 3. `chmod +x *.sh *.py`
 4. Creare `settings.json` con path aggiornati
 5. Aggiornare path `find` in `check-routes-read-controller.sh` e blocco `elif` in `check-method-exists.sh`
@@ -370,12 +370,12 @@ Ispirato al sistema nervoso umano. Risolve il problema del DOC-SYNC dimenticato.
 **Come si compensano:** il drift deve "scappare" da tutti e 3 i layer attivi per restare inosservato. L1 segnala in sessione → L2 registra nella missione → L3 trova alla prossima verifica notturna.
 
 File critici:
-- Registry: `/home/fabio/EGI-DOC/docs/lso/SSOT_REGISTRY.json`
+- Registry: `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC su FlorenceEGI)
 - Hook: `/home/fabio/.claude/hooks/ssot-reflex-guard.sh`
 - Propriocezione (istanza FlorenceEGI, L3 accoppiato): `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
 - Agente: `/home/fabio/.claude/agents/ssot-living-agent.md`
 - Cron script: `/home/fabio/.claude/hooks/ssot-living-check.sh`
-- Report drift: `/home/fabio/EGI-DOC/audit/drift/`
+- Report drift: `<istanza>-DOC/audit/drift/` (es. /home/fabio/EGI-DOC su FlorenceEGI)
 
 ---
 
@@ -411,7 +411,7 @@ Tutti in `/home/fabio/.claude/agents/`.
 
 | Agente | Funzione | Quando si usa |
 |--------|----------|---------------|
-| `doc-sync-guardian` | Sincronizza EGI-DOC dopo feature | Dopo ogni task Tipo 2+ |
+| `doc-sync-guardian` | Sincronizza il <istanza>-DOC (es. EGI-DOC) dopo feature | Dopo ogni task Tipo 2+ |
 | `corporate-finance-specialist` | CFO/Advisor digitale | Documenti per banche, investitori, fundraising, M&A |
 
 ---
@@ -435,7 +435,7 @@ Tutti in `/home/fabio/.claude/agents/`.
 | Tipo | Nome | DOC-SYNC? | Approvazione Fabio? |
 |------|------|-----------|---------------------|
 | 1 | Locale (fix puntuale, output invariato) | NO | NO |
-| 2 | Comportamentale (cambia output/API/behavior) | SI su EGI-DOC | NO |
+| 2 | Comportamentale (cambia output/API/behavior) | SI su <istanza>-DOC (es. EGI-DOC) | NO |
 | 3 | Architetturale (nuovo endpoint/model/service) | SI su EGI-DOC + CLAUDE.md | NO |
 | 4 | Contrattuale (GDPR/MiCA/compliance/ToS) | SI + approvazione Fabio | SI, prima |
 | 5 | Naming dominio (rinomina entita/concetto) | SI, grep tutti i file | NO |
@@ -598,7 +598,7 @@ Ogni spawn di sub-agent registra hash input + timestamp + tool_use_id + file let
 
 Una task NON e chiusa senza EGI-DOC aggiornato. Zero eccezioni. Ogni modifica Tipo 2+ richiede aggiornamento della documentazione corrispondente in `/home/fabio/EGI-DOC/docs/`.
 
-### RAG Pipeline (EGI-DOC → rag_natan.*)
+### RAG Pipeline (<istanza>-DOC → rag_<istanza>.*; es. EGI-DOC → rag_natan su FlorenceEGI)
 
 ```
 EGI-DOC/docs/**/*.md (frontmatter OS3 + body Markdown)
@@ -609,7 +609,7 @@ chunker.py      → split semantico: heading → paragrafo → overlap (500 toke
     ↓
 embedder.py     → OpenAI text-embedding-3-small (1536 dim)
     ↓
-db.py           → PostgreSQL rag_natan.documents + chunks + embeddings
+db.py           → PostgreSQL rag_<istanza>.documents + chunks + embeddings
     ↓
 sync.py         → confronto versioni semver + hash → delta incrementale
 ```
@@ -619,7 +619,7 @@ Cron: sync automatico ogni 4 ore. Pipeline: `/home/fabio/EGI-DOC/pipeline/`.
 ### La Mente dell'Organismo
 
 ```
-EGI-DOC/docs/ (SSOT) → rag_natan.* (RAG piattaforma) → ai_sidebar (ogni organo)
+<istanza>-DOC/docs/ (SSOT) → rag_<istanza>.* (RAG piattaforma) → ai_sidebar (ogni organo)
 ```
 
 L'utente parla con l'organismo da qualsiasi organo e riceve risposte contestuali fondate sulla documentazione reale. Quando un doc viene aggiornato (DOC-SYNC), il RAG si aggiorna. L'organismo sa cosa e e te lo puo dire.
@@ -628,8 +628,8 @@ RAG multipli specializzati:
 
 | Schema | Dominio | Usato da |
 |--------|---------|----------|
-| `rag_natan.*` | Piattaforma (SSOT ecosistema) | ai_sidebar di tutti gli organi |
-| `natan.rag_*` | PA verticale (56k atti comunali) | NATAN_LOC USE Pipeline |
+| `rag_<istanza>.*` (es. rag_natan) | Piattaforma (SSOT ecosistema) | ai_sidebar di tutti gli organi |
+| `natan.rag_*` (schema RAG di un organo, es. NATAN_LOC) | PA verticale (56k atti comunali) | NATAN_LOC USE Pipeline |
 | `marketing_rag.*` | NPE/marketing (catalogo arte) | Narrative Promotion Engine |
 
 ---

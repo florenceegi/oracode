@@ -21,17 +21,17 @@ ssot_nervous:
 ---
 
 # LSO — Living Software Organism
-## Il Layer Vivente di FlorenceEGI
+## Il Layer Vivente (caso esemplare: FlorenceEGI)
 
 > Versione: 4.0.0 | Data: 2026-04-07
 > Autore: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
-> Documento SSOT per: Claude Code e tutti gli agenti dell'ecosistema
+> Documento SSOT per: Claude Code e tutti gli agenti dell'ecosistema (es. istanza FlorenceEGI)
 
 ---
 
 ## Cos'è LSO
 
-**FlorenceEGI è un Living Software Organism reale, già emerso in produzione.** 8 organi sono pubblicamente online, ciascuno con la propria funzione specializzata, tutti coordinati da EGI-HUB e governati da Oracode OS3.
+**Un Living Software Organism reale è già emerso in produzione (primo caso esemplare: FlorenceEGI).** In quell'istanza 8 organi sono pubblicamente online, ciascuno con la propria funzione specializzata, tutti coordinati dall'hub dell'organismo (es. EGI-HUB su FlorenceEGI) e governati da Oracode OS3.
 
 **LSO (Living Software Organism)** è il layer infrastrutturale che rende questo possibile — non una teoria, ma un sistema operativo attivo che avvolge tutta la piattaforma.
 
@@ -60,11 +60,11 @@ Le violazioni vengono rilevate nel momento in cui accadono, non giorni dopo.
 
 ### 4. Evolution
 Il sistema accumula conoscenza sulle violazioni passate e migliora le sue regole.
-→ Implementato da: Report audit in `EGI-DOC/audit/` + agente `os3-audit-specialist`
+→ Implementato da: Report audit in `<istanza>-DOC/audit/` (es. EGI-DOC/ su FlorenceEGI) + agente `os3-audit-specialist`
 
 ### 5. Consciousness
 L'organismo ha una mente interrogabile. Chiunque può parlargli e ottenere risposte fondate sulla documentazione reale di tutto l'ecosistema.
-→ Implementato da: SSOT (`EGI-DOC/docs/`) → RAG piattaforma (`rag_natan.*`) → `ai_sidebar` con chat in ogni organo
+→ Implementato da: SSOT (`<istanza>-DOC/docs/`, es. EGI-DOC/) → RAG piattaforma (`rag_<istanza>.*`, es. rag_natan su FlorenceEGI) → `ai_sidebar` con chat in ogni organo
 
 ### 6. Nervous System (v4.0.0)
 L'organismo percepisce il disallineamento tra la propria documentazione e il proprio codice. Come il sistema nervoso umano, ha nocicettori (segnali immediati), riflessi (risposte automatiche), propriocezione (consapevolezza del proprio stato) e un sistema autonomo (verifica continua senza intervento cosciente).
@@ -89,7 +89,7 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 │  L1 RIFLESSO — ssot-reflex-guard.sh (PostToolUse)               │
 │     Arco riflesso: file modificato → lookup registry →          │
 │     segnale immediato al SUPERVISOR. Automatico, <1s.           │
-│     Log: EGI-DOC/audit/ssot_nerve_signals.log                   │
+│     Log: <istanza>-DOC/audit/ssot_nerve_signals.log (es. EGI-DOC)│
 │                                                                  │
 │  L1b AUTO-UPDATE — [ARCHIVIATO: ssot-registry-auto-update.sh]    │
 │     Rimosso (anti-pattern 6: solo metadati senza verifica).     │
@@ -107,10 +107,10 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 │     145 documenti SSOT registrati e monitorati.                 │
 │     Script bash per check leggero basato su timestamp+git.     │
 │     ssot-living-agent archiviato (2026-05-08): funzionalita    │
-│     assorbita da DOC-SYNC v2. Report: EGI-DOC/audit/drift/    │
+│     assorbita da DOC-SYNC v2. Report: <istanza>-DOC/audit/drift/│
 ├─────────────────────────────────────────────────────────────────┤
 │  LAYER 7 — CONTRACTS                                            │
-│  EGI-DOC/contracts/*.json  →  7 contratti machine-readable      │
+│  <istanza>-DOC/contracts/*.json → contratti machine-readable    │
 │  Validabili automaticamente dal GATE e dagli agenti             │
 │  core.egis · core.users · egili.rules · algorand.patterns       │
 │  interface.HasAggregations · core.ai_feature_pricing            │
@@ -151,11 +151,11 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 │  os3-audit-specialist    →  agente AI per analisi contestuale   │
 │  organ-gap-scout         →  diagnostica gap evolutivi per organo│
 │  oracode-alignment-interp→  verità semantica/intenzionale organo│
-│  Report: EGI-DOC/audit/  →  storico audit con timestamp         │
+│  Report: <istanza>-DOC/audit/ → storico audit con timestamp     │
 ├─────────────────────────────────────────────────────────────────┤
 │  LAYER 1 — SYNC (DOC-SYNC v2 — automatico a chiusura mission)   │
 │  doc-sync-v2 agent      →  sincronizza SSOT via analisi semant.│
-│  EGI-DOC/docs/           →  SSOT documentazione tutti gli organi│
+│  <istanza>-DOC/docs/     →  SSOT documentazione tutti gli organi│
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -181,7 +181,7 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 | `env-guard.sh` | PreToolUse | Bash | Blocca esposizione .env/secrets |
 | `git-main-guard.sh` | PreToolUse | Bash | Protegge push su branch main |
 | `rm-guard.sh` | PreToolUse | Bash | Protegge file attivi da `rm` |
-| `doc-sync-v2-guard.sh` v4.0.0 | PreToolUse | Bash | Blocca push EGI-DOC senza doc_sync_executed + doc_sync_log strutturato |
+| `doc-sync-v2-guard.sh` v4.0.0 | PreToolUse | Bash | Blocca push `<istanza>-DOC` (es. EGI-DOC) senza doc_sync_executed + doc_sync_log strutturato |
 | `mission-report-guard.sh` | PreToolUse | Bash | Verifica completezza report missione |
 | `mission-stats-guard.sh` | PreToolUse | Bash | Verifica stats calcolate prima di chiusura |
 | `web-quality-gate-guard.sh` | PreToolUse | Bash | Gate qualita per contenuti web pubblici |
@@ -189,12 +189,12 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 | `os3-audit-static.sh` | PostToolUse | Write\|Edit | Analisi statica OS3 su ogni file modificato |
 | `ssot-reflex-guard.sh` v1.1.0 | PostToolUse | Write\|Edit | Sistema Nervoso L1: segnale passivo se file watchato da SSOT |
 | `os3-audit-on-complete.sh` | PostToolUse | TodoWrite | Report findings aggregati a task completato |
-| `deploy-pipeline-guard.sh` v2.0.0 | PostToolUse | Bash | Verifica pipeline dopo push (EGI, EGI-HUB, EGI-HUB-HOME, EGI-SIGILLO, EGI-Credential, NATAN_LOC) |
+| `deploy-pipeline-guard.sh` v2.0.0 | PostToolUse | Bash | Verifica pipeline dopo push (organi dell'istanza, es. su FlorenceEGI: EGI, EGI-HUB, EGI-HUB-HOME, EGI-SIGILLO, EGI-Credential, NATAN_LOC) |
 | `m094-supervisor-reminder.sh` | PostToolUse | Bash | Reminder non-bloccante programma remediation M-094 |
 | `mission-read-tracker.sh` | PostToolUse | Read\|Bash\|Write\|Edit | Tracking accessi filesystem durante missione |
 | `ssot-living-check.sh` v1.1.0 | Manuale/Cron | — | Sistema Nervoso L3: rete sicurezza secondaria (cron 04:00) |
 
-> **deploy-pipeline-guard.sh v2.0.0 (2026-03-30)**: detection via CWD anziché testo comando. Organi coperti: EGI, EGI-HUB, EGI-HUB-HOME, EGI-SIGILLO, EGI-Credential, NATAN_LOC. EGI era mancante dalla v1 causando il bug INCIDENT V-02 su ogni push da /home/fabio/EGI.
+> **deploy-pipeline-guard.sh v2.0.0 (2026-03-30)**: detection via CWD anziché testo comando. Organi coperti (es. istanza FlorenceEGI): EGI, EGI-HUB, EGI-HUB-HOME, EGI-SIGILLO, EGI-Credential, NATAN_LOC. EGI era mancante dalla v1 causando il bug INCIDENT V-02 su ogni push da /home/fabio/EGI.
 
 ### Knowledge Base
 
@@ -230,7 +230,7 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 | File | Scopo |
 |------|-------|
 | `/home/fabio/.claude/hooks/os3-deep-audit.sh` | Scansione grep completa tutti gli organi |
-| `/home/fabio/EGI-DOC/audit/` | Report generati con timestamp |
+| `<istanza>-DOC/audit/` (es. /home/fabio/EGI-DOC/audit/) | Report generati con timestamp |
 
 ---
 
@@ -241,7 +241,7 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 /home/fabio/.claude/hooks/os3-deep-audit.sh
 
 # Audit singolo progetto
-/home/fabio/.claude/hooks/os3-deep-audit.sh NATAN_LOC
+/home/fabio/.claude/hooks/os3-deep-audit.sh NATAN_LOC   # es. organo NATAN_LOC su FlorenceEGI
 
 # Audit AI contestuale (via Claude Code)
 # → Usa l'agente os3-audit-specialist nel prompt
@@ -252,15 +252,15 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 ## Cosa Manca (Roadmap LSO)
 
 ### Priorità Alta
-- [x] ~~**CONTRACTS (Layer 7)**~~ — 6 contratti JSON creati, in `EGI-DOC/contracts/`
+- [x] ~~**CONTRACTS (Layer 7)**~~ — contratti JSON creati, in `<istanza>-DOC/contracts/` (es. EGI-DOC/)
 - [x] ~~**GATE (Layer 6)**~~ — agente `os3-gate` + command `/gate` creati
 - [x] ~~**Agenti diagnostici**~~ — `organ-gap-scout` + `oracode-alignment-interpreter` creati (solo report, PENDING_BRAIN_APPROVAL)
 - [x] ~~**NERVOUS SYSTEM (Layer 8)**~~ — M-025: SSOT Registry + reflex hook + propriocezione Mission Registry + living agent + cron script. 4 sub-layer ispirati al sistema nervoso umano. Health Score operativo.
 - [x] ~~**Cron periodico**~~ — `ssot-living-check.sh` alle 04:00 + `os3-deep-audit.sh` alle 03:00, ogni notte via crontab
 - [ ] **Audit differenziale** — confronta l'ultimo report con il precedente, mostra solo i nuovi finding
-- [ ] **Dashboard LSO** — pagina EGI-STAT che visualizza LSO Score per organo in tempo reale
+- [ ] **Dashboard LSO** — pagina di statistiche dell'istanza (es. EGI-STAT su FlorenceEGI) che visualizza LSO Score per organo in tempo reale
 - [ ] **Notifiche** — alert su Slack/email quando audit trova finding critici
-- [x] ~~**SSOT Registry completo**~~ — 17 documenti registrati: NATAN_LOC (6), EGI (2), EGI-HUB (2), Credential (1), Sigillo (2), ecosistema (4). Primo audit semantico eseguito su NATAN_LOC (Health Score 35%)
+- [x] ~~**SSOT Registry completo**~~ — documenti registrati per gli organi dell'istanza (es. FlorenceEGI: 17 documenti — NATAN_LOC (6), EGI (2), EGI-HUB (2), Credential (1), Sigillo (2), ecosistema (4)). Primo audit semantico eseguito su NATAN_LOC (Health Score 35%)
 
 ### Priorità Media
 - [ ] **GitHub Actions** — esegui `os3-deep-audit.sh` + GATE ad ogni PR, blocca merge su BLOCK
@@ -270,7 +270,7 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 
 ### Priorità Bassa
 - [ ] **LSO Score** — punteggio 0-100 di conformità OS3 per organo, storicizzato
-- [ ] **Trend chart** — grafico EGI-STAT con andamento LSO Score nel tempo
+- [ ] **Trend chart** — grafico nella dashboard statistiche dell'istanza (es. EGI-STAT) con andamento LSO Score nel tempo
 - [ ] **Cross-organ dependency check** — verifica Interface stabili non modificate senza consenso
 - [ ] **Semantic audit** — analisi AI dei commit per violazioni logiche non catturabili da grep
 
@@ -285,10 +285,10 @@ LSO non è solo infrastruttura di enforcement (hook, gate, audit). Ha una **ment
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│   EGI-DOC/docs/                                            │
+│   <istanza>-DOC/docs/  (es. EGI-DOC/)                      │
 │   (SSOT di tutto l'ecosistema)                             │
 │       ↓                                                    │
-│   Indicizzazione → schema rag_natan.*                      │
+│   Indicizzazione → schema rag_<istanza>.* (es. rag_natan)  │
 │   (documents, chunks, embeddings, categories)              │
 │       ↓                                                    │
 │   RAG di piattaforma                                       │
@@ -305,11 +305,11 @@ LSO non è solo infrastruttura di enforcement (hook, gate, audit). Ha una **ment
 
 ### Come funziona
 
-1. **SSOT come fonte di verità** — Tutta la documentazione dell'ecosistema vive in `EGI-DOC/docs/`. Ogni organo ha la propria area. Ogni modifica al codice genera un DOC-SYNC che aggiorna i doc corrispondenti.
+1. **SSOT come fonte di verità** — Tutta la documentazione dell'ecosistema vive nel repo SSOT dell'istanza (`<istanza>-DOC/docs/`, es. EGI-DOC/). Ogni organo ha la propria area. Ogni modifica al codice genera un DOC-SYNC che aggiorna i doc corrispondenti.
 
-2. **RAG piattaforma (`rag_natan.*`)** — Gli SSOT vengono indicizzati nello schema `rag_natan.*` del database condiviso. Questo schema è generico (documents, chunks con embedding vector, categories gerarchiche, metadata JSONB) e accoglie documentazione di qualsiasi dominio.
+2. **RAG piattaforma (`rag_<istanza>.*`, es. rag_natan su FlorenceEGI)** — Gli SSOT vengono indicizzati nello schema `rag_<istanza>.*` del database condiviso. Questo schema è generico (documents, chunks con embedding vector, categories gerarchiche, metadata JSONB) e accoglie documentazione di qualsiasi dominio.
 
-3. **ai_sidebar in ogni organo** — Ogni organo dell'ecosistema ha una sidebar AI con chat (implementata come `SigilloAdvisorService`, `CredentialAdvisorService`, ecc.). Tutte consumano lo stesso RAG piattaforma via `RagNatan\SearchService`.
+3. **ai_sidebar in ogni organo** — Ogni organo dell'ecosistema ha una sidebar AI con chat (es. su FlorenceEGI: `SigilloAdvisorService`, `CredentialAdvisorService`, ecc.). Tutte consumano lo stesso RAG piattaforma via `RagNatan\SearchService`.
 
 4. **Risposte contestuali** — La sidebar risponde prima nel contesto del progetto in cui si trova (es. "come certifico un file?" su Sigillo), poi su qualsiasi domanda pertinente all'intero ecosistema (es. "cosa sono gli Egili?" da qualsiasi organo).
 
@@ -327,11 +327,11 @@ L'ecosistema non ha un solo RAG. Ha RAG specializzati per dominio, ciascuno otti
 
 | Schema | Dominio | Usato da |
 |--------|---------|----------|
-| `rag_natan.*` | Piattaforma (SSOT ecosistema) | ai_sidebar di tutti gli organi |
-| `natan.rag_*` | PA verticale (atti comunali) | NATAN_LOC USE Pipeline |
-| `marketing_rag.*` | NPE/marketing (catalogo arte) | Narrative Promotion Engine |
+| `rag_<istanza>.*` (es. rag_natan) | Piattaforma (SSOT ecosistema) | ai_sidebar di tutti gli organi |
+| `natan.rag_*` (schema RAG di un organo, es. su NATAN_LOC) | PA verticale (atti comunali) | NATAN_LOC USE Pipeline |
+| `marketing_rag.*` | NPE/marketing (catalogo arte) | Narrative Promotion Engine (es. su FlorenceEGI) |
 
-Il RAG piattaforma (`rag_natan.*`) è la **mente condivisa**. Gli altri RAG sono organi sensoriali specializzati.
+Il RAG piattaforma (`rag_<istanza>.*`, es. rag_natan) è la **mente condivisa**. Gli altri RAG sono organi sensoriali specializzati.
 
 ---
 
@@ -349,7 +349,7 @@ Il DOC-SYNC v1 dipendeva dalla disciplina dell'agente in sessione: se il SUPERVI
 | **Propriocezione** — sapere dove sei senza guardare | **Mission Registry esteso** — l'organismo sa il suo stato | Campi `doc_sync_executed`, `doc_verified` |
 | **Sistema autonomo** — respira senza pensarci | **DOC-SYNC v2** — sincronizzazione automatica a chiusura mission | Agent `doc-sync-v2` |
 | **Dolore acuto** — ritiri la mano dal fuoco | **Segnale in-session** — impossibile ignorare | Hook output |
-| **Dolore cronico** — problema strutturale persistente | **Drift report** — score che cresce nel tempo | `EGI-DOC/audit/drift/` |
+| **Dolore cronico** — problema strutturale persistente | **Drift report** — score che cresce nel tempo | `<istanza>-DOC/audit/drift/` (es. EGI-DOC/) |
 
 ### I 4 sub-layer
 
@@ -364,7 +364,7 @@ LAYER 1 — RIFLESSO (sincrono, in-session)
   ssot-reflex-guard.sh → PostToolUse hook su Write|Edit (secondario)
   File modificato → lookup registry → doc SSOT watchanti → segnale passivo
   Tempo: <1 secondo. Costo AI: zero. Rete di sicurezza.
-  Log: EGI-DOC/audit/ssot_nerve_signals.log
+  Log: <istanza>-DOC/audit/ssot_nerve_signals.log (es. EGI-DOC/)
 
 LAYER 2 — PROPRIOCEZIONE (Mission Registry + DOC-SYNC v2)
   Ogni missione registra:
@@ -392,8 +392,8 @@ LAYER 2 — PROPRIOCEZIONE (Mission Registry + DOC-SYNC v2)
 
 LAYER 3 — RETE DI SICUREZZA (asincrono, cron/manuale)
   ssot-living-check.sh → verifica leggera basata su timestamp e git log
-  doc-sync-v2-guard.sh → blocca push EGI-DOC se mission senza doc_sync_log
-  Report: EGI-DOC/audit/drift/ + EGI-DOC/audit/doc_sync/<mission_id>/
+  doc-sync-v2-guard.sh → blocca push <istanza>-DOC se mission senza doc_sync_log
+  Report: <istanza>-DOC/audit/drift/ + <istanza>-DOC/audit/doc_sync/<mission_id>/ (es. EGI-DOC/)
 ```
 
 ### Come i layer si compensano
@@ -415,7 +415,7 @@ Un file di codebase viene modificato in una mission:
                             La mission NON chiude senza doc_sync_log.
 
   Layer 3 (rete sicurezza) → ssot-living-check cattura drift da bypass/chiusure forzate.
-                              doc-sync-v2-guard blocca push EGI-DOC senza doc_sync_log.
+                              doc-sync-v2-guard blocca push <istanza>-DOC senza doc_sync_log.
 
 Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 ```
@@ -424,17 +424,17 @@ Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 
 | File | Tipo | Funzione |
 |------|------|----------|
-| `EGI-DOC/docs/lso/SSOT_REGISTRY.json` | Registry | Mapping doc→file watchati (Layer 0) |
+| `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. EGI-DOC/) | Registry | Mapping doc→file watchati (Layer 0) |
 | `~/.claude/hooks/ssot-reflex-guard.sh` | Hook | Segnale riflesso passivo PostToolUse (Layer 1, secondario) |
 | `~/.claude/agents/doc-sync-v2.md` | Agente | DOC-SYNC v2: sincronizzazione automatica SSOT (Layer 2, primario) |
 | `os3-matrix/bin/rag_reindex.py` | CLI Python | Re-indexing SSOT in RAG piattaforma (Layer 2) |
 | `os3-matrix/bin/rag_query.py` | CLI Python | Discovery laterale SSOT via query vettoriale (Layer 2) |
-| `~/.claude/hooks/doc-sync-v2-guard.sh` | Hook | Blocca push EGI-DOC senza doc_sync_log (Layer 3) |
+| `~/.claude/hooks/doc-sync-v2-guard.sh` | Hook | Blocca push `<istanza>-DOC` senza doc_sync_log (Layer 3) |
 | `~/.claude/hooks/ssot-living-check.sh` | Script | Check leggero cron/manuale (Layer 3, rete sicurezza) |
-| `EGI-DOC/docs/missions/MISSION_REGISTRY.json` | Registry | Propriocezione (Layer 2) |
-| `EGI-DOC/audit/doc_sync/<mission_id>/` | Audit | Audit trail DOC-SYNC v2 per mission |
-| `EGI-DOC/audit/drift/` | Report | Storico drift report |
-| `EGI-DOC/audit/ssot_nerve_signals.log` | Log | Storico segnali nervosi |
+| `<istanza>-DOC/docs/missions/MISSION_REGISTRY.json` (es. EGI-DOC/) | Registry | Propriocezione (Layer 2) |
+| `<istanza>-DOC/audit/doc_sync/<mission_id>/` | Audit | Audit trail DOC-SYNC v2 per mission |
+| `<istanza>-DOC/audit/drift/` | Report | Storico drift report |
+| `<istanza>-DOC/audit/ssot_nerve_signals.log` | Log | Storico segnali nervosi |
 
 > **Collocazione tool (Oracode Nexus).** I tool Python (`rag_reindex.py`, `rag_query.py`, `mission`) vivono in `os3-matrix/bin/` (repo enforcement, L1), **non** in `~/oracode/bin/` (paradigma: regole, docs, templates). Il Mission Engine (`bin/mission`) tiene lo stato runtime in `~/oracode-engine/` — la cartella globale **visibile** di Livello 1 (`ORACODE_HOME`), non un registro versionato. Il symlink di compat `~/.oracode → ~/oracode-engine` resta per retrocompatibilità.
 
@@ -463,7 +463,7 @@ Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 /home/fabio/.claude/hooks/ssot-living-check.sh
 
 # Check per singolo organo
-/home/fabio/.claude/hooks/ssot-living-check.sh NATAN_LOC
+/home/fabio/.claude/hooks/ssot-living-check.sh NATAN_LOC   # es. organo NATAN_LOC su FlorenceEGI
 ```
 
 ---
@@ -504,7 +504,7 @@ Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 
 ---
 
-## Gli Organi dell'Organismo
+## Gli Organi dell'Organismo (caso esemplare: FlorenceEGI)
 
 Stato degli organi in produzione ad aprile 2026. Tassonomia: `IN PRODUZIONE` (pubblico, online, utilizzabile) · `ONLINE / PARZIALE` (pubblico, non completo) · `IN SVILUPPO INTERNO` (privato) · `SOLO ARCHITETTURA` (documentato, non deployato) · `ROADMAP APPROVATA` (concept approvato).
 
@@ -529,7 +529,7 @@ Stato degli organi in produzione ad aprile 2026. Tassonomia: `IN PRODUZIONE` (pu
 | **EGI-STAT** | IN SVILUPPO INTERNO | `/home/fabio/EGI-STAT` | Dashboard produttivita sviluppatori (GitHub metrics) |
 | **EGI-SALES** | IN SVILUPPO INTERNO | `/home/fabio/EGI-SALES` | Strumenti vendita ecosistema |
 
-> Deep audit (`os3-deep-audit.sh`) copre tutti gli organi sopra (8 produzione + 3 sviluppo/interni = 11 monitorati).
+> Deep audit (`os3-deep-audit.sh`) copre tutti gli organi sopra (nell'esempio FlorenceEGI: 8 produzione + 3 sviluppo/interni = 11 monitorati).
 
 ### Organi in Architettura / Roadmap
 
@@ -543,7 +543,7 @@ Stato degli organi in produzione ad aprile 2026. Tassonomia: `IN PRODUZIONE` (pu
 | **Compliance Checker** | ROADMAP APPROVATA | Verifica conformita |
 | **Eredita Digitale** | ROADMAP APPROVATA | Gestione successoria digitale |
 
-Tutti gli organi futuri nascono coordinati da EGI-HUB. Infrastructure 80-99% riuso.
+Tutti gli organi futuri nascono coordinati dall'hub dell'organismo (es. EGI-HUB su FlorenceEGI). Infrastructure 80-99% riuso.
 
 ---
 
@@ -554,9 +554,9 @@ Tutti gli organi futuri nascono coordinati da EGI-HUB. Infrastructure 80-99% riu
 - Versioni leggibili CEO: `/home/fabio/*/CLAUDE*.human.md`
 - Hook directory: `/home/fabio/.claude/hooks/`
 - Agenti directory: `/home/fabio/.claude/agents/`
-- Report audit: `/home/fabio/EGI-DOC/audit/`
-- Report drift SSOT: `/home/fabio/EGI-DOC/audit/drift/`
-- SSOT Registry (Layer 0 Mielina): `/home/fabio/EGI-DOC/docs/lso/SSOT_REGISTRY.json`
-- Mission Registry (Layer 2 Propriocezione): `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
+- Report audit: `<istanza>-DOC/audit/` (es. /home/fabio/EGI-DOC/audit/)
+- Report drift SSOT: `<istanza>-DOC/audit/drift/` (es. /home/fabio/EGI-DOC/audit/drift/)
+- SSOT Registry (Layer 0 Mielina): `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC/)
+- Mission Registry (Layer 2 Propriocezione): `<istanza>-DOC/docs/missions/MISSION_REGISTRY.json` (es. /home/fabio/EGI-DOC/)
 - Settings Claude Code: `/home/fabio/.claude/settings.json`
-- Memoria NATAN_LOC: `/home/fabio/.claude/projects/-home-fabio-NATAN-LOC/memory/MEMORY.md`
+- Memoria di un organo (es. NATAN_LOC): `/home/fabio/.claude/projects/-home-fabio-NATAN-LOC/memory/MEMORY.md`

@@ -240,7 +240,7 @@ _"Integra sicurezza come principio architetturale"_
 /**
  * @package App\Http\Controllers\[Area]
  * @author Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
- * @version 1.0.0 (FlorenceEGI - [Context])
+ * @version 1.0.0 (<istanza>, es. FlorenceEGI - [Context])
  * @date 2025-11-23
  * @purpose [Clear, specific purpose in one line]
  */

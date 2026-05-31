@@ -27,7 +27,7 @@ Questo protocollo si attiva **automaticamente** quando una mission ha come deliv
 
 **Trigger**: `type` in [feature, refactor] AND deliverable include file `.tsx`/`.html`/`.blade.php` serviti su URL pubblico.
 
-> Nota chiavi: `type` è la chiave inglese canonica del MISSION_REGISTRY (decisione CEO 2026-05-30, vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`). La chiave italiana `tipo_missione` è legacy EGI-DOC.
+> Nota chiavi: `type` è la chiave inglese canonica del MISSION_REGISTRY (decisione CEO 2026-05-30, vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`). La chiave italiana `tipo_missione` è legacy di un'istanza (esempio: EGI-DOC, istanza FlorenceEGI).
 
 ---
 

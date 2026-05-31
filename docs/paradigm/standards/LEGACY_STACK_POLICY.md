@@ -12,15 +12,15 @@
 
 ## 1. Decisione
 
-Tre stack frontend/backend sono **bannati** per codice NUOVO su tutti gli organi dell'ecosistema FlorenceEGI:
+Tre stack frontend/backend sono **bannati** per codice NUOVO su tutti gli organi di un ecosistema LSO (esempio: istanza FlorenceEGI):
 
 | Stack | Tipo | Motivo ban |
 |-------|------|-----------|
 | **Alpine.js** | Micro-framework reattivo | Aumenta complessità frontend senza valore rispetto a Vanilla TS. Collision con pattern bundle Vite + TypeScript |
 | **Livewire** | Full-stack reactive PHP | Accoppiamento forte server↔view, payload HTML su ogni interazione, debug difficile. Contrario a filosofia Oracode "semplicità potenziante" |
-| **Filament** | Admin panel Laravel | Esperienza diretta Fabio: admin v4 `art.florenceegi.com` costruito con Filament non girava neanche pagando. Lento, farraginoso. Tutto si fa meglio con Blade + Vanilla TS + Tailwind |
+| **Filament** | Admin panel Laravel | Esperienza diretta Fabio (esempio: istanza FlorenceEGI, admin v4 `art.florenceegi.com`): costruito con Filament non girava neanche pagando. Lento, farraginoso. Tutto si fa meglio con Blade + Vanilla TS + Tailwind |
 
-**Legge**: ban universale per **codice nuovo**. Unica eccezione = Strategia Delta EGI legacy (sezione 4).
+**Legge**: ban universale per **codice nuovo**. Unica eccezione = Strategia Delta su legacy d'istanza (es. EGI, vedi sezione 4).
 
 ---
 
@@ -44,7 +44,7 @@ Legenda: ✅ approvato · ❌ bannato (ban M-094) · 🟡 legacy debito (Strateg
 P0-0 originale vieta anche React. Frontend obbligatorio: Vanilla TS + Blade. Due bundle separati (`natan/`, `citizen/`) gestiti da Vite.
 
 ### EGI — nota legacy 🟡
-Esistono sezioni Livewire/Alpine pre-policy (art.florenceegi.com, aree AMMk, council). Strategia Delta applicata:
+Esistono sezioni Livewire/Alpine pre-policy (es. istanza FlorenceEGI: art.florenceegi.com, aree AMMk, council). Strategia Delta applicata:
 - NON rifattorizzate per decisione CEO (criticità bassa non giustifica effort)
 - NON considerate violazioni quando trovate — sono debito tecnico tracciato
 - Si migrano SOLO se si tocca la zona per altra ragione (on-touch-only)
@@ -57,7 +57,7 @@ Esistono sezioni Livewire/Alpine pre-policy (art.florenceegi.com, aree AMMk, cou
 Sostituire con:
 - **Controller + Blade views + Vanilla TS components + Tailwind puro**
 - Pattern standard: tabelle, form, filtri, modali custom
-- Esempio implementazione: EGI-HUB `/superadmin/*` (pannelli CEO)
+- Esempio implementazione (istanza FlorenceEGI): EGI-HUB `/superadmin/*` (pannelli CEO)
 
 ### 3.2 Interattività frontend (ban Alpine/Livewire)
 Sostituire con:
@@ -68,8 +68,8 @@ Sostituire con:
 
 ### 3.3 SPA moderne (lato public/interattivo heavy)
 - **React 18+ / Next.js 15+** con App Router
-- Consumo API backend EGI via fetch/Sanctum cookie
-- Approvato: EGI-HUB-HOME-REACT, EGI-SIGILLO, EGI-Credential, CREATOR-STAGING, EGI-INFO
+- Consumo API backend dell'organo (es. EGI) via fetch/Sanctum cookie
+- Approvato (istanza FlorenceEGI): EGI-HUB-HOME-REACT, EGI-SIGILLO, EGI-Credential, CREATOR-STAGING, EGI-INFO
 
 ---
 
@@ -90,11 +90,11 @@ Sostituire con:
 
 ### 4.3 Eccezione Strategia Delta
 Hook skippa file preesistenti in:
-- `/home/fabio/EGI/resources/views/*`
-- `/home/fabio/EGI/app/Livewire/*`
-- `/home/fabio/EGI/app/Http/Livewire/*`
+- `/home/fabio/EGI/resources/views/*`  (path istanza FlorenceEGI)
+- `/home/fabio/EGI/app/Livewire/*`  (path istanza FlorenceEGI)
+- `/home/fabio/EGI/app/Http/Livewire/*`  (path istanza FlorenceEGI)
 
-File NUOVI sono sempre sotto enforcement, anche su EGI.
+File NUOVI sono sempre sotto enforcement, anche sull'organo legacy (es. EGI).
 
 ### 4.4 Bypass emergenza
 Solo con approvazione CEO via protocollo CEO/CTO dell'istanza (esempio FlorenceEGI: `EGI-DOC/docs/oracode/05_PROTOCOLLO_CEO_CTO.md`):
@@ -136,9 +136,9 @@ Solo con approvazione CEO via protocollo CEO/CTO dell'istanza (esempio FlorenceE
 | Data | Evento | Fonte |
 |------|--------|-------|
 | 2026-03-27 | CLAUDE_ECOSYSTEM_CORE.md P0-0 NATAN_LOC: no Alpine/Livewire/React | Memory `feedback_frontend_framework_rules.md` |
-| 2026-04-20 | Audit M-093 F-C2: rilevati `@livewireStyles` + 41 view `wire:` su EGI — segnalato chiarimento formale pending | `EGI-DOC/audit/M-093_ULTRA_EXCELLENCE_AUDIT_2026-04-20.md` riga 137 |
-| 2026-04-21 | Memory aggiornata: Alpine/Livewire/Filament bannati su TUTTI organi per codice NUOVO, eccezione Strategia Delta EGI | Memory `feedback_frontend_framework_rules.md` |
-| 2026-04-21 | Filament confermato bannato su tutto ecosistema (esperienza admin v4) | Memory `feedback_filament_banned.md` |
+| 2026-04-20 | Audit M-093 F-C2 (istanza FlorenceEGI): rilevati `@livewireStyles` + 41 view `wire:` sull'organo EGI — segnalato chiarimento formale pending | `EGI-DOC/audit/M-093_ULTRA_EXCELLENCE_AUDIT_2026-04-20.md` riga 137 |
+| 2026-04-21 | Memory aggiornata: Alpine/Livewire/Filament bannati su TUTTI gli organi per codice NUOVO, eccezione Strategia Delta su legacy d'istanza (es. EGI) | Memory `feedback_frontend_framework_rules.md` |
+| 2026-04-21 | Filament confermato bannato su tutto l'ecosistema (esperienza admin v4, istanza FlorenceEGI) | Memory `feedback_filament_banned.md` |
 | 2026-04-22 | M-094 chiusura: SSOT policy + hook `check-no-legacy-stack.sh` + update CORE | Questo documento |
 
 ---

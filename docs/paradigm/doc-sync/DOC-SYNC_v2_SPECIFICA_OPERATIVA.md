@@ -182,7 +182,7 @@ Output: `directly_impacted_ssots.json`
 
 Questa è la fase che distingue DOC-SYNC v2 da una versione "minima". Per ogni modifica semantica della Fase 1, DOC-SYNC v2 cerca SSOT che descrivono **concetti correlati**, anche se non watchano direttamente i file modificati.
 
-**Esempio**: la mission modifica `EGI-SIGILLO/src/data/useCasePages.ts` aggiungendo un nuovo target market "compro-oro". Il SSOT `Sigillo__01_PRICING_MODEL.md` non watcha quel file, ma descrive concettualmente i target di mercato di Sigillo. Discovery laterale lo identifica come SSOT impattato indirettamente.
+**Esempio (istanza FlorenceEGI)**: la mission modifica `EGI-SIGILLO/src/data/useCasePages.ts` aggiungendo un nuovo target market "compro-oro". Il SSOT `Sigillo__01_PRICING_MODEL.md` non watcha quel file, ma descrive concettualmente i target di mercato di Sigillo. Discovery laterale lo identifica come SSOT impattato indirettamente.
 
 La discovery laterale opera tramite:
 
@@ -341,9 +341,9 @@ Questa è la sezione **vincolante**. Un'implementazione di DOC-SYNC v2 è consid
 
 ### Test 3 — Discovery laterale funzionante
 
-**Setup**: Riproduci il caso `useCasePages.ts`. Esegui una mission che modifica `EGI-SIGILLO/src/data/useCasePages.ts` aggiungendo un nuovo target market.
+**Setup**: Riproduci il caso `useCasePages.ts`. Esegui una mission che modifica `EGI-SIGILLO/src/data/useCasePages.ts` (istanza FlorenceEGI) aggiungendo un nuovo target market.
 
-**Atteso**: DOC-SYNC v2 identifica come impattato non solo `Sigillo__02_TECH_SPEC.md` (che watcha il file), ma anche `Sigillo__01_PRICING_MODEL.md` e `Sigillo__00_SIGILLO_OVERVIEW.md` (che descrivono concettualmente target e pricing).
+**Atteso**: DOC-SYNC v2 identifica come impattato non solo `Sigillo__02_TECH_SPEC.md` (che watcha il file), ma anche `Sigillo__01_PRICING_MODEL.md` e `Sigillo__00_SIGILLO_OVERVIEW.md` (che descrivono concettualmente target e pricing). [SSOT dell'istanza FlorenceEGI, esempio]
 
 **Verifica**: ispezionando `laterally_impacted_ssots.json`.
 
@@ -375,7 +375,7 @@ Questa è la sezione **vincolante**. Un'implementazione di DOC-SYNC v2 è consid
 
 **Setup**: Esegui DOC-SYNC v2 su una mission che modifica 3 SSOT (2 additivi, 1 sostitutivo).
 
-**Atteso**: in `EGI-DOC/audit/doc_sync/<mission_id>/` esistono tutti gli output del § 6.1, e il `doc_sync_summary.md` è leggibile da un umano e contiene narrazione coerente di cosa è stato fatto e perché.
+**Atteso**: in `<istanza-DOC>/audit/doc_sync/<mission_id>/` (es. EGI-DOC su FlorenceEGI) esistono tutti gli output del § 6.1, e il `doc_sync_summary.md` è leggibile da un umano e contiene narrazione coerente di cosa è stato fatto e perché.
 
 **Verifica**: lettura manuale del summary + presenza di tutti i file attesi.
 
@@ -402,7 +402,7 @@ Questa è la sezione **vincolante**. Un'implementazione di DOC-SYNC v2 è consid
 DOC-SYNC v1 è composto da 5 meccanismi (audit del 2026-04-30):
 
 1. `ssot-reflex-guard.sh` — PostToolUse hook su Write/Edit
-2. `ssot-registry-auto-update.sh` — PostToolUse hook su file in EGI-DOC/docs/
+2. `ssot-registry-auto-update.sh` — PostToolUse hook su file in `<istanza-DOC>/docs/` (es. EGI-DOC su FlorenceEGI)
 3. `ssot-living-check.sh` — cron daily 04:00
 4. `ssot-living-agent.md` — agent manuale per analisi semantica
 5. Regola P0-11 nei CLAUDE.md — convenzione operativa
@@ -427,7 +427,7 @@ DOC-SYNC v1 è composto da 5 meccanismi (audit del 2026-04-30):
 
 - **DOC-SYNC v2** stesso, come componente nuovo della Mission Engine
 - **Sezione `doc_sync_log` nel record mission**
-- **Directory `EGI-DOC/audit/doc_sync/`** per gli audit trail
+- **Directory `<istanza-DOC>/audit/doc_sync/`** (es. EGI-DOC su FlorenceEGI) per gli audit trail
 - **Sub-stati di mission**: `awaiting_doc_sync_approval`, `doc_sync_failed_*`
 
 ---
@@ -488,7 +488,7 @@ Drift e coverage sono ortogonali: un sistema con drift = 0 ma coverage = 10% non
 
 ### 11.2 Definizioni formali
 
-- **File reale (di un repo)**: file presente in `git ls-files` del repo, escludendo asset binari, lock files, build output, audio, Office documents, Windows `Zone.Identifier`, storage Laravel. Lista di esclusioni in `EGI-DOC/docs/lso/COVERAGE_CONFIG.json`.
+- **File reale (di un repo)**: file presente in `git ls-files` del repo, escludendo asset binari, lock files, build output, audio, Office documents, Windows `Zone.Identifier`, storage Laravel. Lista di esclusioni in `<istanza-DOC>/docs/lso/COVERAGE_CONFIG.json` (es. EGI-DOC su FlorenceEGI).
 - **File coperto**: file reale che matcha almeno un pattern `watches.paths` (glob-expanded) di almeno uno SSOT del cui `watches.repos` il repo è membro.
 - **Coverage % di un repo**: `|file coperti| / |file reali| × 100`.
 - **Pattern broken**: pattern di `watches.paths` che produce 0 match su tutti i repo associati al suo SSOT.
@@ -501,10 +501,10 @@ Per organo, configurabile in `COVERAGE_CONFIG.json`. Default v2.1.0:
 | Organo | Soglia minima | Razionale |
 |---|---:|---|
 | `_default` (organi React/Laravel maturi) | 50% | indica monitoraggio sostantivo |
-| EGI | 30% | monolite legacy, Strategia Delta — non si copre il legacy |
-| EGI-DOC | 5% | repo di documentazione, baseline pattern non applicabili |
+| EGI (es. istanza FlorenceEGI) | 30% | monolite legacy, Strategia Delta — non si copre il legacy |
+| EGI-DOC (es. istanza FlorenceEGI) | 5% | repo di documentazione, baseline pattern non applicabili |
 | EGI-STAT | 30% | strumento interno, copertura minima |
-| EGI-HUB-HOME-REACT | 30% | vetrina pubblica, evolve lentamente |
+| EGI-HUB-HOME-REACT (es. istanza FlorenceEGI) | 30% | vetrina pubblica, evolve lentamente |
 | EGI-SALES | 30% | basso volume operativo |
 | YURI-BIAGINI | 0% | esente se senza `.git` |
 

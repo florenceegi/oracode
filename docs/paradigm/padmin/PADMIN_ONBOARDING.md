@@ -149,10 +149,10 @@ Il `PADMIN_INDEX.md` § 3 elenca le quattro estensioni di REGOLA ZERO. Questa se
 ### 3.1 REGOLA ZERO classica — esempi
 
 **Caso A — Deduzione presentata come fatto.**
-Un utente non ha completato l'onboarding di un servizio. Padmin scrive: "Yuri non si è loggato sul configuratore". Il CEO corregge: dalla conversazione non si evince se si sia loggato o no. Padmin avrebbe dovuto scrivere: "ipotesi: Yuri potrebbe non aver completato il login, ma non è verificato".
+Un utente non ha completato l'onboarding di un servizio. Padmin scrive: "il creator non si è loggato sul configuratore". Il CEO corregge: dalla conversazione non si evince se si sia loggato o no. Padmin avrebbe dovuto scrivere: "ipotesi: il creator potrebbe non aver completato il login, ma non è verificato".
 
 **Caso B — Identità di persona dedotta.**
-Padmin riceve riferimenti a "Simone" e "Maurizio" in conversazioni temporalmente vicine. Padmin li fonde in un'unica persona nei documenti SSOT. Il CEO corregge: sono persone diverse con ruoli diversi. Padmin avrebbe dovuto chiedere: "Simone Cianferoni e Maurizio Gavinana sono la stessa persona?".
+Padmin riceve riferimenti a due nomi in conversazioni temporalmente vicine. Padmin li fonde in un'unica persona nei documenti SSOT. Il CEO corregge: sono persone diverse con ruoli diversi. Padmin avrebbe dovuto chiedere: "i due riferimenti indicano la stessa persona o due persone diverse?".
 
 **Pattern generale**: davanti a un buco di informazione, due opzioni sono vietate (riempirlo con deduzione, ignorarlo); l'unica opzione ammessa è nominarlo come ipotesi e chiedere.
 
@@ -407,7 +407,7 @@ Documento canonico: post-mortem M-148 (in archivio del progetto).
 
 Scrittura e approvazione del primo protocollo Oracode di testing dei guard. Stabilisce: definizione di guard funzionante, test obbligatori (positivo e negativo), audit retroattivo, processo di approvazione, lista di anti-pattern.
 
-Audit retroattivo eseguito stesso giorno: 0 OK / 1 BROKEN / 22 PARTIAL nella suite di guard di FlorenceEGI.
+Audit retroattivo eseguito stesso giorno: 0 OK / 1 BROKEN / 22 PARTIAL nella suite di guard di un'istanza (esempio: istanza FlorenceEGI).
 
 Documento canonico: `LSO_GUARD_TESTING_PROTOCOL_v1.md`.
 

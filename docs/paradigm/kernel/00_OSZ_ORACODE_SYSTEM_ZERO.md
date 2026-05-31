@@ -45,7 +45,7 @@ Nella **triade di autorità** — OSZ (kernel, verità assoluta) → OS3 (execut
 
 ### Premessa Filosofica
 
-FlorenceEGI non è una piattaforma. È un **organismo software**.
+Un organismo Oracode (caso esemplare: FlorenceEGI) non è una piattaforma. È un **organismo software**.
 
 Non stiamo costruendo "siti web collegati". Stiamo costruendo:
 
@@ -91,7 +91,7 @@ Le "articolazioni" dell'organismo:
 
 #### 3. **Instance** - Gli Organi Sostituibili
 
-I progetti orbitanti (NATAN, EGI-PT, EGI-INFO, Marketplace, PA, Goldbar, Book, Audio) non sono "siti".
+I progetti orbitanti di un'istanza (es. su FlorenceEGI: NATAN, EGI-PT, EGI-INFO, Marketplace, PA, Goldbar, Book, Audio) non sono "siti".
 
 Sono **istanze di oggetti** che implementano **interfacce comuni**.
 
@@ -238,7 +238,7 @@ OSZ definisce **COSA** stiamo costruendo (l'organismo).
 - `OS4_FOUNDATION_DOCUMENT.md` (framework completo)
 
 ### 5. Reference Guide OS3/OS4 (legacy/archiviato)
-**Percorso**: `EGI-DOC/docs/oracode/Oracode_Systems/_archive/OS3_OS4_REFERENCE_GUIDE.md`  
+**Percorso**: `EGI-DOC/docs/oracode/Oracode_Systems/_archive/OS3_OS4_REFERENCE_GUIDE.md` (istanza FlorenceEGI)  
 **Stato**: legacy — vive in `_archive`, non è riferimento vivo. Consultare i Moduli OS3/OS4 sopra come fonte corrente.
 
 ---
@@ -275,7 +275,7 @@ Capire come disciplinare l'AI durante lo sviluppo.
 ### Per Chi Legge Documenti
 
 Se trovi contraddizioni:
-1. **OSZ ha sempre ragione** (questo documento + la specifica dell'organismo `EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md`)
+1. **OSZ ha sempre ragione** (questo documento + la specifica dell'organismo `EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md`, istanza FlorenceEGI)
 2. Segnala la contraddizione per pulizia futura
 3. Interpreta sempre alla luce della bio-architettura OSZ
 
@@ -293,7 +293,7 @@ Se trovi contraddizioni:
 
 | Concetto | Domanda | Risposta |
 |----------|---------|----------|
-| **OSZ** | Cos'è? | Il Sistema Operativo dell'organismo FlorenceEGI |
+| **OSZ** | Cos'è? | Il Sistema Operativo di un organismo Oracode (caso esemplare: FlorenceEGI) |
 | **EGI** | Cos'è? | `Wrapper<T> + Regole + Audit + Valore` |
 | **Progetti** | Cosa sono? | Istanze sostituibili che implementano interfacce comuni |
 | **Giunture** | Cosa sono? | Interfacce stabili (API, contratti, protocolli) |

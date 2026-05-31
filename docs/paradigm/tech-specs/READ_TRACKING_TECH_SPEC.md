@@ -107,7 +107,7 @@ SQLite prevista quando il volume diventerà scomodo per parsing/diff git: SQLite
 con JSON1 extension per schema ibrido (campi strutturati indicizzabili + payload
 JSON flessibile).
 
-> *Origine storica EGI*: la genesi del sottosistema (read-log + retrospective)
+> *Origine storica (caso esemplare: FlorenceEGI)*: la genesi del sottosistema (read-log + retrospective)
 > proviene dall'istanza accoppiata FlorenceEGI, dove era tracciata dalle mission
 > M-158 → M-159 (e la migration SQLite da M-162). Quei numeri appartengono allo
 > schema EGI globale storico, **non** al paradigma `oracode`. Nel Nexus la
@@ -246,9 +246,9 @@ non bug da risolvere.
 
 **Versione**: 1.0.0
 **Data**: 2026-05-08
-**Mission di riferimento (origine storica EGI)**: M-158 — riferimento storico
+**Mission di riferimento (origine storica, caso esemplare: FlorenceEGI)**: M-158 — riferimento storico
 dell'istanza accoppiata EGI-DOC, non mission del paradigma `oracode`.
-**Prerequisito storico per (EGI)**: M-159 (implementazione retrospective).
+**Prerequisito storico per (caso esemplare: FlorenceEGI)**: M-159 (implementazione retrospective).
 
 > Nel paradigma `oracode` la numerazione mission usa il namespace `M-OS3-NNN`,
 > e la numerazione globale unica è responsabilità del HUB (L2). Il ponte

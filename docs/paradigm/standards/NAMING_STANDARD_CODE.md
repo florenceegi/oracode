@@ -30,7 +30,7 @@ priority: critical
 ## Principi Fondamentali
 
 ### 1. Naming da Oracode System
-Tutto segue le convenzioni già esistenti in FlorenceEGI. Prima di creare qualsiasi
+Tutto segue le convenzioni già esistenti nell'ecosistema di riferimento (caso esemplare: FlorenceEGI). Prima di creare qualsiasi
 identificatore — metodo, classe, variabile — si verifica nel codebase e nell'Organ Index.
 Se esiste un pattern, si estende. Non si reinventa.
 
@@ -233,7 +233,7 @@ Prima di creare qualsiasi nuovo identificatore:
 
 ```
 1. Consultare l'Organ Index del proprio ecosistema
-   (per FlorenceEGI: EGI-DOC/docs/ecosistema/ORGAN_INDEX.json — caso HUB/istanza accoppiato)
+   (es. istanza FlorenceEGI: EGI-DOC/docs/ecosistema/ORGAN_INDEX.json — caso HUB/istanza accoppiato)
    → Esiste già un metodo/classe con questo scopo?
 
 2. grep cross-organo sul nome proposto
@@ -263,13 +263,13 @@ funzioni, interfacce) di tutti gli organi dell'ecosistema.
   commerciale, Livello 1 motore). NON è un binario in `oracode/bin/` (che contiene solo `cli.js`).
   L'invocazione esatta va verificata dalla fonte in `os3-matrix/bin/organ_index/` prima di citarla
   (P0-12 Anti-Infra-Invention): mai dedurre il comando.
-- **Output JSON**: per FlorenceEGI `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json` (caso HUB/istanza accoppiato);
+- **Output JSON**: es. istanza FlorenceEGI `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json` (caso HUB/istanza accoppiato);
   ogni ecosistema risolve il proprio path di output.
-- **Output leggibile**: `ORGAN_INDEX_SUMMARY.md` accanto al JSON (per FlorenceEGI:
+- **Output leggibile**: `ORGAN_INDEX_SUMMARY.md` accanto al JSON (es. istanza FlorenceEGI:
   `EGI-DOC/docs/ecosistema/ORGAN_INDEX_SUMMARY.md`)
 - **Frequenza**: rigenerato ad ogni cambio significativo o prima di creare nuovi componenti
 
-Vedi le convenzioni di naming dei file di documentazione del proprio ecosistema (per FlorenceEGI:
+Vedi le convenzioni di naming dei file di documentazione del proprio ecosistema (es. istanza FlorenceEGI:
 `EGI-DOC/docs/ecosistema/NAMING_CONVENTIONS.md`) — complementari a questo standard.
 
 ---

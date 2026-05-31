@@ -80,7 +80,7 @@ Il guard deve leggere campi del registry/SSOT esattamente come questi sono nomin
 
 Questo criterio è la **diretta conseguenza del fallimento di DOC-SYNC v2** (post-mortem M-148, EVENTO STORICO), dove `doc-sync-v2-guard.sh` cercava `status`/`date_closed` mentre il MISSION_REGISTRY del tempo conteneva `stato`/`data_chiusura`. Il guard è stato deployato senza che nessuno verificasse la coerenza.
 
-> **NB (riquadratura storica):** al tempo del post-mortem (2026-04-30) il registry EGI-DOC era in **italiano**, quindi i campi corretti erano allora quelli italiani. **Oggi i campi canonici sono in inglese** (`status`, `date_close`; vedi `ORACODE_NEXUS_3_TIER.md` §Livello 3): un guard nuovo deve leggere i campi inglesi. La lezione del Criterio 2 — coerenza tra campi letti e campi reali della sorgente — resta valida indipendentemente dalla lingua; cambia solo *quale* sia la sorgente canonica.
+> **NB (riquadratura storica):** al tempo del post-mortem (2026-04-30) il registry EGI-DOC (istanza FlorenceEGI) era in **italiano**, quindi i campi corretti erano allora quelli italiani. **Oggi i campi canonici sono in inglese** (`status`, `date_close`; vedi `ORACODE_NEXUS_3_TIER.md` §Livello 3): un guard nuovo deve leggere i campi inglesi. La lezione del Criterio 2 — coerenza tra campi letti e campi reali della sorgente — resta valida indipendentemente dalla lingua; cambia solo *quale* sia la sorgente canonica.
 
 ### Criterio 3 — Esistenza di test positivo e negativo
 

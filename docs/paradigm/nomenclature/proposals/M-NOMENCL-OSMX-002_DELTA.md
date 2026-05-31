@@ -8,7 +8,7 @@
 > **Status:** IN ATTESA APPROVAZIONE CEO
 > **Sostituisce:** DELTA v1 (archiviato in `proposals/archived/`, collocazione sbagliata)
 
-> ⚠ **Superseded-context.** Questa proposal (2026-05-22) precede la gerarchia **Oracode Nexus a 3 livelli** (`../ORACODE_NEXUS_3_TIER.md`, decisioni CEO 2026-05-30/31) e il **Ponte L1→L3 automatico** (M-OS3-025 Unità 3, `bin/mission syncToRepoRegistry`, parallel-safe — già FATTO). La descrizione «Mission Protocol enforcement automatico / registry JSON come SSOT con commit+push immediato» va letta alla luce della separazione: **L1** = motore (scratch runtime in `~/oracode-engine`, NON un registro) / **L2 HUB** = primo vero `MISSION_REGISTRY` (statistiche + numerazione globale unica, versionato in HUB-DOC) / **L3 ISTANZA** = registry proprio del progetto (ponte L1→L3 automatico via `.oracode/project.json` risolto dal CWD; chiavi in INGLESE — `id/title/type/organs/status/date_open/date_close` —, l'italiano EGI-DOC è legacy). Quando la proposal verrà applicata a `LSO_NOMENCLATURE_v2.md`, allineare a quella gerarchia.
+> ⚠ **Superseded-context.** Questa proposal (2026-05-22) precede la gerarchia **Oracode Nexus a 3 livelli** (`../ORACODE_NEXUS_3_TIER.md`, decisioni CEO 2026-05-30/31) e il **Ponte L1→L3 automatico** (M-OS3-025 Unità 3, `bin/mission syncToRepoRegistry`, parallel-safe — già FATTO). La descrizione «Mission Protocol enforcement automatico / registry JSON come SSOT con commit+push immediato» va letta alla luce della separazione: **L1** = motore (scratch runtime in `~/oracode-engine`, NON un registro) / **L2 HUB** = primo vero `MISSION_REGISTRY` (statistiche + numerazione globale unica, versionato nel registry-DOC dell'istanza HUB, es. HUB-DOC su FlorenceEGI) / **L3 ISTANZA** = registry proprio del progetto (ponte L1→L3 automatico via `.oracode/project.json` risolto dal CWD; chiavi in INGLESE — `id/title/type/organs/status/date_open/date_close` —, l'italiano del registry d'istanza, es. EGI-DOC su FlorenceEGI, è legacy). Quando la proposal verrà applicata a `LSO_NOMENCLATURE_v2.md`, allineare a quella gerarchia.
 
 ---
 
@@ -194,7 +194,7 @@ OS3 Matrix.
 - **Agenti specializzati** — software autonomo che opera su scope specifici
   dell'organismo (doc-sync-v2, os3-audit-specialist, os3-gate,
   ssot-living-agent, oracode-alignment-interpreter, organ-gap-scout,
-  egili-blood-keeper).
+  e agenti specifici dell'istanza, es. `egili-blood-keeper` su FlorenceEGI).
 - **DOC-SYNC v2 come software runtime** — drift detection autonoma via
   nightly cron, coverage check nativa, analisi semantica del diff a
   chiusura mission, re-indexing RAG sincrono con sanity check bloccante,
@@ -348,7 +348,7 @@ una o piu regole P0. Elenco operativo (istanza FlorenceEGI):
 - `ssot-living-agent` — verifica autonoma drift SSOT↔codebase
 - `oracode-alignment-interpreter` — diagnostica allineamento semantico
 - `organ-gap-scout` — identificazione gap evolutivi
-- `egili-blood-keeper` — protezione sistema circolatorio Egili
+- `egili-blood-keeper` — protezione sistema circolatorio dell'istanza (es. Egili su FlorenceEGI)
 
 ##### DOC-SYNC v2 (software runtime)
 
