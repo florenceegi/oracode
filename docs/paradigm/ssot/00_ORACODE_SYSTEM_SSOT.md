@@ -178,7 +178,7 @@ Altrimenti                                     → P3  REFERENCE
 | P0-8 | **Complete Flow Analysis** | Mappa flusso COMPLETO (4 fasi) prima di qualsiasi fix. |
 | P0-9 | **i18n 6 lingue** | `it` `en` `de` `es` `fr` `pt` — SEMPRE tutte e sei. |
 | P0-10 | **Anti-MongoDB** | MAI `MongoDBService` diretto → usa `get_db_service()` da `db_factory.py`. |
-| P0-11 | **DOC-SYNC** | Task NON chiusa senza EGI-DOC aggiornato. Zero eccezioni. |
+| P0-11 | **DOC-SYNC** | Task NON chiusa senza il doc-store dell'istanza aggiornato (es. EGI-DOC su FlorenceEGI). Zero eccezioni. |
 | P0-12 | **Anti-Infra-Invention** | URL/path EC2/branch → verifica da SSM/git. MAI dedurre. |
 
 **P0 = Zero Tolerance.** Non si passa P0. Si corregge P0. P0 aperte > 0 → audit FAIL, indipendentemente dal punteggio.
@@ -226,7 +226,7 @@ Obbligatoria (P1) su ogni file nuovo o significativamente modificato.
 /**
  * @package App\Http\[Area]
  * @author Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
- * @version 1.0.0 (FlorenceEGI — [Organo])
+ * @version 1.0.0 (<istanza> — [Organo])
  * @date YYYY-MM-DD
  * @purpose [Scopo chiaro e specifico in una riga]
  */
@@ -236,7 +236,7 @@ Obbligatoria (P1) su ogni file nuovo o significativamente modificato.
 /**
  * @package [Organo] — [ComponentName]
  * @author Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
- * @version 1.0.0 (FlorenceEGI — [Organo])
+ * @version 1.0.0 (<istanza> — [Organo])
  * @date YYYY-MM-DD
  * @purpose [Scopo specifico del componente]
  */
@@ -436,7 +436,7 @@ Tutti in `/home/fabio/.claude/agents/`.
 |------|------|-----------|---------------------|
 | 1 | Locale (fix puntuale, output invariato) | NO | NO |
 | 2 | Comportamentale (cambia output/API/behavior) | SI su <istanza>-DOC (es. EGI-DOC) | NO |
-| 3 | Architetturale (nuovo endpoint/model/service) | SI su EGI-DOC + CLAUDE.md | NO |
+| 3 | Architetturale (nuovo endpoint/model/service) | SI su <istanza>-DOC (es. EGI-DOC) + CLAUDE.md | NO |
 | 4 | Contrattuale (GDPR/MiCA/compliance/ToS) | SI + approvazione Fabio | SI, prima |
 | 5 | Naming dominio (rinomina entita/concetto) | SI, grep tutti i file | NO |
 | 6 | Cross-project (impatta piu organi) | SI su ecosistema + approvazione | SI |
@@ -453,7 +453,7 @@ Tutti in `/home/fabio/.claude/agents/`.
 |------|------|---------------|
 | A — P0 Compliance | 40 | Tutte le 8 regole P0 con evidenza |
 | B — P1 Compliance | 25 | Docblock, SSOT update, zero placeholder, testing, GDPR |
-| C — SSOT Alignment | 15 | CLAUDE.md + EGI-DOC allineati al codice |
+| C — SSOT Alignment | 15 | CLAUDE.md + <istanza>-DOC (es. EGI-DOC) allineati al codice |
 | D — Claude Code Enforcement | 10 | Config agenti, identita, escalation |
 | E — Semantic Consistency | 5 | Terminologia coerente codice/doc/business |
 | F — Evidence Quality | 5 | Evidenze verificabili e riproducibili |
@@ -596,12 +596,12 @@ Ogni spawn di sub-agent registra hash input + timestamp + tool_use_id + file let
 
 ### P0-11 — DOC-SYNC
 
-Una task NON e chiusa senza EGI-DOC aggiornato. Zero eccezioni. Ogni modifica Tipo 2+ richiede aggiornamento della documentazione corrispondente in `/home/fabio/EGI-DOC/docs/`.
+Una task NON e chiusa senza il doc-store dell'istanza aggiornato. Zero eccezioni. Ogni modifica Tipo 2+ richiede aggiornamento della documentazione corrispondente nel repo SSOT dell'istanza (es. `EGI-DOC/docs/` su FlorenceEGI).
 
 ### RAG Pipeline (<istanza>-DOC → rag_<istanza>.*; es. EGI-DOC → rag_natan su FlorenceEGI)
 
 ```
-EGI-DOC/docs/**/*.md (frontmatter OS3 + body Markdown)
+<istanza>-DOC/docs/**/*.md (frontmatter OS3 + body Markdown)
     ↓
 manifest.py     → snapshot corpus, diff incrementale (hash SHA256)
     ↓
@@ -614,7 +614,7 @@ db.py           → PostgreSQL rag_<istanza>.documents + chunks + embeddings
 sync.py         → confronto versioni semver + hash → delta incrementale
 ```
 
-Cron: sync automatico ogni 4 ore. Pipeline: `/home/fabio/EGI-DOC/pipeline/`.
+Cron: sync automatico ogni 4 ore. Pipeline: `<istanza>-DOC/pipeline/` (es. EGI-DOC su FlorenceEGI).
 
 ### La Mente dell'Organismo
 

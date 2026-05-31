@@ -89,7 +89,7 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 │  L1 RIFLESSO — ssot-reflex-guard.sh (PostToolUse)               │
 │     Arco riflesso: file modificato → lookup registry →          │
 │     segnale immediato al SUPERVISOR. Automatico, <1s.           │
-│     Log: <istanza>-DOC/audit/ssot_nerve_signals.log (es. EGI-DOC)│
+│     Log: <istanza>-DOC/audit/ssot_nerve_signals.log             │
 │                                                                  │
 │  L1b AUTO-UPDATE — [ARCHIVIATO: ssot-registry-auto-update.sh]    │
 │     Rimosso (anti-pattern 6: solo metadati senza verifica).     │
