@@ -37,6 +37,14 @@ LIVELLO 3 — ISTANZA LSO   (singolo progetto)
 
 **Distinzione chiave:** il repo `oracode` è il **paradigma (la legge: regole, docs, templates)**. La cartella globale è lo **stato operativo dell'engine (la sala di controllo: mission in corso, focus, audit, licenza)**. Sono due cose diverse — per questo non possono avere lo stesso nome.
 
+**🔒 CHIARIMENTO CRITICO (CEO 2026-05-31): L1 NON è un registro di mission.**
+
+L1 è **il software + il motore**: le regole (`oracode`) + l'enforcement (`os3-matrix`) + il motore che *fa girare* le mission (`~/oracode-engine`). Il motore tiene solo lo **scratch operativo** (chi lavora su cosa adesso, lock, stato in volo) — **non un archivio versionato**. È lo **strumento**, non i libri contabili.
+
+> Analogia (CEO): L1 è il **ponte sollevatore con l'auto sopra adesso** (operativo, transitorio). L2 è il **registro di tutte le riparazioni fatte, con tempi e costi** (permanente, versionato).
+
+Il **primo vero MISSION_REGISTRY è L2** (il HUB). Era l'errore di mettere "stato di tutte le mission della macchina" come se fosse un registro L1 a rendere L1 e L2 indistinguibili: corretto. L1 = motore acceso (*"cosa gira adesso?"*); L2 = libri contabili (*"cosa ha prodotto la softwarehouse nel tempo?"*).
+
 **🔒 NOME FISSATO (CEO 2026-05-30):** la cartella globale visibile si chiama **`~/oracode-engine/`**.
 
 **Cosa contiene** (oggi in `~/.oracode/`, DA SPOSTARE in `~/oracode-engine/`): `missions/` (stato runtime per-mission), `focus/` (focus per-session, M-OS3-016), `audit/` (task-invocations.jsonl spawn fingerprint), `state/`, `license.json`.
@@ -112,9 +120,11 @@ Quindi:
 
 | Livello | Cos'è | MISSION_REGISTRY | Statistiche | Numerazione |
 |---|---|---|---|---|
-| **1 — GLOBALE** | macchina / paradigma, cartella **visibile** | stato runtime (state machine) | — | — |
-| **2 — HUB** | softwarehouse acquirente | **SÌ — file unico** che raduna tutto | **calcolate qui** (su decine di cartelle) | **GLOBALE UNICA** (contatore centrale, no ripetizioni cross-istanza) |
-| **3 — ISTANZA LSO** | singolo progetto | **SÌ — proprio**, nel repo (schema EGI-DOC provato) | no (solo dati grezzi) | no |
+| **1 — GLOBALE** | il **motore + software** (paradigma + matrix + `~/oracode-engine`) | **NO** — solo scratch runtime del motore (lock, focus, stato in volo). NON un archivio. | — | — |
+| **2 — HUB** | softwarehouse acquirente | **SÌ — primo vero registro**: file unico che raduna tutto, versionato nel `HUB-DOC` repo della softwarehouse | **calcolate qui** (su decine di cartelle) | **GLOBALE UNICA** (contatore centrale, no ripetizioni cross-istanza) |
+| **3 — ISTANZA LSO** | singolo progetto/cliente | **SÌ — proprio**, nel repo del progetto (schema EGI-DOC provato) | no (solo dati grezzi) | no |
+
+**Chi installa cosa (softwarehouse acquirente):** installa **L1** (motore+software, una volta) + **L2** (il suo `HUB-DOC`, il suo libro contabile) e **genera L3** (un'istanza per cliente, via `/project`). HUB-DOC separato quando ha 2+ clienti; accoppiato HUB+istanza finché ne ha uno (come FlorenceEGI oggi, "caso unico").
 
 ---
 
@@ -128,9 +138,13 @@ Quindi:
 3. **Chiavi entry M-OS3-022/023/024** → **convertire ORA a inglese** (il registry oracode era misto; la riga sopra "già inglese" era falsa, corretta).
 4. **Status mission in corso nel registry repo (L3)** → **stato grezzo 1:1** dall'engine (`planned`/`executing`/`auditing`/...), non collassato. Il registry rispecchia fedelmente lo stato della state machine.
 5. **Numerazione mission (L2 HUB)** → **GLOBALE UNICA**: contatore centrale al HUB, nessun numero si ripete mai tra istanze. ⚠ Implica riconciliare la numerazione storica esistente (es. M-005 esiste sia in EGI sia in fabiocherici) — lavoro di Unità 4 HUB.
-6. **Path del file unico HUB (L2)** → **RIMANDATO** (CEO ha dubbi da chiarire). `[CEO: da decidere prima di Unità 4]`
+6. **Path del file unico HUB (L2)** → **RISOLTO (CEO 2026-05-31)**: vive nel **`HUB-DOC` repo della softwarehouse**, versionato in git (es. `Magicsoft-HUB-DOC/docs/missions/`). NON in `~/oracode-engine/` (che è L1, motore, non un archivio). Risolto chiarendo che L1 non è un registro: il HUB è il primo registro, ed è patrimonio versionato della softwarehouse.
 
-L'SSOT (le **decisioni**) è completo salvo il punto 6 (path L2, rimandato). Resta l'**implementazione**.
+## Decisione CEO 2026-05-31 — chiarimento L1 vs L2 (vedi sezione Livello 1)
+
+7. **L1 NON è un registro di mission.** L1 = motore+software (scratch runtime). Il primo registro vero è L2 (HUB). Questo scioglie sia l'indistinguibilità L1/L2 sia il path HUB (punto 6).
+
+L'SSOT (le **decisioni**) è **completo**. Resta l'**implementazione**.
 
 ---
 
