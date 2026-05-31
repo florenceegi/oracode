@@ -50,7 +50,7 @@ source: docs/lso/LSO_NOMENCLATURE_v2.md
 
 ## 2. Layer Stack (L0-L11)
 
-| Layer | Nome | Funzione biologica | Maturity FlorenceEGI |
+| Layer | Nome | Funzione biologica | Maturity (istanza: FlorenceEGI) |
 |-------|------|--------------------|----------------------|
 | L0 | Mielina | Infrastruttura di trasmissione (SSOT_REGISTRY) | prerequisito |
 | L1 | Sync | Metabolismo cellulare base | PARTIAL |

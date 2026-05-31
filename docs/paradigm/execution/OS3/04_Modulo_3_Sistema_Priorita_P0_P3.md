@@ -476,7 +476,7 @@ P3 Bonus (EXCELLENCE):
 - **P0 only**: Sistema funziona ma non è professionale
 - **P0 + P1**: Production-ready standard
 - **P0 + P1 + P2**: Enterprise-grade quality
-- **P0 + P1 + P2 + P3**: Excellence level (FlorenceEGI standard)
+- **P0 + P1 + P2 + P3**: Excellence level (caso esemplare: standard dell'istanza FlorenceEGI)
 
 ---
 

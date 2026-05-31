@@ -83,11 +83,11 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/lso/00_LSO_LIVING_SOFTWARE_ORGANISM.md`
 - **Status**: ✅ (letto integrale, 548 righe)
 - **Versione/data**: v4.0.0 — aggiornato 2026-05-08
-- **Sintesi**: Implementazione concreta LSO per FlorenceEGI. **6 principi** (i 4 manifesto + Consciousness + Nervous System NUOVO v4.0). Layer Stack v3.0 con 8 layer + 4 sub-layer dentro L8. Lista completa **27 hook** categorizzati per livello (PreToolUse + PostToolUse). Lista **10 agenti attivi** (os3-audit, os3-gate, organ-gap-scout, oracode-alignment-interpreter, oracode-specialist, doc-sync-v2, egili-blood-keeper, m093-remediation, node-ts, corporate-finance). **DOC-SYNC v2 dettaglio 4 sub-layer L0-L3** con analogie biologiche (mielina/nocicettori/arco riflesso/propriocezione/sistema autonomo). **8 organi in produzione FlorenceEGI** (EGI-HUB, EGI-HUB-HOME, EGI, NATAN_LOC, Sigillo, EGI-Credential, EGI-INFO, CREATOR-STAGING).
+- **Sintesi**: Implementazione concreta LSO per FlorenceEGI. **6 principi** (i 4 manifesto + Consciousness + Nervous System NUOVO v4.0). Layer Stack v3.0 con 8 layer + 4 sub-layer dentro L8. Lista completa **27 hook** categorizzati per livello (PreToolUse + PostToolUse). Lista **10 agenti attivi** (os3-audit, os3-gate, organ-gap-scout, oracode-alignment-interpreter, oracode-specialist, doc-sync-v2, egili-blood-keeper, m093-remediation, node-ts, corporate-finance). **DOC-SYNC v2 dettaglio 4 sub-layer L0-L3** con analogie biologiche (mielina/nocicettori/arco riflesso/propriocezione/sistema autonomo). **8 organi in produzione (caso esemplare: istanza FlorenceEGI)** (EGI-HUB, EGI-HUB-HOME, EGI, NATAN_LOC, Sigillo, EGI-Credential, EGI-INFO, CREATOR-STAGING).
 - **Sezioni chiave**: §5 Principi LSO | §Architettura Layer Stack 8 layer | §Hook System tabella 27 hook | §Agenti tabella 10 | §Sistema Nervoso 4 sub-layer | §Ciclo vitale | §Organi tabella | §Mente organismo (SSOT→RAG→ai_sidebar)
 - **Cita strumenti NON ANCORA NEL MIO INDEX**:
-  - `rag_natan.*` schema DB condiviso (RAG piattaforma — specifico FlorenceEGI)
-  - `natan.rag_*` (NATAN_LOC USE Pipeline)
+  - `rag_<istanza>.*` schema DB condiviso (es. `rag_natan` su FlorenceEGI) (RAG piattaforma — specifico dell'istanza)
+  - lo schema RAG di un organo (es. `natan.rag_*` per NATAN_LOC) (USE Pipeline)
   - `marketing_rag.*` (NPE marketing)
   - **Path canonico verificato**: i tool RAG sono `/home/fabio/os3-matrix/bin/rag_reindex.py` + `rag_query.py` (NON `rag_natan_*`, NON in `oracode/bin/`). Le citazioni `rag_natan_*` in 00_LSO sono nomi storici dell'istanza FlorenceEGI.
   - `ssot-reflex-guard.sh` (PostToolUse Layer 1 Riflesso)
@@ -219,18 +219,18 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/standards/LEGACY_STACK_POLICY.md`
 - **Status**: ✅ (letto integrale, 132 righe)
 - **Versione/data**: v1.0.0 — 2026-04-22 (M-094)
-- **Sintesi**: Ban universale 3 stack frontend/backend per **codice NUOVO** ecosistema FlorenceEGI: **Alpine.js** (collision Vanilla TS + Vite), **Livewire** (accoppiamento server↔view, debug difficile), **Filament** (esperienza diretta CEO admin v4 art.florenceegi.com non girava). Tabella stack per 9 organi (✅/❌/🟡). Enforcement hook PreToolUse `check-no-legacy-stack.sh` con pattern regex bloccanti. Strategia Delta solo EGI legacy (sezioni Livewire/Alpine pre-policy, no rifattorizzazione, on-touch-only).
+- **Sintesi**: Ban universale 3 stack frontend/backend per **codice NUOVO** dell'ecosistema (caso esemplare: istanza FlorenceEGI): **Alpine.js** (collision Vanilla TS + Vite), **Livewire** (accoppiamento server↔view, debug difficile), **Filament** (esperienza diretta CEO admin v4 art.florenceegi.com non girava). Tabella stack per 9 organi (✅/❌/🟡). Enforcement hook PreToolUse `check-no-legacy-stack.sh` con pattern regex bloccanti. Strategia Delta solo EGI legacy (organo EGI dell'istanza FlorenceEGI) (sezioni Livewire/Alpine pre-policy, no rifattorizzazione, on-touch-only).
 - **Sezioni chiave**: §1 Ban tabella 3 stack | §2 Stack per organo | §3 Alternative approvate | §4 Hook enforcement | §6 Storico
 
 ### `SSOT_REGISTRY.json` (EGI-DOC)
-- **Path**: `/home/fabio/EGI-DOC/docs/lso/SSOT_REGISTRY.json`
+- **Path**: `/home/fabio/EGI-DOC/docs/lso/SSOT_REGISTRY.json` (istanza FlorenceEGI)
 - **Status**: 🟡 (letto 80 righe su 3777)
 - **Versione/data**: v1.1.0 — 2026-05-25 (M-180 rebase: 68 rewrites, 9 baseline additions, 101 unrepairable)
-- **Sintesi**: SSOT Registry FlorenceEGI Layer 0 MIELINA. Schema RICCO: ssot_id, path, title, organ, doc_type, priority, check_frequency (on_commit/daily/weekly/on_demand), watches (repos + paths + patterns), last_verified, last_drift_score, last_verified_by, missions_since_last_check, known_drift.
+- **Sintesi**: SSOT Registry dell'istanza (es. FlorenceEGI) Layer 0 MIELINA. Schema RICCO: ssot_id, path, title, organ, doc_type, priority, check_frequency (on_commit/daily/weekly/on_demand), watches (repos + paths + patterns), last_verified, last_drift_score, last_verified_by, missions_since_last_check, known_drift.
 - **Sezioni chiave**: _meta | check_frequencies | documents[] (centinaia di SSOT)
 
 ### `COVERAGE_CONFIG.json`
-- **Path**: `/home/fabio/EGI-DOC/docs/lso/COVERAGE_CONFIG.json`
+- **Path**: `/home/fabio/EGI-DOC/docs/lso/COVERAGE_CONFIG.json` (istanza FlorenceEGI)
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v2.1.0 — 2026-05-12
 - **Sintesi**: Config DOC-SYNC v2.1 Coverage Native. Soglie per organo (default 50%, EGI 30%, EGI-DOC 5%, YURI-BIAGINI 0%, EGI-STAT 30%, EGI-HUB-HOME-REACT 30%, EGI-SALES 30%). max_broken_patterns_pct 25%, max_dead_ssots_pct 5%, drift_alert_threshold 0.5. Esclusioni regex (node_modules, vendor, asset binari, lock, ecc.). Applies to `rag_natan_coverage.py` + cron `docsync_weekly_reglob`.
@@ -256,16 +256,16 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Status**: ❌ — 382 righe
 - **Sintesi**: TBD — identità Padmin (cosa è, come si comporta)
 
-### `padmin_partner_memory.md`
-- **Path**: `/home/fabio/oracode/docs/paradigm/padmin/padmin_partner_memory.md`
-- **Status**: 🗂️ (memoria specifica CEO Fabio, non vitale per paradigma)
-- **Sintesi**: Skip per indice paradigma. Memoria operativa rapporto Fabio-Padmin.
+### Memoria privata del partner
+- **Path**: archivio privato fuori dal repo pubblico (dati personali — non nel paradigma MIT)
+- **Status**: 🔒 (memoria operativa specifica dell'istanza, non vitale per il paradigma)
+- **Sintesi**: handoff AI-to-AI sullo stato del partner umano. Vive fuori dal repo pubblico per privacy/GDPR.
 
 ### `NAMING_STANDARD_CODE.md`
 - **Path**: `/home/fabio/oracode/docs/paradigm/standards/NAMING_STANDARD_CODE.md`
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v1.0.0 — 2026-04-10
-- **Sintesi**: Standard naming PHP/Python/TypeScript. Pattern organi (Natan*, Sigillo*, Egi*). Suffix universali (Service/Exception/Enum/Interface/Dto). Anti-pattern (no prefix I/T/Abstract). Organ Index `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json` generato da `/home/fabio/oracode/bin/organ_index.py`.
+- **Sintesi**: Standard naming PHP/Python/TypeScript. Pattern organi (es. Natan*, Sigillo*, Egi* nell'istanza FlorenceEGI). Suffix universali (Service/Exception/Enum/Interface/Dto). Anti-pattern (no prefix I/T/Abstract). Organ Index `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json` (istanza FlorenceEGI) generato da `/home/fabio/oracode/bin/organ_index.py`.
 - **Sezioni chiave**: PHP/Python/TS conventions | Cross-language | Anti-pattern | P0-4 esteso verifica pre-creazione | Organ Index
 
 ### `LEGACY_STACK_POLICY.md` — (sintesi sopra in TIER 1D, riferimento)
@@ -356,13 +356,13 @@ Archive (storico):
 - `_archive/Part I-IV...` + `FRAMMENTI_COSCIENZA_EVOLUTIVA.md` + altri 6 file
 
 00_ECOSISTEMA.md path REALE confermato:
-- `/home/fabio/EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md` (214 r) ✅ letto — vive sotto organo egi-hub
+- `/home/fabio/EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md` (214 r) ✅ letto — vive sotto organo egi-hub (istanza FlorenceEGI)
 
 ### `00_ECOSISTEMA.md` (egi-hub)
-- **Path**: `/home/fabio/EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md`
+- **Path**: `/home/fabio/EGI-DOC/docs/egi-hub/00_ECOSISTEMA.md` (istanza FlorenceEGI)
 - **Status**: ✅ (letto integrale, 214 righe)
 - **Versione/data**: v2.0.1 — 2026-03-25
-- **Sintesi**: FlorenceEGI come **protocollo economico**, non piattaforma. EGI = `Wrapper<T> + Regole + Audit + Valore` (contenitore tipizzato, NON NFT). Progetti orbitanti = istanze di oggetti con interfacce comuni (sostituibili, scollegabili, aggiornabili) — **SOLID applicato a ecosistema**. Giunture = API contract, Payment contracts, EGI schema, Wallet protocol, Audit protocol, AI gateway. AI come Sistema Nervoso Digitale (governatori/validatori/regolatori di flusso). 6 pattern fusi in una ontologia: Microservizi + Factory + DI + Policy engines + Event sourcing + AI agents. **Stato doc**: molti campi "DA COMPLETARE".
+- **Sintesi**: FlorenceEGI (caso esemplare d'istanza) come **protocollo economico**, non piattaforma. EGI = `Wrapper<T> + Regole + Audit + Valore` (contenitore tipizzato, NON NFT). Progetti orbitanti = istanze di oggetti con interfacce comuni (sostituibili, scollegabili, aggiornabili) — **SOLID applicato a ecosistema**. Giunture = API contract, Payment contracts, EGI schema, Wallet protocol, Audit protocol, AI gateway. AI come Sistema Nervoso Digitale (governatori/validatori/regolatori di flusso). 6 pattern fusi in una ontologia: Microservizi + Factory + DI + Policy engines + Event sourcing + AI agents. **Stato doc**: molti campi "DA COMPLETARE".
 - **Sezioni chiave**: §1 Natura protocollo | §2 EGI wrapper | §3 Progetti orbitanti SOLID | §4 Giunture interfacce | §5 AI regolatori | §6 Pattern architetturali
 
 ### `OS3/00_OS3_Executive_Summary.md`
@@ -575,8 +575,7 @@ Archive (storico):
 1. `PADMIN_INDEX.md` (briefing executive)
 2. `PADMIN_ONBOARDING.md` (manuale esteso)
 3. `PADMIN_AI_IDENTITY.md` (identità sostantiva)
-4. `padmin_partner_memory.md` (memoria CEO)
-5. `Oracode_Systems/PADMIN_IDENTITY_OS3_*` (5 file)
+4. `Oracode_Systems/PADMIN_IDENTITY_OS3_*` (5 file)
 
 ### Triade OSZ → OS3 → OS4
 1. `00_ORACODE_SYSTEM_SSOT.md` (§1 sintesi)
@@ -698,15 +697,15 @@ Solo **L4 PRODUCTION** sola, L1-L8 PARTIAL, L9 DESIGN, L10 CONCEPT, L11 VISION.
 
 | File citato | Vivo dove? | Priorità |
 |---|---|---|
-| `EGI-DOC/docs/00_ECOSISTEMA.md` | EGI-DOC root docs/ (citato da OSZ) | ALTA — dettaglio bio-architettura OSZ |
+| `EGI-DOC/docs/00_ECOSISTEMA.md` (istanza FlorenceEGI) | EGI-DOC root docs/ (citato da OSZ) | ALTA — dettaglio bio-architettura OSZ |
 | `Oracode_Systems/OS3/00_OS3_Executive_Summary.md` | da verificare path | ALTA |
 | `Oracode_Systems/OS3/03_Modulo_2_REGOLA_ZERO.md` | da verificare path | ALTA — il breakthrough |
 | `Oracode_Systems/OS3/04_Modulo_3_Sistema_Priorita_P0_P3.md` | da verificare path | ALTA |
 | `Oracode_Systems/OS4/OS4_FOUNDATION_DOCUMENT.md` | da verificare path | ALTA |
-| `~/oracode/bin/rag_natan_reindex.py` + `rag_natan_query.py` | oracode/bin NON os3-matrix/bin | MEDIA |
+| `/home/fabio/os3-matrix/bin/rag_reindex.py` + `rag_query.py` | os3-matrix/bin (tool reali; `rag_natan_*` in `oracode/bin/` = nomi storici inesistenti, solo .pyc cache) | MEDIA |
 | `ssot-reflex-guard.sh` (Layer 1 Riflesso) | ~/.claude/hooks/ | MEDIA |
 | `ssot-living-check.sh` (Layer 3 cron) | ~/.claude/hooks/ | MEDIA |
 | `os3-deep-audit.sh` (Layer 2 Deep Audit) | ~/.claude/hooks/ | MEDIA |
 | `CLAUDE_ECOSYSTEM_CORE.md` + `CLAUDE_ECOSYSTEM_REF.md` | ogni organo `/home/fabio/*/` | MEDIA — boot context organi |
-| `EGI-DOC/contracts/*.json` (7 contratti L7) | EGI-DOC/contracts/ | MEDIA |
-| Schema DB `rag_natan.*` | DB condiviso | BASSA (specifico FlorenceEGI) |
+| `EGI-DOC/contracts/*.json` (7 contratti L7, istanza FlorenceEGI) | EGI-DOC/contracts/ | MEDIA |
+| Schema DB `rag_<istanza>.*` (es. `rag_natan` su FlorenceEGI) | DB condiviso | BASSA (specifico istanza FlorenceEGI) |

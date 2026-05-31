@@ -264,7 +264,7 @@ Percorso di apprendimento integrato che mostra:
 
 ### 🔹 Ambito PA (esempio: Comune di Firenze)
 
-- L'ente usa NATAN_LOC come SaaS cognitivo.
+- L'ente usa lo SaaS cognitivo di un organo d'istanza (es. NATAN_LOC su FlorenceEGI).
 - Il modulo OS4 controlla che ogni risposta dell'AI sia accompagnata dalle fonti.
 - Gli operatori apprendono come leggere i livelli di affidabilità (✅ ⚠️ ❌).
 - I log OS4 diventano parte dell'audit amministrativo.
@@ -361,7 +361,7 @@ L'Assioma 0 è condiviso tra OS3 e OS4:
 ## 🔏 Crediti e autore
 
 **Ideazione e redazione:**  
-Fabio Cherici – FlorenceEGI / N.A.T.A.N. Project  
+Fabio Cherici – paradigma Oracode (prima istanza: FlorenceEGI / N.A.T.A.N. Project)  
 Firenze, Novembre 2025
 
 **Versione 2.0 - Integrazione Assioma 0**: "La Verità è Funzione Operativa"

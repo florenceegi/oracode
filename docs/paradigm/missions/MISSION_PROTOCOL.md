@@ -45,7 +45,7 @@ Il Mission Protocol è di livello **Oracode** (universale, L1). Il **pattern** d
 
 Il `MISSION_REGISTRY.json` esiste a **due livelli** della gerarchia:
 
-- **L2 HUB** — il **primo vero MISSION_REGISTRY**: file unico che raduna tutto, con **statistiche consolidate** cross-istanza e **numerazione globale unica**. Versionato nel repo `HUB-DOC` della softwarehouse acquirente.
+- **L2 HUB** — il **primo vero MISSION_REGISTRY**: file unico che raduna tutto, con **statistiche consolidate** cross-istanza e **numerazione globale unica**. Versionato nel repo `<HUB>-DOC` della softwarehouse acquirente.
 - **L3 ISTANZA LSO** — il registry **proprio del progetto**, nel suo repo (es. `<istanza>-DOC/docs/missions/`). Traccia le mission dell'istanza; le statistiche e la numerazione globale NON vivono qui (sono responsabilità L2 HUB).
 
 | Componente | Livello | Sede tipica |
@@ -122,7 +122,7 @@ Il CEO definisce intent. Supervisor riceve l'intent, identifica `type` (tipo di 
 }
 ```
 
-> **Nota chiavi.** Le chiavi del `MISSION_REGISTRY` sono in **INGLESE** (`id`, `title`, `date_open`, `date_close`, `status`, `type`, `organs`, `cross_organ`, `scope_hash`, `priority`) — come scritte dal motore (`bin/mission`, funzione `syncToRepoRegistry`) e fissate dalla legge `ORACODE_NEXUS_3_TIER.md`. Le chiavi italiane (`tipo_missione`, `organi_coinvolti`, `data_apertura`, `stato`) sono **legacy EGI-DOC**, non modello per istanze nuove.
+> **Nota chiavi.** Le chiavi del `MISSION_REGISTRY` sono in **INGLESE** (`id`, `title`, `date_open`, `date_close`, `status`, `type`, `organs`, `cross_organ`, `scope_hash`, `priority`) — come scritte dal motore (`bin/mission`, funzione `syncToRepoRegistry`) e fissate dalla legge `ORACODE_NEXUS_3_TIER.md`. Le chiavi italiane (`tipo_missione`, `organi_coinvolti`, `data_apertura`, `stato`) sono **legacy di un'istanza accoppiata (es. EGI-DOC)**, non modello per istanze nuove.
 
 ### 4.2 Bootstrap mirato
 
@@ -163,7 +163,6 @@ Il CEO definisce intent. Supervisor riceve l'intent, identifica `type` (tipo di 
     "docs/oracode/PADMIN_INDEX.md",
     "docs/lso/LSO_NOMENCLATURE_INDEX.md",
     "docs/oracode/MISSION_PROTOCOL.md",
-    "docs/oracode/padmin_partner_memory.md",
     "docs/<istanza>/<ISTANZA>_INSTANCE.md"
   ],
   "by_mission_type": {

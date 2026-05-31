@@ -425,25 +425,6 @@
       "last_drift_score": 0
     },
     {
-      "ssot_id": "padmin-partner-memory",
-      "path": "docs/paradigm/padmin/padmin_partner_memory.md",
-      "title": "Padmin Partner Memory — memoria CEO",
-      "doc_type": "concept-ssot",
-      "priority": "medium",
-      "check_frequency": "on_demand",
-      "watches": {
-        "repos": [],
-        "paths": []
-      },
-      "registered_by": "M-OS3-023",
-      "last_verified": "2026-05-29",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-022",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0
-    },
-    {
       "ssot_id": "padmin-identity-os3-core",
       "path": "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_CORE.md",
       "title": "Padmin Identity OS3 — Core",

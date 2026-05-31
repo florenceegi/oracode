@@ -39,8 +39,8 @@
                             │                │
               ┌─────────────▼──┐   ┌────────▼──────────────────────┐
               │ SSOT_REGISTRY  │   │  Python CLI                    │
-              │    .json       │   │  oracode/bin/                  │
-              │ (read/write)   │   │  rag_natan_reindex.py          │
+              │    .json       │   │  os3-matrix/bin/               │
+              │ (read/write)   │   │  rag_reindex.py                │
               └────────────────┘   │                                │
                                    │  - Chunk markdown              │
                                    │  - OpenAI embeddings           │
@@ -50,13 +50,14 @@
                                                │
                                    ┌───────────▼────────────────────┐
                                    │  PostgreSQL RDS                │
-                                   │  rag_natan.documents           │
-                                   │  rag_natan.chunks              │
-                                   │  rag_natan.embeddings          │
+                                   │  rag_<istanza>.documents       │
+                                   │  (es. rag_natan su FlorenceEGI)│
+                                   │  rag_<istanza>.chunks          │
+                                   │  rag_<istanza>.embeddings      │
                                    └────────────────────────────────┘
 
 Guard (enforcement):
-  doc-sync-v2-guard.sh (PostToolUse Bash on git push EGI-DOC)
+  doc-sync-v2-guard.sh (PostToolUse Bash on git push del repo SSOT dell'istanza, es. EGI-DOC su FlorenceEGI)
   → BLOCK if completed mission lacks doc_sync_log
 ```
 
@@ -67,7 +68,7 @@ Guard (enforcement):
 | Componente | Interfaccia con Mission Engine | Interfaccia con DB |
 |------------|-------------------------------|-------------------|
 | Agent doc-sync-v2 | Riceve: mission_id, files_modified, diff (da Mission Phase 6). Restituisce: doc_sync_log JSON | Legge: SSOT_REGISTRY.json. Scrive: SSOT .md files, audit trail |
-| Python CLI rag_natan_reindex | Riceve: lista SSOT file paths da agent. Restituisce: rag_reindex_log JSON | Scrive: rag_natan.documents, chunks, embeddings (transazionale per doc) |
+| Python CLI rag_reindex | Riceve: lista SSOT file paths da agent. Restituisce: rag_reindex_log JSON | Scrive: rag_<istanza>.documents, chunks, embeddings (transazionale per doc) |
 | Guard hook | Legge: MISSION_REGISTRY.json → verifica doc_sync_log presente | Nessuna |
 
 ### 1.3 Flusso dati
@@ -123,10 +124,10 @@ Per ogni anti-pattern di § 2 della specifica, dimostrazione che l'implementazio
 **Esclusione strutturale**: Il prompt dell'agent richiede per ogni SSOT impattato: o contenuto modificato (con diff narrativo), o giustificazione esplicita tracciata del perche non servono modifiche. L'aggiornamento di `last_verified` avviene SOLO come effetto collaterale di una modifica di contenuto o di un no-change giustificato.
 
 ### Anti-pattern 7 — Re-indexing asincrono
-**Esclusione strutturale**: L'agent chiama il Python CLI `rag_natan_reindex.py` in modo sincrono (Bash call, non run_in_background). Attende il risultato. Sanity check e bloccante: fallimento del sanity check dopo retry impedisce chiusura mission (vedi § 6).
+**Esclusione strutturale**: L'agent chiama il Python CLI `rag_reindex.py` in modo sincrono (Bash call, non run_in_background). Attende il risultato. Sanity check e bloccante: fallimento del sanity check dopo retry impedisce chiusura mission (vedi § 6).
 
 ### Anti-pattern 8 — Scrittura cieca senza diff
-**Esclusione strutturale**: L'agent produce un `diffs/<ssot_name>.md` per ogni SSOT modificato, contenente il diff narrativo prima/dopo. L'audit trail in `EGI-DOC/audit/doc_sync/<mission_id>/` conserva tutti i diff.
+**Esclusione strutturale**: L'agent produce un `diffs/<ssot_name>.md` per ogni SSOT modificato, contenente il diff narrativo prima/dopo. L'audit trail in `<repo-SSOT-istanza>/audit/doc_sync/<mission_id>/` (es. EGI-DOC su FlorenceEGI) conserva tutti i diff.
 
 ### Anti-pattern 9 — Confusione DOC-SYNC / DOC-DISCOVERY
 **Esclusione strutturale**: L'agent lavora SOLO sui file della mission (Step 1 riceve lista esplicita). La discovery laterale (Step 3) cerca SSOT correlati semanticamente, ma non scansiona codice non toccato dalla mission.
@@ -145,7 +146,7 @@ Per ogni anti-pattern di § 2 della specifica, dimostrazione che l'implementazio
 | **Componente** | Agent doc-sync-v2 (LLM Claude) |
 | **Input** | Diff unificato della mission, lista file modificati con tipo (created/modified/deleted/renamed) |
 | **Logica** | L'agent legge il diff e produce una sintesi semantica strutturata JSON: nuove funzioni/classi, funzioni rimosse, comportamenti modificati, nuovi contenuti narrativi, modifiche a contenuti narrativi |
-| **Output** | `mission_semantic_summary.json` scritto in `EGI-DOC/audit/doc_sync/<mission_id>/` |
+| **Output** | `mission_semantic_summary.json` scritto in `<repo-SSOT-istanza>/audit/doc_sync/<mission_id>/` (es. EGI-DOC su FlorenceEGI) |
 | **Failure points** | (a) Diff troppo grande per context window → mitigazione: chunking del diff per file, analisi file-per-file, merge risultati. (b) LLM genera JSON malformato → mitigazione: retry con prompt semplificato (max 2 retry) |
 | **Gestione failure** | Se fallisce dopo retry: doc_sync_log.outcome = "failed", failure_reason = "semantic_analysis_failed", mission resta in closing |
 
@@ -166,7 +167,7 @@ Per ogni anti-pattern di § 2 della specifica, dimostrazione che l'implementazio
 |---------|-----------|
 | **Componente** | Agent doc-sync-v2 (LLM Claude per estrazione concetti + Bash per query RAG) |
 | **Input** | `mission_semantic_summary.json` (Step 1) + accesso RAG piattaforma |
-| **Logica** | (1) LLM estrae concetti chiave dalla sintesi semantica (sostantivi tematici, entita nominate). (2) Per ogni concetto, query vettoriale su `rag_natan.embeddings` via Python CLI `rag_natan_query.py --concept "..."`. (3) Risultati filtrati: rimuove SSOT gia identificati in Step 2. (4) Score di rilevanza: cosine similarity > 0.55 (soglia discovery, piu alta di retrieval normale per ridurre falsi positivi). (5) LLM valida i candidati: "questo SSOT descrive concettualmente qualcosa che la mission ha cambiato?" |
+| **Logica** | (1) LLM estrae concetti chiave dalla sintesi semantica (sostantivi tematici, entita nominate). (2) Per ogni concetto, query vettoriale su `rag_<istanza>.embeddings` via Python CLI `rag_query.py --concept "..."`. (3) Risultati filtrati: rimuove SSOT gia identificati in Step 2. (4) Score di rilevanza: cosine similarity > 0.55 (soglia discovery, piu alta di retrieval normale per ridurre falsi positivi). (5) LLM valida i candidati: "questo SSOT descrive concettualmente qualcosa che la mission ha cambiato?" |
 | **Output** | `laterally_impacted_ssots.json` con score per ogni candidato |
 | **Failure points** | (a) RAG vuoto (nessun SSOT indicizzato) → procede con lista laterale vuota. (b) Troppi candidati (>15) → filtro: prende top-5 per score. (c) Query RAG fallisce → procede senza discovery laterale, segnala in log |
 | **Gestione failure** | Discovery laterale e best-effort. Fallimento non blocca la mission, ma viene registrato nel log |
@@ -334,7 +335,7 @@ Se N patch sono approvate e M patch sono rifiutate:
 
 | Aspetto | Dettaglio |
 |---------|-----------|
-| **Componente** | Python CLI `rag_natan_reindex.py` (chiamato dall'agent via Bash) |
+| **Componente** | Python CLI `rag_reindex.py` (chiamato dall'agent via Bash) |
 | **Input** | Lista file SSOT con status `applied` (path assoluti) |
 | **Logica** | Per ogni SSOT file: (1) Legge contenuto markdown. (2) Chunking: split per heading H2/H3 (sezioni semantiche). Chunk max 1500 chars, overlap 100 chars. (3) Genera embedding per ogni chunk via OpenAI text-embedding-3-small. (4) Transazione PostgreSQL per SSOT: DELETE vecchi chunks/embeddings del documento → INSERT nuovi. (5) Sanity check bloccante (vedi § 6) |
 | **Output** | JSON su stdout: `{ssot_path, chunks_updated, embeddings_generated, index_transaction_id, sanity_check_passed}` per ogni SSOT. Agent lo parsa e scrive `rag_reindex_log.json` |
@@ -349,7 +350,7 @@ Se N patch sono approvate e M patch sono rifiutate:
 | **Componente** | Agent doc-sync-v2 (Write tool per audit trail) |
 | **Input** | Output di tutti gli step precedenti |
 | **Logica** | (1) Scrive `doc_sync_summary.md` (narrativo, leggibile). (2) Compone `doc_sync_log` JSON. (3) Restituisce log a mission skill. (4) Mission skill scrive log nel MISSION_REGISTRY, marca doc_sync_executed: true |
-| **Output** | Tutti i file in `EGI-DOC/audit/doc_sync/<mission_id>/` + doc_sync_log nella mission |
+| **Output** | Tutti i file in `<repo-SSOT-istanza>/audit/doc_sync/<mission_id>/` (es. EGI-DOC su FlorenceEGI) + doc_sync_log nella mission |
 | **Failure points** | Scrittura file fallisce → retry |
 | **Gestione failure** | Se audit trail non scrivibile: log degradato (solo JSON inline nel registry) |
 
@@ -381,7 +382,7 @@ PER OGNI modifica semantica rilevante per questo SSOT:
 
 ### Esempi concreti dal codebase
 
-**Caso additivo**: Mission aggiunge `EgiliCostCalculator` a NATAN_LOC (M-136). Il SSOT `00_NATAN_LOC_STATO_DELLARTE_v2.md` non menziona questa classe. DOC-SYNC v2 aggiunge una sezione sotto "Architettura" che descrive il nuovo componente. Status: `pending` → `applied`.
+**Caso additivo**: Mission aggiunge `EgiliCostCalculator` a un organo (es. NATAN_LOC su FlorenceEGI, M-136). Il SSOT `00_NATAN_LOC_STATO_DELLARTE_v2.md` non menziona questa classe. DOC-SYNC v2 aggiunge una sezione sotto "Architettura" che descrive il nuovo componente. Status: `pending` → `applied`.
 
 **Caso sostitutivo approvato**: Mission modifica il threshold di `EvidenceVerifier.MIN_SIMILARITY` da 0.45 a 0.50 (ipotetico). Il SSOT documenta "MIN_SIMILARITY = 0.45". DOC-SYNC v2 propone patch, operatore approva. Status: `pending` → `awaiting_approval` → `approved` → `applied`.
 
@@ -432,7 +433,7 @@ mission_semantic_summary.json
                ▼
    ┌────────────────────────┐
    │ 2. Query vettoriale    │  Per ogni concetto:
-   │    RAG piattaforma     │  SELECT rag_natan.embeddings
+   │    RAG piattaforma     │  SELECT rag_<istanza>.embeddings
    └───────────┬────────────┘  WHERE cosine_sim > 0.55
                │               ORDER BY similarity DESC LIMIT 10
                ▼
@@ -461,7 +462,7 @@ mission_semantic_summary.json
 
 ### Implementazione tecnica query RAG
 
-Il Python CLI `rag_natan_query.py` esegue:
+Il Python CLI `rag_query.py` esegue:
 
 ```python
 # Genera embedding del concetto
@@ -469,9 +470,9 @@ embedding = openai.embeddings.create(input=concept, model="text-embedding-3-smal
 
 # Query pgvector
 SELECT d.id, d.title, d.slug, 1 - (e.embedding <=> %s) as similarity
-FROM rag_natan.embeddings e
-JOIN rag_natan.chunks c ON e.chunk_id = c.id
-JOIN rag_natan.documents d ON c.document_id = d.id
+FROM rag_<istanza>.embeddings e
+JOIN rag_<istanza>.chunks c ON e.chunk_id = c.id
+JOIN rag_<istanza>.documents d ON c.document_id = d.id
 WHERE 1 - (e.embedding <=> %s) > 0.55
 ORDER BY similarity DESC
 LIMIT 10
@@ -490,26 +491,26 @@ Ogni SSOT e re-indicizzato in una singola transazione PostgreSQL:
 ```python
 async with db.transaction():
     # 1. Trova documento esistente (by slug = ssot_filename_without_extension)
-    doc = SELECT * FROM rag_natan.documents WHERE slug = %s
+    doc = SELECT * FROM rag_<istanza>.documents WHERE slug = %s
 
     if doc:
         # 2. DELETE vecchi chunks + embeddings (CASCADE)
-        DELETE FROM rag_natan.chunks WHERE document_id = doc.id
+        DELETE FROM rag_<istanza>.chunks WHERE document_id = doc.id
         # 3. UPDATE documento
-        UPDATE rag_natan.documents SET content = %s, updated_at = NOW() WHERE id = doc.id
+        UPDATE rag_<istanza>.documents SET content = %s, updated_at = NOW() WHERE id = doc.id
     else:
         # 2b. INSERT nuovo documento
-        INSERT INTO rag_natan.documents (title, slug, content, language, document_type, status, tags)
+        INSERT INTO rag_<istanza>.documents (title, slug, content, language, document_type, status, tags)
         VALUES (%s, %s, %s, 'it', 'ssot', 'published', %s)
 
     # 4. INSERT nuovi chunks
     for i, chunk in enumerate(chunks):
-        INSERT INTO rag_natan.chunks (document_id, text, section_title, chunk_order, chunk_type, language)
+        INSERT INTO rag_<istanza>.chunks (document_id, text, section_title, chunk_order, chunk_type, language)
         VALUES (doc.id, %s, %s, %s, 'paragraph', 'it')
 
     # 5. INSERT embeddings (1:1 con chunks)
     for chunk_id, embedding in zip(chunk_ids, embeddings):
-        INSERT INTO rag_natan.embeddings (chunk_id, embedding, model)
+        INSERT INTO rag_<istanza>.embeddings (chunk_id, embedding, model)
         VALUES (%s, %s, 'text-embedding-3-small')
 ```
 
@@ -555,7 +556,7 @@ Dopo ogni upsert transazionale, il sanity check verifica che il RAG sia effettiv
 # Query il RAG con il primo chunk come query
 test_embedding = embeddings[0]
 results = SELECT chunk_id, 1 - (embedding <=> %s) as sim
-          FROM rag_natan.embeddings
+          FROM rag_<istanza>.embeddings
           ORDER BY sim DESC LIMIT 3
 
 # Il chunk stesso deve apparire nei top-3
@@ -642,7 +643,7 @@ sanity_passed = any(r.chunk_id == first_chunk_id for r in results)
 |---------|-----------|
 | **Setup** | Mission che modifica 3 SSOT: 2 additivi, 1 sostitutivo |
 | **Esecuzione** | DOC-SYNC v2 processa |
-| **Verifica** | In `EGI-DOC/audit/doc_sync/<mission_id>/` esistono: `mission_semantic_summary.json`, `directly_impacted_ssots.json`, `laterally_impacted_ssots.json`, `doc_sync_actions.json` (con status granulari per ogni azione), `diffs/ssot1.md`, `diffs/ssot2.md`, `diffs/ssot3.md`, `rag_reindex_log.json`, `doc_sync_summary.md`. Il summary e leggibile da umano e riporta lo stato finale di ogni azione |
+| **Verifica** | In `<repo-SSOT-istanza>/audit/doc_sync/<mission_id>/` (es. EGI-DOC su FlorenceEGI) esistono: `mission_semantic_summary.json`, `directly_impacted_ssots.json`, `laterally_impacted_ssots.json`, `doc_sync_actions.json` (con status granulari per ogni azione), `diffs/ssot1.md`, `diffs/ssot2.md`, `diffs/ssot3.md`, `rag_reindex_log.json`, `doc_sync_summary.md`. Il summary e leggibile da umano e riporta lo stato finale di ogni azione |
 | **Pass condition** | Tutti i file presenti, summary narrativo coerente, stati azione tracciabili |
 
 ### Test 8 — Anti-pattern verification
@@ -718,7 +719,7 @@ Non esiste periodo di transizione. La migrazione e atomica:
 | Dimensione diff media | 400 righe | Stima conservativa |
 | SSOT impattati diretti/mission | 2 | Media stimata su 123 SSOT / 9 organi |
 | SSOT impattati laterali/mission | 1 | Best-effort, spesso 0 |
-| Dimensione SSOT media | 3000 chars | Tipico .md in EGI-DOC |
+| Dimensione SSOT media | 3000 chars | Tipico .md nel repo SSOT dell'istanza (es. EGI-DOC su FlorenceEGI) |
 | Chunk per SSOT | 3 | ~3000 chars / 1500 max per chunk |
 
 ### Costi per mission
@@ -787,10 +788,10 @@ Questo non e overhead DOC-SYNC v2 — e il costo deliberato di garantire che mod
 | File | Tipo | Righe stimate |
 |------|------|---------------|
 | `~/.claude/agents/doc-sync-v2.md` | Agent definition | ~200 |
-| `~/oracode/bin/rag_natan_reindex.py` | Python CLI | ~250 |
-| `~/oracode/bin/rag_natan_query.py` | Python CLI | ~80 |
+| `~/os3-matrix/bin/rag_reindex.py` | Python CLI | ~250 |
+| `~/os3-matrix/bin/rag_query.py` | Python CLI | ~80 |
 | `~/.claude/hooks/doc-sync-v2-guard.sh` | PostToolUse hook | ~60 |
-| `EGI-DOC/audit/doc_sync/.gitkeep` | Directory marker | 1 |
+| `<repo-SSOT-istanza>/audit/doc_sync/.gitkeep` (es. EGI-DOC su FlorenceEGI) | Directory marker | 1 |
 
 ### File da modificare
 
@@ -833,7 +834,7 @@ Estensione approvata 2026-05-12 (specifica § 11). Implementa la **copertura** c
 | Componente | Path | Stato |
 |-----------|------|-------|
 | CLI coverage | `/home/fabio/oracode/bin/rag_natan_coverage.py` | Operativo |
-| Config soglie | `EGI-DOC/docs/lso/COVERAGE_CONFIG.json` | Operativo |
+| Config soglie | `<repo-SSOT-istanza>/docs/lso/COVERAGE_CONFIG.json` (es. EGI-DOC su FlorenceEGI) | Operativo |
 | PreToolUse hook | `~/.claude/hooks/coverage-check-precheck.sh` | Operativo (wired M-189, 2026-05-15) |
 | Cron settimanale | `docsync_weekly_reglob.py` | Previsto (specifica § 11.5) |
 | History | `~/.local/state/docsync_coverage_history.jsonl` | Operativo |

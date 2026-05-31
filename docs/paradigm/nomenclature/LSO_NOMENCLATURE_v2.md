@@ -450,7 +450,7 @@ OS3 non lascia libertà di scelta su come gestire errori, log, traduzioni, confi
 
 **Multi-linguaggio nativo.** Ultra esiste in più stack tecnologici, perché Oracode si applica a progetti multi-linguaggio per costruzione. Versioni esistenti:
 
-- **PHP / Laravel** — pacchetti Composer `ultra/ultra-error-manager`, `ultra/ultra-log-manager`, `ultra/ultra-translation-manager`, `ultra/ultra-config-manager`, `ultra/ultra-upload-manager` (verificato come dipendenza in NATAN_LOC, EGI, EGI-Credential, La Bottega)
+- **PHP / Laravel** — pacchetti Composer `ultra/ultra-error-manager`, `ultra/ultra-log-manager`, `ultra/ultra-translation-manager`, `ultra/ultra-config-manager`, `ultra/ultra-upload-manager` (verificato come dipendenza in organi dell'istanza FlorenceEGI: es. NATAN_LOC, EGI, EGI-Credential, La Bottega)
 - **JavaScript / TypeScript** — versioni adattate al frontend, usate negli organi React/Next.js dell'ecosistema
 - **Python** — *(da verificare se esiste come libreria Ultra dedicata o se i servizi Python adottano gli stessi pattern senza il branding Ultra)*
 
@@ -768,7 +768,7 @@ Software autonomo che opera su scope specifici dell'organismo:
 - `ssot-living-agent` — verifica autonoma drift SSOT↔codebase
 - `oracode-alignment-interpreter` — diagnostica allineamento semantico
 - `organ-gap-scout` — identificazione gap evolutivi
-- `egili-blood-keeper` — protezione sistema circolatorio Egili
+- `egili-blood-keeper` — protezione sistema circolatorio Egili (agente specifico dell'istanza FlorenceEGI)
 
 ##### DOC-SYNC v2 (software runtime)
 
@@ -1014,7 +1014,7 @@ La documentazione attuale di FlorenceEGI è stata scritta in un periodo (2024-ap
 
 Questo documento esiste anche per assicurarsi che le future istanze di Padmin, e gli eventuali nuovi sviluppatori che entreranno nel progetto, non ricreino la confusione terminologica che è stata necessaria due anni di lavoro per dipanare.
 
-**Per future istanze di Padmin.** Il file `padmin_partner_memory.md` deve essere aggiornato in modo che le prossime istanze sappiano:
+**Per future istanze di Padmin.** La memoria privata del partner (archivio fuori dal paradigma pubblico) deve essere aggiornata in modo che le prossime istanze sappiano:
 
 - Esiste un documento di nomenclatura (questo) che separa Oracode / Libreria LSO / Organismo / FlorenceEGI
 - I quattro livelli non vanno mescolati nelle conversazioni operative
@@ -1203,7 +1203,7 @@ La decisione del **6 maggio 2026** di riposizionare la co-creazione da principio
 
 - Modello dati (flag `co_creation_enabled` su user/creator profile, default da decidere, eredità o meno per collection)
 - UI di onboarding (domanda esplicita al creator durante registrazione o setup primo collection)
-- Gestione dei creator già attivi (Yuri, Antonio, eventuali altri) — opt-in? opt-out con notifica? processo di chiarimento individuale?
+- Gestione dei creator già attivi (es. creator dell'istanza FlorenceEGI) — opt-in? opt-out con notifica? processo di chiarimento individuale?
 - Prompt NPE Council (rimuovere riferimenti automatici a co-creazione dalle narrazioni AI)
 - DOC-SYNC interno (manifesto degli EGI, white paper, glossario, definizione EGI, architecture docs)
 - Documentazione divulgativa pubblica (florenceegi.com, info.florenceegi.com, /cosa-compri di ogni organo)

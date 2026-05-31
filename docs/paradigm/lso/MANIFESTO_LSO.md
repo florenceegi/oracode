@@ -20,7 +20,7 @@ priority: critical
 ## Living Software Organism (LSO) — Una Nuova Categoria di Software
 
 > Prima bozza certificabile — v1.0.0
-> Fabio Cherici, FlorenceEGI — 2026
+> Fabio Cherici (FlorenceEGI, prima istanza LSO) — 2026
 
 ---
 
@@ -183,5 +183,5 @@ da strumento passivo che esegue a organismo attivo che sa.
 
 ---
 
-*FlorenceEGI — Oracode System v3.0*
+*Oracode System v3.0 (caso esemplare: FlorenceEGI)*
 *Fabio Cherici — Firenze, 2026*
