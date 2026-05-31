@@ -60,6 +60,8 @@ Guard (enforcement):
   → BLOCK if completed mission lacks doc_sync_log
 ```
 
+> **Nota architetturale (aggiornamento Oracode Nexus).** Il trigger di chiusura non è più legato alla sola `mission.md` di un singolo organo: oggi è orchestrato da **`bin/mission`** (motore in `os3-matrix`) e dal **`/mission` slash command globale context-aware** (rileva l'istanza dalla CWD — Unità 2, FATTO). L'auto-registrazione nel `MISSION_REGISTRY` del progetto (L3) avviene via il **ponte automatico L1→L3** (`bin/mission syncToRepoRegistry`, parallel-safe — Unità 3, FATTO), **non più via sync manuale**.
+
 ### 1.2 Interfacce esplicite
 
 | Componente | Interfaccia con Mission Engine | Interfaccia con DB |
@@ -511,6 +513,8 @@ async with db.transaction():
         VALUES (%s, %s, 'text-embedding-3-small')
 ```
 
+> **Nota lingua (Oracode Nexus).** Il `language` hardcoded a `'it'` (documenti e chunks) riflette l'istanza **EGI legacy**. La direzione del paradigma Oracode Nexus è l'**inglese** (decisione CEO 2026-05-30, cfr. `ORACODE_NEXUS_3_TIER.md` §Livello 3): il valore va **parametrizzato per la lingua dell'istanza**, non assunto a `'it'`.
+
 ### Chunking markdown
 
 ```python
@@ -688,7 +692,7 @@ sanity_passed = any(r.chunk_id == first_chunk_id for r in results)
 
 ### Fase D — Aggiornamento documentazione (giorno 0)
 
-10. **Riscrivere P0-11** in CLAUDE.md e CLAUDE_ECOSYSTEM_CORE.md:
+10. **Riscrivere P0-11** in CLAUDE.md e nel boot context del paradigma `CLAUDE_ORACODE_CORE.md` (storicamente `CLAUDE_ECOSYSTEM_CORE.md`, file dell'istanza EGI legacy; il boot context canonico Oracode Nexus è `CLAUDE_ORACODE_CORE.md`):
     - Da: "L'operatore deve aggiornare i SSOT dopo task Tipo 2+"
     - A: "DOC-SYNC v2 aggiorna automaticamente i SSOT alla chiusura di ogni mission. L'operatore non deve aggiornare manualmente i SSOT durante una mission."
 
@@ -794,7 +798,7 @@ Questo non e overhead DOC-SYNC v2 — e il costo deliberato di garantire che mod
 |------|----------|
 | `~/.claude/commands/mission.md` (tutti gli organi) | Mission Phase 6 invoca doc-sync-v2 |
 | `~/.claude/settings.json` | Registra guard hook |
-| `CLAUDE_ECOSYSTEM_CORE.md` | P0-11 riscritta per v2 |
+| `CLAUDE_ORACODE_CORE.md` (boot context paradigma; legacy `CLAUDE_ECOSYSTEM_CORE.md` = istanza EGI) | P0-11 riscritta per v2 |
 | `oracode/docs/paradigm/lso/00_LSO_LIVING_SOFTWARE_ORGANISM.md` | Sezione DOC-SYNC aggiornata |
 
 ### File da rimuovere/archiviare

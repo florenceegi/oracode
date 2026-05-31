@@ -55,21 +55,27 @@ OS3 introduce un sistema di priorità a 4 livelli che risponde a una domanda fon
 
 Le regole P0 sono i **boundaries non negoziabili** di OS3. Sono poche, precise, e assolutamente critiche.
 
-### **Le 7 Regole P0 Blocking**
+### **Le 13 Regole P0 Universali**
 
-1. **P0-1: REGOLA ZERO** - Anti-Deduzione (vedi Modulo 2)
-2. **P0-2: Translation Keys Only** - No Hardcoded Text
-3. **P0-3: Statistics Rule** - No Hidden Limits
-4. **P0-4: Anti-Method-Invention** - Verify Before Use
-5. **P0-5: UEM-First Rule** - Error Handling Sacred
-6. **P0-6: Anti-Service-Method-Invention** - Service Methods Verified
-7. **P0-7: Anti-Enum-Constant-Invention** - Enum Constants Verified
+1. **P0-1: REGOLA ZERO** - Anti-Deduzione (vedi Modulo 2). Informazione mancante → STOP, chiedi. Mai dedurre, mai completare
+2. **P0-2: Translation Keys Only** - No Hardcoded Text. Ogni stringa visibile passa per il sistema i18n. Chiavi atomiche
+3. **P0-3: Statistics Rule** - No Hidden Limits. Parametri statistiche sempre espliciti. Mai default nascosti
+4. **P0-4: Anti-Method-Invention** - Verify Before Use. Prima di chiamare un metodo, verifica che esista (grep o lettura file)
+5. **P0-5: UEM-First Rule** - Error Handling Sacred. Errori dal gestore centralizzato. Mai try/catch improvvisati, mai solo log
+6. **P0-6: Anti-Service-Method-Invention** - Service Methods Verified. Verifica nel filesystem che service e firma esistano
+7. **P0-7: Anti-Enum-Constant-Invention** - Enum Constants Verified. Verifica che la costante esista come case dell'enum
+8. **P0-8: Complete Flow Analysis** - Prima di modificare qualcosa di non triviale, mappa il flusso completo in 4 fasi (Flow Mapping → Type Tracing → All Occurrences → Impact Analysis)
+9. **P0-9: i18n completa** - Ogni nuova stringa disponibile in tutte le lingue target fin dal primo commit
+10. **P0-10: Anti-bypass data layer** - Accesso al database sempre tramite service factory o repository. Mai query raw quando esiste un'astrazione
+11. **P0-11: DOC-SYNC** - Task non chiusa finché la documentazione SSOT non è aggiornata con il codice
+12. **P0-12: Anti-Infra-Invention** - URL, path, branch, config di deploy: verifica dalla fonte. Mai dedurre nomi plausibili
+13. **P0-13: Test-First Discipline** - Ogni feature/fix/refactor produce o aggiorna test. Task non chiusa senza test verde
 
 ### **Perché Così Poche?**
 
 **Principio: "Regole P0 devono essere così critiche che la loro violazione compromette l'intero sistema."**
 
-Se abbiamo 50 regole P0, nessuna è veramente blocking. Se abbiamo 7, ogni developer sa esattamente cosa non può violare.
+Il vincolo non è il numero esatto, ma la natura: le P0 sono **poche e selezionate**, ciascuna nata da una **cicatrice di produzione** — un errore concreto che ha rotto un sistema reale. Se avessimo 50 regole P0, nessuna sarebbe veramente blocking. Tenendole ridotte alle 13 universali, ogni developer sa esattamente cosa non può violare.
 
 ### **Enforcement P0**
 
@@ -180,7 +186,7 @@ $this->userService->updateUserProfile($user, $data);
 | ----------------- | -------------------------------- | ---------------------------------- |
 | **Violazione**    | STOP immediato                   | Procedi ma non production-ready    |
 | **Correzione**    | Obbligatoria prima di continuare | Obbligatoria prima di deploy       |
-| **Numero regole** | 7 (precisissime)                 | ~15-20 (principi ampi)             |
+| **Numero regole** | 13 (universali, precisissime)    | ~15-20 (principi ampi)             |
 | **Impatto**       | Sistema non funziona             | Sistema funziona ma non eccellente |
 
 ### **Esempio P1 Violation (non STOP, ma non production-ready)**
@@ -550,7 +556,37 @@ Non importa quante feature implementa.
 
 ---
 
-_Prosegui con: **Modulo 4 - Le 7 Regole P0 Blocking (Dettagliate)**_
+## **🧬 P0-P3 nel contesto Oracode Nexus**
+
+Il sistema di priorità P0-P3 non vive isolato: dentro **Oracode Nexus** (il sistema completo — paradigma + gerarchia a 3 livelli + ecosistema) si aggancia a due strumenti complementari ormai canonici del core SSOT.
+
+### **Trigger Matrix DOC-SYNC (classificazione 1-6)**
+
+Prima di agire, ogni modifica si classifica per impatto. La matrice decide se la modifica richiede DOC-SYNC (e quindi attiva **P0-11**):
+
+| Tipo | Impatto | DOC-SYNC |
+|------|---------|----------|
+| 1 — Locale | Fix puntuale, output invariato | NO |
+| 2 — Comportamentale | Cambia output, API, behavior visibile | SÌ |
+| 3 — Architetturale | Nuovo endpoint, model, service | SÌ + boot context |
+| 4 — Contrattuale | GDPR, normative, compliance | SÌ + approvazione CEO PRIMA |
+| 5 — Naming | Rinomina entità del dominio | SÌ + grep cross-progetto |
+| 6 — Cross-project | Schemi condivisi o altri organi | SÌ + approvazione CEO |
+
+Dubbio tra tipo 1 e 2 → tratta come 2. La classificazione determina quando **P0-11 (DOC-SYNC)** scatta come blocking.
+
+### **Layer Stack L0-L11**
+
+Le P0 sono i punti di aggancio del sistema di priorità al **metabolismo** dell'organismo software (L0-L11):
+
+- **P0-11 (DOC-SYNC)** è il gancio con **L1 Sync** (metabolismo cellulare base) e **L8 Nervous System** (propriocezione documentale): nessuna modifica chiude finché il sistema nervoso documentale non è allineato.
+- **P0-13 (Test-First)** è il gancio con **L6 Testing** (memoria immunitaria): i test sono gli anticorpi che rendono permanente ogni cicatrice di produzione.
+
+Riferimento canonico per Trigger Matrix e Layer Stack: il boot context del paradigma (`CLAUDE_ORACODE_CORE.md`). Per la gerarchia operativa a 3 livelli: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+---
+
+_Prosegui con: **Modulo 4 - Le 13 Regole P0 Universali (Dettagliate)**_
 
 ---
 

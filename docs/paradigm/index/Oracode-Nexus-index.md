@@ -1,10 +1,10 @@
 # Oracode Nexus — Index Documenti Vitali
 
 > **Scopo**: indice navigabile anti-degradazione per Padmin Supervisor. Sintesi compatta + path assoluto + sezioni chiave per ogni documento vitale di Oracode + OS3 Matrix + Layer Stack LSO.
-> **Path canonical**: `/home/fabio/oracode/docs/Oracode-Nexus-index.md` (oggi). Dopo disaccoppiamento M-OS3-021 → repo oracode/ primario.
-> **Versione**: 0.1.0 (work in progress sessione 3 — costruito da Supervisor in apprendimento progressivo)
+> **Path canonical**: `/home/fabio/oracode/docs/paradigm/index/Oracode-Nexus-index.md`. Rilocazione paradigma in `docs/paradigm/` COMPLETATA (M-OS3-022).
+> **Versione**: 0.5.0 (audit post-M-OS3-025 — Nexus 3-livelli allineato: engine visibile, /mission globale, ponte L1→L3 FATTI)
 > **Autore**: Padmin Supervisor for Fabio Cherici
-> **Data inizio**: 2026-05-27
+> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-05-31
 
 ---
 
@@ -15,6 +15,26 @@ Prima di qualsiasi mission strutturale, leggi questi SSOT autoritativi. Sono **l
 | SSOT locked | Path | Cosa fissa |
 |---|---|---|
 | **Gerarchia a 3 Livelli** | `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` | Mission tracking su 3 livelli (GLOBALE visibile / HUB aggregatore / ISTANZA repo). **Mai collassare in 2. Globale mai nascosto.** Ponte L1→L3 via `.oracode/project.json`. |
+
+### Oracode Nexus in una frase
+
+**Oracode Nexus** = il sistema completo: **paradigma** (regole + 13 P0 + pilastri) + **3 livelli** di mission tracking + **ecosistema** HUB/istanze.
+
+```
+L1 — GLOBALE   il MOTORE (~/oracode-engine, VISIBILE — non un registro): scratch runtime
+               (missions/, focus/, audit/, state/, license.json). Paradigma = oracode + os3-matrix.
+L2 — HUB       softwarehouse acquirente: PRIMO vero MISSION_REGISTRY (statistiche + numerazione
+               GLOBALE UNICA), versionato nel repo HUB-DOC.
+L3 — ISTANZA   singolo progetto/cliente: MISSION_REGISTRY proprio, nel repo del progetto.
+```
+
+**Stato attuale (M-OS3-025):**
+- ✅ **FATTO** — Migrazione `~/.oracode/` → `~/oracode-engine/` (cartella globale VISIBILE; symlink `~/.oracode` di compat resta). [U1]
+- ✅ **FATTO** — `/mission` slash command GLOBALE context-aware (wrapper di `bin/mission`, rileva istanza da CWD). [U2]
+- ✅ **FATTO** — Ponte automatico **L1→L3** via `.oracode/project.json` (`bin/mission` auto-registra nel registry del progetto, parallel-safe). [U3]
+- ⏳ **DIFFERITO** — Aggregator HUB + stats/numerazione cross-istanza (al 2° cliente). [U4/U5]
+
+**Flusso operativo Nexus:** `/discovery` (acquisizione) → `/project` (bootstrap istanza, scaffolda `.oracode/project.json`) → `/mission` (lavoro, auto-registrato L1→L3).
 
 ---
 
@@ -66,10 +86,10 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Sintesi**: Implementazione concreta LSO per FlorenceEGI. **6 principi** (i 4 manifesto + Consciousness + Nervous System NUOVO v4.0). Layer Stack v3.0 con 8 layer + 4 sub-layer dentro L8. Lista completa **27 hook** categorizzati per livello (PreToolUse + PostToolUse). Lista **10 agenti attivi** (os3-audit, os3-gate, organ-gap-scout, oracode-alignment-interpreter, oracode-specialist, doc-sync-v2, egili-blood-keeper, m093-remediation, node-ts, corporate-finance). **DOC-SYNC v2 dettaglio 4 sub-layer L0-L3** con analogie biologiche (mielina/nocicettori/arco riflesso/propriocezione/sistema autonomo). **8 organi in produzione FlorenceEGI** (EGI-HUB, EGI-HUB-HOME, EGI, NATAN_LOC, Sigillo, EGI-Credential, EGI-INFO, CREATOR-STAGING).
 - **Sezioni chiave**: §5 Principi LSO | §Architettura Layer Stack 8 layer | §Hook System tabella 27 hook | §Agenti tabella 10 | §Sistema Nervoso 4 sub-layer | §Ciclo vitale | §Organi tabella | §Mente organismo (SSOT→RAG→ai_sidebar)
 - **Cita strumenti NON ANCORA NEL MIO INDEX**:
-  - `rag_natan.*` schema DB condiviso (RAG piattaforma)
+  - `rag_natan.*` schema DB condiviso (RAG piattaforma — specifico FlorenceEGI)
   - `natan.rag_*` (NATAN_LOC USE Pipeline)
   - `marketing_rag.*` (NPE marketing)
-  - `~/oracode/bin/rag_natan_reindex.py` + `rag_natan_query.py` (NON in /os3-matrix/bin/ come pensavo)
+  - **Path canonico verificato**: i tool RAG sono `/home/fabio/os3-matrix/bin/rag_reindex.py` + `rag_query.py` (NON `rag_natan_*`, NON in `oracode/bin/`). Le citazioni `rag_natan_*` in 00_LSO sono nomi storici dell'istanza FlorenceEGI.
   - `ssot-reflex-guard.sh` (PostToolUse Layer 1 Riflesso)
   - `ssot-living-check.sh` (cron 04:00 Layer 3)
   - `ai_sidebar` con chat in ogni organo (SigilloAdvisorService, CredentialAdvisorService, ecc.)
@@ -114,7 +134,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
   - §5 Domande aperte (5.1.1 Egili Bible spin-off | 5.1.2 4 livelli esaustivi | 5.1.3 LSO-pieno/ridotto commerciale | **5.2.1 P0-13 storia** | **5.2.2 Ls Audit pattern ricorrente** | 5.2.3 co-creazione mission | 5.2.4 3 Frontiere A/B/C non verificate)
 
 - **CONVERGENZE CRITICHE per M-OS3-021**:
-  1. **§3.1.A.12 nota Mission Engine dual-tracking**: "Oggi la sincronizzazione fra le due fonti è **manuale**... debito tecnico noto... candidata a mission OS3 Matrix dedicata. Il pattern resta universale; cambia solo il *come* la sincronizzazione viene realizzata (manuale oggi, automatica via `.oracode/project.json` domani)."
+  1. **§3.1.A.12 nota Mission Engine dual-tracking** — ⚠ AGGIORNATO: il testo §3.1.A.12 descrive la sync come "manuale oggi, automatica via `.oracode/project.json` domani". Quel "domani" è **ARRIVATO**: il ponte automatico L1→L3 è implementato (M-OS3-025 U3, `bin/mission` propaga via `.oracode/project.json`, parallel-safe). La sync NON è più manuale. La nota in `LSO_NOMENCLATURE_v2.md` va riallineata.
   2. **§3.3.7 Maturity Matrix verificata** (audit M-LS-AUDIT-001 del 7 mag 2026): Solo L4 PRODUCTION (Claude Code scope), L1-L3 e L5-L8 PARTIAL, L9 DESIGN, L10 CONCEPT, L11 VISION. 3 gap critici: L6 Testing (zero CI gate), L3 Detection (no notification dispatcher), L5 UEM (no pattern recognition adattivo).
   3. **Modello commerciale formalizzato** (§1.1.B + §4.1): Oracode-paradigma MIT pubblico, OS3 Matrix commerciale Florence EGI S.R.L. Distinzione MIT/commerciale **decisione del 22 maggio 2026**.
   4. **Co-creazione riposizionata** (§3.3.3 decisione 6 mag 2026): da principio fondativo a opzione discrezionale creator. Mission implementazione da definire.
@@ -152,7 +172,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/tech-specs/READ_TRACKING_TECH_SPEC.md`
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v1.0.0 — 2026-05-08 (M-158 mission origine)
-- **Sintesi**: Hook `~/.claude/hooks/mission-read-tracker.sh` PostToolUse (`Read|Bash|Write|Edit`). Cattura accessi filesystem per retrospective FASE 6. Mission corrente da `MISSION_REGISTRY` (planning/in_progress più recente). Log `EGI-DOC/audit/MISSION_READ_LOG.jsonl` JSONL append-only. `always_loaded` invisibili (limitazione strutturale `@` include CLAUDE.md). Copertura Bash ~60-70%.
+- **Sintesi**: Hook `~/.claude/hooks/mission-read-tracker.sh` PostToolUse (`Read|Bash|Write|Edit`). Cattura accessi filesystem per retrospective FASE 6. **Stato runtime per-mission (L1, scratch)** vive in `~/oracode-engine/{missions,focus,audit}` — la mission corrente si risolve dallo scratch dell'engine. Il **registry di progetto (L3)** è risolto via `.oracode/project.json`, non hardcoded. Log `MISSION_READ_LOG.jsonl` JSONL append-only (path `EGI-DOC/audit/...` = specifico dell'istanza FlorenceEGI, non universale). `always_loaded` invisibili (limitazione strutturale `@` include CLAUDE.md). Copertura Bash ~60-70%.
 - **Sezioni chiave**: §1 Architettura | §3 Sede log | §4 Schema JSONL | §5 Parsing Bash | §6 Limitazione always_loaded
 - **Prerequisito di**: M-159 retrospective
 
@@ -160,7 +180,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/tech-specs/RETROSPECTIVE_TECH_SPEC.md`
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v1.0.0 — 2026-05-08 (M-159 mission origine)
-- **Sintesi**: Script `mission_retrospective.py`. **DISCREPANZA PATH**: spec dice `/home/fabio/oracode/bin/`, filesystem reale `/home/fabio/os3-matrix/bin/`. Confronta caricato (`MISSION_BOOTSTRAP_INDEX` per tipo+organi) vs usato (`MISSION_READ_LOG.jsonl`). Esclude `always_loaded`. Filtro pool SSOT hardcoded. Severity minor/moderate/major. Entry in `BOOTSTRAP_DRIFT_LOG.md`. NO apply automatico (CEO decision).
+- **Sintesi**: Script `/home/fabio/os3-matrix/bin/mission_retrospective.py` (path canonico verificato; vecchia spec `oracode/bin/` superata). Confronta caricato (`MISSION_BOOTSTRAP_INDEX` per `type`+`organs`) vs usato (`MISSION_READ_LOG.jsonl`). Esclude `always_loaded`. Filtro pool SSOT hardcoded. Severity minor/moderate/major. Entry in `BOOTSTRAP_DRIFT_LOG.md`. NO apply automatico (CEO decision).
 - **Sezioni chiave**: §1 Arch | §2 Ordine FASE 6 | §3 Logica diff | §4 Pool SSOT | §6 Severity | §7 Format DRIFT_LOG
 
 ### `os3-matrix/mission/protocol.md`
@@ -191,9 +211,9 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/doc-sync/DOC-SYNC_v2_STATO_DELLARTE.md`
 - **Status**: ✅ (letto integrale, 162 righe)
 - **Versione/data**: v1.0.0 — 2026-05-15 (M-189 wiring coverage hook)
-- **Sintesi**: DOC-SYNC v2 **operativo in produzione dal 2026-05-08** (M-160a). v2.1.0 con Coverage Native completato M-189. Mappa operativa: agent v2.1.0, guard v4.0.0, coverage hook v2.1.0, 3 CLI Python (reindex/query/coverage), config soglie, history JSONL, cron settimanale NON SCHEDULATO (gap basso). **Mission processate**: 136 totali, 100 (73.5%) con doc_sync_executed, 24 con log strutturato v2. **Coverage ecosistema**: 39.3% (3048/7750 file). 13 organi monitorati con soglia per-organo. Pattern broken 19.5% (sotto 25%). Dead SSOT 0/149. **Gap critico documentato**: Mission Registry dual-tracking (state.json HOME vs MISSION_REGISTRY repo) — fix candidato **M-OS3-014** = `.oracode/project.json` descrittore. **Drift rilevato sessione 2 Poli M-002** (closed nel report, in_progress nel registry — finding S2-1).
+- **Sintesi**: DOC-SYNC v2 **operativo in produzione dal 2026-05-08** (M-160a). v2.1.0 con Coverage Native completato M-189. Mappa operativa: agent v2.1.0, guard v4.0.0, coverage hook v2.1.0, 3 CLI Python (reindex/query/coverage), config soglie, history JSONL, cron settimanale NON SCHEDULATO (gap basso). **Mission processate**: 136 totali, 100 (73.5%) con doc_sync_executed, 24 con log strutturato v2. **Coverage ecosistema**: 39.3% (3048/7750 file). 13 organi monitorati con soglia per-organo. Pattern broken 19.5% (sotto 25%). Dead SSOT 0/149. **Gap dual-tracking RISOLTO**: il Mission Registry dual-tracking (scratch runtime L1 `~/oracode-engine` vs MISSION_REGISTRY del repo L3) è chiuso dal **ponte automatico L1→L3** (M-OS3-025 U3): `bin/mission` propaga lo stato della state machine nel registry del progetto via `.oracode/project.json` risolto dal CWD, con lockfile parallel-safe. Niente più sync manuale né "mission fantasma". **Drift sessione 2 Poli M-002** (closed nel report, in_progress nel registry — finding S2-1) era sintomo di questo gap, ora coperto dal ponte automatico.
 - **Sezioni chiave**: §2 Mappa componenti | §3 Metriche produzione | §4 Architettura runtime (3 layer) | §5 Gap noti tabella | §7 Cronologia M-148→M-189
-- **CONVERGENZA EMERSA**: `M-OS3-014` cita stesso debito che ROADMAP_ORACODE cita come "candidato a mission OS3 dedicata". Conflitto nome con M-OS3-014 originale nel mio backlog ("OS3 Conformity Test Gate") — da risolvere.
+- **CONVERGENZA RISOLTA**: il fix dual-tracking, già previsto da ROADMAP_ORACODE e DOC-SYNC_v2_STATO_DELLARTE, è stato implementato come ponte automatico L1→L3 (M-OS3-025 U3, commit 8760c5d). Il conflitto-nome M-OS3-014 non è più una questione aperta.
 
 ### `LEGACY_STACK_POLICY.md`
 - **Path**: `/home/fabio/oracode/docs/paradigm/standards/LEGACY_STACK_POLICY.md`
@@ -258,7 +278,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/standards/WEB_PAGE_QUALITY_GATE.md`
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v1.0.0 — 2026-05-22 (origine M-211)
-- **Sintesi**: Protocollo Quality Gate **automatico** per mission deliverable web. Trigger: `tipo_missione ∈ [feature, refactor]` + file `.tsx`/`.html`/`.blade.php` pubblici. Integrazione Mission Protocol come gate FASE 4 → FASE 5 obbligatorio. 12 sezioni criteri (HTML, SEO, Schema.org, OG, A11y WCAG 2.2 AA, Performance Core Web Vitals, Security headers HSTS+CSP+COOP/COEP, i18n, Funzionalità, Privacy/GDPR, Agentic Browsing Lighthouse 13.3+, Sustainability W3C WSG).
+- **Sintesi**: Protocollo Quality Gate **automatico** per mission deliverable web. Trigger: `type ∈ [feature, refactor]` (chiave canonica inglese; `tipo_missione` = legacy EGI-DOC) + file `.tsx`/`.html`/`.blade.php` pubblici. Integrazione Mission Protocol come gate FASE 4 → FASE 5 obbligatorio. 12 sezioni criteri (HTML, SEO, Schema.org, OG, A11y WCAG 2.2 AA, Performance Core Web Vitals, Security headers HSTS+CSP+COOP/COEP, i18n, Funzionalità, Privacy/GDPR, Agentic Browsing Lighthouse 13.3+, Sustainability W3C WSG).
 - **Sezioni chiave**: §0 Scope/trigger | §1 Ricerca standard FASE 1 | §3 12 sezioni criteri | §4 Processo verifica | §5 Escalation | §6 Checklist sintetica
 
 ### `ROADMAP_ORACODE.md`
@@ -393,7 +413,12 @@ Archive (storico):
 
 ---
 
-## TIER 6 — Agenti OS3 Matrix
+## TIER 6 — Agenti OS3 Matrix + Slash commands globali
+
+### `commands/mission.md` (/mission slash globale)
+- **Path**: `~/.claude/commands/mission.md`
+- **Status**: ✅ (M-OS3-025 U2 FATTO)
+- **Sintesi**: `/mission` slash command GLOBALE, wrapper context-aware di `bin/mission`. Rileva l'istanza dal CWD (via `.oracode/project.json`), espone il lifecycle mission ovunque, auto-registra L1→L3. Componente centrale del Livello 1 Nexus. Catena: `/discovery` → `/project` → `/mission`.
 
 ### `agents/doc-sync-v2.md`
 - **Path**: `~/.claude/agents/doc-sync-v2.md` + `/home/fabio/os3-matrix/agents/doc-sync-v2.md`
@@ -442,9 +467,14 @@ Archive (storico):
 
 ## TIER 7 — Tool scripts paradigma
 
+### `~/oracode-engine/` — cartella globale L1 (VISIBILE)
+- **Path**: `/home/fabio/oracode-engine/`
+- **Status**: ✅ (M-OS3-025 U1 FATTO; ex `~/.oracode` nascosta, symlink di compat presente)
+- **Natura**: L1 = scratch runtime del motore (NON un registro versionato). Contiene: `missions/` (stato runtime per-mission), `focus/` (focus per-session, M-OS3-016), `audit/` (task-invocations.jsonl spawn fingerprint), `state/`, `license.json`. Il primo vero MISSION_REGISTRY è L2 (HUB).
+
 | Tool | Path | Scopo | Status |
 |---|---|---|---|
-| `bin/mission` | `/home/fabio/os3-matrix/bin/mission` | CLI mission lifecycle v0.3.1 | ✅ letto |
+| `bin/mission` | `/home/fabio/os3-matrix/bin/mission` | CLI mission lifecycle v0.3.0. `ORACODE_HOME=~/oracode-engine` (cartella globale VISIBILE, M-OS3-025 U1; symlink `~/.oracode` di compat). Auto-registra la mission nel MISSION_REGISTRY del progetto via `.oracode/project.json` risolto dal CWD (**ponte L1→L3**, M-OS3-025 U3, parallel-safe). | ✅ letto |
 | `enrich_registry.py` | `/home/fabio/os3-matrix/bin/enrich_registry.py` | Stats commit_hashes + files_modified | ❌ |
 | `mission_retrospective.py` | `/home/fabio/os3-matrix/bin/mission_retrospective.py` | Retrospective FASE 6 step 6e | ❌ |
 | `organ_index.py` | `/home/fabio/oracode/bin/organ_index.py` (spec NAMING) o `/home/fabio/os3-matrix/bin/organ_index` | Genera Organ Index ecosystem-wide | ❌ |
@@ -514,10 +544,15 @@ Archive (storico):
 
 ## Cross-Reference tematici
 
+### Flusso operativo Nexus (punto d'ingresso reale)
+1. `/discovery` (`~/.claude/commands/discovery.md`) — acquisizione nuovo progetto/cliente
+2. `/project` (`~/.claude/commands/project.md`) — bootstrap istanza: scaffolda `.oracode/project.json` (descrittore L3)
+3. `/mission` (`~/.claude/commands/mission.md`) — wrapper GLOBALE context-aware di `bin/mission` (U2 FATTO): rileva l'istanza dal CWD e auto-registra la mission nel MISSION_REGISTRY del progetto via ponte L1→L3
+
 ### Mission lifecycle (FASE 0 → FASE 6)
-1. `MISSION_PROTOCOL.md` (canonical) → `bin/mission` (CLI) + `mission-state-guard.sh` (hook)
+1. `MISSION_PROTOCOL.md` (canonical) → `/mission` / `bin/mission` (CLI) + `mission-state-guard.sh` (hook)
 2. FASE 0: prenotazione ID + commit immediato → richiede MISSION_REGISTRY canonical schema
-3. FASE 1: bootstrap mirato → `MISSION_BOOTSTRAP_INDEX.json` per (tipo_missione, organi_coinvolti)
+3. FASE 1: bootstrap mirato → `MISSION_BOOTSTRAP_INDEX.json` per (`type`, `organs`) — chiavi canoniche INGLESI (`tipo_missione`/`organi_coinvolti` = legacy EGI-DOC), come fissato in `ORACODE_NEXUS_3_TIER.md` §Lingua chiavi
 4. FASE 4: Web Quality Gate trigger se deliverable web
 5. FASE 6: 8 step → `doc-sync-v2` agent + `mission_retrospective.py` + `enrich_registry.py`
 
@@ -528,7 +563,7 @@ Archive (storico):
 4. `agents/doc-sync-v2.md` (agent OS3 Matrix)
 5. `SSOT_REGISTRY.json` (input watches)
 6. `COVERAGE_CONFIG.json` (soglie + cron)
-7. `rag_natan_coverage.py` + `docsync_weekly_reglob.py` (executors)
+7. `rag_reindex.py` + `rag_query.py` + `docsync_weekly_reglob.py` (executors, `/home/fabio/os3-matrix/bin/`; `rag_natan_coverage.py` citato in COVERAGE_CONFIG = nome legacy istanza FlorenceEGI)
 
 ### Nomenclatura / 4 Livelli
 1. `LSO_NOMENCLATURE_v2.md` (canonical integrale)
@@ -589,7 +624,7 @@ Aggiungere:
 
 ---
 
-**Versione index**: 0.4.0 — dopo Batch 1 + Batch 2A + Batch 3A (LSO_NOMENCLATURE_v2 integrale)
+**Versione index**: 0.5.0 — 2026-05-31 (audit post-M-OS3-025: Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
 **Documenti letti integrali totali**: 18 — TIER 1A/B/C/D/E/F principali completi
 **Documenti TBD vitali ancora da leggere**:
 - TIER 1D: `DOC-SYNC_v2_SPECIFICA_OPERATIVA.md` (629 r)
@@ -608,12 +643,12 @@ Aggiungere:
 
 ## CONVERGENZE STRUTTURALI EMERSE (cosa serve sapere subito per M-OS3-021)
 
-### 1. **Dual-tracking Mission Registry — fix unanime previsto**
-DUE documenti ufficiali citano lo stesso fix architetturale:
+### 1. **Dual-tracking Mission Registry — fix FATTO (ponte automatico L1→L3)**
+Il fix architetturale previsto da DUE documenti è stato implementato:
 - `ROADMAP_ORACODE.md §5` (22 mag) → "candidato a mission OS3 dedicata" per `.oracode/project.json`
-- `DOC-SYNC_v2_STATO_DELLARTE.md §5` (15 mag) → "**M-OS3-014** = `bin/mission` legge `.oracode/project.json` del progetto attivo e propaga automaticamente transizioni"
+- `DOC-SYNC_v2_STATO_DELLARTE.md §5` (15 mag) → `bin/mission` legge `.oracode/project.json` del progetto attivo e propaga automaticamente le transizioni
 
-**Conflitto nome:** mio BACKLOG cita M-OS3-014 = "OS3 Conformity Test Gate" (futura). Ma DOC-SYNC_v2_STATO_DELLARTE prenotò M-OS3-014 per il fix dual-tracking. **Da risolvere chi prende il numero o rinominare uno dei due.**
+**Stato: ✅ FATTO** in **M-OS3-025 Unità 3** (commit 8760c5d): `bin/mission` → `syncToRepoRegistry(state)` risolve `.oracode/project.json` dal CWD e propaga lo stato della state machine (L1, `~/oracode-engine`) → MISSION_REGISTRY del progetto (L3), parallel-safe. La separazione netta L1 (motore/scratch) vs L2 (HUB, primo vero registro) vs L3 (istanza) scioglie anche il conflitto-nome M-OS3-014: non è più una questione aperta.
 
 ### 2. **DOC-SYNC v2 è MOLTO più articolato di quello che usavo**
 v2.1.0 in produzione include:
@@ -630,14 +665,17 @@ Da `00_LSO_LIVING_SOFTWARE_ORGANISM.md v4.0`:
 - **PostToolUse (6 hook)**: os3-audit-static, ssot-reflex, deploy-pipeline, m094-supervisor-reminder, os3-audit-on-complete, mission-read-tracker
 - **10 agenti**: os3-audit-specialist + os3-gate + organ-gap-scout + oracode-alignment-interpreter + oracode-specialist + doc-sync-v2 + egili-blood-keeper + m093-remediation-tracker + node-ts-specialist + corporate-finance-specialist
 
-### 4. **Tooling Python in `/home/fabio/oracode/bin/` (NON `/home/fabio/os3-matrix/bin/`)**
-00_LSO v4.0 cita:
-- `~/oracode/bin/rag_natan_reindex.py`
-- `~/oracode/bin/rag_natan_query.py`
-- `~/oracode/bin/rag_natan_coverage.py`
-- `~/oracode/bin/docsync_weekly_reglob.py`
+### 4. **Tooling Python — path canonico VERIFICATO: `/home/fabio/os3-matrix/bin/`**
+Path reali (verificati con `ls`):
+- `/home/fabio/os3-matrix/bin/rag_reindex.py`
+- `/home/fabio/os3-matrix/bin/rag_query.py`
+- `/home/fabio/os3-matrix/bin/docsync_weekly_reglob.py`
+- `/home/fabio/os3-matrix/bin/mission_retrospective.py`
+- `/home/fabio/os3-matrix/bin/enrich_registry.py`
+- `/home/fabio/os3-matrix/bin/web_quality_gate.py`
+- `/home/fabio/os3-matrix/bin/organ_index/` (DIRECTORY, non `.py`)
 
-Filesystem reale: i tool sono in `/home/fabio/os3-matrix/bin/`. **Discrepanza spec vs filesystem**. M-OS3-021 dovrà consolidare.
+I nomi `rag_natan_*` / `~/oracode/bin/...` citati in 00_LSO v4.0 sono **storici dell'istanza FlorenceEGI**, non i tool paradigma. Drift risolto: path unico canonico = `os3-matrix/bin/`. Doc paradigma vivono in `/home/fabio/oracode/docs/paradigm/`.
 
 ### 5. **REGOLA ZERO è il breakthrough cardine**
 Da OS3 Manifesto (Modulo 0): "L'AI non pensa. Predice. Non deduce. Completa statisticamente." REGOLA ZERO = contromisura strutturale. **In OS3 originale v3.0.0 (Nov 2025) erano 7 Regole P0**. Sono evolute in **13 P0** nel paradigma corrente (visibile in CLAUDE_ORACODE_CORE.md).

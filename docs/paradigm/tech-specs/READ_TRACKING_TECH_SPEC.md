@@ -22,6 +22,23 @@ source: docs/oracode/MISSION_PROTOCOL.md § 4.2, § 6.2
 
 ---
 
+## Inquadramento Oracode Nexus
+
+Il read-tracking è un **sottosistema del motore (Livello 1)** di Oracode Nexus.
+Opera sullo **scratch runtime** dell'engine (`~/oracode-engine/`) per identificare
+la mission corrente, e produce un **read-log d'istanza (Livello 3)** risolto via il
+descrittore `<progetto>/.oracode/project.json` (campo `read_log_path`), CWD-resolved
+come fa `bin/mission`.
+
+L'**aggregazione e la statistica cross-istanza** non sono responsabilità di questo
+sottosistema: appartengono al **HUB (Livello 2)** (aggregator `mission-hub-aggregate.py`,
+differito finché non ci sono 2+ clienti).
+
+Per la gerarchia completa dei tre livelli vedi
+`docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+---
+
 ## 1. Architettura
 
 **Hook**: `~/.claude/hooks/mission-read-tracker.sh`
@@ -36,38 +53,66 @@ Il hook e registrato in `~/.claude/settings.json` sotto `hooks.PostToolUse`.
 
 ## 2. Identificazione mission corrente
 
-**Strategia**: lettura di `MISSION_REGISTRY.json` a ogni invocazione.
+**Strategia**: lettura del `MISSION_REGISTRY.json` dell'istanza a ogni invocazione.
+
+Il registry NON è hardcoded: si risolve via il descrittore
+`<progetto>/.oracode/project.json` (campo `registry_path`), CWD-resolved
+risalendo dal working directory come fa `bin/mission` (ponte L1→L3, M-OS3-025).
+Il path `EGI-DOC/docs/missions/MISSION_REGISTRY.json` è solo un **esempio legacy**
+dell'istanza accoppiata FlorenceEGI, non il path universale del paradigma.
 
 Logica:
-1. Legge `EGI-DOC/docs/missions/MISSION_REGISTRY.json`
-2. Filtra mission con `stato` in `["planning", "in_progress"]`
-3. Ordina per `data_apertura` decrescente
+1. Risolve e legge il `MISSION_REGISTRY.json` dell'istanza (via `registry_path`
+   in `.oracode/project.json`)
+2. Filtra mission con `status` in stato grezzo non-terminale
+   (`planned`/`executing`/`auditing`, decisione CEO 2026-05-31 punto 4)
+3. Ordina per `date_open` decrescente
 4. Prende la prima (piu recente)
 
-Questa strategia copre la finestra tra FASE 0 (entry minima, stato planning)
-e FASE 1 (stato in_progress), catturando le Read di raccolta requisiti.
+> **Chiavi inglesi canoniche** (SSOT 3-TIER §108). Le chiavi italiane
+> (`stato`/`data_apertura`) sopravvivono solo nell'hook EGI-DOC legacy, da migrare.
+> Il registry `oracode` reale usa già chiavi inglesi
+> (`id`/`title`/`type`/`organs`/`status`/`date_open`/`date_close`).
+
+Questa strategia copre la finestra tra FASE 0 (entry minima, stato `planned`)
+e FASE 1 (stato `executing`), catturando le Read di raccolta requisiti.
 
 **Limitazione parallel sessions**: se due sessioni hanno mission in stati
-planning/in_progress contemporaneamente, il tracking confluisce nella mission
-con data_apertura piu recente. Falso positivo accettabile — il retrospective
+non-terminali contemporaneamente, il tracking confluisce nella mission
+con `date_open` piu recente. Falso positivo accettabile — il retrospective
 lavora su statistiche aggregate, non su forensic analysis.
 
 ---
 
 ## 3. Sede del log
 
-**Path**: `EGI-DOC/audit/MISSION_READ_LOG.jsonl`
+**Path**: risolto via `<progetto>/.oracode/project.json` (campo `read_log_path`),
+CWD-resolved dal working directory. Per l'istanza `oracode` reale vale
+`/home/fabio/oracode/audit/MISSION_READ_LOG.jsonl`. Il path
+`EGI-DOC/audit/MISSION_READ_LOG.jsonl` è solo un **esempio legacy** dell'istanza
+accoppiata FlorenceEGI, non un path universale del paradigma.
 
-File globale unico, append-only. Ogni entry contiene `mission` come campo
-per filtraggio. Creato automaticamente dal hook al primo accesso.
+Il read-log è un **dato d'istanza (L3)** (oppure scratch dell'engine L1 quando
+si lavora fuori da un'istanza con descrittore), append-only. Ogni entry contiene
+`mission` come campo per filtraggio. Creato automaticamente dal hook al primo accesso.
 
-**Trade-off consapevole**: con ritmo empirico di ~4.5 mission/giorno
-(157 mission in 35 giorni) e 50-100 entry/mission, il file crescera a
-multi-MB entro mesi. Questa scelta e temporanea — chiude il sistema
-end-to-end (M-158 → M-159) nel modo piu semplice. Migration a SQLite
-pianificata in M-162 quando il volume diventera scomodo per
-parsing/diff git. SQLite con JSON1 extension per schema ibrido
-(campi strutturati indicizzabili + payload JSON flessibile).
+> Risoluzione coerente con il ponte L1→L3 (M-OS3-025): registry e read-log
+> non sono hardcoded nel paradigma, ma derivati dal descrittore
+> `.oracode/project.json` dell'istanza corrente.
+
+**Trade-off consapevole**: con un ritmo empirico sostenuto di mission/giorno
+e 50-100 entry/mission, il file cresce a multi-MB entro mesi. Questa scelta è
+temporanea — chiude il sistema end-to-end nel modo più semplice. Migration a
+SQLite prevista quando il volume diventerà scomodo per parsing/diff git: SQLite
+con JSON1 extension per schema ibrido (campi strutturati indicizzabili + payload
+JSON flessibile).
+
+> *Origine storica EGI*: la genesi del sottosistema (read-log + retrospective)
+> proviene dall'istanza accoppiata FlorenceEGI, dove era tracciata dalle mission
+> M-158 → M-159 (e la migration SQLite da M-162). Quei numeri appartengono allo
+> schema EGI globale storico, **non** al paradigma `oracode`. Nel Nexus la
+> numerazione è ora responsabilità del **HUB (L2, numerazione globale unica)** e
+> l'istanza `oracode` usa il namespace `M-OS3-NNN`.
 
 ---
 
@@ -184,7 +229,8 @@ non bug da risolvere.
 ## 7. Altre limitazioni note
 
 1. **Parallel sessions**: tracking confluisce nella mission piu recente
-   per data_apertura se multiple mission in planning/in_progress
+   per `date_open` se multiple mission in stato non-terminale
+   (`planned`/`executing`/`auditing`)
 2. **Agent subagent**: tool call dentro subagent non triggerano hook del parent
 3. **Overhead I/O**: ~10ms per invocazione (jq parse MISSION_REGISTRY + append)
 4. **Path relativi**: i path vengono relativizzati rimuovendo il prefisso
@@ -200,7 +246,13 @@ non bug da risolvere.
 
 **Versione**: 1.0.0
 **Data**: 2026-05-08
-**Mission di riferimento**: M-158
-**Prerequisito per**: M-159 (implementazione retrospective)
+**Mission di riferimento (origine storica EGI)**: M-158 — riferimento storico
+dell'istanza accoppiata EGI-DOC, non mission del paradigma `oracode`.
+**Prerequisito storico per (EGI)**: M-159 (implementazione retrospective).
+
+> Nel paradigma `oracode` la numerazione mission usa il namespace `M-OS3-NNN`,
+> e la numerazione globale unica è responsabilità del HUB (L2). Il ponte
+> automatico L1→L3 (registry/read-log via `.oracode/project.json`) è realizzato
+> in **M-OS3-025** (vedi `bin/mission` `syncToRepoRegistry`, parallel-safe).
 
 *Per il protocollo completo del bootstrap retrospective: `docs/oracode/MISSION_PROTOCOL.md` § 6.2*

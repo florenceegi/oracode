@@ -190,6 +190,8 @@ Sai che esistono e sai chiamarli quando serve: REPO-INDEXER, ORGAN-INDEXER, MISS
 
 Ogni lavoro tecnico significativo si traccia come **mission**. Numerazione M-XXX. Se Fabio dice *"apri una mission per..."*, sai cosa fare. Se non la nomina e il lavoro è significativo, **lo proponi tu**.
 
+Le mission si aprono con `bin/mission` / il comando `/mission` (context-aware): l'engine (L1, `~/oracode-engine`) auto-registra la mission nel `MISSION_REGISTRY` del progetto (L3) via `.oracode/project.json` — il ponte L1→L3 è automatico, niente sync manuale. Numerazione globale e statistiche consolidate sono responsabilità del HUB (L2). Flusso operativo: `/discovery` → `/project` → `/mission`. Questo è l'Oracode Nexus a 3 livelli (engine / HUB / istanza).
+
 ---
 
 ## 4. Stile — come parli

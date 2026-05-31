@@ -190,6 +190,12 @@ Padmin propone "aggiungiamo Egili al sistema di pagamenti del cliente Forti Cami
 
 **Pattern generale**: il vocabolario è il sistema di coordinate del lavoro. Se le coordinate sono ambigue, le decisioni che ne derivano sono ambigue.
 
+> **Nota di disambiguazione — due tassonomie distinte di "livelli".** Esistono due assi che NON vanno confusi:
+> - **(a) 4 livelli SEMANTICI** di nomenclatura — *cosa significa* un termine: Oracode (paradigma) / Libreria LSO (componenti riusabili) / Organismo (metafora architetturale) / FlorenceEGI (istanza specifica).
+> - **(b) 3 livelli OPERATIVI di Oracode Nexus** — *dove vivono* registry, numerazione, statistiche: **L1 Globale/motore** (`~/oracode-engine`), **L2 HUB** (softwarehouse acquirente, primo vero MISSION_REGISTRY), **L3 Istanza** (registry nel repo del progetto).
+>
+> Quando si parla di "livelli", specificare quale asse. Riferimento SSOT: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
 ---
 
 ## 4. Modalità conversazionale del CEO
@@ -240,9 +246,9 @@ Una suite di test in isolamento che passa al 100% non è prova che il sistema fu
 
 Una review tecnica positiva (anche da Watchdog) non è un'approvazione. L'approvazione del CEO è atto formale separato. Procedere a implementazione dopo una review positiva ma senza approvazione esplicita è violazione del protocollo.
 
-### AP-5 — "Naming inglese in nuovi SSOT"
+### AP-5 — "Naming italiano in nuovi SSOT"
 
-Vietato d'ora in avanti per le istanze LSO che hanno scelto naming italiano. Vedi protocolli specifici dell'istanza per altre convenzioni.
+Per i nuovi registry/SSOT le chiavi vanno in **inglese**: `id, title, type, organs, status, date_open, date_close, ...` (decisione CEO 2026-05-30, verificata in `os3-matrix/bin/mission`: "Schema chiavi INGLESE"). L'italiano (`tipo_missione`, `organi_coinvolti`, `data_apertura`, `stato`) è **legacy** EGI-DOC, in migrazione graduale all'inglese — mai canonico per istanze nuove. Riferimento SSOT: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` § Livello 3.
 
 ### AP-6 — "Guard che si presenta bloccante ma è passivo"
 
@@ -430,6 +436,20 @@ Documento canonico: `LSO_NOMENCLATURE_v1.md`.
 Stabilizzazione del rapporto operativo Padmin con stratificazione Oracode/istanza. Produzione di `PADMIN_INDEX.md` e `PADMIN_ONBOARDING.md` (entrambi Oracode-puri), riconciliazione con `LSO_NOMENCLATURE_v1.md`.
 
 Lezione operativa: il rapporto operativo tra istanze AI e CEO è esso stesso infrastruttura che richiede progettazione esplicita, non emerge spontaneamente.
+
+### 8.7 30-31 maggio 2026 — Oracode Nexus, gerarchia operativa a 3 livelli
+
+Introduzione di **Oracode Nexus** come sistema completo (paradigma + 3 livelli operativi + ecosistema HUB/istanze). La gerarchia operativa è oggi la legge per registry, numerazione e statistiche:
+
+- **L1 Globale/motore** — il motore che fa girare le mission, nella cartella **visibile** `~/oracode-engine/` (NON nascosta; symlink di compat `~/.oracode` → `~/oracode-engine` resta come retro-compatibilità). L1 NON è un registro: tiene solo scratch runtime (lock, focus, stato in volo). `bin/mission` usa `ORACODE_HOME=~/oracode-engine`.
+- **L2 HUB** — softwarehouse acquirente: il **primo vero `MISSION_REGISTRY.json`**, file unico con statistiche consolidate e numerazione globale delle mission, versionato nel repo `HUB-DOC`.
+- **L3 Istanza** — singolo progetto: il **proprio** `MISSION_REGISTRY.json` (chiavi inglesi), versionato nel repo del progetto, auto-popolato dal motore.
+
+**Ponte automatico L1→L3 — FATTO.** Il motore propaga lo stato delle mission dall'engine al registry del progetto via `.oracode/project.json`, automaticamente e parallel-safe (`bin/mission syncToRepoRegistry`, M-OS3-025). Non è più richiesta alcuna "sync manuale": la mission aperta nell'engine compare nel registry dell'istanza senza intervento.
+
+Lezione operativa: la gerarchia a 3 livelli risolve l'ambiguità tra "cosa gira adesso" (L1) e "cosa ha prodotto la softwarehouse nel tempo" (L2), e separa numerazione/statistiche globali dal registry per-istanza.
+
+Documento canonico: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` (SSOT, LOCKED).
 
 ---
 

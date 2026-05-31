@@ -78,7 +78,9 @@ Un guard che si limita a emettere un warning ma non blocca **non e un guard** �
 
 Il guard deve leggere campi del registry/SSOT esattamente come questi sono nominati nella sorgente. Discrepanze di naming (campo inglese vs italiano, snake_case vs camelCase, singolare vs plurale) rendono il guard automaticamente rotto.
 
-Questo criterio è la **diretta conseguenza del fallimento di DOC-SYNC v2**, dove `doc-sync-v2-guard.sh` cercava `status` e `date_closed` mentre il MISSION_REGISTRY contiene `stato` e `data_chiusura`. Il guard è stato deployato senza che nessuno verificasse la coerenza.
+Questo criterio è la **diretta conseguenza del fallimento di DOC-SYNC v2** (post-mortem M-148, EVENTO STORICO), dove `doc-sync-v2-guard.sh` cercava `status`/`date_closed` mentre il MISSION_REGISTRY del tempo conteneva `stato`/`data_chiusura`. Il guard è stato deployato senza che nessuno verificasse la coerenza.
+
+> **NB (riquadratura storica):** al tempo del post-mortem (2026-04-30) il registry EGI-DOC era in **italiano**, quindi i campi corretti erano allora quelli italiani. **Oggi i campi canonici sono in inglese** (`status`, `date_close`; vedi `ORACODE_NEXUS_3_TIER.md` §Livello 3): un guard nuovo deve leggere i campi inglesi. La lezione del Criterio 2 — coerenza tra campi letti e campi reali della sorgente — resta valida indipendentemente dalla lingua; cambia solo *quale* sia la sorgente canonica.
 
 ### Criterio 3 — Esistenza di test positivo e negativo
 
@@ -182,26 +184,27 @@ Questa sezione formalizza la regola che chiude definitivamente il problema "camp
 
 ### 4.1 Regola
 
-**Tutti i nuovi SSOT registry/log/output di LSO sono in italiano.**
+**Tutti i nuovi SSOT registry/log/output di Oracode Nexus usano chiavi in INGLESE** (decisione CEO 2026-05-30, vedi `ORACODE_NEXUS_3_TIER.md` §Livello 3).
 
 Si intende per "naming" l'insieme dei nomi dei campi (chiavi JSON, intestazioni di colonna, nomi di variabili esposte, label di log) accessibili a qualsiasi consumer (guard, agent, script, lettore umano).
 
-### 4.2 Standard di nomenclatura italiana
+### 4.2 Standard di nomenclatura inglese
 
 Ogni nuovo SSOT deve usare:
 
-- **Snake_case in italiano** per i nomi dei campi: `data_chiusura`, `stato_corrente`, `id_missione`
-- **Verbi al passato per gli stati di completamento**: `completata`, `chiusa`, `archiviata` (non `completed`, `closed`, `archived`)
-- **Termini tecnici accettati in inglese** quando sono nomi propri di tecnologia: `commit`, `branch`, `pull_request`, `webhook` restano in inglese se sono il nome ufficiale del concetto. La regola si applica ai **campi descrittivi**, non ai nomi propri.
+- **Snake_case in inglese** per i nomi dei campi: `date_close`, `status`, `mission_id`
+- **Verbi al passato per gli stati di completamento, in inglese**: `completed`, `closed`, `archived` (non `completata`, `chiusa`, `archiviata`)
+- **Termini tecnici** che sono nomi propri di tecnologia restano nella loro forma ufficiale: `commit`, `branch`, `pull_request`, `webhook`.
 
-In caso di dubbio su un termine specifico, si applica il principio: **se un parlante italiano nativo userebbe il termine italiano in conversazione tecnica, usa l'italiano. Se userebbe il termine inglese, è ammesso l'inglese.**
+Le chiavi canoniche del MISSION_REGISTRY sono in inglese: `id`, `title`, `type`, `organs`, `status`, `date_open`, `date_close` (vedi `ORACODE_NEXUS_3_TIER.md` §Livello 3). Le forme italiane (`tipo_missione`, `organi_coinvolti`, `data_apertura`, `stato`, `data_chiusura`) sono **legacy** e non sono mai canoniche per istanze nuove.
 
 ### 4.3 SSOT esistenti
 
 Gli SSOT esistenti **non vengono migrati immediatamente**. La migrazione è **lazy** e segue queste regole:
 
-- **Quando un SSOT esistente viene modificato per qualsiasi motivo** (rinnovamento di funzionalità, aggiunta di campi, refactoring), in quella stessa modifica viene anche allineato al naming italiano
-- **I guard che leggono SSOT in inglese** vengono aggiornati per leggere i nomi inglesi finché lo SSOT non viene migrato. Quando lo SSOT viene migrato, anche i guard vengono aggiornati nello stesso atomic change
+- **Quando un SSOT esistente viene modificato per qualsiasi motivo** (rinnovamento di funzionalità, aggiunta di campi, refactoring), in quella stessa modifica viene anche allineato al naming inglese
+- **Gli SSOT italiani** (es. EGI-DOC) migrano **lazy verso l'inglese, non viceversa**: l'inglese è il target canonico, l'italiano è il legacy da convertire
+- **I guard che leggono SSOT ancora in italiano** vengono aggiornati per leggere i nomi italiani finché quello SSOT non viene migrato. Quando lo SSOT viene migrato all'inglese, anche i guard vengono aggiornati nello stesso atomic change
 - **Audit periodico** (vedi § 5) include la mappatura degli SSOT non ancora migrati, in modo da pianificare migrazioni opportunistiche quando si tocca quella zona di codice
 
 ### 4.4 Documentazione del naming nel guard
@@ -214,9 +217,9 @@ Esempio header:
 # Guard: mission-stats-guard.sh
 # Tipo: Mission-phase (closing)
 # Verifica: aggiornamento delle statistiche prima della chiusura mission
-# Blocca quando: il campo `statistiche.aggiornata_il` nella mission è precedente a `data_chiusura`
+# Blocca quando: il campo `stats.calculated_at` nella mission è precedente a `date_close`
 # Legge da: MISSION_REGISTRY.json
-# Campi letti: missioni[].statistiche.aggiornata_il, missioni[].data_chiusura
+# Campi letti: missions[].stats.calculated_at, missions[].date_close
 # Test positivo: tests/guards/mission-stats-guard/test_positive.sh
 # Test negativo: tests/guards/mission-stats-guard/test_negative.sh
 # Versione: 1.0.0
@@ -321,9 +324,9 @@ Una suite di test in isolamento che passa al 100% non è prova che il guard funz
 
 Una review tecnica positiva (anche da un AI partner come Astra) **non è un'approvazione**. L'approvazione del CEO è atto formale separato. Procedere a implementazione dopo una review positiva ma senza approvazione esplicita è violazione del protocollo.
 
-### Anti-pattern 5 — "Naming inglese in nuovi SSOT"
+### Anti-pattern 5 — "Naming italiano in nuovi SSOT"
 
-Vietato d'ora in avanti. Vedi § 4.
+Vietato d'ora in avanti. Le chiavi dei nuovi SSOT sono in inglese (decisione CEO 2026-05-30). Vedi § 4.
 
 ### Anti-pattern 6 — "Guard che si presenta bloccante ma è passivo"
 

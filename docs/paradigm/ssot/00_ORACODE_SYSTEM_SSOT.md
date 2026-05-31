@@ -2,10 +2,10 @@
 title: Oracode System — SSOT Completo
 slug: oracode-system-ssot
 doc_type: architecture
-version: 1.2.0
+version: 1.3.0
 status: current
-date: '2026-05-27'
-updated_at: '2026-05-27'
+date: '2026-05-31'
+updated_at: '2026-05-31'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - ecosistema
@@ -46,6 +46,18 @@ Oracode e una **metodologia formale** per governare ecosistemi software compless
 | **OS4** | Education | Educazione epistemica dell'umano. 4 regole epistemiche (futuro). |
 
 **Regola fondamentale:** OSZ e la verita assoluta. OS3 si aggiorna per allinearsi a OSZ. Mai il contrario.
+
+### Oracode Nexus — gerarchia a 3 livelli
+
+**Oracode Nexus** = il sistema completo: il paradigma (regole, docs, templates) + i 3 livelli architetturali + l'ecosistema HUB/istanze. La gerarchia a 3 livelli è la **LEGGE locked** dell'architettura attuale — SSOT in `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+| Livello | Cos'è | MISSION_REGISTRY | Statistiche / Numerazione |
+|---------|-------|------------------|---------------------------|
+| **L1 — GLOBALE** | il **motore + paradigma** (`oracode` + `os3-matrix` + cartella globale **VISIBILE** `~/oracode-engine/`). Tiene solo lo **scratch runtime** (focus, lock, stato in volo). **NON un registro.** | NO | — |
+| **L2 — HUB** | softwarehouse acquirente. Il **primo vero MISSION_REGISTRY** consolidato, versionato nel repo `HUB-DOC`. | SÌ — file unico consolidato | statistiche calcolate qui + **numerazione globale unica** (contatore centrale, no collisioni cross-istanza) |
+| **L3 — ISTANZA LSO** | singolo progetto/cliente. Registry **proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/`). | SÌ — per-progetto | no (solo dati grezzi) |
+
+La softwarehouse installa **L1** (una volta) + **L2** (il suo `HUB-DOC`) e **genera L3** via `/project` (un'istanza per cliente). Dettaglio e direttive CEO: `ORACODE_NEXUS_3_TIER.md` (🔒 LOCKED).
 
 **Proprieta intellettuale:** Fabio Cherici (CEO & OS3 Architect) + Padmin D. Curtis (CTO & AI Partner). Manifesto certificato su blockchain Algorand via Sigillo (24 marzo 2026).
 
@@ -352,7 +364,7 @@ Ispirato al sistema nervoso umano. Risolve il problema del DOC-SYNC dimenticato.
 |-----------|--------------------|-----------------|-------|
 | **L0 MIELINA** | Guaina mielinica accelera trasmissione | `SSOT_REGISTRY.json` — mapping esplicito doc → file watchati | Statico |
 | **L1 RIFLESSO** | Arco riflesso senza cervello | `ssot-reflex-guard.sh` (PostToolUse) — file modificato → lookup → segnale | <1s, costo AI zero |
-| **L2 PROPRIOCEZIONE** | Sapere dove sei senza guardare | Mission Registry esteso: `doc_sync_executed`, `doc_verified`, `files_modified` | Per missione |
+| **L2 PROPRIOCEZIONE** | Sapere dove sei senza guardare | Mission Registry esteso (`doc_sync_executed`, `doc_verified`, `files_modified`), popolato **automaticamente** dal ponte L1→L3 (`bin/mission` propaga lo stato nel registry del progetto via `.oracode/project.json`) | Per missione |
 | **L3 AUTONOMO** | Respira senza pensarci | `ssot-living-agent` + `ssot-living-check.sh` (cron 04:00) — drift report | Periodico |
 
 **Come si compensano:** il drift deve "scappare" da tutti e 3 i layer attivi per restare inosservato. L1 segnala in sessione → L2 registra nella missione → L3 trova alla prossima verifica notturna.
@@ -360,7 +372,7 @@ Ispirato al sistema nervoso umano. Risolve il problema del DOC-SYNC dimenticato.
 File critici:
 - Registry: `/home/fabio/EGI-DOC/docs/lso/SSOT_REGISTRY.json`
 - Hook: `/home/fabio/.claude/hooks/ssot-reflex-guard.sh`
-- Propriocezione: `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
+- Propriocezione (istanza FlorenceEGI, L3 accoppiato): `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
 - Agente: `/home/fabio/.claude/agents/ssot-living-agent.md`
 - Cron script: `/home/fabio/.claude/hooks/ssot-living-check.sh`
 - Report drift: `/home/fabio/EGI-DOC/audit/drift/`
@@ -471,17 +483,33 @@ Tutti in `/home/fabio/.claude/agents/`.
 
 > **Specifica completa:** `docs/oracode/MISSION_PROTOCOL.md` v3.0.0 (2026-05-27). Questa sezione è un sommario operativo. In caso di divergenza, prevale `MISSION_PROTOCOL.md`.
 
+> **PONTE AUTOMATICO L1→L3 (M-OS3-025 Unità 3).** `bin/mission` auto-registra e propaga lo stato della mission nel MISSION_REGISTRY del progetto, risolto dal **CWD** tramite il descrittore `<progetto>/.oracode/project.json` (`syncToRepoRegistry`). Niente sincronizzazione manuale state↔registry, niente mission fantasma. Operazione **parallel-safe** (lock per-registry, `withRegistryLock`).
+
+### Flusso operativo Nexus
+
+```
+/discovery (acquisizione pre-vendita)
+    ↓
+/project   (bootstrap istanza L3 — scaffolda <progetto>/.oracode/project.json)
+    ↓
+/mission   (lavoro — auto-registrato nel registry del progetto via ponte L1→L3)
+```
+
+Il comando `/mission` è **globale e context-aware**: rileva l'istanza dal CWD (wrapper di `bin/mission`, M-OS3-025 Unità 2).
+
 ### 18.1 Fasi narrative (livello Oracode)
 
 | Fase | Nome | Azione |
 |------|------|--------|
 | 0 | Prenotazione ID | Counter mission → entry minima registry → commit immediato (anti-collisione cross-session) |
-| 1 | Apertura + bootstrap mirato | Intent CEO → `tipo_missione` + `organi_coinvolti` → carica solo moduli rilevanti |
+| 1 | Apertura + bootstrap mirato | Intent CEO → `type` + `organs` → carica solo moduli rilevanti |
 | 2 | Analisi | Read + grep + flow mapping + identificazione rischi |
 | 3 | Piano | FILE COINVOLTI + SEQUENCE + RISCHI + DOC-SYNC → **approvazione esplicita CEO** |
 | 4 | Esecuzione | Un file per volta, firma OS3, max 500 righe, tracking moduli consultati |
 | 5 | Review deliverable | Watchdog → approvazione CEO |
 | 6 | Chiusura: DOC-SYNC v2 + retrospective | Spawn `doc-sync-v2` → ESITO A/B/C → retrospective bootstrap → close |
+
+> **Chiavi registry canoniche = INGLESE** (decisione CEO 2026-05-30): `id`, `title`, `type`, `organs`, `status`, `date_open`, `date_close`. Le chiavi italiane `tipo_missione`/`organi_coinvolti`/`data_apertura`/`stato` sono **LEGACY** (EGI-DOC accoppiato), in migrazione graduale — mai canoniche per le nuove istanze.
 
 ### 18.2 State machine codificata (livello Oracode-tooling)
 
@@ -524,7 +552,7 @@ Transizioni non ammesse bloccate dal CLI. Stati `auditing_failed` e `closed_with
 }
 ```
 
-SSOT registry: `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
+**Dove vive il registry (gerarchia Nexus 3-livelli).** Ogni **ISTANZA LSO (L3)** ha il proprio MISSION_REGISTRY nel suo repo: `<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`. Le **statistiche** e la **numerazione globale unica** sono responsabilità del **L2 HUB** (MISSION_REGISTRY consolidato nel repo `HUB-DOC`). `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json` è il caso **accoppiato HUB+istanza** di FlorenceEGI (caso unico finché c'è un solo cliente, chiavi italiane = legacy), **NON** il modello canonico per le nuove istanze. Vedi `ORACODE_NEXUS_3_TIER.md`.
 
 ---
 
@@ -554,7 +582,9 @@ close
 
 ### Multi-write per session_id (M-OS3-016)
 
-N sessioni Claude Code parallele = N focus paralleli in `~/.oracode/focus/<session_id>.json`. Zero collisione. **AMENDMENT 1 CEO**: env presente + file assente = BLOCK, no eredità da legacy `focus.json`.
+N sessioni Claude Code parallele = N focus paralleli in `~/oracode-engine/focus/<session_id>.json`. Zero collisione. **AMENDMENT 1 CEO**: env presente + file assente = BLOCK, no eredità da legacy `focus.json`.
+
+> **Nota path (M-OS3-025 Unità 1).** La cartella globale (L1 motore) è **VISIBILE** in `~/oracode-engine/` — non più `~/.oracode` nascosta. `bin/mission` usa `ORACODE_HOME = ~/oracode-engine`. `~/.oracode` resta come **symlink di compatibilità** verso `~/oracode-engine`, rimovibile.
 
 ### Spawn fingerprint (M-OS3-005)
 
@@ -676,26 +706,35 @@ P2, non blocca deploy. Applicata incrementalmente.
 
 ## Riferimenti
 
+I doc di **paradigma** sono stati rilocati in `/home/fabio/oracode/docs/paradigm/` (M-OS3-022). I path che restano in `EGI-DOC` sono **artefatti dell'istanza FlorenceEGI (L3 accoppiato)** — registry, audit, report runtime — non doc di paradigma universale.
+
+### Paradigma (universale)
+
 | Risorsa | Path |
 |---------|------|
-| Regole OS3 universali | `/home/fabio/EGI-DOC/CLAUDE_ECOSYSTEM_CORE.md` |
+| Nexus 3-livelli (SSOT locked) | `/home/fabio/oracode/docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` |
 | LSO architettura | `/home/fabio/oracode/docs/paradigm/lso/00_LSO_LIVING_SOFTWARE_ORGANISM.md` |
+| Manifesto LSO | `/home/fabio/oracode/docs/paradigm/lso/MANIFESTO_LSO.md` |
+| Mission Protocol | `/home/fabio/oracode/docs/paradigm/missions/MISSION_PROTOCOL.md` |
+| OS3 Executive Summary | `/home/fabio/oracode/docs/paradigm/execution/OS3/00_OS3_Executive_Summary.md` |
+| Sistema Priorità P0-P3 | `/home/fabio/oracode/docs/paradigm/execution/OS3/04_Modulo_3_Sistema_Priorita_P0_P3.md` |
+| Standards (naming, quality gate, legacy stack) | `/home/fabio/oracode/docs/paradigm/standards/` |
 | Hook directory | `/home/fabio/.claude/hooks/` |
 | Agenti directory | `/home/fabio/.claude/agents/` |
+
+### Istanza FlorenceEGI (L3 accoppiato — runtime / legacy)
+
+| Risorsa | Path |
+|---------|------|
+| Regole ecosistema (boot context istanza) | `/home/fabio/EGI-DOC/CLAUDE_ECOSYSTEM_CORE.md` |
 | Report audit | `/home/fabio/EGI-DOC/audit/` |
 | Report drift SSOT | `/home/fabio/EGI-DOC/audit/drift/` |
 | SSOT Registry | `/home/fabio/EGI-DOC/docs/lso/SSOT_REGISTRY.json` |
-| Mission Registry | `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json` |
-| Target Matrix | `/home/fabio/EGI-DOC/docs/oracode/audit/01_TARGET_MATRIX.md` |
-| Trigger Matrix | `/home/fabio/EGI-DOC/docs/oracode/audit/02_TRIGGER_MATRIX.md` |
-| Scoring Sheet | `/home/fabio/EGI-DOC/docs/oracode/audit/05_SCORING_SHEET.md` |
-| Runbook audit | `/home/fabio/EGI-DOC/docs/oracode/audit/07_RUNBOOK.md` |
-| Hook Enforcement | `/home/fabio/EGI-DOC/docs/oracode/audit/08_HOOK_ENFORCEMENT_SYSTEM.md` |
+| Mission Registry (legacy chiavi IT) | `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json` |
+| Target / Trigger / Scoring / Runbook / Hook Enforcement | `/home/fabio/EGI-DOC/docs/oracode/audit/` |
 | EGI-DOC Pipeline | `/home/fabio/EGI-DOC/docs/oracode/EGI_DOC_PIPELINE.md` |
-| Manifesto IT | `/home/fabio/EGI-DOC/docs/oracode/ORACODE_SYSTEM_MANIFESTO_IT_v1.0.0.md` |
-| Manifesto EN | `/home/fabio/EGI-DOC/docs/oracode/ORACODE_SYSTEM_MANIFESTO_EN_v1.0.0.md` |
 
 ---
 
-*Oracode OS3.0 — FlorenceEGI Organismo Software — SSOT v1.0.0 (2026-04-09)*
+*Oracode OS3.0 — Oracode Nexus SSOT v1.3.0 (2026-05-31)*
 *Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici*

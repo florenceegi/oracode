@@ -34,6 +34,20 @@ source: docs/lso/LSO_NOMENCLATURE_v2.md
 
 ---
 
+## 1bis. Gerarchia operativa Oracode Nexus (3 livelli)
+
+> **Oracode Nexus** = il sistema completo: paradigma + gerarchia operativa a 3 livelli + ecosistema (HUB / istanze). I 4 livelli sopra sono l'**asse concettuale**; i 3 livelli qui sono l'**asse operativo**.
+
+| # | Livello operativo | Definizione (una riga) |
+|---|-------------------|------------------------|
+| L1 | **GLOBALE** | Motore + paradigma (`oracode` + `os3-matrix`). Cartella globale **visibile** `~/oracode-engine/` (NON nascosta). Tiene solo lo **scratch runtime** (mission in volo, focus, lock) — NON un archivio versionato, NON un MISSION_REGISTRY. |
+| L2 | **HUB** | Softwarehouse acquirente. **Primo vero MISSION_REGISTRY**: file unico che raduna tutto, con **statistiche consolidate** e **numerazione globale unica** delle mission. Versionato nel repo `HUB-DOC` della softwarehouse. |
+| L3 | **ISTANZA LSO** | Singolo progetto/cliente. **Registry proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`). Ponte L1→L3 **automatico** (FATTO): `bin/mission` propaga lo stato dell'engine al registry del progetto via `.oracode/project.json`. |
+
+**Asse concettuale (4 livelli) e asse operativo (3 livelli) sono ortogonali.** SSOT: `ORACODE_NEXUS_3_TIER.md`.
+
+---
+
 ## 2. Layer Stack (L0-L11)
 
 | Layer | Nome | Funzione biologica | Maturity FlorenceEGI |

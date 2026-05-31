@@ -60,6 +60,28 @@ You write code with Claude Code
 
 ---
 
+## Oracode Nexus — 3 levels
+
+**Oracode Nexus** is the complete system: the paradigm + a 3-level operational hierarchy + the HUB/instance ecosystem. The framework is not mono-level — state lives at three distinct levels:
+
+```
+L1 — GLOBAL    The engine + software. Visible folder ~/oracode-engine/
+               holds only runtime scratch (missions/, focus/, audit/,
+               license.json). It is the control room, NOT a registry.
+
+L2 — HUB       The acquiring softwarehouse. The first real MISSION_REGISTRY:
+               a single file with consolidated statistics and globally-unique
+               mission numbering, versioned in the HUB-DOC repo.
+
+L3 — INSTANCE  A single project/LSO. Its own MISSION_REGISTRY in its own repo,
+               fed automatically by the engine via the L1→L3 bridge
+               (.oracode/project.json, CWD-resolved, parallel-safe).
+```
+
+The SSOT law for this hierarchy is [`docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`](docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md).
+
+---
+
 ## Quick start
 
 ```bash
@@ -115,8 +137,14 @@ It creates `.oracode/` in your workspace and registers hooks in Claude Code auto
 │   ├── node-ts-specialist.md    ← Node.js/TS code specialist
 │   └── corporate-finance-specialist.md ← financial docs
 ├── ssot-registry.json           ← doc-to-code mapping
-└── mission-registry.json        ← change tracking
+└── project.json                 ← bridge descriptor: where the versioned registry lives (registry_path)
 ```
+
+Missions are not stored inside `.oracode/`. They are auto-registered into the project's
+versioned `MISSION_REGISTRY.json` (e.g. `docs/missions/MISSION_REGISTRY.json`) by `bin/mission`,
+which resolves the `.oracode/project.json` descriptor from the current working directory
+(L1→L3 bridge, parallel-safe via lockfile). `.oracode/project.json` only points to where the
+registry, repo-map, and read-log live — it is not itself the registry.
 
 That's it. Start using Claude Code — Oracode is watching.
 
@@ -240,22 +268,29 @@ Track every significant change with full traceability:
 
 ```json
 {
-  "mission_id": "M-042",
+  "id": "M-042",
   "title": "Add Stripe webhook for refunds",
+  "type": "FEAT",
+  "organs": ["api"],
   "status": "completed",
+  "date_open": "2026-04-08",
+  "date_close": "2026-04-09",
   "doc_sync_executed": true,
   "doc_verified": false,
-  "files_modified": ["src/webhooks/stripe.ts", "src/services/refund.ts"]
+  "files_modified": ["src/webhooks/stripe.ts", "src/services/refund.ts"],
+  "stats": {}
 }
 ```
 
-The `doc_verified` field starts `false` — the nervous system sets it to `true` after verifying documentation alignment.
+Registry keys are English by convention (`id`, `title`, `type`, `organs`, `status`, `date_open`, `date_close`, `files_modified`, `stats`). The `doc_verified` field starts `false` — the nervous system sets it to `true` after verifying documentation alignment.
+
+The per-project registry (L3) holds the entries. Globally-unique numbering and consolidated statistics are the responsibility of the HUB level (L2), not the individual instance.
 
 ---
 
-## Multi-project ecosystems
+## Multi-project ecosystems — the HUB (L2)
 
-Oracode was built for a 7-project ecosystem. It handles multi-project workspaces natively:
+Oracode was built for a 7-project ecosystem. A multi-project workspace is exactly the **HUB level (L2)** of Oracode Nexus: the acquiring softwarehouse that owns the consolidated `MISSION_REGISTRY`, globally-unique mission numbering, and cross-instance statistics, versioned in its HUB-DOC repo. Each project is an instance (L3) with its own registry, fed automatically by the engine.
 
 ```bash
 npx oracode init
@@ -263,7 +298,7 @@ npx oracode init
 # > Project directories: api, web, ai-service, docs
 ```
 
-The nervous system watches files across all projects and maps them to shared documentation.
+The nervous system watches files across all instances and maps them to shared documentation, while the HUB consolidates numbering and statistics across them.
 
 ---
 
@@ -296,7 +331,7 @@ docs/paradigm/
 └── index/               Oracode-Nexus-index (navigable anti-degradation index)
 ```
 
-Start with [`docs/paradigm/index/Oracode-Nexus-index.md`](docs/paradigm/index/Oracode-Nexus-index.md) for a navigable map.
+Start with [`docs/paradigm/index/Oracode-Nexus-index.md`](docs/paradigm/index/Oracode-Nexus-index.md) for a navigable map. **Oracode Nexus** is the name of the complete system — the paradigm plus the 3-level hierarchy (L1 GLOBAL engine / L2 HUB / L3 INSTANCE) plus the HUB/instance ecosystem (see [`docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`](docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md)).
 
 Para enforcement runtime (hooks, agents, mission CLI) → see commercial repo [`florenceegi/os3-matrix`](https://github.com/florenceegi/os3-matrix) (OS3 Matrix, §1.1.B of LSO_NOMENCLATURE_v2).
 

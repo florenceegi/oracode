@@ -17,6 +17,10 @@ priority: critical
 
 # Oracode OS3 — Code Naming Standard
 
+> Standard di naming del paradigma **Oracode Nexus** (Livello 1 GLOBALE). Si applica a ogni
+> istanza LSO (L3) generata via `/project` e all'HUB softwarehouse (L2). Gli esempi sono tratti
+> dall'ecosistema FlorenceEGI (HUB/istanza accoppiato, "caso unico").
+
 > Prima di scrivere un metodo, una classe, una variabile — si verifica se esiste già un pattern nel codebase.
 > Se esiste, si estende. Non si reinventa.
 > Strategia Delta: file legacy restano invariati. Standard valido per ogni file nuovo.
@@ -228,7 +232,8 @@ Prefisso per scope: VITE_* (frontend), DB_* (database), AWS_* (infra)
 Prima di creare qualsiasi nuovo identificatore:
 
 ```
-1. Consultare l'Organ Index (EGI-DOC/docs/ecosistema/ORGAN_INDEX.json)
+1. Consultare l'Organ Index del proprio ecosistema
+   (per FlorenceEGI: EGI-DOC/docs/ecosistema/ORGAN_INDEX.json — caso HUB/istanza accoppiato)
    → Esiste già un metodo/classe con questo scopo?
 
 2. grep cross-organo sul nome proposto
@@ -243,6 +248,10 @@ Prima di creare qualsiasi nuovo identificatore:
 
 Se la risposta a (1) o (4) è sì → **non creare, riusare**.
 
+> Nessun path documentale è canonico universale: ogni istanza LSO (L3) risolve i propri path
+> dal suo repo (via `.oracode/project.json`), l'HUB (L2) dal suo `HUB-DOC`. I path `EGI-DOC/...`
+> citati sono il caso FlorenceEGI (HUB/istanza accoppiato), non lo standard per tutte le istanze.
+
 ---
 
 ## Organ Index — Catalogo Vivente
@@ -250,15 +259,20 @@ Se la risposta a (1) o (4) è sì → **non creare, riusare**.
 L'Organ Index è un catalogo auto-generato di tutti i simboli pubblici (classi, metodi,
 funzioni, interfacce) di tutti gli organi dell'ecosistema.
 
-- **Generazione**: `python3 /home/fabio/oracode/bin/organ_index.py`
-- **Output JSON**: `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json`
-- **Output leggibile**: `EGI-DOC/docs/ecosistema/ORGAN_INDEX_SUMMARY.md`
+- **Generazione**: tool in `os3-matrix/bin/organ_index/` (package Python — parte dell'enforcement
+  commerciale, Livello 1 motore). NON è un binario in `oracode/bin/` (che contiene solo `cli.js`).
+  L'invocazione esatta va verificata dalla fonte in `os3-matrix/bin/organ_index/` prima di citarla
+  (P0-12 Anti-Infra-Invention): mai dedurre il comando.
+- **Output JSON**: per FlorenceEGI `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json` (caso HUB/istanza accoppiato);
+  ogni ecosistema risolve il proprio path di output.
+- **Output leggibile**: `ORGAN_INDEX_SUMMARY.md` accanto al JSON (per FlorenceEGI:
+  `EGI-DOC/docs/ecosistema/ORGAN_INDEX_SUMMARY.md`)
 - **Frequenza**: rigenerato ad ogni cambio significativo o prima di creare nuovi componenti
 
-Vedi `EGI-DOC/docs/ecosistema/NAMING_CONVENTIONS.md` per le convenzioni di naming dei file
-di documentazione (complementari a questo standard).
+Vedi le convenzioni di naming dei file di documentazione del proprio ecosistema (per FlorenceEGI:
+`EGI-DOC/docs/ecosistema/NAMING_CONVENTIONS.md`) — complementari a questo standard.
 
 ---
 
 *v1.0.0 — 2026-04-10 — Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici*
-*Oracode OS3.0 — FlorenceEGI Organismo Software*
+*Oracode Nexus — standard di paradigma (L1 GLOBALE). Esempi da FlorenceEGI (HUB/istanza accoppiato).*

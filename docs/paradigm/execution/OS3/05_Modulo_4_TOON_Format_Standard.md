@@ -149,10 +149,10 @@ toon_str = ToonConverter.to_toon(data)
 restored = ToonConverter.from_toon(toon_str)
 ```
 
-### **Integrazione in NeuraleStrict (NATAN_LOC)**
+### **Integrazione in un Service RAG (esempio)**
 
 ```python
-class NeuraleStrict:
+class RagContextBuilder:
     def _build_context(self, chunks: List[Dict]) -> str:
         """Costruisce context window ottimizzato con TOON"""
         try:
@@ -214,9 +214,9 @@ def test_lossless_conversion():
     assert data == restored
 
 # Integration test
-def test_neurale_strict_integration():
+def test_rag_context_integration():
     chunks = [{"id": "chunk_1", "text": "test"}]
-    service = NeuraleStrict()
+    service = RagContextBuilder()
     context = service._build_context(chunks)
     assert "sources[1]" in context  # TOON format
 ```
@@ -320,21 +320,22 @@ for item in restored:
 ### **Documentazione Completa**
 
 - **Specifica ufficiale**: [fromjsontotoon.com](https://www.fromjsontotoon.com)
-- **Implementation guide**: `/docs/Progetti/TOON_FORMAT_IMPLEMENTATION.md`
-- **Repository**: `/home/fabio/NATAN_LOC/python_ai_service/toon_utils.py`
-- **Test suite**: `/home/fabio/NATAN_LOC/tests/test_toon_conversion.py`
+- **Implementation guide**: doc d'istanza (Livello 3), non parte del paradigma
+- **Repository / Test suite**: l'implementazione concreta (`toon_utils.py` + test) vive nel repo del singolo progetto che adotta TOON, non nel paradigma
 
-### **Integration Points**
+> Nota (paradigma MIT): TOON è qui definito come **standard generico** del paradigma Oracode. L'implementazione concreta, i path assoluti e i test appartengono al doc d'istanza (Livello 3), non a questo modulo riusabile.
+
+### **Integration Points (struttura tipo, per progetto che adotta TOON)**
 
 ```
-NATAN_LOC/
-├── python_ai_service/
+<progetto>/
+├── <ai_service>/
 │   ├── toon_utils.py (ToonConverter class)
 │   └── app/services/
-│       └── neurale_strict.py (USE pipeline integration)
+│       └── <rag_service>.py (pipeline integration)
 └── tests/
     ├── test_toon_conversion.py (unit tests)
-    ├── test_neurale_strict_integration.py (integration)
+    ├── test_rag_context_integration.py (integration)
     └── test_e2e_toon_workflow.py (end-to-end)
 ```
 
@@ -362,8 +363,8 @@ TOON Format incarna i principi fondamentali di Oracode System 3.0:
 - **P0 Security**: Sanitizzazione automatica, nessuna SQL injection
 - **P1 Testing**: Coverage completo (unit/integration/E2E)
 - **P2 Performance**: 26-60% token reduction misurabile
-- **Pilastro 3 (Eccellenza)**: Lossless conversion, type safety
-- **Pilastro 6 (Partnership)**: Human-readable per debugging collaborativo
+- **Pilastro 3 (Coerenza Semantica)**: Lossless conversion + type safety
+- **Pilastro 6 (Sicurezza Proattiva)**: Sanitizzazione automatica
 
 **TOON non è solo un formato dati. È un manifesto di efficienza AI-native con dignità umana preservata.**
 
@@ -377,13 +378,13 @@ TOON Format incarna i principi fondamentali di Oracode System 3.0:
 - ✅ ToonConverter implementation
 - ✅ NeuraleStrict integration
 - ✅ Test coverage completo
-- ✅ Production deployment (NATAN_LOC main branch)
+- ✅ Production deployment (prima istanza di adozione)
 - ✅ Token reduction confermata (26% media)
 - ✅ Adottato come standard OS3
 
 ---
 
-**Autori**: NATAN_LOC Development Team, Oracode Standards Committee  
+**Autori**: Oracode Standards Committee  
 **Mantainer**: Fabio Cherici (fabio@oracode.com)  
 **Versione documento**: 1.0.0  
 **Ultima modifica**: 2025-11-24
