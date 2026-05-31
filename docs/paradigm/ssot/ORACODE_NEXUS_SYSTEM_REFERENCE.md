@@ -1,11 +1,11 @@
 ---
-title: Oracode System — SSOT Completo
-slug: oracode-system-ssot
+title: Oracode Nexus — Riferimento di Sistema (SSOT tecnico completo)
+slug: oracode-nexus-system-reference
 doc_type: architecture
-version: 1.3.0
+version: 1.4.0
 status: current
 date: '2026-05-31'
-updated_at: '2026-05-31'
+updated_at: '2026-06-01'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - ecosistema
@@ -19,9 +19,9 @@ rag_indexed: true
 priority: critical
 ---
 
-# Oracode System — SSOT Completo
+# Oracode Nexus — Riferimento di Sistema
 
-> Versione: 1.2.0 | Data: 2026-05-27
+> Versione: 1.4.0 | Data: 2026-06-01
 > Autore: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 > Documento SSOT consolidato: tutto Oracode/LSO in un unico riferimento autorevole.
 >
@@ -29,9 +29,14 @@ priority: critical
 
 ---
 
-## 1. Cos'e Oracode
+## 1. Cos'e Oracode Nexus
 
-Oracode e una **metodologia formale** per governare ecosistemi software complessi dove agenti AI scrivono codice in produzione. Non e un framework, non e un linter, non e una pipeline CI/CD. E un sistema di regole, hook meccanici, agenti specializzati e audit che garantiscono coerenza, sicurezza e tracciabilita quando l'AI e co-autore del codice.
+Oracode Nexus e un **«[CATEGORIA DI PRODOTTO — PLACEHOLDER]»**: un sistema che sta **tra l'AI e il codice e impedisce — mentre l'AI scrive — che entri qualcosa che rompe le regole.** Previene *prima*, non verifica *dopo*. Non e un linter ne una pipeline di review post-scrittura: e **paradigma + motore di enforcement** (regole, hook meccanici, agenti specializzati e audit) che garantisce coerenza, sicurezza e tracciabilita quando l'AI e co-autore del codice.
+
+Per la gerarchia a 3 livelli (motore / HUB / istanza) vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`.
+
+<!-- INTERNO — NON PUBBLICO: la categoria di prodotto reale (che sostituisce il PLACEHOLDER qui sopra) e l'intero naming stack — brand / categoria / pratica — vivono nel documento privato ~/.florenceegi-private/naming-strategy/NAMING_STACK_SSOT.md (fuori da git). Pubblicabili solo dopo trademark check. Comprensibile solo a noi finche il file resta privato. -->
+<!-- NOTA coerenza: questa definizione risolve la contraddizione "metodologia vs framework" (vecchia §1 vs sezione 19) inquadrando Oracode Nexus come paradigma + motore. Allineare le altre occorrenze quando si tocca la sezione 19. -->
 
 **Dati di produzione (caso esemplare: istanza FlorenceEGI, aprile 2026):** 7 organi online, ~500k LOC, 34+ missioni completate, zero regressioni non rilevate.
 

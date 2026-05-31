@@ -349,9 +349,9 @@
       "last_drift_score": 0
     },
     {
-      "ssot_id": "oracode-system-ssot",
-      "path": "docs/paradigm/ssot/00_ORACODE_SYSTEM_SSOT.md",
-      "title": "Oracode System SSOT consolidato",
+      "ssot_id": "oracode-nexus-system-reference",
+      "path": "docs/paradigm/ssot/ORACODE_NEXUS_SYSTEM_REFERENCE.md",
+      "title": "Oracode Nexus — Riferimento di Sistema (SSOT tecnico)",
       "doc_type": "concept-ssot",
       "priority": "high",
       "check_frequency": "on_demand",
@@ -800,6 +800,22 @@
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
+    },
+    {
+      "ssot_id": "oracode-nexus-executive-summary",
+      "path": "docs/paradigm/ssot/00_ORACODE_NEXUS_EXECUTIVE_SUMMARY.md",
+      "title": "Oracode Nexus — Executive Summary",
+      "doc_type": "overview",
+      "priority": "high",
+      "check_frequency": "on_demand"
+    },
+    {
+      "ssot_id": "oracode-nexus-ssot",
+      "path": "docs/paradigm/ssot/00_ORACODE_NEXUS_SSOT.md",
+      "title": "Oracode Nexus — Definizione (SSOT di record)",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "on_demand"
     }
   ]
 }
