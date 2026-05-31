@@ -11,7 +11,7 @@ scope:
 - oracode
 rag_indexed: true
 priority: high
-source: docs/oracode/MISSION_PROTOCOL.md § 6.2
+source: docs/paradigm/missions/MISSION_PROTOCOL.md § 6.2
 ---
 
 # Retrospective Auto-Migliorante — Specifica Tecnica
@@ -257,5 +257,5 @@ naturalmente dal DRIFT_LOG.
 **Prerequisito**: M-158 (tracking accessi filesystem — riferimento storico EGI)
 **Consumato da**: MISSION_PROTOCOL.md FASE 6 (§ 6.2)
 
-*Per il tracking accessi: `docs/oracode/READ_TRACKING_TECH_SPEC.md`*
-*Per il protocollo completo: `docs/oracode/MISSION_PROTOCOL.md` § 6.2-6.3*
+*Per il tracking accessi: `docs/paradigm/tech-specs/READ_TRACKING_TECH_SPEC.md`*
+*Per il protocollo completo: `docs/paradigm/missions/MISSION_PROTOCOL.md` § 6.2-6.3*

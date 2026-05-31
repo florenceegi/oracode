@@ -11,7 +11,7 @@ scope:
 - oracode
 rag_indexed: true
 priority: high
-source: docs/oracode/MISSION_PROTOCOL.md § 4.2, § 6.2
+source: docs/paradigm/missions/MISSION_PROTOCOL.md § 4.2, § 6.2
 ---
 
 # Read Tracking — Specifica Tecnica
@@ -255,4 +255,4 @@ dell'istanza accoppiata EGI-DOC, non mission del paradigma `oracode`.
 > automatico L1→L3 (registry/read-log via `.oracode/project.json`) è realizzato
 > in **M-OS3-025** (vedi `bin/mission` `syncToRepoRegistry`, parallel-safe).
 
-*Per il protocollo completo del bootstrap retrospective: `docs/oracode/MISSION_PROTOCOL.md` § 6.2*
+*Per il protocollo completo del bootstrap retrospective: `docs/paradigm/missions/MISSION_PROTOCOL.md` § 6.2*
