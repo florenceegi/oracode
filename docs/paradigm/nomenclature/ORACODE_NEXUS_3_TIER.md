@@ -157,7 +157,7 @@ Ogni unità passa per il ciclo esecutore → doppio audit (os3-audit + alignment
 | 1 | Migrazione `~/.oracode/` → **`~/oracode-engine/`** (cartella globale visibile) | L1 | "globale visibile, non nascosta" | DA FARE |
 | 2 | **`/mission` slash command GLOBALE** (`~/.claude/commands/mission.md`) — wrapper di `bin/mission`, context-aware (rileva istanza da CWD) | L1 | "io devo sapere dove sono le cose / accesso globale all'engine" | ✅ **FATTO** (doppio audit GREEN/YELLOW→risolto) |
 | 3 | Ponte automatico **L1→L3** via `.oracode/project.json` (bin/mission propaga state→registry del progetto) | L1→L3 | "istanza ha registry proprio, sync automatico" | ✅ **FATTO** (commit 8760c5d, parallel-safe, doppio audit GREEN) |
-| 1 | Migrazione `~/.oracode/` → **`~/oracode-engine/`** (cartella globale visibile) | L1 | "globale visibile, non nascosta" | DA FARE (ULTIMA — con fix buyer-facing trovati in audit) |
+| 1 | Migrazione `~/.oracode/` → **`~/oracode-engine/`** (cartella globale visibile) | L1 | "globale visibile, non nascosta" | ✅ **FATTO** (move+symlink compat; bin/mission/cli.js/project.md + 4 hook sweepati alla visibile; fix buyer-facing chiusi; doppio audit GREEN). Symlink `~/.oracode→~/oracode-engine` resta come compat, rimovibile (sweep completato). |
 | 4 | **Aggregator HUB** (`mission-hub-aggregate.py`) — file unico con statistiche + numerazione cross-istanza | L2 | "HUB centrale per statistiche e numerazione" | DIFFERITO (serve a 2+ clienti; 1ª commessa = accoppiato) |
 | 5 | Ricollocare `finalize`/stats: calcolo a livello **HUB**, non istanza | L2 vs L3 | "statistiche = HUB" | DIFFERITO (con Unità 4) |
 
