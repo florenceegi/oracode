@@ -2,10 +2,10 @@
 title: Mission Protocol
 slug: mission-protocol
 doc_type: protocol
-version: 3.0.0
+version: 4.0.0
 status: current
 date: '2026-05-27'
-updated_at: '2026-05-27'
+updated_at: '2026-05-31'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
@@ -19,6 +19,8 @@ priority: high
 
 > **Livello (vedi `LSO_NOMENCLATURE_v1.md`)**: Oracode (universale, trasferibile a qualsiasi istanza LSO)
 > **Sostituisce**: `MISSION_PROTOCOL.md` v2.0.0 (2026-05-08)
+> **Cambio maggiore v4.0.0 (M-OS3-025, 2026-05-31)**: ingresso in **Oracode Nexus** con la gerarchia a 3 livelli. Cambiamenti strutturali: (1) **ponte L1→L3 AUTOMATICO** — `bin/mission` auto-registra le mission nel `MISSION_REGISTRY` dell'istanza via `.oracode/project.json` (fine della sincronizzazione manuale / "mission fantasma"); (2) **chiavi registry in INGLESE** (`id/title/type/organs/status/date_open/date_close`); (3) **cartella globale visibile** `~/oracode-engine/` (`ORACODE_HOME`); (4) statistiche/numerazione = responsabilità **HUB (L2)**, non istanza. Compatibile concettualmente con v3 (FASE 0-6 preservate); major perché cambiano schema-chiavi e meccanismo di propagazione.
+>
 > **Cambio maggiore v3.0.0 (M-OS3-018)**: codifica della state machine a 7 stati, introduzione del CLI di riferimento `bin/mission`, multi-mission concurrency (M-OS3-012), multi-write per session_id (M-OS3-016), spawn fingerprint (M-OS3-005), test-red whitelist `tests/**` in stato `planned`, scope hash anti-drift, pattern AMENDMENT CEO, ESITO A/B/C verification pre-close. La parte narrativa Oracode-universale (FASE 0-6) della v2.0.0 è preservata.
 
 ---
@@ -371,6 +373,7 @@ L'implementazione di riferimento del Mission Protocol è il CLI `bin/mission` (l
 | v0.1 | M-OS3-001 | State machine 7 stati non-aggirabile, scope hash, lock globale single-mission |
 | v0.2 | M-OS3-012 | Multi-mission concurrency: rimosso global lock, focus-based isolation |
 | v0.3 | M-OS3-016 | Multi-write per `session_id`: focus per-session via env, N chat parallele zero collision |
+| **v4.0.0** | **M-OS3-025** | **Oracode Nexus 3 livelli**: ponte L1→L3 automatico (`syncToRepoRegistry` via `.oracode/project.json`, parallel-safe), chiavi registry INGLESE, `~/oracode-engine` visibile, stats/numerazione al HUB. Subcomando `finalize`. Slash command globale `/mission`. |
 
 ### 8.2 Subcomandi principali
 

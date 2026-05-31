@@ -186,7 +186,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 ### `os3-matrix/mission/protocol.md`
 - **Path**: `/home/fabio/os3-matrix/mission/protocol.md`
 - **Status**: ❌
-- **Sintesi**: TBD — probabilmente versione stale rispetto a `MISSION_PROTOCOL.md v3.0.0` di EGI-DOC
+- **Sintesi**: TBD — probabilmente versione stale rispetto a `MISSION_PROTOCOL.md v4.0.0`
 
 ### `os3-matrix/mission/registry-schema.json`
 - **Path**: `/home/fabio/os3-matrix/mission/registry-schema.json`

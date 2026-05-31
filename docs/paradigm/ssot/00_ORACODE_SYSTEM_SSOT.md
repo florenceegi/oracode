@@ -25,7 +25,7 @@ priority: critical
 > Autore: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 > Documento SSOT consolidato: tutto Oracode/LSO in un unico riferimento autorevole.
 >
-> **v1.2.0 (M-OS3-018):** allineamento con M-OS3 sessioni 1+2+3 — riferimento esplicito a `bin/mission` CLI, state machine 7 stati, multi-write per `session_id`, hook hardening M-OS3-013. Per il dettaglio operativo del Mission Protocol vedere `MISSION_PROTOCOL.md` v3.0.0.
+> **v1.2.0 (M-OS3-018):** allineamento con M-OS3 sessioni 1+2+3 — riferimento esplicito a `bin/mission` CLI, state machine 7 stati, multi-write per `session_id`, hook hardening M-OS3-013. Per il dettaglio operativo del Mission Protocol vedere `MISSION_PROTOCOL.md` v4.0.0.
 
 ---
 
