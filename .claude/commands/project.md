@@ -11,7 +11,7 @@ Verifica cosa l'utente ha gia installato sul sistema.
 
 **0.1 Oracode Paradigma**
 Cerca `CLAUDE_ORACODE_CORE.md` in:
-- `~/.oracode/CLAUDE_ORACODE_CORE.md`
+- `~/oracode-engine/CLAUDE_ORACODE_CORE.md`
 - CWD e parent directories
 - Path noti (es. `/home/*/oracode/templates/`)
 
@@ -21,7 +21,7 @@ Se non trovato: "Oracode paradigma non rilevato. Vuoi installarlo ora?" → proc
 **0.2 OS3 Matrix**
 Cerca file di licenza OS3 Matrix in questo ordine:
 1. Variabile ambiente `ORACODE_LICENSE_PATH` (se definita, usa quel path)
-2. `~/.oracode/license.json` (path convenzionale)
+2. `~/oracode-engine/license.json` (path convenzionale)
 
 Se trovato, leggi il file JSON e verifica:
 - `product` deve essere `"os3-matrix"`
@@ -73,7 +73,7 @@ Chiedi conferma scelte prima di procedere.
 ## Fase 2 — Licenza e Installazione infrastruttura
 
 **2.1 Se OS3 Matrix selezionato**
-Rileggi `~/.oracode/license.json`. Se licenza valida:
+Rileggi `~/oracode-engine/license.json`. Se licenza valida:
 - Usa il campo `repo` per clonare os3-matrix in una directory temporanea
 - Se il clone fallisce (credenziali, rete): segnala e chiedi se procedere senza Matrix
 

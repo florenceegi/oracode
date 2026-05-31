@@ -5,7 +5,7 @@ const path = require('path');
 const readline = require('readline');
 const { execSync } = require('child_process');
 
-const ORACODE_DIR = path.join(require('os').homedir(), '.oracode');
+const ORACODE_DIR = path.join(require('os').homedir(), 'oracode-engine');  // M-OS3-025 Unità 1: cartella globale VISIBILE (era ~/.oracode; symlink di compat presente)
 const LICENSE_PATH = process.env.ORACODE_LICENSE_PATH || path.join(ORACODE_DIR, 'license.json');
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
