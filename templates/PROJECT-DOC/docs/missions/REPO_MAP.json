@@ -1,0 +1,4 @@
+{
+  "_meta": { "description": "Repo map per enrich_registry.py — mappa organo_key → (local_dir, github_repo) per attribution grep-by-mission-ID.", "version": "1.0.0" },
+  "{{PROJECT_NAME}}": { "local_dir": "{{INSTANCE_ROOT}}", "github_repo": "{{GITHUB_REPO}}" }
+}
