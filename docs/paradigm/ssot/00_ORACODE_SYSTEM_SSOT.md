@@ -481,7 +481,7 @@ Tutti in `/home/fabio/.claude/agents/`.
 
 ## 18. Mission Protocol — summary
 
-> **Specifica completa:** `docs/oracode/MISSION_PROTOCOL.md` v3.0.0 (2026-05-27). Questa sezione è un sommario operativo. In caso di divergenza, prevale `MISSION_PROTOCOL.md`.
+> **Specifica completa:** `docs/paradigm/missions/MISSION_PROTOCOL.md` v4.0.0 (2026-05-31). Questa sezione è un sommario operativo. In caso di divergenza, prevale `MISSION_PROTOCOL.md`.
 
 > **PONTE AUTOMATICO L1→L3 (M-OS3-025 Unità 3).** `bin/mission` auto-registra e propaga lo stato della mission nel MISSION_REGISTRY del progetto, risolto dal **CWD** tramite il descrittore `<progetto>/.oracode/project.json` (`syncToRepoRegistry`). Niente sincronizzazione manuale state↔registry, niente mission fantasma. Operazione **parallel-safe** (lock per-registry, `withRegistryLock`).
 
