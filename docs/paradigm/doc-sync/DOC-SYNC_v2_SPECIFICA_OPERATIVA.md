@@ -574,7 +574,7 @@ ed esce con 0.
 
 ### 11.7 Soglie e configurazione
 
-File: `EGI-DOC/docs/lso/COVERAGE_CONFIG.json`. Versionato in EGI-DOC. Modifiche soglie → Trigger Matrix tipo 2 (comportamentale).
+File: `<istanza-DOC>/docs/lso/COVERAGE_CONFIG.json` (es. EGI-DOC su FlorenceEGI). Versionato nel repo SSOT dell'istanza. Modifiche soglie → Trigger Matrix tipo 2 (comportamentale).
 
 ### 11.8 Test di accettazione v2.1.0 (additivi)
 
