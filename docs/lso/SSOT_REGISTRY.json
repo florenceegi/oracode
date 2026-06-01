@@ -235,7 +235,8 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "split_candidate": true
     },
     {
       "ssot_id": "lso-guard-testing-protocol",
@@ -444,7 +445,8 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "split_candidate": true
     },
     {
       "ssot_id": "padmin-ai-identity",
@@ -886,7 +888,8 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "split_candidate": true
     },
     {
       "ssot_id": "oracode-nexus-executive-summary",
@@ -933,7 +936,8 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "split_candidate": true
     },
     {
       "ssot_id": "agent-deploy-runtime-model",
@@ -1014,7 +1018,8 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "split_candidate": true
     }
   ]
 }
