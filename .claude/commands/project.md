@@ -118,6 +118,14 @@ Chiedi una descrizione del dominio in una riga.
 **Q4: Stack tecnologico**
 Chiedi backend, frontend, database, infrastruttura.
 
+> **Infra deploy — NON ASSUMERE (P0-12).** Se l'istanza si innesta su un ecosistema esistente,
+> non dedurre il pattern di hosting: verificalo dalla infra SSOT dell'ecosistema e replica quello già in uso.
+> **FlorenceEGI**: i sottodomini `*.florenceegi.com` usano **Route53 A-alias → ALB `florenceegi-alb` (eu-north-1)
+> → EC2 `i-0940cdb7b955d1632` → nginx vhost statico**, deploy via SSM da `s3://florenceegi-media/_deploy/<sub>/`,
+> docroot `/home/forge/<sub>/dist`, cert wildcard ACM sull'ALB. **NON S3/CloudFront** (CloudFront = solo CDN media).
+> Riferimenti SSOT: `EGI-DOC/docs/egi/AWS_INFRASTRUCTURE.md` (tabella deploy per-progetto + vhost) e
+> `EGI-DOC/docs/aws/ROUTE53_SUBDOMAIN_PROCEDURE.md`. Cicatrice: M-LEVESPE-002 (assunto S3/CloudFront → corretto a runtime).
+
 **Q5: Lingue i18n**
 Chiedi le lingue target. Default: "it en".
 
