@@ -78,6 +78,17 @@ all'apertura mission. Fragilità tracciate in `os3-matrix/docs/design/BACKLOG.md
 Mitigazione attuale: fallback REGOLA ZERO nel blocco + test che asserisce gli anchor.
 Saldo strutturale = mission dedicata.
 
+**Anchor stabile (M-OS3-034) + limite fresh-clone.** La risoluzione di
+`{{paradigm_root}}`/`{{engine_root}}` usa ora un campo `anchor` (`paradigm`/`engine`)
+nei descrittori, propagato in `projects.json` da `registerProject` (più robusto del
+match-by-display-name). **Limite dichiarato:** il descrittore di `oracode` è gitignored
+(convenzione `.oracode/` locale), quindi su fresh clone l'anchor `paradigm` non è
+versionato; il template `/project` generico non può portarlo (sarebbe errato per un
+progetto non-paradigma). Fino al primo `/project`/open che lo rigenera, la risoluzione
+di `{{paradigm_root}}` **degrada al fallback name-match "oracode"** (correttezza
+garantita, robustezza parziale). Decisione su come versionare l'anchor paradigm
+(es. descrittore oracode tracked) = mission/CEO.
+
 **No-prune → orfani.** `deploy-agents` copia/aggiorna ma non rimuove i file di `$DEST`
 non presenti in sorgente. Orfani osservati in `~/.claude/agents` (2026-06-01): 3 —
 `egili-blood-keeper.md`, `m093-remediation-tracker.md` (deployati per altra via) e
