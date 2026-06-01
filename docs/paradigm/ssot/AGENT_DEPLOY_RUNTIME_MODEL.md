@@ -164,16 +164,18 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-036 | decoupling runtime degli hook (mirror M-OS3-031): 6 hook coupled risolvono il root a runtime (no path organismo baked); `install-gitleaks-hooks` con lista repo esternalizzata; settings-snippet `$HOME`-based generico. §2b/§3 aggiornate. Residuo: classificazione hook generic vs FlorenceEGI = BACKLOG |
 | M-OS3-038 | hook event-driven di enforcement (§2c): `oracode-lint-guard.sh` (PostToolUse, segnala non-bloccante) + `oracode-lint-gate.sh` (PreToolUse git push, blocca su drift ERROR). Completa Q-001 — `oracode-lint` ora enforcement attivo. Binario risolto via engine anchor a runtime, graceful se assente (dip. `python3`+`jq`) |
 | M-OS3-040 | split snippet a due livelli (§2b): `settings-snippet.{core,florenceegi}.json` + README criterio. Chiude il residuo BACKLOG M-OS3-036 (classificazione generic vs FlorenceEGI). core=30 (wirato da `/project`), florenceegi=8 overlay. Audit remediation: 3 mis-classificazioni P1 corrette |
+| M-OS3-041 | `bin/seed-anchors` (idempotente) — salda il *seeding* del debito robustezza M-OS3-034: anchor `paradigm`/`engine` garantiti in `projects.json` da seed config, fresh-clone risolve senza descrittore gitignored né apertura mission. Aborta su `projects.json` illeggibile (no data-loss). Residuo: match-by-name |
 
 ## 5. Debito noto (robustezza risoluzione)
 
 La risoluzione di `{{paradigm_root}}`/`{{engine_root}}` poggia su
 `~/oracode-engine/projects.json`, artefatto runtime non versionato, popolato
 all'apertura mission. Fragilità tracciate in `os3-matrix/docs/design/BACKLOG.md`:
-- anchor non seedati (macchina nuova → non risolvono finché non si apre una mission);
-- match-by-name (`name == "OS3 Matrix"`) invece che per chiave stabile.
+- anchor non seedati (macchina nuova → non risolvono finché non si apre una mission)
+  — **SALDATO da M-OS3-041** (`bin/seed-anchors`, seeding idempotente); vedi sotto;
+- match-by-name (`name == "OS3 Matrix"`) invece che per chiave stabile — residuo aperto.
 Mitigazione attuale: fallback REGOLA ZERO nel blocco + test che asserisce gli anchor.
-Saldo strutturale = mission dedicata.
+Saldo strutturale (match-by-name) = mission dedicata.
 
 **Anchor stabile (M-OS3-034) + limite fresh-clone.** La risoluzione di
 `{{paradigm_root}}`/`{{engine_root}}` usa ora un campo `anchor` (`paradigm`/`engine`)
@@ -186,6 +188,16 @@ di `{{paradigm_root}}` **degrada al fallback name-match "oracode"** (correttezza
 garantita, robustezza parziale). Decisione su come versionare l'anchor paradigm
 (es. descrittore oracode tracked) = mission/CEO.
 
+**Mitigato da M-OS3-041 (`bin/seed-anchors`).** Il pezzo *seeding* di questo limite è
+risolto: `os3-matrix/bin/seed-anchors` (Python, idempotente) garantisce gli anchor
+`oracode`(paradigm)+`OS3 Matrix`(engine) in `projects.json` da un seed config
+(`~/oracode-engine/anchors.seed.json` machine-config + `etc/anchors.seed.json.example`
+versionato). Su fresh-clone: `seed-anchors` → `{{paradigm_root}}`/`{{engine_root}}`
+risolvono senza dipendere dal descrittore `oracode` gitignored né dall'apertura di una
+mission. Aggiunge se manca, non duplica, preserva descriptor/root esistenti; aborta (no
+overwrite) se `projects.json` è presente-ma-illeggibile. Residuo: il *come* versionare
+l'anchor paradigm nel descrittore tracked resta decisione mission/CEO — il seed lo aggira.
+
 **No-prune → orfani.** `deploy-agents` copia/aggiorna ma non rimuove i file di `$DEST`
 non presenti in sorgente. Orfani osservati in `~/.claude/agents` (2026-06-01): 3 —
 `egili-blood-keeper.md`, `m093-remediation-tracker.md` (deployati per altra via) e
@@ -194,4 +206,4 @@ Decidere se `deploy-agents` debba fare prune = mission separata.
 
 ---
 
-*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035, hook decoupled a runtime da M-OS3-036. Licenza MIT.*
+*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035, hook decoupled a runtime da M-OS3-036, seeding anchor fresh-clone da M-OS3-041. Licenza MIT.*
