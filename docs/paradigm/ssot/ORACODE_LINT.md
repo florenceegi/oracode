@@ -57,6 +57,10 @@ graceful se assente. Dipendenza runtime: `python3` + `jq`.
 - **R3 cross-organo**: contraddizioni tra CLAUDE.md di organi diversi (serve organ index).
 - **Claude-API (cron)**: detection semantica (ambiguità, contraddizioni di significato).
 - **Auto-lint**: le regole vanno tenute allineate al paradigma (il linter può driftare).
+  Nota: se l'auto-lint estendesse il target ai doc SSOT, serve **allow-list per i blocchi
+  esempio** (skip dentro fence ```` ``` ````) — un SSOT che *cita* i pattern R2 come esempi
+  (es. questo file) altrimenti si auto-trippa. Oggi non raggiungibile (guard/gate non
+  scansionano `docs/**/ssot/`).
 
 ## 5. Storia
 | Mission | Cosa |
