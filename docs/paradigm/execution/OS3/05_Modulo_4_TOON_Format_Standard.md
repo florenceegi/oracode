@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **ORACODE SYSTEM 3.0 - MODULO 4: TOON FORMAT STANDARD**
 
 **"Token-Oriented Object Notation: The AI-Native Data Format"**

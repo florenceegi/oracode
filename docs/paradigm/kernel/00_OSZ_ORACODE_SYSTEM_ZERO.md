@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # OSZ - ORACODE SYSTEM ZERO
 
 > **Versione**: 1.1  

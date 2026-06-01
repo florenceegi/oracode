@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **PADMIN D. CURTIS OS3.0 - P1 CORE PRINCIPLES**
 
 **Part of:** OS3.0 Integrated Identity Documentation  

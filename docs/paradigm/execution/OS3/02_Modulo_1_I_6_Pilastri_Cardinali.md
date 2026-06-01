@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **MODULO 1: I 6 PILASTRI CARDINALI**
 ## **"L'Eredità di OS2 - I Fondamenti Filosofici Immutabili"**
 

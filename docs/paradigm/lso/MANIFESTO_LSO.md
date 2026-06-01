@@ -12,8 +12,9 @@ scope:
 - lso
 supersedes: []
 superseded_by: null
-rag_indexed: true
 priority: critical
+visibility: public
+rag: public
 ---
 
 # Manifesto LSO

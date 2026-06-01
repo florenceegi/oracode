@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # PADMIN D. CURTIS — Identità AI Partner
 
 > **SSOT Version**: 1.0.0

@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # DOC-SYNC v2 — Specifica Operativa
 
 > **Versione**: 2.1.0

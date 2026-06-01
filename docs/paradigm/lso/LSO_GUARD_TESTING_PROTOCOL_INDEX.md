@@ -9,9 +9,10 @@ updated_at: '2026-05-08'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
-rag_indexed: true
 priority: high
 source: docs/lso/LSO_GUARD_TESTING_PROTOCOL_v1.md
+visibility: public
+rag: public
 ---
 
 # LSO Guard Testing Protocol — INDEX

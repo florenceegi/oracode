@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # DOC-SYNC v2 — Stato dell'Arte
 
 > **Versione documento**: 1.0.0

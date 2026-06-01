@@ -9,9 +9,10 @@ updated_at: '2026-05-08'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
-rag_indexed: true
 priority: high
 source: docs/paradigm/missions/MISSION_PROTOCOL.md § 4.2, § 6.2
+visibility: public
+rag: public
 ---
 
 # Read Tracking — Specifica Tecnica

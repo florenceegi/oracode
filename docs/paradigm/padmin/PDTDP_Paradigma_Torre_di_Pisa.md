@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # PDTDP --- Paradigma della Torre di Pisa
 
 ## Principio architetturale per la gestione delle deviazioni nei sistemi complessi

@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "description": "Repo map per enrich_registry.py — paradigma Oracode. Mappa organo_key → (local_dir, github_repo) per attribution grep-by-mission-ID.",
+    "version": "1.0.0",
+    "created": "2026-05-29",
+    "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
+    "mission": "M-OS3-025",
+    "purpose": "Le mission Oracode Nexus (M-OS3-NNN) toccano paradigma (oracode), enforcement (os3-matrix) e talvolta l'istanza laboratorio storica (EGI-DOC, es. M-OS3-022 relocation). enrich_registry.py greppa l'ID in tutti questi repo."
+  },
+  "oracode": {
+    "local_dir": "/home/fabio/oracode",
+    "github_repo": "florenceegi/oracode"
+  },
+  "os3-matrix": {
+    "local_dir": "/home/fabio/os3-matrix",
+    "github_repo": "florenceegi/os3-matrix"
+  },
+  "EGI-DOC": {
+    "local_dir": "/home/fabio/EGI-DOC",
+    "github_repo": "florenceegi/EGI-DOC"
+  }
+}

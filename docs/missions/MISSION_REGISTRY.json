@@ -21,6 +21,21 @@
   "counter": 23,
   "missions": [
     {
+      "id": "M-NEXUS-004",
+      "title": "Fix §18 changelog MISSION_PROTOCOL — M-OS3-026 + A1/prefisso su 025",
+      "type": "doc",
+      "organs": [
+        "oracode"
+      ],
+      "trigger_matrix": 2,
+      "status": "executing",
+      "date_open": "2026-06-01",
+      "date_close": null,
+      "scope_hash": "c07c7c203ed1b4f6df29ced3097e367543b8cf2546ec3381907b822246ae3d38",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-01T08:08:10.227Z"
+    },
+    {
       "id": "M-NEXUS-003",
       "title": "Fix coerenza MISSION_PROTOCOL Sez 17 (v3.0.0 → v4.0.0)",
       "type": "doc",

@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # PADMIN_ONBOARDING.md
 
 > **Versione**: 1.0.0

@@ -9,8 +9,9 @@ updated: '2026-06-01'
 author: Padmin D. Curtis con Fabio Cherici
 scope:
 - oracode
-rag_indexed: true
 priority: high
+visibility: public
+rag: public
 ---
 
 # Roadmap di disaccoppiamento di Oracode

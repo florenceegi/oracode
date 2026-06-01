@@ -9,8 +9,9 @@ updated_at: '2026-05-22'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
-rag_indexed: true
 priority: high
+visibility: public
+rag: public
 ---
 
 # Web Page Quality Gate — Protocollo Ultra Eccellenza

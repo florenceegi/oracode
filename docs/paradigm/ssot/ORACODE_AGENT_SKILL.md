@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # Oracode Agent Skill — dottrina single-source, on-demand
 
 ```

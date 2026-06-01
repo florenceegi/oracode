@@ -15,8 +15,9 @@ supersedes:
 - docs/oracode/index.md
 - docs/oracode/ORACODE_SYSTEM_MANIFESTO_IT_v1.0.0.md
 superseded_by: null
-rag_indexed: true
 priority: critical
+visibility: public
+rag: public
 ---
 
 # Oracode Nexus — Riferimento di Sistema

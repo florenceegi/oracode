@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **MODULO 3: SISTEMA DI PRIORITÀ P0-P3**
 
 ## **"La Gerarchia Decisionale: Cosa è Negoziabile e Cosa No"**
