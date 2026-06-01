@@ -8,7 +8,7 @@
 @purpose  SSOT del modello di deploy degli agenti e della risoluzione dei root
           a runtime: dove vive la fonte, come si genera la copia operativa,
           come gli agenti risolvono i path senza accoppiarsi a un organismo.
-@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032.
+@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico.
@@ -48,10 +48,16 @@ risolti **a runtime** dall'agente stesso, dichiarati nel blocco "Risoluzione roo
 | Placeholder | = | Risolto da |
 |-------------|---|------------|
 | `{{instance_root}}` | progetto attivo | `.oracode/project.json` da CWD, risalendo i parent |
-| `{{paradigm_root}}` | docs paradigma | `~/oracode-engine/projects.json` → progetto "oracode" `.root` + `/docs/paradigm` |
-| `{{engine_root}}` | os3-matrix engine | `~/oracode-engine/projects.json` → progetto "OS3 Matrix" `.root` |
+| `{{paradigm_root}}` | docs paradigma | `~/oracode-engine/projects.json` → entry con `anchor == "paradigm"` `.root` + `/docs/paradigm` (fallback: name-match "oracode") |
+| `{{engine_root}}` | os3-matrix engine | `~/oracode-engine/projects.json` → entry con `anchor == "engine"` `.root` (fallback: name-match "OS3 Matrix") |
 
-Se un root non si risolve (descrittore assente, anchor mancante): **REGOLA ZERO** —
+Da **M-OS3-034** la risoluzione di `{{paradigm_root}}`/`{{engine_root}}` avviene per
+**anchor stabile** (campo `anchor` `paradigm`/`engine` nel descrittore `.oracode/project.json`,
+propagato in `projects.json` da `registerProject`), con **fallback al match-by-display-name**
+("oracode"/"OS3 Matrix") quando l'anchor non è seedato. L'anchor è più robusto del
+display-name (rinominabile). Dettaglio e limite fresh-clone in §5.
+
+Se un root non si risolve (descrittore assente, anchor E name-match mancanti): **REGOLA ZERO** —
 l'agente chiede, non assume. Conseguenza: lo stesso agente opera su **qualsiasi
 organismo** senza modifiche (organism-agnostic).
 
@@ -67,6 +73,8 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-030 | `bin/deploy-agents` — single-source sorgente↔deploy (modello B, root `@@` baked) |
 | M-OS3-031 | decoupling runtime (modello A): root risolti a runtime, deploy = copia pura |
 | M-OS3-032 | skill estesa ai 6 agenti dottrina-pesanti |
+| M-OS3-033 | SSOT istituito; remediation accuratezza (atomico per-file, no-prune, orfani) |
+| M-OS3-034 | robustezza risoluzione root: anchor stabile (`paradigm`/`engine`) + fallback name; §3 allineata, limite fresh-clone in §5 |
 
 ## 5. Debito noto (robustezza risoluzione)
 
