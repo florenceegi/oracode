@@ -325,7 +325,7 @@
     {
       "ssot_id": "mission-protocol",
       "path": "docs/paradigm/missions/MISSION_PROTOCOL.md",
-      "title": "Mission Protocol v3.0.0 — FASE 0-6 state machine",
+      "title": "Mission Protocol v4.1.0 — FASE 0-6 state machine + bootstrap mirato open-time",
       "doc_type": "spec-ssot",
       "priority": "critical",
       "check_frequency": "on_commit",
@@ -343,7 +343,7 @@
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-025",
+      "verified_in_mission": "M-OS3-026",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
