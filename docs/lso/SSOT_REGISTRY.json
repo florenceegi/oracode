@@ -848,7 +848,12 @@
       "organ": "oracode-paradigm",
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:read-tracking-tech-spec"
+      "split_private_ref": "os3-matrix:read-tracking-tech-spec",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-048",
+      "verification_mode": "registry_only",
+      "last_drift_score": 0
     },
     {
       "ssot_id": "retrospective-tech-spec",
@@ -865,7 +870,12 @@
       "organ": "oracode-paradigm",
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:retrospective-tech-spec"
+      "split_private_ref": "os3-matrix:retrospective-tech-spec",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-048",
+      "verification_mode": "registry_only",
+      "last_drift_score": 0
     },
     {
       "ssot_id": "doc-sync-v2-specifica-operativa",
@@ -882,7 +892,12 @@
       "organ": "oracode-paradigm",
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:doc-sync-v2-specifica-operativa"
+      "split_private_ref": "os3-matrix:doc-sync-v2-specifica-operativa",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-048",
+      "verification_mode": "registry_only",
+      "last_drift_score": 0
     },
     {
       "ssot_id": "doc-sync-v2-piano-implementativo",
@@ -899,7 +914,12 @@
       "organ": "oracode-paradigm",
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:doc-sync-v2-piano-implementativo"
+      "split_private_ref": "os3-matrix:doc-sync-v2-piano-implementativo",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-048",
+      "verification_mode": "registry_only",
+      "last_drift_score": 0
     },
     {
       "ssot_id": "doc-sync-v2-stato-dellarte",
@@ -916,7 +936,12 @@
       "organ": "oracode-paradigm",
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:doc-sync-v2-stato-dellarte"
+      "split_private_ref": "os3-matrix:doc-sync-v2-stato-dellarte",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-048",
+      "verification_mode": "registry_only",
+      "last_drift_score": 0
     },
     {
       "ssot_id": "agent-deploy-runtime-model",
@@ -933,7 +958,12 @@
       "organ": "oracode-paradigm",
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:agent-deploy-runtime-model"
+      "split_private_ref": "os3-matrix:agent-deploy-runtime-model",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-048",
+      "verification_mode": "registry_only",
+      "last_drift_score": 0
     }
   ]
 }
