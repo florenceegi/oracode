@@ -98,6 +98,10 @@ La registrazione nel `MISSION_REGISTRY.json` dell'istanza (L3) è **automatica**
 
 La **numerazione globale unica** anti-collisione cross-istanza è responsabilità centralizzata del **HUB (L2)**, non più di un "leggi counter → incrementa" eseguito a mano nell'istanza.
 
+**Blocco mission-fantasma — A1 (decisione CEO 2026-06-01, M-OS3-025).** `bin/mission open` **BLOCCA** se nel CWD non esiste `.oracode/project.json`: una mission senza progetto vivrebbe solo nel runtime globale (`~/oracode-engine/`) e NON sarebbe versionata ("mission fantasma"). Per una mission **globale intenzionale** (es. lavoro sul motore stesso) serve il flag esplicito `--global`. I comandi non distruttivi (`advance`, `close`, `status`) restano fail-soft.
+
+**Convenzione ID prefissato per progetto (decisione CEO 2026-06-01, M-OS3-025).** Il runtime globale `~/oracode-engine/missions/` è condiviso e chiavato sul solo ID → gli ID devono essere **globalmente unici**. Convenzione: prefisso per progetto — `M-POLI-001`, `M-OS3-025`, `M-NEXUS-001`, ecc. La numerazione globale automatica anti-collisione è compito del **HUB (L2)** (Unità 4, da costruire); fino ad allora il prefisso garantisce unicità.
+
 Una mission può essere aperta anche solo per riservare uno slot (`draft`) mentre la specifica è ancora discussa con il CEO.
 
 ---
