@@ -816,6 +816,30 @@
       "doc_type": "concept-ssot",
       "priority": "critical",
       "check_frequency": "on_demand"
+    },
+    {
+      "ssot_id": "oracode-agent-skill",
+      "path": "docs/paradigm/ssot/ORACODE_AGENT_SKILL.md",
+      "title": "Oracode Agent Skill — dottrina single-source on-demand",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "oracode"
+        ],
+        "paths": [
+          "templates/CLAUDE_ORACODE_CORE.md"
+        ]
+      },
+      "update_policy": null,
+      "registered_by": "M-OS3-029",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "padmin",
+      "verified_in_mission": "M-OS3-029",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
     }
   ]
 }
