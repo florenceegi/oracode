@@ -85,7 +85,9 @@ BACKLOG os3-matrix.
 Oltre agli hook deployati come copia pura (§2b), il modello prevede una classe di
 **hook di enforcement event-driven** wirati nel `settings-snippet.json` su eventi del
 tool-runtime. Istituita da M-OS3-038 con la coppia che attiva `oracode-lint` (il linter
-degli artefatti Oracode — agent/skill/hook — che vive in `engine_root/bin/oracode-lint`):
+degli artefatti Oracode — agent/skill/hook — che vive in `engine_root/bin/oracode-lint`;
+specifica completa di regole e scopo in `ORACODE_LINT.md`. Qui si descrive solo il loro
+innesto deploy/runtime):
 
 - **`oracode-lint-guard.sh`** — evento **PostToolUse** su `Write|Edit`. Linta l'artefatto
   appena editato (`*/agents/*.md`, `*/skills/*.md`, `*/hooks/*.sh`) e segnala il drift

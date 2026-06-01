@@ -51,7 +51,8 @@ gli altri guard, stratificato per costo:
 | (futuro) cron | settimanale | sweep olistico + Claude API | — |
 
 Risoluzione runtime: guard/gate trovano `oracode-lint` via engine anchor (`projects.json`),
-graceful se assente. Dipendenza runtime: `python3` + `jq`.
+graceful se assente. Dipendenza runtime: `python3` + `jq`. Dettaglio deploy/risoluzione-root
+degli hook: `AGENT_DEPLOY_RUNTIME_MODEL.md` §2c.
 
 ## 4. Follow-up (iterazioni)
 - **R3 cross-organo**: contraddizioni tra CLAUDE.md di organi diversi (serve organ index).
