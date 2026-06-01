@@ -62,12 +62,12 @@ Ogni regola nasce da un errore concreto in produzione. Sono cicatrici codificate
 | P0-5 | **UEM-First** | Errori passano dal gestore centralizzato. Mai try/catch improvvisati, mai solo log |
 | P0-6 | **Anti-Service-Method** | Prima di chiamare un metodo di un service, verifica nel filesystem che il service esista e abbia quel metodo con quella firma |
 | P0-7 | **Anti-Enum-Constant** | Prima di usare una costante enum, verifica che esista come case dell'enum. Mai completare con valori plausibili |
-| P0-8 | **Complete Flow Analysis** | Prima di modificare qualcosa di non triviale, mappa il flusso completo in 4 fasi → `rules/p0-08-flow-analysis.md` |
+| P0-8 | **Complete Flow Analysis** | Prima di modificare qualcosa di non triviale, mappa il flusso completo in 4 fasi (vedi sotto) |
 | P0-9 | **i18n completa** | Ogni nuova stringa disponibile in tutte le lingue target fin dal primo commit. Mai "le altre lingue le faccio dopo" |
 | P0-10 | **Anti-bypass data layer** | Accesso al database sempre tramite service factory o repository. Mai query raw quando esiste un'astrazione |
 | P0-11 | **DOC-SYNC** | Task non chiusa finché documentazione SSOT non è aggiornata con il codice. Codice e doc viaggiano insieme |
 | P0-12 | **Anti-Infra-Invention** | URL, path, branch, config di deploy: verifica dalla fonte. Mai dedurre nomi plausibili |
-| P0-13 | **Test-First Discipline** | Ogni feature/fix/refactor produce o aggiorna test. Task non chiusa senza test verde → `rules/p0-13-test-first.md` |
+| P0-13 | **Test-First Discipline** | Ogni feature/fix/refactor produce o aggiorna test. Task non chiusa senza test verde |
 
 ---
 
