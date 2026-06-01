@@ -3,11 +3,11 @@
 ```
 @package  oracode/paradigm/ssot
 @author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
-@version  1.0.0
+@version  1.1.0
 @date     2026-06-01
 @purpose  SSOT del linter Oracode: codifica in enforcement automatico il drift-detection
           che prima era manuale (audit). Layer 3 LSO — sistema auto-correttivo.
-@status   PRODUCTION (MVP static + wiring event-driven) — istituito da M-OS3-037/038.
+@status   PRODUCTION (MVP static + wiring event-driven + R5 cross-organo) — M-OS3-037/038/043.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico. Implementazione: `os3-matrix/bin/oracode-lint`.
@@ -26,7 +26,7 @@ Principio: lo **static gratis** sta nei trigger event-driven (gira spesso); il *
 costoso** (Claude API) andrà nel cron (raro). Lo static non sostituisce il giudizio LLM —
 lo **complementa** front-line sul drift meccanico/strutturale.
 
-## 2. Le 4 regole (MVP)
+## 2. Le regole
 
 | Regola | Rileva | Severità |
 |--------|--------|----------|
@@ -34,6 +34,14 @@ lo **complementa** front-line sul drift meccanico/strutturale.
 | **R2** organism-coupling | path organismo / var doc-root baked (`${ORACODE_DOC_ROOT}`, `@@..@@`, `/home/fabio/EGI-DOC/`, `NATAN_LOC/`) invece che runtime `{{}}` | error |
 | **R3** source-deploy-drift | `os3-matrix/{agents,hooks}` ≠ `~/.claude/{agents,hooks}` (deploy non in parità) | error |
 | **R4** doctrine-drift | P0 enumerati negli artefatti ≠ CORE (nome sbagliato, P0 inventato, range errato) | error |
+| **R5** cross-organ | costanti condivise (`shared-constants.json`) con valore divergente tra organi (`projects.json`) — attivata da `--cross-organ` | error |
+
+R5 è opt-in (`--cross-organ`): confronta i valori delle costanti condivise dichiarate in
+`shared-constants.json` (+ `.example`, default vuoto = generico) tra i `CLAUDE.md` degli organi
+in `projects.json`, flaggando le divergenze (es. scala/`tokens_per_egili` incoerenti). Regex con
+1 gruppo = valore. Override `--organs`/`--shared-constants` per test. Senza config attiva →
+warning su stderr (no falsa sicurezza, simmetria col warning R4). Config live
+(`etc/shared-constants.json`) è gitignored: versionato solo il `.example`. Istituita da M-OS3-043.
 
 Tarature anti-rumore: R4 solo claim `P0-N (nome-corto)` (non checklist `**P0-N** —`), **skip
 delle skill** (proiezione verbatim del CORE, verificate altrove). CORE non caricato → R4
@@ -55,7 +63,10 @@ graceful se assente. Dipendenza runtime: `python3` + `jq`. Dettaglio deploy/riso
 degli hook: `AGENT_DEPLOY_RUNTIME_MODEL.md` §2c.
 
 ## 4. Follow-up (iterazioni)
-- **R3 cross-organo**: contraddizioni tra CLAUDE.md di organi diversi (serve organ index).
+- **Cross-organo — slice deterministico REALIZZATO (M-OS3-043 → R5)**: divergenza di valore
+  su costanti condivise tra CLAUDE.md di organi diversi (via `projects.json` +
+  `shared-constants.json`). Residuo: detection *semantica* delle contraddizioni in prosa
+  (significato, non solo valore) → M-OS3-044 (Claude-API).
 - **Claude-API (cron)**: detection semantica (ambiguità, contraddizioni di significato).
 - **Auto-lint**: le regole vanno tenute allineate al paradigma (il linter può driftare).
   Nota: se l'auto-lint estendesse il target ai doc SSOT, serve **allow-list per i blocchi
@@ -68,7 +79,8 @@ degli hook: `AGENT_DEPLOY_RUNTIME_MODEL.md` §2c.
 |---------|------|
 | M-OS3-037 | MVP static `bin/oracode-lint` (R1-R4) + report md/json + exit code |
 | M-OS3-038 | wiring event-driven: guard PostToolUse + gate pre-push |
+| M-OS3-043 | R5 cross-organo (`--cross-organ`) — costanti condivise divergenti tra organi |
 
 ---
 
-*Oracode System — SSOT paradigma. Istituito da M-OS3-037/038. Licenza MIT.*
+*Oracode System — SSOT paradigma. Istituito da M-OS3-037/038, esteso da M-OS3-043. Licenza MIT.*
