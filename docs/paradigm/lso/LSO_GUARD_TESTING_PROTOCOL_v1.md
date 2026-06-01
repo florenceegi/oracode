@@ -47,15 +47,16 @@ Un guard è uno script che, in un punto specifico del flusso operativo, **verifi
 - Cron-based check (verificano periodicamente lo stato del sistema)
 - Mission-phase guard (verificano alla chiusura di una fase)
 
-Esempi attualmente attivi in LSO (al 2026-05-04):
+Esempi di **tipo** di guard (l'inventario concreto dei guard attivi — con i rispettivi nomi,
+status e l'audit retroattivo — è `visibility: private` nell'enforcement OS3 Matrix: SSOT
+`lso-guard-testing-protocol-impl`. Confine mono, M-OS3-048):
 
-- `mission-report-guard.sh` — blocca chiusura mission senza report esteso
-- `mission-stats-guard.sh` — blocca chiusura mission senza aggiornamento statistiche
-- `ssot-reflex-guard.sh` — segnala modifica a file watchato (passivo, non bloccante)
-- `ssot-living-check.sh` — cron daily che marca SSOT come stale
-- `doc-sync-v2-guard.sh` — **ROTTO** (oggetto del post-mortem)
+- guard di **chiusura mission** (blocca senza report / senza aggiornamento statistiche)
+- guard **reflex passivo** (segnala modifica a file watchato, non bloccante)
+- **cron di staleness** (marca SSOT stantii)
+- guard **DOC-SYNC** (aggancio alla chiusura mission)
 
-Questa lista non è esaustiva e sarà completata dall'audit retroattivo (vedi § 5).
+Questi sono *tipi*, non l'elenco esaustivo: l'inventario reale e gli status vivono nel SSOT privato.
 
 ---
 
@@ -83,7 +84,7 @@ Un guard che si limita a emettere un warning ma non blocca **non e un guard** �
 
 Il guard deve leggere campi del registry/SSOT esattamente come questi sono nominati nella sorgente. Discrepanze di naming (campo inglese vs italiano, snake_case vs camelCase, singolare vs plurale) rendono il guard automaticamente rotto.
 
-Questo criterio è la **diretta conseguenza del fallimento di DOC-SYNC v2** (post-mortem M-148, EVENTO STORICO), dove `doc-sync-v2-guard.sh` cercava `status`/`date_closed` mentre il MISSION_REGISTRY del tempo conteneva `stato`/`data_chiusura`. Il guard è stato deployato senza che nessuno verificasse la coerenza.
+Questo criterio è la **diretta conseguenza del fallimento di DOC-SYNC v2** (post-mortem M-148, EVENTO STORICO), dove il guard DOC-SYNC cercava `status`/`date_closed` mentre il MISSION_REGISTRY del tempo conteneva `stato`/`data_chiusura`. Il guard è stato deployato senza che nessuno verificasse la coerenza.
 
 > **NB (riquadratura storica):** al tempo del post-mortem (2026-04-30) il registry EGI-DOC (istanza FlorenceEGI) era in **italiano**, quindi i campi corretti erano allora quelli italiani. **Oggi i campi canonici sono in inglese** (`status`, `date_close`; vedi `ORACODE_NEXUS_3_TIER.md` §Livello 3): un guard nuovo deve leggere i campi inglesi. La lezione del Criterio 2 — coerenza tra campi letti e campi reali della sorgente — resta valida indipendentemente dalla lingua; cambia solo *quale* sia la sorgente canonica.
 
@@ -124,7 +125,7 @@ Ogni guard di LSO deve avere **almeno** i due test seguenti, archiviati in `test
 2. Execute: eseguire il guard
 3. Assert: verificare che il guard abbia restituito un exit code di "passa" (tipicamente 0) e non abbia bloccato
 
-**Esempio per `mission-report-guard.sh`**:
+**Esempio per un guard di report mission**:
 - Setup: creare una mission test con `report_esteso` valorizzato
 - Execute: eseguire il guard
 - Assert: il guard restituisce 0 e non emette messaggi di blocco
@@ -140,12 +141,12 @@ Ogni guard di LSO deve avere **almeno** i due test seguenti, archiviati in `test
 2. Execute: eseguire il guard
 3. Assert: verificare che il guard abbia restituito un exit code di "blocco" (tipicamente diverso da 0) e abbia emesso un messaggio di blocco identificabile
 
-**Esempio per `mission-report-guard.sh`**:
+**Esempio per un guard di report mission**:
 - Setup: creare una mission test con `report_esteso` mancante o vuoto
 - Execute: eseguire il guard
 - Assert: il guard restituisce un exit code di blocco e il messaggio di errore indica chiaramente che il blocco è dovuto a `report_esteso` mancante
 
-**Importante**: il test negativo è il test che **avrebbe rilevato il bug di `doc-sync-v2-guard.sh`**. Un test negativo per quel guard avrebbe testato: "creo una mission con `doc_sync_executed: false` e verifico che il guard blocchi". Quel test sarebbe fallito (perché il guard non blocca per via dei campi inglesi/italiani) e il bug sarebbe emerso prima di M-148.
+**Importante**: il test negativo è il test che **avrebbe rilevato il bug del guard DOC-SYNC**. Un test negativo per quel guard avrebbe testato: "creo una mission con `doc_sync_executed: false` e verifico che il guard blocchi". Quel test sarebbe fallito (perché il guard non blocca per via dei campi inglesi/italiani) e il bug sarebbe emerso prima di M-148.
 
 **Completezza del test negativo**: il test negativo deve verificare entrambi:
 
@@ -219,7 +220,7 @@ Ogni guard deve dichiarare nell'header documentale (vedi § 2 Criterio 4) **qual
 Esempio header:
 
 ```bash
-# Guard: mission-stats-guard.sh
+# Guard: <guard-stats-mission>
 # Tipo: Mission-phase (closing)
 # Verifica: aggiornamento delle statistiche prima della chiusura mission
 # Blocca quando: il campo `stats.calculated_at` nella mission è precedente a `date_close`

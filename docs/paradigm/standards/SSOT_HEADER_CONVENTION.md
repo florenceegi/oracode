@@ -85,14 +85,14 @@ Il vecchio campo `rag_indexed` viene rimosso quando si aggiunge `rag`.
 OS3 Matrix / organismo (`private`) — **mai entrambi nello stesso file**. Se un argomento ha sia un
 livello-modello sia un livello-implementazione, si **spezza in due SSOT** distinti, con cross-ref:
 - il SSOT `public` descrive il **modello/principi** (cosa, perché) — astratto, riusabile;
-- il SSOT `private` descrive l'**implementazione concreta** (come: codice, path `os3-matrix/bin/...`,
+- il SSOT `private` descrive l'**implementazione concreta** (come: codice, path di enforcement,
   layout file, regole esatte) — vive nel repo privato.
 
 ## 3.1 Dove vive l'entry di registro di un SSOT private
 
 Il `SSOT_REGISTRY.json` di `oracode` è **pubblico**: contiene SOLO entry `visibility: public`.
-Un SSOT `visibility: private` ha la sua entry in un **registry privato** dedicato in
-`os3-matrix/docs/lso/SSOT_REGISTRY.json` (da istituire al primo SSOT private classificato) —
+Un SSOT `visibility: private` ha la sua entry in un **registry privato** dedicato nel repo
+OS3 Matrix (in `docs/lso/`, istituito da M-OS3-048) —
 applicando la regola mono-confine **anche al registro**: nessun `ssot_id`/`title`/`path` che
 riveli l'implementazione OS3 Matrix finisce nel registry pubblico. *(Decisione architetturale
 cross-project — confermare con CEO prima di M-OS3-048.)*
@@ -111,7 +111,7 @@ Dubbio tra public e private → **tratta come private** (il leak è irreversibil
 ## 5. Applicazione (mission successive)
 - **M-OS3-047**: classifica tutti gli SSOT esistenti + aggiunge i 2 header. Marca inoltre
   `split_candidate: true` nel registry su criterio **path-based**: ogni SSOT che watcha
-  `os3-matrix/bin|hooks` (mescola modello pubblico + implementazione privata) è candidato allo
+  i path di enforcement (bin/hooks dell'OS3 Matrix) — mescola modello pubblico + implementazione privata — è candidato allo
   split. I candidati reali risultano **18**, non i 3 illustrativi sotto: ai 3 nominati qui si
   aggiungono — fra gli altri — `MISSION_PROTOCOL`, `NAMING_STANDARD_CODE`, `WEB_PAGE_QUALITY_GATE`,
   `LEGACY_STACK_POLICY`, le 3 tech-spec/doc-sync e i protocolli LSO-guard. La lista autorevole è

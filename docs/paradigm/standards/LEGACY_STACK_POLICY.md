@@ -9,7 +9,7 @@ rag: public
 > **Quando**: 2026-04-22
 > **Versione**: 1.0.0
 > **Mission**: M-094 (child di M-094-SUPERVISOR, parent M-093 Ultra Excellence Audit)
-> **Enforcement**: hook `~/.claude/hooks/check-no-legacy-stack.sh` (PreToolUse Write|Edit) — meccanismo L1 riusabile, non specifico FlorenceEGI
+> **Enforcement**: hook PreToolUse Write|Edit di enforcement (meccanismo L1 riusabile, non specifico FlorenceEGI; impl privata OS3 Matrix)
 
 > **Inquadramento Oracode Nexus (Livello 1).** Il ban stack (Alpine/Livewire/Filament per codice nuovo) è **policy di paradigma**: vale per ogni istanza LSO generata via `/project`. L'hook `check-no-legacy-stack.sh` è il meccanismo di enforcement L1, ereditabile da ogni HUB/istanza. Le **tabelle per-organo** e i **path EGI-DOC** sotto sono l'**applicazione concreta nell'ecosistema FlorenceEGI** (HUB/istanza accoppiato, caso unico) — esempio di istanza L2/L3, non parte normativa del paradigma.
 
@@ -81,7 +81,7 @@ Sostituire con:
 ## 4. Enforcement automatico
 
 ### 4.1 Hook PreToolUse
-**Path**: `~/.claude/hooks/check-no-legacy-stack.sh`
+**Enforcement**: hook PreToolUse di stack-ban (impl privata OS3 Matrix)
 **Matcher**: `Write|Edit` su file `.blade.php`, `.ts`, `.tsx`, `.vue`, `.php`
 **Azione**: exit code 2 (block) + stderr con pattern violato + alternative
 

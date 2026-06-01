@@ -46,48 +46,32 @@ Regola di contenuto: **il normativo è verbatim dal CORE, mai parafrasato.** La 
 aggiunge *profondità procedurale ed esempi*, non riscrive la norma. In caso di
 divergenza, **vince il CORE** (unico SSOT normativo; la skill è la sua proiezione).
 
-## 3. Implementazione (proof minimale — M-OS3-029)
+## 3. Implementazione (riferimento)
 
-- Skill `~/.claude/skills/oracode-doctrine/`:
-  - `SKILL.md` — sottile, sempre-on: 13 P0 + pilastri + priorità, **verbatim**; topic-index; provenance.
-  - `rules/p0-08-flow-analysis.md`, `rules/p0-13-test-first.md` — procedure profonde on-demand.
-  - `topic-index.md` — routing deterministico topic → file.
-- Agente pilota `oracode-specialist.md`: cablato via `skills: [oracode-doctrine]`;
-  rimossa la lista P0 a mano, sostituita da puntatore alla skill (single-source puro).
-- Test deterministico `os3-matrix/tests/m-os3-029/test_skill_verbatim.sh`: deriva i
-  13 P0 **dal CORE a runtime** e assert che SKILL.md li contenga verbatim + struttura
-  skill + agente de-driftato. È il **check anti-drift SKILL.md↔CORE** per costruzione.
+L'implementazione di riferimento — struttura della skill (`SKILL.md` sottile sempre-on +
+`rules/p0-NN-*.md` on-demand + `topic-index.md` per il routing), cablaggio degli agenti e
+**test deterministico anti-drift** (deriva i 13 P0 dal CORE a runtime e asserisce che la skill
+li contenga verbatim) — è un SSOT `visibility: private` nell'enforcement OS3 Matrix:
+`oracode-agent-skill-impl`. Confine mono (M-OS3-048).
 
-### Prova A/B
-Agente PRE (lista a mano): P0-10 = "Anti-MongoDB", P0-13 assente, range "P0-0..P0-12".
-Agente POST (skill): P0-10 = "Anti-bypass data layer", P0-13 = "Test-First Discipline"
-presente, range "P0-1..P0-13", nessuna P0-0 — **citando la skill come fonte**.
+### Prova A/B (sintesi)
+Agente PRE (dottrina a mano): P0-10 errato ("Anti-MongoDB"), P0-13 assente, range sbagliato.
+Agente POST (via skill): P0-10 corretto, P0-13 presente, range corretto — **citando la skill
+come fonte unica**. La prova conferma il principio § 2.
 
 ## 4. Estensione
 
 Una `rules/p0-NN-*.md` per P0 (anti sovra-frammentazione: una per regola, non più
 fine). Agenti codice-pesanti: beneficio marginale, valutare caso per caso.
 
-### 4.1 Stato del cablaggio (M-OS3-032 — realizzato)
-Dopo la prova del pilota, il pattern single-source è cablato via `skills:
-[oracode-doctrine]` (preload frontmatter) su **7 agenti** os3-matrix:
-
-| Agente | Mission | Ruolo |
-|--------|---------|-------|
-| `oracode-specialist` | M-OS3-029 | pilota (prova A/B) |
-| `os3-audit-specialist` | M-OS3-032 | dottrina-pesante |
-| `os3-gate` | M-OS3-032 | dottrina-pesante |
-| `oracode-alignment-interpreter` | M-OS3-032 | dottrina-pesante |
-| `organ-gap-scout` | M-OS3-032 | dottrina-pesante |
-| `doc-sync-v2` | M-OS3-032 | dottrina-pesante |
-| `ssot-living-agent` | M-OS3-032 | dottrina-pesante |
-
-Questi agenti citano le definizioni P0/pilastri/priorità **dalla fonte unica (skill)**,
-non a memoria. Le checklist organismo-specifiche (es. P0-0 stack-ban = regole d'organo)
-restano intatte negli agenti — la skill copre il normativo universale, non le regole
-locali. `corporate-finance-specialist` escluso (CFO, dottrina marginale); agenti
-codice-pesanti valutati caso per caso. M-OS3-032 aggiunge inoltre un test di parità
-skill source↔deploy (anti-drift sulla copia deployata).
+### 4.1 Stato del cablaggio
+Il pattern single-source è cablato (via `skills: [oracode-doctrine]`, preload frontmatter) sugli
+agenti **dottrina-pesanti**: questi citano le definizioni di P0/pilastri/priorità **dalla fonte
+unica (skill)**, non a memoria. L'**inventario concreto** degli agenti cablati e dell'enforcement
+su cui vivono è privato (`oracode-agent-skill-impl`, OS3 Matrix). Le checklist
+organismo-specifiche (es. stack-ban d'organo) restano negli agenti — la skill copre il normativo
+universale, non le regole locali. Esiste inoltre un test di parità skill source↔deploy
+(anti-drift sulla copia deployata).
 
 ## 5. Provenance & Attribution
 

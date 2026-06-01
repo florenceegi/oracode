@@ -14,7 +14,8 @@
     "relocation_mission": "M-OS3-022",
     "note_rag": "RAG schema non istituito per il paradigma (LSO ridotto). verification_mode=registry_only su tutte le entry. Decisione RAG paradigma rinviata a mission futura.",
     "cross_repo_watches_gap": "spec-ssot con watches.repos=[\"os3-matrix\"] sono cross-repo. DOC-SYNC v2 opera repo-singolo: il watch cross-repo è informativo (audit manuale), non auto-triggerato. Gap noto — risoluzione futura (DOC-SYNC v2 multi-repo).",
-    "enforcement_unversioned": "RISOLTO da M-OS3-035 (Q-002). I 3 hook che il drift M-OS3-022 segnalava live-ma-non-versionati (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) — insieme ad altri 6 — sono ora versionati in os3-matrix/hooks e deployati via bin/deploy-hooks (copia pura, mirror di bin/deploy-agents). Modello documentato in SSOT agent-deploy-runtime-model §1/§2b. Decoupling runtime RISOLTO da M-OS3-036: i 6 hook coupled risolvono il root a runtime (CWD→.oracode/project.json, no path organismo baked), install-gitleaks-hooks con lista repo esternalizzata, settings-snippet $HOME-based generico. Modello in SSOT agent-deploy-runtime-model §2b/§3. Residuo follow-up RISOLTO da M-OS3-040: split snippet a due livelli (settings-snippet.{core,florenceegi}.json + README criterio); core=30 generici (wirato da /project), florenceegi=8 overlay. Modello in SSOT agent-deploy-runtime-model §2b/§4."
+    "enforcement_unversioned": "RISOLTO da M-OS3-035 (Q-002). I 3 hook che il drift M-OS3-022 segnalava live-ma-non-versionati (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) — insieme ad altri 6 — sono ora versionati in os3-matrix/hooks e deployati via bin/deploy-hooks (copia pura, mirror di bin/deploy-agents). Modello documentato in SSOT agent-deploy-runtime-model §1/§2b. Decoupling runtime RISOLTO da M-OS3-036: i 6 hook coupled risolvono il root a runtime (CWD→.oracode/project.json, no path organismo baked), install-gitleaks-hooks con lista repo esternalizzata, settings-snippet $HOME-based generico. Modello in SSOT agent-deploy-runtime-model §2b/§3. Residuo follow-up RISOLTO da M-OS3-040: split snippet a due livelli (settings-snippet.{core,florenceegi}.json + README criterio); core=30 generici (wirato da /project), florenceegi=8 overlay. Modello in SSOT agent-deploy-runtime-model §2b/§4.",
+    "split_mission": "M-OS3-048 (split SSOT misti: 6 spostati a private, 4 split public/impl)"
   },
   "check_frequencies": {
     "on_commit": "Dopo ogni commit che tocca file watchati (Layer 1 — Riflesso)",
@@ -235,8 +236,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "lso-guard-testing-protocol",
@@ -250,7 +250,6 @@
           "os3-matrix"
         ],
         "paths": [
-          "hooks/",
           "docs/tests/"
         ]
       },
@@ -263,7 +262,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_candidate": true
+      "split_private_ref": "os3-matrix:lso-guard-testing-protocol-impl"
     },
     {
       "ssot_id": "lso-guard-testing-index",
@@ -276,9 +275,7 @@
         "repos": [
           "os3-matrix"
         ],
-        "paths": [
-          "hooks/"
-        ]
+        "paths": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
@@ -288,8 +285,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "lso-nomenclature-v2",
@@ -366,12 +362,7 @@
         "repos": [
           "os3-matrix"
         ],
-        "paths": [
-          "bin/mission",
-          "hooks/mission-state-guard.sh",
-          "hooks/spawn-fingerprint-logger.sh",
-          "hooks/trigger-matrix-classifier.sh"
-        ]
+        "paths": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
@@ -381,8 +372,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "oracode-nexus-system-reference",
@@ -445,8 +435,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "padmin-ai-identity",
@@ -627,10 +616,7 @@
         "repos": [
           "os3-matrix"
         ],
-        "paths": [
-          "hooks/hardcoded-strings-guard.sh",
-          "hooks/p04-method-guard.sh"
-        ]
+        "paths": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-05-29",
@@ -640,8 +626,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "web-page-quality-gate",
@@ -649,58 +634,6 @@
       "title": "Web Page Quality Gate — disciplina pagine pubbliche",
       "doc_type": "spec-ssot",
       "priority": "high",
-      "check_frequency": "on_commit",
-      "watches": {
-        "repos": [
-          "os3-matrix"
-        ],
-        "paths": [
-          "bin/web_quality_gate.py"
-        ]
-      },
-      "registered_by": "M-OS3-023",
-      "last_verified": "2026-05-29",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-022",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0,
-      "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
-    },
-    {
-      "ssot_id": "legacy-stack-policy",
-      "path": "docs/paradigm/standards/LEGACY_STACK_POLICY.md",
-      "title": "Legacy Stack Policy — Strategia Delta concretizzata",
-      "doc_type": "spec-ssot",
-      "priority": "high",
-      "check_frequency": "on_commit",
-      "watches": {
-        "repos": [
-          "os3-matrix"
-        ],
-        "paths": [
-          "hooks/legacy-guard.sh"
-        ]
-      },
-      "registered_by": "M-OS3-023",
-      "last_verified": "2026-05-29",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-022",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0,
-      "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
-    },
-    {
-      "ssot_id": "read-tracking-tech-spec",
-      "path": "docs/paradigm/tech-specs/READ_TRACKING_TECH_SPEC.md",
-      "title": "Read Tracking Tech Spec",
-      "doc_type": "spec-ssot",
-      "priority": "medium",
       "check_frequency": "on_commit",
       "watches": {
         "repos": [
@@ -715,25 +648,22 @@
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
-      "enforcement_note": "mission-read-tracker.sh ora versionato in os3-matrix/hooks e deployato via bin/deploy-hooks (drift M-OS3-022 saldato da M-OS3-035)",
       "visibility": "public",
       "rag": "public",
-      "split_candidate": true
+      "split_private_ref": "os3-matrix:web-page-quality-gate-impl"
     },
     {
-      "ssot_id": "retrospective-tech-spec",
-      "path": "docs/paradigm/tech-specs/RETROSPECTIVE_TECH_SPEC.md",
-      "title": "Retrospective Tech Spec",
+      "ssot_id": "legacy-stack-policy",
+      "path": "docs/paradigm/standards/LEGACY_STACK_POLICY.md",
+      "title": "Legacy Stack Policy — Strategia Delta concretizzata",
       "doc_type": "spec-ssot",
-      "priority": "medium",
+      "priority": "high",
       "check_frequency": "on_commit",
       "watches": {
         "repos": [
           "os3-matrix"
         ],
-        "paths": [
-          "bin/mission_retrospective.py"
-        ]
+        "paths": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-05-29",
@@ -743,89 +673,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
-    },
-    {
-      "ssot_id": "doc-sync-v2-specifica-operativa",
-      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md",
-      "title": "DOC-SYNC v2 — Specifica Operativa",
-      "doc_type": "spec-ssot",
-      "priority": "critical",
-      "check_frequency": "on_commit",
-      "watches": {
-        "repos": [
-          "os3-matrix"
-        ],
-        "paths": [
-          "agents/doc-sync-v2.md",
-          "bin/rag_query.py",
-          "bin/rag_reindex.py"
-        ]
-      },
-      "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-01",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-032",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0,
-      "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
-    },
-    {
-      "ssot_id": "doc-sync-v2-piano-implementativo",
-      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_PIANO_IMPLEMENTATIVO.md",
-      "title": "DOC-SYNC v2 — Piano Implementativo",
-      "doc_type": "spec-ssot",
-      "priority": "high",
-      "check_frequency": "on_commit",
-      "watches": {
-        "repos": [
-          "os3-matrix"
-        ],
-        "paths": [
-          "agents/doc-sync-v2.md",
-          "bin/docsync_weekly_reglob.py"
-        ]
-      },
-      "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-01",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-032",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0,
-      "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
-    },
-    {
-      "ssot_id": "doc-sync-v2-stato-dellarte",
-      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_STATO_DELLARTE.md",
-      "title": "DOC-SYNC v2 — Stato dell'Arte",
-      "doc_type": "spec-ssot",
-      "priority": "high",
-      "check_frequency": "on_commit",
-      "watches": {
-        "repos": [
-          "os3-matrix"
-        ],
-        "paths": [
-          "agents/doc-sync-v2.md"
-        ]
-      },
-      "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-01",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-032",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0,
-      "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "roadmap-oracode",
@@ -889,7 +737,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_candidate": true
+      "split_private_ref": "os3-matrix:oracode-nexus-index-impl"
     },
     {
       "ssot_id": "oracode-nexus-executive-summary",
@@ -937,37 +785,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_candidate": true
-    },
-    {
-      "ssot_id": "agent-deploy-runtime-model",
-      "path": "docs/paradigm/ssot/AGENT_DEPLOY_RUNTIME_MODEL.md",
-      "title": "Agent Deploy & Runtime-Root Model",
-      "doc_type": "spec-ssot",
-      "priority": "high",
-      "check_frequency": "on_commit",
-      "watches": {
-        "repos": [
-          "os3-matrix"
-        ],
-        "paths": [
-          "bin/deploy-agents",
-          "bin/deploy-hooks",
-          "bin/seed-anchors",
-          "agents/*.md"
-        ]
-      },
-      "update_policy": null,
-      "registered_by": "M-OS3-033",
-      "last_verified": "2026-06-01",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-042",
-      "verification_mode": "registry_only",
-      "organ": "oracode-paradigm",
-      "last_drift_score": 0,
-      "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "split_private_ref": "os3-matrix:oracode-agent-skill-impl"
     },
     {
       "ssot_id": "oracode-lint",
@@ -980,11 +798,7 @@
         "repos": [
           "os3-matrix"
         ],
-        "paths": [
-          "bin/oracode-lint",
-          "hooks/oracode-lint-guard.sh",
-          "hooks/oracode-lint-gate.sh"
-        ]
+        "paths": []
       },
       "update_policy": null,
       "registered_by": "M-OS3-039",
@@ -995,8 +809,7 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public",
-      "split_candidate": true
+      "rag": "public"
     },
     {
       "ssot_id": "ssot-header-convention",
@@ -1018,8 +831,109 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
+      "rag": "public"
+    },
+    {
+      "ssot_id": "read-tracking-tech-spec",
+      "path": "docs/paradigm/tech-specs/READ_TRACKING_TECH_SPEC.md",
+      "title": "Read Tracking — Modello (stub public)",
+      "doc_type": "stub",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-048",
+      "organ": "oracode-paradigm",
+      "visibility": "public",
       "rag": "public",
-      "split_candidate": true
+      "split_private_ref": "os3-matrix:read-tracking-tech-spec"
+    },
+    {
+      "ssot_id": "retrospective-tech-spec",
+      "path": "docs/paradigm/tech-specs/RETROSPECTIVE_TECH_SPEC.md",
+      "title": "Retrospective — Modello (stub public)",
+      "doc_type": "stub",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-048",
+      "organ": "oracode-paradigm",
+      "visibility": "public",
+      "rag": "public",
+      "split_private_ref": "os3-matrix:retrospective-tech-spec"
+    },
+    {
+      "ssot_id": "doc-sync-v2-specifica-operativa",
+      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md",
+      "title": "DOC-SYNC v2 — Modello (stub public)",
+      "doc_type": "stub",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-048",
+      "organ": "oracode-paradigm",
+      "visibility": "public",
+      "rag": "public",
+      "split_private_ref": "os3-matrix:doc-sync-v2-specifica-operativa"
+    },
+    {
+      "ssot_id": "doc-sync-v2-piano-implementativo",
+      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_PIANO_IMPLEMENTATIVO.md",
+      "title": "DOC-SYNC v2 Piano — stub public",
+      "doc_type": "stub",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-048",
+      "organ": "oracode-paradigm",
+      "visibility": "public",
+      "rag": "public",
+      "split_private_ref": "os3-matrix:doc-sync-v2-piano-implementativo"
+    },
+    {
+      "ssot_id": "doc-sync-v2-stato-dellarte",
+      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_STATO_DELLARTE.md",
+      "title": "DOC-SYNC v2 Stato — stub public",
+      "doc_type": "stub",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-048",
+      "organ": "oracode-paradigm",
+      "visibility": "public",
+      "rag": "public",
+      "split_private_ref": "os3-matrix:doc-sync-v2-stato-dellarte"
+    },
+    {
+      "ssot_id": "agent-deploy-runtime-model",
+      "path": "docs/paradigm/ssot/AGENT_DEPLOY_RUNTIME_MODEL.md",
+      "title": "Agent Deploy & Runtime — Modello (stub public)",
+      "doc_type": "stub",
+      "priority": "low",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "registered_by": "M-OS3-048",
+      "organ": "oracode-paradigm",
+      "visibility": "public",
+      "rag": "public",
+      "split_private_ref": "os3-matrix:agent-deploy-runtime-model"
     }
   ]
 }

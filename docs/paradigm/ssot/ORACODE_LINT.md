@@ -15,7 +15,7 @@ rag: public
 @status   PRODUCTION (static R1-R5 + wiring event-driven + R6 semantico LLM + cron) — M-OS3-037/038/043/044.
 ```
 
-> Licenza: MIT. Parte del paradigma Oracode pubblico. Implementazione: `os3-matrix/bin/oracode-lint`.
+> Licenza: MIT. Parte del paradigma Oracode pubblico. Questo SSOT è il **contratto del linter** (regole R1-R6, severità, innesto). L'implementazione concreta (codice, invocazione esatta) vive nell'enforcement OS3 Matrix (repo privato).
 
 ---
 
@@ -37,7 +37,7 @@ sostituisce il giudizio LLM — lo **complementa** front-line sul drift meccanic
 |--------|--------|----------|
 | **R1** broken-ref | riferimento a file (.md/.json/.sh/.py) inesistente su disco | warn |
 | **R2** organism-coupling | path organismo / var doc-root baked (`${ORACODE_DOC_ROOT}`, `@@..@@`, `/home/fabio/EGI-DOC/`, `NATAN_LOC/`) invece che runtime `{{}}` | error |
-| **R3** source-deploy-drift | `os3-matrix/{agents,hooks}` ≠ `~/.claude/{agents,hooks}` (deploy non in parità) | error |
+| **R3** source-deploy-drift | sorgente enforcement `{agents,hooks}` ≠ `~/.claude/{agents,hooks}` (deploy non in parità) | error |
 | **R4** doctrine-drift | P0 enumerati negli artefatti ≠ CORE (nome sbagliato, P0 inventato, range errato) | error |
 | **R5** cross-organ | costanti condivise (`shared-constants.json`) con valore divergente tra organi (`projects.json`) — attivata da `--cross-organ` | error |
 | **R6** semantic | contraddizioni/ambiguità di **significato** tra `CLAUDE.md` degli organi (drift in prosa che lo static R1-R5 non vede) — attivata da `--semantic`, via Claude API | warn |
@@ -68,9 +68,9 @@ gli altri guard, stratificato per costo:
 
 | Livello | Trigger | Hook/meccanismo | Blocca? |
 |---------|---------|-----------------|---------|
-| guard | PostToolUse Write\|Edit su artefatto | `hooks/oracode-lint-guard.sh` | no (segnala subito) |
-| gate | PreToolUse Bash `git push` | `hooks/oracode-lint-gate.sh` | sì su `ERROR` (exit 2) |
-| cron | settimanale | `bin/oracode-lint-cron` — sweep R5 (cross-organo) + R6 (semantico, Claude API) | no (rete di sicurezza: logga l'esito) |
+| guard | PostToolUse Write\|Edit su artefatto | hook PostToolUse (privato) | no (segnala subito) |
+| gate | PreToolUse Bash `git push` | hook gate pre-push (privato) | sì su `ERROR` (exit 2) |
+| cron | settimanale | wrapper cron (privato) — sweep R5 (cross-organo) + R6 (semantico, Claude API) | no (rete di sicurezza: logga l'esito) |
 
 Risoluzione runtime: guard/gate trovano `oracode-lint` via engine anchor (`projects.json`),
 graceful se assente. Dipendenza runtime: `python3` + `jq`. Dettaglio deploy/risoluzione-root

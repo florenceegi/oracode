@@ -69,7 +69,7 @@ L'organismo ha una mente interrogabile. Chiunque può parlargli e ottenere rispo
 
 ### 6. Nervous System (v4.0.0)
 L'organismo percepisce il disallineamento tra la propria documentazione e il proprio codice. Come il sistema nervoso umano, ha nocicettori (segnali immediati), riflessi (risposte automatiche), propriocezione (consapevolezza del proprio stato) e un sistema autonomo (verifica continua senza intervento cosciente).
-→ Implementato da: `SSOT_REGISTRY.json` (mielina) + `ssot-reflex-guard.sh` (riflesso) + Mission Registry propriocettivo + `ssot-living-check.sh` (cron) + DOC-SYNC v2 Step 5b (metadati)
+→ Implementato da: `SSOT_REGISTRY.json` (mielina) + reflex guard passivo (riflesso) + Mission Registry propriocettivo + cron di staleness + DOC-SYNC v2 Step 5b (metadati)
 
 ---
 
@@ -87,27 +87,27 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 │     Ogni doc dichiara cosa watcha. Il segnale viaggia           │
 │     istantaneamente dal file al doc senza analisi semantica.    │
 │                                                                  │
-│  L1 RIFLESSO — ssot-reflex-guard.sh (PostToolUse)               │
+│  L1 RIFLESSO — reflex guard passivo (PostToolUse)               │
 │     Arco riflesso: file modificato → lookup registry →          │
 │     segnale immediato al SUPERVISOR. Automatico, <1s.           │
 │     Log: <istanza>-DOC/audit/ssot_nerve_signals.log             │
 │                                                                  │
-│  L1b AUTO-UPDATE — [ARCHIVIATO: ssot-registry-auto-update.sh]    │
+│  L1b AUTO-UPDATE — [ARCHIVIATO: hook auto-update]               │
 │     Rimosso (anti-pattern 6: solo metadati senza verifica).     │
 │     Responsabilita trasferita a DOC-SYNC v2 Step 5b: aggiorna   │
 │     last_verified SOLO dopo verifica semantica + RAG confermato.│
-│     Hook originale M-132. Archiviato post M-160b (2026-05-08). │
+│     Hook originale M-132. Archiviato post M-160b (2026-05-08).  │
 │                                                                  │
 │  L2 PROPRIOCEZIONE — Mission Registry esteso                    │
 │     Campi: doc_sync_executed, doc_verified, files_modified      │
 │     L'organismo sa quali doc dovrebbero essere aggiornati       │
 │     e se la verifica post-mission è avvenuta.                   │
 │                                                                  │
-│  L3 AUTONOMO — ssot-living-check.sh (cron 04:00)                │
+│  L3 AUTONOMO — cron di staleness (04:00)                        │
 │     Cron attivo: ogni notte alle 04:00 (tutti gli organi).     │
 │     145 documenti SSOT registrati e monitorati.                 │
 │     Script bash per check leggero basato su timestamp+git.     │
-│     ssot-living-agent archiviato (2026-05-08): funzionalita    │
+│     agente living archiviato (2026-05-08): funzionalita        │
 │     assorbita da DOC-SYNC v2. Report: <istanza>-DOC/audit/drift/│
 ├─────────────────────────────────────────────────────────────────┤
 │  LAYER 7 — CONTRACTS                                            │
@@ -148,9 +148,9 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 │  Read|Bash|Write|Edit: mission-read-tracker                     │
 ├─────────────────────────────────────────────────────────────────┤
 │  LAYER 2 — DEEP AUDIT (periodico / on-demand)                   │
-│  os3-deep-audit.sh       →  scansione grep completa tutti organi│
-│  os3-audit-specialist    →  agente AI per analisi contestuale   │
-│  organ-gap-scout         →  diagnostica gap evolutivi per organo│
+│  deep-audit (privato)    →  scansione grep completa tutti organi│
+│  agente di audit AI      →  analisi contestuale                 │
+│  agente gap-scout        →  diagnostica gap evolutivi per organo│
 │  oracode-alignment-interp→  verità semantica/intenzionale organo│
 │  Report: <istanza>-DOC/audit/ → storico audit con timestamp     │
 ├─────────────────────────────────────────────────────────────────┤
@@ -164,38 +164,22 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 
 ## Componenti Implementati
 
-### Hook System (`~/.claude/hooks/`)
+### Hook System
 
-| Hook | Tipo | Trigger | Funzione |
-|------|------|---------|----------|
-| `cross-project-guard.sh` | PreToolUse | Write\|Edit | Forza lettura CLAUDE.md + CORE su tutti gli organi |
-| `os3-preflight-guard.sh` | PreToolUse | Write\|Edit | Reminder P0 contestuale per tipo file |
-| `legacy-guard.sh` | PreToolUse | Write\|Edit | Blocca modifica file LEGACY senza piano |
-| `immutable-values-guard.sh` | PreToolUse | Write\|Edit | Blocca modifica valori immutabili |
-| `mica-guard.sh` | PreToolUse | Write\|Edit | Blocca violazioni MiCA-SAFE (Egili↔EUR) |
-| `hardcoded-strings-guard.sh` | PreToolUse | Write\|Edit | Avvisa su stringhe hardcoded |
-| `check-no-legacy-stack.sh` | PreToolUse | Write\|Edit | Blocca Alpine/Livewire/Filament su codice nuovo |
-| `seo-public-content-guard.sh` | PreToolUse | Write\|Edit | Verifica SEO su contenuti pubblici |
-| `p04-method-guard.sh` | PreToolUse | Write\|Edit | P0-4: verifica esistenza metodi prima di chiamarli |
-| `organ-index-guard.sh` | PreToolUse | Write\|Edit | P0-13: verifica Organ Index prima di creare classi |
-| `coverage-check-precheck.sh` | PreToolUse | Write\|Edit | Segnala file non coperti da watch SSOT |
-| `env-guard.sh` | PreToolUse | Bash | Blocca esposizione .env/secrets |
-| `git-main-guard.sh` | PreToolUse | Bash | Protegge push su branch main |
-| `rm-guard.sh` | PreToolUse | Bash | Protegge file attivi da `rm` |
-| `doc-sync-v2-guard.sh` v4.0.0 | PreToolUse | Bash | Blocca push `<istanza>-DOC` (es. EGI-DOC) senza doc_sync_executed + doc_sync_log strutturato |
-| `mission-report-guard.sh` | PreToolUse | Bash | Verifica completezza report missione |
-| `mission-stats-guard.sh` | PreToolUse | Bash | Verifica stats calcolate prima di chiusura |
-| `web-quality-gate-guard.sh` | PreToolUse | Bash | Gate qualita per contenuti web pubblici |
-| `os3-mission-reinject.sh` | PreToolUse | Agent | Reiniezione contesto missione su spawn agente |
-| `os3-audit-static.sh` | PostToolUse | Write\|Edit | Analisi statica OS3 su ogni file modificato |
-| `ssot-reflex-guard.sh` v1.1.0 | PostToolUse | Write\|Edit | Sistema Nervoso L1: segnale passivo se file watchato da SSOT |
-| `os3-audit-on-complete.sh` | PostToolUse | TodoWrite | Report findings aggregati a task completato |
-| `deploy-pipeline-guard.sh` v2.0.0 | PostToolUse | Bash | Verifica pipeline dopo push (organi dell'istanza, es. su FlorenceEGI: EGI, EGI-HUB, EGI-HUB-HOME, EGI-SIGILLO, EGI-Credential, NATAN_LOC) |
-| `m094-supervisor-reminder.sh` | PostToolUse | Bash | Reminder non-bloccante programma remediation M-094 |
-| `mission-read-tracker.sh` | PostToolUse | Read\|Bash\|Write\|Edit | Tracking accessi filesystem durante missione |
-| `ssot-living-check.sh` v1.1.0 | Manuale/Cron | — | Sistema Nervoso L3: rete sicurezza secondaria (cron 04:00) |
+L'enforcement runtime usa **hook** stratificati per momento di intervento. Questo è il **modello**
+per categoria; l'**inventario concreto** (nomi file, versioni, trigger esatti) è `visibility:private`
+nell'OS3 Matrix — SSOT `oracode-nexus-index-impl`. Confine mono (M-OS3-048).
 
-> **deploy-pipeline-guard.sh v2.0.0 (2026-03-30)**: detection via CWD anziché testo comando. Organi coperti (es. istanza FlorenceEGI): EGI, EGI-HUB, EGI-HUB-HOME, EGI-SIGILLO, EGI-Credential, NATAN_LOC. EGI era mancante dalla v1 causando il bug INCIDENT V-02 su ogni push da /home/fabio/EGI.
+- **PreToolUse / Write|Edit** — guardie che bloccano o avvisano *prima* di scrivere codice:
+  coerenza cross-organo, P0 contestuali, file legacy, valori immutabili, compliance di dominio,
+  stringhe hardcoded, stack vietati, SEO contenuti pubblici, esistenza metodi/Organ Index, coverage SSOT.
+- **PreToolUse / Bash** — guardie su comandi rischiosi: secrets/`.env`, push su `main`, `rm`,
+  push doc senza DOC-SYNC, completezza report/stats di mission, gate qualità web.
+- **PreToolUse / Agent** — reiniezione del contesto mission allo spawn di un sotto-agente.
+- **PostToolUse** — segnali e analisi *dopo* l'operazione: analisi statica OS3, riflesso passivo
+  SSOT (Sistema Nervoso L1), report findings a task completato, verifica pipeline post-push,
+  tracking accessi filesystem.
+- **Cron / manuale** — reti di sicurezza periodiche: staleness SSOT (L3), deep-audit notturno.
 
 ### Knowledge Base
 
@@ -208,45 +192,24 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 | `/home/fabio/*/CLAUDE_ECOSYSTEM_CORE.md.human.md` | Backup leggibile CORE per CEO — zero token cost |
 | `/home/fabio/.claude/projects/*/memory/MEMORY.md` | Memoria persistente cross-sessione (~1.8k token) |
 
-### Agenti Specializzati (`~/.claude/agents/`) — 10 attivi
+### Agenti Specializzati
 
-| Agente | Funzione |
-|--------|----------|
-| `os3-audit-specialist` | Supervisore OS3 — audit AI contestuale, genera report |
-| `os3-gate` | Validatore AI pre-push — legge contratti + diff → PASS/WARN/BLOCK |
-| `organ-gap-scout` | Diagnostica gap evolutivi organo vs organismo — solo report |
-| `oracode-alignment-interpreter` | Verita semantica/intenzionale organo vs Oracode/OSZ — solo report |
-| `oracode-specialist` | Consulenza esperta Oracode/LSO: pilastri, P0, hook, agenti, audit, mission. Mai codice |
-| `doc-sync-v2` | DOC-SYNC v2: sincronizzazione automatica SSOT a chiusura mission |
-| `egili-blood-keeper` | Guardiano Egili Economy: auto-attivo su task Egili/pricing, legge Bibbia privata |
-| `m093-remediation-tracker` | Tracker vivente M-094-SUPERVISOR: aggiorna stato a chiusura child mission |
-| `node-ts-specialist` | Esperto TypeScript/Node.js per microservizi (vc-engine, algokit-service) |
-| `corporate-finance-specialist` | CFO/Advisor digitale — documenti per banche, investitori, fundraising |
+L'organismo di livello 2+ si avvale di **agenti** specializzati (sotto-istanze LLM con scope
+definito), coordinati dal Supervisor. Categorie tipiche: audit/conformità OS3, gate pre-push,
+diagnostica gap d'organo, allineamento semantico, consulenza dottrina, DOC-SYNC, specialisti di
+dominio/linguaggio, CFO. L'**inventario concreto** (roster, file sorgente) è `visibility:private`
+nell'OS3 Matrix — SSOT `oracode-nexus-index-impl`.
 
-> `laravel-specialist`, `python-rag-specialist`, `frontend-ts-specialist` sono **skill built-in Claude Code**, non agent globali. Ogni organo puo personalizzarli con `.claude/agents/<name>.md` locale.
-> `ssot-living-agent` archiviato 2026-05-08 — funzionalita assorbita da `doc-sync-v2`.
+> Le skill built-in di Claude Code (es. laravel/python/frontend) non sono agent globali; ogni
+> organo può personalizzarli con un `.claude/agents/<name>.md` locale.
 
 ### Deep Audit
 
-| File | Scopo |
-|------|-------|
-| `/home/fabio/.claude/hooks/os3-deep-audit.sh` | Scansione grep completa tutti gli organi |
-| `<istanza>-DOC/audit/` (es. /home/fabio/EGI-DOC/audit/) | Report generati con timestamp |
-
----
-
-## Come Eseguire un Audit Manuale
-
-```bash
-# Audit completo tutti gli organi
-/home/fabio/.claude/hooks/os3-deep-audit.sh
-
-# Audit singolo progetto
-/home/fabio/.claude/hooks/os3-deep-audit.sh NATAN_LOC   # es. organo NATAN_LOC su FlorenceEGI
-
-# Audit AI contestuale (via Claude Code)
-# → Usa l'agente os3-audit-specialist nel prompt
-```
+L'organismo dispone di uno **scan grep completo** cross-organo (rete di sicurezza periodica) e di
+un **audit AI contestuale** via agente specializzato. Comandi, path e schedule concreti dello
+scanner sono `visibility:private` nell'OS3 Matrix — SSOT `oracode-nexus-index-impl`. I report di
+audit vivono nell'`<istanza>-DOC/audit/` con timestamp. L'audit AI si invoca dall'agente di audit
+nel prompt.
 
 ---
 
@@ -257,14 +220,14 @@ L'organismo percepisce il disallineamento tra la propria documentazione e il pro
 - [x] ~~**GATE (Layer 6)**~~ — agente `os3-gate` + command `/gate` creati
 - [x] ~~**Agenti diagnostici**~~ — `organ-gap-scout` + `oracode-alignment-interpreter` creati (solo report, PENDING_BRAIN_APPROVAL)
 - [x] ~~**NERVOUS SYSTEM (Layer 8)**~~ — M-025: SSOT Registry + reflex hook + propriocezione Mission Registry + living agent + cron script. 4 sub-layer ispirati al sistema nervoso umano. Health Score operativo.
-- [x] ~~**Cron periodico**~~ — `ssot-living-check.sh` alle 04:00 + `os3-deep-audit.sh` alle 03:00, ogni notte via crontab
+- [x] ~~**Cron periodico**~~ — cron di staleness SSOT (04:00) + deep-audit (03:00), ogni notte via crontab
 - [ ] **Audit differenziale** — confronta l'ultimo report con il precedente, mostra solo i nuovi finding
 - [ ] **Dashboard LSO** — pagina di statistiche dell'istanza (es. EGI-STAT su FlorenceEGI) che visualizza LSO Score per organo in tempo reale
 - [ ] **Notifiche** — alert su Slack/email quando audit trova finding critici
 - [x] ~~**SSOT Registry completo**~~ — documenti registrati per gli organi dell'istanza (es. FlorenceEGI: 17 documenti — NATAN_LOC (6), EGI (2), EGI-HUB (2), Credential (1), Sigillo (2), ecosistema (4)). Primo audit semantico eseguito su NATAN_LOC (Health Score 35%)
 
 ### Priorità Media
-- [ ] **GitHub Actions** — esegui `os3-deep-audit.sh` + GATE ad ogni PR, blocca merge su BLOCK
+- [ ] **GitHub Actions** — esegui il deep-audit + GATE ad ogni PR, blocca merge su BLOCK
 - [ ] **Auto-remediation** — agente che propone e applica fix per finding standard
 - [ ] **Pilot Console completa** — `/health`, `/audit [organo]`, `/new-organ [nome]`, `/onboard`
 - [ ] **GATE integrato in pre-push hook** — attivazione automatica senza `/gate` manuale
@@ -362,7 +325,7 @@ LAYER 0 — MIELINA (mapping statico)
   Con mielina il segnale è istantaneo (lookup JSON).
 
 LAYER 1 — RIFLESSO (sincrono, in-session)
-  ssot-reflex-guard.sh → PostToolUse hook su Write|Edit (secondario)
+  reflex guard passivo → PostToolUse hook su Write|Edit (secondario)
   File modificato → lookup registry → doc SSOT watchanti → segnale passivo
   Tempo: <1 secondo. Costo AI: zero. Rete di sicurezza.
   Log: <istanza>-DOC/audit/ssot_nerve_signals.log (es. EGI-DOC/)
@@ -392,8 +355,8 @@ LAYER 2 — PROPRIOCEZIONE (Mission Registry + DOC-SYNC v2)
   (`id/title/type/organs/status/date_open/date_close`).
 
 LAYER 3 — RETE DI SICUREZZA (asincrono, cron/manuale)
-  ssot-living-check.sh → verifica leggera basata su timestamp e git log
-  doc-sync-v2-guard.sh → blocca push <istanza>-DOC se mission senza doc_sync_log
+  cron di staleness → verifica leggera basata su timestamp e git log
+  guard DOC-SYNC → blocca push <istanza>-DOC se mission senza doc_sync_log
   Report: <istanza>-DOC/audit/drift/ + <istanza>-DOC/audit/doc_sync/<mission_id>/ (es. EGI-DOC/)
 ```
 
@@ -426,25 +389,25 @@ Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 | File | Tipo | Funzione |
 |------|------|----------|
 | `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. EGI-DOC/) | Registry | Mapping doc→file watchati (Layer 0) |
-| `~/.claude/hooks/ssot-reflex-guard.sh` | Hook | Segnale riflesso passivo PostToolUse (Layer 1, secondario) |
-| `~/.claude/agents/doc-sync-v2.md` | Agente | DOC-SYNC v2: sincronizzazione automatica SSOT (Layer 2, primario) |
-| `os3-matrix/bin/rag_reindex.py` | CLI Python | Re-indexing SSOT in RAG piattaforma (Layer 2) |
-| `os3-matrix/bin/rag_query.py` | CLI Python | Discovery laterale SSOT via query vettoriale (Layer 2) |
-| `~/.claude/hooks/doc-sync-v2-guard.sh` | Hook | Blocca push `<istanza>-DOC` senza doc_sync_log (Layer 3) |
-| `~/.claude/hooks/ssot-living-check.sh` | Script | Check leggero cron/manuale (Layer 3, rete sicurezza) |
+| reflex guard passivo (privato) | Hook | Segnale riflesso passivo PostToolUse (Layer 1, secondario) |
+| agente DOC-SYNC (privato) | Agente | DOC-SYNC v2: sincronizzazione automatica SSOT (Layer 2, primario) |
+| CLI RAG re-index (enforcement L1, privato) | CLI Python | Re-indexing SSOT in RAG piattaforma (Layer 2) |
+| CLI RAG query (enforcement L1, privato) | CLI Python | Discovery laterale SSOT via query vettoriale (Layer 2) |
+| guard DOC-SYNC (privato) | Hook | Blocca push `<istanza>-DOC` senza doc_sync_log (Layer 3) |
+| cron di staleness (privato) | Script | Check leggero cron/manuale (Layer 3, rete sicurezza) |
 | `<istanza>-DOC/docs/missions/MISSION_REGISTRY.json` (es. EGI-DOC/) | Registry | Propriocezione (Layer 2) |
 | `<istanza>-DOC/audit/doc_sync/<mission_id>/` | Audit | Audit trail DOC-SYNC v2 per mission |
 | `<istanza>-DOC/audit/drift/` | Report | Storico drift report |
 | `<istanza>-DOC/audit/ssot_nerve_signals.log` | Log | Storico segnali nervosi |
 
-> **Collocazione tool (Oracode Nexus).** I tool Python (`rag_reindex.py`, `rag_query.py`, `mission`) vivono in `os3-matrix/bin/` (repo enforcement, L1), **non** in `~/oracode/bin/` (paradigma: regole, docs, templates). Il Mission Engine (`bin/mission`) tiene lo stato runtime in `~/oracode-engine/` — la cartella globale **visibile** di Livello 1 (`ORACODE_HOME`), non un registro versionato. Il symlink di compat `~/.oracode → ~/oracode-engine` resta per retrocompatibilità.
+> **Collocazione tool (Oracode Nexus).** I tool Python di re-index/query RAG e il Mission Engine vivono nell'**enforcement L1 (OS3 Matrix, repo privato)**, **non** in `~/oracode/bin/` (paradigma: regole, docs, templates). Il Mission Engine (`bin/mission`) tiene lo stato runtime in `~/oracode-engine/` — la cartella globale **visibile** di Livello 1 (`ORACODE_HOME`), non un registro versionato. Il symlink di compat `~/.oracode → ~/oracode-engine` resta per retrocompatibilità.
 
 ### Componenti archiviati (v1 → v2 migration, 2026-04-30)
 
 | File | Destinazione | Motivo archiviazione |
 |------|-------------|---------------------|
-| `ssot-registry-auto-update.sh` | `~/.claude/hooks/archive/` | Anti-pattern: aggiornava solo metadati senza contenuto |
-| `ssot-living-agent.md` | `~/.claude/agents/archive/` | Capacita integrate in doc-sync-v2 |
+| hook auto-update (archiviato) | archivio enforcement | Anti-pattern: aggiornava solo metadati senza contenuto |
+| agente living (archiviato) | archivio enforcement | Capacita integrate in doc-sync-v2 |
 | `doc-sync-guardian.md` | `EGI-DOC/docs/egi-team/_archived/` | Agente predecessore DOC-SYNC v1, sostituito da doc-sync-v2 (M-160b) |
 
 ### Specifiche DOC-SYNC v2
@@ -461,10 +424,8 @@ Il drift deve "scappare" da DOC-SYNC v2 automatico E dalla rete di sicurezza.
 # Non serve invocazione manuale per mission standard
 
 # Check leggero (cron o manuale) — rete di sicurezza
-/home/fabio/.claude/hooks/ssot-living-check.sh
-
-# Check per singolo organo
-/home/fabio/.claude/hooks/ssot-living-check.sh NATAN_LOC   # es. organo NATAN_LOC su FlorenceEGI
+#   eseguito dal cron di staleness dell'enforcement (impl privata OS3 Matrix),
+#   opzionale per singolo organo. DOC-SYNC v2 a Mission Phase 6 resta automatico.
 ```
 
 ---
@@ -530,7 +491,7 @@ Stato degli organi in produzione ad aprile 2026. Tassonomia: `IN PRODUZIONE` (pu
 | **EGI-STAT** | IN SVILUPPO INTERNO | `/home/fabio/EGI-STAT` | Dashboard produttivita sviluppatori (GitHub metrics) |
 | **EGI-SALES** | IN SVILUPPO INTERNO | `/home/fabio/EGI-SALES` | Strumenti vendita ecosistema |
 
-> Deep audit (`os3-deep-audit.sh`) copre tutti gli organi sopra (nell'esempio FlorenceEGI: 8 produzione + 3 sviluppo/interni = 11 monitorati).
+> Il deep-audit (impl privata) copre tutti gli organi sopra (nell'esempio FlorenceEGI: 8 produzione + 3 sviluppo/interni = 11 monitorati).
 
 ### Organi in Architettura / Roadmap
 
@@ -553,8 +514,7 @@ Tutti gli organi futuri nascono coordinati dall'hub dell'organismo (es. EGI-HUB 
 - Regole OS3 compresse (auto-loaded): `/home/fabio/*/CLAUDE_ECOSYSTEM_CORE.md`
 - Dettagli estesi (on-demand): `/home/fabio/*/CLAUDE_ECOSYSTEM_REF.md`
 - Versioni leggibili CEO: `/home/fabio/*/CLAUDE*.human.md`
-- Hook directory: `/home/fabio/.claude/hooks/`
-- Agenti directory: `/home/fabio/.claude/agents/`
+- Hook/agenti enforcement: deployati sotto `~/.claude/` (inventario privato OS3 Matrix)
 - Report audit: `<istanza>-DOC/audit/` (es. /home/fabio/EGI-DOC/audit/)
 - Report drift SSOT: `<istanza>-DOC/audit/drift/` (es. /home/fabio/EGI-DOC/audit/drift/)
 - SSOT Registry (Layer 0 Mielina): `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC/)
