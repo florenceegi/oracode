@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **PADMIN D. CURTIS OS3.0 - ULM/UEM/GDPR INTEGRATION GUIDE**
 
 **Part of:** OS3.0 Integrated Identity Documentation  

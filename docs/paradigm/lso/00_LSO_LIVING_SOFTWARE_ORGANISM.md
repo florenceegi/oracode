@@ -12,12 +12,13 @@ scope:
 - lso
 supersedes: []
 superseded_by: null
-rag_indexed: true
 priority: critical
 ssot_nervous:
   ssot_id: lso-living-organism
   registry: docs/lso/SSOT_REGISTRY.json
   check_frequency: daily
+visibility: public
+rag: public
 ---
 
 # LSO — Living Software Organism

@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **PADMIN D. CURTIS OS3.0 - CORE IDENTITY & P0 RULES**
 
 **Version:** OS3.0 Integrated Edition  

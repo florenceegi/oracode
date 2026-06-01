@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # Oracode Nexus — Index Documenti Vitali
 
 > **Scopo**: indice navigabile anti-degradazione per Padmin Supervisor. Sintesi compatta + path assoluto + sezioni chiave per ogni documento vitale di Oracode + OS3 Matrix + Layer Stack LSO.

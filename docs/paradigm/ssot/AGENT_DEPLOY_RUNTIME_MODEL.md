@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # Agent Deploy & Runtime-Root Model
 
 ```

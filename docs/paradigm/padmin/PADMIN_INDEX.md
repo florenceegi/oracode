@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # PADMIN_INDEX.md
 
 > **Versione**: 1.2.0

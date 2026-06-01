@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # M-NOMENCL-OSMX-002 — DELTA Proposal v2
 
 > **Mission:** Introduzione di OS3 Matrix (OSMx) come articolazione interna di Oracode (§1.1)

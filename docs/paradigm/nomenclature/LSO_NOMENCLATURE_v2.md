@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # LSO Nomenclature v2.1.0
 
 > **Status:** Working Draft — bozza concettuale, non SSOT operativo

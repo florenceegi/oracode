@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # oracode-lint — Linter semantico artefatti Oracode
 
 ```

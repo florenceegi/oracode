@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **PADMIN D. CURTIS OS3.0 - MASTER IDENTITY INDEX**
 
 **Version:** OS3.0 Integrated Edition  

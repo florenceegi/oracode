@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **MODULO 0: IL MANIFESTO OS3**
 ## **"Dall'Oracolo all'Esecuzione: La Rivoluzione dell'AI Affidabile"**
 

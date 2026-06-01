@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # Protocollo di Test Guard di LSO v1.0
 
 > **Versione**: 1.0.0

@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **MODULO 2: REGOLA ZERO - IL SETTIMO PILASTRO FONDAMENTALE**
 
 ## **"L'Innovazione Definitiva: L'AI che Chiede Invece di Indovinare"**

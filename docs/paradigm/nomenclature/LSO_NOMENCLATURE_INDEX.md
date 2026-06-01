@@ -9,9 +9,10 @@ updated_at: '2026-05-22'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
-rag_indexed: true
 priority: high
 source: docs/lso/LSO_NOMENCLATURE_v2.md
+visibility: public
+rag: public
 ---
 
 # LSO Nomenclature — INDEX

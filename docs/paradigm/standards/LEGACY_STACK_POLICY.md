@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # Legacy Stack Policy — Paradigma Oracode Nexus (Livello 1)
 
 > **Chi**: CEO Fabio Cherici · CTO Padmin D. Curtis (AI)

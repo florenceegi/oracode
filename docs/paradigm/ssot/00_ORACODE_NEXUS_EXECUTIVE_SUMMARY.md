@@ -9,8 +9,9 @@ updated_at: '2026-06-01'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 supersedes: null
 superseded_by: null
-rag_indexed: true
 priority: high
+visibility: public
+rag: public
 ---
 
 # Oracode Nexus — Executive Summary

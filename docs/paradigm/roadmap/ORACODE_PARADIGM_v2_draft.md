@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # ORACODE PARADIGM
 
 **Versione:** 2.1 — Draft di lavoro

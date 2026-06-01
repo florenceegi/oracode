@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # **ORACODE SYSTEM 3.0 - EXECUTIVE SUMMARY**
 
 **"From Philosophy to Execution: The Operating System for AI-Human Excellence"**

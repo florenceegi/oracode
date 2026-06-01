@@ -1,3 +1,8 @@
+---
+visibility: public
+rag: public
+---
+
 # 🜂 ORACODE SYSTEM 4 – FOUNDATION DOCUMENT
 
 ## "Educare l'uomo al funzionamento dell'intelligenza predittiva"

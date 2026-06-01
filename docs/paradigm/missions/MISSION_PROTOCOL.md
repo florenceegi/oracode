@@ -9,8 +9,9 @@ updated_at: '2026-06-01'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
-rag_indexed: true
 priority: high
+visibility: public
+rag: public
 ---
 
 # Mission Protocol
