@@ -109,10 +109,16 @@ cross-project — confermare con CEO prima di M-OS3-048.)*
 Dubbio tra public e private → **tratta come private** (il leak è irreversibile; il contrario no).
 
 ## 5. Applicazione (mission successive)
-- **M-OS3-047**: classifica tutti gli SSOT esistenti + aggiunge i 2 header.
+- **M-OS3-047**: classifica tutti gli SSOT esistenti + aggiunge i 2 header. Marca inoltre
+  `split_candidate: true` nel registry su criterio **path-based**: ogni SSOT che watcha
+  `os3-matrix/bin|hooks` (mescola modello pubblico + implementazione privata) è candidato allo
+  split. I candidati reali risultano **18**, non i 3 illustrativi sotto: ai 3 nominati qui si
+  aggiungono — fra gli altri — `MISSION_PROTOCOL`, `NAMING_STANDARD_CODE`, `WEB_PAGE_QUALITY_GATE`,
+  `LEGACY_STACK_POLICY`, le 3 tech-spec/doc-sync e i protocolli LSO-guard. La lista autorevole è
+  il campo `split_candidate` in `docs/lso/SSOT_REGISTRY.json`.
 - **M-OS3-048**: spezza i misti (es. `AGENT_DEPLOY_RUNTIME_MODEL`, `ORACODE_LINT`,
   `ORACODE_AGENT_SKILL` mescolano modello+implementazione) → modello in `oracode`,
-  implementazione in `os3-matrix`.
+  implementazione in `os3-matrix`. Perimetro: i 18 `split_candidate` del registry.
 - RAG: re-istituito rispettando il campo `rag` (sezione pubblica subito; privata-dev poi).
 - (Futuro) `oracode-lint` R7: ogni SSOT DEVE avere `visibility` + `rag` coerenti (enforcement).
 
