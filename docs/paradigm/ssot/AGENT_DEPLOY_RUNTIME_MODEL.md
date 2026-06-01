@@ -5,10 +5,10 @@
 @author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
 @version  1.0.0
 @date     2026-06-01
-@purpose  SSOT del modello di deploy degli agenti e della risoluzione dei root
-          a runtime: dove vive la fonte, come si genera la copia operativa,
+@purpose  SSOT del modello di deploy degli agenti E degli hook, e della risoluzione
+          dei root a runtime: dove vive la fonte, come si genera la copia operativa,
           come gli agenti risolvono i path senza accoppiarsi a un organismo.
-@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034.
+@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico.
@@ -17,14 +17,20 @@
 
 ## 1. Single-source: sorgente vs deploy
 
+Il modello vale per **due classi di artefatto deployato** — agenti e hook:
+
 ```
-FONTE (versionata):   os3-matrix/agents/*.md      ← si edita QUI
-DEPLOY (generato):    ~/.claude/agents/*.md        ← MAI editato a mano
+AGENTI  FONTE (versionata):  os3-matrix/agents/*.md   ← si edita QUI
+        DEPLOY (generato):   ~/.claude/agents/*.md     ← MAI editato a mano
+
+HOOK    FONTE (versionata):  os3-matrix/hooks/*.sh    ← si edita QUI
+        DEPLOY (generato):   ~/.claude/hooks/*.sh      ← MAI editato a mano
 ```
 
-`~/.claude/agents` è una **proiezione generata** della sorgente, prodotta da
-`os3-matrix/bin/deploy-agents`. Editare direttamente il deploy crea divergenza
-silenziosa (era il difetto risolto da M-OS3-030). Regola: **si tocca la sorgente,
+Entrambi i deploy sono una **proiezione generata** della sorgente, prodotta
+rispettivamente da `os3-matrix/bin/deploy-agents` e `os3-matrix/bin/deploy-hooks`.
+Editare direttamente il deploy crea divergenza silenziosa (difetto risolto per gli
+agenti da M-OS3-030, per gli hook da M-OS3-035). Regola unica: **si tocca la sorgente,
 si ri-esegue il deploy.**
 
 ## 2. deploy-agents — copia pura + guardia
@@ -39,6 +45,29 @@ si ri-esegue il deploy.**
   in sorgente → possibili **orfani** (vedi §5). `$DEST ⊇ sorgente`, non `==`.
 - **con guardia anti-regressione**: se ricompare un placeholder `@@KEY@@` (path
   organismo tornato deploy-time invece che runtime), il deploy ABORTISCE.
+
+### 2b. deploy-hooks — stesso modello, sugli hook (M-OS3-035)
+
+`bin/deploy-hooks` è il **mirror di `deploy-agents`** sulla classe hook. Copia
+`os3-matrix/hooks/*.sh` → `~/.claude/hooks/*.sh` con le stesse proprietà:
+- **copia pura** byte-identica (nessuna sostituzione);
+- **atomico per-file** (staging temp → `mv` file-per-file, `nullglob`);
+- **senza prune** (stessa semantica `$DEST ⊇ sorgente`, possibili orfani come §5);
+- **`+x` preservato** (`chmod +x` su ogni file nel deploy).
+
+Motivazione (Q-002): alcuni hook erano *live in `~/.claude/hooks` ma non versionati*
+in os3-matrix, mentre il settings-snippet li referenziava → in un setup nuovo il path
+puntava a un hook assente dalla sorgente (P0-4 landmine "hook assente"). Versionando i
+9 hook mancanti, **tutti gli hook referenziati dallo snippet esistono in sorgente** e
+sono deployabili ovunque. Lo stesso difetto sorgente↔deploy degli agenti (M-OS3-030),
+risolto sugli hook.
+
+**Differenza dagli agenti (no guardia `@@`):** gli hook non usano placeholder
+deploy-time `@@`, quindi `deploy-hooks` non ha guardia anti-regressione. Tuttavia
+parte degli hook conserva ancora **path d'organismo baked** (es. `/home/fabio/...`) e
+il settings-snippet usa path assoluti Fabio-specifici: il decoupling runtime degli hook
+coupled + snippet generico per `/project` è **debito M-OS3-036** (BACKLOG os3-matrix),
+mirror di M-OS3-031 sugli hook.
 
 ## 3. Risoluzione root a runtime
 
@@ -75,6 +104,7 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-032 | skill estesa ai 6 agenti dottrina-pesanti |
 | M-OS3-033 | SSOT istituito; remediation accuratezza (atomico per-file, no-prune, orfani) |
 | M-OS3-034 | robustezza risoluzione root: anchor stabile (`paradigm`/`engine`) + fallback name; §3 allineata, limite fresh-clone in §5 |
+| M-OS3-035 | `bin/deploy-hooks` — stesso modello sugli hook (Q-002): 9 hook live-non-versionati ora versionati; settings-snippet senza più hook-assente; decoupling hook coupled = debito M-OS3-036 |
 
 ## 5. Debito noto (robustezza risoluzione)
 
@@ -105,4 +135,4 @@ Decidere se `deploy-agents` debba fare prune = mission separata.
 
 ---
 
-*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031. Licenza MIT.*
+*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035. Licenza MIT.*
