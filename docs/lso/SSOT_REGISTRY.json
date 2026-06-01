@@ -692,7 +692,7 @@
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-028",
+      "verified_in_mission": "M-OS3-032",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
@@ -716,7 +716,7 @@
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-027",
+      "verified_in_mission": "M-OS3-032",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
@@ -739,7 +739,7 @@
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-028",
+      "verified_in_mission": "M-OS3-032",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
@@ -836,8 +836,8 @@
       "update_policy": null,
       "registered_by": "M-OS3-029",
       "last_verified": "2026-06-01",
-      "last_verified_by": "padmin",
-      "verified_in_mission": "M-OS3-029",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-OS3-032",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0

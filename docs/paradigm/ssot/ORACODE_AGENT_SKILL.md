@@ -3,12 +3,13 @@
 ```
 @package  oracode/paradigm/ssot
 @author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
-@version  1.0.0
+@version  1.1.0
 @date     2026-06-01
 @purpose  SSOT dell'architettura "Agent Skill": come gli agenti Oracode ricevono
           la dottrina normativa da una fonte unica (verbatim dal CORE) e le
           procedure profonde on-demand, senza duplicazione e senza drift.
-@status   PRODUCTION (proof minimale) — istituito da M-OS3-029.
+@status   PRODUCTION (esteso) — istituito da M-OS3-029 (pilota),
+          esteso a 6 agenti dottrina-pesanti da M-OS3-032.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico.
@@ -57,10 +58,31 @@ Agente PRE (lista a mano): P0-10 = "Anti-MongoDB", P0-13 assente, range "P0-0..P
 Agente POST (skill): P0-10 = "Anti-bypass data layer", P0-13 = "Test-First Discipline"
 presente, range "P0-1..P0-13", nessuna P0-0 — **citando la skill come fonte**.
 
-## 4. Estensione (mission successive)
+## 4. Estensione
+
 Una `rules/p0-NN-*.md` per P0 (anti sovra-frammentazione: una per regola, non più
-fine). Cablaggio degli altri agenti dottrina-pesanti (os3-audit, os3-gate, doc-sync)
-**dopo** la prova. Agenti codice-pesanti: beneficio marginale, valutare caso per caso.
+fine). Agenti codice-pesanti: beneficio marginale, valutare caso per caso.
+
+### 4.1 Stato del cablaggio (M-OS3-032 — realizzato)
+Dopo la prova del pilota, il pattern single-source è cablato via `skills:
+[oracode-doctrine]` (preload frontmatter) su **7 agenti** os3-matrix:
+
+| Agente | Mission | Ruolo |
+|--------|---------|-------|
+| `oracode-specialist` | M-OS3-029 | pilota (prova A/B) |
+| `os3-audit-specialist` | M-OS3-032 | dottrina-pesante |
+| `os3-gate` | M-OS3-032 | dottrina-pesante |
+| `oracode-alignment-interpreter` | M-OS3-032 | dottrina-pesante |
+| `organ-gap-scout` | M-OS3-032 | dottrina-pesante |
+| `doc-sync-v2` | M-OS3-032 | dottrina-pesante |
+| `ssot-living-agent` | M-OS3-032 | dottrina-pesante |
+
+Questi agenti citano le definizioni P0/pilastri/priorità **dalla fonte unica (skill)**,
+non a memoria. Le checklist organismo-specifiche (es. P0-0 stack-ban = regole d'organo)
+restano intatte negli agenti — la skill copre il normativo universale, non le regole
+locali. `corporate-finance-specialist` escluso (CFO, dottrina marginale); agenti
+codice-pesanti valutati caso per caso. M-OS3-032 aggiunge inoltre un test di parità
+skill source↔deploy (anti-drift sulla copia deployata).
 
 ## 5. Provenance & Attribution
 
@@ -93,4 +115,4 @@ tool, la nota di copyright MIT sopra viene mantenuta come richiesto dalla licenz
 
 ---
 
-*Oracode System — SSOT paradigma. Istituito da M-OS3-029. Licenza MIT.*
+*Oracode System — SSOT paradigma. Istituito da M-OS3-029, esteso a 7 agenti da M-OS3-032. Licenza MIT.*
