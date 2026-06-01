@@ -45,7 +45,7 @@ DOC-SYNC v2 è il closing hook semantico della Mission Engine. Alla chiusura di 
 | Componente | Path | Stato |
 |-----------|------|-------|
 | `ssot-registry-auto-update.sh` | `~/.claude/hooks/archive/` | Archiviato — anti-pattern 6 (solo metadati) |
-| `ssot-reflex-guard.sh` | `~/.claude/hooks/` | Attivo come rete secondaria (PostToolUse Write\|Edit, non blocca). v1.1.0 — **de-coupled** (M-OS3-027): risolve registry/nerve-log dal progetto editato via `.oracode/project.json`, generico per qualsiasi istanza Oracode (no hardcode EGI-DOC). Same-repo; cross-repo = M-OS3-017 |
+| `ssot-reflex-guard.sh` | `~/.claude/hooks/` | Attivo come rete secondaria (PostToolUse Write\|Edit, non blocca). v2.1.0 — **cross-repo** (M-OS3-028, chiude M-OS3-017): legge l'indice progetti `~/oracode-engine/projects.json`, aggrega le REPO_MAP di tutti i progetti e scandisce **tutti** gli `SSOT_REGISTRY`, segnalando anche i watcher cross-repo (SSOT del progetto A su codice del repo B). Eredita il de-coupling istanza di v1.1.0 (M-OS3-027): registry/nerve-log risolti via `.oracode/project.json`, no hardcode EGI-DOC |
 
 ---
 
@@ -124,7 +124,7 @@ Mission chiusa da operatore
 
 ### Rete secondaria (non parte del ciclo v2)
 
-- `ssot-reflex-guard.sh` — PostToolUse Write|Edit: segnala se file modificato è watchato da SSOT. De-coupled (M-OS3-027): registry/nerve-log risolti dal `.oracode/project.json` del progetto editato — generico, same-repo (cross-repo = M-OS3-017)
+- `ssot-reflex-guard.sh` — PostToolUse Write|Edit: segnala se file modificato è watchato da SSOT. v2.1.0 **cross-repo** (M-OS3-028, chiude M-OS3-017): legge `~/oracode-engine/projects.json`, aggrega le REPO_MAP e scandisce tutti gli `SSOT_REGISTRY` → segnala anche i watcher cross-repo (SSOT progetto A su codice repo B). Eredita il de-coupling istanza M-OS3-027 (registry/nerve-log via `.oracode/project.json`). Resta passivo
 - `ssot-living-check.sh` — dormiente (nelle permissions, non negli hook): cattura drift da bypass
 
 ---
@@ -169,3 +169,4 @@ Mission chiusa da operatore
 | 2026-05-12 | **v2.1.0 specifica**: coverage nativa, CLI, config, hook | M-179 |
 | 2026-05-15 | Coverage hook wired, Piano e Agent allineati a v2.1.0 | M-189 |
 | 2026-06-01 | DOC-SYNC fine-tuning: agente esaustivo (Step 4.3 — aggiorna TUTTE le tabelle changelog + grep verifica) + reflex de-coupled (v1.1.0, generico via `.oracode/project.json`) | M-OS3-027 |
+| 2026-06-01 | **Reflex cross-repo** (v2.1.0): `ssot-reflex-guard.sh` legge `~/oracode-engine/projects.json`, aggrega le REPO_MAP e scandisce tutti gli `SSOT_REGISTRY` → segnala i watcher cross-repo. Chiude M-OS3-017 | M-OS3-028 |

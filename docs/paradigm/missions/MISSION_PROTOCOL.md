@@ -587,9 +587,10 @@ Il ciclo a 6 fasi e la prenotazione ID anti-collisione sono mantenuti da v1.1.0.
 | M-OS3-012 | 2 | Multi-mission concurrency, rimozione global lock, test-red whitelist `tests/**` in `planned` |
 | M-OS3-013 | 3 | Hardening hook OS3 Matrix S2-14/15/18/19/21 + S2-23 uem-code-validation (collaterale) |
 | M-OS3-016 | 3 | Multi-write per `session_id`, focus per-session, AMENDMENT 1 anti-eredità |
-| M-OS3-017 | 3 | Cross-organism SSOT tracking (concept, design pending) |
+| M-OS3-017 | 3 | Cross-organism SSOT tracking (concept, design pending) — **realizzato lato reflex da M-OS3-028 (2026-06-01)** |
 | M-OS3-018 | 3 | **Questo documento — SSOT Oracode realignment v3.0.0** |
 | M-OS3-025 | 4 | Ponte automatico L1→L3 (`bin/mission` + `.oracode/project.json`), migrazione `~/.oracode`→`~/oracode-engine` (visibile), `finalize` orchestra enrich+retrospective. + **blocco mission-fantasma A1** (`open` BLOCCA fuori da un progetto, `--global` override) e **convenzione ID prefissato** (CEO 2026-06-01). **Bump v4.0.0** |
 | M-OS3-026 | 4 | **Bootstrap mirato cablato all'open** — `emitBootstrap` in `cmdOpen` emette la lista moduli calibrata per `type`+`organs` da `MISSION_BOOTSTRAP_INDEX.json` (path, non contenuto → token-light). FASE 1 ora eseguita dal motore. **Bump v4.1.0** |
+| M-OS3-028 | 4 | **Cross-organism SSOT tracking — reflex cross-repo** (chiude M-OS3-017). `cmdOpen` auto-popola l'indice progetti `~/oracode-engine/projects.json` (`registerProject`, idempotente per descriptor); `ssot-reflex-guard.sh` v2.1.0 aggrega le REPO_MAP di tutti i progetti e scandisce **tutti** gli `SSOT_REGISTRY`, segnalando i watcher **cross-repo** (SSOT del progetto A che osserva codice del repo B). Reflex resta **passivo**. Nessun bump protocollo |
 
 > **DOC-SYNC Oracode Nexus 3-tier (2026-05-31).** Allineamento alla legge `ORACODE_NEXUS_3_TIER.md`: stratificazione su 3 livelli (L1 motore / L2 HUB / L3 istanza), chiavi registry in **INGLESE**, FASE 0 via ponte automatico L1→L3, path motore `~/oracode-engine`, path retrospective `os3-matrix/bin/`. Bump a **v4.0.0 approvato dal CEO** (2026-05-31, M-OS3-025).
