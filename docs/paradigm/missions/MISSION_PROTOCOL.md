@@ -2,10 +2,10 @@
 title: Mission Protocol
 slug: mission-protocol
 doc_type: protocol
-version: 4.0.0
+version: 4.1.0
 status: current
 date: '2026-05-27'
-updated_at: '2026-05-31'
+updated_at: '2026-06-01'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
@@ -19,6 +19,7 @@ priority: high
 
 > **Livello (vedi `LSO_NOMENCLATURE_v1.md`)**: Oracode (universale, trasferibile a qualsiasi istanza LSO)
 > **Sostituisce**: `MISSION_PROTOCOL.md` v2.0.0 (2026-05-08)
+> **Cambio minore v4.1.0 (M-OS3-026, 2026-06-01)**: bootstrap mirato (FASE 1) **cablato all'open** — `bin/mission` emette automaticamente la lista moduli calibrata per `type`+`organs` (`emitBootstrap`); prima era design non implementato. Additivo, retro-compatibile.
 > **Cambio maggiore v4.0.0 (M-OS3-025, 2026-05-31)**: ingresso in **Oracode Nexus** con la gerarchia a 3 livelli. Cambiamenti strutturali: (1) **ponte L1→L3 AUTOMATICO** — `bin/mission` auto-registra le mission nel `MISSION_REGISTRY` dell'istanza via `.oracode/project.json` (fine della sincronizzazione manuale / "mission fantasma"); (2) **chiavi registry in INGLESE** (`id/title/type/organs/status/date_open/date_close`); (3) **cartella globale visibile** `~/oracode-engine/` (`ORACODE_HOME`); (4) statistiche/numerazione = responsabilità **HUB (L2)**, non istanza. Compatibile concettualmente con v3 (FASE 0-6 preservate); major perché cambiano schema-chiavi e meccanismo di propagazione.
 >
 > **Cambio maggiore v3.0.0 (M-OS3-018)**: codifica della state machine a 7 stati, introduzione del CLI di riferimento `bin/mission`, multi-mission concurrency (M-OS3-012), multi-write per session_id (M-OS3-016), spawn fingerprint (M-OS3-005), test-red whitelist `tests/**` in stato `planned`, scope hash anti-drift, pattern AMENDMENT CEO, ESITO A/B/C verification pre-close. La parte narrativa Oracode-universale (FASE 0-6) della v2.0.0 è preservata.
@@ -376,7 +377,8 @@ L'implementazione di riferimento del Mission Protocol è il CLI `bin/mission` (l
 | v0.1 | M-OS3-001 | State machine 7 stati non-aggirabile, scope hash, lock globale single-mission |
 | v0.2 | M-OS3-012 | Multi-mission concurrency: rimosso global lock, focus-based isolation |
 | v0.3 | M-OS3-016 | Multi-write per `session_id`: focus per-session via env, N chat parallele zero collision |
-| **v4.0.0** | **M-OS3-025** | **Oracode Nexus 3 livelli**: ponte L1→L3 automatico (`syncToRepoRegistry` via `.oracode/project.json`, parallel-safe), chiavi registry INGLESE, `~/oracode-engine` visibile, stats/numerazione al HUB. Subcomando `finalize`. Slash command globale `/mission`. |
+| **v4.0.0** | **M-OS3-025** | **Oracode Nexus 3 livelli**: ponte L1→L3 automatico (`syncToRepoRegistry` via `.oracode/project.json`, parallel-safe), chiavi registry INGLESE, `~/oracode-engine` visibile, stats/numerazione al HUB. Subcomando `finalize`. Slash command globale `/mission`. + blocco mission-fantasma A1 (`open` BLOCCA fuori da un progetto, `--global` override) e convenzione ID prefissato (CEO 2026-06-01). |
+| **v4.1.0** | **M-OS3-026** | **Bootstrap mirato cablato all'open**: `emitBootstrap` (in `cmdOpen`) emette la lista moduli calibrata per `type`+`organs` da `MISSION_BOOTSTRAP_INDEX.json` (path, non contenuto → token-light). La FASE 1 §4.2 ora è eseguita dal motore, non più manuale. |
 
 ### 8.2 Subcomandi principali
 
@@ -534,9 +536,11 @@ Per chiarire l'appartenenza di ogni componente menzionato in questo documento:
 
 ## 17. Versionamento e firma
 
-**Versione**: 4.0.0
-**Data**: 2026-05-31
+**Versione**: 4.1.0
+**Data**: 2026-06-01
 **Sostituisce**: v3.0.0 (2026-05-27)
+
+**Cambio minore (v4.0.0 → v4.1.0) — M-OS3-026**: bootstrap mirato (FASE 1) cablato all'open (`emitBootstrap`); + blocco mission-fantasma A1 e convenzione ID prefissato (CEO 2026-06-01).
 
 **Cambio maggiore (v3.0.0 → v4.0.0) — M-OS3-025**: ingresso in **Oracode Nexus** (gerarchia 3 livelli L1/L2/L3). Ponte L1→L3 automatico (`syncToRepoRegistry` via `.oracode/project.json`), chiavi registry INGLESE, `~/oracode-engine` visibile, stats/numerazione al HUB, subcomando `finalize`, slash command globale `/mission`. + blocco mission-fantasma A1 e convenzione ID prefissato (decisioni CEO 2026-06-01). Dettaglio: front-matter + Sez 3 (FASE 0) + tabella evoluzione (riga changelog v4.0.0).
 
