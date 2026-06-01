@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "description": "Bootstrap mirato — moduli da caricare all'open per type + organs (MISSION_PROTOCOL §4.2-4.3). Emesso da bin/mission cmdOpen (M-OS3-026).",
+    "version": "1.0.0",
+    "created": "2026-06-01",
+    "author": "Padmin D. Curtis (AI Partner) for Fabio Cherici",
+    "note": "Path relativi a instance_root. CLAUDE.md + CLAUDE_ORACODE_CORE.md sono residenti dal session-start → NON elencati. Aggiornamenti via retrospective FASE 6 + ok CEO.",
+    "id_prefix": "M-NEXUS"
+  },
+  "always_loaded": [
+    "docs/paradigm/padmin/PADMIN_INDEX.md",
+    "docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md",
+    "docs/paradigm/missions/MISSION_PROTOCOL.md"
+  ],
+  "by_mission_type": {
+    "feature": [],
+    "fix": [],
+    "refactor": [],
+    "arch": [
+      "docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md",
+      "docs/paradigm/ssot/00_ORACODE_NEXUS_SSOT.md"
+    ],
+    "doc": [],
+    "doc-sync": [
+      "docs/paradigm/doc-sync/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md",
+      "docs/lso/SSOT_REGISTRY.json"
+    ],
+    "guard": [
+      "docs/paradigm/lso/LSO_GUARD_TESTING_PROTOCOL_v1.md"
+    ],
+    "oracode-audit": [
+      "docs/paradigm/ssot/ORACODE_NEXUS_SYSTEM_REFERENCE.md"
+    ],
+    "security": [],
+    "infrastructure": [],
+    "migration": [],
+    "compliance": [],
+    "bootstrap": [],
+    "epic": []
+  },
+  "by_organ": {}
+}
