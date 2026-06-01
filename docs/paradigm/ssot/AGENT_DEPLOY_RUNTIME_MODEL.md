@@ -3,12 +3,12 @@
 ```
 @package  oracode/paradigm/ssot
 @author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
-@version  1.0.0
+@version  1.1.0
 @date     2026-06-01
 @purpose  SSOT del modello di deploy degli agenti E degli hook, e della risoluzione
           dei root a runtime: dove vive la fonte, come si genera la copia operativa,
-          come gli agenti risolvono i path senza accoppiarsi a un organismo.
-@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035.
+          come agenti e hook risolvono i path senza accoppiarsi a un organismo.
+@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035/036.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico.
@@ -63,16 +63,29 @@ sono deployabili ovunque. Lo stesso difetto sorgente↔deploy degli agenti (M-OS
 risolto sugli hook.
 
 **Differenza dagli agenti (no guardia `@@`):** gli hook non usano placeholder
-deploy-time `@@`, quindi `deploy-hooks` non ha guardia anti-regressione. Tuttavia
-parte degli hook conserva ancora **path d'organismo baked** (es. `/home/fabio/...`) e
-il settings-snippet usa path assoluti Fabio-specifici: il decoupling runtime degli hook
-coupled + snippet generico per `/project` è **debito M-OS3-036** (BACKLOG os3-matrix),
-mirror di M-OS3-031 sugli hook.
+deploy-time `@@`, quindi `deploy-hooks` non ha guardia anti-regressione.
+
+**Decoupling runtime degli hook (M-OS3-036 — risolto).** Il debito sopra è chiuso,
+mirror di M-OS3-031 sugli agenti. I 6 hook organism-coupled
+(`coverage-check-precheck`, `doc-sync-v2-guard`, `m094-supervisor-reminder`,
+`mission-read-tracker`, `organ-index-guard`, `install-gitleaks-hooks`) **non hanno più
+path d'organismo baked**: risolvono il root del progetto attivo **a runtime** con la
+stessa risalita degli agenti (CWD → `.oracode/project.json` → `instance_root`; root non
+risolto → **graceful exit 0**, nessun crash della tool-call). `install-gitleaks-hooks`
+esternalizza la lista repo in `$HOME/.claude/gitleaks-repos.conf` (template
+`etc/gitleaks-repos.conf.example`), niente lista baked nell'hook. Il `settings-snippet.json`
+usa `$HOME/.claude/hooks/...` (shell-form, espanso a runtime) invece di path
+Fabio-specifici → generico per `/project` su qualsiasi macchina. Safety verificata: tutti
+gli hook escono 0 da ogni CWD. **Residuo (follow-up, non drift):** classificazione degli
+hook generic vs FlorenceEGI-specifici dentro lo snippet (logica di selezione, non path) =
+BACKLOG os3-matrix.
 
 ## 3. Risoluzione root a runtime
 
-Gli agenti **non** contengono path assoluti né d'organismo baked. Usano placeholder
-risolti **a runtime** dall'agente stesso, dichiarati nel blocco "Risoluzione root":
+Gli agenti **non** contengono path assoluti né d'organismo baked — e da **M-OS3-036**
+neppure i 6 hook organism-coupled (vedi §2b): entrambe le classi risolvono il root del
+progetto attivo **a runtime** con la stessa risalita CWD → `.oracode/project.json` →
+`instance_root`. Gli agenti usano placeholder dichiarati nel blocco "Risoluzione root":
 
 | Placeholder | = | Risolto da |
 |-------------|---|------------|
@@ -105,6 +118,7 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-033 | SSOT istituito; remediation accuratezza (atomico per-file, no-prune, orfani) |
 | M-OS3-034 | robustezza risoluzione root: anchor stabile (`paradigm`/`engine`) + fallback name; §3 allineata, limite fresh-clone in §5 |
 | M-OS3-035 | `bin/deploy-hooks` — stesso modello sugli hook (Q-002): 9 hook live-non-versionati ora versionati; settings-snippet senza più hook-assente; decoupling hook coupled = debito M-OS3-036 |
+| M-OS3-036 | decoupling runtime degli hook (mirror M-OS3-031): 6 hook coupled risolvono il root a runtime (no path organismo baked); `install-gitleaks-hooks` con lista repo esternalizzata; settings-snippet `$HOME`-based generico. §2b/§3 aggiornate. Residuo: classificazione hook generic vs FlorenceEGI = BACKLOG |
 
 ## 5. Debito noto (robustezza risoluzione)
 
@@ -135,4 +149,4 @@ Decidere se `deploy-agents` debba fare prune = mission separata.
 
 ---
 
-*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035. Licenza MIT.*
+*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035, hook decoupled a runtime da M-OS3-036. Licenza MIT.*
