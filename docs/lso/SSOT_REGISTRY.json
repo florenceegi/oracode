@@ -894,6 +894,28 @@
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
+    },
+    {
+      "ssot_id": "ssot-header-convention",
+      "path": "docs/paradigm/standards/SSOT_HEADER_CONVENTION.md",
+      "title": "Convenzione header SSOT — visibility + rag + mono-confine",
+      "doc_type": "standard",
+      "priority": "high",
+      "check_frequency": "on_demand",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": null,
+      "registered_by": "M-OS3-046",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "padmin",
+      "verified_in_mission": "M-OS3-046",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0,
+      "visibility": "public",
+      "rag": "public"
     }
   ]
 }
