@@ -66,6 +66,19 @@ privata per i dev: il campo `rag` la prevede già.
 **Vincolo di coerenza:** `rag: public` richiede `visibility: public` (non si indicizza nel RAG
 pubblico un contenuto privato). `visibility: private` ⇒ `rag ∈ {exclude, private}`.
 
+**Combinazioni valide** (2×3 meno l'unica vietata `private,public`):
+`(public,exclude)`, `(public,public)`, **`(public,private)`** (paradigma pubblico ma indicizzato
+solo nel RAG dev — valido), `(private,exclude)`, `(private,private)`.
+
+**I 2 campi si AGGIUNGONO** al front-matter esistente (`scope`, `priority`, `doc_type`, …) — non
+li sostituiscono.
+
+### Migrazione da `rag_indexed` (campo deprecato)
+Alcuni SSOT hanno il vecchio booleano `rag_indexed: true|false`. È **deprecato** da questo
+standard. Mappa di migrazione (applicata da M-OS3-047):
+`rag_indexed: true → rag: public` · `rag_indexed: false → rag: exclude`.
+Il vecchio campo `rag_indexed` viene rimosso quando si aggiunge `rag`.
+
 ## 3. Regola mono-confine
 
 **Ogni SSOT appartiene a UN SOLO confine.** Un SSOT è *o* paradigma (`public`) *o* implementazione
@@ -74,6 +87,15 @@ livello-modello sia un livello-implementazione, si **spezza in due SSOT** distin
 - il SSOT `public` descrive il **modello/principi** (cosa, perché) — astratto, riusabile;
 - il SSOT `private` descrive l'**implementazione concreta** (come: codice, path `os3-matrix/bin/...`,
   layout file, regole esatte) — vive nel repo privato.
+
+## 3.1 Dove vive l'entry di registro di un SSOT private
+
+Il `SSOT_REGISTRY.json` di `oracode` è **pubblico**: contiene SOLO entry `visibility: public`.
+Un SSOT `visibility: private` ha la sua entry in un **registry privato** dedicato in
+`os3-matrix/docs/lso/SSOT_REGISTRY.json` (da istituire al primo SSOT private classificato) —
+applicando la regola mono-confine **anche al registro**: nessun `ssot_id`/`title`/`path` che
+riveli l'implementazione OS3 Matrix finisce nel registry pubblico. *(Decisione architetturale
+cross-project — confermare con CEO prima di M-OS3-048.)*
 
 ## 4. Criterio di classificazione
 
