@@ -867,6 +867,32 @@
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
+    },
+    {
+      "ssot_id": "oracode-lint",
+      "path": "docs/paradigm/ssot/ORACODE_LINT.md",
+      "title": "oracode-lint — linter semantico artefatti Oracode",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "bin/oracode-lint",
+          "hooks/oracode-lint-guard.sh",
+          "hooks/oracode-lint-gate.sh"
+        ]
+      },
+      "update_policy": null,
+      "registered_by": "M-OS3-039",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "padmin",
+      "verified_in_mission": "M-OS3-039",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
     }
   ]
 }
