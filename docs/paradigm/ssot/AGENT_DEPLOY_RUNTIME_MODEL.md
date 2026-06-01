@@ -3,12 +3,12 @@
 ```
 @package  oracode/paradigm/ssot
 @author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
-@version  1.2.0
+@version  1.3.0
 @date     2026-06-01
 @purpose  SSOT del modello di deploy degli agenti E degli hook, e della risoluzione
           dei root a runtime: dove vive la fonte, come si genera la copia operativa,
           come agenti e hook risolvono i path senza accoppiarsi a un organismo.
-@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035/036/038.
+@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035/036/038/040/041/042.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico.
@@ -41,8 +41,9 @@ si ri-esegue il deploy.**
 - **atomico per-file**: render in staging temp, la guardia anti-`@@` gira PRIMA di
   toccare `$DEST` (un deploy bloccato dalla guardia lascia `$DEST` intatto), poi `mv`
   file-per-file. Non è un `mv` atomico dell'intera directory.
-- **senza prune**: copia/aggiorna ma NON rimuove i file presenti in `$DEST` e assenti
-  in sorgente → possibili **orfani** (vedi §5). `$DEST ⊇ sorgente`, non `==`.
+- **senza prune (default)**: copia/aggiorna ma NON rimuove i file presenti in `$DEST` e
+  assenti in sorgente → possibili **orfani**. `$DEST ⊇ sorgente`, non `==`. Da M-OS3-042
+  esiste il flag opt-in **`--prune`** (dry-run + `--apply`, allow-list) per gestirli; vedi §5.
 - **con guardia anti-regressione**: se ricompare un placeholder `@@KEY@@` (path
   organismo tornato deploy-time invece che runtime), il deploy ABORTISCE.
 
@@ -52,7 +53,8 @@ si ri-esegue il deploy.**
 `os3-matrix/hooks/*.sh` → `~/.claude/hooks/*.sh` con le stesse proprietà:
 - **copia pura** byte-identica (nessuna sostituzione);
 - **atomico per-file** (staging temp → `mv` file-per-file, `nullglob`);
-- **senza prune** (stessa semantica `$DEST ⊇ sorgente`, possibili orfani come §5);
+- **senza prune (default)** (stessa semantica `$DEST ⊇ sorgente`, possibili orfani); da
+  M-OS3-042 stesso flag opt-in **`--prune`** + allow-list `HOOKS_PRUNE_ALLOW` (vedi §5);
 - **`+x` preservato** (`chmod +x` su ogni file nel deploy).
 
 Motivazione (Q-002): alcuni hook erano *live in `~/.claude/hooks` ma non versionati*
@@ -165,6 +167,7 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-038 | hook event-driven di enforcement (§2c): `oracode-lint-guard.sh` (PostToolUse, segnala non-bloccante) + `oracode-lint-gate.sh` (PreToolUse git push, blocca su drift ERROR). Completa Q-001 — `oracode-lint` ora enforcement attivo. Binario risolto via engine anchor a runtime, graceful se assente (dip. `python3`+`jq`) |
 | M-OS3-040 | split snippet a due livelli (§2b): `settings-snippet.{core,florenceegi}.json` + README criterio. Chiude il residuo BACKLOG M-OS3-036 (classificazione generic vs FlorenceEGI). core=30 (wirato da `/project`), florenceegi=8 overlay. Audit remediation: 3 mis-classificazioni P1 corrette |
 | M-OS3-041 | `bin/seed-anchors` (idempotente) — salda il *seeding* del debito robustezza M-OS3-034: anchor `paradigm`/`engine` garantiti in `projects.json` da seed config, fresh-clone risolve senza descrittore gitignored né apertura mission. Aborta su `projects.json` illeggibile (no data-loss). Residuo: match-by-name |
+| M-OS3-042 | `deploy-agents`/`deploy-hooks` flag **`--prune` opt-in** (dry-run + `--apply`) + allow-list → chiude il debito "no-prune → orfani" (§5). 2 orfani legittimi versionati (`egili-blood-keeper`, `m093-remediation-tracker` decoupled a `{{instance_root}}`), `AGENT_EPISTEMOLOGY_PROTOCOL` allow-listed. Roster sorgente 9→11. Default invariato (no prune). Debito `egili-blood-keeper` (Bibbia privata, organism-bound vero) → BACKLOG |
 
 ## 5. Debito noto (robustezza risoluzione)
 
@@ -198,12 +201,16 @@ mission. Aggiunge se manca, non duplica, preserva descriptor/root esistenti; abo
 overwrite) se `projects.json` è presente-ma-illeggibile. Residuo: il *come* versionare
 l'anchor paradigm nel descrittore tracked resta decisione mission/CEO — il seed lo aggira.
 
-**No-prune → orfani.** `deploy-agents` copia/aggiorna ma non rimuove i file di `$DEST`
-non presenti in sorgente. Orfani osservati in `~/.claude/agents` (2026-06-01): 3 —
-`egili-blood-keeper.md`, `m093-remediation-tracker.md` (deployati per altra via) e
-`AGENT_EPISTEMOLOGY_PROTOCOL.md` (asset paradigma, NON da rimuovere senza verifica).
-Decidere se `deploy-agents` debba fare prune = mission separata.
+**No-prune → orfani — RISOLTO da M-OS3-042.** Il default resta **senza prune** (sicuro,
+`$DEST ⊇ sorgente`), ma `deploy-agents`/`deploy-hooks` espongono ora un flag **`--prune`
+opt-in**: `--prune` da solo è **dry-run** (elenca gli orfani genuini), `--prune --apply`
+li rimuove. Una **allow-list** (`HOOKS_PRUNE_ALLOW` per gli hook; equivalente per gli
+agenti) protegge gli asset paradigma — in particolare `AGENT_EPISTEMOLOGY_PROTOCOL.md`,
+che NON è un agente e non va mai rimosso. Gli orfani osservati il 2026-06-01 sono stati
+decisi alla fonte: `egili-blood-keeper.md` e `m093-remediation-tracker.md` **versionati**
+(ora `source == deploy`, gestiti dal deploy), `AGENT_EPISTEMOLOGY_PROTOCOL.md`
+allow-listed. Orfani genuini residui: **0**.
 
 ---
 
-*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035, hook decoupled a runtime da M-OS3-036, seeding anchor fresh-clone da M-OS3-041. Licenza MIT.*
+*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035, hook decoupled a runtime da M-OS3-036, seeding anchor fresh-clone da M-OS3-041, prune opt-in + roster 11 da M-OS3-042. Licenza MIT.*
