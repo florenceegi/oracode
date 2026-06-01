@@ -421,8 +421,9 @@ Archive (storico):
 > `~/.claude/agents/...` elencati sotto sono la *destinazione deployata*, non la
 > fonte. Gli agenti risolvono i root a runtime (no path organismo baked). Modello
 > completo: SSOT `AGENT_DEPLOY_RUNTIME_MODEL.md`. Roster sorgente = 9 agenti
-> versionati (egili-blood-keeper / m093-remediation-tracker NON sono nella sorgente
-> os3-matrix: orfani deployati, da censire).
+> versionati. Orfani in `~/.claude/agents` non in sorgente (3): `egili-blood-keeper`,
+> `m093-remediation-tracker` (deployati per altra via) e `AGENT_EPISTEMOLOGY_PROTOCOL`
+> (asset paradigma, NON da rimuovere). `deploy-agents` non fa prune → vanno censiti.
 
 ### `commands/mission.md` (/mission slash globale)
 - **Path**: `~/.claude/commands/mission.md`

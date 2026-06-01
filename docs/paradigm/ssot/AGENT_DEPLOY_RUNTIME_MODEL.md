@@ -32,8 +32,11 @@ si ri-esegue il deploy.**
 `bin/deploy-agents` copia la sorgente nel deploy in modo:
 - **copia pura**: nessuna sostituzione (dopo M-OS3-031 non esistono più placeholder
   deploy-time `@@`); il deploy è byte-identico alla sorgente.
-- **atomico**: render in staging temp → `mv` all-or-nothing; un deploy fallito non
-  lascia `~/.claude/agents` in stato parziale.
+- **atomico per-file**: render in staging temp, la guardia anti-`@@` gira PRIMA di
+  toccare `$DEST` (un deploy bloccato dalla guardia lascia `$DEST` intatto), poi `mv`
+  file-per-file. Non è un `mv` atomico dell'intera directory.
+- **senza prune**: copia/aggiorna ma NON rimuove i file presenti in `$DEST` e assenti
+  in sorgente → possibili **orfani** (vedi §5). `$DEST ⊇ sorgente`, non `==`.
 - **con guardia anti-regressione**: se ricompare un placeholder `@@KEY@@` (path
   organismo tornato deploy-time invece che runtime), il deploy ABORTISCE.
 
@@ -74,6 +77,12 @@ all'apertura mission. Fragilità tracciate in `os3-matrix/docs/design/BACKLOG.md
 - match-by-name (`name == "OS3 Matrix"`) invece che per chiave stabile.
 Mitigazione attuale: fallback REGOLA ZERO nel blocco + test che asserisce gli anchor.
 Saldo strutturale = mission dedicata.
+
+**No-prune → orfani.** `deploy-agents` copia/aggiorna ma non rimuove i file di `$DEST`
+non presenti in sorgente. Orfani osservati in `~/.claude/agents` (2026-06-01): 3 —
+`egili-blood-keeper.md`, `m093-remediation-tracker.md` (deployati per altra via) e
+`AGENT_EPISTEMOLOGY_PROTOCOL.md` (asset paradigma, NON da rimuovere senza verifica).
+Decidere se `deploy-agents` debba fare prune = mission separata.
 
 ---
 
