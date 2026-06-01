@@ -3,7 +3,7 @@
     "description": "Mission Registry canonical — paradigma Oracode (repo florenceegi/oracode). Traccia le mission Oracode Nexus (M-OS3-NNN) che evolvono paradigma + enforcement os3-matrix.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-05-31",
+    "updated": "2026-06-01",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Registro SSOT delle mission del paradigma. Schema chiavi inglese (allineato fabiocherici.com, prodotto da doc-sync-v2). Chiude il dual-tracking gap HOME-engine vs repo-registry: questo è il registro repo canonical, l'engine HOME (~/.oracode/missions/) resta state machine runtime.",
     "schema": "canonical-english",
@@ -20,6 +20,21 @@
   },
   "counter": 23,
   "missions": [
+    {
+      "id": "M-NEXUS-003",
+      "title": "Fix coerenza MISSION_PROTOCOL Sez 17 (v3.0.0 → v4.0.0)",
+      "type": "doc",
+      "organs": [
+        "oracode"
+      ],
+      "trigger_matrix": 2,
+      "status": "closed",
+      "date_open": "2026-06-01",
+      "date_close": "2026-06-01",
+      "scope_hash": "8f800857599bafb6141f477949c910176eee85d9a8c7e72ed04e84a11478a7e3",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-01T07:23:08.438Z"
+    },
     {
       "id": "M-NEXUS-002",
       "title": "Sicurezza — hardening privacy + governance segreti",

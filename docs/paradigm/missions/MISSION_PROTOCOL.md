@@ -534,9 +534,11 @@ Per chiarire l'appartenenza di ogni componente menzionato in questo documento:
 
 ## 17. Versionamento e firma
 
-**Versione**: 3.0.0
-**Data**: 2026-05-27
-**Sostituisce**: v2.0.0 (2026-05-08)
+**Versione**: 4.0.0
+**Data**: 2026-05-31
+**Sostituisce**: v3.0.0 (2026-05-27)
+
+**Cambio maggiore (v3.0.0 → v4.0.0) — M-OS3-025**: ingresso in **Oracode Nexus** (gerarchia 3 livelli L1/L2/L3). Ponte L1→L3 automatico (`syncToRepoRegistry` via `.oracode/project.json`), chiavi registry INGLESE, `~/oracode-engine` visibile, stats/numerazione al HUB, subcomando `finalize`, slash command globale `/mission`. + blocco mission-fantasma A1 e convenzione ID prefissato (decisioni CEO 2026-06-01). Dettaglio: front-matter + Sez 3 (FASE 0) + tabella evoluzione (riga changelog v4.0.0).
 
 **Cambio maggiore (v2.0.0 → v3.0.0) — M-OS3-018**:
 - Codifica della state machine a 7 stati operativi (Sez 7)
@@ -585,4 +587,4 @@ Il ciclo a 6 fasi e la prenotazione ID anti-collisione sono mantenuti da v1.1.0.
 | M-OS3-018 | 3 | **Questo documento — SSOT Oracode realignment v3.0.0** |
 | M-OS3-025 | — | Ponte automatico L1→L3 (`bin/mission` + `.oracode/project.json`), migrazione `~/.oracode`→`~/oracode-engine` (visibile), `finalize` orchestra enrich+retrospective |
 
-> **DOC-SYNC Oracode Nexus 3-tier (2026-05-31).** Allineamento alla legge `ORACODE_NEXUS_3_TIER.md`: stratificazione su 3 livelli (L1 motore / L2 HUB / L3 istanza), chiavi registry in **INGLESE**, FASE 0 via ponte automatico L1→L3, path motore `~/oracode-engine`, path retrospective `os3-matrix/bin/`. La versione resta 3.0.0 fino a bump approvato dal CEO.
+> **DOC-SYNC Oracode Nexus 3-tier (2026-05-31).** Allineamento alla legge `ORACODE_NEXUS_3_TIER.md`: stratificazione su 3 livelli (L1 motore / L2 HUB / L3 istanza), chiavi registry in **INGLESE**, FASE 0 via ponte automatico L1→L3, path motore `~/oracode-engine`, path retrospective `os3-matrix/bin/`. Bump a **v4.0.0 approvato dal CEO** (2026-05-31, M-OS3-025).
