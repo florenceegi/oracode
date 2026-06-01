@@ -45,7 +45,7 @@ DOC-SYNC v2 è il closing hook semantico della Mission Engine. Alla chiusura di 
 | Componente | Path | Stato |
 |-----------|------|-------|
 | `ssot-registry-auto-update.sh` | `~/.claude/hooks/archive/` | Archiviato — anti-pattern 6 (solo metadati) |
-| `ssot-reflex-guard.sh` | `~/.claude/hooks/` | Attivo come rete secondaria (PostToolUse Write\|Edit, non blocca) |
+| `ssot-reflex-guard.sh` | `~/.claude/hooks/` | Attivo come rete secondaria (PostToolUse Write\|Edit, non blocca). v1.1.0 — **de-coupled** (M-OS3-027): risolve registry/nerve-log dal progetto editato via `.oracode/project.json`, generico per qualsiasi istanza Oracode (no hardcode EGI-DOC). Same-repo; cross-repo = M-OS3-017 |
 
 ---
 
@@ -124,7 +124,7 @@ Mission chiusa da operatore
 
 ### Rete secondaria (non parte del ciclo v2)
 
-- `ssot-reflex-guard.sh` — PostToolUse Write|Edit: segnala se file modificato è watchato da SSOT
+- `ssot-reflex-guard.sh` — PostToolUse Write|Edit: segnala se file modificato è watchato da SSOT. De-coupled (M-OS3-027): registry/nerve-log risolti dal `.oracode/project.json` del progetto editato — generico, same-repo (cross-repo = M-OS3-017)
 - `ssot-living-check.sh` — dormiente (nelle permissions, non negli hook): cattura drift da bypass
 
 ---
@@ -168,3 +168,4 @@ Mission chiusa da operatore
 | 2026-05-11 | Audit metodologico | M-178 |
 | 2026-05-12 | **v2.1.0 specifica**: coverage nativa, CLI, config, hook | M-179 |
 | 2026-05-15 | Coverage hook wired, Piano e Agent allineati a v2.1.0 | M-189 |
+| 2026-06-01 | DOC-SYNC fine-tuning: agente esaustivo (Step 4.3 — aggiorna TUTTE le tabelle changelog + grep verifica) + reflex de-coupled (v1.1.0, generico via `.oracode/project.json`) | M-OS3-027 |

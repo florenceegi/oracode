@@ -416,6 +416,7 @@ DOC-SYNC v1 è composto da 5 meccanismi (audit del 2026-04-30):
 ### 8.3 Cosa viene mantenuto come rete di sicurezza secondaria
 
 - `ssot-reflex-guard.sh` — **mantenuto, declassato**. Resta come segnale di propriocezione passiva ("è stato modificato un file watchato"), utile per auditing e per debugging quando DOC-SYNC v2 fallisce silenziosamente. Non è più nel ciclo principale di documentazione.
+  - *De-coupling istanza (M-OS3-027, 2026-06-01, reflex v1.1.0)*: il reflex non è più legato a un'istanza specifica (nessun hardcode `EGI-DOC` di registry/nerve-log né lista organi FlorenceEGI). Risolve il progetto risalendo dal file editato fino a `.oracode/project.json`, da cui deriva `<root>/docs/lso/SSOT_REGISTRY.json` e `<root>/audit/ssot_nerve_signals.log`. Funziona per **qualsiasi** progetto Oracode (oracode, os3-matrix, istanze applicative). Copre i watch **same-repo**; il caso **cross-repo** (SSOT di un progetto che osserva codice di un altro) resta fuori scope e tracciato in **M-OS3-017**.
 
 - `ssot-living-check.sh` — **mantenuto, riposizionato**. Diventa rete di sicurezza secondaria: se per qualche motivo una mission viene chiusa bypassando DOC-SYNC v2 (per esempio chiusura forzata da operatore), il cron notturno rileva drift residui e li segnala. È esplicitamente **secondario** rispetto al ciclo primario.
 
