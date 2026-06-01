@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 39 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
+    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 41 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-05-29",
+    "updated": "2026-06-01",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Layer 0 MIELINA paradigma. concept-ssot = documenti concettuali (kernel, moduli, manifesti, identità) senza file codice da watchare. spec-ssot = specifiche che descrivono enforcement implementato in os3-matrix (cross-repo watches).",
     "schema": "canonical-paradigm",
@@ -829,7 +829,8 @@
           "oracode"
         ],
         "paths": [
-          "templates/CLAUDE_ORACODE_CORE.md"
+          "templates/CLAUDE_ORACODE_CORE.md",
+          "skills/oracode-doctrine/SKILL.md"
         ]
       },
       "update_policy": null,
