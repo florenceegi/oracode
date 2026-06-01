@@ -225,19 +225,9 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 
 ## 4. Processo di verifica — Quality Gate
 
-L'enforcement è **automatizzato** da `os3-matrix/bin/web_quality_gate.py` (Gate automatico pre-commit per pagine web pubbliche — 90 criteri, 12 categorie; exit code `0 = PASS`, `1 = FAIL` su almeno un criterio obbligatorio fallito). Lo snippet bash di §4.2 è la **logica di riferimento**; in pratica si invoca il gate:
+L'enforcement è **automatizzato** da un **Quality Gate pre-commit** per pagine web pubbliche (90 criteri, 12 categorie; exit code `0 = PASS`, `1 = FAIL` su almeno un criterio obbligatorio fallito). Lo snippet bash di §4.2 è la **logica di riferimento**.
 
-```bash
-python3 os3-matrix/bin/web_quality_gate.py \
-  --dir out/ \
-  --page <nome-pagina> \
-  --locales it,en,de,es,fr,pt,zh \
-  [--url https://<dominio>] \
-  [--messages messages/] \
-  [--report /tmp/web-quality-gate-report.json] [--quiet]
-```
-
-Argomenti (da `argparse`): `--dir` (directory HTML generato, es. `out/`) e `--page` e `--locales` sono **obbligatori**; `--url` abilita i check post-deploy; `--messages` punta ai file i18n JSON; `--report` definisce il path del report JSON (default `/tmp/web-quality-gate-report.json`); `--quiet` mostra solo l'output finale.
+> **Invocazione concreta privata (M-OS3-048).** Il comando del gate (CLI, argomenti `argparse`, path) è un SSOT `visibility: private` nell'enforcement OS3 Matrix (repo privato): `web-page-quality-gate-impl`. Confine mono — il modello (i 90 criteri di §1-3) resta pubblico.
 
 ### 4.1 Durante la creazione (FASE 4)
 
@@ -264,7 +254,7 @@ VERIFICA i18n (dopo ogni file di traduzione):
 
 ### 4.2 Pre-deploy (dopo build, prima di S3 sync)
 
-In pratica si invoca `os3-matrix/bin/web_quality_gate.py` (vedi §4). Lo snippet sotto resta come **logica di riferimento** dei controlli sul HTML generato in `out/`:
+In pratica si invoca il Quality Gate (vedi §4; comando concreto privato). Lo snippet sotto resta come **logica di riferimento** dei controlli sul HTML generato in `out/`:
 
 ```bash
 # Eseguire per ogni locale

@@ -12,3 +12,9 @@ __pycache__/
 # Export flat SSOT (snapshot rigenerabile dal cron, non versionare)
 tmp/nexus-ssot-export/
 tmp/nexus-ssot-export.log
+
+# Audit trail DOC-SYNC — immutabile e interno, NON nel repo pubblico (leak os3-matrix/bin) — M-OS3-048
+audit/
+
+# Doc audit "fuori registro" — interno, non paradigma pubblico (leak impl) — M-OS3-048
+docs/paradigm/index/SSOT_NEXUS_COHERENCE_AUDIT_2026-05-31.md

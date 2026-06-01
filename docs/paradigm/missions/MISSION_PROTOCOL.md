@@ -275,7 +275,7 @@ Output: SSOT e RAG allineati al codice modificato dalla mission, `doc_sync_log` 
 bin/mission finalize <ID>   # orchestra enrich_registry.py + mission_retrospective.py (POST-COMMIT)
 ```
 
-Lo script `mission_retrospective.py` vive nel motore di enforcement (`os3-matrix/bin/mission_retrospective.py`), non nel repo `oracode` (paradigma). Identifica automaticamente la mission corrente, calcola il diff, e genera eventuali proposte nel `BOOTSTRAP_DRIFT_LOG.md`.
+Lo script di retrospective vive nel motore di enforcement (OS3 Matrix, repo privato), non nel repo `oracode` (paradigma). Identifica automaticamente la mission corrente, calcola il diff, e genera eventuali proposte nel `BOOTSTRAP_DRIFT_LOG.md`.
 
 **Ordine obbligatorio FASE 6** (aggiornato da M-160a per attivazione runtime DOC-SYNC v2 — sequenza era 6 step da M-159, diventa 8 step):
 
@@ -592,6 +592,6 @@ Il ciclo a 6 fasi e la prenotazione ID anti-collisione sono mantenuti da v1.1.0.
 | M-OS3-018 | 3 | **Questo documento — SSOT Oracode realignment v3.0.0** |
 | M-OS3-025 | 4 | Ponte automatico L1→L3 (`bin/mission` + `.oracode/project.json`), migrazione `~/.oracode`→`~/oracode-engine` (visibile), `finalize` orchestra enrich+retrospective. + **blocco mission-fantasma A1** (`open` BLOCCA fuori da un progetto, `--global` override) e **convenzione ID prefissato** (CEO 2026-06-01). **Bump v4.0.0** |
 | M-OS3-026 | 4 | **Bootstrap mirato cablato all'open** — `emitBootstrap` in `cmdOpen` emette la lista moduli calibrata per `type`+`organs` da `MISSION_BOOTSTRAP_INDEX.json` (path, non contenuto → token-light). FASE 1 ora eseguita dal motore. **Bump v4.1.0** |
-| M-OS3-028 | 4 | **Cross-organism SSOT tracking — reflex cross-repo** (chiude M-OS3-017). `cmdOpen` auto-popola l'indice progetti `~/oracode-engine/projects.json` (`registerProject`, idempotente per descriptor); `ssot-reflex-guard.sh` v2.1.0 aggrega le REPO_MAP di tutti i progetti e scandisce **tutti** gli `SSOT_REGISTRY`, segnalando i watcher **cross-repo** (SSOT del progetto A che osserva codice del repo B). Reflex resta **passivo**. Nessun bump protocollo |
+| M-OS3-028 | 4 | **Cross-organism SSOT tracking — reflex cross-repo** (chiude M-OS3-017). `cmdOpen` auto-popola l'indice progetti `~/oracode-engine/projects.json` (`registerProject`, idempotente per descriptor); il reflex guard cross-repo (v2.1.0) aggrega le REPO_MAP di tutti i progetti e scandisce **tutti** gli `SSOT_REGISTRY`, segnalando i watcher **cross-repo** (SSOT del progetto A che osserva codice del repo B). Reflex resta **passivo**. Nessun bump protocollo |
 
-> **DOC-SYNC Oracode Nexus 3-tier (2026-05-31).** Allineamento alla legge `ORACODE_NEXUS_3_TIER.md`: stratificazione su 3 livelli (L1 motore / L2 HUB / L3 istanza), chiavi registry in **INGLESE**, FASE 0 via ponte automatico L1→L3, path motore `~/oracode-engine`, path retrospective `os3-matrix/bin/`. Bump a **v4.0.0 approvato dal CEO** (2026-05-31, M-OS3-025).
+> **DOC-SYNC Oracode Nexus 3-tier (2026-05-31).** Allineamento alla legge `ORACODE_NEXUS_3_TIER.md`: stratificazione su 3 livelli (L1 motore / L2 HUB / L3 istanza), chiavi registry in **INGLESE**, FASE 0 via ponte automatico L1→L3, path motore `~/oracode-engine`, retrospective nell'enforcement privato. Bump a **v4.0.0 approvato dal CEO** (2026-05-31, M-OS3-025).

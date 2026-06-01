@@ -253,7 +253,7 @@ Una review tecnica positiva (anche da Watchdog) non è un'approvazione. L'approv
 
 ### AP-5 — "Naming italiano in nuovi SSOT"
 
-Per i nuovi registry/SSOT le chiavi vanno in **inglese**: `id, title, type, organs, status, date_open, date_close, ...` (decisione CEO 2026-05-30, verificata in `os3-matrix/bin/mission`: "Schema chiavi INGLESE"). L'italiano (`tipo_missione`, `organi_coinvolti`, `data_apertura`, `stato`) è **legacy** EGI-DOC, in migrazione graduale all'inglese — mai canonico per istanze nuove. Riferimento SSOT: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` § Livello 3.
+Per i nuovi registry/SSOT le chiavi vanno in **inglese**: `id, title, type, organs, status, date_open, date_close, ...` (decisione CEO 2026-05-30, verificata nel Mission Engine dell'enforcement: "Schema chiavi INGLESE"). L'italiano (`tipo_missione`, `organi_coinvolti`, `data_apertura`, `stato`) è **legacy** EGI-DOC, in migrazione graduale all'inglese — mai canonico per istanze nuove. Riferimento SSOT: `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` § Livello 3.
 
 ### AP-6 — "Guard che si presenta bloccante ma è passivo"
 
@@ -399,7 +399,7 @@ Riferimenti sintetici ai principali eventi che hanno generato il pattern attuale
 
 ### 8.1 30 aprile 2026 — Fallimento DOC-SYNC v2
 
-Il guard `doc-sync-v2-guard.sh` viene scoperto rotto silenziosamente per mesi durante M-148. Padmin produce post-mortem chirurgico identificando 5 livelli di fallimento:
+Il guard DOC-SYNC viene scoperto rotto silenziosamente per mesi durante M-148. Padmin produce post-mortem chirurgico identificando 5 livelli di fallimento:
 1. Nessun trigger automatico (DOC-SYNC è agent invocato manualmente)
 2. Guard hook rotto (campi inglesi vs italiani nel registry)
 3. Acceptance test falsi positivi
@@ -418,7 +418,7 @@ Documento canonico: `LSO_GUARD_TESTING_PROTOCOL_v1.md`.
 
 ### 8.3 4 maggio 2026 — M-149 chiusa parziale
 
-Riparazione di `doc-sync-v2-guard.sh` con campi italiani corretti, test positivo e negativo, infrastruttura test inaugurata. Ma scoperto durante l'esecuzione che il guard è agganciato a PostToolUse e quindi non blocca davvero. Mission chiusa parziale, finding strutturale documentato.
+Riparazione del guard DOC-SYNC con campi italiani corretti, test positivo e negativo, infrastruttura test inaugurata. Ma scoperto durante l'esecuzione che il guard è agganciato a PostToolUse e quindi non blocca davvero. Mission chiusa parziale, finding strutturale documentato.
 
 Lezione operativa: REGOLA ZERO si estende allo scope (Estensione 1). Un finding strutturale che invalida l'obiettivo della mission NON è "fuori scope".
 

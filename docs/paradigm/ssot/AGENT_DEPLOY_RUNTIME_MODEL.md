@@ -1,221 +1,28 @@
 ---
+title: Agent Deploy & Runtime-Root — Modello (stub public)
+slug: agent-deploy-runtime-model
+doc_type: stub
+status: current
 visibility: public
 rag: public
 ---
 
-# Agent Deploy & Runtime-Root Model
+# Agent Deploy & Runtime-Root — Modello
 
-```
-@package  oracode/paradigm/ssot
-@author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
-@version  1.3.0
-@date     2026-06-01
-@purpose  SSOT del modello di deploy degli agenti E degli hook, e della risoluzione
-          dei root a runtime: dove vive la fonte, come si genera la copia operativa,
-          come agenti e hook risolvono i path senza accoppiarsi a un organismo.
-@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035/036/038/040/041/042.
-```
+> **Stub pubblico (M-OS3-048).** Modello (cosa/perché). Il **meccanismo di deploy concreto**
+> (script, path sorgente, anchor, risoluzione root) è un SSOT `visibility: private`
+> nell'enforcement OS3 Matrix (repo privato) — confine mono.
 
-> Licenza: MIT. Parte del paradigma Oracode pubblico.
+## Cosa è (modello)
 
----
+Agenti e hook hanno una **fonte versionata single-source**; la **copia operativa** (sotto
+`~/.claude/...`) è **generata** da quella fonte. I **root** si risolvono a **runtime**, non
+hardcoded.
 
-## 1. Single-source: sorgente vs deploy
+## Principio
 
-Il modello vale per **due classi di artefatto deployato** — agenti e hook:
+**Si edita la fonte, mai la copia.** La copia operativa è un artefatto derivato: modificarla a
+mano introduce drift source↔deploy (intercettato dalla regola R3 di `oracode-lint`). Coerente
+con Pilastro 3 (Coerenza Semantica) e con la disciplina single-source della dottrina agenti.
 
-```
-AGENTI  FONTE (versionata):  os3-matrix/agents/*.md   ← si edita QUI
-        DEPLOY (generato):   ~/.claude/agents/*.md     ← MAI editato a mano
-
-HOOK    FONTE (versionata):  os3-matrix/hooks/*.sh    ← si edita QUI
-        DEPLOY (generato):   ~/.claude/hooks/*.sh      ← MAI editato a mano
-```
-
-Entrambi i deploy sono una **proiezione generata** della sorgente, prodotta
-rispettivamente da `os3-matrix/bin/deploy-agents` e `os3-matrix/bin/deploy-hooks`.
-Editare direttamente il deploy crea divergenza silenziosa (difetto risolto per gli
-agenti da M-OS3-030, per gli hook da M-OS3-035). Regola unica: **si tocca la sorgente,
-si ri-esegue il deploy.**
-
-## 2. deploy-agents — copia pura + guardia
-
-`bin/deploy-agents` copia la sorgente nel deploy in modo:
-- **copia pura**: nessuna sostituzione (dopo M-OS3-031 non esistono più placeholder
-  deploy-time `@@`); il deploy è byte-identico alla sorgente.
-- **atomico per-file**: render in staging temp, la guardia anti-`@@` gira PRIMA di
-  toccare `$DEST` (un deploy bloccato dalla guardia lascia `$DEST` intatto), poi `mv`
-  file-per-file. Non è un `mv` atomico dell'intera directory.
-- **senza prune (default)**: copia/aggiorna ma NON rimuove i file presenti in `$DEST` e
-  assenti in sorgente → possibili **orfani**. `$DEST ⊇ sorgente`, non `==`. Da M-OS3-042
-  esiste il flag opt-in **`--prune`** (dry-run + `--apply`, allow-list) per gestirli; vedi §5.
-- **con guardia anti-regressione**: se ricompare un placeholder `@@KEY@@` (path
-  organismo tornato deploy-time invece che runtime), il deploy ABORTISCE.
-
-### 2b. deploy-hooks — stesso modello, sugli hook (M-OS3-035)
-
-`bin/deploy-hooks` è il **mirror di `deploy-agents`** sulla classe hook. Copia
-`os3-matrix/hooks/*.sh` → `~/.claude/hooks/*.sh` con le stesse proprietà:
-- **copia pura** byte-identica (nessuna sostituzione);
-- **atomico per-file** (staging temp → `mv` file-per-file, `nullglob`);
-- **senza prune (default)** (stessa semantica `$DEST ⊇ sorgente`, possibili orfani); da
-  M-OS3-042 stesso flag opt-in **`--prune`** + allow-list `HOOKS_PRUNE_ALLOW` (vedi §5);
-- **`+x` preservato** (`chmod +x` su ogni file nel deploy).
-
-Motivazione (Q-002): alcuni hook erano *live in `~/.claude/hooks` ma non versionati*
-in os3-matrix, mentre il settings-snippet li referenziava → in un setup nuovo il path
-puntava a un hook assente dalla sorgente (P0-4 landmine "hook assente"). Versionando i
-9 hook mancanti, **tutti gli hook referenziati dallo snippet esistono in sorgente** e
-sono deployabili ovunque. Lo stesso difetto sorgente↔deploy degli agenti (M-OS3-030),
-risolto sugli hook.
-
-**Differenza dagli agenti (no guardia `@@`):** gli hook non usano placeholder
-deploy-time `@@`, quindi `deploy-hooks` non ha guardia anti-regressione.
-
-**Decoupling runtime degli hook (M-OS3-036 — risolto).** Il debito sopra è chiuso,
-mirror di M-OS3-031 sugli agenti. I 6 hook organism-coupled
-(`coverage-check-precheck`, `doc-sync-v2-guard`, `m094-supervisor-reminder`,
-`mission-read-tracker`, `organ-index-guard`, `install-gitleaks-hooks`) **non hanno più
-path d'organismo baked**: risolvono il root del progetto attivo **a runtime** con la
-stessa risalita degli agenti (CWD → `.oracode/project.json` → `instance_root`; root non
-risolto → **graceful exit 0**, nessun crash della tool-call). `install-gitleaks-hooks`
-esternalizza la lista repo in `$HOME/.claude/gitleaks-repos.conf` (template
-`etc/gitleaks-repos.conf.example`), niente lista baked nell'hook. Il `settings-snippet.json`
-usa `$HOME/.claude/hooks/...` (shell-form, espanso a runtime) invece di path
-Fabio-specifici → generico per `/project` su qualsiasi macchina. Safety verificata: tutti
-gli hook escono 0 da ogni CWD.
-
-**Split snippet core/FlorenceEGI (M-OS3-040 — chiude il residuo M-OS3-036).** Il
-`settings-snippet.json` è ora scomposto per **logica di dominio** in tre file
-(`etc/settings-snippet.README.md` ne è l'SSOT di criterio): `settings-snippet.core.json`
-(30 hook **generici** — sicurezza/disciplina universale + i runtime-resolved di §2b/§3 —
-quello che `/project` wira su un nuovo organismo), `settings-snippet.florenceegi.json`
-(8 hook **overlay** organism-specific FlorenceEGI: logica MiCA/Egili, organ-index, mission
-family M-094, whitelist repo EGI, domini `*.florenceegi.com`), e `settings-snippet.json` =
-full core+florenceegi (config FlorenceEGI completa). Criterio: FlorenceEGI-specific = la
-*logica* dell'hook encoda regole/strutture EGI (non menzioni incidentali in commenti); casi
-ambigui → default **core**. Debito noto (audit M-OS3-040): eccezione hardcoded
-`/home/fabio/EGI/*` in `check-no-legacy-stack` (resta core, regola universale) e
-`cross-project-guard`/`deploy-pipeline-guard` generalizzabili via `projects.json` runtime.
-
-### 2c. Hook event-driven di enforcement — guard + gate (M-OS3-038)
-
-Oltre agli hook deployati come copia pura (§2b), il modello prevede una classe di
-**hook di enforcement event-driven** wirati nel `settings-snippet.json` su eventi del
-tool-runtime. Istituita da M-OS3-038 con la coppia che attiva `oracode-lint` (il linter
-degli artefatti Oracode — agent/skill/hook — che vive in `engine_root/bin/oracode-lint`;
-specifica completa di regole e scopo in `ORACODE_LINT.md`. Qui si descrive solo il loro
-innesto deploy/runtime):
-
-- **`oracode-lint-guard.sh`** — evento **PostToolUse** su `Write|Edit`. Linta l'artefatto
-  appena editato (`*/agents/*.md`, `*/skills/*.md`, `*/hooks/*.sh`) e segnala il drift
-  **subito** su stderr. **Non bloccante** (exit 0 sempre): l'edit è già avvenuto, è solo
-  feedback immediato.
-- **`oracode-lint-gate.sh`** — evento **PreToolUse** su `Bash` con comando `git push`.
-  Lancia il lint completo e **blocca il push** (exit 2) se trova drift di severità
-  `ERROR`; solo `WARN` → passa. Il drift non shippa.
-
-Proprietà comuni, coerenti col resto del modello:
-- **risoluzione a runtime** del binario: `oracode-lint` risolto via engine anchor
-  (`~/oracode-engine/projects.json` → `anchor == "engine"` → `bin/oracode-lint`),
-  override testabile `ORACODE_LINT_BIN`. Nessun path d'organismo baked (§3);
-- **graceful se assente**: lint non risolto/non eseguibile → exit 0, nessun blocco né
-  crash della tool-call;
-- **dipendenza runtime** `python3` + `jq` (parsing input hook): assente → graceful exit 0;
-- **wiring** nel `settings-snippet.json` in shell-form `$HOME/.claude/hooks/...` (come §2b),
-  generico per `/project` su qualsiasi macchina.
-
-Questo completa Q-001 (BACKLOG os3-matrix): `oracode-lint` passa da linter on-demand a
-**enforcement attivo event-driven**. Distinzione di severità del gate: blocca su `ERROR`,
-lascia passare `WARN`. Discriminante anti-cry-wolf del guard: il finding reale è una riga
-`^- [ERROR]/[WARN]` (non il footer descrittivo del report).
-
-## 3. Risoluzione root a runtime
-
-Gli agenti **non** contengono path assoluti né d'organismo baked — e da **M-OS3-036**
-neppure i 6 hook organism-coupled (vedi §2b): entrambe le classi risolvono il root del
-progetto attivo **a runtime** con la stessa risalita CWD → `.oracode/project.json` →
-`instance_root`. Gli agenti usano placeholder dichiarati nel blocco "Risoluzione root":
-
-| Placeholder | = | Risolto da |
-|-------------|---|------------|
-| `{{instance_root}}` | progetto attivo | `.oracode/project.json` da CWD, risalendo i parent |
-| `{{paradigm_root}}` | docs paradigma | `~/oracode-engine/projects.json` → entry con `anchor == "paradigm"` `.root` + `/docs/paradigm` (fallback: name-match "oracode") |
-| `{{engine_root}}` | os3-matrix engine | `~/oracode-engine/projects.json` → entry con `anchor == "engine"` `.root` (fallback: name-match "OS3 Matrix") |
-
-Da **M-OS3-034** la risoluzione di `{{paradigm_root}}`/`{{engine_root}}` avviene per
-**anchor stabile** (campo `anchor` `paradigm`/`engine` nel descrittore `.oracode/project.json`,
-propagato in `projects.json` da `registerProject`), con **fallback al match-by-display-name**
-("oracode"/"OS3 Matrix") quando l'anchor non è seedato. L'anchor è più robusto del
-display-name (rinominabile). Dettaglio e limite fresh-clone in §5.
-
-Se un root non si risolve (descrittore assente, anchor E name-match mancanti): **REGOLA ZERO** —
-l'agente chiede, non assume. Conseguenza: lo stesso agente opera su **qualsiasi
-organismo** senza modifiche (organism-agnostic).
-
-Distinzione dottrina vs organo: la **dottrina universale** (P0, pilastri) vive nella
-skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
-(mappa organi, regole locali) si risolve a runtime via `{{instance_root}}/CLAUDE_ECOSYSTEM_CORE.md`.
-
-## 4. Storia evolutiva
-
-| Mission | Cosa |
-|---------|------|
-| M-OS3-029 | skill `oracode-doctrine` (dottrina single-source) — pilota oracode-specialist |
-| M-OS3-030 | `bin/deploy-agents` — single-source sorgente↔deploy (modello B, root `@@` baked) |
-| M-OS3-031 | decoupling runtime (modello A): root risolti a runtime, deploy = copia pura |
-| M-OS3-032 | skill estesa ai 6 agenti dottrina-pesanti |
-| M-OS3-033 | SSOT istituito; remediation accuratezza (atomico per-file, no-prune, orfani) |
-| M-OS3-034 | robustezza risoluzione root: anchor stabile (`paradigm`/`engine`) + fallback name; §3 allineata, limite fresh-clone in §5 |
-| M-OS3-035 | `bin/deploy-hooks` — stesso modello sugli hook (Q-002): 9 hook live-non-versionati ora versionati; settings-snippet senza più hook-assente; decoupling hook coupled = debito M-OS3-036 |
-| M-OS3-036 | decoupling runtime degli hook (mirror M-OS3-031): 6 hook coupled risolvono il root a runtime (no path organismo baked); `install-gitleaks-hooks` con lista repo esternalizzata; settings-snippet `$HOME`-based generico. §2b/§3 aggiornate. Residuo: classificazione hook generic vs FlorenceEGI = BACKLOG |
-| M-OS3-038 | hook event-driven di enforcement (§2c): `oracode-lint-guard.sh` (PostToolUse, segnala non-bloccante) + `oracode-lint-gate.sh` (PreToolUse git push, blocca su drift ERROR). Completa Q-001 — `oracode-lint` ora enforcement attivo. Binario risolto via engine anchor a runtime, graceful se assente (dip. `python3`+`jq`) |
-| M-OS3-040 | split snippet a due livelli (§2b): `settings-snippet.{core,florenceegi}.json` + README criterio. Chiude il residuo BACKLOG M-OS3-036 (classificazione generic vs FlorenceEGI). core=30 (wirato da `/project`), florenceegi=8 overlay. Audit remediation: 3 mis-classificazioni P1 corrette |
-| M-OS3-041 | `bin/seed-anchors` (idempotente) — salda il *seeding* del debito robustezza M-OS3-034: anchor `paradigm`/`engine` garantiti in `projects.json` da seed config, fresh-clone risolve senza descrittore gitignored né apertura mission. Aborta su `projects.json` illeggibile (no data-loss). Residuo: match-by-name |
-| M-OS3-042 | `deploy-agents`/`deploy-hooks` flag **`--prune` opt-in** (dry-run + `--apply`) + allow-list → chiude il debito "no-prune → orfani" (§5). 2 orfani legittimi versionati (`egili-blood-keeper`, `m093-remediation-tracker` decoupled a `{{instance_root}}`), `AGENT_EPISTEMOLOGY_PROTOCOL` allow-listed. Roster sorgente 9→11. Default invariato (no prune). Debito `egili-blood-keeper` (Bibbia privata, organism-bound vero) → BACKLOG |
-
-## 5. Debito noto (robustezza risoluzione)
-
-La risoluzione di `{{paradigm_root}}`/`{{engine_root}}` poggia su
-`~/oracode-engine/projects.json`, artefatto runtime non versionato, popolato
-all'apertura mission. Fragilità tracciate in `os3-matrix/docs/design/BACKLOG.md`:
-- anchor non seedati (macchina nuova → non risolvono finché non si apre una mission)
-  — **SALDATO da M-OS3-041** (`bin/seed-anchors`, seeding idempotente); vedi sotto;
-- match-by-name (`name == "OS3 Matrix"`) invece che per chiave stabile — residuo aperto.
-Mitigazione attuale: fallback REGOLA ZERO nel blocco + test che asserisce gli anchor.
-Saldo strutturale (match-by-name) = mission dedicata.
-
-**Anchor stabile (M-OS3-034) + limite fresh-clone.** La risoluzione di
-`{{paradigm_root}}`/`{{engine_root}}` usa ora un campo `anchor` (`paradigm`/`engine`)
-nei descrittori, propagato in `projects.json` da `registerProject` (più robusto del
-match-by-display-name). **Limite dichiarato:** il descrittore di `oracode` è gitignored
-(convenzione `.oracode/` locale), quindi su fresh clone l'anchor `paradigm` non è
-versionato; il template `/project` generico non può portarlo (sarebbe errato per un
-progetto non-paradigma). Fino al primo `/project`/open che lo rigenera, la risoluzione
-di `{{paradigm_root}}` **degrada al fallback name-match "oracode"** (correttezza
-garantita, robustezza parziale). Decisione su come versionare l'anchor paradigm
-(es. descrittore oracode tracked) = mission/CEO.
-
-**Mitigato da M-OS3-041 (`bin/seed-anchors`).** Il pezzo *seeding* di questo limite è
-risolto: `os3-matrix/bin/seed-anchors` (Python, idempotente) garantisce gli anchor
-`oracode`(paradigm)+`OS3 Matrix`(engine) in `projects.json` da un seed config
-(`~/oracode-engine/anchors.seed.json` machine-config + `etc/anchors.seed.json.example`
-versionato). Su fresh-clone: `seed-anchors` → `{{paradigm_root}}`/`{{engine_root}}`
-risolvono senza dipendere dal descrittore `oracode` gitignored né dall'apertura di una
-mission. Aggiunge se manca, non duplica, preserva descriptor/root esistenti; aborta (no
-overwrite) se `projects.json` è presente-ma-illeggibile. Residuo: il *come* versionare
-l'anchor paradigm nel descrittore tracked resta decisione mission/CEO — il seed lo aggira.
-
-**No-prune → orfani — RISOLTO da M-OS3-042.** Il default resta **senza prune** (sicuro,
-`$DEST ⊇ sorgente`), ma `deploy-agents`/`deploy-hooks` espongono ora un flag **`--prune`
-opt-in**: `--prune` da solo è **dry-run** (elenca gli orfani genuini), `--prune --apply`
-li rimuove. Una **allow-list** (`HOOKS_PRUNE_ALLOW` per gli hook; equivalente per gli
-agenti) protegge gli asset paradigma — in particolare `AGENT_EPISTEMOLOGY_PROTOCOL.md`,
-che NON è un agente e non va mai rimosso. Gli orfani osservati il 2026-06-01 sono stati
-decisi alla fonte: `egili-blood-keeper.md` e `m093-remediation-tracker.md` **versionati**
-(ora `source == deploy`, gestiti dal deploy), `AGENT_EPISTEMOLOGY_PROTOCOL.md`
-allow-listed. Orfani genuini residui: **0**.
-
----
-
-*Oracode System — SSOT paradigma. Istituito da M-OS3-030/031, esteso agli hook da M-OS3-035, hook decoupled a runtime da M-OS3-036, seeding anchor fresh-clone da M-OS3-041, prune opt-in + roster 11 da M-OS3-042. Licenza MIT.*
+> Implementazione concreta (script di deploy, anchor, layout): privata (OS3 Matrix).

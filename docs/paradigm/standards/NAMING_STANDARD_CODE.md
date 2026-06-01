@@ -260,9 +260,8 @@ Se la risposta a (1) o (4) è sì → **non creare, riusare**.
 L'Organ Index è un catalogo auto-generato di tutti i simboli pubblici (classi, metodi,
 funzioni, interfacce) di tutti gli organi dell'ecosistema.
 
-- **Generazione**: tool in `os3-matrix/bin/organ_index/` (package Python — parte dell'enforcement
-  commerciale, Livello 1 motore). NON è un binario in `oracode/bin/` (che contiene solo `cli.js`).
-  L'invocazione esatta va verificata dalla fonte in `os3-matrix/bin/organ_index/` prima di citarla
+- **Generazione**: package Python `organ_index` nell'**enforcement commerciale (OS3 Matrix, repo privato, Livello 1 motore)**. NON è un binario in `oracode/bin/` (che contiene solo `cli.js`).
+  L'invocazione esatta va verificata dalla fonte nell'enforcement prima di citarla
   (P0-12 Anti-Infra-Invention): mai dedurre il comando.
 - **Output JSON**: es. istanza FlorenceEGI `EGI-DOC/docs/ecosistema/ORGAN_INDEX.json` (caso HUB/istanza accoppiato);
   ogni ecosistema risolve il proprio path di output.
