@@ -14,7 +14,7 @@
     "relocation_mission": "M-OS3-022",
     "note_rag": "RAG schema non istituito per il paradigma (LSO ridotto). verification_mode=registry_only su tutte le entry. Decisione RAG paradigma rinviata a mission futura.",
     "cross_repo_watches_gap": "spec-ssot con watches.repos=[\"os3-matrix\"] sono cross-repo. DOC-SYNC v2 opera repo-singolo: il watch cross-repo è informativo (audit manuale), non auto-triggerato. Gap noto — risoluzione futura (DOC-SYNC v2 multi-repo).",
-    "enforcement_unversioned": "RISOLTO da M-OS3-035 (Q-002). I 3 hook che il drift M-OS3-022 segnalava live-ma-non-versionati (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) — insieme ad altri 6 — sono ora versionati in os3-matrix/hooks e deployati via bin/deploy-hooks (copia pura, mirror di bin/deploy-agents). Modello documentato in SSOT agent-deploy-runtime-model §1/§2b. Decoupling runtime RISOLTO da M-OS3-036: i 6 hook coupled risolvono il root a runtime (CWD→.oracode/project.json, no path organismo baked), install-gitleaks-hooks con lista repo esternalizzata, settings-snippet $HOME-based generico. Modello in SSOT agent-deploy-runtime-model §2b/§3. Residuo follow-up (non drift): classificazione hook generic vs FlorenceEGI nello snippet = BACKLOG."
+    "enforcement_unversioned": "RISOLTO da M-OS3-035 (Q-002). I 3 hook che il drift M-OS3-022 segnalava live-ma-non-versionati (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) — insieme ad altri 6 — sono ora versionati in os3-matrix/hooks e deployati via bin/deploy-hooks (copia pura, mirror di bin/deploy-agents). Modello documentato in SSOT agent-deploy-runtime-model §1/§2b. Decoupling runtime RISOLTO da M-OS3-036: i 6 hook coupled risolvono il root a runtime (CWD→.oracode/project.json, no path organismo baked), install-gitleaks-hooks con lista repo esternalizzata, settings-snippet $HOME-based generico. Modello in SSOT agent-deploy-runtime-model §2b/§3. Residuo follow-up RISOLTO da M-OS3-040: split snippet a due livelli (settings-snippet.{core,florenceegi}.json + README criterio); core=30 generici (wirato da /project), florenceegi=8 overlay. Modello in SSOT agent-deploy-runtime-model §2b/§4."
   },
   "check_frequencies": {
     "on_commit": "Dopo ogni commit che tocca file watchati (Layer 1 — Riflesso)",
@@ -863,7 +863,7 @@
       "registered_by": "M-OS3-033",
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-038",
+      "verified_in_mission": "M-OS3-040",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0

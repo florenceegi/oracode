@@ -76,9 +76,20 @@ esternalizza la lista repo in `$HOME/.claude/gitleaks-repos.conf` (template
 `etc/gitleaks-repos.conf.example`), niente lista baked nell'hook. Il `settings-snippet.json`
 usa `$HOME/.claude/hooks/...` (shell-form, espanso a runtime) invece di path
 Fabio-specifici → generico per `/project` su qualsiasi macchina. Safety verificata: tutti
-gli hook escono 0 da ogni CWD. **Residuo (follow-up, non drift):** classificazione degli
-hook generic vs FlorenceEGI-specifici dentro lo snippet (logica di selezione, non path) =
-BACKLOG os3-matrix.
+gli hook escono 0 da ogni CWD.
+
+**Split snippet core/FlorenceEGI (M-OS3-040 — chiude il residuo M-OS3-036).** Il
+`settings-snippet.json` è ora scomposto per **logica di dominio** in tre file
+(`etc/settings-snippet.README.md` ne è l'SSOT di criterio): `settings-snippet.core.json`
+(30 hook **generici** — sicurezza/disciplina universale + i runtime-resolved di §2b/§3 —
+quello che `/project` wira su un nuovo organismo), `settings-snippet.florenceegi.json`
+(8 hook **overlay** organism-specific FlorenceEGI: logica MiCA/Egili, organ-index, mission
+family M-094, whitelist repo EGI, domini `*.florenceegi.com`), e `settings-snippet.json` =
+full core+florenceegi (config FlorenceEGI completa). Criterio: FlorenceEGI-specific = la
+*logica* dell'hook encoda regole/strutture EGI (non menzioni incidentali in commenti); casi
+ambigui → default **core**. Debito noto (audit M-OS3-040): eccezione hardcoded
+`/home/fabio/EGI/*` in `check-no-legacy-stack` (resta core, regola universale) e
+`cross-project-guard`/`deploy-pipeline-guard` generalizzabili via `projects.json` runtime.
 
 ### 2c. Hook event-driven di enforcement — guard + gate (M-OS3-038)
 
@@ -152,6 +163,7 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-035 | `bin/deploy-hooks` — stesso modello sugli hook (Q-002): 9 hook live-non-versionati ora versionati; settings-snippet senza più hook-assente; decoupling hook coupled = debito M-OS3-036 |
 | M-OS3-036 | decoupling runtime degli hook (mirror M-OS3-031): 6 hook coupled risolvono il root a runtime (no path organismo baked); `install-gitleaks-hooks` con lista repo esternalizzata; settings-snippet `$HOME`-based generico. §2b/§3 aggiornate. Residuo: classificazione hook generic vs FlorenceEGI = BACKLOG |
 | M-OS3-038 | hook event-driven di enforcement (§2c): `oracode-lint-guard.sh` (PostToolUse, segnala non-bloccante) + `oracode-lint-gate.sh` (PreToolUse git push, blocca su drift ERROR). Completa Q-001 — `oracode-lint` ora enforcement attivo. Binario risolto via engine anchor a runtime, graceful se assente (dip. `python3`+`jq`) |
+| M-OS3-040 | split snippet a due livelli (§2b): `settings-snippet.{core,florenceegi}.json` + README criterio. Chiude il residuo BACKLOG M-OS3-036 (classificazione generic vs FlorenceEGI). core=30 (wirato da `/project`), florenceegi=8 overlay. Audit remediation: 3 mis-classificazioni P1 corrette |
 
 ## 5. Debito noto (robustezza risoluzione)
 
