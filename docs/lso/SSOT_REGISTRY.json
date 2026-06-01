@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 41 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
+    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 42 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
     "version": "1.0.0",
     "created": "2026-05-29",
     "updated": "2026-06-01",
@@ -838,6 +838,31 @@
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-032",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0
+    },
+    {
+      "ssot_id": "agent-deploy-runtime-model",
+      "path": "docs/paradigm/ssot/AGENT_DEPLOY_RUNTIME_MODEL.md",
+      "title": "Agent Deploy & Runtime-Root Model",
+      "doc_type": "spec-ssot",
+      "priority": "high",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "os3-matrix"
+        ],
+        "paths": [
+          "bin/deploy-agents",
+          "agents/*.md"
+        ]
+      },
+      "update_policy": null,
+      "registered_by": "M-OS3-033",
+      "last_verified": "2026-06-01",
+      "last_verified_by": "padmin",
+      "verified_in_mission": "M-OS3-033",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0

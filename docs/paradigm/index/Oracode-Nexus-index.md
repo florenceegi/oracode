@@ -415,6 +415,15 @@ Archive (storico):
 
 ## TIER 6 — Agenti OS3 Matrix + Slash commands globali
 
+> **Nota deploy (M-OS3-030/031):** la **fonte** versionata degli agenti è
+> `os3-matrix/agents/*.md`. `~/.claude/agents/*.md` è **GENERATO** da
+> `os3-matrix/bin/deploy-agents` (copia pura) — **mai editato a mano**. I path
+> `~/.claude/agents/...` elencati sotto sono la *destinazione deployata*, non la
+> fonte. Gli agenti risolvono i root a runtime (no path organismo baked). Modello
+> completo: SSOT `AGENT_DEPLOY_RUNTIME_MODEL.md`. Roster sorgente = 9 agenti
+> versionati (egili-blood-keeper / m093-remediation-tracker NON sono nella sorgente
+> os3-matrix: orfani deployati, da censire).
+
 ### `commands/mission.md` (/mission slash globale)
 - **Path**: `~/.claude/commands/mission.md`
 - **Status**: ✅ (M-OS3-025 U2 FATTO)
