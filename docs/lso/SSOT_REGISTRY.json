@@ -14,7 +14,7 @@
     "relocation_mission": "M-OS3-022",
     "note_rag": "RAG schema non istituito per il paradigma (LSO ridotto). verification_mode=registry_only su tutte le entry. Decisione RAG paradigma rinviata a mission futura.",
     "cross_repo_watches_gap": "spec-ssot con watches.repos=[\"os3-matrix\"] sono cross-repo. DOC-SYNC v2 opera repo-singolo: il watch cross-repo è informativo (audit manuale), non auto-triggerato. Gap noto — risoluzione futura (DOC-SYNC v2 multi-repo).",
-    "enforcement_unversioned": "Alcuni hook enforcement (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) sono deployati in ~/.claude/hooks/ ma NON versionati in os3-matrix repo. Drift noto M-OS3-022. Le entry relative watchano solo i file effettivamente versionati."
+    "enforcement_unversioned": "RISOLTO da M-OS3-035 (Q-002). I 3 hook che il drift M-OS3-022 segnalava live-ma-non-versionati (web-quality-gate-guard.sh, check-no-legacy-stack.sh, mission-read-tracker.sh) — insieme ad altri 6 — sono ora versionati in os3-matrix/hooks e deployati via bin/deploy-hooks (copia pura, mirror di bin/deploy-agents). Modello documentato in SSOT agent-deploy-runtime-model §1/§2b. Debito residuo: 5 hook coupled con path organismo baked + settings-snippet Fabio-specifico = M-OS3-036 (BACKLOG os3-matrix), non più drift sorgente↔deploy ma decoupling runtime."
   },
   "check_frequencies": {
     "on_commit": "Dopo ogni commit che tocca file watchati (Layer 1 — Riflesso)",
@@ -647,7 +647,7 @@
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
-      "enforcement_note": "mission-read-tracker.sh deployato ~/.claude/hooks/ non versionato os3-matrix (drift M-OS3-022)"
+      "enforcement_note": "mission-read-tracker.sh ora versionato in os3-matrix/hooks e deployato via bin/deploy-hooks (drift M-OS3-022 saldato da M-OS3-035)"
     },
     {
       "ssot_id": "retrospective-tech-spec",
@@ -855,6 +855,7 @@
         ],
         "paths": [
           "bin/deploy-agents",
+          "bin/deploy-hooks",
           "agents/*.md"
         ]
       },
@@ -862,7 +863,7 @@
       "registered_by": "M-OS3-033",
       "last_verified": "2026-06-01",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-034",
+      "verified_in_mission": "M-OS3-035",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0
