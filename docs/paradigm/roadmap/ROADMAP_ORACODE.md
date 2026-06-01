@@ -2,9 +2,10 @@
 title: Roadmap di disaccoppiamento di Oracode
 slug: oracode-roadmap
 doc_type: roadmap
-version: 1.0.0
+version: 1.1.0
 status: working_draft
 date: '2026-05-22'
+updated: '2026-06-01'
 author: Padmin D. Curtis con Fabio Cherici
 scope:
 - oracode
@@ -56,7 +57,7 @@ I quattro step seguenti sono passaggi funzionali necessari per arrivare al punto
 
 **Sostanza.** Il Layer Stack L0-L11 di Oracode è oggi parzialmente in produzione. L'audit M-LS-AUDIT-001 (7 maggio 2026) ha rilevato che solo L4 raggiunge genuinamente PRODUCTION; i layer reattivi L1-L8 sono in stati intermedi, i layer evolutivi L9-L11 sono in design o concept. Lo step è il completamento progressivo dei layer reattivi verso PRODUCTION e l'attivazione effettiva dei layer evolutivi.
 
-**Nota di stato.** La gamba B del vincolo L9 (autocorrezione operativa via DOC-SYNC v2) è già operativa. Va dichiarata come tale: una delle due gambe di L9 è raggiunta.
+**Nota di stato.** La gamba B del vincolo L9 (autocorrezione operativa via DOC-SYNC v2) è già operativa. Va dichiarata come tale: una delle due gambe di L9 è raggiunta. *(Aggiornamento 2026-06-01: `oracode-lint` — M-OS3-037…044 — aggiunge un secondo strumento di autocorrezione, il Layer 3 auto-correttivo, che codifica in enforcement automatico il drift-detection prima manuale. Vedi §5.)*
 
 **Presuppone.** Niente. Lo step può procedere in qualsiasi momento, ed è di fatto già in corso.
 
@@ -99,3 +100,15 @@ Il documento è promosso a STABLE quando il CEO ritiene che la struttura non ric
   Nello stesso intervallo era emerso un debito tecnico architetturale sul Mission Engine: la state machine di `bin/mission` (vissuta nel motore globale) e il Mission Registry del progetto applicativo (versionato col repo) richiedevano sincronizzazione manuale. La nota era registrata in `LSO_NOMENCLATURE_v2.md` §3.1.A.12, `ORACODE_PARADIGM_v2_draft.md` Macroarea 4 §10, `DOC-SYNC_v2_STATO_DELLARTE.md` §5.
 
 - **2026-05-31.** Il debito tecnico architetturale sul Mission Engine — sincronizzazione manuale tra state machine (`bin/mission`) e `MISSION_REGISTRY.json` del progetto — è stato risolto. `bin/mission` ora propaga automaticamente le transizioni di stato al MISSION_REGISTRY del progetto via il descrittore `.oracode/project.json` risolto dal CWD (ponte L1→L3 di Oracode Nexus, parallel-safe con lockfile per-registry). La sincronizzazione manuale e le "mission fantasma" sono superate. Questo chiude un gap di auto-descrizione rilevante per lo STEP C.
+
+- **2026-06-01 (sessione "Agent infrastructure + auto-correzione").** 16 mission (`M-OS3-029`…`M-OS3-044`). Tre filoni, soprattutto su **STEP C** (completamento Layer Stack / auto-descrizione) con ricaduta su **STEP A** (trasferibilità):
+
+  - **Layer 3 auto-correttivo REALIZZATO (STEP C).** `oracode-lint` — linter degli artefatti Oracode con 6 regole (R1 broken-ref, R2 organism-coupling, R3 source↔deploy, R4 doctrine-drift, R5 cross-organo, R6 semantico-LLM), wiring event-driven (guard PostToolUse + gate pre-push) + sweep cron (`M-OS3-037/038/043/044`). Il drift-detection prima manuale (audit) è ora **enforcement automatico**: il paradigma si auto-osserva e blocca il drift prima del push. Rafforza la **gamba B di L9** (autocorrezione) con un secondo strumento concreto oltre a DOC-SYNC v2.
+
+  - **Single-source per costruzione → auto-descrizione (STEP C).** Dottrina via skill `oracode-doctrine` (`M-OS3-029/032`), deploy agenti+hook single-source sorgente↔deploy (`M-OS3-030/035`), modello documentato come SSOT `AGENT_DEPLOY_RUNTIME_MODEL`/`ORACODE_LINT` (`M-OS3-033/039`). Gli artefatti operativi non duplicano più la dottrina né divergono dalla sorgente: il sistema descrive sé stesso senza drift.
+
+  - **Decoupling degli artefatti dall'organismo → trasferibilità (STEP A enabler).** Agenti e hook risolvono i root a runtime (`{{instance_root}}`/`{{paradigm_root}}`/`{{engine_root}}`), zero path FlorenceEGI baked (`M-OS3-031/036/040`); anchor stabile + seed fresh-clone (`M-OS3-034/041`). Gli artefatti operano ora su **qualsiasi** organismo (Poli, Capasso…), non solo FlorenceEGI — condizione materiale di STEP A.
+
+  **Nota STEP B (onesta).** Nessuna sessione operativa su un modello LLM diverso da Claude è stata condotta oggi → il criterio di completamento di **STEP B NON è avanzato**. Unico tocco: R6 del linter invoca l'LLM via interfaccia astratta (`ORACODE_LINT_LLM_CMD`/`ORACODE_LINT_LLM_MODEL`), quindi non hardcoda il fornitore — un punto di design model-agnostic, non il criterio.
+
+  **Limite emerso (auto-applicazione del paradigma).** Questa roadmap è rimasta ferma al 31-05 per un'intera giornata di 16 mission: DOC-SYNC v2 è change-triggered sui path watchati, ma i doc di sintesi (roadmap, Nexus index) hanno `watches` vuoti → cadono fuori dal trigger. **Gap di copertura del sistema nervoso** da chiudere (mission a sé). Inoltre il RAG paradigma resta **non istituito** (`rag_indexed: true` nel front-matter è oggi falso) — decisione rinviata, da formalizzare.
