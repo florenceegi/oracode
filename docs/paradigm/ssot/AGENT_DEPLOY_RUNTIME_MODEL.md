@@ -3,12 +3,12 @@
 ```
 @package  oracode/paradigm/ssot
 @author   Padmin D. Curtis (CTO-AI) for Fabio Cherici (CEO)
-@version  1.1.0
+@version  1.2.0
 @date     2026-06-01
 @purpose  SSOT del modello di deploy degli agenti E degli hook, e della risoluzione
           dei root a runtime: dove vive la fonte, come si genera la copia operativa,
           come agenti e hook risolvono i path senza accoppiarsi a un organismo.
-@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035/036.
+@status   PRODUCTION — istituito da M-OS3-030/031, esteso da M-OS3-032/033/034/035/036/038.
 ```
 
 > Licenza: MIT. Parte del paradigma Oracode pubblico.
@@ -80,6 +80,36 @@ gli hook escono 0 da ogni CWD. **Residuo (follow-up, non drift):** classificazio
 hook generic vs FlorenceEGI-specifici dentro lo snippet (logica di selezione, non path) =
 BACKLOG os3-matrix.
 
+### 2c. Hook event-driven di enforcement — guard + gate (M-OS3-038)
+
+Oltre agli hook deployati come copia pura (§2b), il modello prevede una classe di
+**hook di enforcement event-driven** wirati nel `settings-snippet.json` su eventi del
+tool-runtime. Istituita da M-OS3-038 con la coppia che attiva `oracode-lint` (il linter
+degli artefatti Oracode — agent/skill/hook — che vive in `engine_root/bin/oracode-lint`):
+
+- **`oracode-lint-guard.sh`** — evento **PostToolUse** su `Write|Edit`. Linta l'artefatto
+  appena editato (`*/agents/*.md`, `*/skills/*.md`, `*/hooks/*.sh`) e segnala il drift
+  **subito** su stderr. **Non bloccante** (exit 0 sempre): l'edit è già avvenuto, è solo
+  feedback immediato.
+- **`oracode-lint-gate.sh`** — evento **PreToolUse** su `Bash` con comando `git push`.
+  Lancia il lint completo e **blocca il push** (exit 2) se trova drift di severità
+  `ERROR`; solo `WARN` → passa. Il drift non shippa.
+
+Proprietà comuni, coerenti col resto del modello:
+- **risoluzione a runtime** del binario: `oracode-lint` risolto via engine anchor
+  (`~/oracode-engine/projects.json` → `anchor == "engine"` → `bin/oracode-lint`),
+  override testabile `ORACODE_LINT_BIN`. Nessun path d'organismo baked (§3);
+- **graceful se assente**: lint non risolto/non eseguibile → exit 0, nessun blocco né
+  crash della tool-call;
+- **dipendenza runtime** `python3` + `jq` (parsing input hook): assente → graceful exit 0;
+- **wiring** nel `settings-snippet.json` in shell-form `$HOME/.claude/hooks/...` (come §2b),
+  generico per `/project` su qualsiasi macchina.
+
+Questo completa Q-001 (BACKLOG os3-matrix): `oracode-lint` passa da linter on-demand a
+**enforcement attivo event-driven**. Distinzione di severità del gate: blocca su `ERROR`,
+lascia passare `WARN`. Discriminante anti-cry-wolf del guard: il finding reale è una riga
+`^- [ERROR]/[WARN]` (non il footer descrittivo del report).
+
 ## 3. Risoluzione root a runtime
 
 Gli agenti **non** contengono path assoluti né d'organismo baked — e da **M-OS3-036**
@@ -119,6 +149,7 @@ skill `oracode-doctrine` (vedi `ORACODE_AGENT_SKILL.md`); il **kernel d'organo**
 | M-OS3-034 | robustezza risoluzione root: anchor stabile (`paradigm`/`engine`) + fallback name; §3 allineata, limite fresh-clone in §5 |
 | M-OS3-035 | `bin/deploy-hooks` — stesso modello sugli hook (Q-002): 9 hook live-non-versionati ora versionati; settings-snippet senza più hook-assente; decoupling hook coupled = debito M-OS3-036 |
 | M-OS3-036 | decoupling runtime degli hook (mirror M-OS3-031): 6 hook coupled risolvono il root a runtime (no path organismo baked); `install-gitleaks-hooks` con lista repo esternalizzata; settings-snippet `$HOME`-based generico. §2b/§3 aggiornate. Residuo: classificazione hook generic vs FlorenceEGI = BACKLOG |
+| M-OS3-038 | hook event-driven di enforcement (§2c): `oracode-lint-guard.sh` (PostToolUse, segnala non-bloccante) + `oracode-lint-gate.sh` (PreToolUse git push, blocca su drift ERROR). Completa Q-001 — `oracode-lint` ora enforcement attivo. Binario risolto via engine anchor a runtime, graceful se assente (dip. `python3`+`jq`) |
 
 ## 5. Debito noto (robustezza risoluzione)
 
