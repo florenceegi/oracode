@@ -212,11 +212,11 @@ async function main() {
     const matrixDir = path.join(require('os').tmpdir(), `os3-matrix-${Date.now()}`);
     try {
       log('  Cloning OS3 Matrix...');
-      let cloneUrl = license.repo;
-      const ghToken = process.env.GITHUB_TOKEN;
-      if (ghToken && cloneUrl.startsWith('https://github.com/')) {
-        cloneUrl = cloneUrl.replace('https://github.com/', `https://${ghToken}@github.com/`);
-      }
+      // SICUREZZA (M-OS3-050): MAI incollare il token nella URL di clone. Finirebbe in
+      // chiaro nel .git/config del clone → leak ricorrente del PAT (causa delle rotazioni
+      // ripetute). L'auth HTTPS passa dal credential helper di git
+      // (~/.gitconfig: helper = !gh auth git-credential) o da SSH. Nessun segreto nella URL.
+      const cloneUrl = license.repo;
       execSync(`git clone --depth 1 ${cloneUrl} ${matrixDir}`, { stdio: 'pipe' });
       ok('OS3 Matrix cloned');
 
