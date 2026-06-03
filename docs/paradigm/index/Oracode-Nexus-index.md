@@ -97,7 +97,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
   - **Tool RAG**: re-index + query, nell'enforcement privato (OS3 Matrix). Le citazioni `rag_natan_*` in 00_LSO sono nomi storici dell'istanza FlorenceEGI. Inventario path: SSOT privato `oracode-nexus-index-impl`.
   - reflex guard passivo (PostToolUse, Sistema Nervoso L1) + cron di staleness (L3) — impl privata
   - `ai_sidebar` con chat in ogni organo (SigilloAdvisorService, CredentialAdvisorService, ecc.)
-- **DOC-SYNC v2 5b clarification**: `ssot-registry-auto-update.sh` ARCHIVIATO (anti-pattern 6), responsabilità trasferita a DOC-SYNC v2 Step 5b che aggiorna `last_verified` SOLO post-verifica semantica + RAG conferma
+- **DOC-SYNC v2 5b clarification**: hook auto-update ARCHIVIATO (anti-pattern 6), responsabilità trasferita a DOC-SYNC v2 Step 5b che aggiorna `last_verified` SOLO post-verifica semantica + RAG conferma
 
 ---
 
@@ -216,7 +216,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/standards/LEGACY_STACK_POLICY.md`
 - **Status**: ✅ (letto integrale, 132 righe)
 - **Versione/data**: v1.0.0 — 2026-04-22 (M-094)
-- **Sintesi**: Ban universale 3 stack frontend/backend per **codice NUOVO** dell'ecosistema (caso esemplare: istanza FlorenceEGI): **Alpine.js** (collision Vanilla TS + Vite), **Livewire** (accoppiamento server↔view, debug difficile), **Filament** (esperienza diretta CEO admin v4 art.florenceegi.com non girava). Tabella stack per 9 organi (✅/❌/🟡). Enforcement hook PreToolUse `check-no-legacy-stack.sh` con pattern regex bloccanti. Strategia Delta solo EGI legacy (organo EGI dell'istanza FlorenceEGI) (sezioni Livewire/Alpine pre-policy, no rifattorizzazione, on-touch-only).
+- **Sintesi**: Ban universale 3 stack frontend/backend per **codice NUOVO** dell'ecosistema (caso esemplare: istanza FlorenceEGI): **Alpine.js** (collision Vanilla TS + Vite), **Livewire** (accoppiamento server↔view, debug difficile), **Filament** (esperienza diretta CEO admin v4 art.florenceegi.com non girava). Tabella stack per 9 organi (✅/❌/🟡). Enforcement hook PreToolUse di stack-ban con pattern regex bloccanti. Strategia Delta solo EGI legacy (organo EGI dell'istanza FlorenceEGI) (sezioni Livewire/Alpine pre-policy, no rifattorizzazione, on-touch-only).
 - **Sezioni chiave**: §1 Ban tabella 3 stack | §2 Stack per organo | §3 Alternative approvate | §4 Hook enforcement | §6 Storico
 
 ### `SSOT_REGISTRY.json` (EGI-DOC)
