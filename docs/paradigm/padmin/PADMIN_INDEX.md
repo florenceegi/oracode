@@ -200,13 +200,10 @@ Entrambe lavorano in parallelo, 0 collision.
 
 **Comando di cleanup:** `bin/mission gc-focus [--dry-run] [--older-than=N]` per i file `focus/` orfani (chat chiuse non puliscono). Default `--older-than=7`. Esecuzione manuale finché FINDING-S3-2 (automation gc-focus) non viene risolto in mission dedicata. (Questo riguarda SOLO il garbage-collect dei focus di sessione; è separato dal ponte L1→L3 registry, che è automatico — vedi header.)
 
-**Versioni componenti core:**
-- `bin/mission` v0.3.0
-- `~/.claude/hooks/mission-state-guard.sh` v0.3.0
-- `~/.claude/hooks/spawn-fingerprint-logger.sh` v0.4.0 (JSONL include `session_id` + `focus_resolve_layer`)
-- `~/.claude/hooks/trigger-matrix-classifier.sh` v0.2.0
+**Versioni componenti core** (inventario concreto privato — OS3 Matrix):
+- Mission Engine (CLI) v0.3.0 + guard di stato mission, spawn-fingerprint (JSONL con `session_id`), trigger-matrix.
 
-**Riferimento design:** `/home/fabio/os3-matrix/docs/design/M-OS3-016_DESIGN.md`
+**Riferimento design:** privato (OS3 Matrix).
 
 ---
 

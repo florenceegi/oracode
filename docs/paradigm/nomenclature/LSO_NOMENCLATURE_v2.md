@@ -749,10 +749,10 @@ Questi sono i componenti software che implementano l'enforcement delle regole de
 
 Gate fail-closed che intercettano l'azione AI. Ogni hook enforcea una o più regole P0. Elenco operativo (istanza FlorenceEGI, 22 maggio 2026):
 
-- `check-routes-read-controller.sh` — enforce P0-6 (anti-service-method)
-- `check-method-exists.sh` — enforce P0-4 (anti-method-invention)
-- `doc-sync-v2-guard.sh` — enforce P0-11 (DOC-SYNC obbligatorio)
-- `check-no-legacy-stack.sh` — enforce ban stack (Alpine/Livewire/Filament)
+- hook P0-6 (anti-service-method)
+- hook P0-4 (anti-method-invention)
+- hook P0-11 (DOC-SYNC obbligatorio)
+- hook ban-stack (Alpine/Livewire/Filament)
 - Hook PreToolUse che verifica presenza test associati prima di permettere chiusura mission — enforce P0-13
 - Hook che blocca commit con messaggio `feat:` o `fix:` senza modifiche ai file di test corrispondenti — enforce P0-13
 - *(in roadmap)* ulteriori hook P0-13

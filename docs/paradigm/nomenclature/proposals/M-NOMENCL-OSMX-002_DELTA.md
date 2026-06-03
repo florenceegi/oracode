@@ -337,10 +337,10 @@ Matrix abita principalmente i layer L1-L4 e L8.
 Gate fail-closed che intercettano l'azione AI. Ogni hook enforcea
 una o piu regole P0. Elenco operativo (istanza FlorenceEGI):
 
-- `check-routes-read-controller.sh` — enforce P0-6
-- `check-method-exists.sh` — enforce P0-4
-- `doc-sync-v2-guard.sh` — enforce P0-11
-- `check-no-legacy-stack.sh` — enforce ban stack
+- hook P0-6 (anti-service-method)
+- hook P0-4 (anti-method-invention)
+- hook P0-11 (DOC-SYNC)
+- hook ban-stack
 - *(in roadmap)* hook P0-13 (test obbligatori)
 - Hook che blocca commit feat:/fix: senza file test (da P0-13, §3.1.A.4)
 - Gate validator coverage (da P0-13, §3.1.A.4)
