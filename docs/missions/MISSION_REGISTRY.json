@@ -3,7 +3,7 @@
     "description": "Mission Registry canonical — paradigma Oracode (repo florenceegi/oracode). Traccia le mission Oracode Nexus (M-OS3-NNN) che evolvono paradigma + enforcement os3-matrix.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-06-01",
+    "updated": "2026-06-03",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Registro SSOT delle mission del paradigma. Schema chiavi inglese (allineato fabiocherici.com, prodotto da doc-sync-v2). Chiude il dual-tracking gap HOME-engine vs repo-registry: questo è il registro repo canonical, l'engine HOME (~/.oracode/missions/) resta state machine runtime.",
     "schema": "canonical-english",
@@ -20,6 +20,19 @@
   },
   "counter": 23,
   "missions": [
+    {
+      "id": "M-LEDGER-ORACODE",
+      "title": "Registro perpetuo — oracode",
+      "type": "ledger",
+      "trigger_matrix": 1,
+      "status": "perpetual",
+      "date_open": "2026-06-03",
+      "date_close": null,
+      "scope_hash": "ba6c92354703bf76dbcef96881000eb90545c8b3361c9e429c5f4931e744e42c",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-03T16:55:48.218Z",
+      "perpetual": true
+    },
     {
       "id": "M-NEXUS-004",
       "title": "Fix §18 changelog MISSION_PROTOCOL — M-OS3-026 + A1/prefisso su 025",
