@@ -309,12 +309,12 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Sintesi**: TBD
 
 ### `os3-matrix/CLAUDE.md`
-- **Path**: `/home/fabio/os3-matrix/CLAUDE.md`
+- **Path**: boot context del motore (OS3 Matrix, privato)
 - **Status**: ❌ — 33 righe
 - **Sintesi**: TBD
 
 ### `os3-matrix/CLAUDE_OS3_MATRIX_TEMPLATE.md`
-- **Path**: `/home/fabio/os3-matrix/CLAUDE_OS3_MATRIX_TEMPLATE.md`
+- **Path**: template boot context istanze (OS3 Matrix, privato)
 - **Status**: ❌ — 174 righe
 - **Sintesi**: TBD — template boot context per istanze che usano OS3 Matrix
 
