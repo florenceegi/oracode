@@ -370,7 +370,7 @@ File critici:
 - Registry: `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC su FlorenceEGI)
 - Hook: reflex guard passivo (impl privata — OS3 Matrix)
 - Propriocezione (istanza FlorenceEGI, L3 accoppiato): `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
-- Agente: `/home/fabio/.claude/agents/ssot-living-agent.md`
+- Agente: living agent (archiviato; impl privata — OS3 Matrix)
 - Cron script: cron di staleness (impl privata — OS3 Matrix)
 - Report drift: `<istanza>-DOC/audit/drift/` (es. /home/fabio/EGI-DOC su FlorenceEGI)
 
@@ -378,7 +378,7 @@ File critici:
 
 ## 15. Agenti Specializzati (11 agenti)
 
-Tutti in `/home/fabio/.claude/agents/`.
+Deployati nella dir agenti privata (OS3 Matrix).
 
 ### Agenti DEV (scrivono codice)
 
@@ -716,8 +716,8 @@ I doc di **paradigma** sono stati rilocati in `/home/fabio/oracode/docs/paradigm
 | OS3 Executive Summary | `/home/fabio/oracode/docs/paradigm/execution/OS3/00_OS3_Executive_Summary.md` |
 | Sistema Priorità P0-P3 | `/home/fabio/oracode/docs/paradigm/execution/OS3/04_Modulo_3_Sistema_Priorita_P0_P3.md` |
 | Standards (naming, quality gate, legacy stack) | `/home/fabio/oracode/docs/paradigm/standards/` |
-| Hook directory | `/home/fabio/.claude/hooks/` |
-| Agenti directory | `/home/fabio/.claude/agents/` |
+| Hook directory | privata (OS3 Matrix) |
+| Agenti directory | privata (OS3 Matrix) |
 
 ### Istanza FlorenceEGI (L3 accoppiato — runtime / legacy)
 
