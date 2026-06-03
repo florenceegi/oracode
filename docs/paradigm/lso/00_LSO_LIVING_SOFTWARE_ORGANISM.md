@@ -514,7 +514,7 @@ Tutti gli organi futuri nascono coordinati dall'hub dell'organismo (es. EGI-HUB 
 - Regole OS3 compresse (auto-loaded): `/home/fabio/*/CLAUDE_ECOSYSTEM_CORE.md`
 - Dettagli estesi (on-demand): `/home/fabio/*/CLAUDE_ECOSYSTEM_REF.md`
 - Versioni leggibili CEO: `/home/fabio/*/CLAUDE*.human.md`
-- Hook/agenti enforcement: deployati sotto `~/.claude/` (inventario privato OS3 Matrix)
+- Hook/agenti enforcement: deployati nel layer di deploy locale (inventario privato OS3 Matrix)
 - Report audit: `<istanza>-DOC/audit/` (es. /home/fabio/EGI-DOC/audit/)
 - Report drift SSOT: `<istanza>-DOC/audit/drift/` (es. /home/fabio/EGI-DOC/audit/drift/)
 - SSOT Registry (Layer 0 Mielina): `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC/)

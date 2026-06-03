@@ -286,7 +286,7 @@ CODICE LEGACY → Resta dove e. Si migra SOLO quando si tocca per altra ragione.
 
 ## 11. Hook System (14 hook)
 
-Deployati sotto `~/.claude/` (inventario concreto privato — OS3 Matrix). Attivi su ogni operazione Claude Code.
+Deployati nel layer di deploy locale (inventario concreto privato — OS3 Matrix). Attivi su ogni operazione Claude Code.
 
 Gli hook di enforcement (prevenzione/detection) sono stratificati per momento. L'**inventario
 concreto** (nomi, trigger, versioni) e `visibility:private` nell'OS3 Matrix — SSOT `oracode-nexus-index-impl`.
@@ -302,39 +302,37 @@ Categorie (modello):
 
 ## 12. Hook Enforcement Meccanico
 
-Oltre ai 14 hook globali, esistono **2 hook progetto-specifici** che bloccano meccanicamente le violazioni piu critiche.
+Oltre agli hook globali, il paradigma prevede **hook progetto-specifici** che bloccano
+meccanicamente le violazioni P0 piu critiche. Il **modello** (categorie, principi) e parte del
+paradigma pubblico; l'**inventario concreto** (nomi, logica, struttura sorgente, procedura di
+deploy) e `visibility:private` nell'OS3 Matrix — SSOT `oracode-nexus-index-impl`.
 
-### H-01 — check-routes-read-controller (P0-6)
+### Modello — enforcement P0-6 (route ↔ controller)
 
-**Regola:** Prima di modificare `routes/*.php` che referenzia un Controller, quel Controller deve essere stato letto (`Read`) nella sessione corrente.
+**Regola:** prima di modificare una route che referenzia un Controller, quel Controller deve
+essere stato letto (`Read`) nella sessione corrente. Estrazione dell'entita dal codice → ricerca
+nel filesystem → verifica presenza nel transcript → block se non letto.
 
-**Logica:** Estrae `XxxController` dal codice → cerca nel filesystem → controlla se presente nel transcript JSONL → exit 2 se non letto.
+**Origine:** incidente 2026-03-23 (istanza FlorenceEGI). Middleware aggiunto a una route senza
+leggere il controller che gia gestiva i permessi → regressione silenziosa in produzione.
 
-**Origine:** Incidente 2026-03-23. Claude aggiunse middleware `superadmin` a una route senza leggere il controller che gia gestiva i permessi via Spatie. Regressione silenziosa in produzione.
+### Modello — enforcement P0-4 (esistenza metodo)
 
-### H-02 — check-method-exists (P0-4)
+**Regola:** i metodi chiamati su Service/Repository/Manager/Handler devono esistere nel file
+della classe. **Architettura a 2 livelli:** guard (detection progetto) → analizzatore di codice.
+Whitelist framework per metodi standard.
 
-**Regola:** I metodi chiamati su Service/Repository/Manager/Handler devono esistere nel file della classe.
-
-**Architettura a 2 livelli:** Shell (guard + detection progetto) → Python (analisi codice PHP/Python). Whitelist framework per metodi Eloquent/QueryBuilder/Python standard.
-
-**Principio:** un falso negativo e preferibile a un falso positivo. Gli hook assistono la review, non la sostituiscono.
+**Principio:** un falso negativo e preferibile a un falso positivo. Gli hook assistono la review,
+non la sostituiscono.
 
 ### Attivi su: gli organi dell'istanza (es. NATAN_LOC, EGI-HUB, EGI su FlorenceEGI).
 
-### Come aggiungere un nuovo hook
+### Come si estende (principio)
 
-1. Creare script bash con struttura: `INPUT=$(cat)` → guard → logica → `exit 2` con messaggio su stderr
-2. Design: guard generosi (escludere vendor, tests, migrations), exit 0 su dubbi, messaggio chiaro
-3. Registrare in `settings.json` sotto il blocco `PreToolUse` e nella tabella Hook Registry
-
-### Come aggiungere un nuovo progetto
-
-1. `mkdir -p /home/fabio/PROGETTO/.claude/hooks`
-2. Copiare i 3 file hook da un organo di riferimento (es. NATAN_LOC)
-3. `chmod +x *.sh *.py`
-4. Creare `settings.json` con path aggiornati
-5. Aggiornare path `find` in `check-routes-read-controller.sh` e blocco `elif` in `check-method-exists.sh`
+1. Guard generosi (escludere vendor, tests, migrations), uscita pulita sui dubbi, messaggio chiaro.
+2. Registrazione del guard nel layer di enforcement dell'istanza.
+3. La procedura concreta di scaffolding/deploy per nuovo hook o nuovo progetto e nell'OS3 Matrix
+   (impl privata — SSOT `oracode-nexus-index-impl`).
 
 ---
 

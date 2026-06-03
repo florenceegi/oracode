@@ -11,7 +11,7 @@ rag: public
 > **Mission**: M-094 (child di M-094-SUPERVISOR, parent M-093 Ultra Excellence Audit)
 > **Enforcement**: hook PreToolUse Write|Edit di enforcement (meccanismo L1 riusabile, non specifico FlorenceEGI; impl privata OS3 Matrix)
 
-> **Inquadramento Oracode Nexus (Livello 1).** Il ban stack (Alpine/Livewire/Filament per codice nuovo) è **policy di paradigma**: vale per ogni istanza LSO generata via `/project`. L'hook `check-no-legacy-stack.sh` è il meccanismo di enforcement L1, ereditabile da ogni HUB/istanza. Le **tabelle per-organo** e i **path EGI-DOC** sotto sono l'**applicazione concreta nell'ecosistema FlorenceEGI** (HUB/istanza accoppiato, caso unico) — esempio di istanza L2/L3, non parte normativa del paradigma.
+> **Inquadramento Oracode Nexus (Livello 1).** Il ban stack (Alpine/Livewire/Filament per codice nuovo) è **policy di paradigma**: vale per ogni istanza LSO generata via `/project`. L'hook PreToolUse di stack-ban è il meccanismo di enforcement L1, ereditabile da ogni HUB/istanza. Le **tabelle per-organo** e i **path EGI-DOC** sotto sono l'**applicazione concreta nell'ecosistema FlorenceEGI** (HUB/istanza accoppiato, caso unico) — esempio di istanza L2/L3, non parte normativa del paradigma.
 
 ---
 
@@ -144,7 +144,7 @@ Solo con approvazione CEO via protocollo CEO/CTO dell'istanza (esempio FlorenceE
 | 2026-04-20 | Audit M-093 F-C2 (istanza FlorenceEGI): rilevati `@livewireStyles` + 41 view `wire:` sull'organo EGI — segnalato chiarimento formale pending | `EGI-DOC/audit/M-093_ULTRA_EXCELLENCE_AUDIT_2026-04-20.md` riga 137 |
 | 2026-04-21 | Memory aggiornata: Alpine/Livewire/Filament bannati su TUTTI gli organi per codice NUOVO, eccezione Strategia Delta su legacy d'istanza (es. EGI) | Memory `feedback_frontend_framework_rules.md` |
 | 2026-04-21 | Filament confermato bannato su tutto l'ecosistema (esperienza admin v4, istanza FlorenceEGI) | Memory `feedback_filament_banned.md` |
-| 2026-04-22 | M-094 chiusura: SSOT policy + hook `check-no-legacy-stack.sh` + update CORE | Questo documento |
+| 2026-04-22 | M-094 chiusura: SSOT policy + hook stack-ban + update CORE | Questo documento |
 
 ---
 

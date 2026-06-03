@@ -15,8 +15,8 @@ rag: public
 
 ## Cosa è (modello)
 
-Agenti e hook hanno una **fonte versionata single-source**; la **copia operativa** (sotto
-`~/.claude/...`) è **generata** da quella fonte. I **root** si risolvono a **runtime**, non
+Agenti e hook hanno una **fonte versionata single-source**; la **copia operativa** (nel layer di
+deploy locale) è **generata** da quella fonte. I **root** si risolvono a **runtime**, non
 hardcoded.
 
 ## Principio

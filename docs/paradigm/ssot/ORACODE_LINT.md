@@ -37,7 +37,7 @@ sostituisce il giudizio LLM — lo **complementa** front-line sul drift meccanic
 |--------|--------|----------|
 | **R1** broken-ref | riferimento a file (.md/.json/.sh/.py) inesistente su disco | warn |
 | **R2** organism-coupling | path organismo / var doc-root baked (`${ORACODE_DOC_ROOT}`, `@@..@@`, `/home/fabio/EGI-DOC/`, `NATAN_LOC/`) invece che runtime `{{}}` | error |
-| **R3** source-deploy-drift | sorgente enforcement `{agents,hooks}` ≠ `~/.claude/{agents,hooks}` (deploy non in parità) | error |
+| **R3** source-deploy-drift | sorgente enforcement (agenti/hook) ≠ layer di deploy generato (deploy non in parità) | error |
 | **R4** doctrine-drift | P0 enumerati negli artefatti ≠ CORE (nome sbagliato, P0 inventato, range errato) | error |
 | **R5** cross-organ | costanti condivise (`shared-constants.json`) con valore divergente tra organi (`projects.json`) — attivata da `--cross-organ` | error |
 | **R6** semantic | contraddizioni/ambiguità di **significato** tra `CLAUDE.md` degli organi (drift in prosa che lo static R1-R5 non vede) — attivata da `--semantic`, via Claude API | warn |
