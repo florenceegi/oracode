@@ -128,7 +128,7 @@ Un software tradizionale e statico: il codice fa cio che scrivi, non di piu. Un 
 │  audit-static + audit-on-complete + deploy-pipeline-guard    │
 ├──────────────────────────────────────────────────────────────┤
 │  L2 — DEEP AUDIT (periodico / on-demand)                     │
-│  os3-deep-audit.sh + agenti diagnostici + report storicizzati│
+│  deep-audit periodico + agenti diagnostici + report storico   │
 ├──────────────────────────────────────────────────────────────┤
 │  L1 — SYNC (post-task)                                       │
 │  doc-sync-guardian → <istanza>-DOC/docs/ (es. EGI-DOC)       │
@@ -286,24 +286,15 @@ CODICE LEGACY → Resta dove e. Si migra SOLO quando si tocca per altra ragione.
 
 ## 11. Hook System (14 hook)
 
-Tutti in `/home/fabio/.claude/hooks/`. Attivi su ogni operazione Claude Code nell'ecosistema.
+Deployati sotto `~/.claude/` (inventario concreto privato — OS3 Matrix). Attivi su ogni operazione Claude Code.
 
-| Hook | Tipo | Trigger | Funzione |
-|------|------|---------|----------|
-| `cross-project-guard.sh` | PreToolUse | Write/Edit | Forza lettura CLAUDE.md + CORE su tutti gli organi |
-| `os3-preflight-guard.sh` | PreToolUse | Write/Edit | Reminder P0 contestuale per tipo file |
-| `legacy-guard.sh` | PreToolUse | Write/Edit | Blocca modifica file LEGACY senza piano |
-| `immutable-values-guard.sh` | PreToolUse | Write/Edit | Blocca modifica valori immutabili |
-| `mica-guard.sh` | PreToolUse | Write/Edit | Blocca violazioni MiCA-SAFE (Egili-EUR) |
-| `hardcoded-strings-guard.sh` | PreToolUse | Write/Edit | Avvisa su stringhe hardcoded |
-| `env-guard.sh` | PreToolUse | Write/Edit | Blocca esposizione .env/secrets |
-| `git-main-guard.sh` | PreToolUse | Bash | Protegge push su branch main |
-| `rm-guard.sh` | PreToolUse | Bash | Protegge file attivi da cancellazione |
-| `deploy-pipeline-guard.sh` | PostToolUse | Bash | Verifica pipeline dopo push (tutti gli organi) |
-| `os3-audit-static.sh` | PostToolUse | Write/Edit | Analisi statica OS3 su ogni file modificato |
-| `os3-audit-on-complete.sh` | PostToolUse | TodoWrite | Report findings aggregati a task completato |
-| `ssot-reflex-guard.sh` | PostToolUse | Write/Edit | Sistema Nervoso L1: segnala file watchati da SSOT |
-| `ssot-living-check.sh` | Manuale/Cron | — | Sistema Nervoso L3: check leggero drift doc-codebase |
+Gli hook di enforcement (prevenzione/detection) sono stratificati per momento. L'**inventario
+concreto** (nomi, trigger, versioni) e `visibility:private` nell'OS3 Matrix — SSOT `oracode-nexus-index-impl`.
+Categorie (modello):
+- **PreToolUse / Write|Edit** — coerenza cross-organo, P0 contestuali, file legacy, valori immutabili, compliance dominio (es. MiCA), stringhe hardcoded, secrets.
+- **PreToolUse / Bash** — push su `main`, `rm`, comandi rischiosi.
+- **PostToolUse** — analisi statica OS3, report findings a task completato, riflesso passivo SSOT (Sistema Nervoso L1).
+- **Cron/manuale** — staleness SSOT (L3), deep-audit periodico.
 
 **Hardening M-OS3-013 (sessione 3).** Hook hardening pass risolve i finding S2-14/15/18/19/21 e introduce il nuovo guard `S2-23 uem-code-validation`. Dettaglio in `docs/oracode/audit/08_HOOK_ENFORCEMENT_SYSTEM.md`.
 
@@ -369,18 +360,18 @@ Ispirato al sistema nervoso umano. Risolve il problema del DOC-SYNC dimenticato.
 | Sub-layer | Analogia biologica | Implementazione | Tempo |
 |-----------|--------------------|-----------------|-------|
 | **L0 MIELINA** | Guaina mielinica accelera trasmissione | `SSOT_REGISTRY.json` — mapping esplicito doc → file watchati | Statico |
-| **L1 RIFLESSO** | Arco riflesso senza cervello | `ssot-reflex-guard.sh` (PostToolUse) — file modificato → lookup → segnale | <1s, costo AI zero |
+| **L1 RIFLESSO** | Arco riflesso senza cervello | reflex guard passivo (PostToolUse) — file modificato → lookup → segnale | <1s, costo AI zero |
 | **L2 PROPRIOCEZIONE** | Sapere dove sei senza guardare | Mission Registry esteso (`doc_sync_executed`, `doc_verified`, `files_modified`), popolato **automaticamente** dal ponte L1→L3 (`bin/mission` propaga lo stato nel registry del progetto via `.oracode/project.json`) | Per missione |
-| **L3 AUTONOMO** | Respira senza pensarci | `ssot-living-agent` + `ssot-living-check.sh` (cron 04:00) — drift report | Periodico |
+| **L3 AUTONOMO** | Respira senza pensarci | cron di staleness (04:00) — drift report | Periodico |
 
 **Come si compensano:** il drift deve "scappare" da tutti e 3 i layer attivi per restare inosservato. L1 segnala in sessione → L2 registra nella missione → L3 trova alla prossima verifica notturna.
 
 File critici:
 - Registry: `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC su FlorenceEGI)
-- Hook: `/home/fabio/.claude/hooks/ssot-reflex-guard.sh`
+- Hook: reflex guard passivo (impl privata — OS3 Matrix)
 - Propriocezione (istanza FlorenceEGI, L3 accoppiato): `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
 - Agente: `/home/fabio/.claude/agents/ssot-living-agent.md`
-- Cron script: `/home/fabio/.claude/hooks/ssot-living-check.sh`
+- Cron script: cron di staleness (impl privata — OS3 Matrix)
 - Report drift: `<istanza>-DOC/audit/drift/` (es. /home/fabio/EGI-DOC su FlorenceEGI)
 
 ---
@@ -696,7 +687,7 @@ P2, non blocca deploy. Applicata incrementalmente.
 
 ### Priorita media
 
-- [ ] **GitHub Actions** — `os3-deep-audit.sh` + GATE ad ogni PR, blocca merge su BLOCK
+- [ ] **GitHub Actions** — il deep-audit + GATE ad ogni PR, blocca merge su BLOCK
 - [ ] **Auto-remediation** — agente che propone e applica fix per finding standard
 - [ ] **GATE integrato in pre-push hook** — attivazione automatica
 - [ ] **Pilot Console completa** — `/health`, `/audit [organo]`, `/new-organ [nome]`
