@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { readFileSync, existsSync } from 'node:fs';
+const ROOT='/home/fabio/oracode';
+let f=0; const ck=(c,m)=>{try{assert.ok(c,m);console.log('  ✓ '+m);}catch(e){console.error('  ✗ '+e.message);f++;}};
+console.log('=== M-OS3-074 — skill /web-fx-displacement ===');
+const sk = existsSync(ROOT+'/.claude/commands/web-fx-displacement.md')?readFileSync(ROOT+'/.claude/commands/web-fx-displacement.md','utf8'):'';
+ck(sk.length>0, 'skill web-fx-displacement.md presente');
+ck(/Quando usarlo/i.test(sk) && /NON usar/i.test(sk), 'skill: quando usarlo / quando no');
+ck(/Progressive Enhancement|PE-1/.test(sk), 'skill: PE obbligatorio');
+ck(/harness offline|swiftshader/i.test(sk), 'skill: verifica offline obbligatoria');
+ck(/smoothstep/.test(sk) && /indefinito|undefined/i.test(sk), 'skill: cicatrice smoothstep');
+ck(/per-immagine|full-viewport/i.test(sk), 'skill: per-immagine non full-viewport');
+ck(/MO|Motion/.test(sk) && /WEB_PAGE_QUALITY_GATE/.test(sk), 'skill: tie ai criteri MO del gate');
+ck(/templates\/fx\/fximage/.test(sk), 'skill: riferisce il template');
+const tpl = existsSync(ROOT+'/templates/fx/fximage.v1.js')?readFileSync(ROOT+'/templates/fx/fximage.v1.js','utf8'):'';
+ck(tpl.length>0, 'template fximage.v1.js presente');
+ck(/getContext\(\s*(['"])webgl2\1/.test(tpl), 'template: WebGL2 raw');
+ck(/data-fx-displace/.test(tpl), 'template: data-fx-displace');
+// rete anti-regressione: lo shader NON deve usare smoothstep con edge invertiti (spec-undefined)
+ck(!/smoothstep\(\s*0?\.4?5?\s*,\s*0\.0\s*,/.test(tpl) && !/smoothstep\(\s*[0-9.]+\s*,\s*0\.0\s*,/.test(tpl), 'template: nessun smoothstep edge-invertiti (spec-undefined)');
+ck(/1\.0 - smoothstep\(0\.0/.test(tpl.replace(/\s+/g,' ')), 'template: hover usa 1.0 - smoothstep(0.0, R, d) (definito)');
+process.exit(f===0?0:1);

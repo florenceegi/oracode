@@ -2,7 +2,7 @@
 title: Web Page Quality Gate
 slug: web-page-quality-gate
 doc_type: protocol
-version: 1.2.0
+version: 1.3.0
 status: current
 date: '2026-05-22'
 updated_at: '2026-06-04'
@@ -286,6 +286,12 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 | MO-5 | **`prefers-reduced-motion`**: TUTTE le animazioni espressive neutralizzate, contenuto pienamente fruibile | obbligatorio | toggle OS + ispezione |
 | MO-6 | Nessun movimento blocca l'interazione o sposta il layout | obbligatorio | coincide con P-2 (CLS) |
 | MO-7 | **Movimento = enhancement, mai prerequisito**: contenuto leggibile e completo senza JS | obbligatorio | disabilita JS + verifica |
+| MO-8 | **Immagini "displacement" (load-unveil + hover)** dove l'immagine rappresenta identità viva (ritratti, lavori, presente): rivelazione liquida allo scroll-in + ondeggiamento in hover. Pattern riusabile pronto: skill **`/web-fx-displacement`** + template `templates/fx/fximage.v1.js` (WebGL2 raw, PE, desktop-only, verifica offline harness obbligatoria). Per-immagine, mai full-viewport | raccomandato | live + smoke test scope |
+
+> **Effetti riusabili (skill).** I pattern motion validati dal vivo vanno codificati in skill `/web-fx-*`
+> con template MIT in `templates/fx/`, così ogni organo li adotta senza ripartire da zero. Primo: M-OS3-074
+> (`/web-fx-displacement`, da M-CAPASSO-030). La verifica del motion è **offline harness (swiftshader) +
+> gate umano §8** — non è verificabile con screenshot headless standard.
 
 ### 3.15 Progressive Enhancement & Resilience (PE)
 
@@ -509,8 +515,8 @@ spazio. La distinzione nasce dalla precisione delle poche cose presenti, non dal
 
 ## 9. Versionamento e firma
 
-**Versione**: 1.2.0
-**Data**: 2026-05-22 (v1.0.0) · 2026-06-02 (v1.1.0) · 2026-06-04 (v1.2.0)
+**Versione**: 1.3.0
+**Data**: 2026-05-22 (v1.0.0) · 2026-06-02 (v1.1.0) · 2026-06-04 (v1.2.0) · 2026-06-04 (v1.3.0)
 **Autore**: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 **Origine v1.0.0**: Audit M-211 — difetti trovati post-deploy che il protocollo mission non preveniva
 **Origine v1.1.0**: ciclo mission M-LEVESPE (giugno 2026) — un sito identitario che passava
@@ -531,3 +537,4 @@ entrambi gli assi.
 | 1.0.0 | 2026-05-22 | Protocollo iniziale — Asse Correttezza (§3.1–§3.12, 90 criteri). Origine audit M-211 |
 | 1.1.0 | 2026-06-02 | Asse Distinzione: §0.1 (due assi), §3.13 Craft (CR-1..8), §3.14 Motion (MO-1..7), §3.15 Progressive Enhancement (PE-1..8), §8 metodo north-star, gate umano in §5. Origine M-LEVESPE |
 | 1.2.0 | 2026-06-04 | Asse Correttezza esteso da rivalutazione esterna (Qwen) su Capasso: **F-8** (404 custom + status HTTP 404 reale, no fallback 200), **F-9** (integrità segnali di fiducia — anti fake trust signals, Pilastro 3), **SEC-11** (Mozilla Observatory A+), **A-13/A-14** (axe 0 critical/serious + WAVE 0 errori). Corretto anche il conteggio Asse 1 stale ("90"→**101**, P0-3 Statistics Rule). Origine M-OS3-072 (lezioni M-CAPASSO-024/025) |
+| 1.3.0 | 2026-06-04 | Asse Distinzione: **MO-8** (immagini displacement load+hover) + nota "effetti riusabili (skill)". Primo pattern codificato come skill `/web-fx-displacement` + template `templates/fx/fximage.v1.js` (WebGL2 raw, PE, desktop-only). Origine M-OS3-074 (da M-CAPASSO-030) |
