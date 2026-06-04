@@ -1,7 +1,7 @@
 /**
  * @package  oracode/templates/fx
  * @author   Oracode paradigm (MIT) — reference implementation
- * @version  1.0.0 (template)
+ * @version  1.1.0 (template)
  * @purpose  TEMPLATE riusabile — effetto immagini "displacement" WebGL (skill /web-fx-displacement):
  *           ogni <img data-fx-displace> viene potenziata con un canvas WebGL2 sovrapposto che
  *           (1) la "rivela" con una distorsione liquida al primo scroll-in (IntersectionObserver) e
@@ -95,12 +95,17 @@
         if (!ctx) return; // niente WebGL2 -> resta l'<img>
         var gl = ctx.gl, pr = ctx.pr;
 
-        // posiziona il canvas esattamente sopra l'<img> (usa la figure contenitore se c'è)
-        var parent = img.closest('figure') || img.parentNode;
-        var pos = getComputedStyle(parent).position;
-        if (pos === 'static') parent.style.position = 'relative';
-        canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;';
-        parent.appendChild(canvas);
+        // Posizionamento robusto (drop-in su qualsiasi markup): canvas FIXED che insegue il
+        // bounding-rect dell'<img> a ogni frame. Nessuna dipendenza da un <figure>/wrapper stretto.
+        canvas.style.cssText = 'position:fixed;left:0;top:0;display:block;pointer-events:none;z-index:5;';
+        document.body.appendChild(canvas);
+        function place() {
+          var r = img.getBoundingClientRect();
+          canvas.style.left = r.left + 'px'; canvas.style.top = r.top + 'px';
+          canvas.style.width = r.width + 'px'; canvas.style.height = r.height + 'px';
+          var w = Math.max(2, Math.round(r.width * dpr)), h = Math.max(2, Math.round(r.height * dpr));
+          if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+        }
 
         var tex = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -119,21 +124,15 @@
         };
         var texW = img.naturalWidth || box.width, texH = img.naturalHeight || box.height;
 
-        function resize() {
-          var bb = img.getBoundingClientRect();
-          var w = Math.max(2, Math.round(bb.width * dpr)), h = Math.max(2, Math.round(bb.height * dpr));
-          if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
-        }
-        window.addEventListener('resize', resize);
-        resize();
+        place();
 
         // NB: l'<img> viene reso trasparente SOLO dopo il primo frame disegnato (vedi frame()),
         // così se il canvas fallisse l'immagine reale resta comunque visibile (fallback robusto).
         var firstDrawn = false;
         var hover = 0, hoverTarget = 0, mx = 0.5, my = 0.5;
-        parent.addEventListener('pointerenter', function () { hoverTarget = 1; });
-        parent.addEventListener('pointerleave', function () { hoverTarget = 0; });
-        parent.addEventListener('pointermove', function (e) {
+        img.addEventListener('pointerenter', function () { hoverTarget = 1; });
+        img.addEventListener('pointerleave', function () { hoverTarget = 0; });
+        img.addEventListener('pointermove', function (e) {
           var bb = img.getBoundingClientRect();
           mx = (e.clientX - bb.left) / bb.width; my = (e.clientY - bb.top) / bb.height;
         }, { passive: true });
@@ -150,6 +149,7 @@
         function frame(ts) {
           if (t0 === 0) t0 = ts;
           if (!started) { started = true; }
+          place(); // insegue posizione/dimensione dell'img (scroll, resize, reflow)
           // avvia il load solo quando visibile
           if (visible && load < 1) { load += 0.018; if (load > 1) load = 1; }
           hover += (hoverTarget - hover) * 0.08;
