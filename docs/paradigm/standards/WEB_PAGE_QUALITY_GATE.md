@@ -2,10 +2,10 @@
 title: Web Page Quality Gate
 slug: web-page-quality-gate
 doc_type: protocol
-version: 1.0.0
+version: 1.2.0
 status: current
 date: '2026-05-22'
-updated_at: '2026-05-22'
+updated_at: '2026-06-04'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
@@ -29,6 +29,31 @@ Questo protocollo si attiva **automaticamente** quando una mission ha come deliv
 **Trigger**: `type` in [feature, refactor] AND deliverable include file `.tsx`/`.html`/`.blade.php` serviti su URL pubblico.
 
 > Nota chiavi: `type` è la chiave inglese canonica del MISSION_REGISTRY (decisione CEO 2026-05-30, vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`). La chiave italiana `tipo_missione` è legacy di un'istanza (esempio: EGI-DOC, istanza FlorenceEGI).
+
+### 0.1 I due assi: Correttezza e Distinzione
+
+Questo gate misura **due assi indipendenti**. Passare il primo non implica il secondo.
+
+```
+ASSE 1 — CORRETTEZZA    (§3.1–§3.12)   Tecnico, verificabile, binario.
+                                        HTML/SEO/Schema/a11y/perf/security/i18n.
+                                        "Il test di terze parti passa al massimo."
+
+ASSE 2 — DISTINZIONE    (§3.13–§3.15)  Editoriale, qualitativo, calibrato.
+                                        Craft/motion/progressive-enhancement.
+                                        "La pagina è al top nel mondo, non mediana."
+```
+
+**Una pagina può passare tutti i 101 criteri di correttezza ed essere comunque anonima.**
+"Competente" è il default — ed è insufficiente per pagine vetrina/identitarie. L'Asse 2
+è obbligatorio quando la mission produce una pagina che rappresenta un'identità (brand,
+luogo, persona, dominio). Per pagine puramente funzionali (es. form interno, status page)
+l'Asse 2 si dichiara non applicabile con motivazione.
+
+> **Regola anti-mediano (origine M-LEVESPE 2026-06-02).** Quando l'LLM produce output
+> "competente ma anonimo", sta servendo la propria metrica mediana. Riconoscere il default
+> e romperlo deliberatamente è parte del gate, non un extra. La distinzione si **calibra**
+> su riferimenti (vedi §8) e si **giudica dal vivo** dal CEO/committente sul device reale.
 
 ---
 
@@ -137,6 +162,8 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 | A-10 | Ordine di lettura logico (DOM order = visual order) | obbligatorio | ispezione |
 | A-11 | Link che aprono nuova finestra: indicatore per screen reader | obbligatorio | `target="_blank"` + sr-only "(nuova finestra)" o aria-label |
 | A-12 | Form: `<label>` associato a ogni input, errori annunciati | se form presente | ispezione |
+| A-13 | axe DevTools / axe-core: **0 violazioni** critical e serious | obbligatorio | axe DevTools o `@axe-core/cli` post-build |
+| A-14 | WAVE (webaim.org): **0 errori** | obbligatorio | wave.webaim.org/report#/<url> post-deploy |
 
 ### 3.6 Performance
 
@@ -169,6 +196,7 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 | SEC-8 | `Cross-Origin-Embedder-Policy` presente | raccomandato | curl -sI |
 | SEC-9 | HTTPS attivo, nessun mixed content | obbligatorio | curl -sI |
 | SEC-10 | securityheaders.com grade A o A+ | obbligatorio | test manuale post-deploy |
+| SEC-11 | Mozilla Observatory (developer.mozilla.org/observatory) grade A o A+ | obbligatorio | test manuale post-deploy |
 
 ### 3.8 Internazionalizzazione (i18n)
 
@@ -194,6 +222,8 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 | F-5 | Link interni: nessun 404 | obbligatorio | crawl link nella pagina |
 | F-6 | Link esterni: `target="_blank" rel="noopener noreferrer"` | obbligatorio | grep nel HTML |
 | F-7 | Redirect da vecchi URL (se pagina rinominata) | se applicabile | curl vecchio URL |
+| F-8 | **Pagina di errore 404 custom** brandizzata + **status HTTP 404 reale** su path non risolto (mai fallback a 200 che maschera l'errore). Server statico: `error_page 404 /404.html` + `try_files … =404` (no fallback a `/index.html`). i18n se il sito è multilingua | obbligatorio | `curl -o /dev/null -w "%{http_code}" <url>/path-inesistente` = 404 + corpo brandizzato |
+| F-9 | **Integrità dei segnali di fiducia** (Pilastro 3 — Coerenza Semantica): ogni badge/claim di qualità, sicurezza o compliance esposto (SSL, Security, WCAG, GDPR, "zero tracking", ecc.) deve **linkare una prova** — validatore terzo live (SSLLabs, securityheaders, Observatory, WAVE) o pagina in-site che lo dimostra (es. privacy) — **oppure essere rimosso**. Vietati i "fake trust signals": claim decorativi non verificabili | obbligatorio | ispezione: ogni badge è `<a href>` verso prova; nessun claim statico nudo |
 
 ### 3.10 Privacy e GDPR
 
@@ -223,11 +253,65 @@ Non tutti i criteri si applicano a tutte le pagine (es. una pagina senza form no
 
 ---
 
+## 3bis. Asse Distinzione (§3.13–§3.15)
+
+> Si applica a pagine che rappresentano un'identità. Verifica in parte **qualitativa**:
+> dove la colonna "Verifica" dice "giudizio CEO" il criterio non è binario-automatizzabile —
+> è un gate umano, deliberato. Non per questo opzionale.
+
+### 3.13 Editorial Craft & Distinction (CR)
+
+| # | Criterio | Soglia | Verifica |
+|---|----------|--------|----------|
+| CR-1 | **Anti-mediano**: nessuna pagina "competente ma anonima". Ogni pagina chiave ha almeno un momento memorabile (gesto, composizione, transizione) che la distingue | obbligatorio | giudizio CEO + confronto north-star (§8) |
+| CR-2 | **Raffinatezza per sottrazione**: una sola famiglia d'accento cromatico dominante, saturazione contenuta, whitespace generoso. Togliere prima di aggiungere | obbligatorio | ispezione design tokens |
+| CR-3 | **Hero editoriale full-bleed** sulle pagine chiave (immagine a tutta larghezza + overlay tipografico + accento), non header testuale piatto | obbligatorio | ispezione |
+| CR-4 | **Ritmo compositivo**: alternanza di blocchi (chiaro/scuro, testo/immagine, denso/arioso). Nessuna pagina mono-blocco | obbligatorio | ispezione sezioni |
+| CR-5 | **Chiusura attiva**: ogni pagina termina con invito/cross-link, mai un "muro" statico | obbligatorio | ispezione fondo pagina |
+| CR-6 | **Sistema, non one-off**: hero/sezioni/CTA derivano da componenti riusabili condivisi, non duplicati per pagina | obbligatorio | conteggio componenti condivisi |
+| CR-7 | **Tipografia espressiva**: scala fluida (`clamp`), variable/opsz font dove disponibile, gerarchia visiva netta | raccomandato | ispezione CSS |
+| CR-8 | **Identità riflessa**: l'estetica esprime il soggetto (luogo, brand, dominio), non un template generico riusabile per chiunque | obbligatorio | giudizio CEO |
+
+### 3.14 Motion & Interaction Quality (MO)
+
+> Il movimento è infrastruttura espressiva, non decorazione. Vincolato sempre all'Asse 1
+> (perf §3.6, reduced-motion §3.5): la distinzione non sacrifica mai la correttezza.
+
+| # | Criterio | Soglia | Verifica |
+|---|----------|--------|----------|
+| MO-1 | **Easing fisico**: palette di easing definita (almeno soft/standard/elastic). Nessun `linear`/`ease` di default su transizioni espressive | obbligatorio | ispezione tokens CSS |
+| MO-2 | **Reveal on-scroll** con stagger sui gruppi; nessun "pop-in" brusco | raccomandato | ispezione |
+| MO-3 | **Profondità**: parallax o layering su almeno l'elemento hero, entro budget perf | raccomandato | ispezione |
+| MO-4 | **Movimento ambientale lento e continuo** dove appropriato (ken-burns ≥ ~20s, marquee morbidi). Mai loop nervosi/veloci | raccomandato | ispezione durate |
+| MO-5 | **`prefers-reduced-motion`**: TUTTE le animazioni espressive neutralizzate, contenuto pienamente fruibile | obbligatorio | toggle OS + ispezione |
+| MO-6 | Nessun movimento blocca l'interazione o sposta il layout | obbligatorio | coincide con P-2 (CLS) |
+| MO-7 | **Movimento = enhancement, mai prerequisito**: contenuto leggibile e completo senza JS | obbligatorio | disabilita JS + verifica |
+
+### 3.15 Progressive Enhancement & Resilience (PE)
+
+> L'eccellenza non si paga con la fragilità. Ogni enhancement ricco (3D/WebGL, smooth-scroll,
+> sfogliabili, canvas) è uno strato sopra una base che funziona da sola.
+
+| # | Criterio | Soglia | Verifica |
+|---|----------|--------|----------|
+| PE-1 | **Fallback semantico SEMPRE nel DOM**: la versione accessibile/SEO/no-JS è server-rendered; l'enhancement la sostituisce o arricchisce a runtime | obbligatorio | view-source con JS disabilitato |
+| PE-2 | Enhancement decorativo marcato `aria-hidden`; non duplica contenuto agli screen reader | obbligatorio | ispezione (coincide con A-8) |
+| PE-3 | **Guardie di degrado esplicite** per ogni enhancement pesante: `prefers-reduced-motion`, `navigator.connection.saveData`, capability check (es. WebGL) | obbligatorio | ispezione script |
+| PE-4 | **Parità mobile per taratura, non per esclusione**: gli enhancement ricchi restano su mobile in forma adattata (DPR/qualità ridotti, single-column/single-page), non disattivati per default | obbligatorio | test su device mobile reale |
+| PE-5 | `save-data` e `reduced-motion` sono gli **unici opt-out legittimi** del 3D/animazioni pesanti | obbligatorio | ispezione guardie |
+| PE-6 | Asset JS/CSS di terze parti **self-hosted** (CSP `script-src 'self'`), mai CDN né inline | obbligatorio | coincide con SEC-2 + ispezione |
+| PE-7 | **Filename versionato** per asset self-hosted con cache lunga; rinomina (`v1`→`v2`) a ogni cambio di contenuto, per cache-bust deterministico | obbligatorio | diff filename su modifica del contenuto |
+| PE-8 | **Preload LCP per-pagina corretto**: si precarica l'immagine hero *di quella pagina*, non un default globale | obbligatorio | grep preload vs hero reale |
+
+---
+
 ## 4. Processo di verifica — Quality Gate
 
-L'enforcement è **automatizzato** da un **Quality Gate pre-commit** per pagine web pubbliche (90 criteri, 12 categorie; exit code `0 = PASS`, `1 = FAIL` su almeno un criterio obbligatorio fallito). Lo snippet bash di §4.2 è la **logica di riferimento**.
+L'enforcement dell'**Asse 1 (Correttezza)** è **automatizzato** da un **Quality Gate pre-commit** per pagine web pubbliche (101 criteri, 12 categorie tecniche; exit code `0 = PASS`, `1 = FAIL` su almeno un criterio obbligatorio fallito). Lo snippet bash di §4.2 è la **logica di riferimento**.
 
-> **Invocazione concreta privata (M-OS3-048).** Il comando del gate (CLI, argomenti `argparse`, path) è un SSOT `visibility: private` nell'enforcement OS3 Matrix (repo privato): `web-page-quality-gate-impl`. Confine mono — il modello (i 90 criteri di §1-3) resta pubblico.
+L'**Asse 2 (Distinzione, §3.13–§3.15)** è in parte auto-verificabile (es. PE-1 view-source senza JS, PE-7 diff filename, MO-1 grep easing tokens) e in parte **gate umano** (CR-1/CR-8 = giudizio CEO dal vivo, §5). Il Quality Gate automatico copre i controlli statici dell'Asse 2; i criteri qualitativi restano verdetto del committente sul device reale (§8 passo 4).
+
+> **Invocazione concreta privata (M-OS3-048).** Il comando del gate (CLI, argomenti `argparse`, path) è un SSOT `visibility: private` nell'enforcement OS3 Matrix (repo privato): `web-page-quality-gate-impl`. Confine mono — il modello (i 101 criteri di §1-3) resta pubblico.
 
 ### 4.1 Durante la creazione (FASE 4)
 
@@ -318,6 +402,12 @@ Se un criterio **raccomandato** non passa:
 - Dichiarare nel report mission come WARN con motivazione
 - Non blocca la chiusura
 
+Per i criteri dell'**Asse Distinzione** a verifica qualitativa ("giudizio CEO", es. CR-1,
+CR-8): non sono auto-bloccabili da uno script — sono un **gate umano**. La mission non chiude
+"distinzione PASS" finché il CEO/committente non l'ha giudicata dal vivo sul device reale.
+L'LLM dichiara onestamente cosa NON è misurabile staticamente (resa motion/3D, impatto di una
+transizione) e rimanda il verdetto, invece di auto-certificarsi eccellente.
+
 ---
 
 ## 6. Checklist sintetica (copia rapida per piano mission)
@@ -331,16 +421,26 @@ SEO:               S-1..S-10 (title, desc, canonical, hreflang, sitemap, robots,
                               noindex, h1 keyword)
 Schema.org:        SD-1..SD-7 (WebPage, about, locale-dynamic, valid JSON-LD)
 Social:            OG-1..OG-10 (og:*, twitter:*, image 1200x630)
-Accessibilita:     A-1..A-12  (alt, skip, contrast, focus, target size, aria, sr-only)
+Accessibilita:     A-1..A-14  (alt, skip, contrast, focus, target size, aria, sr-only,
+                                  axe 0 critical/serious, WAVE 0 errori)
 Performance:       P-1..P-12  (LCP, CLS, INP, FCP, Lighthouse >=90, images, fonts, JS)
-Security:          SEC-1..SEC-10 (HSTS, CSP, nosniff, X-Frame, Referrer, Permissions,
-                                  COOP, COEP, HTTPS, securityheaders.com A+)
+Security:          SEC-1..SEC-11 (HSTS, CSP, nosniff, X-Frame, Referrer, Permissions,
+                                  COOP, COEP, HTTPS, securityheaders.com A+, Observatory A+)
 i18n:              I-1..I-8   (tutte le lingue, diacritici, nomi legali, rich text,
                               meta lengths, title composition, JSON valid, no hardcoded)
-Funzionalita:      F-1..F-7   (200 OK, response time, form, CORS, link interni/esterni)
+Funzionalita:      F-1..F-9   (200 OK, response time, form, CORS, link interni/esterni,
+                                  404 custom + status reale, trust-signal integrity)
 Privacy:           PR-1..PR-4 (cookie, consenso, dark pattern, privacy link)
 Agentic:           AB-1..AB-4 (llms.txt, sitemap in robots)
 Sustainability:    WS-1..WS-3 (peso pagina, immagini, asset inutilizzati)
+
+── ASSE DISTINZIONE (pagine identitarie) ──
+Craft:             CR-1..CR-8 (anti-mediano, sottrazione, hero full-bleed, ritmo,
+                              chiusura attiva, sistema, tipografia, identità)
+Motion:            MO-1..MO-7 (easing fisico, reveal/stagger, profondità, ambientale,
+                              reduced-motion, no-CLS, enhancement-non-prerequisito)
+Progressive Enh.:  PE-1..PE-8 (fallback semantico, aria-hidden, guardie degrado, parità
+                              mobile per taratura, self-hosted, filename versionato, preload LCP)
 ```
 
 ---
@@ -355,19 +455,79 @@ Sustainability:    WS-1..WS-3 (peso pagina, immagini, asset inutilizzati)
 | Schema.org | 31 tipi attivi rich results (marzo 2026) | attivo |
 | HTML | Living Standard (W3C/WHATWG) | attivo |
 | Security Headers | HSTS + CSP + COOP/COEP/CORP | attivo |
+| Security scanners | securityheaders.com A+ + Mozilla Observatory A+ | attivo |
+| A11y scanners | axe-core (0 critical/serious) + WAVE (0 errori) | attivo |
 | Open Graph | og:* + twitter:card | attivo |
 | W3C WSG | Web Sustainability Guidelines | target spec aprile 2026 |
 | llms.txt | Convenzione community | emergente |
+| Asse Distinzione (CR/MO/PE) | calibrato su north-star, non su spec esterna | attivo (da M-LEVESPE, giugno 2026) |
 
 **Questo documento va aggiornato quando la ricerca di FASE 1 identifica cambiamenti.**
 
+> L'Asse 1 (correttezza) insegue spec esterne aggiornate dalla ricerca di §1. L'Asse 2
+> (distinzione) non ha una spec esterna: si calibra sui riferimenti del committente (§8) e
+> si misura contro lo stato dell'arte del momento, non contro una soglia fissa.
+
 ---
 
-## 8. Versionamento e firma
+## 8. Calibrazione Distinzione — metodo north-star
 
-**Versione**: 1.0.0
-**Data**: 2026-05-22
+L'Asse 2 non si misura contro una soglia fissa: si **calibra**. Il metodo, in quattro passi,
+è parte del Quality Gate per pagine identitarie e va eseguito **in FASE 1/3**, prima di costruire.
+
+```
+PASSO 1 — RACCOGLI RIFERIMENTI
+  Il committente indica 2-4 siti che ammira (north-star). Sono la sua bussola estetica,
+  non un capitolato di feature da copiare.
+
+PASSO 2 — DISTILLA IL FILO COMUNE
+  Non "che features hanno" ma QUALE PRINCIPIO condividono. Esempio di distillato:
+  "raffinatezza per sottrazione" (saturazione bassa, un accento, motion fisico,
+  whitespace costoso, sofisticazione tecnica invisibile). Il filo, non la copia.
+
+PASSO 3 — PARAMETRA IL LAVORO SUL FILO
+  Ogni scelta (palette, tipografia, motion, densità) si giustifica contro il filo distillato.
+  Se una scelta non serve il filo, è rumore: si toglie (CR-2).
+
+PASSO 4 — VALIDA DAL VIVO
+  Motion, 3D, transizioni e sfogliabili NON rendono in screenshot headless. Il giudizio
+  finale è del CEO/committente sul device reale (desktop E mobile). L'LLM consegna con
+  onestà: dichiara cosa ha verificato staticamente e cosa richiede l'occhio umano.
+```
+
+**Trappola della metrica mediana.** Il default dell'LLM è "competente" — corretto, pulito,
+anonimo. Per pagine identitarie è un fallimento dell'Asse 2. Riconoscere quando si sta
+producendo il default e romperlo è una disciplina attiva, non un'aspirazione. Il segnale
+d'allarme: "tecnicamente è tutto a posto" mentre la pagina non ha alcun momento che si
+ricordi (viola CR-1).
+
+**Restraint come default, non timidezza.** "Rompere il mediano" non significa caricare
+effetti. La direzione è di solito *sottrarre* (CR-2): un accento, movimento fisico misurato,
+spazio. La distinzione nasce dalla precisione delle poche cose presenti, non dal numero.
+
+---
+
+## 9. Versionamento e firma
+
+**Versione**: 1.2.0
+**Data**: 2026-05-22 (v1.0.0) · 2026-06-02 (v1.1.0) · 2026-06-04 (v1.2.0)
 **Autore**: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
-**Origine**: Audit M-211 — difetti trovati post-deploy che il protocollo mission non preveniva
+**Origine v1.0.0**: Audit M-211 — difetti trovati post-deploy che il protocollo mission non preveniva
+**Origine v1.1.0**: ciclo mission M-LEVESPE (giugno 2026) — un sito identitario che passava
+la correttezza ma veniva giudicato "mediano". Da lì l'Asse 2 (Distinzione: CR/MO/PE) + il
+metodo north-star (§8).
 
-Il protocollo nasce dalla constatazione che "build passa" non equivale a "pagina eccellente". I criteri qui elencati sono la definizione operativa di "eccellente" per una pagina web pubblica.
+Il protocollo nasce dalla constatazione che "build passa" non equivale a "pagina eccellente".
+La v1.1.0 aggiunge la constatazione successiva: **"corretta" non equivale a "distinta"**. La
+v1.2.0 rinforza l'Asse Correttezza con la lezione che **un errore nascosto resta un errore**
+(404 che restituisce 200 — F-8) e che **un claim non provato è un anti-pattern** (fake trust
+signals — F-9). I criteri qui elencati sono la definizione operativa di "eccellente" su
+entrambi gli assi.
+
+### Changelog
+
+| Versione | Data | Modifica |
+|----------|------|----------|
+| 1.0.0 | 2026-05-22 | Protocollo iniziale — Asse Correttezza (§3.1–§3.12, 90 criteri). Origine audit M-211 |
+| 1.1.0 | 2026-06-02 | Asse Distinzione: §0.1 (due assi), §3.13 Craft (CR-1..8), §3.14 Motion (MO-1..7), §3.15 Progressive Enhancement (PE-1..8), §8 metodo north-star, gate umano in §5. Origine M-LEVESPE |
+| 1.2.0 | 2026-06-04 | Asse Correttezza esteso da rivalutazione esterna (Qwen) su Capasso: **F-8** (404 custom + status HTTP 404 reale, no fallback 200), **F-9** (integrità segnali di fiducia — anti fake trust signals, Pilastro 3), **SEC-11** (Mozilla Observatory A+), **A-13/A-14** (axe 0 critical/serious + WAVE 0 errori). Corretto anche il conteggio Asse 1 stale ("90"→**101**, P0-3 Statistics Rule). Origine M-OS3-072 (lezioni M-CAPASSO-024/025) |
