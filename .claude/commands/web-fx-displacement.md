@@ -68,7 +68,10 @@ Eleganza prima di spettacolo: parti gentile, alza solo se il CEO lo chiede.
   fallisce → l'immagine reale resta visibile.
 - **Guardie di degrado (PE-3)**: WebGL2 + `pointer:fine` + `min-width 768` + `!prefers-reduced-motion` +
   `!save-data` + `!toggle a11y`. Fuori gating: nessun canvas. Tutto in `try/catch` (fallback silenzioso).
-- **Per-immagine, mai full-viewport**: ogni immagine ha il proprio canvas dentro il suo contenitore. Un
+- **Posizionamento drop-in (template ≥1.1.0)**: il canvas è `position:fixed` e **insegue il bounding-rect
+  dell'`<img>`** a ogni frame → funziona su qualsiasi markup (img nuda, card, grid) **senza** richiedere un
+  `<figure>`/wrapper stretto. Basta `data-fx-displace` sull'`<img>`.
+- **Per-immagine, mai full-viewport**: ogni immagine ha il proprio canvas dimensionato all'immagine. Un
   overlay full-viewport refrattivo può "opacizzare" l'intera pagina su bug dell'alpha. (Cicatrice M-CAPASSO-029.)
 - **Texture same-origin**: usa solo immagini servite dalla stessa origin (no CORS taint su `texImage2D`).
 

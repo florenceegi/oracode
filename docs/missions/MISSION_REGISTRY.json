@@ -18,8 +18,42 @@
     "keys_language": "english",
     "keys_converted_mission": "M-OS3-025 (CEO 2026-05-31: tipo_missione→type, organi_coinvolti→organs)"
   },
-  "counter": 74,
+  "counter": 76,
   "missions": [
+    {
+      "id": "M-OS3-076",
+      "title": "Template fx robusto: canvas fixed che insegue il rect dell'img (drop-in su qualsiasi markup)",
+      "type": "refactor",
+      "organs": [
+        "oracode"
+      ],
+      "priority": "P2",
+      "trigger_matrix": 3,
+      "status": "closed",
+      "date_open": "2026-06-04",
+      "date_close": "2026-06-04",
+      "scope_hash": "ca1998756d3f27d6f63bb79e5135bd58f2e6d5db42cf9e26af4eb74eb832c7d2",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-04T21:34:27.093Z",
+      "report_technical": "docs/missions/M-OS3-076_REPORT_TECHNICAL.md",
+      "report_extended": "docs/missions/M-OS3-076_REPORT_EXTENDED.md",
+      "doc_sync_log": "audit/doc_sync/M-OS3-076/doc_sync_log.json",
+      "stats": {
+        "total_commits": 0,
+        "lines_added": 0,
+        "lines_deleted": 0,
+        "lines_net": 0,
+        "lines_touched": 0,
+        "files_touched": 0,
+        "weighted_commits": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
+        "tags_breakdown": {},
+        "commit_hashes": [],
+        "by_repo_day": [],
+        "calculated_at": "2026-06-04"
+      }
+    },
     {
       "id": "M-OS3-074",
       "title": "Skill /web-fx-displacement — effetto immagini WebGL riusabile (da M-CAPASSO-030) + template + gate MO",
@@ -39,30 +73,33 @@
       "report_extended": "docs/missions/M-OS3-074_REPORT_EXTENDED.md",
       "doc_sync_log": "audit/doc_sync/M-OS3-074/doc_sync_log.json",
       "stats": {
-        "total_commits": 1,
+        "total_commits": 2,
         "lines_added": 382,
         "lines_deleted": 4,
         "lines_net": 378,
         "lines_touched": 386,
         "files_touched": 6,
-        "weighted_commits": 1.6,
-        "cognitive_load": 2.43,
-        "productivity_index": 22.11,
+        "weighted_commits": 2.2,
+        "cognitive_load": 2.5,
+        "productivity_index": 23.92,
         "tags_breakdown": {
+          "CHORE": 1,
           "ARCH": 1
         },
         "commit_hashes": [
-          "269f0a80680e0baed5741ba5d194960d8d188a1b"
+          "269f0a80680e0baed5741ba5d194960d8d188a1b",
+          "d83393595598376ef52c4348e502fb9168323c85"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-04",
-            "commits": 1,
+            "commits": 2,
             "lines_added": 382,
             "lines_deleted": 4,
             "files_touched": 6,
             "tags": {
+              "CHORE": 1,
               "ARCH": 1
             }
           }
@@ -589,8 +626,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
