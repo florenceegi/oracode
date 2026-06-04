@@ -39,20 +39,38 @@
       "report_extended": "docs/missions/M-OS3-074_REPORT_EXTENDED.md",
       "doc_sync_log": "audit/doc_sync/M-OS3-074/doc_sync_log.json",
       "stats": {
-        "total_commits": 0,
-        "lines_added": 0,
-        "lines_deleted": 0,
-        "lines_net": 0,
-        "lines_touched": 0,
-        "files_touched": 0,
-        "weighted_commits": 0,
-        "cognitive_load": 1.0,
-        "productivity_index": 0.0,
-        "tags_breakdown": {},
-        "commit_hashes": [],
-        "by_repo_day": [],
+        "total_commits": 1,
+        "lines_added": 382,
+        "lines_deleted": 4,
+        "lines_net": 378,
+        "lines_touched": 386,
+        "files_touched": 6,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.43,
+        "productivity_index": 22.11,
+        "tags_breakdown": {
+          "ARCH": 1
+        },
+        "commit_hashes": [
+          "269f0a80680e0baed5741ba5d194960d8d188a1b"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-06-04",
+            "commits": 1,
+            "lines_added": 382,
+            "lines_deleted": 4,
+            "files_touched": 6,
+            "tags": {
+              "ARCH": 1
+            }
+          }
+        ],
         "calculated_at": "2026-06-04"
-      }
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
     },
     {
       "id": "M-OS3-072",
@@ -571,8 +589,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1.0,
-        "productivity_index": 0.0,
+        "cognitive_load": 1,
+        "productivity_index": 0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
