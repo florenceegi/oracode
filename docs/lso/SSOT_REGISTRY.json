@@ -729,9 +729,9 @@
         "paths": []
       },
       "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-03",
+      "last_verified": "2026-06-05",
       "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-049",
+      "verified_in_mission": "M-OS3-078",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0,

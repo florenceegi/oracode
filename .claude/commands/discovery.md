@@ -65,24 +65,17 @@ Chiedi sempre a Fabio prima di procedere.
 ## Fase 3 — Stima tempi e costi
 
 **3.1 Riferimento**
-Leggi `/home/fabio/EGI-DOC/docs/ecosistema/PLATFORM_NUMBERS.md`, sezione 4 "Prove di Sviluppo".
-Questi numeri sono l'ordine di grandezza REALE di cosa produciamo con Oracode. Usali come calibrazione:
+Leggi `templates/CALIBRATION_REFERENCE.md` (paradigma): ordini di grandezza REALI per archetipo, calibrati su git
+history di progetti Oracode. Usa l'archetipo più vicino come calibrazione.
+Se l'organismo ha un registro numerico interno più dettagliato, quello è la fonte primaria (resta privato all'organismo).
 
-| Tipo progetto | Ore reali | LOC | Riferimento |
-|---------------|-----------|-----|-------------|
-| Sito vetrina + CMS | ~16h | 18k | Gialloro |
-| Configuratore complesso | ~30h | 27k | Creator Staging |
-| Business card virale | ~25h | 15k | Business Card |
-| Certificazione blockchain | 38-44h | 17k | Sigillo |
-| Wallet credenziali W3C | ~78h | 45k | EGI-Credential |
-
-ATTENZIONE: la tendenza naturale e SOVRASTIMARE. Se pensi "3 giorni" e il riferimento dice "2 ore per qualcosa di simile", fidati del riferimento. Questi numeri vengono da git, non da stime.
+ATTENZIONE: la tendenza naturale e SOVRASTIMARE. Se pensi "3 giorni" e l'archetipo dice "~16h per qualcosa di simile", fidati del riferimento. Questi numeri vengono da git, non da stime.
 
 **3.2 Stima**
 Produci:
 - **Ore di sviluppo stimate** — range (min-max), calibrato sui riferimenti
 - **Calendario** — giorni/settimane realistici (considera che non e sviluppo full-time)
-- **Costo** — basato su tariffa oraria Magicsoft 2.0 (chiedi a Fabio se non nota)
+- **Costo** — basato sulla tariffa oraria dell'organismo (parametro commerciale; chiedi al responsabile se non nota)
 - **Livello Oracode consigliato** — 1/2/3/4 con motivazione
 
 **3.3 Includi nel costo**
@@ -117,6 +110,23 @@ Produci UN DOCUMENTO diviso in due parti.
 
 Mostra ENTRAMBE le parti a Fabio. Fabio approva PRIMA che qualsiasi cosa vada al cliente.
 
+**4.1 Persisti la Parte B (handoff deterministico)**
+Dopo l'approvazione, salva la Parte B come artefatto-ponte **`DISCOVERY_REPORT.json`** (REGOLA ZERO: il
+handoff non deve dipendere dalla memoria di sessione). Path: `~/.oracode/discovery/<nome-progetto>.json`.
+Schema (campi che `/project` riuserà senza ri-chiederli):
+```json
+{
+  "project": "<nome>", "company": "<societa>", "ceo": "<ceo>", "cto": "<cto se noto>",
+  "domain": "<descrizione una riga>",
+  "stack": {"backend": "...", "frontend": "...", "database": "...", "infra": "..."},
+  "languages": "it en", "level": 3, "github_repo": "<owner/repo se noto>",
+  "rag": {"runtime": "...", "schema": "..."},
+  "lso_libs": ["..."], "ssots_to_produce": ["..."], "mission_plan": ["M-001 ...", "..."],
+  "source_mission": "discovery"
+}
+```
+Campi non noti → lascia `null` (NON inventare): `/project` li chiederà esplicitamente.
+
 ---
 
 ## Fase 5 — Approvazione e handoff
@@ -130,9 +140,9 @@ Fabio gestisce la comunicazione col cliente.
 Quando il cliente approva: il progetto e confermato.
 
 **5.3 Handoff a /project**
-La Parte B del report diventa l'input di `/project`.
-Supervisor puo avviare `/project` con i dati gia raccolti — nessuna domanda duplicata.
-Da qui iniziano gli SSOT del progetto.
+La Parte B persistita (`DISCOVERY_REPORT.json`, Fase 4.1) è l'input di `/project`.
+`/oracode-configure` legge questo file e **salta le domande già risolte**, chiedendo solo i campi `null`
+(es. CTO, repo GitHub se non noti in discovery). Nessuna domanda duplicata. Da qui iniziano gli SSOT del progetto.
 
 **5.4 MVP (se concordato)**
 Prima di sviluppo completo, produrre MVP minimo per validazione visiva.
@@ -144,7 +154,7 @@ Iterabile: MVP → feedback cliente → aggiustamento → nuovo MVP → accordo 
 
 - MAI comunicare direttamente col cliente. Tutto passa da Fabio.
 - MAI sottostimare la raccolta dati. Anche 10 pagine richiedono specifiche.
-- MAI gonfiare i tempi. Calibra su PLATFORM_NUMBERS, non su istinto.
+- MAI gonfiare i tempi. Calibra su `CALIBRATION_REFERENCE.md` (archetipi), non su istinto.
 - Cambio idea del cliente dopo approvazione = change order con costi aggiuntivi. Non e un problema — e business.
 - Il form lacune deve essere comprensibile da una persona non tecnica. Zero acronimi, zero gergo.
 - Discovery e lavoro e va fatturato. Includerlo nel costo totale.
