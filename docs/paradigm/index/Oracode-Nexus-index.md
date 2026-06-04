@@ -275,7 +275,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 ### `WEB_PAGE_QUALITY_GATE.md`
 - **Path**: `/home/fabio/oracode/docs/paradigm/standards/WEB_PAGE_QUALITY_GATE.md`
 - **Status**: ✅ (letto integrale)
-- **Versione/data**: v1.2.0 — 2026-06-04 (origine M-211; v1.1.0 Asse Distinzione CR/MO/PE da M-LEVESPE; v1.2.0 F-8/F-9/SEC-11/A-13/A-14 da M-OS3-072)
+- **Versione/data**: v1.3.0 — 2026-06-04 (origine M-211; v1.1.0 Asse Distinzione CR/MO/PE da M-LEVESPE; v1.2.0 F-8/F-9/SEC-11/A-13/A-14 da M-OS3-072; v1.3.0 MO-8 immagini displacement + nota effetti riusabili skill da M-OS3-074)
 - **Sintesi**: Protocollo Quality Gate **automatico** per mission deliverable web. Trigger: `type ∈ [feature, refactor]` (chiave canonica inglese; `tipo_missione` = legacy EGI-DOC) + file `.tsx`/`.html`/`.blade.php` pubblici. Integrazione Mission Protocol come gate FASE 4 → FASE 5 obbligatorio. 12 sezioni criteri (HTML, SEO, Schema.org, OG, A11y WCAG 2.2 AA, Performance Core Web Vitals, Security headers HSTS+CSP+COOP/COEP, i18n, Funzionalità, Privacy/GDPR, Agentic Browsing Lighthouse 13.3+, Sustainability W3C WSG).
 - **Sezioni chiave**: §0 Scope/trigger | §1 Ricerca standard FASE 1 | §3 12 sezioni criteri | §4 Processo verifica | §5 Escalation | §6 Checklist sintetica
 
