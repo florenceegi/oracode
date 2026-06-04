@@ -35,16 +35,59 @@ Se licenza non presente o scaduta: "Licenza OS3 Matrix non valida. Procedi senza
 Copia `CLAUDE_ORACODE_CORE.md` dal repo oracode nella root del futuro progetto.
 
 **2.3 Se Matrix: installa enforcement**
-Dal clone temporaneo di os3-matrix, copia nel progetto:
-- `hooks/` → `.claude/hooks/` del progetto (o `~/.claude/hooks/` se globale)
-- `agents/` → `.claude/agents/` del progetto (o `~/.claude/agents/` se globale)
+
+Chiedi all'utente: "Installare hook/agenti a livello progetto (`.claude/`) o globale (`~/.claude/`)?"
+Chiama la destinazione scelta `<CLAUDE_DIR>` (`<project>/.claude` oppure `~/.claude`).
+
+**2.3.a — Scegli il set di hook (NON copiare l'intera `hooks/`)**
+L'install copia SOLO gli hook del set giusto, mai tutti. La fonte di verità è `etc/settings-snippet.*.json`:
+- **Progetto generico (default, ogni cliente)** → set **core**: solo gli hook referenziati in
+  `etc/settings-snippet.core.json` (universali / risolti a runtime, nessun path organismo-specifico).
+- **Organismo FlorenceEGI** (solo se il descrittore dichiara `organism: florenceegi`) → core **+** overlay
+  `etc/settings-snippet.florenceegi.json` (hook con logica di dominio EGI/MiCA/Egili).
+
+> ⚠️ Gli 8+ hook overlay FlorenceEGI (mica-guard, organ-index-guard, cross-project-guard,
+> deploy-pipeline-guard, doc-sync-v2-guard, mission-stats-guard, ...) NON vanno MAI in un progetto cliente.
+> Copiare l'intera `hooks/` è un BUG (M-OS3-077): porta logica di dominio e path privati nel repo cliente.
+
+Per ogni hook del set scelto, copia `hooks/<nome>.sh` → `<CLAUDE_DIR>/hooks/<nome>.sh`.
+
+**2.3.b — Wira gli hook in `settings.json` (senza questo, gli hook NON scattano)**
+Claude Code esegue gli hook SOLO se dichiarati in `settings.json`. Quindi:
+- Se `<CLAUDE_DIR>/settings.json` NON esiste → crealo copiando `etc/settings-snippet.core.json`
+  (+ merge di `settings-snippet.florenceegi.json` se organismo FlorenceEGI).
+- Se esiste già → fai il **merge** della chiave `hooks` degli snippet in quella esistente (non sovrascrivere
+  altre chiavi). I path negli snippet sono `$HOME`-based (generici): non sostituirli con path assoluti.
+
+Verifica finale (invariante M-OS3-077): `<CLAUDE_DIR>/settings.json` ha `hooks` popolati; in
+`<CLAUDE_DIR>/hooks/` nessun hook overlay e nessun path `/home/...`/dominio baked
+(`docs/tests/m-os3-077/verify_install.sh <project-dir>` deve uscire 0).
+
+**2.3.c — Agenti e bin: gate anti-leak (NON copiare wholesale)**
+Come per gli hook, `agents/` e `bin/` NON si copiano interi in un progetto cliente: molti agenti/bin
+sono FlorenceEGI-coupled (path privati, logica di dominio Egili/NATAN/MiCA). Regola:
+- **Organismo FlorenceEGI** (descrittore `organism: florenceegi`) → copia `agents/` e `bin/` interi.
+- **Progetto generico (default)** → copia da `agents/` e `bin/` SOLO i file che passano il gate canonico
+  `bin/install-leak-gate.sh <file>` (exit 0 = client-clean: nessun path privato né nome-dominio).
+  I file che NON passano si SALTANO (REGOLA ZERO: non versare nel cliente ciò che è organism-specific).
+
+Per ogni file di `agents/*.md` e `bin/*`:
+```
+bash <clone>/bin/install-leak-gate.sh "<file>" && cp "<file>" "<dest>"   # salta se exit≠0
+```
+> Nota: oggi solo pochi agenti passano il gate (es. doc-sync-v2, web-quality-gate, skill-dryrun-guardian)
+> e l'engine `bin/mission`. Il decoupling del resto è tracciato come **R-DECOUPLE**: man mano che un
+> agente/bin viene ripulito, entra automaticamente nell'install generico (nessuna lista da aggiornare).
+
+**2.3.d — Resto (sempre)**
 - `CLAUDE_OS3_MATRIX_TEMPLATE.md` → root del progetto
-- `bin/` → `.oracode/bin/` del progetto
 - `mission/` → `.oracode/mission/` del progetto
 - `nervous-system/` → `.oracode/nervous-system/` del progetto
+- `etc/settings-snippet.core.json` → `.oracode/etc/` (riferimento per re-wiring/audit futuri)
 
-Chiedi all'utente: "Installare hook/agenti a livello progetto o globale (~/.claude/)?"
 Rimuovi il clone temporaneo dopo la copia.
+Verifica finale: `docs/tests/m-os3-077/verify_install.sh <project-dir>` esce 0 (settings wirato +
+nessun leak in hooks/agents/bin + hook ⊆ set core canonico).
 
 **2.4 Installa librerie LSO selezionate**
 Per ogni libreria scelta, installa tramite package manager appropriato allo stack:
