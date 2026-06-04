@@ -20,6 +20,7 @@ Prima di qualsiasi mission strutturale, leggi questi SSOT autoritativi. Sono **l
 | SSOT locked | Path | Cosa fissa |
 |---|---|---|
 | **Gerarchia a 3 Livelli** | `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` | Mission tracking su 3 livelli (GLOBALE visibile / HUB aggregatore / ISTANZA repo). **Mai collassare in 2. Globale mai nascosto.** Ponte L1→L3 via `.oracode/project.json`. |
+| **Trasferimento Know-How** | `docs/paradigm/ssot/KNOW_HOW_TRANSFER_PROTOCOL.md` | Esperienza privata d'istanza ≠ prodotto. Il know-how operativo GENERICO si **promuove** a un vettore di prodotto (CORE/SSOT/agente/skill/hook/engine), non resta in memoria privata. Gate in FASE 6/DOC-SYNC. Vedi CORE §Trasferimento Know-How. |
 
 ### Oracode Nexus in una frase
 

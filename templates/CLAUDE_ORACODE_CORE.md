@@ -180,6 +180,32 @@ Dubbio tra tipo 1 e 2 → tratta come 2.
 
 ---
 
+## Trasferimento Know-How — Privato → Prodotto
+
+DOC-SYNC trasferisce *codice → documentazione*. Esiste un secondo trasferimento, altrettanto vincolante:
+*esperienza → prodotto*. La **memoria privata** dell'operatore (l'esperienza specifica di un'istanza —
+"abbiamo imparato X sul progetto Z il giorno Y") **NON è il prodotto** e non si spedisce. Ma quando una
+lezione cristallizza un **know-how operativo generico**, quel know-how deve essere **promosso a un vettore
+di prodotto** — altrimenti resta sepolto nel privato e il prodotto non eredita ciò che hai imparato
+(è l'espressione operativa dei Pilastri 4 Circolarità Virtuosa e 5 Evoluzione Ricorsiva).
+
+Classifica ogni lezione e instradala al vettore giusto:
+
+| Tipo di know-how | Vettore (dove vive, come opera) |
+|------------------|----------------------------------|
+| Esperienziale / fatto specifico d'istanza | **Memoria privata** — NON spedisce, NON è prodotto |
+| Protocollo / pattern operativo generico | **SSOT doc** — verità consultabile, tenuta viva da DOC-SYNC |
+| Capacità da auto-innescare al contesto giusto | **Agente** — con descrizione-trigger `USA QUANDO …` |
+| Operazione invocabile su richiesta | **Skill / comando** — `/...` (deployato dalla fonte versionata) |
+| Regola costituzionale / valore | **questo CORE** (paradigma) |
+| Enforcement automatico su evento | **Hook** |
+
+**Gate (FASE 6 / DOC-SYNC):** a ogni chiusura chiediti — *"c'è qui know-how operativo GENERICO da promuovere
+a un vettore di prodotto, o è solo esperienza d'istanza?"*. Il generico si promuove; lo specifico resta privato.
+Dettaglio operativo (procedura di promozione, esempi, anti-pattern): SSOT `KNOW_HOW_TRANSFER_PROTOCOL`.
+
+---
+
 ## Tag Commit
 
 ```
