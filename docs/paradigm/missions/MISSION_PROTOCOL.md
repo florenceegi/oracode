@@ -292,9 +292,17 @@ Il retrospective al punto 5 trova la mission corrente perché lo stato è ancora
 
 ### 6.3 Stati DOC-SYNC (transitori)
 
-Durante FASE 6, DOC-SYNC v2 può portare la mission in stati transitori:
+> ⚠️ **STATO IMPLEMENTAZIONE (M-OS3-079, verità=engine):** questi stati transitori sono **DESIGN / NON
+> implementati** nell'engine `bin/mission`. La macchina-stati reale è: `draft → planned → executing →
+> auditing → closed` (+ `auditing_failed`, `closed_with_debt`, `aborted`, `perpetual`) — vedi `STATES`/
+> `VALID_TRANSITIONS` in `bin/mission`. Gli stati `closing`/`awaiting_doc_sync_approval`/`doc_sync_failed_*`
+> NON esistono come stati persistiti: l'engine usa `auditing` come fase FASE 6 e valida lo **spawn fingerprint**
+> di `doc-sync-v2` al close. La tabella sotto descrive il modello-obiettivo; l'**hardening** (stati DOC-SYNC
+> persistiti + gate su esito reale, non solo spawn) è a backlog (richiede finestra engine + OK CEO).
 
-| Stato | Quando | Transizioni ammesse |
+Modello-obiettivo (DESIGN — non ancora enforced dall'engine):
+
+| Stato (DESIGN) | Quando | Transizioni ammesse |
 |---|---|---|
 | `closing` | FASE 6 in corso, DOC-SYNC v2 in esecuzione | → `completed`, `awaiting_doc_sync_approval`, `doc_sync_failed_*` |
 | `awaiting_doc_sync_approval` | Patch sostitutiva in attesa decisione CEO | → `closing` (dopo risoluzione) → `completed` |
@@ -302,7 +310,8 @@ Durante FASE 6, DOC-SYNC v2 può portare la mission in stati transitori:
 | `doc_sync_failed_rag_reindex` | Agent Step 5 fallito | → `closing` (retry da Step 5, idempotente) |
 | `doc_sync_failed_user_rejected` | Rifiuto senza risoluzione | → `closing` (risoluzione obbligatoria) |
 
-**Nessuna mission chiude con SSOT incoerente.** Se DOC-SYNC v2 fallisce, la mission resta in `closing` fino a risoluzione.
+**Obiettivo:** Nessuna mission chiude con SSOT incoerente. *(Oggi l'engine garantisce lo spawn di DOC-SYNC, non
+l'esito: il gate-su-esito è l'hardening a backlog R-MP.)*
 
 ### 6.4 BOOTSTRAP_DRIFT_LOG e approvazione
 
@@ -459,11 +468,19 @@ P0-13 (Test-First Discipline) richiede test red prima di `executing`. Ma scriver
 
 ## 13. Scope hash anti-drift
 
-Al momento di `open`, il CLI calcola `SHA256(scope)` e lo memorizza in `state.scope_hash`. Ogni transizione di stato verifica che lo scope non sia stato modificato silenziosamente.
+Al momento di `open`, il CLI calcola `SHA256(scope)` e lo memorizza in `state.scope_hash` (nella catena firmata).
+
+> ⚠️ **STATO IMPLEMENTAZIONE (M-OS3-079, verità=engine):** lo scope_hash viene **calcolato e memorizzato**
+> all'open, e l'integrità della catena di transizioni è verificata (`verifyChainOrDie`). MA la **ri-verifica
+> scope-corrente-vs-hash a ogni transizione NON è ancora attiva**: `cmdAdvance` non ricalcola l'hash dello
+> scope dal registry per confrontarlo. Quindi una modifica silenziosa dello scope nel registry **non è
+> attualmente bloccata** alla transizione. La ri-verifica anti-drift è hardening a backlog R-MP (richiede
+> finestra engine + OK CEO, perché tocca `bin/mission` condiviso).
 
 **Output esempio:** `Scope hash: 6c61d27e126b7d0efb384d44eee5bd4243be4b1ed212ee0a191a8c8260b4cee4`
 
-**Conseguenza.** Una mission con scope modificato post-approvazione CEO viene rilevata come scope drift e bloccata. Per modificare lo scope serve un AMENDMENT esplicito (Sez 14).
+**Conseguenza (obiettivo).** Una mission con scope modificato post-approvazione CEO va rilevata come scope drift e
+bloccata. Per modificare lo scope serve un AMENDMENT esplicito (Sez 14). *(Oggi: rilevabile via ri-esecuzione hash, non auto-bloccante.)*
 
 ---
 
