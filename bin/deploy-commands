@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# deploy-commands — M-OS3-064: COPIA PURA oracode/.claude/commands → ~/.claude/commands.
+#
+# PERCHÉ ESISTE (cicatrice): i comandi-skill del paradigma (project, discovery) vivono versionati
+# in oracode/.claude/commands, ma Claude Code esegue la copia USER-LEVEL (~/.claude/commands) che
+# ha PRECEDENZA su quella project-level (regola Claude Code: Enterprise > Personal > Project > Plugin).
+# Senza un deploy esplicito, ~/.claude/commands DRIFTA dalla sorgente git → gira una versione vecchia.
+# (Caso reale: /project girava una copia del 31/05 priva del blocco infra P0-12 / cicatrice M-LEVESPE-002,
+#  mentre il sorgente aggiornato in oracode era schermato e non eseguito.)
+#
+# Gemello di os3-matrix/bin/deploy-agents. Copia ADDITIVA (non sync distruttivo): aggiorna/aggiunge solo
+# i comandi presenti in sorgente, NON tocca gli altri comandi in ~/.claude/commands (q, mission, gate,
+# crea-sito, calc-stat, new-subdomain, ...). Atomico: staging temp → mv all-or-nothing.
+#
+# @author Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici (CEO)
+# @version 1.0.0 (oracode)
+# @purpose Single-source dei comandi-skill paradigma: la versione che gira == la sorgente versionata.
+set -euo pipefail
+shopt -s nullglob
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SRC="$ROOT/.claude/commands"
+DEST="${COMMANDS_DEST:-$HOME/.claude/commands}"
+
+[ -d "$SRC" ] || { echo "✗ sorgente comandi assente: $SRC" >&2; exit 1; }
+mkdir -p "$DEST"
+
+# Copia atomica: staging ACCANTO al DEST (stesso filesystem → mv = rename atomico anche con
+# COMMANDS_DEST override), poi mv all-or-nothing. Solo i .md della sorgente (additivo).
+STAGE="$(mktemp -d "$DEST/.deploy.XXXXXX")"; trap 'rm -rf "$STAGE"' EXIT
+n=0
+for f in "$SRC"/*.md; do
+  [ -e "$f" ] || continue
+  cp "$f" "$STAGE/$(basename "$f")"
+  n=$((n+1))
+done
+for f in "$STAGE"/*.md; do
+  mv -f "$f" "$DEST/$(basename "$f")"
+done
+
+echo "✓ deploy-commands: $n comandi-skill copiati → $DEST (additivo, altri comandi preservati)"
+echo "  sorgente canonica versionata: $SRC (florenceegi/oracode)"
