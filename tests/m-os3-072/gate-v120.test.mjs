@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const g = readFileSync('/home/fabio/oracode/docs/paradigm/standards/WEB_PAGE_QUALITY_GATE.md','utf8');
+let f=0; const ck=(c,m)=>{try{assert.ok(c,m);console.log('  ✓ '+m);}catch(e){console.error('  ✗ '+e.message);f++;}};
+console.log('=== Gate v1.2.0 — nuove criteri ===');
+ck(/F-8/.test(g) && /404 custom|errore.*404|404.*custom/i.test(g), 'F-8 pagina errore 404 custom');
+ck(/F-9/.test(g) && /trust|segnal.*fiducia|dimostrabile|fake trust/i.test(g), 'F-9 trust-signal integrity');
+ck(/SEC-11/.test(g) && /Observatory/i.test(g), 'SEC-11 Mozilla Observatory');
+ck(/A-13/.test(g) && /axe/i.test(g), 'A-13 axe');
+ck(/A-14/.test(g) && /WAVE/i.test(g), 'A-14 WAVE');
+ck(/version:\s*1\.2\.0/.test(g), 'version bump 1.2.0');
+process.exit(f===0?0:1);

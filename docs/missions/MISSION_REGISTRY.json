@@ -3,7 +3,7 @@
     "description": "Mission Registry canonical — paradigma Oracode (repo florenceegi/oracode). Traccia le mission Oracode Nexus (M-OS3-NNN) che evolvono paradigma + enforcement os3-matrix.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-06-03",
+    "updated": "2026-06-04",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Registro SSOT delle mission del paradigma. Schema chiavi inglese (allineato fabiocherici.com, prodotto da doc-sync-v2). Chiude il dual-tracking gap HOME-engine vs repo-registry: questo è il registro repo canonical, l'engine HOME (~/.oracode/missions/) resta state machine runtime.",
     "schema": "canonical-english",
@@ -18,8 +18,42 @@
     "keys_language": "english",
     "keys_converted_mission": "M-OS3-025 (CEO 2026-05-31: tipo_missione→type, organi_coinvolti→organs)"
   },
-  "counter": 23,
+  "counter": 72,
   "missions": [
+    {
+      "id": "M-OS3-072",
+      "title": "Web Quality Gate v1.2.0 — 404 custom, trust-signal integrity, Observatory, axe/WAVE",
+      "type": "feature",
+      "organs": [
+        "oracode"
+      ],
+      "priority": "P2",
+      "trigger_matrix": 3,
+      "status": "closed",
+      "date_open": "2026-06-04",
+      "date_close": "2026-06-04",
+      "scope_hash": "17532cd20b60e5a7c053d407b2d24e97e562c21dd3aa05ad750d9378043862ae",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-04T16:20:46.610Z",
+      "report_technical": "docs/missions/M-OS3-072_REPORT_TECHNICAL.md",
+      "report_extended": "docs/missions/M-OS3-072_REPORT_EXTENDED.md",
+      "doc_sync_log": "audit/doc_sync/M-OS3-072/doc_sync_log.json",
+      "stats": {
+        "total_commits": 0,
+        "lines_added": 0,
+        "lines_deleted": 0,
+        "lines_net": 0,
+        "lines_touched": 0,
+        "files_touched": 0,
+        "weighted_commits": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
+        "tags_breakdown": {},
+        "commit_hashes": [],
+        "by_repo_day": [],
+        "calculated_at": "2026-06-04"
+      }
+    },
     {
       "id": "M-LEDGER-ORACODE",
       "title": "Registro perpetuo — oracode",
@@ -482,8 +516,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
