@@ -6,11 +6,21 @@ risposte che definiscono il progetto e ne determina il livello. Produce la **con
 
 ## Fase 3 — Configurazione progetto
 
-**Q1: Nome progetto**
-Chiedi il nome del progetto (diventa il prefisso: `NOME-DOC/`).
+**3.0 Pre-fill da discovery (handoff deterministico)**
+PRIMA di chiedere Q1, scopri se esiste un report discovery: elenca `~/.oracode/discovery/*.json`.
+- **0 file** → nessun discovery: chiedi tutto come sotto.
+- **1 file** → usalo: è il `DISCOVERY_REPORT.json` del progetto.
+- **>1 file** → chiedi a quale progetto ci si riferisce (mostra i `project` dei JSON) e usa quello.
+Dal file scelto **pre-compila** tutte le risposte presenti. Per ogni campo valorizzato (non `null`): NON ri-chiederlo,
+mostralo come "già definito in discovery: <valore>" e procedi. Chiedi SOLO i campi `null` o assenti.
+REGOLA ZERO: mai inventare un campo mancante — chiedilo.
 
-**Q2: Societa e CEO**
-Chiedi nome societa e nome CEO/founder.
+**Q1: Nome progetto**
+Chiedi il nome del progetto (diventa il prefisso: `NOME-DOC/`). Da questo si deriva `INSTANCE_NAME` (es. `<nome>-DOC`).
+
+**Q2: Societa, CEO e CTO**
+Chiedi nome societa, nome CEO/founder e nome del CTO (partner tecnico/AI). Il CTO popola `{{CTO_NAME}}` nei template:
+non dedurlo né usare un default — se non noto, chiedilo.
 
 **Q3: Dominio**
 Chiedi una descrizione del dominio in una riga.
@@ -19,12 +29,14 @@ Chiedi una descrizione del dominio in una riga.
 Chiedi backend, frontend, database, infrastruttura.
 
 > **Infra deploy — NON ASSUMERE (P0-12).** Se l'istanza si innesta su un ecosistema esistente,
-> non dedurre il pattern di hosting: verificalo dalla infra SSOT dell'ecosistema e replica quello già in uso.
-> **FlorenceEGI**: i sottodomini `*.florenceegi.com` usano **Route53 A-alias → ALB `florenceegi-alb` (eu-north-1)
-> → EC2 `i-0940cdb7b955d1632` → nginx vhost statico**, deploy via SSM da `s3://florenceegi-media/_deploy/<sub>/`,
-> docroot `/home/forge/<sub>/dist`, cert wildcard ACM sull'ALB. **NON S3/CloudFront** (CloudFront = solo CDN media).
-> Riferimenti SSOT: `EGI-DOC/docs/egi/AWS_INFRASTRUCTURE.md` (tabella deploy per-progetto + vhost) e
-> `EGI-DOC/docs/aws/ROUTE53_SUBDOMAIN_PROCEDURE.md`. Cicatrice: M-LEVESPE-002 (assunto S3/CloudFront → corretto a runtime).
+> non dedurre il pattern di hosting (DNS, load balancer, compute, docroot, certificati, pipeline di deploy):
+> verificalo dalla **infra SSOT dell'ecosistema** e replica esattamente quello già in uso. Mai assumere
+> "tanto sarà S3/CloudFront" o pattern plausibili. Cicatrice tipica: deploy assunto ≠ deploy reale → corretto a runtime.
+> *(Gli organismi con infra propria mantengono i dettagli — endpoint, account, path — nella loro SSOT privata, non qui.)*
+
+**Q4b: Repo GitHub**
+Chiedi il repository GitHub del progetto (`owner/repo`) — popola `{{GITHUB_REPO}}` in REPO_MAP.json.
+Se il progetto non ha ancora un repo remoto: registra `null` (NON inventare un nome plausibile, P0-12).
 
 **Q5: Lingue i18n**
 Chiedi le lingue target. Default: "it en".
@@ -81,4 +93,5 @@ Per tutti i livelli:
 
 <!-- Fase 3 sara espansa con step aggiuntivi futuri -->
 
-**Output**: la config raccolta (nome, societa, CEO, dominio, stack, lingue, livello, Q7.*) è l'input di `/oracode-scaffold`.
+**Output**: la config raccolta (nome, INSTANCE_NAME, societa, CEO, CTO, dominio, stack, repo GitHub, lingue, livello, Q7.*) —
+pre-compilata da `DISCOVERY_REPORT.json` dove disponibile — è l'input di `/oracode-scaffold`. Nessun placeholder template resta non risolto.
