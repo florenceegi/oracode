@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "purpose": "Single-source della tassonomia degli status mission. Lettori: EGI-STAT/backend/ecosystem.py (e, in futuro, l'engine bin/mission). REGOLA: ogni NUOVO status va aggiunto QUI; se l'aggregatore incontra uno status assente, GRIDA (loud-on-unknown) e la mission NON viene conteggiata finche non mappata. Niente piu skip silenzioso.",
+    "version": "1.0.0",
+    "mission": "M-OS3-090",
+    "date": "2026-06-07"
+  },
+  "statuses": {
+    "draft":            { "counts_as_production": false, "terminal": false, "note": "aperta — bozza" },
+    "planned":          { "counts_as_production": false, "terminal": false, "note": "aperta — pianificata" },
+    "executing":        { "counts_as_production": false, "terminal": false, "note": "aperta — in esecuzione" },
+    "auditing":         { "counts_as_production": false, "terminal": false, "note": "aperta — in audit di chiusura" },
+    "auditing_failed":  { "counts_as_production": false, "terminal": false, "note": "audit fallito — non chiusa" },
+    "closed":           { "counts_as_production": true,  "terminal": true,  "note": "chiusa con successo" },
+    "closed_with_debt": { "counts_as_production": true,  "terminal": true,  "note": "chiusa con debito tracciato — produzione consegnata, conta" },
+    "aborted":          { "counts_as_production": false, "terminal": true,  "note": "annullata — NON conta" },
+    "perpetual":        { "counts_as_production": false, "terminal": false, "note": "registro perpetuo — non si chiude, escluso da produzione" },
+    "completed":        { "counts_as_production": true,  "terminal": true,  "note": "alias legacy IT (stato==completed) ≡ closed" }
+  }
+}
