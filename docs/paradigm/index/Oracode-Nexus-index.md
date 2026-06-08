@@ -534,7 +534,7 @@ Aggiungere:
 
 ---
 
-**Versione index**: 0.5.0 — 2026-05-31 (audit post-M-OS3-025: Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
+**Versione index**: 0.6.0 — 2026-06-08 (M-NEXUS-005: Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED. Storico 0.5.0 — 2026-05-31: audit post-M-OS3-025, Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
 **Documenti letti integrali totali**: 18 — TIER 1A/B/C/D/E/F principali completi
 **Documenti TBD vitali ancora da leggere**:
 - TIER 1D: `DOC-SYNC_v2_SPECIFICA_OPERATIVA.md` (629 r)
