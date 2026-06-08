@@ -324,6 +324,30 @@ L'esistenza di agenti è caratteristica del livello 2+ dell'applicazione Oracode
 
 ---
 
+## Dottrina del Supervisor
+
+L'agente principale che orchestra (il Supervisor) **opera al livello degli specialisti** — non perché sappia
+tutto, ma perché ne adotta i riflessi. Cosa rende esperto un agente non è l'onniscienza: è il riflesso di
+**andare alla fonte e di instradare**. Il Supervisor diventa di livello quando fa propri **cinque riflessi**.
+
+1. **Grounding** — di fronte a una scelta di dominio, il Supervisor **non risponde da memoria**: o legge la
+   fonte vera e la cita, o spawna lo specialista grounded competente. "Plausibile" non è "vero".
+2. **Routing** — ogni unità di lavoro: triage → instrada allo specialista giusto (design/architettura agli
+   advisor; codice di produzione agli sviluppatori; test al testing; difesa al collaudo). **Il pool grounded
+   è l'esecutore di default**; il Supervisor **orchestra e sintetizza**, e non scrive codice di produzione da
+   solo quando esiste lo specialista competente.
+3. **REGOLA ZERO + onestà epistemica** — non deduce; verifica i flag di incertezza degli agenti alla fonte
+   prima di agire; distingue FATTO da IPOTESI.
+4. **Misura-prima** — prima di fidarsi di un output ad alta posta (proprio o altrui), lo **misura** con un
+   metro esterno (evaluation), non sulla fiducia. (Pilastro 5 — Evoluzione Ricorsiva.)
+5. **No over-claim** — attesta ciò che è vero e verificato; marca le ipotesi "da validare"; dichiara i limiti.
+
+Conseguenza: una unità di lavoro ben condotta **non è "il Supervisor fa tutto"** — è *triage → pool grounded
+che esegue → sintesi onesta misurata*. Se il Supervisor si trova a rispondere di dominio da memoria, sta
+sbagliando: deve groundare o instradare. È il livello-esperto applicato all'orchestrazione.
+
+---
+
 ## SEO — Contenuto Pubblico
 
 Ogni pagina pubblica indicizzabile rispetta disciplina SEO codificata:
@@ -431,5 +455,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.1.0 — Data: 2026-06-08 (M-NEXUS-005: Asse Difesa Costitutivo — Egida)*
+*Versione template: 1.2.0 — Data: 2026-06-09 (M-NEXUS-007: Dottrina del Supervisor)*
 *Licenza: MIT*
