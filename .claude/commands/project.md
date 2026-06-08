@@ -28,6 +28,11 @@ Mostra all'utente:
 - Struttura creata (tree)
 - Infrastruttura Oracode installata (paradigma, Matrix, librerie)
 - Livello determinato e perche
+- **Difesa Egida installata** (se Matrix, livello 2+): profilo `egida_profile`, `SECURITY_INVARIANTS.json`
+  scaffoldato nella root (target `<PLACEHOLDER>` da compilare dalla corsia dell'organo), `egida_gate` nel
+  descrittore. Ricorda all'utente: prima della consegna l'LSO deve passare il **Banco di Prova** (`/collaudo`),
+  e i `<PLACEHOLDER>` degli invarianti vanno riempiti coi valori reali dell'organo. Per L1 paradigm-only senza
+  Matrix: nessuna difesa-by-default (proporzionalità — "dove ha senso").
 - Prossimi passi consigliati per il livello scelto
 
 <!-- Fase 5 sara espansa con step aggiuntivi futuri -->
