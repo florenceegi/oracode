@@ -1,0 +1,76 @@
+/**
+ * oracode/templates/fx/photowheel.v1.css — stili Photo Wheel (giostra verticale a cilindro).
+ * Pair con photowheel.v1.js. Classi generiche; colori via var(--color-*, fallback) → funziona
+ * standalone o dentro un design system. Copia in una sezione/foglio dell'istanza e adatta i token.
+ *
+ * STATO BASE = fallback statico (no-JS / reduced-motion): immagini impilate, didascalie visibili.
+ * STATO .is-wheel (aggiunto dal JS) = giostra 3D + ruzzola.
+ */
+
+/* ── Fallback statico ────────────────────────────────────────────────── */
+.wheel-stage { margin-top: clamp(4rem, 8vw, 7rem); }
+.wheel { list-style: none; margin: 0; padding: 0; display: grid; gap: 4rem; justify-items: center; }
+.slide-fig { margin: 0; width: 100%; max-width: 48rem; }
+.slide-fig img { width: 100%; height: auto; display: block; border: 1px solid var(--color-mist, #555); background: var(--color-ink, #0a0a0a); cursor: zoom-in; }
+.slide-cap { margin-top: 0.75rem; text-align: center; }
+.dial, .wheel-controls, .wheel-caption { display: none; } /* nascosti finché il JS non attiva */
+
+/* ── Giostra (.is-wheel) ─────────────────────────────────────────────── */
+.wheel-stage.is-wheel { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); margin-inline: auto; max-width: 72rem; }
+
+.wheel-stage.is-wheel .wheel-viewport {
+  position: relative; grid-column: 1; height: var(--wheel-h, clamp(320px, 56vh, 600px));
+  perspective: 1200px; perspective-origin: 50% 50%; overflow: visible;
+  touch-action: none; cursor: grab;   /* swipe verticale diretto sulle immagini */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+}
+.wheel-stage.is-wheel .wheel-viewport:active { cursor: grabbing; }
+.wheel-stage.is-wheel .wheel { position: absolute; inset: 0; margin: 0; padding: 0; display: block; transform-style: preserve-3d; }
+
+/* slide: transform / opacity / z-index impostati dal JS ogni frame */
+.wheel-stage.is-wheel .slide {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--slide-w, 60%); height: var(--slide-h, auto);
+  margin: 0; transform-origin: center center; will-change: transform, opacity;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.wheel-stage.is-wheel .slide-fig { width: 100%; height: 100%; max-width: none; }
+.wheel-stage.is-wheel .slide-fig picture { display: block; width: 100%; height: 100%; }
+.wheel-stage.is-wheel .slide-fig img {
+  width: 100%; height: 100%; object-fit: contain; background: var(--color-ink, #0a0a0a);
+  border: 1px solid var(--color-mist, #555); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7); cursor: grab;
+}
+.wheel-stage.is-wheel .slide-cap { display: none; }
+
+/* Ruzzola zigrinata — cilindro visto di taglio dal fronte */
+.wheel-stage.is-wheel .dial {
+  display: block; grid-column: 2; position: relative; align-self: stretch;
+  width: clamp(38px, 6vw, 58px); height: var(--wheel-h, clamp(320px, 56vh, 600px));
+  border-radius: 10px; overflow: hidden; cursor: grab; touch-action: none;
+  background: linear-gradient(90deg, #050505 0%, #2c2c2c 20%, #707070 50%, #2c2c2c 80%, #050505 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+.wheel-stage.is-wheel .dial:active { cursor: grabbing; }
+.wheel-stage.is-wheel .dial-ridges {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.14) 0, rgba(255,255,255,0.14) 1px, rgba(0,0,0,0.55) 4px, rgba(0,0,0,0.0) 7px, rgba(255,255,255,0.14) 8px);
+  background-size: 100% 16px; background-position: 0 0; will-change: background-position;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+.wheel-stage.is-wheel .dial-notch { position: absolute; left: 6%; right: 6%; top: 50%; height: 2px; transform: translateY(-50%); background: var(--color-paper, #fff); opacity: 0.45; }
+
+/* Comandi su/giù — accessibili, ≥24px (WCAG 2.5.8) */
+.wheel-stage.is-wheel .wheel-controls { display: flex; flex-direction: column; gap: 0.6rem; grid-column: 2; justify-self: center; margin-top: 1rem; }
+.wheel-btn {
+  width: 2.75rem; height: 2.75rem; display: grid; place-items: center; cursor: pointer;
+  border: 1px solid var(--color-mist, #555); border-radius: 50%; background: transparent; color: var(--color-paper, #fff);
+  transition: background 200ms ease, transform 200ms ease;
+}
+.wheel-btn:hover { background: rgba(255, 255, 255, 0.08); transform: scale(1.06); }
+.wheel-btn:focus-visible { outline: 2px solid var(--color-paper, #fff); outline-offset: 3px; }
+.wheel-stage.is-wheel .wheel-caption {
+  display: block; grid-column: 1 / -1; margin: 1.5rem auto 0; text-align: center; max-width: 50ch; min-height: 1.6em;
+  font-style: italic; color: var(--color-mist, #aaa);
+}
