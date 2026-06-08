@@ -7,9 +7,9 @@ rag: public
 
 > **Scopo**: indice navigabile anti-degradazione per Padmin Supervisor. Sintesi compatta + path assoluto + sezioni chiave per ogni documento vitale di Oracode + OS3 Matrix + Layer Stack LSO.
 > **Path canonical**: `/home/fabio/oracode/docs/paradigm/index/Oracode-Nexus-index.md`. Rilocazione paradigma in `docs/paradigm/` COMPLETATA (M-OS3-022).
-> **Versione**: 0.6.1 (M-NEXUS-006 E5 — Egida difesa-by-default operazionalizzata nel bootstrap `/project`)
+> **Versione**: 0.6.2 (M-NEXUS-007 — Dottrina del Supervisor aggiunta alle Decisioni LOCKED + sintesi CORE 1.2.0)
 > **Autore**: Padmin Supervisor for Fabio Cherici
-> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-06-08
+> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-06-09
 
 ---
 
@@ -22,6 +22,7 @@ Prima di qualsiasi mission strutturale, leggi questi SSOT autoritativi. Sono **l
 | **Gerarchia a 3 Livelli** | `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` | Mission tracking su 3 livelli (GLOBALE visibile / HUB aggregatore / ISTANZA repo). **Mai collassare in 2. Globale mai nascosto.** Ponte L1→L3 via `.oracode/project.json`. |
 | **Trasferimento Know-How** | `docs/paradigm/ssot/KNOW_HOW_TRANSFER_PROTOCOL.md` | Esperienza privata d'istanza ≠ prodotto. Il know-how operativo GENERICO si **promuove** a un vettore di prodotto (CORE/SSOT/agente/skill/hook/engine), non resta in memoria privata. Gate in FASE 6/DOC-SYNC. Vedi CORE §Trasferimento Know-How. |
 | **Asse Difesa Costitutivo — Egida** | `EGI-DOC/docs/oracode/Egida/00_EGIDA_CHARTER.md` + CORE §Asse Difesa Costitutivo | **In OSZ da M-NEXUS-005** (4 [DECISIONE CEO] ratificati 2026-06-08). Clausola: *"un LSO si difende e prova la propria difesa, in proporzione al rischio; chi non lo fa non è un LSO"*. **Fortino** difende (runtime) · **DeepDebug** collauda (banco di prova, esiste già) · **Egida** = usarli insieme · **Sigillo** certifica. Difesa = parte della definizione di LSO. Profilo scalato sul livello (vetrina→leggero, denaro/PII/blockchain→pieno). |
+| **Dottrina del Supervisor** | CORE §Dottrina del Supervisor (`templates/CLAUDE_ORACODE_CORE.md`) | **Nel kernel da M-NEXUS-007** (richiesta CEO 2026-06-08, CORE 1.1.0→1.2.0; generica → si diffonde a tutti i progetti via `@import`). Il Supervisor opera al livello degli specialisti adottandone i **5 riflessi**: grounding (mai da memoria — legge la fonte o spawna lo specialista grounded), routing (triage → instrada; **il pool grounded è l'esecutore di default**; il Supervisor orchestra e sintetizza, non scrive codice di produzione da solo quando esiste lo specialista), REGOLA ZERO + onestà epistemica (FATTO vs IPOTESI), misura-prima (metro esterno/evaluation, Pilastro 5), no over-claim. Unità di lavoro ben condotta = *triage → pool grounded esegue → sintesi onesta misurata*, non "il Supervisor fa tutto". |
 
 ### Oracode Nexus in una frase
 
@@ -323,7 +324,8 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 ### `templates/CLAUDE_ORACODE_CORE.md`
 - **Path**: `/home/fabio/oracode/templates/CLAUDE_ORACODE_CORE.md`
 - **Status**: ✅
-- **Sintesi**: Boot context paradigma incluso via `@CLAUDE_ORACODE_CORE.md` in CLAUDE.md istanze. OSZ kernel, REGOLA ZERO, 6+1 pilastri, 13 P0, P0-13 4 fasi, Strategia Delta, Firma OS3, Pattern CEO/CTO, Mission Protocol sintesi, Trigger Matrix DOC-SYNC, Tag commit, Soglie git safety, Checklist pre-risposta, Ultra libs, Layer Stack L0-L11, Protocollo epistemologico spawn agenti.
+- **Sintesi**: Boot context paradigma incluso via `@CLAUDE_ORACODE_CORE.md` in CLAUDE.md istanze. OSZ kernel, REGOLA ZERO, 6+1 pilastri, 13 P0, P0-13 4 fasi, Strategia Delta, Firma OS3, Pattern CEO/CTO, **Dottrina del Supervisor** (5 riflessi; pool grounded = esecutore default — M-NEXUS-007, CORE 1.2.0), Mission Protocol sintesi, Trigger Matrix DOC-SYNC, Tag commit, Soglie git safety, Checklist pre-risposta, Ultra libs, Layer Stack L0-L11, Protocollo epistemologico spawn agenti, Asse Difesa Costitutivo Egida.
+- **Versione/data**: CORE 1.2.0 — 2026-06-09 (M-NEXUS-007: Dottrina del Supervisor)
 
 ### `templates/CLAUDE_PROJECT_TEMPLATE.md`
 - **Path**: `/home/fabio/oracode/templates/CLAUDE_PROJECT_TEMPLATE.md`
@@ -534,7 +536,7 @@ Aggiungere:
 
 ---
 
-**Versione index**: 0.6.1 — 2026-06-08 (M-NEXUS-006 E5: Egida difesa-by-default operazionalizzata nel bootstrap `/project` — `egida_profile` da `/oracode-configure` Q8, `SECURITY_INVARIANTS.json` + `egida_gate`/`egida_profile` da `/oracode-scaffold` step 6b. Storico 0.6.0 — 2026-06-08: M-NEXUS-005 Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED. Storico 0.5.0 — 2026-05-31: audit post-M-OS3-025, Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
+**Versione index**: 0.6.2 — 2026-06-09 (M-NEXUS-007: Dottrina del Supervisor — promossa dal CLAUDE.md locale Fucina al kernel paradigma `CLAUDE_ORACODE_CORE.md` in versione generica (CORE 1.1.0→1.2.0, si diffonde a tutti i progetti via `@import`); aggiunta alle Decisioni LOCKED + sintesi CORE template aggiornata. Storico 0.6.1 — 2026-06-08: M-NEXUS-006 E5 Egida difesa-by-default operazionalizzata nel bootstrap `/project` — `egida_profile` da `/oracode-configure` Q8, `SECURITY_INVARIANTS.json` + `egida_gate`/`egida_profile` da `/oracode-scaffold` step 6b. Storico 0.6.0 — 2026-06-08: M-NEXUS-005 Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED. Storico 0.5.0 — 2026-05-31: audit post-M-OS3-025, Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
 **Documenti letti integrali totali**: 18 — TIER 1A/B/C/D/E/F principali completi
 **Documenti TBD vitali ancora da leggere**:
 - TIER 1D: `DOC-SYNC_v2_SPECIFICA_OPERATIVA.md` (629 r)
