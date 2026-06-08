@@ -7,9 +7,9 @@ rag: public
 
 > **Scopo**: indice navigabile anti-degradazione per Padmin Supervisor. Sintesi compatta + path assoluto + sezioni chiave per ogni documento vitale di Oracode + OS3 Matrix + Layer Stack LSO.
 > **Path canonical**: `/home/fabio/oracode/docs/paradigm/index/Oracode-Nexus-index.md`. Rilocazione paradigma in `docs/paradigm/` COMPLETATA (M-OS3-022).
-> **Versione**: 0.5.0 (audit post-M-OS3-025 — Nexus 3-livelli allineato: engine visibile, /mission globale, ponte L1→L3 FATTI)
+> **Versione**: 0.6.0 (M-NEXUS-005 — Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED)
 > **Autore**: Padmin Supervisor for Fabio Cherici
-> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-05-31
+> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-06-08
 
 ---
 
@@ -21,6 +21,7 @@ Prima di qualsiasi mission strutturale, leggi questi SSOT autoritativi. Sono **l
 |---|---|---|
 | **Gerarchia a 3 Livelli** | `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` | Mission tracking su 3 livelli (GLOBALE visibile / HUB aggregatore / ISTANZA repo). **Mai collassare in 2. Globale mai nascosto.** Ponte L1→L3 via `.oracode/project.json`. |
 | **Trasferimento Know-How** | `docs/paradigm/ssot/KNOW_HOW_TRANSFER_PROTOCOL.md` | Esperienza privata d'istanza ≠ prodotto. Il know-how operativo GENERICO si **promuove** a un vettore di prodotto (CORE/SSOT/agente/skill/hook/engine), non resta in memoria privata. Gate in FASE 6/DOC-SYNC. Vedi CORE §Trasferimento Know-How. |
+| **Asse Difesa Costitutivo — Egida** | `EGI-DOC/docs/oracode/Egida/00_EGIDA_CHARTER.md` + CORE §Asse Difesa Costitutivo | **In OSZ da M-NEXUS-005** (4 [DECISIONE CEO] ratificati 2026-06-08). Clausola: *"un LSO si difende e prova la propria difesa, in proporzione al rischio; chi non lo fa non è un LSO"*. **Fortino** difende (runtime) · **DeepDebug** collauda (banco di prova, esiste già) · **Egida** = usarli insieme · **Sigillo** certifica. Difesa = parte della definizione di LSO. Profilo scalato sul livello (vetrina→leggero, denaro/PII/blockchain→pieno). |
 
 ### Oracode Nexus in una frase
 
