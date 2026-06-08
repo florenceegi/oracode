@@ -7,7 +7,7 @@ rag: public
 
 > **Scopo**: indice navigabile anti-degradazione per Padmin Supervisor. Sintesi compatta + path assoluto + sezioni chiave per ogni documento vitale di Oracode + OS3 Matrix + Layer Stack LSO.
 > **Path canonical**: `/home/fabio/oracode/docs/paradigm/index/Oracode-Nexus-index.md`. Rilocazione paradigma in `docs/paradigm/` COMPLETATA (M-OS3-022).
-> **Versione**: 0.6.0 (M-NEXUS-005 — Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED)
+> **Versione**: 0.6.1 (M-NEXUS-006 E5 — Egida difesa-by-default operazionalizzata nel bootstrap `/project`)
 > **Autore**: Padmin Supervisor for Fabio Cherici
 > **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-06-08
 
@@ -41,7 +41,7 @@ L3 — ISTANZA   singolo progetto/cliente: MISSION_REGISTRY proprio, nel repo de
 - ✅ **FATTO** — Ponte automatico **L1→L3** via `.oracode/project.json` (`bin/mission` auto-registra nel registry del progetto, parallel-safe). [U3]
 - ⏳ **DIFFERITO** — Aggregator HUB + stats/numerazione cross-istanza (al 2° cliente). [U4/U5]
 
-**Flusso operativo Nexus:** `/discovery` (acquisizione) → `/project` (bootstrap istanza, scaffolda `.oracode/project.json`) → `/mission` (lavoro, auto-registrato L1→L3).
+**Flusso operativo Nexus:** `/discovery` (acquisizione) → `/project` (bootstrap istanza, scaffolda `.oracode/project.json` + **difesa Egida-by-default** per i progetti con Matrix, liv 2+) → `/mission` (lavoro, auto-registrato L1→L3).
 
 ---
 
@@ -457,7 +457,7 @@ mission, backlog, timing/handoff di sessione) sono **privati** — inventario ne
 
 ### Flusso operativo Nexus (punto d'ingresso reale)
 1. `/discovery` — acquisizione nuovo progetto/cliente
-2. `/project` — bootstrap istanza: scaffolda `.oracode/project.json` (descrittore L3)
+2. `/project` — bootstrap istanza: scaffolda `.oracode/project.json` (descrittore L3) + installa la **difesa Egida-by-default** per i progetti con Matrix (liv 2+) — operazionalizza l'Asse Difesa Costitutivo (M-NEXUS-005) via `EGIDA_INSTALL_CONTRACT §6`: `/oracode-configure` Q8 sceglie `egida_profile` (`L1`/`L2-L3`/`L3-L4`, upgrade a `L3-L4` per organi denaro/PII/blockchain), `/oracode-scaffold` step 6b scaffolda `SECURITY_INVARIANTS.json` (target `<PLACEHOLDER>`) + scrive `egida_gate`/`egida_profile` nel descrittore. L1 paradigm-only senza Matrix: nessuna difesa-by-default ("dove ha senso"). [M-NEXUS-006 E5]
 3. `/mission` — wrapper GLOBALE context-aware del Mission Engine: rileva l'istanza dal CWD e auto-registra la mission nel MISSION_REGISTRY del progetto via ponte L1→L3
 
 ### Mission lifecycle (FASE 0 → FASE 6)
@@ -534,7 +534,7 @@ Aggiungere:
 
 ---
 
-**Versione index**: 0.6.0 — 2026-06-08 (M-NEXUS-005: Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED. Storico 0.5.0 — 2026-05-31: audit post-M-OS3-025, Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
+**Versione index**: 0.6.1 — 2026-06-08 (M-NEXUS-006 E5: Egida difesa-by-default operazionalizzata nel bootstrap `/project` — `egida_profile` da `/oracode-configure` Q8, `SECURITY_INVARIANTS.json` + `egida_gate`/`egida_profile` da `/oracode-scaffold` step 6b. Storico 0.6.0 — 2026-06-08: M-NEXUS-005 Asse Difesa Costitutivo Egida aggiunto alle Decisioni LOCKED. Storico 0.5.0 — 2026-05-31: audit post-M-OS3-025, Nexus 3-livelli allineato — engine visibile, /mission globale, ponte L1→L3 FATTI; path tool e chiavi registry inglesi verificati alla fonte)
 **Documenti letti integrali totali**: 18 — TIER 1A/B/C/D/E/F principali completi
 **Documenti TBD vitali ancora da leggere**:
 - TIER 1D: `DOC-SYNC_v2_SPECIFICA_OPERATIVA.md` (629 r)
