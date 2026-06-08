@@ -70,5 +70,21 @@
   "DeepDebug": {
     "local_dir": "/home/fabio/DeepDebug-DOC",
     "github_repo": "florenceegi/DeepDebug"
+  },
+  "Fucina": {
+    "local_dir": "/home/fabio/Fucina",
+    "github_repo": "florenceegi/Fucina"
+  },
+  "fabiocherici": {
+    "local_dir": "/home/fabio/fabiocherici.com",
+    "github_repo": "florenceegi/fabiocherici"
+  },
+  "fabio-gianni-site": {
+    "local_dir": "/home/fabio/FABIO-GIANNI",
+    "github_repo": "florenceegi/fabio-gianni-site"
+  },
+  "FORTINO": {
+    "local_dir": "/home/fabio/FORTINO",
+    "github_repo": "florenceegi/FORTINO"
   }
 }
