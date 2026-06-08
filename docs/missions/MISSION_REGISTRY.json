@@ -21,6 +21,19 @@
   "counter": 76,
   "missions": [
     {
+      "id": "M-NEXUS-007",
+      "title": "Dottrina del Supervisor nel kernel OSZ (generica, diffusa a tutti i progetti)",
+      "trigger_matrix": 6,
+      "status": "executing",
+      "date_open": "2026-06-08",
+      "date_close": null,
+      "scope_hash": "9d5593a086fbdce5db0b8432cfd6c2ad87b847fac69ccdead0846c160ec4daa3",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-08T22:06:43.507Z",
+      "report_technical": "docs/missions/M-NEXUS-007_REPORT_TECHNICAL.md",
+      "report_extended": "docs/missions/M-NEXUS-007_REPORT_EXTENDED.md"
+    },
+    {
       "id": "M-NEXUS-006",
       "title": "E5-/project — Egida difesa-by-default nel bootstrap (configure egida_profile + install persist starter + scaffold SECURITY_INVARIANTS + descrittore egida_gate)",
       "trigger_matrix": 3,
@@ -96,7 +109,7 @@
         "lines_net": 465,
         "lines_touched": 475,
         "files_touched": 7,
-        "weighted_commits": 4.0,
+        "weighted_commits": 4,
         "cognitive_load": 2.64,
         "productivity_index": 32.74,
         "tags_breakdown": {
@@ -175,7 +188,7 @@
         "lines_net": 48,
         "lines_touched": 84,
         "files_touched": 4,
-        "weighted_commits": 2.0,
+        "weighted_commits": 2,
         "cognitive_load": 2.12,
         "productivity_index": 11.67,
         "tags_breakdown": {
@@ -447,19 +460,21 @@
       "synced_by_engine": true,
       "last_engine_sync": "2026-05-31T23:54:17.427Z",
       "stats": {
-        "total_commits": 1,
-        "lines_added": 4,
-        "lines_deleted": 0,
-        "lines_net": 4,
-        "lines_touched": 4,
-        "files_touched": 1,
-        "weighted_commits": 1.6,
-        "cognitive_load": 1.5,
-        "productivity_index": 10.94,
+        "total_commits": 3,
+        "lines_added": 1720,
+        "lines_deleted": 145,
+        "lines_net": 1575,
+        "lines_touched": 1865,
+        "files_touched": 18,
+        "weighted_commits": 4.8,
+        "cognitive_load": 2.98,
+        "productivity_index": 69.03,
         "tags_breakdown": {
-          "ARCH": 1
+          "ARCH": 3
         },
         "commit_hashes": [
+          "21cf2a02227f6a5d6606ce5970c77aabb8c36874",
+          "54150528737f2e17cffc17d224cb33c0b2106988",
           "7579f00b9860e0b9657e978119797dff3232c628"
         ],
         "by_repo_day": [
@@ -470,6 +485,28 @@
             "lines_added": 4,
             "lines_deleted": 0,
             "files_touched": 1,
+            "tags": {
+              "ARCH": 1
+            }
+          },
+          {
+            "repo": "florenceegi/os3-matrix",
+            "date": "2026-05-26",
+            "commits": 1,
+            "lines_added": 127,
+            "lines_deleted": 72,
+            "files_touched": 1,
+            "tags": {
+              "ARCH": 1
+            }
+          },
+          {
+            "repo": "florenceegi/os3-matrix",
+            "date": "2026-05-27",
+            "commits": 1,
+            "lines_added": 1589,
+            "lines_deleted": 73,
+            "files_touched": 16,
             "tags": {
               "ARCH": 1
             }
@@ -637,29 +674,36 @@
       },
       "note": "38 doc da EGI-DOC + 1 Oracode-Nexus-index. Redirect notice MOVED_TO_ORACODE_REPO.md in EGI-DOC.",
       "stats": {
-        "total_commits": 8,
-        "lines_added": 16485,
-        "lines_deleted": 15711,
-        "lines_net": 774,
-        "lines_touched": 32196,
-        "files_touched": 88,
-        "weighted_commits": 12.1,
+        "total_commits": 15,
+        "lines_added": 17362,
+        "lines_deleted": 15858,
+        "lines_net": 1504,
+        "lines_touched": 33220,
+        "files_touched": 91,
+        "weighted_commits": 17.7,
         "cognitive_load": 3.5,
-        "productivity_index": 56.69,
+        "productivity_index": 93.54,
         "tags_breakdown": {
           "FIX": 1,
+          "DOC": 8,
           "ARCH": 5,
-          "SECURITY": 1,
-          "DOC": 1
+          "SECURITY": 1
         },
         "commit_hashes": [
+          "0c2e0e2c68e579d42f2943a54b3672849c4c2cc5",
           "39ea4ada147286091a71c70817a95d85e121cd05",
           "3f324d12592fd5c897f7b5f3e3a973820e78e196",
           "4ad14e9262e3fae4d5bed69bd124080855a0c5f5",
+          "4ca94483f5abb1669eb206e2c5f0bf432796ea98",
+          "5cdd59c6e471fb36599ffdd81a73a8f45f312fd5",
+          "618cb360d0fe73dab349366634c28a7fdbaa20e4",
           "671a49890da7b4ab3f785fb3fe05e5079317a7c7",
+          "6fdfcbd2e60d127a6e7c1d3377059fe082a2a882",
           "d2e9cc88dbce8d09fad4ac83e1477b0457050d54",
           "de4588c581499fa9f36dd278df7b69d03d3203e7",
+          "deb61d32787b89cc0aaf40febd1eeabc2351c09d",
           "e9395c6c49e18c894370d7d6ccd346b457f3c2c6",
+          "f33b6aed16e825e5477df92493c3ab4e34173f63",
           "f9329b087a5267a024441f58503fc015966a26ff"
         ],
         "by_repo_day": [
@@ -672,6 +716,39 @@
             "files_touched": 1,
             "tags": {
               "FIX": 1
+            }
+          },
+          {
+            "repo": "florenceegi/EGI-DOC",
+            "date": "2026-04-07",
+            "commits": 1,
+            "lines_added": 287,
+            "lines_deleted": 0,
+            "files_touched": 1,
+            "tags": {
+              "DOC": 1
+            }
+          },
+          {
+            "repo": "florenceegi/EGI-DOC",
+            "date": "2026-04-15",
+            "commits": 4,
+            "lines_added": 157,
+            "lines_deleted": 145,
+            "files_touched": 1,
+            "tags": {
+              "DOC": 4
+            }
+          },
+          {
+            "repo": "florenceegi/EGI-DOC",
+            "date": "2026-04-17",
+            "commits": 2,
+            "lines_added": 433,
+            "lines_deleted": 2,
+            "files_touched": 3,
+            "tags": {
+              "DOC": 2
             }
           },
           {
@@ -768,8 +845,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1.0,
-        "productivity_index": 0.0,
+        "cognitive_load": 1,
+        "productivity_index": 0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
@@ -795,22 +872,34 @@
       "stats_status": "unrecoverable",
       "stats_unrecoverable_reason": "Mission session 3: commit non portano l ID nel messaggio. enrich_registry.py grep-by-ID ritorna 0 commit. Stats non ricostruibili. Stub storico permanente.",
       "stats": {
-        "total_commits": 1,
-        "lines_added": 303,
-        "lines_deleted": 33,
-        "lines_net": 270,
-        "lines_touched": 336,
-        "files_touched": 2,
-        "weighted_commits": 0.8,
-        "cognitive_load": 2.27,
-        "productivity_index": 15.43,
+        "total_commits": 2,
+        "lines_added": 915,
+        "lines_deleted": 37,
+        "lines_net": 878,
+        "lines_touched": 952,
+        "files_touched": 6,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.65,
+        "productivity_index": 39.16,
         "tags_breakdown": {
-          "DOC": 1
+          "DOC": 2
         },
         "commit_hashes": [
-          "43477937f02a17bc2f139d23a83b7cc458d390e7"
+          "43477937f02a17bc2f139d23a83b7cc458d390e7",
+          "f80a481c592d4ab89712d723aed16d346e7f8ccf"
         ],
         "by_repo_day": [
+          {
+            "repo": "florenceegi/EGI-DOC",
+            "date": "2026-04-06",
+            "commits": 1,
+            "lines_added": 612,
+            "lines_deleted": 4,
+            "files_touched": 4,
+            "tags": {
+              "DOC": 1
+            }
+          },
           {
             "repo": "florenceegi/EGI-DOC",
             "date": "2026-05-27",
@@ -849,26 +938,38 @@
       "stats_status": "unrecoverable",
       "stats_unrecoverable_reason": "Mission session 3: commit non portano l ID nel messaggio. enrich_registry.py grep-by-ID ritorna 0 commit. Stats non ricostruibili. Stub storico permanente.",
       "stats": {
-        "total_commits": 3,
-        "lines_added": 511,
-        "lines_deleted": 33,
-        "lines_net": 478,
-        "lines_touched": 544,
-        "files_touched": 6,
-        "weighted_commits": 3.4,
-        "cognitive_load": 2.61,
-        "productivity_index": 31.4,
+        "total_commits": 4,
+        "lines_added": 667,
+        "lines_deleted": 39,
+        "lines_net": 628,
+        "lines_touched": 706,
+        "files_touched": 10,
+        "weighted_commits": 4.2,
+        "cognitive_load": 2.76,
+        "productivity_index": 37.95,
         "tags_breakdown": {
-          "DOC": 1,
+          "DOC": 2,
           "ARCH": 1,
           "FEAT": 1
         },
         "commit_hashes": [
           "43477937f02a17bc2f139d23a83b7cc458d390e7",
           "8760c5ddc12fdbbb2e919c475d9890f9c862ba9f",
-          "de4588c581499fa9f36dd278df7b69d03d3203e7"
+          "de4588c581499fa9f36dd278df7b69d03d3203e7",
+          "fe75e31660c557503e1d97ed07e4fdcf928f4ba6"
         ],
         "by_repo_day": [
+          {
+            "repo": "florenceegi/EGI-DOC",
+            "date": "2026-04-06",
+            "commits": 1,
+            "lines_added": 156,
+            "lines_deleted": 6,
+            "files_touched": 4,
+            "tags": {
+              "DOC": 1
+            }
+          },
           {
             "repo": "florenceegi/EGI-DOC",
             "date": "2026-05-27",
