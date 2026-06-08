@@ -38,23 +38,24 @@
         "Fucina"
       ],
       "stats": {
-        "total_commits": 3,
-        "lines_added": 379,
-        "lines_deleted": 4,
-        "lines_net": 375,
-        "lines_touched": 383,
-        "files_touched": 5,
-        "weighted_commits": 3.2,
-        "cognitive_load": 2.52,
-        "productivity_index": 27.56,
+        "total_commits": 4,
+        "lines_added": 470,
+        "lines_deleted": 5,
+        "lines_net": 465,
+        "lines_touched": 475,
+        "files_touched": 7,
+        "weighted_commits": 4,
+        "cognitive_load": 2.64,
+        "productivity_index": 32.74,
         "tags_breakdown": {
-          "DOC": 2,
+          "DOC": 3,
           "ARCH": 1
         },
         "commit_hashes": [
           "76694f6ab9a201a3e3ad7cd30623d8f528a16833",
           "7770e692a3d3ef80b679ab8f35ca62663f019600",
-          "8e2852bf41006c61785e6072329459d9f8eeb50d"
+          "8e2852bf41006c61785e6072329459d9f8eeb50d",
+          "ac6a60a7ccf46f496a42d43667e84004ca64481a"
         ],
         "by_repo_day": [
           {
@@ -82,17 +83,20 @@
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-08",
-            "commits": 1,
-            "lines_added": 97,
-            "lines_deleted": 3,
-            "files_touched": 3,
+            "commits": 2,
+            "lines_added": 188,
+            "lines_deleted": 4,
+            "files_touched": 5,
             "tags": {
+              "DOC": 1,
               "ARCH": 1
             }
           }
         ],
         "calculated_at": "2026-06-08"
-      }
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
     },
     {
       "id": "M-OS3-076",
@@ -721,8 +725,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1.0,
-        "productivity_index": 0.0,
+        "cognitive_load": 1,
+        "productivity_index": 0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
