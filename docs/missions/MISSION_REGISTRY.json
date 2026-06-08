@@ -24,12 +24,48 @@
       "id": "M-NEXUS-006",
       "title": "E5-/project — Egida difesa-by-default nel bootstrap (configure egida_profile + install persist starter + scaffold SECURITY_INVARIANTS + descrittore egida_gate)",
       "trigger_matrix": 3,
-      "status": "executing",
+      "status": "closed",
       "date_open": "2026-06-08",
-      "date_close": null,
+      "date_close": "2026-06-08",
       "scope_hash": "d186000de206e82772b9d1e9f75a506403a7cde850333fe7e0a6d77794dedb37",
       "synced_by_engine": true,
-      "last_engine_sync": "2026-06-08T13:55:54.999Z"
+      "last_engine_sync": "2026-06-08T14:06:46.257Z",
+      "report_technical": "docs/missions/M-NEXUS-006_REPORT_TECHNICAL.md",
+      "report_extended": "docs/missions/M-NEXUS-006_REPORT_EXTENDED.md",
+      "organs": [
+        "oracode"
+      ],
+      "stats": {
+        "total_commits": 1,
+        "lines_added": 120,
+        "lines_deleted": 2,
+        "lines_net": 118,
+        "lines_touched": 122,
+        "files_touched": 5,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.22,
+        "productivity_index": 12.54,
+        "tags_breakdown": {
+          "ARCH": 1
+        },
+        "commit_hashes": [
+          "c7c5a905b4f79058b66c5dbe5ca866bedf2d37e0"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-06-08",
+            "commits": 1,
+            "lines_added": 120,
+            "lines_deleted": 2,
+            "files_touched": 5,
+            "tags": {
+              "ARCH": 1
+            }
+          }
+        ],
+        "calculated_at": "2026-06-08"
+      }
     },
     {
       "id": "M-NEXUS-005",
@@ -49,20 +85,22 @@
         "Fucina"
       ],
       "stats": {
-        "total_commits": 4,
+        "total_commits": 5,
         "lines_added": 470,
         "lines_deleted": 5,
         "lines_net": 465,
         "lines_touched": 475,
         "files_touched": 7,
-        "weighted_commits": 4,
-        "cognitive_load": 2.64,
-        "productivity_index": 32.74,
+        "weighted_commits": 4.6,
+        "cognitive_load": 2.67,
+        "productivity_index": 34.61,
         "tags_breakdown": {
           "DOC": 3,
+          "CHORE": 1,
           "ARCH": 1
         },
         "commit_hashes": [
+          "75f8f7952a05a78c80e99036e9fe1cd20f8935e8",
           "76694f6ab9a201a3e3ad7cd30623d8f528a16833",
           "7770e692a3d3ef80b679ab8f35ca62663f019600",
           "8e2852bf41006c61785e6072329459d9f8eeb50d",
@@ -94,11 +132,12 @@
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-08",
-            "commits": 2,
+            "commits": 3,
             "lines_added": 188,
             "lines_deleted": 4,
             "files_touched": 5,
             "tags": {
+              "CHORE": 1,
               "DOC": 1,
               "ARCH": 1
             }
@@ -736,8 +775,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],

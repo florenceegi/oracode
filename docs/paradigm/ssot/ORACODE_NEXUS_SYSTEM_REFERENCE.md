@@ -485,12 +485,22 @@ Deployati nella dir agenti privata (OS3 Matrix).
 ```
 /discovery (acquisizione pre-vendita)
     ↓
-/project   (bootstrap istanza L3 — scaffolda <progetto>/.oracode/project.json)
+/project   (bootstrap istanza L3 — scaffolda <progetto>/.oracode/project.json
+            + difesa Egida-by-default per i progetti con Matrix, liv 2+)
     ↓
 /mission   (lavoro — auto-registrato nel registry del progetto via ponte L1→L3)
 ```
 
 Il comando `/mission` è **globale e context-aware**: rileva l'istanza dal CWD (wrapper di `bin/mission`, M-OS3-025 Unità 2).
+
+> **Difesa Egida-by-default nel bootstrap (M-NEXUS-006 E5).** `/project` installa di default la difesa Egida
+> per i progetti **con Matrix** (livello 2+), operazionalizzando l'Asse Difesa Costitutivo (OSZ, M-NEXUS-005)
+> tramite `EGIDA_INSTALL_CONTRACT §6`: `/oracode-configure` (Q8) sceglie `egida_profile` ∈ `{L1, L2-L3, L3-L4}`
+> — default dal livello, **upgrade a `L3-L4` se l'organo tratta denaro/PII/blockchain** (segnale chiesto, non
+> dedotto — REGOLA ZERO); `/oracode-scaffold` (step 6b) scaffolda `<repo>/SECURITY_INVARIANTS.json` (target
+> `<PLACEHOLDER>`, riempiti dalla corsia dell'organo) e scrive `egida_gate`/`egida_profile` nel descrittore.
+> Un **livello 1 paradigm-only (senza Matrix)** NON riceve Egida-by-default (proporzionalità — "dove ha senso").
+> `fortino-check` resta concern di **runtime** (corsia Fortino, fuori scope `/project`).
 
 ### 18.1 Fasi narrative (livello Oracode)
 
