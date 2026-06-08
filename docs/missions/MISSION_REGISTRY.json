@@ -36,35 +36,32 @@
         "oracode"
       ],
       "stats": {
-        "total_commits": 3,
+        "total_commits": 2,
         "lines_added": 233,
         "lines_deleted": 7,
         "lines_net": 226,
         "lines_touched": 240,
         "files_touched": 9,
-        "weighted_commits": 3,
-        "cognitive_load": 2.53,
-        "productivity_index": 20.8,
+        "weighted_commits": 2.4,
+        "cognitive_load": 2.48,
+        "productivity_index": 18.78,
         "tags_breakdown": {
-          "CHORE": 1,
           "DOC": 1,
           "ARCH": 1
         },
         "commit_hashes": [
           "34353995c23572e11196128a7d9a84873a3f0c98",
-          "c7c5a905b4f79058b66c5dbe5ca866bedf2d37e0",
-          "da5f45ca744ddd96fb02fafc155b307a0b9d247a"
+          "c7c5a905b4f79058b66c5dbe5ca866bedf2d37e0"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-08",
-            "commits": 3,
+            "commits": 2,
             "lines_added": 233,
             "lines_deleted": 7,
             "files_touched": 9,
             "tags": {
-              "CHORE": 1,
               "DOC": 1,
               "ARCH": 1
             }
@@ -93,22 +90,20 @@
         "Fucina"
       ],
       "stats": {
-        "total_commits": 5,
+        "total_commits": 4,
         "lines_added": 470,
         "lines_deleted": 5,
         "lines_net": 465,
         "lines_touched": 475,
         "files_touched": 7,
-        "weighted_commits": 4.6,
-        "cognitive_load": 2.67,
-        "productivity_index": 34.61,
+        "weighted_commits": 4.0,
+        "cognitive_load": 2.64,
+        "productivity_index": 32.74,
         "tags_breakdown": {
           "DOC": 3,
-          "CHORE": 1,
           "ARCH": 1
         },
         "commit_hashes": [
-          "75f8f7952a05a78c80e99036e9fe1cd20f8935e8",
           "76694f6ab9a201a3e3ad7cd30623d8f528a16833",
           "7770e692a3d3ef80b679ab8f35ca62663f019600",
           "8e2852bf41006c61785e6072329459d9f8eeb50d",
@@ -140,12 +135,11 @@
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-08",
-            "commits": 3,
+            "commits": 2,
             "lines_added": 188,
             "lines_deleted": 4,
             "files_touched": 5,
             "tags": {
-              "CHORE": 1,
               "DOC": 1,
               "ARCH": 1
             }
@@ -175,33 +169,30 @@
       "report_extended": "docs/missions/M-OS3-076_REPORT_EXTENDED.md",
       "doc_sync_log": "audit/doc_sync/M-OS3-076/doc_sync_log.json",
       "stats": {
-        "total_commits": 2,
+        "total_commits": 1,
         "lines_added": 66,
         "lines_deleted": 18,
         "lines_net": 48,
         "lines_touched": 84,
         "files_touched": 4,
-        "weighted_commits": 2.6,
-        "cognitive_load": 2.19,
-        "productivity_index": 14.05,
+        "weighted_commits": 2.0,
+        "cognitive_load": 2.12,
+        "productivity_index": 11.67,
         "tags_breakdown": {
-          "CHORE": 1,
           "REFACTOR": 1
         },
         "commit_hashes": [
-          "0100fe53958fbd97d832a8909f7e39b34306a1a8",
           "40f3a8f6b1c95b327da587cb0521db81d0f8147c"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-04",
-            "commits": 2,
+            "commits": 1,
             "lines_added": 66,
             "lines_deleted": 18,
             "files_touched": 4,
             "tags": {
-              "CHORE": 1,
               "REFACTOR": 1
             }
           }
@@ -230,33 +221,30 @@
       "report_extended": "docs/missions/M-OS3-074_REPORT_EXTENDED.md",
       "doc_sync_log": "audit/doc_sync/M-OS3-074/doc_sync_log.json",
       "stats": {
-        "total_commits": 2,
+        "total_commits": 1,
         "lines_added": 382,
         "lines_deleted": 4,
         "lines_net": 378,
         "lines_touched": 386,
         "files_touched": 6,
-        "weighted_commits": 2.2,
-        "cognitive_load": 2.5,
-        "productivity_index": 23.92,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.43,
+        "productivity_index": 22.11,
         "tags_breakdown": {
-          "CHORE": 1,
           "ARCH": 1
         },
         "commit_hashes": [
-          "269f0a80680e0baed5741ba5d194960d8d188a1b",
-          "d83393595598376ef52c4348e502fb9168323c85"
+          "269f0a80680e0baed5741ba5d194960d8d188a1b"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-04",
-            "commits": 2,
+            "commits": 1,
             "lines_added": 382,
             "lines_deleted": 4,
             "files_touched": 6,
             "tags": {
-              "CHORE": 1,
               "ARCH": 1
             }
           }
@@ -285,33 +273,30 @@
       "report_extended": "docs/missions/M-OS3-072_REPORT_EXTENDED.md",
       "doc_sync_log": "audit/doc_sync/M-OS3-072/doc_sync_log.json",
       "stats": {
-        "total_commits": 2,
+        "total_commits": 1,
         "lines_added": 241,
         "lines_deleted": 15,
         "lines_net": 226,
         "lines_touched": 256,
         "files_touched": 4,
-        "weighted_commits": 2.2,
-        "cognitive_load": 2.38,
-        "productivity_index": 18.77,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.31,
+        "productivity_index": 16.72,
         "tags_breakdown": {
-          "CHORE": 1,
           "ARCH": 1
         },
         "commit_hashes": [
-          "93363393a03b1167f5f4bb8bec94a784ded7b227",
           "e5d6442b0b110b42aebbab956fcf7e355b7c3d24"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-04",
-            "commits": 2,
+            "commits": 1,
             "lines_added": 241,
             "lines_deleted": 15,
             "files_touched": 4,
             "tags": {
-              "CHORE": 1,
               "ARCH": 1
             }
           }
@@ -783,8 +768,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
