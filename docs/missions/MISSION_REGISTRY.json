@@ -36,36 +36,41 @@
         "oracode"
       ],
       "stats": {
-        "total_commits": 1,
-        "lines_added": 120,
-        "lines_deleted": 2,
-        "lines_net": 118,
-        "lines_touched": 122,
-        "files_touched": 5,
-        "weighted_commits": 1.6,
-        "cognitive_load": 2.22,
-        "productivity_index": 12.54,
+        "total_commits": 2,
+        "lines_added": 233,
+        "lines_deleted": 7,
+        "lines_net": 226,
+        "lines_touched": 240,
+        "files_touched": 9,
+        "weighted_commits": 2.4,
+        "cognitive_load": 2.48,
+        "productivity_index": 18.78,
         "tags_breakdown": {
+          "DOC": 1,
           "ARCH": 1
         },
         "commit_hashes": [
+          "34353995c23572e11196128a7d9a84873a3f0c98",
           "c7c5a905b4f79058b66c5dbe5ca866bedf2d37e0"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-06-08",
-            "commits": 1,
-            "lines_added": 120,
-            "lines_deleted": 2,
-            "files_touched": 5,
+            "commits": 2,
+            "lines_added": 233,
+            "lines_deleted": 7,
+            "files_touched": 9,
             "tags": {
+              "DOC": 1,
               "ARCH": 1
             }
           }
         ],
         "calculated_at": "2026-06-08"
-      }
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
     },
     {
       "id": "M-NEXUS-005",
@@ -775,8 +780,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1.0,
-        "productivity_index": 0.0,
+        "cognitive_load": 1,
+        "productivity_index": 0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
