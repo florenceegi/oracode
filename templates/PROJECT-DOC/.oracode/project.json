@@ -1,8 +1,9 @@
 {
   "_meta": {
     "description": "Descrittore progetto Oracode — ponte L1→L3. Letto da bin/mission (engine, L1) per auto-registrare le mission nel MISSION_REGISTRY di questa istanza (L3). Compilato da /project.",
-    "version": "1.0.0",
-    "created": "{{DATE}}"
+    "version": "1.1.0",
+    "created": "{{DATE}}",
+    "egida_fields": "Difesa-by-default (Egida, CORE §Asse Difesa Costitutivo). /oracode-scaffold step 6b AGGIUNGE qui, per i progetti con Matrix (livello 2+), le chiavi: egida_gate (bool) ed egida_profile (\"L1\"|\"L2-L3\"|\"L3-L4\"). L'hook os3-matrix bin/egida-gate-check le legge al close di una mission type==release. Un livello 1 paradigm-only (senza Matrix) NON le riceve (flag assente = zero requisito)."
   },
   "project": "{{PROJECT_NAME}}",
   "level": {{ORACODE_LEVEL}},

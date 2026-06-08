@@ -81,7 +81,24 @@ Se livello 4:
 - Sistema circolatorio cross-organo (organ index, contracts)
 - Database condiviso
 
-Se livello 1 o 2 (NON-LSO):
+**Q8: Profilo difesa Egida (`egida_profile`)** — solo se Matrix presente (livello 2+).
+
+L'asse difesa Egida è **costitutivo** (CORE §Asse Difesa Costitutivo): un LSO si difende e lo prova,
+in proporzione al rischio. `/project` installa la difesa di default — qui si sceglie il **profilo**
+(lo starter di invarianti). Determina `egida_profile` ∈ `{"L1","L2-L3","L3-L4"}` così
+(EGIDA_INSTALL_CONTRACT §6):
+
+- default dal livello: `1 → L1`, `2 → L2-L3`, `3 → L2-L3`, `4 → L2-L3`;
+- **upgrade a `L3-L4`** se l'organo tratta **denaro / PII / blockchain**. Questo segnale NON è deducibile
+  dal solo livello: chiedilo (o leggilo dal discovery). REGOLA ZERO — non assumere.
+  Domanda: "Questo organo tratta denaro, dati personali (PII) o blockchain?" (sì → `L3-L4`).
+
+> **Prerequisito Matrix (G2).** Il tooling Egida (starter, `bin/collaudo`, `fortino-check`) vive in
+> os3-matrix/FORTINO → esiste solo con Matrix licenziato. Un **livello 1 paradigm-only (senza Matrix)**
+> NON riceve Egida-by-default (nessun `egida_profile`, nessun `egida_gate`): coerente con "dove ha senso".
+> Un livello 1 *con* Matrix riceve `L1` leggero.
+
+`egida_profile` entra nella config (input di `/oracode-scaffold`). Se Matrix assente: ometti (no Egida).
 Nessun sistema circolatorio. CLAUDE.md include solo paradigma + P0. Niente DOC-SYNC v2,
 niente RAG, niente Helping. Spiegare al CEO che alcune features Oracode (es. retrospective
 mission, propriocezione documentale) richiedono livello 3+.
@@ -93,5 +110,5 @@ Per tutti i livelli:
 
 <!-- Fase 3 sara espansa con step aggiuntivi futuri -->
 
-**Output**: la config raccolta (nome, INSTANCE_NAME, societa, CEO, CTO, dominio, stack, repo GitHub, lingue, livello, Q7.*) —
+**Output**: la config raccolta (nome, INSTANCE_NAME, societa, CEO, CTO, dominio, stack, repo GitHub, lingue, livello, Q7.*, `egida_profile` se Matrix presente) —
 pre-compilata da `DISCOVERY_REPORT.json` dove disponibile — è l'input di `/oracode-scaffold`. Nessun placeholder template resta non risolto.

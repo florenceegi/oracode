@@ -21,6 +21,17 @@
   "counter": 76,
   "missions": [
     {
+      "id": "M-NEXUS-006",
+      "title": "E5-/project — Egida difesa-by-default nel bootstrap (configure egida_profile + install persist starter + scaffold SECURITY_INVARIANTS + descrittore egida_gate)",
+      "trigger_matrix": 3,
+      "status": "executing",
+      "date_open": "2026-06-08",
+      "date_close": null,
+      "scope_hash": "d186000de206e82772b9d1e9f75a506403a7cde850333fe7e0a6d77794dedb37",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-08T13:55:54.999Z"
+    },
+    {
       "id": "M-NEXUS-005",
       "title": "E1 Egida — clausola costitutiva difesa in OSZ + matrice proporzionalità + Nexus index (4 [DECISIONE CEO] ratificati)",
       "trigger_matrix": 6,
