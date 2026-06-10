@@ -346,6 +346,12 @@ Conseguenza: una unità di lavoro ben condotta **non è "il Supervisor fa tutto"
 che esegue → sintesi onesta misurata*. Se il Supervisor si trova a rispondere di dominio da memoria, sta
 sbagliando: deve groundare o instradare. È il livello-esperto applicato all'orchestrazione.
 
+**Layer enforcement (M-FUC-020):** la Dottrina non è prosa-da-ricordare — è retta da forzanti deterministiche:
+hook globali di iniezione (`~/.claude/hooks/supervisor-doctrine-inject.sh` a ogni boot/resume/compact +
+`supervisor-triage-reminder.sh` per-prompt, registrati in `~/.claude/settings.json`), gate dell'engine
+`os3-matrix/bin/mission` v0.4 (ROUTING: trigger 3 → design `engineer-*` o waiver firmato; SSOT-FIRST: campo
+`ssot_first` nel descrittore `.oracode/project.json`), contratto L7 `os3-matrix/contracts/routing-matrix.json`.
+
 ---
 
 ## SEO — Contenuto Pubblico
@@ -455,5 +461,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.2.0 — Data: 2026-06-09 (M-NEXUS-007: Dottrina del Supervisor)*
+*Versione template: 1.3.0 — Data: 2026-06-10 (M-FUC-021: layer enforcement Dottrina del Supervisor)*
 *Licenza: MIT*
