@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Descrittore progetto Oracode — ponte L1→L3. Letto da bin/mission (engine, L1) per auto-registrare le mission nel MISSION_REGISTRY di questa istanza (L3). Compilato da /project.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "created": "{{DATE}}",
     "egida_fields": "Difesa-by-default (Egida, CORE §Asse Difesa Costitutivo). /oracode-scaffold step 6b AGGIUNGE qui, per i progetti con Matrix (livello 2+), le chiavi: egida_gate (bool) ed egida_profile (\"L1\"|\"L2-L3\"|\"L3-L4\"). L'hook os3-matrix bin/egida-gate-check le legge al close di una mission type==release. Un livello 1 paradigm-only (senza Matrix) NON le riceve (flag assente = zero requisito)."
   },
@@ -11,5 +11,13 @@
   "registry_path": "{{INSTANCE_ROOT}}/docs/missions/MISSION_REGISTRY.json",
   "repo_map_path": "{{INSTANCE_ROOT}}/docs/missions/REPO_MAP.json",
   "read_log_path": "{{INSTANCE_ROOT}}/audit/MISSION_READ_LOG.jsonl",
-  "bootstrap_index_path": "{{INSTANCE_ROOT}}/docs/missions/MISSION_BOOTSTRAP_INDEX.json"
+  "bootstrap_index_path": "{{INSTANCE_ROOT}}/docs/missions/MISSION_BOOTSTRAP_INDEX.json",
+  "ssot_first": {
+    "enabled": true,
+    "ssot_globs": [
+      "docs/lso/",
+      "docs/missions/MISSION_REGISTRY.json"
+    ],
+    "_meta": "M-FUC-021 gate SSOT-first (engine bin/mission v0.4, M-FUC-020): mission trigger 3 richiede lettura SSOT prima di executing (kill-switch: enabled=false). I globs di default coprono lo scaffold base (docs/lso, MISSION_REGISTRY); aggiungere docs/ssot/ quando l'organo la crea."
+  }
 }
