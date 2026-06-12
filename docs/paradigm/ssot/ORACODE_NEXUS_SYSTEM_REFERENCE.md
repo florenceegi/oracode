@@ -2,10 +2,10 @@
 title: Oracode Nexus — Riferimento di Sistema (SSOT tecnico completo)
 slug: oracode-nexus-system-reference
 doc_type: architecture
-version: 1.4.0
+version: 1.5.0
 status: current
 date: '2026-05-31'
-updated_at: '2026-06-01'
+updated_at: '2026-06-12'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - ecosistema
@@ -22,11 +22,13 @@ rag: public
 
 # Oracode Nexus — Riferimento di Sistema
 
-> Versione: 1.4.0 | Data: 2026-06-01
+> Versione: 1.5.0 | Data: 2026-06-12
 > Autore: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 > Documento SSOT consolidato: tutto Oracode/LSO in un unico riferimento autorevole.
 >
 > **v1.2.0 (M-OS3-018):** allineamento con M-OS3 sessioni 1+2+3 — riferimento esplicito a `bin/mission` CLI, state machine 7 stati, multi-write per `session_id`, hook hardening M-OS3-013. Per il dettaglio operativo del Mission Protocol vedere `MISSION_PROTOCOL.md` v4.0.0.
+>
+> **v1.5.0 (M-FUC-029):** §14 — indice Nexus dei registry (`ssot-registry-index.json` + check `ssot-index-check`): ogni nuovo `SSOT_REGISTRY.json` nato dal bootstrap (`/oracode-scaffold` step 5b, forzante f.1 ADR M-FUC-029) è censito alla nascita — nessun registry nasce orfano.
 
 ---
 
@@ -366,6 +368,7 @@ Ispirato al sistema nervoso umano. Risolve il problema del DOC-SYNC dimenticato.
 
 File critici:
 - Registry: `<istanza>-DOC/docs/lso/SSOT_REGISTRY.json` (es. /home/fabio/EGI-DOC su FlorenceEGI)
+- Indice Nexus dei registry: `ssot-registry-index.json` (contratto OS3 Matrix, `os3-matrix/contracts/`) — censimento di tutti gli `SSOT_REGISTRY.json` delle istanze. Ogni nuovo registry creato dal bootstrap viene censito alla nascita (`/oracode-scaffold` step 5b, forzante f.1 ADR M-FUC-029) con check `ssot-index-check` verde (exit 0) prima di proseguire: **nessun registry nasce orfano**.
 - Hook: reflex guard passivo (impl privata — OS3 Matrix)
 - Propriocezione (istanza FlorenceEGI, L3 accoppiato): `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json`
 - Agente: living agent (archiviato; impl privata — OS3 Matrix)
@@ -741,5 +744,5 @@ I doc di **paradigma** sono stati rilocati in `/home/fabio/oracode/docs/paradigm
 
 ---
 
-*Oracode OS3.0 — Oracode Nexus SSOT v1.3.0 (2026-05-31)*
+*Oracode OS3.0 — Oracode Nexus SSOT v1.5.0 (2026-06-12)*
 *Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici*
