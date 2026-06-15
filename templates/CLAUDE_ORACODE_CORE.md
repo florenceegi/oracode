@@ -187,13 +187,15 @@ Sigillo    — CERTIFICA (hash del report → ancoraggio Algorand + marca tempor
 
 ### Regola di proporzionalità — la difesa scala col rischio
 
-"Dove ha senso" è **regola scritta**, non discrezione: il profilo di difesa è scalato sul livello/rischio.
+"Dove ha senso" è **regola scritta**, non discrezione: il profilo di difesa è scalato sul **rischio R1-R4**
+(R1 vetrina → R4 denaro/PII/blockchain). NB nomenclatura (M-FUC-040): "R" = rischio, "L" = maturità
+(Layer Stack), "T" = tier operativo — vedi LSO_NOMENCLATURE §0.
 
 | Livello / superficie | Banco di Prova (consegna, DeepDebug) | Fortino (runtime) |
 |---|---|---|
-| Sito vetrina statico (L1) | domini applicabili: reverse-security (secrets/headers/deps), perf | Liv. A leggero (secrets, headers, deps, TLS) |
-| App con auth/dati (L2–L3) | + ai-driven (variant analysis) | Liv. A pieno + B (sentinella) |
-| Organo con denaro/PII/blockchain (L3–L4) | tutti i domini applicabili | A + B + C (forense) |
+| Sito vetrina statico (R1) | domini applicabili: reverse-security (secrets/headers/deps), perf | Liv. A leggero (secrets, headers, deps, TLS) |
+| App con auth/dati (R2–R3) | + ai-driven (variant analysis) | Liv. A pieno + B (sentinella) |
+| Organo con denaro/PII/blockchain (R3–R4) | tutti i domini applicabili | A + B + C (forense) |
 | Codice nativo (C/C++/Rust-FFI) | + memory, concurrency | come sopra |
 
 Vincoli invarianti: **triage** (solo domini applicabili, mai "tutti a forza"); **no over-claim** (si attesta
