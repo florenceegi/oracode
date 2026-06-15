@@ -61,11 +61,11 @@ Per la gerarchia a 3 livelli (motore / HUB / istanza) vedi `docs/paradigm/nomenc
 
 | Livello | Cos'è | MISSION_REGISTRY | Statistiche / Numerazione |
 |---------|-------|------------------|---------------------------|
-| **L1 — GLOBALE** | il **motore + paradigma** (`oracode` + `os3-matrix` + cartella globale **VISIBILE** `~/oracode-engine/`). Tiene solo lo **scratch runtime** (focus, lock, stato in volo). **NON un registro.** | NO | — |
-| **L2 — HUB** | softwarehouse acquirente. Il **primo vero MISSION_REGISTRY** consolidato, versionato nel repo `HUB-DOC`. | SÌ — file unico consolidato | statistiche calcolate qui + **numerazione globale unica** (contatore centrale, no collisioni cross-istanza) |
-| **L3 — ISTANZA LSO** | singolo progetto/cliente. Registry **proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/`). | SÌ — per-progetto | no (solo dati grezzi) |
+| **T1 — GLOBALE** | il **motore + paradigma** (`oracode` + `os3-matrix` + cartella globale **VISIBILE** `~/oracode-engine/`). Tiene solo lo **scratch runtime** (focus, lock, stato in volo). **NON un registro.** | NO | — |
+| **T2 — HUB** | softwarehouse acquirente. Il **primo vero MISSION_REGISTRY** consolidato, versionato nel repo `HUB-DOC`. | SÌ — file unico consolidato | statistiche calcolate qui + **numerazione globale unica** (contatore centrale, no collisioni cross-istanza) |
+| **T3 — ISTANZA LSO** | singolo progetto/cliente. Registry **proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/`). | SÌ — per-progetto | no (solo dati grezzi) |
 
-La softwarehouse installa **L1** (una volta) + **L2** (il suo `HUB-DOC`) e **genera L3** via `/project` (un'istanza per cliente). Dettaglio e direttive CEO: `ORACODE_NEXUS_3_TIER.md` (🔒 LOCKED).
+La softwarehouse installa **T1** (una volta) + **T2** (il suo `HUB-DOC`) e **genera L3** via `/project` (un'istanza per cliente). Dettaglio e direttive CEO: `ORACODE_NEXUS_3_TIER.md` (🔒 LOCKED).
 
 **Proprieta intellettuale:** Fabio Cherici (CEO & OS3 Architect) + Padmin D. Curtis (CTO & AI Partner). Manifesto certificato su blockchain Algorand via Sigillo (24 marzo 2026).
 
@@ -499,7 +499,7 @@ Il comando `/mission` è **globale e context-aware**: rileva l'istanza dal CWD (
 > **Difesa Egida-by-default nel bootstrap (M-NEXUS-006 E5).** `/project` installa di default la difesa Egida
 > per i progetti **con Matrix** (livello 2+), operazionalizzando l'Asse Difesa Costitutivo (OSZ, M-NEXUS-005)
 > tramite `EGIDA_INSTALL_CONTRACT §6`: `/oracode-configure` (Q8) sceglie `egida_profile` ∈ `{L1, L2-L3, L3-L4}`
-> — default dal livello, **upgrade a `L3-L4` se l'organo tratta denaro/PII/blockchain** (segnale chiesto, non
+> — default dal livello, **upgrade a `R3-R4` se l'organo tratta denaro/PII/blockchain** (segnale chiesto, non
 > dedotto — REGOLA ZERO); `/oracode-scaffold` (step 6b) scaffolda `<repo>/SECURITY_INVARIANTS.json` (target
 > `<PLACEHOLDER>`, riempiti dalla corsia dell'organo) e scrive `egida_gate`/`egida_profile` nel descrittore.
 > Un **livello 1 paradigm-only (senza Matrix)** NON riceve Egida-by-default (proporzionalità — "dove ha senso").
@@ -560,7 +560,7 @@ Transizioni non ammesse bloccate dal CLI. Stati `auditing_failed` e `closed_with
 }
 ```
 
-**Dove vive il registry (gerarchia Nexus 3-livelli).** Ogni **ISTANZA LSO (L3)** ha il proprio MISSION_REGISTRY nel suo repo: `<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`. Le **statistiche** e la **numerazione globale unica** sono responsabilità del **L2 HUB** (MISSION_REGISTRY consolidato nel repo `HUB-DOC`). `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json` è il caso **accoppiato HUB+istanza** di FlorenceEGI (caso unico finché c'è un solo cliente, chiavi italiane = legacy), **NON** il modello canonico per le nuove istanze. Vedi `ORACODE_NEXUS_3_TIER.md`.
+**Dove vive il registry (gerarchia Nexus 3-livelli).** Ogni **ISTANZA LSO (T3)** ha il proprio MISSION_REGISTRY nel suo repo: `<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`. Le **statistiche** e la **numerazione globale unica** sono responsabilità del **T2 HUB** (MISSION_REGISTRY consolidato nel repo `HUB-DOC`). `/home/fabio/EGI-DOC/docs/missions/MISSION_REGISTRY.json` è il caso **accoppiato HUB+istanza** di FlorenceEGI (caso unico finché c'è un solo cliente, chiavi italiane = legacy), **NON** il modello canonico per le nuove istanze. Vedi `ORACODE_NEXUS_3_TIER.md`.
 
 ---
 

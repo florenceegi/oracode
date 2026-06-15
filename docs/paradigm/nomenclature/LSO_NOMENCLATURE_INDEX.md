@@ -22,6 +22,30 @@ rag: public
 
 ---
 
+## 0. CANONE DELLE SCALE — disambiguazione "L" (M-FUC-040, decisione CEO 2026-06-15)
+
+**Problema risolto:** la lettera "L" indicava QUATTRO scale diverse → ambiguità e drift.
+**Regola canonica:** **"L" = SOLO maturità (Layer Stack L0-L11).** Le altre scale hanno lettere/nomi propri.
+
+| Scala | Cosa misura | Etichetta CANONICA | Era (deprecato) |
+|-------|-------------|--------------------|-----------------|
+| **Maturità** (Layer Stack) | quanto è evoluto il sistema nervoso | **L0-L11** | (invariato) |
+| **Tier operativo** (GLOBALE/HUB/ISTANZA) | dove vivono registri/stato | **T1-T3** | L1-L3 |
+| **Rischio** (Egida) | quanto è in gioco | **R1-R4** | L1-L4 |
+| **Astrazione** (Oracode/Libreria LSO/Organismo/FlorenceEGI) | che tipo di cosa è | **per NOME** (no numero) | "livello 1-4" |
+
+**Tabella di equivalenza (vecchio → nuovo)** per la migrazione:
+- contesto rischio/Egida: `L1→R1` (vetrina), `L2→R2`, `L3→R3`, `L4→R4` (denaro/PII/blockchain)
+- contesto operativo: `L1→T1` (GLOBALE), `L2→T2` (HUB), `L3→T3` (ISTANZA)
+- contesto astrazione: `livello 1→Oracode`, `livello 2→Libreria LSO`, `livello 3→Organismo`, `livello 4→FlorenceEGI`
+- contesto maturità: invariato (L0-L11 resta).
+
+**Migrazione (M-FUC-040):** doc cardine ribattezzati big-bang; i restanti via Strategia Delta —
+l'hook `nomenclature-deprecation-guard.sh` avvisa al touch di un file con etichetta vecchia in
+contesto rischio/operativo, e `bin/nomenclature-drift-count` conta i file residui (visibile in cabina).
+
+---
+
 ## 1. I quattro livelli
 
 | # | Livello | Definizione (una riga) |
@@ -35,15 +59,15 @@ rag: public
 
 ---
 
-## 1bis. Gerarchia operativa Oracode Nexus (3 livelli)
+## 1bis. Gerarchia operativa Oracode Nexus (3 tier, T1-T3)
 
 > **Oracode Nexus** = il sistema completo: paradigma + gerarchia operativa a 3 livelli + ecosistema (HUB / istanze). I 4 livelli sopra sono l'**asse concettuale**; i 3 livelli qui sono l'**asse operativo**.
 
 | # | Livello operativo | Definizione (una riga) |
 |---|-------------------|------------------------|
-| L1 | **GLOBALE** | Motore + paradigma (`oracode` + `os3-matrix`). Cartella globale **visibile** `~/oracode-engine/` (NON nascosta). Tiene solo lo **scratch runtime** (mission in volo, focus, lock) — NON un archivio versionato, NON un MISSION_REGISTRY. |
-| L2 | **HUB** | Softwarehouse acquirente. **Primo vero MISSION_REGISTRY**: file unico che raduna tutto, con **statistiche consolidate** e **numerazione globale unica** delle mission. Versionato nel repo `HUB-DOC` della softwarehouse. |
-| L3 | **ISTANZA LSO** | Singolo progetto/cliente. **Registry proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`). Ponte L1→L3 **automatico** (FATTO): `bin/mission` propaga lo stato dell'engine al registry del progetto via `.oracode/project.json`. |
+| T1 | **GLOBALE** | Motore + paradigma (`oracode` + `os3-matrix`). Cartella globale **visibile** `~/oracode-engine/` (NON nascosta). Tiene solo lo **scratch runtime** (mission in volo, focus, lock) — NON un archivio versionato, NON un MISSION_REGISTRY. |
+| T2 | **HUB** | Softwarehouse acquirente. **Primo vero MISSION_REGISTRY**: file unico che raduna tutto, con **statistiche consolidate** e **numerazione globale unica** delle mission. Versionato nel repo `HUB-DOC` della softwarehouse. |
+| T3 | **ISTANZA LSO** | Singolo progetto/cliente. **Registry proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/MISSION_REGISTRY.json`). Ponte T1→T3 **automatico** (FATTO): `bin/mission` propaga lo stato dell'engine al registry del progetto via `.oracode/project.json`. |
 
 **Asse concettuale (4 livelli) e asse operativo (3 livelli) sono ortogonali.** SSOT: `ORACODE_NEXUS_3_TIER.md`.
 
