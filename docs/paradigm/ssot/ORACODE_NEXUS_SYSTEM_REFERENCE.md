@@ -65,7 +65,7 @@ Per la gerarchia a 3 livelli (motore / HUB / istanza) vedi `docs/paradigm/nomenc
 | **T2 — HUB** | softwarehouse acquirente. Il **primo vero MISSION_REGISTRY** consolidato, versionato nel repo `HUB-DOC`. | SÌ — file unico consolidato | statistiche calcolate qui + **numerazione globale unica** (contatore centrale, no collisioni cross-istanza) |
 | **T3 — ISTANZA LSO** | singolo progetto/cliente. Registry **proprio** nel repo del progetto (`<progetto>-DOC/docs/missions/`). | SÌ — per-progetto | no (solo dati grezzi) |
 
-La softwarehouse installa **T1** (una volta) + **T2** (il suo `HUB-DOC`) e **genera L3** via `/project` (un'istanza per cliente). Dettaglio e direttive CEO: `ORACODE_NEXUS_3_TIER.md` (🔒 LOCKED).
+La softwarehouse installa **T1** (una volta) + **T2** (il suo `HUB-DOC`) e **genera T3** via `/project` (un'istanza per cliente). Dettaglio e direttive CEO: `ORACODE_NEXUS_3_TIER.md` (🔒 LOCKED).
 
 **Proprieta intellettuale:** Fabio Cherici (CEO & OS3 Architect) + Padmin D. Curtis (CTO & AI Partner). Manifesto certificato su blockchain Algorand via Sigillo (24 marzo 2026).
 
