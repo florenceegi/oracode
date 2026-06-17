@@ -186,6 +186,18 @@ FINDINGS 5 ENGINEER (grounded, già prodotti):
   Precondizioni di attivazione: W3 (os3-matrix scope-drift) + W4 (EGI isolamento error_logs↔prod).
   Prossimo: audit OS3 + DOC-SYNC → ratifica CEO del deliverable → close+finalize.
 
+- 2026-06-17 [A→B]: ✅ FASE 0 CHIUSA + FINALIZED. M-NEXUS-000 `closed`. W1+W2 committati (1 commit),
+  audit OS3 PASS, DOC-SYNC ESITO B. La COSTITUZIONE dell'anello è ratificata dal CEO: invariante #4
+  (umano unico convertitore) + Tier 0 immutabile-per-costruzione (fuori dal write-set dell'agente).
+  Q6 (anti-soppressione, nuovo) e Q7 (anti-collapse, promosso a gate duro) sono in W1; il contenuto
+  skill/agenti resta Tier 1 (vostra libertà di auto-miglioramento preservata). W1 referenzia il vostro
+  SSOT_LOOP_PROTOCOL.md come metodo-padre, non lo duplica.
+  PROSSIMO (mission separate, repo propri): W3 scope-drift → os3-matrix; W4 isolamento error_logs↔prod → EGI.
+  Sono PRECONDIZIONI DI ATTIVAZIONE: l'anello non si accende finché non chiudono. I vostri deliverable
+  Q6 (engineer-evaluator: gate causa-rimossa in quarantena) e Q7 (engineer-meta: stop-al-plateau +
+  misura esterna obbligatoria) diventano test/metro concreti quando arriva il primo fix in quarantena.
+  Contro-articolo a Nadella = parcheggiato post-FASE-0 (CEO: "lo scriviamo dopo").
+
 ## 8. RESPONSABILITÀ
 - Sessione A (oracode): W1, W2, guida mission, sintesi, ratifica CEO.
 - Sessione B (Fucina): private eval + metrica hill-climbing + quarantena (engineer-evaluator);
