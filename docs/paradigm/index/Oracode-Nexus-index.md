@@ -7,9 +7,9 @@ rag: public
 
 > **Scopo**: indice navigabile anti-degradazione per Padmin Supervisor. Sintesi compatta + path assoluto + sezioni chiave per ogni documento vitale di Oracode + OS3 Matrix + Layer Stack LSO.
 > **Path canonical**: `/home/fabio/oracode/docs/paradigm/index/Oracode-Nexus-index.md`. Rilocazione paradigma in `docs/paradigm/` COMPLETATA (M-OS3-022).
-> **Versione**: 0.6.3 (M-FUC-029 — scaffold step 5b: censimento del nuovo SSOT_REGISTRY nell'indice Nexus + `ssot-index-check` verde)
+> **Versione**: 0.6.4 (M-NEXUS-000 — censiti in TIER 1A i due SSOT costituzionali dell'Anello di Auto-Miglioramento: W1 `PATTERN_ANELLO_AUTOMIGLIORAMENTO` + W2 `TIER0_CLAUSOLE_IMMUTABILI`)
 > **Autore**: Padmin Supervisor for Fabio Cherici
-> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-06-12
+> **Data inizio**: 2026-05-27 — **Ultimo aggiornamento**: 2026-06-17
 
 ---
 
@@ -101,6 +101,22 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
   - reflex guard passivo (PostToolUse, Sistema Nervoso L1) + cron di staleness (L3) — impl privata
   - `ai_sidebar` con chat in ogni organo (SigilloAdvisorService, CredentialAdvisorService, ecc.)
 - **DOC-SYNC v2 5b clarification**: hook auto-update ARCHIVIATO (anti-pattern 6), responsabilità trasferita a DOC-SYNC v2 Step 5b che aggiorna `last_verified` SOLO post-verifica semantica + RAG conferma
+
+### `TIER0_CLAUSOLE_IMMUTABILI_v1.0.0.md` — NUOVO (W2, M-NEXUS-000)
+- **Path**: `/home/fabio/oracode/docs/paradigm/kernel/TIER0_CLAUSOLE_IMMUTABILI_v1.0.0.md`
+- **Status**: 🟡 DRAFT (mission M-NEXUS-000, ratificato CEO 2026-06-16) — `critical` / `immutable-ceo-approval`
+- **Versione/data**: v1.0.0 — 2026-06-17 — Padmin D. Curtis for Fabio Cherici
+- **Sintesi**: Denylist costituzionale dell'Anello di Auto-Miglioramento. Elenca le clausole che l'anello NON può modificare e per ciascuna dichiara l'**enforcer reale**. Principio cardine: **"immutabile PER COSTRUZIONE"** — non un divieto interpretabile ("non toccare") ma un **controllo d'accesso meccanico** (file fuori dal write-set dell'agente o hook fail-closed). STRATO 1 costituzionale (REGOLA ZERO, gerarchia OSZ→OS3→OS4, 6 invarianti, #4 agency umana, #6 irreversibilità). STRATO 2 operativo (6 azioni vietate → enforcer reali: safety-classifier, mission-state-guard, registry-guard, rm-guard). **Gerarchia mutabilità Tier 0/1/2 (D8)**: meta-regole=Tier 0 (solo ratifica CEO); contenuto skill/agenti=Tier 1 (evolvibile sotto gate); artefatti operativi=Tier 2. Identità PADMIN = Tier 0. Stato enforcement onesto (no over-claim): STRATO 2 già reale fail-closed, STRATO 1 da cablare (oggi: ratifica umana + esclusione write-set).
+- **Sezioni chiave**: §0 immutabile-per-costruzione | §1 STRATO 1 costituzionale | §2 STRATO 2 operativo | §3 meta-clausola | §4 gerarchia Tier 0/1/2 | §6 stato enforcement
+- **Cross-ref**: vincola `PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md` (W1) | fonti `00_OSZ`, `LSO_NOMENCLATURE_v2.md:705-714`, `LSO_NOMENCLATURE_INDEX.md §0`
+
+### `PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md` — NUOVO (W1, M-NEXUS-000)
+- **Path**: `/home/fabio/oracode/docs/paradigm/lso/PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md`
+- **Status**: 🟡 DRAFT (mission M-NEXUS-000, ratificato CEO 2026-06-16) — `high`
+- **Versione/data**: v1.0.0 — 2026-06-17 — Padmin D. Curtis for Fabio Cherici
+- **Sintesi**: Pattern dell'anello errore→fix→apprendimento nella versione **AUTONOMA auto-innescata**. Realizzazione concreta di **L9 — Riflessione, Gamba B (Autocorrezione operativa)**; attraversa la **Soglia 2 (L8→L9)** senza eccederla (no L10/L11). Ciclo: errore→diagnosi→fix in sandbox→prova→propagazione→ratifica→apprendimento. **Due anelli annidati** separati dalla **barriera dura L8/L9** (interno reattivo su codice T3-ISTANZA / esterno evolutivo su SSOT-paradigma); barriera **enforced-by-construction** (write-set esclude fisicamente i SSOT paradigma + Tier 0). **Trigger = PUSH** UEM→Nexus via `NexusNotificationHandler` (gemello di `TelegramNotificationHandler`); `error_logs` = rete di recupero pull; idempotenza = error fingerprint. **4 punti-di-stop** agente + **GATE Q6 anti-soppressione** (CAUSA-RIMOSSA, non sintomo zittito) + **GATE Q7 anti-collapse** (stop-al-plateau / ri-derivazione da fonte primaria / misura esterna). Referenzia il **metodo-padre gated Fucina** (`SSOT_LOOP_PROTOCOL.md`) senza duplicarlo — ne è la specializzazione auto-innescata. Precondizioni di attivazione: W3 (scope-drift os3-matrix) + W4 (isolamento error_logs↔prod).
+- **Sezioni chiave**: §1 definizione | §2 due anelli + barriera L8/L9 | §3 trigger PUSH + idempotenza | §4 4 stop + GATE Q6 | §5 guardrail + GATE Q7 | §7 esistente vs nuovo | §9 precondizioni attivazione
+- **Cross-ref**: vincolato da `TIER0_CLAUSOLE_IMMUTABILI_v1.0.0.md` (W2) | metodo-padre `Fucina/docs/ssot/SSOT_LOOP_PROTOCOL.md` | `MISSION_PROTOCOL.md:326-336` (ESITO A/B/C)
 
 ---
 

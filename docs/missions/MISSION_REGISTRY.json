@@ -3,7 +3,7 @@
     "description": "Mission Registry canonical — paradigma Oracode (repo florenceegi/oracode). Traccia le mission Oracode Nexus (M-OS3-NNN) che evolvono paradigma + enforcement os3-matrix.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-06-08",
+    "updated": "2026-06-17",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Registro SSOT delle mission del paradigma. Schema chiavi inglese (allineato fabiocherici.com, prodotto da doc-sync-v2). Chiude il dual-tracking gap HOME-engine vs repo-registry: questo è il registro repo canonical, l'engine HOME (~/.oracode/missions/) resta state machine runtime.",
     "schema": "canonical-english",
@@ -20,6 +20,37 @@
   },
   "counter": 76,
   "missions": [
+    {
+      "id": "M-NEXUS-000",
+      "title": "FASE 0 paradigma — SSOT pattern Anello Auto-Miglioramento Nexus + denylist Tier 0",
+      "trigger_matrix": 3,
+      "status": "closed",
+      "date_open": "2026-06-16",
+      "date_close": "2026-06-17",
+      "scope_hash": "deb37e1547e3682eb59b00b87a47c15a7cb5ba45b092a772f61153f4c8023520",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-17T09:21:24.983Z",
+      "design_fingerprint": {
+        "agent": "engineer-architecture",
+        "tool_use_id": "toolu_01LSy7ydZUSdq4wUTZ4gZLSi",
+        "output_hash": "fa2e272f43e2d4e32d666202a9ce79c2f32dd5d65e551a9c36c608e54d6bdefe",
+        "timestamp": "2026-06-17T09:00:31Z"
+      },
+      "ssot_first_evidence": {
+        "path": "oracode/docs/missions/MISSION_REGISTRY.json",
+        "ts": "2026-06-17T09:01:16Z"
+      },
+      "report_technical": "docs/missions/M-NEXUS-000_REPORT_TECHNICAL.md",
+      "report_extended": "docs/missions/M-NEXUS-000_REPORT_EXTENDED.md",
+      "doc_sync_executed": true,
+      "doc_sync_log": {
+        "agent": "doc-sync-v2",
+        "tool_use_id": "toolu_012mdVbirXcZwr2i46wx1j6Q",
+        "output_hash": "eb74d83bc0363cbee69cd49de4f02d3de8c2466bcbe635eea2c8258f9445f979",
+        "date": "2026-06-17T09:21:24.981Z",
+        "outcome": "success"
+      }
+    },
     {
       "id": "M-NEXUS-007",
       "title": "Dottrina del Supervisor nel kernel OSZ (generica, diffusa a tutti i progetti)",

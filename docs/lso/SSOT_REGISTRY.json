@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 46 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
+    "description": "SSOT Registry — Layer 0 MIELINA del paradigma Oracode. Mappa i 48 documenti SSOT del paradigma ai file enforcement che li implementano (os3-matrix) o segna i documenti concettuali costituzionali.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-06-15",
+    "updated": "2026-06-17",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Layer 0 MIELINA paradigma. concept-ssot = documenti concettuali (kernel, moduli, manifesti, identità) senza file codice da watchare. spec-ssot = specifiche che descrivono enforcement implementato in os3-matrix (cross-repo watches).",
     "schema": "canonical-paradigm",
@@ -1009,6 +1009,54 @@
       "visibility": "public",
       "rag": "public",
       "note": "Orfano rilevato da audit Nexus M-OS3-075: SSOT-legge LOCKED (lettura obbligatoria pre-mission strutturale, trascrizione direttive CEO) mai registrato."
+    },
+    {
+      "ssot_id": "tier0-clausole-immutabili",
+      "path": "docs/paradigm/kernel/TIER0_CLAUSOLE_IMMUTABILI_v1.0.0.md",
+      "title": "Tier 0 — Clausole Immutabili (denylist costituzionale Anello)",
+      "doc_type": "concept-ssot",
+      "priority": "critical",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "status": "DRAFT",
+      "registered_by": "M-NEXUS-000",
+      "last_verified": "2026-06-17",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-NEXUS-000",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0,
+      "visibility": "public",
+      "rag": "public",
+      "note": "W2 M-NEXUS-000 (FASE 0). Elenca le clausole che l'anello di auto-miglioramento NON puo modificare e dichiara per ciascuna l'enforcer reale ('immutabile PER COSTRUZIONE'). Gerarchia mutabilita Tier 0/1/2 (D8). DRAFT ratificato CEO 2026-06-16, da promuovere a STABLE in mission futura. Test anticorpo: tests/m-nexus-000/test_anello_ssot.sh."
+    },
+    {
+      "ssot_id": "pattern-anello-automiglioramento",
+      "path": "docs/paradigm/lso/PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md",
+      "title": "Pattern Anello di Auto-Miglioramento (LSO) — L9 Gamba B",
+      "doc_type": "concept-ssot",
+      "priority": "high",
+      "check_frequency": "constitutional",
+      "watches": {
+        "repos": [],
+        "paths": []
+      },
+      "update_policy": "immutable-ceo-approval",
+      "status": "DRAFT",
+      "registered_by": "M-NEXUS-000",
+      "last_verified": "2026-06-17",
+      "last_verified_by": "doc_sync_v2",
+      "verified_in_mission": "M-NEXUS-000",
+      "verification_mode": "registry_only",
+      "organ": "oracode-paradigm",
+      "last_drift_score": 0,
+      "visibility": "public",
+      "rag": "public",
+      "note": "W1 M-NEXUS-000 (FASE 0). Realizzazione concreta di L9 Gamba B (Autocorrezione operativa), attraversamento Soglia 2 (L8->L9). Due anelli annidati + barriera dura L8/L9 enforced-by-construction. Trigger PUSH UEM->Nexus. GATE Q6 anti-soppressione + Q7 anti-collapse. Referenzia il metodo-padre gated Fucina (SSOT_LOOP_PROTOCOL) senza duplicarlo. DRAFT ratificato CEO 2026-06-16. Vincolato dal Tier 0 (tier0-clausole-immutabili). Test anticorpo: tests/m-nexus-000/test_anello_ssot.sh."
     }
   ]
 }

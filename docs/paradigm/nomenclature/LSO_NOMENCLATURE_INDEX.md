@@ -5,7 +5,7 @@ doc_type: index
 version: 2.0.0
 status: current
 date: '2026-05-08'
-updated_at: '2026-05-22'
+updated_at: '2026-06-17'
 author: Padmin D. Curtis for Fabio Cherici
 scope:
 - oracode
@@ -43,6 +43,13 @@ rag: public
 **Migrazione (M-FUC-040):** doc cardine ribattezzati big-bang; i restanti via Strategia Delta —
 l'hook `nomenclature-deprecation-guard.sh` avvisa al touch di un file con etichetta vecchia in
 contesto rischio/operativo, e `bin/nomenclature-drift-count` conta i file residui (visibile in cabina).
+
+> **Asset costituzionali che applicano il canone (M-NEXUS-000):** il Pattern Anello di
+> Auto-Miglioramento (`docs/paradigm/lso/PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md`, W1) usa **L**
+> per la maturità (L8→L9, Soglia 2; non L10/L11) e **T3** per il tier ISTANZA dell'anello interno.
+> Il Tier 0 — Clausole Immutabili (`docs/paradigm/kernel/TIER0_CLAUSOLE_IMMUTABILI_v1.0.0.md`, W2)
+> introduce una scala di **mutabilità** Tier 0/1/2 (asse distinto e dichiarato, D8) — da non confondere
+> con il tier operativo T1-T3 della tabella sopra.
 
 ---
 

@@ -86,5 +86,9 @@
   "FORTINO": {
     "local_dir": "/home/fabio/FORTINO",
     "github_repo": "florenceegi/FORTINO"
+  },
+  "dimostralo": {
+    "local_dir": "/home/fabio/DIMOSTRALO",
+    "github_repo": "florenceegi/dimostralo"
   }
 }
