@@ -49,7 +49,43 @@
         "output_hash": "eb74d83bc0363cbee69cd49de4f02d3de8c2466bcbe635eea2c8258f9445f979",
         "date": "2026-06-17T09:21:24.981Z",
         "outcome": "success"
-      }
+      },
+      "organs": [
+        "oracode"
+      ],
+      "stats": {
+        "total_commits": 1,
+        "lines_added": 668,
+        "lines_deleted": 3,
+        "lines_net": 665,
+        "lines_touched": 671,
+        "files_touched": 8,
+        "weighted_commits": 0.8,
+        "cognitive_load": 2.57,
+        "productivity_index": 29.02,
+        "tags_breakdown": {
+          "DOC": 1
+        },
+        "commit_hashes": [
+          "04e207af48e8ffffbdf93a43495e07760901d1f2"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-06-17",
+            "commits": 1,
+            "lines_added": 668,
+            "lines_deleted": 3,
+            "files_touched": 8,
+            "tags": {
+              "DOC": 1
+            }
+          }
+        ],
+        "calculated_at": "2026-06-19"
+      },
+      "retrospective_executed": true,
+      "retrospective_executed_at": "2026-06-17T09:22:20Z"
     },
     {
       "id": "M-NEXUS-007",
@@ -72,25 +108,23 @@
         "fabiocherici"
       ],
       "stats": {
-        "total_commits": 9,
-        "lines_added": 2708,
-        "lines_deleted": 66,
-        "lines_net": 2642,
-        "lines_touched": 2774,
-        "files_touched": 37,
-        "weighted_commits": 9.9,
-        "cognitive_load": 3.31,
-        "productivity_index": 90.29,
+        "total_commits": 7,
+        "lines_added": 1316,
+        "lines_deleted": 64,
+        "lines_net": 1252,
+        "lines_touched": 1380,
+        "files_touched": 30,
+        "weighted_commits": 7.3,
+        "cognitive_load": 3.12,
+        "productivity_index": 63.44,
         "tags_breakdown": {
-          "FEAT": 2,
+          "FEAT": 1,
           "DOC": 4,
           "FIX": 1,
-          "ARCH": 2
+          "ARCH": 1
         },
         "commit_hashes": [
-          "0544be34d9b829c22fa2f3e5702eee2df4246074",
           "0e8cf1e3360cc2bc53c84364bb681144f3b57a29",
-          "3111bba5044f37828a8aad0cc838333ca9a69c4f",
           "36126f22c51782c6cbf05f36ecad0b039af610e1",
           "3b8bf5ea72a5f1f4888cbb68b74177970865a349",
           "47aabd40da0094f13240806c621bfe939db13dfb",
@@ -102,12 +136,12 @@
           {
             "repo": "florenceegi/EGI",
             "date": "2026-04-05",
-            "commits": 2,
-            "lines_added": 1610,
-            "lines_deleted": 17,
-            "files_touched": 14,
+            "commits": 1,
+            "lines_added": 304,
+            "lines_deleted": 15,
+            "files_touched": 9,
             "tags": {
-              "FEAT": 2
+              "FEAT": 1
             }
           },
           {
@@ -144,17 +178,6 @@
             }
           },
           {
-            "repo": "florenceegi/fabiocherici",
-            "date": "2026-05-27",
-            "commits": 1,
-            "lines_added": 86,
-            "lines_deleted": 0,
-            "files_touched": 2,
-            "tags": {
-              "ARCH": 1
-            }
-          },
-          {
             "repo": "florenceegi/oracode",
             "date": "2026-06-09",
             "commits": 2,
@@ -178,7 +201,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -230,7 +253,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -259,7 +282,7 @@
         "lines_net": 465,
         "lines_touched": 475,
         "files_touched": 7,
-        "weighted_commits": 4,
+        "weighted_commits": 4.0,
         "cognitive_load": 2.64,
         "productivity_index": 32.74,
         "tags_breakdown": {
@@ -308,7 +331,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -338,7 +361,7 @@
         "lines_net": 48,
         "lines_touched": 84,
         "files_touched": 4,
-        "weighted_commits": 2,
+        "weighted_commits": 2.0,
         "cognitive_load": 2.12,
         "productivity_index": 11.67,
         "tags_breakdown": {
@@ -360,7 +383,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -412,7 +435,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -464,7 +487,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -512,35 +535,19 @@
       "synced_by_engine": true,
       "last_engine_sync": "2026-06-01T07:23:08.438Z",
       "stats": {
-        "total_commits": 1,
-        "lines_added": 6,
-        "lines_deleted": 4,
-        "lines_net": 2,
-        "lines_touched": 10,
-        "files_touched": 1,
-        "weighted_commits": 0.8,
-        "cognitive_load": 1.63,
-        "productivity_index": 5.03,
-        "tags_breakdown": {
-          "DOC": 1
-        },
-        "commit_hashes": [
-          "f84be09e57dc8db79582ed98d698354a30dd1052"
-        ],
-        "by_repo_day": [
-          {
-            "repo": "florenceegi/oracode",
-            "date": "2026-06-01",
-            "commits": 1,
-            "lines_added": 6,
-            "lines_deleted": 4,
-            "files_touched": 1,
-            "tags": {
-              "DOC": 1
-            }
-          }
-        ],
-        "calculated_at": "2026-06-09"
+        "total_commits": 0,
+        "lines_added": 0,
+        "lines_deleted": 0,
+        "lines_net": 0,
+        "lines_touched": 0,
+        "files_touched": 0,
+        "weighted_commits": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
+        "tags_breakdown": {},
+        "commit_hashes": [],
+        "by_repo_day": [],
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -560,6 +567,39 @@
       "scope_hash": "8f3bd39701a75cced9210f246365495e771b80ffa59cd0287db2c2bf5003c2aa",
       "synced_by_engine": true,
       "last_engine_sync": "2026-05-31T23:55:05.514Z",
+      "stats": {
+        "total_commits": 0,
+        "lines_added": 0,
+        "lines_deleted": 0,
+        "lines_net": 0,
+        "lines_touched": 0,
+        "files_touched": 0,
+        "weighted_commits": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
+        "tags_breakdown": {},
+        "commit_hashes": [],
+        "by_repo_day": [],
+        "calculated_at": "2026-06-19"
+      },
+      "retrospective_executed": false,
+      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
+    },
+    {
+      "id": "M-NEXUS-001",
+      "title": "Consolidamento paradigma Oracode Nexus — de-branding + naming stack + architettura SSOT",
+      "type": "arch",
+      "organs": [
+        "oracode",
+        "os3-matrix"
+      ],
+      "trigger_matrix": 6,
+      "status": "closed",
+      "date_open": "2026-05-31",
+      "date_close": "2026-05-31",
+      "scope_hash": "37be26f34d20ab8c61e64e6a7ab3427e9e451515d09cdcce0988a6e9315b4b07",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-05-31T23:54:17.427Z",
       "stats": {
         "total_commits": 1,
         "lines_added": 4,
@@ -589,80 +629,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
-      },
-      "retrospective_executed": false,
-      "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
-    },
-    {
-      "id": "M-NEXUS-001",
-      "title": "Consolidamento paradigma Oracode Nexus — de-branding + naming stack + architettura SSOT",
-      "type": "arch",
-      "organs": [
-        "oracode",
-        "os3-matrix"
-      ],
-      "trigger_matrix": 6,
-      "status": "closed",
-      "date_open": "2026-05-31",
-      "date_close": "2026-05-31",
-      "scope_hash": "37be26f34d20ab8c61e64e6a7ab3427e9e451515d09cdcce0988a6e9315b4b07",
-      "synced_by_engine": true,
-      "last_engine_sync": "2026-05-31T23:54:17.427Z",
-      "stats": {
-        "total_commits": 3,
-        "lines_added": 1720,
-        "lines_deleted": 145,
-        "lines_net": 1575,
-        "lines_touched": 1865,
-        "files_touched": 18,
-        "weighted_commits": 4.8,
-        "cognitive_load": 2.98,
-        "productivity_index": 69.03,
-        "tags_breakdown": {
-          "ARCH": 3
-        },
-        "commit_hashes": [
-          "21cf2a02227f6a5d6606ce5970c77aabb8c36874",
-          "54150528737f2e17cffc17d224cb33c0b2106988",
-          "7579f00b9860e0b9657e978119797dff3232c628"
-        ],
-        "by_repo_day": [
-          {
-            "repo": "florenceegi/oracode",
-            "date": "2026-06-01",
-            "commits": 1,
-            "lines_added": 4,
-            "lines_deleted": 0,
-            "files_touched": 1,
-            "tags": {
-              "ARCH": 1
-            }
-          },
-          {
-            "repo": "florenceegi/os3-matrix",
-            "date": "2026-05-26",
-            "commits": 1,
-            "lines_added": 127,
-            "lines_deleted": 72,
-            "files_touched": 1,
-            "tags": {
-              "ARCH": 1
-            }
-          },
-          {
-            "repo": "florenceegi/os3-matrix",
-            "date": "2026-05-27",
-            "commits": 1,
-            "lines_added": 1589,
-            "lines_deleted": 73,
-            "files_touched": 16,
-            "tags": {
-              "ARCH": 1
-            }
-          }
-        ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -688,37 +655,35 @@
       "test_file": "tests/m-os3-024/test_mission_registry_bootstrap.sh",
       "note": "Self-registering bootstrap. FASE 6 self-close via DOC-SYNC v2. Istituisce dual-tracking: engine HOME (state machine runtime) + questo registry repo canonical (vista versionata).",
       "stats": {
-        "total_commits": 3,
-        "lines_added": 16128,
+        "total_commits": 1,
+        "lines_added": 144,
         "lines_deleted": 0,
-        "lines_net": 16128,
-        "lines_touched": 16128,
-        "files_touched": 46,
-        "weighted_commits": 4.8,
-        "cognitive_load": 3.49,
-        "productivity_index": 71.11,
+        "lines_net": 144,
+        "lines_touched": 144,
+        "files_touched": 3,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.18,
+        "productivity_index": 13.97,
         "tags_breakdown": {
-          "ARCH": 3
+          "ARCH": 1
         },
         "commit_hashes": [
-          "d2e9cc88dbce8d09fad4ac83e1477b0457050d54",
-          "de4588c581499fa9f36dd278df7b69d03d3203e7",
-          "e9395c6c49e18c894370d7d6ccd346b457f3c2c6"
+          "de4588c581499fa9f36dd278df7b69d03d3203e7"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-05-29",
-            "commits": 3,
-            "lines_added": 16128,
+            "commits": 1,
+            "lines_added": 144,
             "lines_deleted": 0,
-            "files_touched": 46,
+            "files_touched": 3,
             "tags": {
-              "ARCH": 3
+              "ARCH": 1
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking",
@@ -749,49 +714,35 @@
         "oracode": "f893eee"
       },
       "stats": {
-        "total_commits": 4,
-        "lines_added": 16189,
-        "lines_deleted": 15469,
-        "lines_net": 720,
-        "lines_touched": 31658,
-        "files_touched": 85,
-        "weighted_commits": 6.4,
-        "cognitive_load": 3.5,
-        "productivity_index": 38.86,
+        "total_commits": 1,
+        "lines_added": 142,
+        "lines_deleted": 0,
+        "lines_net": 142,
+        "lines_touched": 142,
+        "files_touched": 2,
+        "weighted_commits": 1.6,
+        "cognitive_load": 2.13,
+        "productivity_index": 14.21,
         "tags_breakdown": {
-          "ARCH": 4
+          "ARCH": 1
         },
         "commit_hashes": [
-          "d2e9cc88dbce8d09fad4ac83e1477b0457050d54",
-          "de4588c581499fa9f36dd278df7b69d03d3203e7",
-          "e9395c6c49e18c894370d7d6ccd346b457f3c2c6",
-          "f9329b087a5267a024441f58503fc015966a26ff"
+          "e9395c6c49e18c894370d7d6ccd346b457f3c2c6"
         ],
         "by_repo_day": [
           {
-            "repo": "florenceegi/EGI-DOC",
+            "repo": "florenceegi/oracode",
             "date": "2026-05-29",
             "commits": 1,
-            "lines_added": 61,
-            "lines_deleted": 15469,
-            "files_touched": 39,
+            "lines_added": 142,
+            "lines_deleted": 0,
+            "files_touched": 2,
             "tags": {
               "ARCH": 1
             }
-          },
-          {
-            "repo": "florenceegi/oracode",
-            "date": "2026-05-29",
-            "commits": 3,
-            "lines_added": 16128,
-            "lines_deleted": 0,
-            "files_touched": 46,
-            "tags": {
-              "ARCH": 3
-            }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking",
@@ -824,50 +775,30 @@
       },
       "note": "38 doc da EGI-DOC + 1 Oracode-Nexus-index. Redirect notice MOVED_TO_ORACODE_REPO.md in EGI-DOC.",
       "stats": {
-        "total_commits": 15,
-        "lines_added": 17362,
-        "lines_deleted": 15858,
-        "lines_net": 1504,
-        "lines_touched": 33220,
-        "files_touched": 91,
-        "weighted_commits": 17.7,
+        "total_commits": 8,
+        "lines_added": 16469,
+        "lines_deleted": 15616,
+        "lines_net": 853,
+        "lines_touched": 32085,
+        "files_touched": 82,
+        "weighted_commits": 8.0,
         "cognitive_load": 3.5,
-        "productivity_index": 93.54,
+        "productivity_index": 47.23,
         "tags_breakdown": {
-          "FIX": 1,
-          "DOC": 8,
-          "ARCH": 5,
-          "SECURITY": 1
+          "DOC": 6,
+          "ARCH": 2
         },
         "commit_hashes": [
           "0c2e0e2c68e579d42f2943a54b3672849c4c2cc5",
-          "39ea4ada147286091a71c70817a95d85e121cd05",
-          "3f324d12592fd5c897f7b5f3e3a973820e78e196",
-          "4ad14e9262e3fae4d5bed69bd124080855a0c5f5",
           "4ca94483f5abb1669eb206e2c5f0bf432796ea98",
           "5cdd59c6e471fb36599ffdd81a73a8f45f312fd5",
           "618cb360d0fe73dab349366634c28a7fdbaa20e4",
-          "671a49890da7b4ab3f785fb3fe05e5079317a7c7",
           "6fdfcbd2e60d127a6e7c1d3377059fe082a2a882",
           "d2e9cc88dbce8d09fad4ac83e1477b0457050d54",
-          "de4588c581499fa9f36dd278df7b69d03d3203e7",
-          "deb61d32787b89cc0aaf40febd1eeabc2351c09d",
-          "e9395c6c49e18c894370d7d6ccd346b457f3c2c6",
           "f33b6aed16e825e5477df92493c3ab4e34173f63",
           "f9329b087a5267a024441f58503fc015966a26ff"
         ],
         "by_repo_day": [
-          {
-            "repo": "AutobookNft/EGI-STAT",
-            "date": "2026-06-03",
-            "commits": 1,
-            "lines_added": 28,
-            "lines_deleted": 5,
-            "files_touched": 1,
-            "tags": {
-              "FIX": 1
-            }
-          },
           {
             "repo": "florenceegi/EGI-DOC",
             "date": "2026-04-07",
@@ -893,12 +824,12 @@
           {
             "repo": "florenceegi/EGI-DOC",
             "date": "2026-04-17",
-            "commits": 2,
-            "lines_added": 433,
+            "commits": 1,
+            "lines_added": 122,
             "lines_deleted": 2,
-            "files_touched": 3,
+            "files_touched": 2,
             "tags": {
-              "DOC": 2
+              "DOC": 1
             }
           },
           {
@@ -915,39 +846,16 @@
           {
             "repo": "florenceegi/oracode",
             "date": "2026-05-29",
-            "commits": 3,
-            "lines_added": 16128,
-            "lines_deleted": 0,
-            "files_touched": 46,
-            "tags": {
-              "ARCH": 3
-            }
-          },
-          {
-            "repo": "florenceegi/oracode",
-            "date": "2026-05-31",
-            "commits": 2,
-            "lines_added": 229,
-            "lines_deleted": 228,
-            "files_touched": 28,
-            "tags": {
-              "SECURITY": 1,
-              "ARCH": 1
-            }
-          },
-          {
-            "repo": "florenceegi/oracode",
-            "date": "2026-06-01",
             "commits": 1,
-            "lines_added": 39,
-            "lines_deleted": 9,
-            "files_touched": 1,
+            "lines_added": 15842,
+            "lines_deleted": 0,
+            "files_touched": 41,
             "tags": {
-              "DOC": 1
+              "ARCH": 1
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -995,12 +903,12 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       }
     },
     {
@@ -1062,7 +970,7 @@
             }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
@@ -1088,24 +996,19 @@
       "stats_status": "unrecoverable",
       "stats_unrecoverable_reason": "Mission session 3: commit non portano l ID nel messaggio. enrich_registry.py grep-by-ID ritorna 0 commit. Stats non ricostruibili. Stub storico permanente.",
       "stats": {
-        "total_commits": 4,
-        "lines_added": 667,
-        "lines_deleted": 39,
-        "lines_net": 628,
-        "lines_touched": 706,
-        "files_touched": 10,
-        "weighted_commits": 4.2,
-        "cognitive_load": 2.76,
-        "productivity_index": 37.95,
+        "total_commits": 1,
+        "lines_added": 156,
+        "lines_deleted": 6,
+        "lines_net": 150,
+        "lines_touched": 162,
+        "files_touched": 4,
+        "weighted_commits": 0.8,
+        "cognitive_load": 2.23,
+        "productivity_index": 10.3,
         "tags_breakdown": {
-          "DOC": 2,
-          "ARCH": 1,
-          "FEAT": 1
+          "DOC": 1
         },
         "commit_hashes": [
-          "43477937f02a17bc2f139d23a83b7cc458d390e7",
-          "8760c5ddc12fdbbb2e919c475d9890f9c862ba9f",
-          "de4588c581499fa9f36dd278df7b69d03d3203e7",
           "fe75e31660c557503e1d97ed07e4fdcf928f4ba6"
         ],
         "by_repo_day": [
@@ -1119,42 +1022,9 @@
             "tags": {
               "DOC": 1
             }
-          },
-          {
-            "repo": "florenceegi/EGI-DOC",
-            "date": "2026-05-27",
-            "commits": 1,
-            "lines_added": 303,
-            "lines_deleted": 33,
-            "files_touched": 2,
-            "tags": {
-              "DOC": 1
-            }
-          },
-          {
-            "repo": "florenceegi/oracode",
-            "date": "2026-05-29",
-            "commits": 1,
-            "lines_added": 144,
-            "lines_deleted": 0,
-            "files_touched": 3,
-            "tags": {
-              "ARCH": 1
-            }
-          },
-          {
-            "repo": "florenceegi/os3-matrix",
-            "date": "2026-05-31",
-            "commits": 1,
-            "lines_added": 64,
-            "lines_deleted": 0,
-            "files_touched": 1,
-            "tags": {
-              "FEAT": 1
-            }
           }
         ],
-        "calculated_at": "2026-06-09"
+        "calculated_at": "2026-06-19"
       },
       "retrospective_executed": false,
       "retrospective_skipped_reason": "deps assenti (read_log/bootstrap_index) — instance laboratorio senza read tracking"
