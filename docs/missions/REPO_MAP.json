@@ -87,6 +87,10 @@
     "local_dir": "/home/fabio/FORTINO",
     "github_repo": "florenceegi/FORTINO"
   },
+  "nexus-cockpit": {
+    "local_dir": "/home/fabio/nexus-cockpit",
+    "github_repo": "florenceegi/nexus-cockpit"
+  },
   "dimostralo": {
     "local_dir": "/home/fabio/DIMOSTRALO",
     "github_repo": "florenceegi/dimostralo"
