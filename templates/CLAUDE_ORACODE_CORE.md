@@ -155,7 +155,9 @@ Ogni mission:
   - Ha identificatore univoco progressivo (M-001, M-002, ...)
   - Dichiara scope all'apertura
   - Ha fasi sequenziali: apertura → analisi → piano → esecuzione → chiusura
-  - Produce report alla chiusura
+  - Il REGISTRY è il record alla chiusura (id, scope, date, organi, stats, governance);
+    scheda leggibile generata a richiesta (cockpit / `mission show`). Coppia report
+    non più obbligatoria (M-OS3-112 — potatura: no file-report che driftano). Report opzionale.
   - È integrata con DOC-SYNC (P0-11)
 
 Niente si modifica fuori da una mission aperta.
@@ -463,5 +465,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.3.0 — Data: 2026-06-10 (M-FUC-021: layer enforcement Dottrina del Supervisor)*
+*Versione template: 1.3.1 — Data: 2026-06-21 (M-OS3-112: registry = record alla chiusura, coppia report non più obbligatoria — potatura)*
 *Licenza: MIT*
