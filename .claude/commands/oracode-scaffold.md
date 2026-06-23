@@ -21,11 +21,16 @@ Convenzione path (portabile, NO path assoluti baked): `$ORACODE_HOME` = radice d
 3. **Compila CLAUDE.md**: sostituisci tutti i placeholder `{{...}}` con le risposte raccolte
 4. **Compila MISSION_REGISTRY.json**: inserisci dati progetto, counter=0. **Schema chiavi INGLESE** (id/title/type/organs/status/date_open/date_close/...) — decisione paradigma (vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`).
 5. **Compila SSOT_REGISTRY.json**: inserisci dati progetto, documents vuoto
-5b. **Censisci il registry nell'indice Nexus** (M-FUC-029 — nessun registry nasce orfano): aggiungi l'entry
-   completa (`instance`, `instance_root`, `registry_path` assoluto, `registry_schema: "documents"`, `scope`,
-   `organs_covered`, `export`, `status: "active"`, `added_by_mission`) a
-   `os3-matrix/contracts/ssot-registry-index.json`, poi lancia `os3-matrix/bin/ssot-index-check` →
-   deve essere verde (exit 0) prima di proseguire.
+5b. **Censisci il registry nell'indice Nexus** (M-FUC-029 — nessun registry nasce orfano) **via il comando
+   engine `ssot-index-add`** (M-OS3-119), **NON a mano**: l'edit manuale di `ssot-registry-index.json` è
+   off-pipeline e vietato dal guard "MAI editare i registry a mano". Esegui **dopo lo step 6** (descrittore
+   compilato), perché il comando deriva `instance`/`registry_path` dal descrittore e da `SSOT_REGISTRY.json`:
+   ```
+   os3-matrix/bin/ssot-index-add <instance_root_assoluto> --scope <paradigm|engine|organism|nexus-tool> --mission project-bootstrap
+   ```
+   Aggiunge l'entry **idempotente** (schema M-FUC-029: `registry_schema` default `documents`, `scope` default
+   `organism`, `organs_covered`/`export`/`status` derivati) e lancia `ssot-index-check` (**fail-closed**: deve
+   uscire 0 prima di proseguire).
 6. **Compila `.oracode/project.json`** (PONTE L1→L3 — OBBLIGATORIO per l'auto-registrazione mission): sostituisci i placeholder con:
    - `{{DATE}}` = data corrente
    - `{{PROJECT_NAME}}` = nome progetto
