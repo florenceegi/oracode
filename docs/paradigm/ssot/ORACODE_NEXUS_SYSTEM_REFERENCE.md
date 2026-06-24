@@ -2,10 +2,10 @@
 title: Oracode Nexus — Riferimento di Sistema (SSOT tecnico completo)
 slug: oracode-nexus-system-reference
 doc_type: architecture
-version: 1.5.0
+version: 1.5.1
 status: current
 date: '2026-05-31'
-updated_at: '2026-06-12'
+updated_at: '2026-06-25'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - ecosistema
@@ -634,11 +634,15 @@ L'utente parla con l'organismo da qualsiasi organo e riceve risposte contestuali
 
 RAG multipli specializzati:
 
-| Schema | Dominio | Usato da |
-|--------|---------|----------|
-| `rag_<istanza>.*` (es. rag_natan) | Piattaforma (SSOT ecosistema) | ai_sidebar di tutti gli organi |
-| `natan.rag_*` (schema RAG di un organo, es. NATAN_LOC) | PA verticale (56k atti comunali) | NATAN_LOC USE Pipeline |
-| `marketing_rag.*` | NPE/marketing (catalogo arte) | Narrative Promotion Engine |
+| Schema / store | Dove vive | Letto da (verificato alla fonte 2026-06-24) |
+|----------------|-----------|----------------------------------------------|
+| `rag_natan` | schema nell'**RDS condiviso** FlorenceEGI (~230 doc) | **ai_sidebar art-advisor di FlorenceEGI** — `POST /art-advisor/chat` → `RagNatan\SearchService` (pgvector, expert "platform") |
+| `natan.*` | schema dedicato nell'**RDS** (atti comunali) | **NATAN_LOC** (chat per i Comuni) via FastAPI `:8001` |
+| `rag_nexus` — **VETRINA** | box `nexus-fabiocherici` (Stoccolma), Postgres **locale**, servizio `:8002` **ON** (~136 doc, solo `published`) | **chat pubblico di `fabiocherici.com`** → `oracode.fabiocherici.com/chat` (SSE, rate-limit 50/gg) |
+| `rag_nexus` — **OFFICINA** | box `oracode-dev` (Milano), Postgres **locale**, servizio `:8002` **OFF** (~239 doc, tutti gli SSOT) | **doc-sync** (discovery laterale), **`rag_query`** (dev/agenti), **cockpit** — query Postgres diretta, niente HTTP |
+| `marketing_rag.*` | (NPE/marketing) | Narrative Promotion Engine |
+
+> ⚠️ **`rag_natan` (RDS, sidebar FlorenceEGI) e `rag_nexus` (box Nexus, vetrina/officina) sono store DISTINTI**, su macchine e database diversi, alimentati da pipeline diverse — non sono la stessa cosa. La sidebar di FlorenceEGI NON legge `rag_nexus`; la chat di `fabiocherici.com` NON legge `rag_natan`. (Verificato sui server 2026-06-24.)
 
 ---
 
