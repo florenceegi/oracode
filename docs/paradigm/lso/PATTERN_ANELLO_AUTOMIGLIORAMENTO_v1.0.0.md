@@ -35,7 +35,7 @@ rag: public
 L'**anello di auto-miglioramento** è il ciclo:
 
 ```
-errore osservato → diagnosi → fix in sandbox → prova → propagazione → ratifica → apprendimento
+errore osservato → diagnosi → fix in sandbox → prova → ratifica umana → propagazione → apprendimento
 ```
 
 Precisazioni vincolanti (grounded):
@@ -45,6 +45,8 @@ Precisazioni vincolanti (grounded):
 - Con la ratifica del fondatore su OGNI azione (invariante #4), l'organismo che esegue questo
   anello è nello **Stato Riflessivo (L1-L10)** — vive, si pensa, si autocorregge, ma **dipende dal
   fondatore** (`LSO_NOMENCLATURE_v2.md:683`). NON è Stato Stabile di Specie (L1-L11).
+
+- **Ordine ratifica→propagazione**: la propagazione è PREPARATA come patch proposto (DOC-SYNC ESITO C); la scrittura nei SSOT avviene SOLO dopo la ratifica umana. Niente entra nel genoma prima della ratifica del fondatore (corregge l'ordine fuorviante del riassunto a freccette).
 
 ## 2. I due anelli annidati e la barriera dura (doppia linea L8/L9)
 
