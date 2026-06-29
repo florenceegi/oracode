@@ -3,7 +3,7 @@
     "description": "Mission Registry canonical — paradigma Oracode (repo florenceegi/oracode). Traccia le mission Oracode Nexus (M-OS3-NNN) che evolvono paradigma + enforcement os3-matrix.",
     "version": "1.0.0",
     "created": "2026-05-29",
-    "updated": "2026-06-17",
+    "updated": "2026-06-29",
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Registro SSOT delle mission del paradigma. Schema chiavi inglese (allineato fabiocherici.com, prodotto da doc-sync-v2). Chiude il dual-tracking gap HOME-engine vs repo-registry: questo è il registro repo canonical, l'engine HOME (~/.oracode/missions/) resta state machine runtime.",
     "schema": "canonical-english",
@@ -20,6 +20,38 @@
   },
   "counter": 76,
   "missions": [
+    {
+      "id": "M-NEXUS-014",
+      "title": "Allineamento ordine ciclo Anello (ratifica prima di propagazione) nell'indice vivo + audit ratifica genoma (correzione CEO)",
+      "trigger_matrix": 2,
+      "stats_counted": true,
+      "status": "executing",
+      "date_open": "2026-06-29",
+      "date_close": null,
+      "scope_hash": "6fc0b533bd848fc78226de05d507f4664751a8303cc5d8ff7b56ab3814471a10",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-29T10:35:53.067Z",
+      "ssot_first_evidence": {
+        "path": "oracode/docs/missions/MISSION_REGISTRY.json",
+        "ts": "2026-06-29T10:35:24Z"
+      }
+    },
+    {
+      "id": "M-FABIOCHERICI-003",
+      "title": "doc-sync runtime drop nodejs20→22",
+      "trigger_matrix": 1,
+      "stats_counted": true,
+      "ssot_first_evidence": {
+        "path": "fabiocherici.com/FABIOCHERICI-DOC/docs/missions/MISSION_REGISTRY.json",
+        "ts": "2026-06-26T19:49:19Z"
+      },
+      "status": "auditing_failed",
+      "date_open": "2026-06-26",
+      "date_close": null,
+      "scope_hash": "168499c2e56c4f305d1200f42b397e7d0d66adc70301e868d6b3c48e4f24d1a8",
+      "synced_by_engine": true,
+      "last_engine_sync": "2026-06-26T20:03:00.124Z"
+    },
     {
       "id": "M-NEXUS-000",
       "title": "FASE 0 paradigma — SSOT pattern Anello Auto-Miglioramento Nexus + denylist Tier 0",
