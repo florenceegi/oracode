@@ -94,5 +94,13 @@
   "dimostralo": {
     "local_dir": "/home/fabio/DIMOSTRALO",
     "github_repo": "florenceegi/dimostralo"
+  },
+  "sales-network-control": {
+    "local_dir": "/home/fabio/sales-network-control",
+    "github_repo": "florenceegi/sales-network-control"
+  },
+  "oracode-nexus": {
+    "local_dir": "/home/fabio/oracode-nexus",
+    "github_repo": "florenceegi/oracode-nexus"
   }
 }
