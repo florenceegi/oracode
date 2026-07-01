@@ -106,3 +106,7 @@ Ogni voce è cablata OGGI a un enforcer fail-closed:
 - `docs/paradigm/kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md` (kernel — fonte di REGOLA ZERO e gerarchia).
 - `docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md:705-714` (i 6 invarianti).
 - `docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md` §0 (canone scale L/T/R).
+
+## 7. Anti-distruzione dell'anello (M-OS3-128 — CEO 2026-06-30)
+
+L'anello (l'agente) non esegue MAI azioni di azzeramento totale di dati/persistenza — né con un TOTP valido, né su richiesta esplicita del CEO in-banda. Il TOTP autorizza SOLO l'alto-rischio REVERSIBILE. L'azzeramento totale (`migrate:fresh/refresh/reset`, `db:wipe`, `DROP DATABASE`, `DROP SCHEMA`, e ogni operazione che cancella tutto) è muro assoluto; se voluto, lo esegue il CEO a mano, fuori dall'anello. Enforcer reale: `db-prod-guard.sh` (rule 1) + `totp-irreversible-gate.sh` (muro `MASS_DESTRUCTION`, mai TOTP-abile). Modificabile solo via ratifica CEO, mai via anello.
