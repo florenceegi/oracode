@@ -14,6 +14,9 @@ visibility: public
 rag: public
 ---
 
+> ⛔ **DEPRECATO — clausole di stato (M-OS3-138, 2026-07-06).** Le affermazioni «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato* / *caso unico*; L2/HUB *differito* finché non ci sono 2+ clienti» in questo documento sono **superate**: il disaccoppiamento è fatto, **L2 = Florence EGI S.R.L.** (software house acquirente con licenza Nexus) *esiste*, e le istanze L3-clienti sono già molte (FlorenceEGI, Capasso, LeVespe, DeepDebug). Stato corrente autoritativo → **oracode: docs/paradigm/nomenclature/NEXUS_HIERARCHY_CURRENT_STATE.md**. Le *definizioni core* L1/L2/L3 restano valide.
+
+
 # Mission Protocol
 
 > **Inquadramento Oracode Nexus.** Questo protocollo è il **pattern L1/Oracode-universale** del lavoro a mission. Vive dentro **Oracode Nexus** — il sistema completo (paradigma + gerarchia operativa a 3 livelli L1 GLOBALE / L2 HUB / L3 ISTANZA + ecosistema). La gerarchia dei livelli è legge: vedi `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md` (SSOT LOCKED). Il motore di riferimento `bin/mission` è componente L1 (in `os3-matrix`, `ORACODE_HOME=~/oracode-engine`) e propaga automaticamente lo stato della state machine al `MISSION_REGISTRY` dell'istanza (L3) via il descrittore `.oracode/project.json`.
