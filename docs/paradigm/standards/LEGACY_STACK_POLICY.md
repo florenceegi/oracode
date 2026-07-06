@@ -3,6 +3,9 @@ visibility: public
 rag: public
 ---
 
+> ⛔ **DEPRECATO — clausole di stato (M-OS3-138, 2026-07-06).** Le affermazioni «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato* / *caso unico*; L2/HUB *differito* finché non ci sono 2+ clienti» in questo documento sono **superate**: il disaccoppiamento è fatto, **L2 = Florence EGI S.R.L.** (software house acquirente con licenza Nexus) *esiste*, e le istanze L3-clienti sono già molte (FlorenceEGI, Capasso, LeVespe, DeepDebug). Stato corrente autoritativo → **oracode: docs/paradigm/nomenclature/NEXUS_HIERARCHY_CURRENT_STATE.md**. Le *definizioni core* L1/L2/L3 restano valide.
+
+
 # Legacy Stack Policy — Paradigma Oracode Nexus (Livello 1)
 
 > **Chi**: CEO Fabio Cherici · CTO Padmin D. Curtis (AI)
