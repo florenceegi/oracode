@@ -16,6 +16,8 @@ set -euo pipefail
 
 ORACODE="/home/fabio/oracode"
 REGISTRY="${ORACODE}/docs/lso/SSOT_REGISTRY.json"
+# M-OS3-139: lettore canonico format-agnostic (annidato/JSON-Lines), risolto dall'anchor engine.
+REG_READER="$(jq -r '(.projects[]?|select(.anchor=="engine")|.root)//empty' "$HOME/oracode-engine/projects.json" 2>/dev/null)/bin/oracode-registry-docs"
 DEST="${1:-${ORACODE}/tmp/nexus-ssot-export}"
 
 if [ ! -f "$REGISTRY" ]; then
@@ -50,7 +52,7 @@ while IFS='|' read -r SSOT_ID DOC_PATH; do
     echo "  MANCANTE: ${DOC_PATH}"
     MISSING=$((MISSING + 1))
   fi
-done < <(jq -r '.documents[] | "\(.ssot_id)|\(.path)"' "$REGISTRY")
+done < <( { if [ -x "$REG_READER" ]; then "$REG_READER" "$REGISTRY"; else jq -c '[.documents[]?]' "$REGISTRY"; fi; } | jq -r '.[] | "\(.ssot_id)|\(.path)"')
 
 # Documenti chiave NON nel registry ma vitali per capire Oracode Nexus
 add_extra() {

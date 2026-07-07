@@ -1,11 +1,1 @@
-{
-  "_meta": {
-    "description": "SSOT Registry — mapping documenti SSOT e file codebase",
-    "version": "1.0.0",
-    "created": "{{DATE}}",
-    "updated": "{{DATE}}",
-    "author": "{{CTO_NAME}} for {{CEO_NAME}}",
-    "purpose": "Layer 0 MIELINA: ogni entry mappa un documento SSOT ai file sorgente che descrive."
-  },
-  "documents": []
-}
+{"_meta":{"description":"SSOT Registry — un-documento-per-riga (JSON-Lines, doc-sync v3 M-OS3-139). Layer 0 MIELINA: ogni riga oltre a questa header mappa un documento SSOT ai file sorgente che descrive. Verita = questo testo-in-git, scritto CHIRURGICO dall'engine (1 campo = 1 riga); lo SQLite di serving e usa-e-getta. Aggiungere un SSOT = UNA riga JSON {ssot_id,path,watches,...}. NON pretty-print (rompe il formato riga).","version":"2.0.0","created":"{{DATE}}","updated":"{{DATE}}","author":"{{CTO_NAME}} for {{CEO_NAME}}","schema":"SSOT_REGISTRY/jsonl"}}
