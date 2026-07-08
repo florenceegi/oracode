@@ -26,16 +26,30 @@ Convenzione path (portabile, NO path assoluti baked): `$ORACODE_HOME` = radice d
    off-pipeline e vietato dal guard "MAI editare i registry a mano". Esegui **dopo lo step 6** (descrittore
    compilato), perché il comando deriva `instance`/`registry_path` dal descrittore e da `SSOT_REGISTRY.json`:
    ```
-   os3-matrix/bin/ssot-index-add <instance_root_assoluto> --scope <paradigm|engine|organism|nexus-tool> --mission project-bootstrap
+   os3-matrix/bin/ssot-index-add <instance_root_assoluto> --scope <SCOPE> --mission project-bootstrap
    ```
-   Aggiunge l'entry **idempotente** (schema M-FUC-029: `registry_schema` default `documents`, `scope` default
-   `organism`, `organs_covered`/`export`/`status` derivati) e lancia `ssot-index-check` (**fail-closed**: deve
-   uscire 0 prima di proseguire).
+   **`<SCOPE>` NON si sceglie a caso — si DETERMINA dal ruolo (M-OS3-141, tassonomia Nexus). È il fatto
+   da cui il routing RAG di fine-mission si deduce (`bin/oracode-resolve-rag`), quindi va giusto ALLA NASCITA:**
+   - **`paradigm` / `engine`** — SOLO i due tool-radice (`oracode`=paradigm, `os3-matrix`=engine). Un progetto nuovo **non è mai** questo.
+   - **`nexus-tool`** — è **attrezzatura del Nexus** (serve a costruire/gestire gli organismi: es. Fucina, DeepDebug, il cockpit). → i suoi SSOT vanno in `rag_nexus`.
+   - **`organism`** — è un **organismo/progetto** vero (mono, hub, o organo di un hub). Default per i progetti-cliente.
+
+   Triage: *"È attrezzatura del Nexus, o è un organismo/progetto a sé?"* → `nexus-tool` vs `organism`.
+   Aggiunge l'entry **idempotente**; `registry_schema` default `documents`; poi lancia `ssot-index-check`
+   (**fail-closed**: deve uscire 0). *(Per correggere lo scope di un'entry già presente: `--update`.)*
 6. **Compila `.oracode/project.json`** (PONTE L1→L3 — OBBLIGATORIO per l'auto-registrazione mission): sostituisci i placeholder con:
    - `{{DATE}}` = data corrente
    - `{{PROJECT_NAME}}` = nome progetto
    - `{{ORACODE_LEVEL}}` = livello (numero)
    - `{{INSTANCE_ROOT}}` = **path assoluto** della dir progetto creata (es. `<percorso-assoluto>/Cliente-DOC`)
+   - **`ssot_home`** = casa dei documenti. **ASSENTE = sé** (mono/hub, default di /project). Un **Organo**
+     (membro di un organismo multi-organo) mette `ssot_home` = nome-repo dell'hub — di norma via **promozione**
+     a organo, non a /project (un progetto nasce mono).
+   - **Se è un Organismo-HUB** (la RADICE di un multi-organo, con organi che gli puntano) → dichiara qui il suo
+     **store RAG**: `"rag_store": "<nome-store>"` + `"rag_engine_writes": <true se lo scrive l'engine | false se
+     lo alimenta una pipeline esterna>`. È il fatto da cui `resolve-rag` instrada gli SSOT dell'organismo
+     (M-OS3-141 "la mossa"). Un **Progetto mono senza RAG NON lo dichiara** (→ nessun RAG, corretto).
+   - `doc_sync_v3_live: true` è già nel template (a fine mission aggiorna registro/serving + RAG se instradato).
    Compila anche `docs/missions/REPO_MAP.json` (`{{GITHUB_REPO}}` = url repo, o `null` se non ancora creato).
    > Senza questo descrittore, `bin/mission`/`/mission` NON auto-registra le mission nel MISSION_REGISTRY del progetto (regressione "mission fantasma"). È il ponte Livello 1 (motore) → Livello 3 (registry del progetto).
 6b. **Installa la difesa Egida (difesa-by-default)** — solo se Matrix presente e `egida_profile` definito (livello 2+, o livello 1 *con* Matrix). EGIDA_INSTALL_CONTRACT §6 (interfaccia autoritativa):

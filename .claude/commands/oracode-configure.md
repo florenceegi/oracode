@@ -56,6 +56,16 @@ Se l'utente non sa, triage:
 
 Nota: se l'utente sceglie livello 2+ ma non ha OS3 Matrix installato, segnala l'incongruenza e chiedi come procedere.
 
+**Q6b: Ruolo nel Nexus → determina lo `scope`** (M-OS3-141). Il livello (sopra) è un asse; il **ruolo** è un altro,
+ed è quello da cui il routing RAG di fine-mission si deduce. Determinalo ora (fluisce a `/oracode-scaffold`):
+- **Paradigma** — il progetto È il motore/le regole (`oracode`→`paradigm`, `os3-matrix`→`engine`). Raro: solo i due tool-radice.
+- **Strumento del Nexus** (`nexus-tool`) — attrezzatura operativa del Nexus (Fucina, DeepDebug, il cockpit…). SSOT → `rag_nexus`.
+- **Organismo/Progetto** (`organism`) — un progetto/organismo vero (mono, hub, o organo). Default per i progetti-cliente.
+
+Triage: *"È attrezzatura del Nexus, o è un organismo/progetto a sé?"* → `nexus-tool` vs `organism`.
+Se **Organismo multi-organo (hub)**: sarà la radice dei suoi organi → allo scaffold dichiarerà il suo store RAG
+(`rag_store` + `rag_engine_writes`). Un mono senza RAG non dichiara nulla (→ nessun RAG). Output: `scope` in config.
+
 **Domande condizionali per livello:**
 
 Se livello 3+ (LSO mono-organo o multi-organo) — SISTEMA CIRCOLATORIO completo richiesto:
