@@ -14,12 +14,16 @@
   ],
   "by_mission_type": {
     "feature": [
+      "/home/fabio/oracode/docs/paradigm/modules/DEV_DISCIPLINE.md",
       "/home/fabio/oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md"
     ],
     "fix": [
+      "/home/fabio/oracode/docs/paradigm/modules/DEV_DISCIPLINE.md",
       "/home/fabio/oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md"
     ],
-    "refactor": [],
+    "refactor": [
+      "/home/fabio/oracode/docs/paradigm/modules/DEV_DISCIPLINE.md"
+    ],
     "arch": [
       "docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md",
       "docs/paradigm/ssot/00_ORACODE_NEXUS_SSOT.md"
