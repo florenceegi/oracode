@@ -18,6 +18,23 @@ Regola immutabile: OSZ è verità assoluta. OS3 e OS4 si aggiornano per allinear
 
 ---
 
+## Glossario — i 6 ruoli della gerarchia (decisione CEO 2026-07-08/11)
+
+I ruoli si nominano con PAROLE, mai con numeri di livello:
+- **Paradigma** — le regole, la legge: oracode (MIT).
+- **Softwarehouse** — l'azienda con licenza (es. Florence EGI S.R.L.), SOPRA tutti i clienti. A questo
+  livello vivono le **Librerie LSO** e l'**attuazione del paradigma** (librerie, imbrigliamento, hook — repo os3-matrix).
+- **Libreria LSO** — repo di proprietà della software house, al servizio di tutti i lavori, nessun
+  cliente committente (DeepDebug, Fucina, Cockpit, EGI-STAT, SNC).
+- **Progetto** — un LSO mono-organo (es. Capasso).
+- **Organismo** — un LSO multi-organo (es. FlorenceEGI; repo-centro EGI-DOC).
+- **Organo** — un LSO che appartiene a un Organismo (es. EGI, EGI-HUB).
+
+Regole: nessun termine nuovo senza definizione alla prima occorrenza · MAI rinominare termini
+consolidati senza permesso CEO. Dettaglio: `LSO_NOMENCLATURE_INDEX.md` §0/§1bis. (M-OS3-144 D27)
+
+---
+
 ## REGOLA ZERO — Principio fondante
 
 **Mai dedurre. Mai completare lacune. Se non sai, chiedi.**
@@ -337,5 +354,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.8.0 — Data: 2026-07-11 (M-OS3-144 dieta C2: D20+D24+D13+D11+D21-D23 — SEO/A11y/GDPR compattate a un blocco, dettaglio nel modulo WEB_PUBLIC_STANDARDS on-demand; GDPR tipo-4 tenuto visibile)*
+*Versione template: 1.9.0 — Data: 2026-07-11 (M-OS3-144 D27: glossario 6 ruoli SEMPRE caricato — testo ratificato CEO; entra a saldo negativo, coperto dai tagli D20-D23)*
 *Licenza: MIT*
