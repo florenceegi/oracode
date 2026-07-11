@@ -57,15 +57,16 @@ supersedes_clauses:
 
 | Ruolo | Cos'è | Cross-repo di una sua mission |
 |---|---|---|
-| **Paradigma** *(ex L1)* | Lo **strumento-legge**: `oracode` (paradigma, MIT) + `os3-matrix` (enforcement) + `~/oracode-engine` (motore). «Cosa gira adesso». | **Globale** — qualunque Organo di qualunque LSO (è il tool che enforcea ovunque). |
-| **Softwarehouse** *(ex L2)* | L'**acquirente con licenza Nexus** = **Florence EGI S.R.L.** (*Magicsoft 2.0*). Tiene l'HUB: statistiche consolidate + numerazione globale su **TUTTA** la produzione — clienti E Librerie LSO (argomento CEO 2026-07-11). | (concerne registry/stat/numerazione, non lo span di commit) |
+| **Paradigma** *(ex L1)* | Le **REGOLE**, la legge: `oracode` (MIT). **CORRETTO CEO 2026-07-11 (M-OS3-144):** os3-matrix NON sta qui — è l'attuazione e vive al livello Softwarehouse (riga sotto). | **Globale** — la legge vale ovunque. |
+| *(attuazione del paradigma — vive al livello Softwarehouse)* | `os3-matrix` (enforcement: librerie, imbrigliamento, hook) + `~/oracode-engine` (motore) — **proprietà della software house**, al servizio di tutti i lavori. | **Globale** — span operativo dichiarato: è l'attuatore del paradigma ovunque installato (ratifica CEO 2026-07-11). |
+| **Softwarehouse** *(ex L2)* | L'**acquirente con licenza Nexus** = **Florence EGI S.R.L.** (*Magicsoft 2.0*). SOPRA tutti i clienti: a questo livello vivono le **Librerie LSO** e l'**attuazione** (riga sopra). Tiene l'HUB: statistiche consolidate + numerazione globale su **TUTTA** la produzione — clienti E Librerie LSO (argomento CEO 2026-07-11). | (concerne registry/stat/numerazione, non lo span di commit) |
 | **Libreria LSO** *(nuovo, 2026-07-11)* | Repo di **proprietà della software house**, al servizio di tutti i lavori, nessun cliente committente: **DeepDebug, Fucina, Cockpit (nexus-cockpit), EGI-STAT (nexus), SNC**. Il ruolo si dichiara alla creazione via `/project` (design M-OS3-144). | **Contenuto** al proprio repo (strumento, non commessa). |
 | **Progetto** *(ex L3 mono-organo)* | **Un LSO mono-organo** (definizione CEO): sta per conto suo (es. Capasso). | **Contenuto** al proprio repo. |
 | **Organismo** *(ex L3-hub)* | **Un LSO multi-organo** (definizione CEO): es. **FlorenceEGI**, il cui **repo-centro** è **EGI-DOC** (`ssot_home` = sé, gli Organi gli puntano). | Una mission aperta sul repo-centro è **ristretta agli Organi del proprio LSO**. |
 | **Organo** *(ex organo di L3-hub)* | **Un LSO appartenente a un Organismo** (definizione CEO): EGI, EGI-HUB, EGI-Credential, … (`ssot_home` = il repo-centro dell'Organismo). | **Contenuto** al proprio repo. |
 
 **Regola cross-repo (tre casi):**
-1. **Mission del Paradigma** (oracode/os3-matrix) → qualunque Organo/LSO.
+1. **Mission del Paradigma (oracode) e dell'attuazione (os3-matrix, motore)** → qualunque Organo/LSO (span globale dichiarato in tabella, ratifica CEO 2026-07-11).
 2. **Mission dell'Organismo** (aperta sul repo-centro, es. EGI-DOC) → gli **Organi del proprio LSO** (dichiarati in `organs[]`, ⊆ organi di quell'LSO).
 3. **Mission di Progetto, di Organo o di Libreria LSO** → il **proprio** repo.
 
