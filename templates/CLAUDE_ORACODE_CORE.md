@@ -90,35 +90,9 @@ Ogni regola nasce da un errore concreto in produzione. Sono cicatrici codificate
 | P0-12 | **Anti-Infra-Invention** | URL, path, branch, config di deploy: verifica dalla fonte. Mai dedurre nomi plausibili |
 | P0-13 | **Test-First Discipline** | Ogni feature/fix/refactor produce o aggiorna test. Task non chiusa senza test verde |
 
-### P0-8 — Complete Flow Analysis (4 fasi obbligatorie)
-
-```
-FASE 1 — FLOW MAPPING
-  User Action → Entry Point → Processing → Exit Point
-  Dove può fallire? Dove cambiano i tipi? Branch logic?
-
-FASE 2 — TYPE TRACING
-  Per ogni variabile: tipo in ogni step. Ogni trasformazione esplicita.
-
-FASE 3 — ALL OCCURRENCES
-  Ricerca esaustiva di tutti gli usi nel codebase PRIMA di modificare.
-
-FASE 4 — IMPACT ANALYSIS
-  Mappa di chi viene impattato, upstream e downstream.
-```
-
-### P0-13 — Test-First Discipline (3 obblighi)
-
-```
-FEATURE NUOVA:
-  P0-8 (identifica edge case) → test (red) → implementazione (green) → refactor → DOC-SYNC → chiusa
-
-FIX:
-  Bug riprodotto → test che lo cattura (red) → fix (green) → nessuna regressione → DOC-SYNC → chiusa
-
-REFACTOR:
-  Test esistenti verdi (baseline) → refactor incrementale → test verdi a ogni step → DOC-SYNC → chiusa
-```
+Le espansioni procedurali di P0-8 (le 4 fasi del Complete Flow Analysis) e P0-13 (i 3 obblighi
+test-first per feature/fix/refactor): modulo `oracode/docs/paradigm/modules/DEV_DISCIPLINE.md`
+(bootstrap type=feature|fix|refactor). Migrato: M-OS3-144 D6.
 
 ---
 
@@ -137,17 +111,9 @@ Protegge da due rischi opposti: debito tecnico non gestito e refactoring nevroti
 
 ## Firma Oracode (P1)
 
-Ogni file porta una firma. Non ornamento — dichiarazione di responsabilità.
-
-```
-@package  [modulo/area]
-@author   [autore] ([ruolo]) for [CEO/responsabile]
-@version  [versione] ([progetto])
-@date     [data]
-@purpose  [perché esiste questo file — Pilastro 1]
-```
-
-Assenza della firma non blocca lo sviluppo ma rende il file non production-ready.
+Ogni file porta una firma (@package/@author/@version/@date/@purpose) — dichiarazione di
+responsabilità, non ornamento; assenza = non production-ready. Template del blocco: modulo
+`DEV_DISCIPLINE.md`. Migrato: M-OS3-144 D8.
 
 ---
 
@@ -172,9 +138,7 @@ Ogni mission:
   - Ha identificatore univoco progressivo (M-001, M-002, ...)
   - Dichiara scope all'apertura
   - Ha fasi sequenziali: apertura → analisi → piano → esecuzione → chiusura
-  - Il REGISTRY è il record alla chiusura (id, scope, date, organi, stats, governance);
-    scheda leggibile generata a richiesta (cockpit / `mission show`). Coppia report
-    non più obbligatoria (M-OS3-112 — potatura: no file-report che driftano). Report opzionale.
+  - Il REGISTRY è il record alla chiusura; report opzionale (M-OS3-112)
   - È integrata con DOC-SYNC (P0-11)
 
 Niente si modifica fuori da una mission aperta.
@@ -264,48 +228,20 @@ Prima di rispondere o scrivere codice, verifica:
 
 ## Pattern di Output — Principi
 
-```
-ERRORI:    Sempre via gestore centralizzato (UEM). Mai try/catch isolati, mai solo log.
-I18N:      Chiavi atomiche. Mai testo interpolato nelle chiavi di traduzione.
-SICUREZZA: Mai innerHTML raw senza sanitizzazione. Mai input utente non validato.
-A11Y:      aria-label su button icon-only. aria-live su aggiornamenti dinamici. label[for] su input.
-GDPR:      Audit trail su azioni utente con categoria classificata. Consenso versionato.
-```
+Pattern obbligatori (ERRORI via UEM · I18N chiavi atomiche · SICUREZZA no innerHTML raw · A11Y ·
+GDPR audit trail) e tabella librerie Ultra (UEM/ULM/UTM/UCM/UUM — Ultra è parte del paradigma):
+modulo `DEV_DISCIPLINE.md` (bootstrap type=feature|fix|refactor). Migrato: M-OS3-144 D17-D18.
 
 ---
 
-## Disciplina di Codice — Librerie Ultra
+## Agenti Specializzati e Dottrina del Supervisor
 
-Responsabilità trasversali coperte da librerie obbligatorie. Ultra è parte del paradigma.
-
-| Libreria | Sigla | Funzione | P0 di riferimento |
-|----------|-------|----------|-------------------|
-| Ultra Error Manager | UEM | Gestione errori centralizzata, recovery patterns | P0-5 |
-| Ultra Log Manager | ULM | Logging strutturato, multi-channel, GDPR-aware | Sicurezza Proattiva |
-| Ultra Translation Manager | UTM | Internazionalizzazione, chiavi atomiche | P0-2 + P0-9 |
-| Ultra Config Manager | UCM | Configurazioni centralizzate | — |
-| Ultra Upload Manager | UUM | Upload, validazione, scan, storage | — |
-
-Multi-linguaggio nativo: Ultra esiste per PHP, TypeScript, e si estende al linguaggio target del progetto.
-
----
-
-## Agenti Specializzati — Principio
-
-Progetti di media/grande complessità si avvalgono di agenti: sotto-istanze dell'LLM configurate per ambiti specifici. Ogni agente ha scope definito. Il coordinamento è responsabilità dell'agente principale (Supervisor).
-
-Esempi tipici: backend specialist, frontend specialist, DOC-SYNC guardian, domain specialist.
-
-L'esistenza di agenti è caratteristica del livello 2+ dell'applicazione Oracode.
-
----
-
-## Dottrina del Supervisor
-
-I 5 riflessi dell'orchestratore (grounding · routing al pool · REGOLA ZERO · misura-prima · no over-claim)
-sono **iniettati a ogni sessione** dall'hook `supervisor-doctrine-inject.sh` (boot/resume/compact) e retti da
-forzanti deterministiche (gate ROUTING e SSOT-FIRST di `bin/mission`, contratto `routing-matrix.json`).
-Fonte integrale: `SSOT_SUPERVISOR_DOCTRINE.md` (Fucina). Testo migrato dal CORE: M-OS3-144 D20 (dieta, doppione hook).
+Progetti di media/grande complessità si avvalgono di agenti (sotto-istanze con scope definito),
+coordinati dal Supervisor — i cui 5 riflessi (grounding · routing al pool · REGOLA ZERO ·
+misura-prima · no over-claim) sono **iniettati a ogni sessione** dall'hook
+`supervisor-doctrine-inject.sh` (boot/resume/compact) e retti da forzanti deterministiche
+(gate ROUTING e SSOT-FIRST di `bin/mission`, contratto `routing-matrix.json`).
+Fonte integrale: `SSOT_SUPERVISOR_DOCTRINE.md` (Fucina). Migrato: M-OS3-144 D19-D20.
 
 ---
 
@@ -354,5 +290,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.9.0 — Data: 2026-07-11 (M-OS3-144 D27: glossario 6 ruoli SEMPRE caricato — testo ratificato CEO; entra a saldo negativo, coperto dai tagli D20-D23)*
+*Versione template: 2.0.0 — Data: 2026-07-11 (M-OS3-144 dieta C2 COMPLETA: D20+D24+D13+D11+D21-D23 migrate + D27 glossario entrato + blocco finale D6/D8/D10/D17/D18/D19 — dettagli nei moduli on-demand DEV_DISCIPLINE, EGIDA_ASSE_DIFESA, WEB_PUBLIC_STANDARDS + hook Dottrina + INDEX + KNOW_HOW_TRANSFER_PROTOCOL)*
 *Licenza: MIT*
