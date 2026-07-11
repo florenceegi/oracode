@@ -330,31 +330,10 @@ L'esistenza di agenti è caratteristica del livello 2+ dell'applicazione Oracode
 
 ## Dottrina del Supervisor
 
-L'agente principale che orchestra (il Supervisor) **opera al livello degli specialisti** — non perché sappia
-tutto, ma perché ne adotta i riflessi. Cosa rende esperto un agente non è l'onniscienza: è il riflesso di
-**andare alla fonte e di instradare**. Il Supervisor diventa di livello quando fa propri **cinque riflessi**.
-
-1. **Grounding** — di fronte a una scelta di dominio, il Supervisor **non risponde da memoria**: o legge la
-   fonte vera e la cita, o spawna lo specialista grounded competente. "Plausibile" non è "vero".
-2. **Routing** — ogni unità di lavoro: triage → instrada allo specialista giusto (design/architettura agli
-   advisor; codice di produzione agli sviluppatori; test al testing; difesa al collaudo). **Il pool grounded
-   è l'esecutore di default**; il Supervisor **orchestra e sintetizza**, e non scrive codice di produzione da
-   solo quando esiste lo specialista competente.
-3. **REGOLA ZERO + onestà epistemica** — non deduce; verifica i flag di incertezza degli agenti alla fonte
-   prima di agire; distingue FATTO da IPOTESI.
-4. **Misura-prima** — prima di fidarsi di un output ad alta posta (proprio o altrui), lo **misura** con un
-   metro esterno (evaluation), non sulla fiducia. (Pilastro 5 — Evoluzione Ricorsiva.)
-5. **No over-claim** — attesta ciò che è vero e verificato; marca le ipotesi "da validare"; dichiara i limiti.
-
-Conseguenza: una unità di lavoro ben condotta **non è "il Supervisor fa tutto"** — è *triage → pool grounded
-che esegue → sintesi onesta misurata*. Se il Supervisor si trova a rispondere di dominio da memoria, sta
-sbagliando: deve groundare o instradare. È il livello-esperto applicato all'orchestrazione.
-
-**Layer enforcement (M-FUC-020):** la Dottrina non è prosa-da-ricordare — è retta da forzanti deterministiche:
-hook globali di iniezione (`~/.claude/hooks/supervisor-doctrine-inject.sh` a ogni boot/resume/compact +
-`supervisor-triage-reminder.sh` per-prompt, registrati in `~/.claude/settings.json`), gate dell'engine
-`os3-matrix/bin/mission` v0.4 (ROUTING: trigger 3 → design `engineer-*` o waiver firmato; SSOT-FIRST: campo
-`ssot_first` nel descrittore `.oracode/project.json`), contratto L7 `os3-matrix/contracts/routing-matrix.json`.
+I 5 riflessi dell'orchestratore (grounding · routing al pool · REGOLA ZERO · misura-prima · no over-claim)
+sono **iniettati a ogni sessione** dall'hook `supervisor-doctrine-inject.sh` (boot/resume/compact) e retti da
+forzanti deterministiche (gate ROUTING e SSOT-FIRST di `bin/mission`, contratto `routing-matrix.json`).
+Fonte integrale: `SSOT_SUPERVISOR_DOCTRINE.md` (Fucina). Testo migrato dal CORE: M-OS3-144 D20 (dieta, doppione hook).
 
 ---
 
@@ -465,5 +444,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.3.1 — Data: 2026-06-21 (M-OS3-112: registry = record alla chiusura, coppia report non più obbligatoria — potatura)*
+*Versione template: 1.4.0 — Data: 2026-07-11 (M-OS3-144 D20: Dottrina del Supervisor → rimando; testo integrale vive nell'hook di iniezione + SSOT_SUPERVISOR_DOCTRINE — dieta CORE, prima sezione migrata)*
 *Licenza: MIT*
