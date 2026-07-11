@@ -2,7 +2,7 @@
 title: Mission Protocol
 slug: mission-protocol
 doc_type: protocol
-version: 4.1.0
+version: 4.2.0
 status: current
 date: '2026-05-27'
 updated_at: '2026-06-01'
@@ -23,6 +23,7 @@ rag: public
 
 > **Livello (vedi `LSO_NOMENCLATURE_v1.md`)**: Oracode (universale, trasferibile a qualsiasi istanza LSO)
 > **Sostituisce**: `MISSION_PROTOCOL.md` v2.0.0 (2026-05-08)
+> **Cambio minore v4.2.0 (M-OS3-145, 2026-07-11)**: classe **Micromission** (Sez 7-bis) — mission Trigger-1 con chiusura leggera e eleggibilità verificata dal MOTORE sul diff reale (tetti 25/2/2, effetto-salame 7gg, promote a senso unico, P0-13 tenuto). Additivo: percorso standard invariato; invariante Sez 7 riformulato "per classe".
 > **Cambio minore v4.1.0 (M-OS3-026, 2026-06-01)**: bootstrap mirato (FASE 1) **cablato all'open** — `bin/mission` emette automaticamente la lista moduli calibrata per `type`+`organs` (`emitBootstrap`); prima era design non implementato. Additivo, retro-compatibile.
 > **Cambio maggiore v4.0.0 (M-OS3-025, 2026-05-31)**: ingresso in **Oracode Nexus** con la gerarchia a 3 livelli. Cambiamenti strutturali: (1) **ponte L1→L3 AUTOMATICO** — `bin/mission` auto-registra le mission nel `MISSION_REGISTRY` dell'istanza via `.oracode/project.json` (fine della sincronizzazione manuale / "mission fantasma"); (2) **chiavi registry in INGLESE** (`id/title/type/organs/status/date_open/date_close`); (3) **cartella globale visibile** `~/oracode-engine/` (`ORACODE_HOME`); (4) statistiche/numerazione = responsabilità **HUB (L2)**, non istanza. Compatibile concettualmente con v3 (FASE 0-6 preservate); major perché cambiano schema-chiavi e meccanismo di propagazione.
 >
@@ -373,9 +374,53 @@ Le fasi narrative di Sez 2 (FASE 0-6) sono il **piano logico**. La state machine
 | `closed_with_debt` | Mission chiusa con debito tecnico documentato | terminale | `debt_reason` obbligatorio |
 | `aborted` | Mission abbandonata prima di executing | terminale | — |
 
-**Invariante.** Nessuna mission può saltare stati. Il CLI di riferimento blocca transizioni non ammesse.
+**Invariante.** Ogni mission percorre integralmente il percorso codificato della **propria classe**; nessuna transizione fuori dal percorso della classe. Il CLI di riferimento blocca transizioni non ammesse. (Riformulato da M-OS3-145 con l'introduzione della classe Micromission: per la mission standard il percorso resta identico a prima.)
 
 **Origine.** State machine v0.1 introdotta da M-OS3-001 (Mission State Machine non-aggirabile). Stati `auditing_failed` e `closed_with_debt` aggiunti da M-OS3-006 (Test Quality Gate). Stato `aborted` da M-OS3-009 (Mission Timeout + Auto-Suspend).
+
+---
+
+## 7-bis. Classe Micromission (M-OS3-145)
+
+Una **micromission** è una mission a tutti gli effetti — stesso ID progressivo, stesso registry, scope
+dichiarato all'apertura e approvato dal CEO — la cui chiusura è alleggerita perché il suo contenuto è,
+**per definizione e per verifica meccanica**, una modifica Trigger 1 (fix puntuale, output invariato).
+
+**Dichiarazione.** All'apertura: `bin/mission open <ID> ... --trigger=1 --micro`. Il motore rifiuta
+`--micro` con trigger ≠ 1. Il flag è scritto nello state e propagato self-describing nel registry
+(`micro: true`, pattern del flag `perpetual` — M-OS3-058). Mai un prefisso nel titolo: il filtro è
+meccanico (`jq 'select(.micro != true)'` esclude le micro da ricerche e viste).
+
+**Percorso codificato.** `draft → planned → executing → closed`. La classe micro non attraversa
+`auditing`: non c'è audit da rappresentare, e uno stato attraversato a vuoto sarebbe incoerenza
+semantica (Pilastro 3).
+
+**Chiusura leggera.** Restano: aggiornamento registry (automatico), stats (auto-enrich), cambio stato,
+commit+push. Saltano: report, spawn DOC-SYNC (ramo Trigger 1, già codificato nel motore), retrospective,
+log/triage, gate handoff (una micro non produce passaggio di consegne).
+
+**GATE MICRO — l'eleggibilità la verifica il motore, mai l'istanza.** Alla transizione
+`executing → closed` il motore misura il diff reale della mission (commit che citano l'ID, al netto del
+bookkeeping): righe toccate (added+deleted), numero file, numero commit, superfici vietate
+(migration, route, contratti/schema, i18n, SSOT, enforcement). Tetti = default paradigma
+(**25 righe toccate / 2 file / 2 commit** — ratifica CEO 2026-07-11), override per-istanza nel
+descrittore `.oracode/project.json`. Il motore esige inoltre il test della mission VERDE
+(ri-esecuzione di `test_red_file`, exit 0): P0-13 vale anche per le micro.
+
+**Escalation a senso unico.** Tetti sforati o superficie vietata → il motore RIFIUTA il close micro e
+impone `bin/mission promote <ID> --reason="..."`: la mission diventa standard (traccia
+`micro_promotion` permanente) e chiude con FASE 6 piena. Non esiste declassamento a micro.
+
+**Effetto salame.** Una mission piena "affettata" in N micro per passare sotto i tetti: il motore blocca
+la serie — con i default ratificati (finestra **7 giorni**, serie max **2**), la **3ª micro sullo stesso
+file** viene rifiutata e impone la promozione. Il conteggio è ricalcolato dal registry
+(`micro_evidence.files`), nessun contatore separato da mantenere. Limite dichiarato: il salame
+*cross-file* non è catturato meccanicamente; il backstop resta l'ok CEO sullo scope in `draft → planned`.
+
+**Statistiche.** Le micro **contano come ogni altra mission chiusa** (decisione CEO 2026-07-11: "è
+sempre produzione") — status `closed` → `counts_as_production: true` nella tassonomia single-source,
+nessun filtro. Il flag serve a ricerca/viste e a marcare che la micro non aggiorna SSOT, NON a
+escludere dalle statistiche.
 
 ---
 
@@ -392,6 +437,7 @@ L'implementazione di riferimento del Mission Protocol è il CLI `bin/mission` (l
 | v0.3 | M-OS3-016 | Multi-write per `session_id`: focus per-session via env, N chat parallele zero collision |
 | **v4.0.0** | **M-OS3-025** | **Oracode Nexus 3 livelli**: ponte L1→L3 automatico (`syncToRepoRegistry` via `.oracode/project.json`, parallel-safe), chiavi registry INGLESE, `~/oracode-engine` visibile, stats/numerazione al HUB. Subcomando `finalize`. Slash command globale `/mission`. + blocco mission-fantasma A1 (`open` BLOCCA fuori da un progetto, `--global` override) e convenzione ID prefissato (CEO 2026-06-01). |
 | **v4.1.0** | **M-OS3-026** | **Bootstrap mirato cablato all'open**: `emitBootstrap` (in `cmdOpen`) emette la lista moduli calibrata per `type`+`organs` da `MISSION_BOOTSTRAP_INDEX.json` (path, non contenuto → token-light). La FASE 1 §4.2 ora è eseguita dal motore, non più manuale. |
+| **v0.7.0 (engine)** | **M-OS3-145** | **Classe Micromission** (Sez 7-bis): `open --micro` (solo Trigger 1), transizione `executing→closed` riservata alle micro, GATE MICRO al close (tetti 25/2/2, superfici vietate, test-green, effetto-salame 7gg/serie 2), `promote` a senso unico con traccia `micro_promotion`, esenzione gate handoff, `micro_evidence` persistita, `finalize` senza retrospective, badge `[micro]`. Schema registry: `micro`/`micro_evidence`/`micro_promotion` + sanatoria `perpetual`. |
 
 ### 8.2 Subcomandi principali
 
@@ -560,6 +606,8 @@ Per chiarire l'appartenenza di ogni componente menzionato in questo documento:
 **Versione**: 4.1.0
 **Data**: 2026-06-01
 **Sostituisce**: v3.0.0 (2026-05-27)
+
+**Cambio minore (v4.1.0 → v4.2.0) — M-OS3-145**: classe **Micromission** (Sez 7-bis) — mission Trigger-1 con chiusura leggera; eleggibilità verificata dal motore sul diff (tetti 25/2/2 ratificati CEO 2026-07-11), effetto-salame 7gg, `promote` a senso unico, P0-13 e SSOT-first tenuti, stats: contano come le altre (decisione CEO). Invariante Sez 7 riformulato "per classe". Additivo, retro-compatibile.
 
 **Cambio minore (v4.0.0 → v4.1.0) — M-OS3-026**: bootstrap mirato (FASE 1) cablato all'open (`emitBootstrap`); + blocco mission-fantasma A1 e convenzione ID prefissato (CEO 2026-06-01).
 
