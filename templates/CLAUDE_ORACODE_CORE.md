@@ -90,9 +90,35 @@ Ogni regola nasce da un errore concreto in produzione. Sono cicatrici codificate
 | P0-12 | **Anti-Infra-Invention** | URL, path, branch, config di deploy: verifica dalla fonte. Mai dedurre nomi plausibili |
 | P0-13 | **Test-First Discipline** | Ogni feature/fix/refactor produce o aggiorna test. Task non chiusa senza test verde |
 
-Le espansioni procedurali di P0-8 (le 4 fasi del Complete Flow Analysis) e P0-13 (i 3 obblighi
-test-first per feature/fix/refactor): modulo `oracode/docs/paradigm/modules/DEV_DISCIPLINE.md`
-(bootstrap type=feature|fix|refactor). Migrato: M-OS3-144 D6.
+### P0-8 — Complete Flow Analysis (4 fasi obbligatorie)
+
+```
+FASE 1 — FLOW MAPPING
+  User Action → Entry Point → Processing → Exit Point
+  Dove può fallire? Dove cambiano i tipi? Branch logic?
+
+FASE 2 — TYPE TRACING
+  Per ogni variabile: tipo in ogni step. Ogni trasformazione esplicita.
+
+FASE 3 — ALL OCCURRENCES
+  Ricerca esaustiva di tutti gli usi nel codebase PRIMA di modificare.
+
+FASE 4 — IMPACT ANALYSIS
+  Mappa di chi viene impattato, upstream e downstream.
+```
+
+### P0-13 — Test-First Discipline (3 obblighi)
+
+```
+FEATURE NUOVA:
+  P0-8 (identifica edge case) → test (red) → implementazione (green) → refactor → DOC-SYNC → chiusa
+
+FIX:
+  Bug riprodotto → test che lo cattura (red) → fix (green) → nessuna regressione → DOC-SYNC → chiusa
+
+REFACTOR:
+  Test esistenti verdi (baseline) → refactor incrementale → test verdi a ogni step → DOC-SYNC → chiusa
+```
 
 ---
 
@@ -111,9 +137,17 @@ Protegge da due rischi opposti: debito tecnico non gestito e refactoring nevroti
 
 ## Firma Oracode (P1)
 
-Ogni file porta una firma (@package/@author/@version/@date/@purpose) — dichiarazione di
-responsabilità, non ornamento; assenza = non production-ready. Template del blocco: modulo
-`DEV_DISCIPLINE.md`. Migrato: M-OS3-144 D8.
+Ogni file porta una firma. Non ornamento — dichiarazione di responsabilità.
+
+```
+@package  [modulo/area]
+@author   [autore] ([ruolo]) for [CEO/responsabile]
+@version  [versione] ([progetto])
+@date     [data]
+@purpose  [perché esiste questo file — Pilastro 1]
+```
+
+Assenza della firma non blocca lo sviluppo ma rende il file non production-ready.
 
 ---
 
@@ -138,7 +172,9 @@ Ogni mission:
   - Ha identificatore univoco progressivo (M-001, M-002, ...)
   - Dichiara scope all'apertura
   - Ha fasi sequenziali: apertura → analisi → piano → esecuzione → chiusura
-  - Il REGISTRY è il record alla chiusura; report opzionale (M-OS3-112)
+  - Il REGISTRY è il record alla chiusura (id, scope, date, organi, stats, governance);
+    scheda leggibile generata a richiesta (cockpit / `mission show`). Coppia report
+    non più obbligatoria (M-OS3-112 — potatura: no file-report che driftano). Report opzionale.
   - È integrata con DOC-SYNC (P0-11)
 
 Niente si modifica fuori da una mission aperta.
@@ -148,15 +184,44 @@ Niente si modifica fuori da una mission aperta.
 
 ## Asse Difesa Costitutivo — Egida
 
-> Decisione costituzionale del CEO (2026-06-08, 4 punti ratificati, in OSZ via M-NEXUS-005).
+> Decisione costituzionale del CEO (2026-06-08, 4 punti ratificati). Entra in OSZ come la difesa è
+> parte della **definizione** di LSO — al pari di Mission Protocol e DOC-SYNC. Non è un add-on.
+
+### Clausola costitutiva
 
 **"Un LSO si difende e prova la propria difesa. La difesa è proporzionale alla superficie di rischio.
 Un progetto che non integra l'asse difesa — dove esso ha senso — non è un LSO: è solo software."**
 
-Strumenti (Fortino DIFENDE · DeepDebug COLLAUDA · Egida = i due insieme, in proporzione al rischio ·
-Sigillo CERTIFICA), tabella di proporzionalità R1-R4 e vincoli (triage, no over-claim, deterministico
-dove blocca): modulo `oracode/docs/paradigm/modules/EGIDA_ASSE_DIFESA.md` (bootstrap type=guard).
-Migrato: M-OS3-144 D11.
+Conseguenza: l'asse difesa non è opzionale. Un software che assume lo status di LSO **deve** integrarlo.
+
+### I due strumenti + l'ombrello
+
+```
+Fortino    — DIFENDE (difesa runtime continua, invarianti di sicurezza, sentinella, forense).
+DeepDebug  — COLLAUDA (banco di prova: triage 5 domini, debug profondo, read-only). ESISTE GIÀ.
+Egida      — USARLI INSIEME, in proporzione al rischio. NON un terzo strumento.
+             Lo scudo "Egida" si attribuisce a un software quando unisce Fortino + DeepDebug.
+Sigillo    — CERTIFICA (hash del report → ancoraggio Algorand + marca temporale TSA).
+```
+
+### Regola di proporzionalità — la difesa scala col rischio
+
+"Dove ha senso" è **regola scritta**, non discrezione: il profilo di difesa è scalato sul **rischio R1-R4**
+(R1 vetrina → R4 denaro/PII/blockchain). NB nomenclatura (M-FUC-040): "R" = rischio, "L" = maturità
+(Layer Stack), "T" = tier operativo — vedi LSO_NOMENCLATURE §0.
+
+| Livello / superficie | Banco di Prova (consegna, DeepDebug) | Fortino (runtime) |
+|---|---|---|
+| Sito vetrina statico (R1) | domini applicabili: reverse-security (secrets/headers/deps), perf | Liv. A leggero (secrets, headers, deps, TLS) |
+| App con auth/dati (R2–R3) | + ai-driven (variant analysis) | Liv. A pieno + B (sentinella) |
+| Organo con denaro/PII/blockchain (R3–R4) | tutti i domini applicabili | A + B + C (forense) |
+| Codice nativo (C/C++/Rust-FFI) | + memory, concurrency | come sopra |
+
+Vincoli invarianti: **triage** (solo domini applicabili, mai "tutti a forza"); **no over-claim** (si attesta
+"controlli superati in data certa", non "sicuro al 100%"); **deterministico dove blocca** (gate su regola
+scritta, mai su opinione di un modello — il passaggio AI è esplorativo); **onestà epistemica** (REGOLA ZERO).
+
+Dettaglio architetturale, piano mission (E1–E6) e dottrina: charter `EGI-DOC/docs/oracode/Egida/00_EGIDA_CHARTER.md`.
 
 ---
 
@@ -179,11 +244,27 @@ Dubbio tra tipo 1 e 2 → tratta come 2.
 
 ## Trasferimento Know-How — Privato → Prodotto
 
-Oltre a DOC-SYNC (codice → documentazione) esiste un secondo trasferimento vincolante: *esperienza →
-prodotto*. **Gate in FASE 6, a ogni chiusura:** *"c'è know-how operativo GENERICO da promuovere a un
-vettore di prodotto (SSOT / agente / skill / CORE / hook), o è solo esperienza d'istanza?"* — il generico
-si promuove, lo specifico resta in memoria privata (che NON si spedisce). Tabella dei vettori, procedura
-e anti-pattern: SSOT `KNOW_HOW_TRANSFER_PROTOCOL` (oracode/docs/paradigm/ssot). Compattato: M-OS3-144 D13.
+DOC-SYNC trasferisce *codice → documentazione*. Esiste un secondo trasferimento, altrettanto vincolante:
+*esperienza → prodotto*. La **memoria privata** dell'operatore (l'esperienza specifica di un'istanza —
+"abbiamo imparato X sul progetto Z il giorno Y") **NON è il prodotto** e non si spedisce. Ma quando una
+lezione cristallizza un **know-how operativo generico**, quel know-how deve essere **promosso a un vettore
+di prodotto** — altrimenti resta sepolto nel privato e il prodotto non eredita ciò che hai imparato
+(è l'espressione operativa dei Pilastri 4 Circolarità Virtuosa e 5 Evoluzione Ricorsiva).
+
+Classifica ogni lezione e instradala al vettore giusto:
+
+| Tipo di know-how | Vettore (dove vive, come opera) |
+|------------------|----------------------------------|
+| Esperienziale / fatto specifico d'istanza | **Memoria privata** — NON spedisce, NON è prodotto |
+| Protocollo / pattern operativo generico | **SSOT doc** — verità consultabile, tenuta viva da DOC-SYNC |
+| Capacità da auto-innescare al contesto giusto | **Agente** — con descrizione-trigger `USA QUANDO …` |
+| Operazione invocabile su richiesta | **Skill / comando** — `/...` (deployato dalla fonte versionata) |
+| Regola costituzionale / valore | **questo CORE** (paradigma) |
+| Enforcement automatico su evento | **Hook** |
+
+**Gate (FASE 6 / DOC-SYNC):** a ogni chiusura chiediti — *"c'è qui know-how operativo GENERICO da promuovere
+a un vettore di prodotto, o è solo esperienza d'istanza?"*. Il generico si promuove; lo specifico resta privato.
+Dettaglio operativo (procedura di promozione, esempi, anti-pattern): SSOT `KNOW_HOW_TRANSFER_PROTOCOL`.
 
 ---
 
@@ -228,44 +309,155 @@ Prima di rispondere o scrivere codice, verifica:
 
 ## Pattern di Output — Principi
 
-Pattern obbligatori (ERRORI via UEM · I18N chiavi atomiche · SICUREZZA no innerHTML raw · A11Y ·
-GDPR audit trail) e tabella librerie Ultra (UEM/ULM/UTM/UCM/UUM — Ultra è parte del paradigma):
-modulo `DEV_DISCIPLINE.md` (bootstrap type=feature|fix|refactor). Migrato: M-OS3-144 D17-D18.
+```
+ERRORI:    Sempre via gestore centralizzato (UEM). Mai try/catch isolati, mai solo log.
+I18N:      Chiavi atomiche. Mai testo interpolato nelle chiavi di traduzione.
+SICUREZZA: Mai innerHTML raw senza sanitizzazione. Mai input utente non validato.
+A11Y:      aria-label su button icon-only. aria-live su aggiornamenti dinamici. label[for] su input.
+GDPR:      Audit trail su azioni utente con categoria classificata. Consenso versionato.
+```
 
 ---
 
-## Agenti Specializzati e Dottrina del Supervisor
+## Disciplina di Codice — Librerie Ultra
 
-Progetti di media/grande complessità si avvalgono di agenti (sotto-istanze con scope definito),
-coordinati dal Supervisor — i cui 5 riflessi (grounding · routing al pool · REGOLA ZERO ·
-misura-prima · no over-claim) sono **iniettati a ogni sessione** dall'hook
-`supervisor-doctrine-inject.sh` (boot/resume/compact) e retti da forzanti deterministiche
-(gate ROUTING e SSOT-FIRST di `bin/mission`, contratto `routing-matrix.json`).
-Fonte integrale: `SSOT_SUPERVISOR_DOCTRINE.md` (Fucina). Migrato: M-OS3-144 D19-D20.
+Responsabilità trasversali coperte da librerie obbligatorie. Ultra è parte del paradigma.
+
+| Libreria | Sigla | Funzione | P0 di riferimento |
+|----------|-------|----------|-------------------|
+| Ultra Error Manager | UEM | Gestione errori centralizzata, recovery patterns | P0-5 |
+| Ultra Log Manager | ULM | Logging strutturato, multi-channel, GDPR-aware | Sicurezza Proattiva |
+| Ultra Translation Manager | UTM | Internazionalizzazione, chiavi atomiche | P0-2 + P0-9 |
+| Ultra Config Manager | UCM | Configurazioni centralizzate | — |
+| Ultra Upload Manager | UUM | Upload, validazione, scan, storage | — |
+
+Multi-linguaggio nativo: Ultra esiste per PHP, TypeScript, e si estende al linguaggio target del progetto.
 
 ---
 
-## Standard Web Pubblici — SEO · Accessibility · GDPR
+## Agenti Specializzati — Principio
 
-Per gli organi con superficie web pubblica e/o dati personali: SEO codificata (SSR, meta, OG,
-Core Web Vitals, JSON-LD) · Accessibility WCAG 2.1 AA (infrastruttura obbligatoria, non feature
-etica) · GDPR come strato infrastrutturale di prima classe — ⚠️ **GDPR = Trigger tipo 4:
-approvazione CEO PRIMA**. Dettaglio: modulo `oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md`
-(bootstrap type=feature|fix); enforcement meccanico già attivo (web-quality-gate + seo-guard,
-PreToolUse). Migrato: M-OS3-144 D21-D23.
+Progetti di media/grande complessità si avvalgono di agenti: sotto-istanze dell'LLM configurate per ambiti specifici. Ogni agente ha scope definito. Il coordinamento è responsabilità dell'agente principale (Supervisor).
+
+Esempi tipici: backend specialist, frontend specialist, DOC-SYNC guardian, domain specialist.
+
+L'esistenza di agenti è caratteristica del livello 2+ dell'applicazione Oracode.
+
+---
+
+## Dottrina del Supervisor
+
+L'agente principale che orchestra (il Supervisor) **opera al livello degli specialisti** — non perché sappia
+tutto, ma perché ne adotta i riflessi. Cosa rende esperto un agente non è l'onniscienza: è il riflesso di
+**andare alla fonte e di instradare**. Il Supervisor diventa di livello quando fa propri **cinque riflessi**.
+
+1. **Grounding** — di fronte a una scelta di dominio, il Supervisor **non risponde da memoria**: o legge la
+   fonte vera e la cita, o spawna lo specialista grounded competente. "Plausibile" non è "vero".
+2. **Routing** — ogni unità di lavoro: triage → instrada allo specialista giusto (design/architettura agli
+   advisor; codice di produzione agli sviluppatori; test al testing; difesa al collaudo). **Il pool grounded
+   è l'esecutore di default**; il Supervisor **orchestra e sintetizza**, e non scrive codice di produzione da
+   solo quando esiste lo specialista competente.
+3. **REGOLA ZERO + onestà epistemica** — non deduce; verifica i flag di incertezza degli agenti alla fonte
+   prima di agire; distingue FATTO da IPOTESI.
+4. **Misura-prima** — prima di fidarsi di un output ad alta posta (proprio o altrui), lo **misura** con un
+   metro esterno (evaluation), non sulla fiducia. (Pilastro 5 — Evoluzione Ricorsiva.)
+5. **No over-claim** — attesta ciò che è vero e verificato; marca le ipotesi "da validare"; dichiara i limiti.
+
+Conseguenza: una unità di lavoro ben condotta **non è "il Supervisor fa tutto"** — è *triage → pool grounded
+che esegue → sintesi onesta misurata*. Se il Supervisor si trova a rispondere di dominio da memoria, sta
+sbagliando: deve groundare o instradare. È il livello-esperto applicato all'orchestrazione.
+
+**Layer enforcement (M-FUC-020):** la Dottrina non è prosa-da-ricordare — è retta da forzanti deterministiche:
+hook globali di iniezione (`~/.claude/hooks/supervisor-doctrine-inject.sh` a ogni boot/resume/compact +
+`supervisor-triage-reminder.sh` per-prompt, registrati in `~/.claude/settings.json`), gate dell'engine
+`os3-matrix/bin/mission` v0.4 (ROUTING: trigger 3 → design `engineer-*` o waiver firmato; SSOT-FIRST: campo
+`ssot_first` nel descrittore `.oracode/project.json`), contratto L7 `os3-matrix/contracts/routing-matrix.json`.
+
+---
+
+## SEO — Contenuto Pubblico
+
+Ogni pagina pubblica indicizzabile rispetta disciplina SEO codificata:
+
+- SSR obbligatorio per contenuto indicizzabile
+- Meta tags strutturati (title, description, canonical, viewport, lang, robots)
+- Open Graph + Twitter Card completi
+- Core Web Vitals entro soglie definite dal progetto
+- Schema.org / JSON-LD strutturato con componenti tipizzati
+
+---
+
+## Accessibility — WCAG 2.1 AA
+
+Accessibilità è infrastruttura obbligatoria, non feature etica.
+
+- Sistema ARIA tipizzato con componenti riutilizzabili
+- Skip-to-main link
+- Focus management (focus-visible, focus trap in modali)
+- Keyboard navigation completa
+- Contrast ratio minimo 4.5:1 testo, 3:1 UI elements
+- `prefers-reduced-motion` rispettato
+- Semantic HTML + Landmarks
+
+---
+
+## GDPR — Infrastruttura Strutturata
+
+GDPR non è compliance a posteriori — è strato infrastrutturale di prima classe.
+
+- Servizio Consensi con versionamento e granularità
+- Audit Trail immutabile con retention definita
+- Tassonomia eventi strutturata (attività, privacy level, security events)
+- Pagine legal pubbliche senza autenticazione
+- Diritti utente operativi (accesso, portabilità, cancellazione)
+- DPIA per organi che fanno profilazione o trattano dati sensibili
 
 ---
 
 ## Layer Stack L0-L11
 
-Ogni applicazione Oracode è stratificata in 11 layer + L0 prerequisito ("L" = SOLO maturità, M-FUC-040):
-L0 Mielina · L1 Sync · L2 Deep Audit · L3 Detection · L4 Prevention · L5 UEM · L6 Testing ·
-L7 Contracts · L8 Nervous System ═soglia metacognizione═ L9 Reflection · L10 Reproduction · L11 Auto-Governance.
-Tre soglie qualitative: **L0→L1** (metabolismo attivo) · **L8→L9** (da reattivo a riflessivo) ·
-**L10→L11** (specie autonoma). Maturity per layer: PRODUCTION / PARTIAL / DESIGN / CONCEPT / VISION.
-Tabella completa, 6 principi invarianti (REGOLA ZERO ovunque, L1 non bypassabile, L7>L6, L9 senza
-azione diretta, L10 richiede checkpoint L9, L11 irreversibile) e 5 stati:
-`oracode/docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md` §2-§4. Compattato: M-OS3-144 D24.
+Ogni applicazione Oracode è stratificata in 11 layer + L0 prerequisito. La tassonomia è universale; la maturity è proprietà dell'istanza.
+
+```
+L0  Mielina         — Infrastruttura di trasmissione (SSOT registry)      prerequisito
+L1  Sync            — Metabolismo cellulare base                          
+L2  Deep Audit      — Riparazione DNA (coerenza documentale)              
+L3  Detection       — Recettori sensoriali (rileva drift)                 
+L4  Prevention      — Riflessi spinali (impedisce errori)                 
+L5  UEM             — Sistema immunitario (gestione errori)               
+L6  Testing         — Memoria immunitaria (test come anticorpi)           
+L7  Contracts       — DNA codificante machine-readable                    
+L8  Nervous System  — Propriocezione documentale                          
+    ═══ SOGLIA METACOGNIZIONE ═══
+L9  Reflection      — Corteccia prefrontale (auto-osservazione)           
+L10 Reproduction    — Mitosi (L10a simbiotica, L10b germinativa)          
+L11 Auto-Governance — Stabilità di specie post-fondatore                  
+```
+
+### Tre soglie qualitative
+
+1. **L0 → L1**: da nessun sistema a metabolismo attivo
+2. **L8 → L9**: da organismo reattivo a riflessivo (soglia metacognizione)
+3. **L10 → L11**: da riproducibile a specie autonoma
+
+### Sei principi invarianti
+
+1. REGOLA ZERO si applica a ogni layer
+2. L1 non bypassabile — ogni modifica passa per il metabolismo
+3. L7 (Contratti) ha priorità su L6 (Test) — test sbagliato, non contratto
+4. L9 non ha potere di azione diretta — solo interpretazione, umani decidono
+5. L10 richiede checkpoint L9 — no divisione senza Readiness Check
+6. L11 protegge l'irreversibilità — clausole costituzionali immutabili
+
+### Categorizzazione maturity (5 stati)
+
+| Stato | Significato |
+|-------|-------------|
+| **PRODUCTION** | Implementato, attivo, enforced, con evidenza |
+| **PARTIAL** | Implementato in parte, non enforced sistematicamente |
+| **DESIGN** | Architettura definita, implementazione non iniziata |
+| **CONCEPT** | Idea formulata, architettura non definita |
+| **VISION** | Direzione di lungo periodo, nessuna formalizzazione |
 
 ---
 
@@ -290,5 +482,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 2.0.0 — Data: 2026-07-11 (M-OS3-144 dieta C2 COMPLETA: D20+D24+D13+D11+D21-D23 migrate + D27 glossario entrato + blocco finale D6/D8/D10/D17/D18/D19 — dettagli nei moduli on-demand DEV_DISCIPLINE, EGIDA_ASSE_DIFESA, WEB_PUBLIC_STANDARDS + hook Dottrina + INDEX + KNOW_HOW_TRANSFER_PROTOCOL)*
+*Versione template: 2.1.0 — Data: 2026-07-12 (M-OS3-144: RIPRISTINO INTEGRALE del testo pre-dieta su decisione CEO — i tagli v1.4-2.0 sono ANNULLATI; resta il glossario 6 ruoli. Storia: commit oracode 646a00b..2b7a7b2)*
 *Licenza: MIT*
