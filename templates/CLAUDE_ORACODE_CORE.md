@@ -378,48 +378,14 @@ GDPR non è compliance a posteriori — è strato infrastrutturale di prima clas
 
 ## Layer Stack L0-L11
 
-Ogni applicazione Oracode è stratificata in 11 layer + L0 prerequisito. La tassonomia è universale; la maturity è proprietà dell'istanza.
-
-```
-L0  Mielina         — Infrastruttura di trasmissione (SSOT registry)      prerequisito
-L1  Sync            — Metabolismo cellulare base                          
-L2  Deep Audit      — Riparazione DNA (coerenza documentale)              
-L3  Detection       — Recettori sensoriali (rileva drift)                 
-L4  Prevention      — Riflessi spinali (impedisce errori)                 
-L5  UEM             — Sistema immunitario (gestione errori)               
-L6  Testing         — Memoria immunitaria (test come anticorpi)           
-L7  Contracts       — DNA codificante machine-readable                    
-L8  Nervous System  — Propriocezione documentale                          
-    ═══ SOGLIA METACOGNIZIONE ═══
-L9  Reflection      — Corteccia prefrontale (auto-osservazione)           
-L10 Reproduction    — Mitosi (L10a simbiotica, L10b germinativa)          
-L11 Auto-Governance — Stabilità di specie post-fondatore                  
-```
-
-### Tre soglie qualitative
-
-1. **L0 → L1**: da nessun sistema a metabolismo attivo
-2. **L8 → L9**: da organismo reattivo a riflessivo (soglia metacognizione)
-3. **L10 → L11**: da riproducibile a specie autonoma
-
-### Sei principi invarianti
-
-1. REGOLA ZERO si applica a ogni layer
-2. L1 non bypassabile — ogni modifica passa per il metabolismo
-3. L7 (Contratti) ha priorità su L6 (Test) — test sbagliato, non contratto
-4. L9 non ha potere di azione diretta — solo interpretazione, umani decidono
-5. L10 richiede checkpoint L9 — no divisione senza Readiness Check
-6. L11 protegge l'irreversibilità — clausole costituzionali immutabili
-
-### Categorizzazione maturity (5 stati)
-
-| Stato | Significato |
-|-------|-------------|
-| **PRODUCTION** | Implementato, attivo, enforced, con evidenza |
-| **PARTIAL** | Implementato in parte, non enforced sistematicamente |
-| **DESIGN** | Architettura definita, implementazione non iniziata |
-| **CONCEPT** | Idea formulata, architettura non definita |
-| **VISION** | Direzione di lungo periodo, nessuna formalizzazione |
+Ogni applicazione Oracode è stratificata in 11 layer + L0 prerequisito ("L" = SOLO maturità, M-FUC-040):
+L0 Mielina · L1 Sync · L2 Deep Audit · L3 Detection · L4 Prevention · L5 UEM · L6 Testing ·
+L7 Contracts · L8 Nervous System ═soglia metacognizione═ L9 Reflection · L10 Reproduction · L11 Auto-Governance.
+Tre soglie qualitative: **L0→L1** (metabolismo attivo) · **L8→L9** (da reattivo a riflessivo) ·
+**L10→L11** (specie autonoma). Maturity per layer: PRODUCTION / PARTIAL / DESIGN / CONCEPT / VISION.
+Tabella completa, 6 principi invarianti (REGOLA ZERO ovunque, L1 non bypassabile, L7>L6, L9 senza
+azione diretta, L10 richiede checkpoint L9, L11 irreversibile) e 5 stati:
+`oracode/docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md` §2-§4. Compattato: M-OS3-144 D24.
 
 ---
 
@@ -444,5 +410,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.4.0 — Data: 2026-07-11 (M-OS3-144 D20: Dottrina del Supervisor → rimando; testo integrale vive nell'hook di iniezione + SSOT_SUPERVISOR_DOCTRINE — dieta CORE, prima sezione migrata)*
+*Versione template: 1.5.0 — Data: 2026-07-11 (M-OS3-144 dieta C2: D20 Dottrina→rimando + D24 Layer Stack→compatto; dettaglio in LSO_NOMENCLATURE_INDEX §2-§4 e hook Dottrina)*
 *Licenza: MIT*
