@@ -13,8 +13,12 @@
     "docs/paradigm/missions/MISSION_PROTOCOL.md"
   ],
   "by_mission_type": {
-    "feature": [],
-    "fix": [],
+    "feature": [
+      "/home/fabio/oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md"
+    ],
+    "fix": [
+      "/home/fabio/oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md"
+    ],
     "refactor": [],
     "arch": [
       "docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md",
@@ -26,6 +30,7 @@
       "docs/lso/SSOT_REGISTRY.json"
     ],
     "guard": [
+      "/home/fabio/oracode/docs/paradigm/modules/EGIDA_ASSE_DIFESA.md",
       "docs/paradigm/lso/LSO_GUARD_TESTING_PROTOCOL_v1.md"
     ],
     "oracode-audit": [

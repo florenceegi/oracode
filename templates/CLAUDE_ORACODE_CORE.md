@@ -292,42 +292,14 @@ Fonte integrale: `SSOT_SUPERVISOR_DOCTRINE.md` (Fucina). Testo migrato dal CORE:
 
 ---
 
-## SEO — Contenuto Pubblico
+## Standard Web Pubblici — SEO · Accessibility · GDPR
 
-Ogni pagina pubblica indicizzabile rispetta disciplina SEO codificata:
-
-- SSR obbligatorio per contenuto indicizzabile
-- Meta tags strutturati (title, description, canonical, viewport, lang, robots)
-- Open Graph + Twitter Card completi
-- Core Web Vitals entro soglie definite dal progetto
-- Schema.org / JSON-LD strutturato con componenti tipizzati
-
----
-
-## Accessibility — WCAG 2.1 AA
-
-Accessibilità è infrastruttura obbligatoria, non feature etica.
-
-- Sistema ARIA tipizzato con componenti riutilizzabili
-- Skip-to-main link
-- Focus management (focus-visible, focus trap in modali)
-- Keyboard navigation completa
-- Contrast ratio minimo 4.5:1 testo, 3:1 UI elements
-- `prefers-reduced-motion` rispettato
-- Semantic HTML + Landmarks
-
----
-
-## GDPR — Infrastruttura Strutturata
-
-GDPR non è compliance a posteriori — è strato infrastrutturale di prima classe.
-
-- Servizio Consensi con versionamento e granularità
-- Audit Trail immutabile con retention definita
-- Tassonomia eventi strutturata (attività, privacy level, security events)
-- Pagine legal pubbliche senza autenticazione
-- Diritti utente operativi (accesso, portabilità, cancellazione)
-- DPIA per organi che fanno profilazione o trattano dati sensibili
+Per gli organi con superficie web pubblica e/o dati personali: SEO codificata (SSR, meta, OG,
+Core Web Vitals, JSON-LD) · Accessibility WCAG 2.1 AA (infrastruttura obbligatoria, non feature
+etica) · GDPR come strato infrastrutturale di prima classe — ⚠️ **GDPR = Trigger tipo 4:
+approvazione CEO PRIMA**. Dettaglio: modulo `oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md`
+(bootstrap type=feature|fix); enforcement meccanico già attivo (web-quality-gate + seo-guard,
+PreToolUse). Migrato: M-OS3-144 D21-D23.
 
 ---
 
@@ -365,5 +337,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.7.0 — Data: 2026-07-11 (M-OS3-144 dieta C2: D20+D24+D13+D11 — Egida ridotta a clausola+rimando, dettaglio nel modulo paradigma EGIDA_ASSE_DIFESA on-demand type=guard)*
+*Versione template: 1.8.0 — Data: 2026-07-11 (M-OS3-144 dieta C2: D20+D24+D13+D11+D21-D23 — SEO/A11y/GDPR compattate a un blocco, dettaglio nel modulo WEB_PUBLIC_STANDARDS on-demand; GDPR tipo-4 tenuto visibile)*
 *Licenza: MIT*
