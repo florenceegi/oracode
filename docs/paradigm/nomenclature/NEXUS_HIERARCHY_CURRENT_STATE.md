@@ -2,14 +2,16 @@
 title: "Gerarchia Oracode Nexus — Stato Corrente (correzione della cornice «accoppiato»)"
 slug: nexus-hierarchy-current-state
 doc_type: architecture
-version: "1.0.0"
+version: "2.0.0"
 status: current
 date: "2026-07-06"
+updated_at: "2026-07-11"
 author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
 scope: [oracode]
 rag_indexed: true
 priority: high
 mission: M-OS3-138
+updated_by_mission: "M-OS3-144 — cablaggio 6 ruoli (ratifica CEO 2026-07-11)"
 supersedes_clauses:
   # Clausole di STATO superate (NON le definizioni core L1/L2/L3, che restano valide):
   - "ORACODE_NEXUS_3_TIER.md:88,106,127,161,162 (LOCKED — clausole di stato accoppiato/differito)"
@@ -35,36 +37,48 @@ supersedes_clauses:
 
 # Gerarchia Oracode Nexus — Stato Corrente
 
-> **Perché questo doc.** La cornice «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato*, *caso unico*; L2 *differito* finché non arrivano 2+ clienti» risale a maggio 2026 ed è **superata dai fatti**. Ha già indotto in errore l'analisi (confondere FlorenceEGI-prodotto con la software house). Questo doc fissa lo **stato corrente** e **depreca** le clausole di stato stale elencate in frontmatter. **NON** depreca le *definizioni core* di L1/L2/L3 (restano valide): depreca solo i **claim di stato**.
+> **Perché questo doc.** La cornice «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato*, *caso unico*; L2 *differito* finché non arrivano 2+ clienti» risale a maggio 2026 ed è **superata dai fatti**. Ha già indotto in errore l'analisi (confondere FlorenceEGI-prodotto con la software house). Questo doc fissa lo **stato corrente** e **depreca** le clausole di stato stale elencate in frontmatter. **NON** depreca le *definizioni core* (restano valide): depreca solo i **claim di stato**.
+
+> 🏷️ **Nomenclatura (decisioni CEO 2026-07-08 e 2026-07-11, ratificate — M-OS3-144).** I ruoli
+> della gerarchia si nominano con parole, mai con numeri: **Paradigma · Softwarehouse ·
+> Libreria LSO · Progetto · Organismo · Organo**. Le sigle L1/L2/L3 e T1/T2/T3 sono in
+> pensione nei doc di nomenclatura; qui compaiono solo tra parentesi *(ex …)* come riferimento
+> storico. Definizioni CEO (verbatim): **Organismo = un LSO multi-organo · Progetto = un LSO
+> mono-organo · Organo = un LSO appartenente a un Organismo.** Il concetto coniato in questo
+> doc come «L3-hub» (direttiva CEO 2026-07-06) è superato: si dice così — **FlorenceEGI è
+> l'Organismo; EGI-DOC è il suo repo-centro.**
 
 ## I fatti che superano la vecchia cornice
-- Il **disaccoppiamento** degli artefatti L1 dall'organismo FlorenceEGI è **fatto**: gli hook/agenti risolvono i root a runtime (`{{instance_root}}`/`{{engine_root}}`/`{{paradigm_root}}`), zero path FlorenceEGI baked (`ROADMAP_ORACODE.md:111`, M-OS3-031/036/040). Girano su qualsiasi organismo.
-- Le **istanze L3-clienti sono già molte**, non una: ledger perpetui reali per **FlorenceEGI, Capasso, LeVespe, DeepDebug** (+ descrittori Pinocapasso, FABIO-GIANNI, SNC…). Quindi «caso unico / serve a 2+ clienti» è **falso**.
-- **Florence EGI S.R.L. è la software house acquirente (L2)** con licenza d'uso di Oracode Nexus (codename *Magicsoft 2.0*, `ROADMAP_ORACODE.md:37`). L2 **esiste** come entità/ruolo; ciò che manca è solo l'**artefatto** HUB-DOC aggregatore (`mission-hub-aggregate.py` non ancora costruito) — un gap di *implementazione*, non «L2 non esiste».
+- Il **disaccoppiamento** degli artefatti del **Paradigma** *(ex L1)* dall'organismo FlorenceEGI è **fatto**: gli hook/agenti risolvono i root a runtime (`{{instance_root}}`/`{{engine_root}}`/`{{paradigm_root}}`), zero path FlorenceEGI baked (`ROADMAP_ORACODE.md:111`, M-OS3-031/036/040). Girano su qualsiasi organismo.
+- I **clienti sono già molti**, non uno: ledger perpetui reali per **FlorenceEGI, Capasso, LeVespe** (+ descrittori Pinocapasso, FABIO-GIANNI…). A parte stanno le **Librerie LSO della software house** (strumenti propri, non clienti): **DeepDebug, Fucina, Cockpit (nexus-cockpit), EGI-STAT (nexus), SNC** — corretto l'errore che elencava DeepDebug tra i clienti (ratifica CEO 2026-07-11). Quindi «caso unico / serve a 2+ clienti» è **falso**.
+- **Florence EGI S.R.L. è la Softwarehouse** *(ex L2)*: la software house acquirente con licenza d'uso di Oracode Nexus (codename *Magicsoft 2.0*, `ROADMAP_ORACODE.md:37`). La Softwarehouse **esiste** come entità/ruolo; ciò che manca è solo l'**artefatto** HUB-DOC aggregatore (`mission-hub-aggregate.py` non ancora costruito) — un gap di *implementazione*, non «la Softwarehouse non esiste».
 
 ## Il modello corrente (metro unico)
 
-| Livello | Cos'è | Cross-repo di una sua mission |
+| Ruolo | Cos'è | Cross-repo di una sua mission |
 |---|---|---|
-| **L1** | Lo **strumento**: `oracode` (paradigma, MIT) + `os3-matrix` (enforcement) + `~/oracode-engine` (motore). «Cosa gira adesso». | **Globale** — qualunque organo di qualunque LSO (è il tool che enforcea ovunque). |
-| **L2** | La **software house acquirente** con licenza Nexus = **Florence EGI S.R.L.** (*Magicsoft 2.0*). Tiene l'HUB: statistiche consolidate + numerazione globale su **tutti** i suoi LSO-clienti. | (concerne registry/stat/numerazione, non lo span di commit) |
-| **L3** | Un **LSO/cliente** generato dalla software house. Due forme ↓ | vedi sotto |
-| **↳ L3 mono-organo** | LSO a singola applicazione. | **Contenuto** al proprio repo. |
-| **↳ L3-hub** | Il **repo core di un LSO multi-organo** (es. **EGI-DOC** per FlorenceEGI). | **Ristretto agli organi del proprio LSO** (una mission aperta sul core spazia negli organi di *quel* LSO multi-organo). |
-| **↳ organo di L3-hub** | Un organo membro di un LSO multi-organo (EGI, EGI-HUB, EGI-Credential, …). | **Contenuto** al proprio repo. |
+| **Paradigma** *(ex L1)* | Lo **strumento-legge**: `oracode` (paradigma, MIT) + `os3-matrix` (enforcement) + `~/oracode-engine` (motore). «Cosa gira adesso». | **Globale** — qualunque Organo di qualunque LSO (è il tool che enforcea ovunque). |
+| **Softwarehouse** *(ex L2)* | L'**acquirente con licenza Nexus** = **Florence EGI S.R.L.** (*Magicsoft 2.0*). Tiene l'HUB: statistiche consolidate + numerazione globale su **TUTTA** la produzione — clienti E Librerie LSO (argomento CEO 2026-07-11). | (concerne registry/stat/numerazione, non lo span di commit) |
+| **Libreria LSO** *(nuovo, 2026-07-11)* | Repo di **proprietà della software house**, al servizio di tutti i lavori, nessun cliente committente: **DeepDebug, Fucina, Cockpit (nexus-cockpit), EGI-STAT (nexus), SNC**. Il ruolo si dichiara alla creazione via `/project` (design M-OS3-144). | **Contenuto** al proprio repo (strumento, non commessa). |
+| **Progetto** *(ex L3 mono-organo)* | **Un LSO mono-organo** (definizione CEO): sta per conto suo (es. Capasso). | **Contenuto** al proprio repo. |
+| **Organismo** *(ex L3-hub)* | **Un LSO multi-organo** (definizione CEO): es. **FlorenceEGI**, il cui **repo-centro** è **EGI-DOC** (`ssot_home` = sé, gli Organi gli puntano). | Una mission aperta sul repo-centro è **ristretta agli Organi del proprio LSO**. |
+| **Organo** *(ex organo di L3-hub)* | **Un LSO appartenente a un Organismo** (definizione CEO): EGI, EGI-HUB, EGI-Credential, … (`ssot_home` = il repo-centro dell'Organismo). | **Contenuto** al proprio repo. |
 
 **Regola cross-repo (tre casi):**
-1. **Mission L1** (oracode/os3-matrix) → qualunque organo/LSO.
-2. **Mission L3-hub** (repo core di un LSO multi-organo) → gli **organi del proprio LSO** (dichiarati in `organs[]`, ⊆ organi di quell'LSO).
-3. **Mission L3** (mono-organo o singolo organo) → il **proprio** repo.
+1. **Mission del Paradigma** (oracode/os3-matrix) → qualunque Organo/LSO.
+2. **Mission dell'Organismo** (aperta sul repo-centro, es. EGI-DOC) → gli **Organi del proprio LSO** (dichiarati in `organs[]`, ⊆ organi di quell'LSO).
+3. **Mission di Progetto, di Organo o di Libreria LSO** → il **proprio** repo.
 
-> **EGI-DOC = L3-hub di FlorenceEGI.** NON è L2 (L2 = Florence EGI S.R.L. software house, sopra *tutti* i clienti), NON è L3 puro. È il core del solo LSO multi-organo FlorenceEGI.
+> **FlorenceEGI è l'Organismo; EGI-DOC è il suo repo-centro.** EGI-DOC NON è la Softwarehouse
+> (= Florence EGI S.R.L., sopra *tutti* i clienti e le Librerie), NON è una Libreria LSO (non è
+> uno strumento della software house: è il centro di un CLIENTE), NON è un Progetto. È il
+> repo-centro del solo LSO multi-organo FlorenceEGI: gli Organi gli puntano via `ssot_home`.
 
 ## Rapporto con `ORACODE_NEXUS_3_TIER.md` (🔒 LOCKED)
-Le **definizioni** di L1/L2/L3 del 3_TIER (strumento / softwarehouse-HUB / istanza) **restano valide e non si toccano**. Sono superate solo le sue **clausole di stato** (accoppiato/caso-unico/differito), perché i fatti sono cambiati (disaccoppiamento fatto + N clienti). Aggiunta di questo doc: il concetto **L3-hub** per il caso multi-organo (direttiva CEO 2026-07-06).
+Le **definizioni** del 3_TIER (strumento / softwarehouse / istanza) **restano valide e non si toccano**: si NOMINANO però coi ruoli — Paradigma, Softwarehouse (col corredo delle sue Librerie LSO), e per le istanze Progetto / Organismo / Organo (decisioni CEO 2026-07-08 e 2026-07-11). Il 3_TIER usa i nomi storici nel corpo (LOCKED): un banner in testa fa la traduzione. Sono superate solo le sue **clausole di stato** (accoppiato/caso-unico/differito), perché i fatti sono cambiati (disaccoppiamento fatto + N clienti). Il concetto qui coniato come «L3-hub» (direttiva CEO 2026-07-06) è superato: si dice **Organismo** (FlorenceEGI) e **repo-centro** (EGI-DOC).
 
 ## Il campo `level` dei descrittori
-Il campo `level` in `.oracode/project.json` **non** codifica il tier Nexus: codifica il *livello di maturità/applicazione* Oracode (cfr. `CLAUDE_ORACODE_CORE.md:327`, Layer Stack) — un **altro asse** (valori 1–4; FlorenceEGI=2, os3-matrix=3, EGI=4, impossibili nel 3-tier) e **nessun guard lo legge**. Il tier operativo (L1/L2/L3/L3-hub) va codificato in un campo dedicato **`tier`** (design in M-OS3-138); si valuta di rinominare `level`→`maturity_level` per non collidere.
+Il campo `level` in `.oracode/project.json` **non** codifica il ruolo Nexus: codifica il *livello di maturità/applicazione* Oracode (cfr. `CLAUDE_ORACODE_CORE.md:327`, Layer Stack) — un **altro asse** (valori 1–4; FlorenceEGI=2, os3-matrix=3, EGI=4, impossibili nei ruoli) e **nessun guard lo legge**. Il **ruolo** (Paradigma / Softwarehouse / Libreria LSO / Progetto / Organismo / Organo) va codificato in un campo dedicato **`role`**, **dichiarato alla creazione via `/project`** (design M-OS3-144, che supera il campo `tier` previsto da M-OS3-138); si valuta di rinominare `level`→`maturity_level` per non collidere.
 
 ---
-*Stato corrente gerarchia Oracode Nexus — M-OS3-138 (Fabio Cherici / Padmin D. Curtis) — 2026-07-06. Depreca le clausole di stato elencate in frontmatter; non le definizioni core.*
+*Stato corrente gerarchia Oracode Nexus — M-OS3-138 (Fabio Cherici / Padmin D. Curtis) — 2026-07-06. Cablaggio 6 ruoli: M-OS3-144, ratifica CEO 2026-07-11. Depreca le clausole di stato elencate in frontmatter; non le definizioni core.*

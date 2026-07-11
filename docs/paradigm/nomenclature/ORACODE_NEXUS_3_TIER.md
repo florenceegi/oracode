@@ -1,6 +1,17 @@
 
 > ⛔ **DEPRECATO — clausole di stato (M-OS3-138, 2026-07-06).** Le affermazioni «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato* / *caso unico*; L2/HUB *differito* finché non ci sono 2+ clienti» in questo documento sono **superate**: il disaccoppiamento è fatto, **L2 = Florence EGI S.R.L.** (software house acquirente con licenza Nexus) *esiste*, e le istanze L3-clienti sono già molte (FlorenceEGI, Capasso, LeVespe, DeepDebug). Stato corrente autoritativo → **oracode: docs/paradigm/nomenclature/NEXUS_HIERARCHY_CURRENT_STATE.md**. Le *definizioni core* L1/L2/L3 restano valide.
 
+> 🏷️ **NOMENCLATURA (decisioni CEO 2026-07-08 e 2026-07-11, ratificate — M-OS3-144).** I livelli
+> di questo documento si nominano oggi con parole-ruolo, mai con numeri: **LIVELLO 1 GLOBALE →
+> Paradigma · LIVELLO 2 HUB → Softwarehouse** (l'entità) **+ le sue Librerie LSO** (strumenti
+> propri della software house: DeepDebug, Fucina, Cockpit/nexus-cockpit, EGI-STAT (nexus), SNC)
+> **· LIVELLO 3 ISTANZA LSO → Progetto | Organismo | Organo** (definizioni CEO: Organismo = un
+> LSO multi-organo, es. FlorenceEGI col repo-centro EGI-DOC · Progetto = un LSO mono-organo ·
+> Organo = un LSO appartenente a un Organismo). Le **definizioni e le direttive del corpo
+> restano valide e intoccate** (questo doc è la trascrizione delle parole del CEO): cambia solo
+> il modo di nominare i ruoli. Riferimenti: `NEXUS_HIERARCHY_CURRENT_STATE.md` (topologia
+> corrente, v2.0.0) e `LSO_NOMENCLATURE_INDEX.md` §0/§1bis (canone).
+
 # Oracode Nexus — Gerarchia a 3 Livelli (SSOT)
 
 > **Status:** 🔒 LOCKED.
