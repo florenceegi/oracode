@@ -167,44 +167,15 @@ Niente si modifica fuori da una mission aperta.
 
 ## Asse Difesa Costitutivo — Egida
 
-> Decisione costituzionale del CEO (2026-06-08, 4 punti ratificati). Entra in OSZ come la difesa è
-> parte della **definizione** di LSO — al pari di Mission Protocol e DOC-SYNC. Non è un add-on.
-
-### Clausola costitutiva
+> Decisione costituzionale del CEO (2026-06-08, 4 punti ratificati, in OSZ via M-NEXUS-005).
 
 **"Un LSO si difende e prova la propria difesa. La difesa è proporzionale alla superficie di rischio.
 Un progetto che non integra l'asse difesa — dove esso ha senso — non è un LSO: è solo software."**
 
-Conseguenza: l'asse difesa non è opzionale. Un software che assume lo status di LSO **deve** integrarlo.
-
-### I due strumenti + l'ombrello
-
-```
-Fortino    — DIFENDE (difesa runtime continua, invarianti di sicurezza, sentinella, forense).
-DeepDebug  — COLLAUDA (banco di prova: triage 5 domini, debug profondo, read-only). ESISTE GIÀ.
-Egida      — USARLI INSIEME, in proporzione al rischio. NON un terzo strumento.
-             Lo scudo "Egida" si attribuisce a un software quando unisce Fortino + DeepDebug.
-Sigillo    — CERTIFICA (hash del report → ancoraggio Algorand + marca temporale TSA).
-```
-
-### Regola di proporzionalità — la difesa scala col rischio
-
-"Dove ha senso" è **regola scritta**, non discrezione: il profilo di difesa è scalato sul **rischio R1-R4**
-(R1 vetrina → R4 denaro/PII/blockchain). NB nomenclatura (M-FUC-040): "R" = rischio, "L" = maturità
-(Layer Stack), "T" = tier operativo — vedi LSO_NOMENCLATURE §0.
-
-| Livello / superficie | Banco di Prova (consegna, DeepDebug) | Fortino (runtime) |
-|---|---|---|
-| Sito vetrina statico (R1) | domini applicabili: reverse-security (secrets/headers/deps), perf | Liv. A leggero (secrets, headers, deps, TLS) |
-| App con auth/dati (R2–R3) | + ai-driven (variant analysis) | Liv. A pieno + B (sentinella) |
-| Organo con denaro/PII/blockchain (R3–R4) | tutti i domini applicabili | A + B + C (forense) |
-| Codice nativo (C/C++/Rust-FFI) | + memory, concurrency | come sopra |
-
-Vincoli invarianti: **triage** (solo domini applicabili, mai "tutti a forza"); **no over-claim** (si attesta
-"controlli superati in data certa", non "sicuro al 100%"); **deterministico dove blocca** (gate su regola
-scritta, mai su opinione di un modello — il passaggio AI è esplorativo); **onestà epistemica** (REGOLA ZERO).
-
-Dettaglio architetturale, piano mission (E1–E6) e dottrina: charter `EGI-DOC/docs/oracode/Egida/00_EGIDA_CHARTER.md`.
+Strumenti (Fortino DIFENDE · DeepDebug COLLAUDA · Egida = i due insieme, in proporzione al rischio ·
+Sigillo CERTIFICA), tabella di proporzionalità R1-R4 e vincoli (triage, no over-claim, deterministico
+dove blocca): modulo `oracode/docs/paradigm/modules/EGIDA_ASSE_DIFESA.md` (bootstrap type=guard).
+Migrato: M-OS3-144 D11.
 
 ---
 
@@ -394,5 +365,5 @@ Quando un report torna con flag → VERIFICA alla fonte prima di agire.
 ---
 
 *Oracode System — paradigma di sviluppo software AI-native.*
-*Versione template: 1.6.0 — Data: 2026-07-11 (M-OS3-144 dieta C2: D20 Dottrina + D24 Layer Stack + D13 Know-How → rimandi; dettagli in hook Dottrina, LSO_NOMENCLATURE_INDEX §2-§4, KNOW_HOW_TRANSFER_PROTOCOL)*
+*Versione template: 1.7.0 — Data: 2026-07-11 (M-OS3-144 dieta C2: D20+D24+D13+D11 — Egida ridotta a clausola+rimando, dettaglio nel modulo paradigma EGIDA_ASSE_DIFESA on-demand type=guard)*
 *Licenza: MIT*
