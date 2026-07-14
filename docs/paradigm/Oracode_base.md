@@ -128,7 +128,7 @@ OSZ definisce i primitivi; un LSO è costruito con istanze di essi. I suoi organ
 
 ### 3.5 Il concetto di LSO
 
-Un LSO, cioè un Living Software Organism, è il prodotto vivente di Oracode applicato a un dominio: un software dotato di un proprio sistema circolatorio, che cattura la propria esperienza, la struttura e la rende riutilizzabile, e in questo modo cresce. Non è un insieme di siti collegati, ma un corpo in cui ogni progetto è un organo, ogni interfaccia un'articolazione e l'intelligenza artificiale il sistema nervoso.
+Un LSO, cioè un Living Software Organism, è il prodotto vivente di Oracode applicato a un dominio: un software dotato di un proprio sistema circolatorio, che cattura la propria esperienza, la struttura e la rende riutilizzabile, e in questo modo cresce. Non è un insieme di siti collegati, ma un corpo: ogni progetto è un organo, ogni interfaccia un'articolazione, e il sistema nervoso è fatto di nervi deterministici, cioè gli hook di Nexus. L'intelligenza artificiale non è il sistema nervoso: opera a un livello superiore, come mente, ma è vincolata da esso, perché sono i nervi a impedirle di rompere le regole.
 
 ### 3.6 Il concetto di Sistema Circolatorio
 
