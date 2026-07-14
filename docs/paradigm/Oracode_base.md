@@ -54,12 +54,14 @@ Oracode-il-paradigma è gratis. La sua **attuazione** — ciò che fa *rispettar
 
 ### 1.1 I prodotti *(concetto qui; cataloghi e implementazioni → rimando)*
 
-- **Oracode Nexus** — il **sistema operativo**: Oracode (i principi, MIT) **+ os3-matrix** (l'enforcement).
-  «Nexus» è il fatto che le regole ora **vincolano**: os3-matrix è ciò che trasforma Oracode da *documenti*
-  a *sistema operativo vivo*. **Chi compra Oracode + os3-matrix compra Oracode Nexus** — non gli manca "la
-  parte Nexus": os3-matrix *è* quella parte.
-- **os3-matrix** — l'**attuazione di OS3** (non è OS3, e non è il paradigma): la macchina di hook, gate e
-  agenti che imbriglia il piano OS3. A pagamento. *(catalogo hook/agenti → doc-spec os3-matrix.)*
+- **Oracode Nexus** — il **sistema operativo**: Oracode (i principi, MIT) **+ Nexus** (l'attuazione).
+  «Nexus» è il fatto che le regole ora **vincolano**: è ciò che trasforma Oracode da *documenti* a *sistema
+  operativo vivo*. **Chi compra Oracode + Nexus compra Oracode Nexus** — non gli manca "la parte Nexus":
+  Nexus *è* quella parte.
+- **Nexus** — l'**attuazione di OS3** (non è OS3, e non è il paradigma): la macchina di hook, gate e agenti
+  che imbriglia il piano OS3. A pagamento. *Origine del nome:* nasce come **os3-matrix**, *l'attuatore di
+  OS3*; il repo/implementazione conserva `os3-matrix`, ma per **convenzione si usa «Nexus»**. *(catalogo dei
+  componenti → doc-spec.)*
 - **Cockpit** — lo strumento di **amministrazione** (osservazione, statistiche, portale documentale).
   **Opzionale, non serve per programmare.** Vive su `nexus.florenceegi.com` — dove *gira*, non come *si
   chiama*. *(dettaglio → doc Cockpit.)*
@@ -164,7 +166,7 @@ recinto Tier-0, la Porta TOTP — è attuazione: → doc TIER0_CLAUSOLE / Porta.
 ## 4. OS3 — Execution (il protocollo AI-Human)
 
 OS3 è il **piano dove l'AI opera come co-autore** a velocità non verificabile in tempo reale. È **parte del
-paradigma** (un *principio*: l'esecuzione va imbrigliata meccanicamente) — da non confondere con **os3-matrix**,
+paradigma** (un *principio*: l'esecuzione va imbrigliata meccanicamente) — da non confondere con **Nexus**,
 che ne è l'**attuazione** (la macchina, a pagamento, §4.6).
 
 ### 4.1 Il sistema di priorità P0-P3
@@ -189,10 +191,13 @@ Niente si modifica fuori da una mission aperta. *(il motore che lo enforcea è o
 Codice nuovo → tutte le regole Oracode. Codice legacy → resta; si migra solo quando lo si tocca per altra
 ragione, mai "refactoring di principio". Protegge dai due rischi opposti: debito non gestito e refactoring nevrotico.
 
-### 4.6 os3-matrix = l'ATTUAZIONE di OS3
-**os3-matrix non è OS3.** È l'insieme dei componenti software (hook bloccanti, gate, agenti) che **fanno
-rispettare meccanicamente** le regole di OS3, sul piano dove l'AI opera. È **prodotto commerciale** al livello
-software house. *(catalogo dei componenti → doc-spec os3-matrix.)*
+### 4.6 Nexus = l'ATTUAZIONE di OS3
+**Nexus non è OS3.** È l'insieme dei componenti software (hook bloccanti, gate, agenti) che **fanno rispettare
+meccanicamente** le regole di OS3, sul piano dove l'AI opera. È **prodotto commerciale** al livello software house.
+> **Origine e convenzione.** Nexus nasce come **os3-matrix** — *l'attuatore di OS3* (da lì il nome storico); il
+> repo/implementazione conserva `os3-matrix`. **Convenzione: si scrive «Nexus».** Chi ne cerca l'origine trova
+> il legame: *Nexus = l'attuatore di OS3*.
+*(catalogo dei componenti → doc-spec.)*
 
 ---
 
