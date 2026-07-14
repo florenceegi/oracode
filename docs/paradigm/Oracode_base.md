@@ -210,7 +210,7 @@ La Software House è l'acquirente con licenza. A questo livello vivono Nexus, co
 
 Il Customer è il cliente. Il meccanismo che lo definisce è la separazione: distingue le funzioni di un cliente da quelle di un altro. Sotto la software house stanno i clienti, non le applicazioni: sono i clienti ad avere le applicazioni.
 
-Seguono i tre livelli dell'organismo software. L'Organismo è un LSO composto da più organi, come FlorenceEGI. L'Organo è un LSO che appartiene a un Organismo. Il Progetto è un LSO composto da un solo organo.
+Le applicazioni che un cliente possiede si distinguono a loro volta in tre forme, a seconda di come è costituito l'organismo software che le realizza: l'Organismo, l'Organo e il Progetto. L'Organismo è un LSO composto da più organi, come FlorenceEGI. L'Organo è un LSO che appartiene a un Organismo. Il Progetto è un LSO composto da un solo organo.
 
 La Libreria LSO, infine, è un repository-strumento della software house, al servizio di tutti i lavori.
 
