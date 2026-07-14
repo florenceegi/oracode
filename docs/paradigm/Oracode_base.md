@@ -3,7 +3,7 @@ title: "Oracode — Documento Base (radice del paradigma)"
 slug: oracode-base
 doc_type: ssot-white-paper
 status: draft-per-ratifica-CEO
-version: 0.2.0
+version: 0.3.0
 date: '2026-07-14'
 author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
 scope: [oracode]
@@ -13,9 +13,11 @@ rag: public
 
 # Oracode — Documento Base
 
-Questo è il documento radice del paradigma. Descrive Oracode e la sua anatomia — OSZ, OS3 e OS4 — nel loro insieme. È un documento di fonte (SSOT) e ha valore di white paper: è completo, dettagliato e autorevole, e non va compresso. Sta prima di ogni altro documento del paradigma, e gli altri vi rimandano.
+Questo è il documento radice del paradigma. Descrive Oracode e la sua anatomia — OSZ, OS3 e OS4 — nel loro insieme. È un documento di fonte, un SSOT, e ha valore di white paper: è completo, dettagliato e autorevole, e non va compresso. Sta prima di ogni altro documento del paradigma, e gli altri vi rimandano.
 
-Non è un file operativo. I file di sistema `CLAUDE_*`, che vengono caricati nel contesto dell'intelligenza artificiale per guidarne il lavoro, sono una distillazione compressa di questo documento: la verità si scrive qui e da qui discende verso i file operativi, mai il contrario. I lettori di questo documento sono le persone — chi sviluppa, chi valuta il prodotto — e l'intelligenza artificiale quando le viene chiesto di approfondire.
+Un SSOT, cioè una *Single Source of Truth* — fonte unica di verità — è il documento che fa da fonte autorevole per un pezzo di conoscenza. Ogni concetto si definisce in un solo posto, il suo SSOT, e tutto il resto vi rimanda invece di ripeterlo. L'SSOT non è un dettaglio organizzativo: è esso stesso uno strumento del paradigma, perché senza una fonte unica la conoscenza si duplica, le copie divergono, e chi legge — persona o intelligenza artificiale — non sa più quale versione è quella vera. La disciplina degli SSOT è ciò che tiene la conoscenza di un sistema coerente nel tempo.
+
+Questo documento non è un file operativo. I file di sistema `CLAUDE_*`, che vengono caricati nel contesto dell'intelligenza artificiale per guidarne il lavoro, sono una distillazione compressa di questo documento: la verità si scrive qui e da qui discende verso i file operativi, mai il contrario. I lettori di questo documento sono le persone — chi sviluppa, chi valuta il prodotto — e l'intelligenza artificiale quando le viene chiesto di approfondire.
 
 Vale una regola di scrittura. Qui si definiscono i concetti, per esteso. Le liste che cambiano nel tempo — cataloghi di prodotti, elenchi di organi, componenti — e le implementazioni tecniche non stanno in questo documento: se ne dà il concetto e si rimanda al documento specifico. Il criterio è semplice: se una cosa cambia o si esegue, non appartiene al documento base.
 
@@ -24,6 +26,8 @@ Vale una regola di scrittura. Qui si definiscono i concetti, per esteso. Le list
 ## 0. Cos'è il Paradigma Oracode
 
 Oracode è un paradigma di sviluppo software AI-native. È il metodo con cui un essere umano e un'intelligenza artificiale costruiscono software insieme, imponendo disciplina epistemica e infrastruttura documentale a qualsiasi sistema costruito con esso. È una metodologia, non un prodotto: è il modo in cui si costruisce, non ciò che si costruisce.
+
+Per capire cosa sia un paradigma aiutano gli esempi già noti a chi programma. La programmazione a oggetti, l'OOP, è stata il paradigma del periodo in cui il problema dominante era dominare la complessità del dominio: ha dato al codice il concetto di oggetto, di classe, di ereditarietà. I principi SOLID sono stati il paradigma del periodo in cui il problema dominante era la manutenibilità: hanno dato regole su come scrivere classi che restano modificabili nel tempo. Prima ancora, la programmazione strutturata aveva risolto il problema del codice ingovernabile. Ogni paradigma risponde al problema dominante della sua epoca, e non sostituisce i precedenti: vi si stratifica sopra. Oracode è il paradigma per l'epoca in cui il codice, in gran parte, lo scrive un'intelligenza artificiale. Quello che l'OOP ha fatto per il dominio e SOLID per la manutenibilità, Oracode si propone di farlo per la collaborazione tra uomo e AI.
 
 Il problema che risolve nasce da due asimmetrie tra l'essere umano e l'intelligenza artificiale. La prima è di velocità: un'AI produce codice, documentazione e decisioni a un ritmo che rende impossibile la revisione umana in tempo reale. La seconda è di degradazione: un'AI può violare al minuto quarantacinque una regola per cui era stata corretta al minuto dodici, perché la degradazione non è un errore occasionale ma una proprietà della generazione statistica. Queste due asimmetrie sono la ragione per cui la disciplina non può restare un insieme di istruzioni che l'AI legge e spera di seguire: deve diventare enforcement meccanico. Oracode codifica questa disciplina.
 
@@ -102,19 +106,29 @@ Regola Zero è il principio fondante: mai dedurre, mai completare le lacune; se 
 
 ### 3.2 I Pilastri Cardinali
 
-I pilastri sono i valori costituzionali del paradigma. Sono sei, più uno.
+I pilastri sono i valori costituzionali del paradigma. Sono sei, più uno:
 
-Il primo è l'intenzionalità esplicita: dichiarare sempre perché si fa ciò che si fa. Il secondo è la semplicità potenziante: scegliere la strada che rende più liberi, senza astrazioni inutili. Il terzo è la coerenza semantica: parole e azioni allineate, dove una funzione fa ciò che il suo nome promette. Il quarto è la circolarità virtuosa: ogni bug diventa un test, ogni soluzione alimenta il sistema. Il quinto è l'evoluzione ricorsiva: ogni risultato migliora il processo, e la documentazione co-evolve con il codice. Il sesto è la sicurezza proattiva: sicurezza per costruzione, non correzione a posteriori. Il settimo, che sta sopra gli altri, è Regola Zero.
+- **Intenzionalità esplicita** — dichiarare sempre perché si fa ciò che si fa.
+- **Semplicità potenziante** — scegliere la strada che rende più liberi, senza astrazioni inutili.
+- **Coerenza semantica** — parole e azioni allineate: una funzione fa ciò che il suo nome promette.
+- **Circolarità virtuosa** — ogni bug diventa un test, ogni soluzione alimenta il sistema.
+- **Evoluzione ricorsiva** — ogni risultato migliora il processo, e la documentazione co-evolve con il codice.
+- **Sicurezza proattiva** — sicurezza per costruzione, non correzione a posteriori.
+- **Regola Zero** — il settimo, che sta sopra gli altri.
 
 ### 3.3 I Primitivi
 
 Come un sistema operativo ha i suoi primitivi — processi, thread, memoria, input e output — così OSZ ha i suoi. Sono quattro.
 
-**RAV** è l'unità atomica di valore. È un contenitore tipizzato reso prodotto reale da tre elementi, secondo la formula `RAV = Wrapper<T> + Regole + Audit + Valore`. Il contenuto `T` può essere qualsiasi cosa: un'opera, un diritto, un flusso economico, un bene fisico, un contratto, un servizio, una competenza, una capacità software. Le regole lo governano, l'audit lo certifica, il valore lo rende scambiabile. Il nome interno è RAV; nella forma qualificata pubblica è Oracode_RAV.
+**RAV** è l'unità atomica di valore. È un contenitore tipizzato reso prodotto reale da tre elementi, secondo la formula `RAV = Wrapper<T> + Regole + Audit + Valore`. Il contenuto `T` può essere qualsiasi cosa: un'opera, un diritto, un flusso economico, un bene fisico, un contratto, un servizio, una credenziale, una capacità software. Le regole lo governano, l'audit lo certifica, il valore lo rende scambiabile. Il nome interno è RAV; nella forma qualificata pubblica è Oracode_RAV.
 
-Il RAV è un primitivo universale, e le sue istanze concrete sono molte. Un EGI, l'unità di valore dell'ecosistema FlorenceEGI, è un RAV il cui contenuto è un'opera, certificato su blockchain. Una capacità di produzione software è un RAV il cui contenuto è una responsabilità, certificato dalla chiusura standard di una mission. Una competenza verificabile è un RAV il cui contenuto è la competenza stessa. È sempre lo stesso primitivo: cambia solo ciò che contiene.
+Il RAV è un primitivo universale, e le sue istanze concrete sono molte. Nell'ecosistema FlorenceEGI, un EGI è un RAV: concretamente, è un record nella tabella degli EGI. Il suo contenuto può variare senza che cambi la sua natura di RAV: può essere un'opera d'arte, oppure una credenziale, cioè una qualifica di una persona resa verificabile. Fuori da FlorenceEGI, nel dominio della produzione software, una capacità — quello che chiamiamo grano — è a sua volta un RAV: il suo contenuto è una responsabilità consegnata, e la sua certificazione è la chiusura standard di una mission. È sempre lo stesso primitivo: cambia solo ciò che contiene e il modo in cui viene certificato.
 
-**Interface** è la giuntura stabile. È il contratto fisso tra due parti, che non cambia anche quando cambia ciò che sta dietro. Vale l'immagine del ginocchio: l'osso e il tendine possono cambiare, ma l'articolazione resta stabile. Finché le interfacce restano stabili, si può sostituire qualsiasi organo dietro di esse senza far crollare il sistema.
+Vale la pena rendere concreta la parte «Audit» del RAV, cioè la certificazione. Certificare un'unità di valore significa attaccarle una prova verificabile di che cosa è, di chi l'ha fatta e di quando. Per un EGI d'arte, questa prova è un'impronta crittografica del contenuto più una transazione registrata su blockchain: fissano per sempre l'autore e la data, in un modo che nessuno può falsificare o retrodatare. Per una capacità di produzione software, la prova è la chiusura standard della mission che l'ha consegnata: i test verdi, l'audit del codice superato, la documentazione allineata. Prove diverse per unità diverse, ma con lo stesso ruolo: rendere l'unità di valore dimostrabilmente ciò che dichiara di essere.
+
+**Interface** è la giuntura stabile. È il contratto fisso tra due parti, che non cambia anche quando cambia ciò che sta dietro. Vale l'immagine del ginocchio: l'osso e il tendine possono cambiare, ma l'articolazione resta stabile, e finché resta stabile si può sostituire qualsiasi organo dietro di essa senza far crollare il sistema.
+
+Un esempio concreto, preso dal nostro ecosistema. Molti organi diversi hanno bisogno di **certificare** un valore: quello che vende opere deve provare che un'opera è autentica, quello che gestisce le credenziali deve ancorare una qualifica, quello che pubblica fatti deve provare che sono veri. Nessuno di questi organi contiene dentro di sé la macchina della certificazione. Tutti chiamano lo stesso punto di contatto, sempre uguale: una richiesta che dice «certifica questo» e riceve indietro la prova, e una che dice «verifica questo» e riceve indietro il responso. Quel punto di contatto è l'Interface. Dietro, oggi, la certificazione la fa una certa tecnologia; se domani cambiasse, ogni organo continuerebbe a chiamare la stessa richiesta, senza accorgersi di nulla e senza rompersi. La giuntura è ferma; ciò che sta dietro può cambiare.
 
 **Instance** è l'organo sostituibile. È un pezzo che svolge un lavoro e comunica con il resto del sistema soltanto attraverso le interfacce; proprio per questo può essere sostituito, scollegato o aggiornato senza far crollare l'insieme. È il principio SOLID applicato a un intero ecosistema.
 
@@ -138,9 +152,11 @@ Il sistema circolatorio è il meccanismo per cui, all'interno di un LSO, l'esper
 
 ### 3.7 Il concetto di Audit
 
-L'audit è la prova verificabile di che cosa è una cosa e da dove proviene: è la componente «A» del RAV. È il concetto universale di certificazione, cioè di esistenza, integrità e anteriorità.
+Audit, nel kernel, è il principio della verifica di aderenza che produce una prova. La sua forma più importante è questa: prima di andare in produzione, il codice scritto viene esaminato da agenti — intelligenze artificiali specializzate — che ne controllano l'aderenza ai principi standard della buona programmazione e, in più, ai principi di Oracode. È un rinforzo dell'imbrigliatura: là dove i nervi deterministici bloccano le violazioni nette, l'audit degli agenti giudica la qualità nel suo insieme. È qui, in gran parte, che nasce il livello altissimo di qualità del codice che Oracode Nexus produce: non si spera che il codice sia buono, lo si audita prima che diventi definitivo.
 
-*La macchina che lo realizza — l'impronta crittografica ancorata su blockchain, il Sigillo — è un'implementazione, e si rimanda al documento relativo.*
+L'audit è la stessa cosa, vista dal lato del valore, che certifica un RAV (§3.3): là si verifica che un'unità di valore sia ciò che dichiara, qui si verifica che il codice aderisca ai principi. In entrambi i casi l'audit è verifica di aderenza che lascia una prova. Sta nel kernel perché è ciò che determina, in modo marcato, la qualità di tutto ciò che il sistema produce.
+
+*Le macchine che realizzano l'audit — gli agenti di verifica, e l'impronta su blockchain per il valore, cioè il Sigillo — sono attuazioni, e si rimanda ai documenti relativi.*
 
 ### 3.8 L'immutabilità del kernel
 
@@ -156,25 +172,50 @@ OS3 è il piano in cui l'intelligenza artificiale opera come co-autore, a una ve
 
 ### 4.1 Il sistema di priorità
 
-Le priorità vanno da P0 a P3. P0 indica che il sistema si rompe subito, e impone di fermarsi e correggere prima di procedere. P1 indica codice non pronto per la produzione, da correggere prima del rilascio. P2 indica debito tecnico, da affrontare con un refactoring programmato. P3 è un'indicazione di contesto, consigliata ma non vincolante.
+Le priorità vanno da P0 a P3:
+
+- **P0** — il sistema si rompe subito. Ci si ferma e si corregge prima di procedere.
+- **P1** — codice non pronto per la produzione. Va corretto prima del rilascio.
+- **P2** — debito tecnico. Va affrontato con un refactoring programmato.
+- **P3** — indicazione di contesto. Consigliata, ma non vincolante.
 
 ### 4.2 Le tredici regole P0
 
-*Questa sezione è un elenco riassuntivo. Il testo per esteso di ciascuna regola va sviluppato in versione definitiva, coerentemente con il carattere di white paper del documento.*
+Ogni regola P0 nasce da un errore concreto avvenuto in produzione: sono cicatrici codificate. Le tredici regole operazionalizzano i pilastri cardinali, e sono:
 
-Ogni regola P0 nasce da un errore concreto avvenuto in produzione: sono cicatrici codificate. Le tredici regole sono: Regola Zero; le chiavi di traduzione; la regola sulle statistiche; il divieto di inventare metodi; l'obbligo di gestire gli errori dal gestore centralizzato; il divieto di chiamare metodi di servizio senza verificarli; il divieto di usare costanti enum senza verificarle; l'analisi completa del flusso prima di una modifica non banale; l'internazionalizzazione completa fin dal primo commit; il divieto di accedere ai dati bypassando il livello di astrazione; DOC-SYNC; il divieto di inventare informazioni di infrastruttura; e la disciplina del test-first. Le tredici regole operazionalizzano i pilastri cardinali.
+- **Regola Zero** — mai dedurre; se non sai, chiedi.
+- **Chiavi di traduzione** — nessun testo scritto direttamente nell'interfaccia; ogni parola visibile passa dal sistema di traduzione.
+- **Regola sulle statistiche** — parametri delle statistiche sempre espliciti, mai valori assunti di nascosto.
+- **Divieto di inventare metodi** — prima di chiamare un metodo, verificare che esista.
+- **Gestione centralizzata degli errori** — gli errori passano da un gestore unico, mai da soluzioni improvvisate.
+- **Verifica dei metodi di servizio** — prima di chiamare un metodo di un servizio, verificare che esista con quella firma.
+- **Verifica delle costanti enum** — prima di usare una costante, verificare che esista davvero.
+- **Analisi completa del flusso** — prima di una modifica non banale, mappare l'intero flusso interessato.
+- **Internazionalizzazione completa** — ogni testo disponibile in tutte le lingue fin dal primo momento.
+- **Nessun accesso diretto ai dati** — l'accesso al database passa sempre da un livello di astrazione.
+- **DOC-SYNC** — codice e documentazione allineati prima di considerare chiusa un'attività.
+- **Divieto di inventare l'infrastruttura** — percorsi, indirizzi e configurazioni si verificano alla fonte, non si deducono.
+- **Test-first** — ogni funzionalità, correzione o rifacimento produce o aggiorna un test.
 
-### 4.3 DOC-SYNC
+### 4.3 DOC-SYNC — la documentazione viva
 
-DOC-SYNC è il principio per cui il codice e la documentazione viaggiano insieme: una attività non è conclusa finché la documentazione di fonte non è allineata al codice.
+DOC-SYNC parte da un principio semplice — codice e documentazione viaggiano insieme, e un'attività non è conclusa finché la documentazione di fonte non è allineata al codice — ma la sua portata è molto più grande di così, e vale la pena dirla per intero.
 
-*Il software che esegue questo principio — rilevamento delle divergenze, controllo di copertura, re-indicizzazione — appartiene a Nexus.*
+La maggior parte dei team tratta la documentazione come un peso: la scrive dopo, la lascia invecchiare, e nel dubbio guarda direttamente il codice. In un LSO succede il contrario. La conoscenza viene scritta in SSOT, cioè in fonti uniche di verità; questi SSOT vengono tokenizzati e messi in un RAG, un archivio interrogabile; e quel RAG è disponibile a due lettori insieme. Da un lato le persone che sviluppano, che possono chiedere e ricevere la conoscenza giusta al momento giusto. Dall'altro gli assistenti di intelligenza artificiale, che in un LSO sono presenti per definizione, e che attingono da lì la loro fonte di verità invece di andare a indovinare.
 
-### 4.4 Mission Protocol
+Così la documentazione smette di essere un archivio morto e diventa **viva**: consultabile, interrogabile, e soprattutto è ciò da cui il sistema stesso — persone e AI — si informa per lavorare. È una delle cose che rendono un LSO un organismo e non un semplice programma: un corpo che ricorda ciò che ha imparato e lo rende disponibile a chi vi opera.
 
-Il Mission Protocol è il principio per cui ogni cambiamento al codice passa attraverso una mission numerata, con fasi sequenziali e un registro delle decisioni. Nulla si modifica al di fuori di una mission aperta.
+*Il software che esegue tutto questo — il rilevamento delle divergenze, il controllo di copertura, la tokenizzazione e la re-indicizzazione nel RAG — appartiene a Nexus.*
 
-*Il motore che enforcia questo principio appartiene a Nexus.*
+### 4.4 Mission Protocol — il vero lavoro del dev
+
+Il Mission Protocol stabilisce che ogni cambiamento al codice passa attraverso una **mission**: un'unità di lavoro numerata, con fasi sequenziali e un registro delle decisioni. Nulla si modifica al di fuori di una mission aperta. Ma dietro questa regola c'è il cambiamento più profondo che Oracode Nexus porta nel modo di lavorare.
+
+Con Oracode Nexus, il dev non scrive più il codice: fa **Solid Coding**, e fare Solid Coding significa, in pratica, **scrivere le mission**. La mission è la vera unità di lavoro del dev — descrive cosa si vuole ottenere, con quale scopo, entro quali confini — e da lì in avanti è il sistema, sotto imbrigliatura, a produrre il codice che la realizza. Il dev non è lasciato solo davanti a un foglio bianco: può scrivere la mission insieme al CTO di Oracode, l'intelligenza artificiale che lo guida a comporre una mission fatta bene, secondo lo standard.
+
+È da qui che nasce **tutta l'imbrigliatura**. La mission è il punto in cui l'intenzione umana entra nel sistema in forma disciplinata; ogni regola, ogni gate, ogni audit di cui parla il resto di questo documento agisce a partire da lì. Chi capisce questo capisce Oracode Nexus: non uno strumento che scrive codice al posto tuo, ma un sistema che sposta il tuo lavoro dal digitare righe al dichiarare, bene, che cosa deve esistere.
+
+*Il motore che enforcia il Mission Protocol appartiene a Nexus.*
 
 ### 4.5 Strategia Delta
 
@@ -232,8 +273,8 @@ Ho collocato Regola Zero e i Pilastri Cardinali in OSZ, ritenendoli parte della 
 
 Ho scritto la gerarchia dei ruoli e accennato al Layer Stack all'interno di questo documento, ma è ancora aperta la decisione se debbano vivere qui o in un documento a sé.
 
-Le tredici regole P0 sono per ora soltanto elencate; se il documento deve essere completo come white paper, vanno sviluppate per esteso.
+Ho unito, nel concetto di Audit (§3.7), l'audit del codice fatto dagli agenti e la certificazione di un'unità di valore, come due facce dello stesso principio di verifica. Se preferisci tenerli separati, si dividono.
 
 Restano infine da confermare il nome del file, la sua collocazione nel repository e la sua visibilità pubblica, coerente con la natura MIT del paradigma.
 
-*Documento Base di Oracode, versione preliminare 0.2.0, 14 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
+*Documento Base di Oracode, versione preliminare 0.3.0, 14 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
