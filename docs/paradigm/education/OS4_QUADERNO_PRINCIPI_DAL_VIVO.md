@@ -143,6 +143,30 @@ letto OS4 lo fa oggi con qualunque chat, per migliorare il suo codice).
 dritto a «AI fai»; l'esperto brainstorma prima. Qual è la *disciplina* del brainstorm, quella che trasforma
 l'idea grossolana in un là abbastanza fermo da non farsi virare?
 
+## P10 — Le pratiche OS4 «a mani nude» (senza enforcement / senza os3-matrix)
+**Còlto:** 15/07, il CEO — cosa fa quando lavora SENZA la macchina: *«lavoro solo per step brevi, commit
+fittissimi, contesto completo condensato su un documento chiaro, scritto assieme ad AI dicendole di
+scriverlo in modo più confacente alla comprensione da parte di un LLM».*
+**Le quattro pratiche (tutte superano il criterio ⓿):**
+- **Step brevi** — piccoli incrementi; poca superficie di là per volta, ogni passo verificabile subito.
+- **Commit fittissimi** — ogni commit è un'ancora/checkpoint: si vede sempre cosa è cambiato, si torna
+  indietro. Tracciabilità **a mano**.
+- **Un solo documento di contesto, condensato e chiaro** — tutto il contesto in UN posto: dà all'AI un
+  **là** stabile e completo, così non riempie i vuoti e non deriva (antidoto P5, cura del contesto a mano).
+- **Scritto *assieme* all'AI, in forma confacente a un LLM** — l'umano fa riformattare il documento
+  all'AI, chiedendole la rappresentazione che un LLM parsa meglio: non presume di sapere come legge un
+  LLM, lo **delega all'LLM**. (È «concordata con l'AI» applicata al contesto stesso.)
+**Meta-pattern (relazione emergente Padmin → IPOTESI per P7, da confermare dal CEO):** ciascuna pratica è
+la **versione manuale di una feature della macchina** — step brevi + commit fittissimi ≈ audit-interim /
+tracciabilità; doc-contesto ≈ bootstrap mirato; scritto-con-l'AI ≈ missione co-negoziata. Se regge: OS4
+(disciplina) e os3-matrix (macchina) sono **la stessa intenzione a due livelli** — la macchina non inventa
+principi, *enforca* ciò che l'umano disciplinato già fa a mani nude.
+**Rifinitura di P4:** il documento di contesto si ottimizza per il suo **lettore**. Se lo legge un LLM,
+«leggibile» = leggibile-**per-LLM** (opposto del bianco-scorrevole dei white-paper per umani). Due
+pubblici, due ottimizzazioni — non una contraddizione con P4.
+**Domanda aperta:** se ogni pratica a mani nude può diventare macchina, cosa di OS4 **NON** è
+meccanizzabile — la parte che resta umana per sempre? *Quella* è l'essenza vera di OS4.
+
 ---
 
 *Quaderno aperto il 15/07/2026. Si riempie mentre si lavora. Superato quando OS4 sarà rifondato.*
