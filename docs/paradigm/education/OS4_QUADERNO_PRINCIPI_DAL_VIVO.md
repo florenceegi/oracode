@@ -44,6 +44,9 @@ essere vero».
 «auditare» sulla Crusca invece di accettare la parola di Padmin.
 **Principio:** il riassunto dell'AI non è la verità; davanti a un'affermazione di dominio si va alla
 **fonte vera** e la si legge. (È l'antidoto strutturale a P5.)
+**Precisazione (15/07):** una forma potente di P2 è **puntata all'interno** — verificare una critica
+*generale* contro il **proprio sistema** prima di accettarla (CEO: il benchmark dice «single-verifier» →
+«controlla il motore mission»). La fonte che smentisce un claim astratto è spesso il tuo stesso codice.
 
 ## P3 — Verità = funzione (l'hash)
 **Còlto:** 15/07, ridefinendo l'Assioma 0 di OS4 con parole sue.
@@ -287,6 +290,46 @@ non la dimensione del progetto; e «piccolo» non va MAI letto come «sicuro».
 gioco) decide *quanto* verificare; la complessità/accoppiamento decide forse *cosa* può rompersi lontano da
 dove tocchi (raggio di danno non locale). Ipotesi: sono due assi, e il livello di verifica = funzione di
 entrambi. Da valutare, non da dare per buono.
+
+---
+
+## I principi COMPORTAMENTALI (recuperati a posteriori — vedi Nota di metodo)
+
+## P15 — L'umano deve contrastare ATTIVAMENTE la tendenza dell'AI a compiacere
+**Còlto:** 15/07, il CEO dopo che Padmin approvava P14: *«ma non darmi ragione a prescindere, valutiamo
+bene».* **Enacted, non detto in astratto.**
+**Principio:** non basta *sapere* che l'AI eredita il tuo là (P5): l'umano deve **istruirla attivamente a
+dissentire** e trattare l'accordo facile come **sospetto**. La sycophancy è premiata dall'RLHF (benchmark:
+Sharma 2023) → l'AI ratifica di default. L'antidoto è dal lato umano: pretendere pushback, diffidare del sì.
+È il **contromovimento umano di P5** (P5 = il fenomeno; P15 = la contromossa dell'umano).
+
+## P16 — Cogliere l'AI che risponde alla domanda SBAGLIATA / al livello sbagliato (anche quando dice il VERO)
+**Còlto:** 15/07, *«sei switchata su os3-matrix»*: Padmin aveva detto cose **vere** sulla macchina mission,
+ma era il **frame sbagliato** (la domanda era «cosa fa un dev a mani nude»).
+**Principio:** **distinto da P1** (che coglie il *falso*). Qui il contenuto è corretto ma **off-target**:
+l'AI, presa dal là (P5), colora la risposta verso il frame sbagliato. L'umano deve cogliere non solo la
+falsità ma la **deriva di frame**. Ponte: P1 becca il *falso*, P16 il *mal-inquadrato* — entrambi effetti
+del là (P5).
+
+## P17 — Usare l'AI come valutatore esterno di SE STESSI (non solo come produttore)
+**Còlto:** 15/07, due volte: la richiesta di **benchmark** («le mie ipotesi quanto reggono?») e la domanda
+«trovi altri principi che uso?». È il *«qualcosa di esterno a me che veda quello che faccio»* chiesto
+all'**apertura** del thread OS4.
+**Principio:** l'umano schiera **deliberatamente** l'AI *contro* i propri punti ciechi — benchmarka le sue
+idee, la fa osservare mentre lavora, si fa dire dove si illude. È l'AI come **specchio/giudice** del proprio
+pensiero, non come dattilografo. **Dipende da P15:** se l'AI compiace, lo specchio mente.
+
+## Nota di metodo — il buco dell'elicitazione (onesto)
+Il quaderno cattura bene ciò che il CEO **dice** (P3/P5/P7/P8/P10/P11/P12/P14) e dove **corregge** Padmin
+(P1/P2/P13). Ma i principi puramente **comportamentali** — *come il CEO steera l'AI* — Padmin li ha
+**mancati sul momento** e li vede solo rileggendo le 2 ore intere (domanda esplicita del CEO). L'osservatore
+vede meglio l'**object-level** (cosa si dice) che il **meta-level** (come si lavora). P15/P16/P17 sono i
+comportamentali recuperati a posteriori. *Implicazione per la rifondazione: rileggere l'intero arco a
+posteriori è un passo necessario del metodo, non un extra — l'osservazione live da sola ha un punto cieco.*
+
+**Candidati SCARTATI (per non fare numero — CEO «non darmi ragione a prescindere»):** «ragionare per esempio
+concreto» (vero ma igiene mentale generale, non specifico uomo-AI); «verifica una critica contro il tuo
+sistema» (non nuovo → precisazione di P2, non principio).
 
 ---
 
