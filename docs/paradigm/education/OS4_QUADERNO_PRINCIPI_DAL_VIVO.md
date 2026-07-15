@@ -226,6 +226,18 @@ ratificare dal CEO. Marcato per onestà di provenienza (P7).
   fiducia (arXiv 2502.10844).
 → Robustezza = **comporre** i tre, non eleggerne uno. (Il benchmark stesso è il principio in azione: 3 fonti
 convergenti valgono più di 1 autorevole.) **Corregge P1, P3, P11.**
+**⚠️ RIDIMENSIONAMENTO — CEO 15/07, grounded al motore `bin/mission` (3378 righe) + `agents/`:** la
+critica «un solo verificatore» **NON vale per os3-matrix**. Il motore della mission ha già un **POOL
+DIVERSO** di verificatori: (a) *deterministici* — GATE MICRO (ri-esegue il test verde P0-13, anti-salame,
+superfici vietate), GATE HANDOFF/DRIFT(scope-hash)/ROUTING/SSOT-FIRST, verifySpawnFingerprint,
+verifyChainOrDie; (b) il *test* (rosso→verde, P0-13); (c) *agenti AI* — os3-gate (PASS/WARN/BLOCK sui
+contratti), os3-audit-specialist (UEM/GDPR/sicurezza/pattern/i18n/firma), doc-sync-v3, web-quality-gate;
+(d) *umani* — Watchdog (review piano FASE 3 + deliverable FASE 5) e CEO (2 cancelli). I gate deterministici
+**non condividono il bias degli LLM** → è esattamente il «gate deterministico + panel diverso» che il
+benchmark prescriveva: **il CEO ha costruito la correzione prima che il benchmark la scrivesse**. Quindi
+P13 vale solo per l'**OS4 a mani nude** (dev con la sola chat) → ed è **P12 in azione** (la macchina
+meccanizza «componi verificatori diversi», difficile da tenere a mano). Coda aperta reale: la *copertura*
+delle falle non-eseguibili (sicurezza/race/design) — già coperta in parte da os3-audit-specialist + os3-gate.
 **Altri buchi dal benchmark (da assorbire — dettaglio nel doc):** il **contesto come risorsa finita** da
 amministrare (*context rot*) = l'assenza più grossa; **misura-prima/eval** come metro ripetibile (ironia: già
 nel CORE, non nelle 12); simplicity-first; autonomia proporzionale al rischio; reversibilità come leva;

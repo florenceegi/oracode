@@ -81,6 +81,12 @@ rag: private
      pure la sicurezza (si è auto-valutato più intelligente dopo aver parlato con modelli accondiscendenti —
      arXiv 2502.10844).
    → La robustezza nasce dal **comporre** i tre verificatori, non dall'eleggerne uno. *Candidato P13.*
+   **MA (correzione CEO 15/07, grounded a `bin/mission`):** questa critica colpisce le *12 ipotesi a mani
+   nude*, NON os3-matrix. Il motore della mission ha **già** un pool DIVERSO — gate deterministici (MICRO,
+   HANDOFF, DRIFT/scope-hash, ROUTING, SSOT-FIRST, spawn-fingerprint, chain), il test (P0-13), agenti AI
+   (os3-gate, os3-audit-specialist, doc-sync-v3), umani (Watchdog + CEO). I gate deterministici non
+   condividono il bias LLM → è già il «gate deterministico + panel» che questo benchmark prescrive. Quindi
+   la debolezza resta solo per l'**OS4 a mani nude**; os3-matrix l'ha già risolta (= P12 in azione).
 2. **Il contesto come risorsa finita da amministrare (l'assenza più grossa).** Il cardine n.1 di Anthropic e
    Google: **context rot** — l'attenzione degrada al crescere dei token (a ~turno 16 la constraint-compliance
    crolla, secondo lo studio Chroma citato); contromisure: `/clear`, compaction, just-in-time retrieval,
