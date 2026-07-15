@@ -167,6 +167,27 @@ pubblici, due ottimizzazioni — non una contraddizione con P4.
 **Domanda aperta:** se ogni pratica a mani nude può diventare macchina, cosa di OS4 **NON** è
 meccanizzabile — la parte che resta umana per sempre? *Quella* è l'essenza vera di OS4.
 
+## P11 — Il documento come checklist a step + agente di audit per-step (frontiera ⓿, oggi bare-handed)
+**Còlto:** 15/07, il CEO: *«Il documento deve essere una checklist suddivisa in step, ogni step si possono
+proporre più commit. Creare un agente di audit (qui si sconfina in OS4-matrix ma chiunque lo può fare ad
+oggi). Chiedere all'agent di sottoporre ogni step ad audit per verificare se non ci sono difformità dal
+quanto richiesto e dal contesto stesso.»*
+**Pratiche:**
+- Il documento di contesto (P10) è una **checklist divisa in step**; ogni step può proporre **più commit**.
+- **Un agente di audit** sottopone **ogni step** a verifica, cercando **difformità su due assi**: dal
+  *quanto richiesto* (l'intento) e dal *contesto stesso* (il là).
+**Connessioni:** è **P1 delegata a un secondo agente** — la vigilanza umana offloadata a un auditor, ma la
+**decisione resta umana**; è **P2** (verifica alla fonte) fatta per-step; è antidoto ripetuto a **P5**.
+**Refinamento del criterio ⓿ (importante — osservazione del CEO):** il confine ⓿ **si muove nel tempo**.
+Spawnare un agente di audit era «macchina» un anno fa, è **bare-handed oggi** (multi-agent nativo). Quindi
+⓿ è **time-indexed**: *OS4 = ciò che un dev fa a mani nude **con gli strumenti di oggi***. Conseguenza: man
+mano che l'AI cresce, **OS4 assorbe pezzi che erano os3/os4-matrix**. È il senso di «OS4 è il fondamento più
+mobile»: mobile perché il confine avanza da sé, non perché si cambia idea.
+**Domanda aperta (verso l'essenza, ipotesi P7 — da confermare dal CEO):** se il confine avanza e prima o poi
+tutte le *pratiche* diventano macchina, l'unica cosa che l'agente di audit **non può fare da sé** è
+**definire cosa sia "conforme"** (cosa hai chiesto davvero, cos'è il contesto) e **decidere** sull'esito che
+segnala. È *lì* l'irriducibile umano di OS4 — la definizione dell'intento e il giudizio finale — o è altrove?
+
 ---
 
 *Quaderno aperto il 15/07/2026. Si riempie mentre si lavora. Superato quando OS4 sarà rifondato.*
