@@ -319,6 +319,42 @@ all'**apertura** del thread OS4.
 idee, la fa osservare mentre lavora, si fa dire dove si illude. È l'AI come **specchio/giudice** del proprio
 pensiero, non come dattilografo. **Dipende da P15:** se l'AI compiace, lo specchio mente.
 
+## P18 — Il contesto è un budget finito: si amministra con un DOCUMENTO VIVO + rotazione di sessione (NON con la compaction automatica)
+**Còlto:** 15/07, il CEO dalla sua **esperienza reale** con Padmin, dopo aver chiesto di spiegargli il
+«context rot» (sembrava contraddire P4/P10).
+**Prima, la contraddizione sciolta:** P4/P10 = *forma/densità* dell'input (metti dentro segnale denso);
+P18 = *amministrazione nel TEMPO* (tieni pulita la finestra mentre lavori). Non opposti: il documento denso
+è la difesa, il rot è la minaccia che si accumula attorno. «Meno è meglio» = «non far accumulare spazzatura
+attorno al segnale», non «dammi poca informazione».
+**Esperienza-base (correzione al benchmark):** *compaction automatica = perdita netta di molto contesto +
+rischio altissimo di deviazioni*; `/clear` mai usato dal CEO. → le contromisure generiche del benchmark non
+reggono all'esperienza: la compaction la fa la macchina, è lossy e non-controllata → drift.
+**Metodo del CEO (lui stesso lo dice «quasi utopico da rispettare»):**
+1. La **memoria persistente è un DOCUMENTO VIVO**, non la sessione (usa-e-getta).
+2. Il documento ha in testa un **Executive Summary dettagliato** (cosa si sta facendo) + **log degli step
+   fatti** + cosa manca.
+3. **Aggiornare il documento a OGNI modifica** (la parte utopica).
+4. **Chiudere la sessione a ~4000/5000 righe, PRIMA del compact**; ripartire **fresca** facendole leggere il
+   documento.
+Non rifiuta la compaction *come concetto* — rifiuta quella **automatica**, e la sostituisce con **compaction
+AUTORATA** (il documento) + rotazione di sessione prima dell'auto-compact.
+**Grounding:** già codificato nel `~/.claude/CLAUDE.md` del CEO («degradazione sessione 4000-5000 righe,
+checkpoint 3k, STOP 4500+») → è uno dei suoi principi più vecchi. os3-matrix ne persiste una parte (mission
+`state.json` + Registry + gate handoff attraversano le sessioni). `emitBootstrap` copre solo la *partenza*
+(lista mirata all'open, **verificato nel codice** riga 699-719: stampa una lista di path, NON just-in-time,
+NON gestione nel tempo).
+**⚠️ VALUTAZIONE CRITICA (P15):**
+- **Il tallone è la freschezza del documento.** Il metodo vale *solo* se il doc è aggiornato; doc stantio →
+  la sessione fresca legge il vecchio ed è persa peggio. E «aggiorna a ogni modifica» è la parte utopica che
+  salta → **è il motivo per cui serve la macchina** (DOC-SYNC/hook forza la freschezza che l'umano non
+  auto-mantiene). P12 di nuovo.
+- **REGOLA ZERO sull'handoff:** «far rendere conto alla nuova sessione di cosa manca» = chiederle di
+  *inferire* il gap → è dove deriva. Il documento deve **dire esplicito** fatto/da-fare, non farlo dedurre.
+- **Se il doc lo scrive l'AI, va verificato dall'umano (P13):** un exec-summary auto-scritto può confabulare
+  (P1/P5) — il doc persiste solo se è *fedele*, e la fedeltà la garantisce l'umano.
+**Domanda aperta:** il documento vivo lo tiene l'umano o l'AI? e senza un hook che la forzi, la freschezza
+regge a mani nude o è proprio qui che l'OS4 senza macchina si rompe?
+
 ## Nota di metodo — il buco dell'elicitazione (onesto)
 Il quaderno cattura bene ciò che il CEO **dice** (P3/P5/P7/P8/P10/P11/P12/P14) e dove **corregge** Padmin
 (P1/P2/P13). Ma i principi puramente **comportamentali** — *come il CEO steera l'AI* — Padmin li ha
