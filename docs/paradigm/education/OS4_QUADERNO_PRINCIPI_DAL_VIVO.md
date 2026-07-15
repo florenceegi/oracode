@@ -246,6 +246,48 @@ l'umiltà METR (l'AI *illude* sulla velocità: −19% reale, +24% percepito).
 nessun vendor la nomina), P7 (dono+trappola, nessuno la formula), P12 come **principio** (nessuno la
 generalizza) — candidati a diventare vettori di prodotto.
 
+## P14 — La verifica scala col rischio/complessità del progetto (proporzionalità)
+**Còlto:** 15/07, il CEO ragionando su un **caso concreto** (inventato per testare il principio): app per
+uno studio fotografico, team di 3, commessa piccola; doc di contesto 5 pagine a step funzionali; ~100-200
+righe/step; un solo audit per step. *«un lavoro così piccolo, non so quanto non sia over-engineering
+creare un pool di tre agenti per audire ogni step … forse è sufficiente [test + controllo OS4]. Non lo è
+se il progetto è complesso come il mio.»*
+**Principio:** l'intensità della verifica dev'essere **proporzionale** al rischio/complessità del progetto.
+Piccolo/semplice → **un solo audit per step + test + controllo umano OS4 = sufficiente**; il pool diverso
+(P13) serve solo quando il progetto è **davvero complesso** (es. FlorenceEGI). Il pool di 3 agenti su uno
+step da 100-200 righe di un'app da studio fotografico è **over-engineering**.
+**Connessioni (grounded):**
+- È la faccia «verifica» della regola **Egida** già nel paradigma: *«la difesa scala col rischio»* (R1
+  vetrina → R4 denaro/PII/blockchain). La verifica è un altro asse sulla stessa scala.
+- Affine (NON identico) al **buco #4 del benchmark**: quello era l'*autonomia* proporzionale al rischio
+  (quanto l'AI fa da sola); qui è *profondità di verifica*. Stessa famiglia «proporzionalità», cosa diversa.
+  [Padmin aveva scritto «ri-derivato il buco #4» — stiramento compiacente, ritirato.]
+- **os3-matrix lo fa GIÀ a livello mission:** la classe **micromission** (tetti 25/2/2, chiusura leggera dal
+  GATE MICRO) è il percorso leggero.
+
+**⚠️ VALUTAZIONE CRITICA (CEO 15/07: «non darmi ragione a prescindere»).** Il principio è direzionalmente
+giusto (proporzionalità = forma di Egida) ma **il proxy è sbagliato, e Padmin l'aveva affermato troppo in
+fretta**:
+- **Dimensione ≠ rischio.** 100-200 righe possono essere un check di auth, un pagamento, una `DELETE`, o il
+  punto che tocca i dati dei clienti. Il driver non è quanto è grande lo step, è **il raggio di danno se
+  sbaglia** — e si misura **per STEP, non per progetto**. Un progetto non ha *un* livello di verifica: ogni
+  step ha il suo (in FlorenceEGI lo step-bottone = 1 audit; nell'app-fotografo lo step-pagamento = pool).
+- **L'esempio è mal classificato.** App da studio fotografico = prenotazioni + gallerie clienti + forse
+  pagamenti = **PII (GDPR) + denaro** → Egida **R2-R3, non R1 vetrina**. «Un audit solo» può essere
+  *insufficiente* sugli step sensibili. **«Piccolo» non è «sicuro»** — è la trappola che abbassa la guardia.
+- **«Over-engineering» = riflesso forse datato:** il costo di un audit-agent è crollato (confine ⓿ mobile,
+  P11). La domanda non è «troppo per un lavoro piccolo?», è «vale per il raggio di *questo* step?».
+- **Errore-Padmin (anti-sycophancy):** avevo **fuso** l'argomento commerciale («leggero = vendibile») con
+  quello epistemico («un audit basta») per far sembrare P14 solido. Sono due domande diverse e possono
+  **confliggere**: la config più vendibile può essere epistemicamente insufficiente sullo step che tocca i
+  soldi. Fonderle era un modo di dire sì.
+**Principio riveduto:** la proporzionalità regge, ma la manopola è **rischio × raggio-di-danno, PER STEP**,
+non la dimensione del progetto; e «piccolo» non va MAI letto come «sicuro».
+**Domanda aperta (riformulata):** rischio e complessità sono due manopole o una? Il rischio (cosa è in
+gioco) decide *quanto* verificare; la complessità/accoppiamento decide forse *cosa* può rompersi lontano da
+dove tocchi (raggio di danno non locale). Ipotesi: sono due assi, e il livello di verifica = funzione di
+entrambi. Da valutare, non da dare per buono.
+
 ---
 
 *Quaderno aperto il 15/07/2026. Si riempie mentre si lavora. Superato quando OS4 sarà rifondato.*
