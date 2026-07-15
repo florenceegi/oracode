@@ -23,6 +23,14 @@ rag: private
 
 ---
 
+## ⓿ Criterio di appartenenza a OS4 (correzione CEO 15/07)
+
+> Un principio è **OS4** se un programmatore lo può applicare **a mani nude**, dopo aver solo *letto*
+> OS4, per migliorare il proprio codice — **senza os3-matrix installato**. Se richiede una macchina o
+> un componente, è **os3-matrix** (o **os4-matrix**), non OS4. Serve a non far colare il tooling dentro
+> la disciplina: è l'errore che Padmin ha fatto in P8 (si è «virata» su os3-matrix), colto dal CEO —
+> che così ha applicato OS4 senza accorgersene.
+
 ## P1 — L'umano coglie l'AI quando confabula
 **Còlto:** 15/07, quando Padmin aveva costruito una «tensione a tre teorie della verità» inesistente;
 il CEO: *«forse ti stai incartando»*.
@@ -106,19 +114,34 @@ deve essere una missione … La missione deve dichiarare lo scopo, il contesto, 
 **Principio:** per lavoro serio (non «una ricetta») il prompt non è una richiesta ma una **missione**:
 scopo · contesto · quali agenti · cosa produrre · esempi · **concordata con l'AI stessa**. È il come-ci-si-
 rapporta con l'AI multi-agentica → conferma piena di P6 (con parole del CEO, non analogia di Padmin).
-**Grounding (P2, alla fonte — `mission/registry-schema.json` + `MISSION_PROTOCOL.md`):** il Mission
-Protocol reale prevede GIÀ, oltre alla lista del CEO — classe del cambiamento (trigger 1-6); bootstrap
-mirato che **cura il contesto** dell'AI (= impostare il là, P5, di proposito); macchina a stati con
-permessi per stato (draft/planned/executing/auditing/closed); **scope-hash anti-drift** (= P6
-meccanizzato); test-first cablato (rosso→verde); due cancelli umani (piano FASE 3, review FASE 5);
-DOC-SYNC alla chiusura; **spawn fingerprint** degli agenti (= tracciabilità cognitiva, la vecchia Regola
-3 di OS4); retrospective che migliora il processo; audit interim ogni N edit; stats; classe micro.
+**⚠️ CORREZIONE CEO (15/07) — Padmin si è virata su os3-matrix (P5 in azione, su Padmin):** rispondendo
+ho elencato le feature della **macchina** mission — trigger, bootstrap-contesto, scope-hash, test-first
+cablato, DOC-SYNC, spawn fingerprint, retrospective, audit-interim — come se fossero OS4. **Non lo sono:**
+sono **os3-matrix** (l'attuazione), falliscono il criterio ⓿ (richiedono la macchina). Restano utili come
+*mappa di ciò che os3-matrix già fa*, ma la parte **OS4** di «prompt = missione» è il **rituale umano** →
+vedi **P9**, applicabile a mani nude.
 **Cosa la missione NON ha ancora (= ciò che OS4 aggiunge):** (1) un campo **esempi**; (2) **«concordata
 con l'AI»** come passo esplicito — oggi c'è il Supervisor che redige + il CEO che approva, ma la missione
 *co-negoziata con l'AI* (l'AI propone/obietta/chiede lei gli esempi) non è nel protocollo.
 **Domanda aperta:** «concordata con l'AI» — l'AI co-scrive la missione con l'umano (il gemello-umano di
 ciò che il Supervisor già fa da solo)? E gli esempi: quanti/quali bastano perché la missione «prenda» il
 là giusto senza sovra-vincolare?
+
+## P9 — Il rituale OS4 della missione (protocollo UMANO, a mani nude)
+**Còlto:** 15/07, il CEO descrivendo come avvia davvero una missione, e correggendo la deriva di Padmin
+su os3-matrix: *«prima ti butto lì l'idea grossolana, poi facciamo brainstorming, poi crei una missione,
+me la fai vedere, l'approvo e inizi. Questo è un protocollo OS4 per forza, non lo trovi nel protocollo
+della mission che è os3-matrix … Lo faccio, come altre cose, senza rendermene conto che sto applicando OS4.»*
+**Principio:** prima dell'esecuzione, tra umano e AI c'è un **protocollo umano** che il programmatore
+applica **senza nessuna macchina**: (1) l'umano butta l'**idea grossolana**; (2) **brainstorming** umano↔AI;
+(3) l'**AI redige la missione**; (4) la **mostra**; (5) l'umano **approva** (o corregge); (6) si **inizia**.
+Questo NON è nel Mission Protocol (che è os3-matrix): è **OS4**, e supera il criterio ⓿ (un dev che ha
+letto OS4 lo fa oggi con qualunque chat, per migliorare il suo codice).
+**Nota:** è la forma «a mani nude» di ciò che P8 chiamava «concordata con l'AI». Il CEO lo fa d'istinto,
+«senza rendermene conto» — ed è ANCHE ciò che ha appena fatto cogliendo la deriva di Padmin (OS4 in azione).
+**Domanda aperta:** nel **brainstorming** (passo 2) — cosa fa l'esperto che il novizio salta? Il novizio va
+dritto a «AI fai»; l'esperto brainstorma prima. Qual è la *disciplina* del brainstorm, quella che trasforma
+l'idea grossolana in un là abbastanza fermo da non farsi virare?
 
 ---
 
