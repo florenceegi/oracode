@@ -3,7 +3,7 @@ title: "Oracode — Documento Base (radice del paradigma)"
 slug: oracode-base
 doc_type: ssot-white-paper
 status: draft-per-ratifica-CEO
-version: 0.5.0
+version: 0.6.0
 date: '2026-07-14'
 author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
 scope: [oracode]
@@ -164,9 +164,22 @@ C'è infine un tratto che rende lo stack degno del kernel: **applica Regola Zero
 
 ### 3.7 Il concetto di Sistema Circolatorio
 
-Il sistema circolatorio è il meccanismo per cui, all'interno di un LSO, l'esperienza circola e diventa patrimonio riutilizzabile: ogni cosa fatta viene catturata, strutturata e resa disponibile per la volta successiva. È un concetto universale. Gli Egili di FlorenceEGI ne sono un'applicazione, non la definizione.
+Il sistema circolatorio è la proprietà che rende *vivente* un'applicazione costruita con Oracode, e non un semplice programma che gira. La sua idea è che nulla di ciò che l'organismo fa vada perduto: ogni esperienza viene catturata, strutturata e rimessa in circolo, così che ogni nuovo lavoro parta da una base di conoscenza più ampia del precedente. La crescita non è magica — l'organismo non si riscrive da solo — ma è reale: è accumulo che si sedimenta e torna utile.
 
-*Le implementazioni concrete dei meccanismi — Mission Protocol, DOC-SYNC, RAG — appartengono a OS3.*
+Il circolo è fatto di quattro funzioni, ciascuna con un compito preciso.
+
+- Il **Mission Protocol** *cattura*: ogni cambiamento passa da una mission, e la mission lascia un track record delle decisioni, con misure quantitative. È la memoria di cosa si è deciso e perché.
+- Il **DOC-SYNC** *struttura*: tiene la documentazione di fonte allineata al codice, così che l'esperienza catturata resti coerente e non invecchi in silenzio.
+- Il **RAG interno** *ricorda*: è la memoria operativa dell'organismo, un archivio interrogabile che cresce con l'uso e da cui persone e intelligenza artificiale attingono la conoscenza giusta al momento giusto.
+- Il **Sistema di Helping conversazionale** *restituisce*: è la voce del RAG verso chi lo usa. Ogni applicazione Oracode espone la propria memoria attraverso un'interfaccia conversazionale, così che la conoscenza accumulata non resti sepolta ma risponda a chi la interroga.
+
+Cattura, struttura, ricorda, restituisce: è un ciclo, e per questo si chiama circolatorio.
+
+Va aggiunta una precisazione, perché non tutti gli organismi battono allo stesso ritmo. L'infrastruttura circolatoria è sempre presente in un'applicazione Oracode, ma il suo *metabolismo* dipende dal flusso di esperienza che la attraversa. Un'applicazione con interazione continua — utenti che generano contenuti, ordini che si muovono, richieste che si accumulano — alimenta davvero il proprio circolo: il RAG cresce, le mission si sedimentano, l'Helping impara. Un'applicazione quasi statica ha la stessa infrastruttura, sana e funzionante, ma un metabolismo ridotto, perché manca il flusso che la nutre: è viva alla nascita, ma resta a dieta minima per natura del proprio dominio.
+
+Il sistema circolatorio è un concetto universale del paradigma. Gli Egili di FlorenceEGI — un circolo che lega più organi tra loro — ne sono un'applicazione specifica, non la definizione.
+
+*Le implementazioni concrete delle quattro funzioni appartengono all'attuazione: Mission Protocol e DOC-SYNC sono verticalizzati in OS3 (§4.4 e §4.3), il RAG e l'Helping hanno le proprie macchine, e si rimanda ai documenti relativi.*
 
 ### 3.8 Il concetto di Audit
 
@@ -253,11 +266,17 @@ La Strategia Delta stabilisce come trattare il codice nuovo e quello preesistent
 
 ### 4.7 Nexus, l'attuazione di OS3
 
-Nexus non è OS3. È l'insieme dei componenti software — hook, gate e agenti — che fanno rispettare meccanicamente le regole di OS3, nel piano in cui l'intelligenza artificiale opera. È un prodotto commerciale, e si colloca al livello della software house.
+Nexus non è OS3. È l'insieme dei componenti software che fanno rispettare meccanicamente le regole di OS3, nel piano in cui l'intelligenza artificiale opera. È un prodotto commerciale, e si colloca al livello della software house.
+
+Il suo cuore è il **sistema di enforcement a hook**. Un hook è un controllo che scatta al confine di ogni azione dell'intelligenza artificiale: *prima* che l'azione avvenga, per bloccarla se viola una regola, oppure *dopo*, per verificarne l'esito. Ciò che li rende diversi da una semplice istruzione è che sono **gate fail-closed**: in caso di dubbio o di controllo non superato, l'azione è *negata*, non consentita. Un'istruzione scritta, l'intelligenza artificiale può leggerla e poi ignorarla sotto degradazione; un gate fail-closed non si può ignorare, perché non chiede il permesso di agire — lo concede o lo nega.
+
+Qui il paradigma chiude il cerchio aperto all'inizio (§0). Il problema era la degradazione: l'AI corretta al minuto dodici che al minuto quarantacinque rifà lo stesso errore. La risposta è che ogni regola P0 viene legata a uno o più hook che la fanno rispettare automaticamente, nel momento stesso dell'azione, senza affidarsi all'interpretazione del modello. È la ragione per cui, in Oracode, la disciplina non resta un buon proposito: diventa un cancello. E ogni hook è, concretamente, un'istanza del primitivo Nerve (§3.3) — il riflesso deterministico che verifica e blocca, ma non giudica.
+
+Il pattern — un hook meccanico e fail-closed per ogni regola P0 — è universale; l'elenco preciso degli hook è invece specifico del dominio, e cambia da un'applicazione all'altra.
 
 Sull'origine del nome vale una precisazione. Nexus nasce come os3-matrix, cioè l'attuatore di OS3, e da qui deriva il nome storico; il repository e l'implementazione tecnica conservano il nome os3-matrix. Per convenzione, nella nomenclatura ufficiale si scrive Nexus. Chi ne cerca l'origine ritrova comunque il legame: Nexus è l'attuatore di OS3.
 
-*Per il catalogo dei componenti si rimanda alla documentazione tecnica.*
+*Il catalogo dei componenti — gli hook concreti, i gate, gli agenti di verifica — si rimanda alla documentazione tecnica.*
 
 ---
 
@@ -301,4 +320,4 @@ Tre punti che erano aperti sono stati chiusi in corso di revisione, e li registr
 
 Resta da confermare il nome del file, la sua collocazione nel repository e la sua visibilità pubblica, coerente con la natura MIT del paradigma. Resta aperta anche la collocazione della gerarchia dei ruoli (§6): se debba vivere qui o in un documento a sé.
 
-*Documento Base di Oracode, versione preliminare 0.5.0, 15 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
+*Documento Base di Oracode, versione preliminare 0.6.0, 15 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
