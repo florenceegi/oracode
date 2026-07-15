@@ -75,8 +75,11 @@ OS3, è **anche uno strumento OS4**.
 dove molli il target di proposito (come questa conversazione su OS4). Cosa distingue, *da dentro*, «sto
 esplorando» (fecondo) da «ho perso il filo» (deriva)? Stesso stato visto da fuori (target assente), esiti
 opposti.
-> **Nota P7:** l'implicazione «Mission Protocol = strumento OS4» è una **relazione emergente sorgente-AI**
-> (Padmin) → per P7 è **da verificare**, non un fatto acquisito.
+> **Nota P7 → VERIFICATO (15/07):** letto il protocollo reale (`os3-matrix/mission/registry-schema.json`
+> + `oracode/docs/paradigm/missions/MISSION_PROTOCOL.md`). Il mission ha davvero `scope hash anti-drift`
+> + write confinato allo scope dichiarato + audit interim ogni N edit: **l'ancora-scope è meccanizzata**
+> (lato AI, confermato alla fonte). Che protegga *anche l'umano* dalla viratura resta la **lettura OS4**
+> (parole del CEO in P6), non un campo del protocollo. → P6 non è più analogia: è fondata.
 
 ## P7 — Le relazioni emergenti dell'AI: regalo e trappola nello stesso gesto — non darle per scontate
 **Còlto:** 15/07, il CEO leggendo il quaderno: *«LLM non sa quello che le chiedi e non sa quello che
@@ -95,6 +98,27 @@ Padmin ha prodotto non richiesta → marcata **da-verificare** per P7. Modellare
 dare per scontato). Ma la stessa capacità che è trappola è anche il **dono**. Esiste una **metà offensiva**
 di OS4 — come si *mungono* le connessioni vere dell'AI senza farsi ingannare dalle finte? Stessa abilità o
 due mestieri distinti?
+
+## P8 — Con gli LLM multi-agentici il «prompt» diventa una MISSIONE
+**Còlto:** 15/07, CEO: *«Come ci si rapporta con le nuove generazioni LLM multi-agentiche? Il prompt
+deve essere una missione … La missione deve dichiarare lo scopo, il contesto, chi la deve svolgere
+(quali agenti), cosa produrre, avere degli esempi. La missione va concordata con la AI stessa.»*
+**Principio:** per lavoro serio (non «una ricetta») il prompt non è una richiesta ma una **missione**:
+scopo · contesto · quali agenti · cosa produrre · esempi · **concordata con l'AI stessa**. È il come-ci-si-
+rapporta con l'AI multi-agentica → conferma piena di P6 (con parole del CEO, non analogia di Padmin).
+**Grounding (P2, alla fonte — `mission/registry-schema.json` + `MISSION_PROTOCOL.md`):** il Mission
+Protocol reale prevede GIÀ, oltre alla lista del CEO — classe del cambiamento (trigger 1-6); bootstrap
+mirato che **cura il contesto** dell'AI (= impostare il là, P5, di proposito); macchina a stati con
+permessi per stato (draft/planned/executing/auditing/closed); **scope-hash anti-drift** (= P6
+meccanizzato); test-first cablato (rosso→verde); due cancelli umani (piano FASE 3, review FASE 5);
+DOC-SYNC alla chiusura; **spawn fingerprint** degli agenti (= tracciabilità cognitiva, la vecchia Regola
+3 di OS4); retrospective che migliora il processo; audit interim ogni N edit; stats; classe micro.
+**Cosa la missione NON ha ancora (= ciò che OS4 aggiunge):** (1) un campo **esempi**; (2) **«concordata
+con l'AI»** come passo esplicito — oggi c'è il Supervisor che redige + il CEO che approva, ma la missione
+*co-negoziata con l'AI* (l'AI propone/obietta/chiede lei gli esempi) non è nel protocollo.
+**Domanda aperta:** «concordata con l'AI» — l'AI co-scrive la missione con l'umano (il gemello-umano di
+ciò che il Supervisor già fa da solo)? E gli esempi: quanti/quali bastano perché la missione «prenda» il
+là giusto senza sovra-vincolare?
 
 ---
 
