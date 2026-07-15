@@ -3,7 +3,7 @@ title: "Oracode — Documento Base (radice del paradigma)"
 slug: oracode-base
 doc_type: ssot-white-paper
 status: draft-per-ratifica-CEO
-version: 0.4.0
+version: 0.5.0
 date: '2026-07-14'
 author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
 scope: [oracode]
@@ -94,6 +94,8 @@ OS4 è l'educazione: la formazione epistemica dell'essere umano, che opera sull'
 
 Tra i tre vige una regola di precedenza, ed è immutabile: OSZ è verità assoluta, mentre OS3 e OS4 si aggiornano per allinearsi a lui, mai il contrario.
 
+C'è poi un secondo rapporto tra i tre, oltre alla precedenza, e conviene tenerlo a mente leggendo ciò che segue. Il kernel detta i principi a un livello di astrazione superiore; sono OS3 e OS4 a verticalizzarli, cioè a renderli concreti e operativi. Regola Zero, per esempio, è un principio di OSZ, e le tredici regole P0 di OS3 ne sono la verticalizzazione; lo stesso vale per l'Audit, che il kernel enuncia come principio e OS3 rende un meccanismo. Quando un concetto vive in OSZ, quindi, non significa che non abbia una forma concreta: significa che la sua forma concreta si trova un piano più in basso, in OS3 o in OS4.
+
 ---
 
 ## 3. OSZ — il Kernel
@@ -120,7 +122,7 @@ I pilastri sono i valori costituzionali del paradigma. Sono sei, più uno:
 
 Come un sistema operativo ha i suoi primitivi — processi, thread, memoria, input e output — così OSZ ha i suoi. Sono quattro.
 
-**RAV** è l'unità atomica di valore. È un contenitore tipizzato reso prodotto reale da tre elementi, secondo la formula `RAV = Wrapper<T> + Regole + Audit + Valore`. Il contenuto `T` può essere qualsiasi cosa: un'opera, un diritto, un flusso economico, un bene fisico, un contratto, un servizio, una credenziale, una capacità software. Le regole lo governano, l'audit lo certifica, il valore lo rende scambiabile. Il RAV si rifà all'oggetto della programmazione a oggetti: `Wrapper<T>` è, letteralmente, una classe generica — un oggetto — ma con le regole economiche incorporate. Il nome interno è RAV; nella forma qualificata pubblica è Oracode_RAV.
+**RAV** è l'unità atomica di valore, e il suo nome è l'acronimo delle tre cose che lo compongono: **R**egole, **A**udit, **V**alore. Sono i tre elementi che, applicati a un contenitore tipizzato — il `Wrapper<T>` —, lo trasformano da semplice involucro a prodotto reale, secondo la formula `RAV = Wrapper<T> + Regole + Audit + Valore`. Le regole lo governano, l'audit lo certifica, il valore lo rende scambiabile. Il contenuto `T` può essere qualsiasi cosa: un'opera, un diritto, un flusso economico, un bene fisico, un contratto, un servizio, una credenziale, una capacità software. Il RAV si rifà all'oggetto della programmazione a oggetti: `Wrapper<T>` è, letteralmente, una classe generica — un oggetto — ma con le regole economiche incorporate. Il nome interno è RAV; nella forma qualificata pubblica è Oracode_RAV.
 
 Il RAV è un primitivo universale, e le sue istanze concrete sono molte. Nell'ecosistema FlorenceEGI, un EGI è un RAV: concretamente, è un record nella tabella degli EGI. Il suo contenuto può variare senza che cambi la sua natura di RAV: può essere un'opera d'arte, oppure una credenziale, cioè una qualifica di una persona resa verificabile. Fuori da FlorenceEGI, nel dominio della produzione software, una capacità — quello che chiamiamo grano — è a sua volta un RAV. Una capacità non è una riga qualsiasi: è un insieme coeso e funzionale di codice, quello che per buona pratica si committa in blocco, e infatti ogni grano corrisponde a un commit. Il suo contenuto è la responsabilità che quel codice assolve, e la sua certificazione è la chiusura standard della mission che l'ha consegnata. È sempre lo stesso primitivo: cambia solo ciò che contiene e il modo in cui viene certificato.
 
@@ -144,21 +146,41 @@ OSZ definisce i primitivi; un LSO è costruito con istanze di essi. I suoi organ
 
 Un LSO, cioè un Living Software Organism, è il prodotto vivente di Oracode applicato a un dominio: un software dotato di un proprio sistema circolatorio, che cattura la propria esperienza, la struttura e la rende riutilizzabile, e in questo modo cresce. Non è un insieme di siti collegati, ma un corpo: ogni progetto è un organo, ogni interfaccia un'articolazione, e il sistema nervoso è fatto di nervi deterministici, cioè gli hook di Nexus. L'intelligenza artificiale non è il sistema nervoso: opera a un livello superiore, come mente, ma è vincolata da esso, perché sono i nervi a impedirle di rompere le regole.
 
-### 3.6 Il concetto di Sistema Circolatorio
+### 3.6 Il Layer Stack
+
+Oracode non descrive un'applicazione come un blocco unico di codice. La descrive come un **organismo stratificato in undici livelli** — da L1 a L11 — più un prerequisito, L0: ognuno con una funzione biologica e un ruolo architetturale, ognuno che presuppone quello sotto e abilita quello sopra. È l'anatomia di ciò che chiamiamo «vivente».
+
+Su questo asse vanno tenute separate due letture, perché confonderle è una delle fonti principali di errore. La stratificazione dei livelli è **tassonomia universale**: è proprietà del paradigma, e ogni applicazione Oracode ha gli stessi livelli. Quello che si legge *lungo* quell'asse, da un'istanza all'altra, è invece la **maturity**: quanto in alto quell'organismo è salito, e con quanta solidità occupa ciascun livello. La tassonomia dice quali organi ha ogni corpo costruito con Oracode; la maturity dice, di un corpo particolare, quali di quegli organi sono davvero cresciuti e quali ancora abbozzati. Per questo la maturity non appartiene a questo documento: è proprietà dell'istanza, non del paradigma.
+
+I livelli si dividono in due bande, separate da una soglia che è la cosa più importante dello stack: la soglia della **metacognizione**, il passaggio da organismo reattivo a organismo riflessivo — ed è la soglia su cui il paradigma stesso oggi si trova. Sotto stanno i livelli **reattivi**: il metabolismo che tiene allineati codice e documentazione, il controllo di coerenza, il rilevamento del drift, i riflessi che impediscono gli errori, la memoria immunitaria dei test, i contratti leggibili dalla macchina, fino al sistema nervoso che sa in ogni momento lo stato di ogni livello. Un organismo fermo a questa banda vive e si mantiene, ma non si pensa. Sopra la soglia stanno i livelli **evolutivi**: la riflessione, cioè l'auto-osservazione; la riproduzione, cioè la capacità di scindersi in una nuova istanza; e l'auto-governance, cioè la stabilità della specie quando il fondatore non c'è più.
+
+Il punto profondo è che questi tre livelli in cima **non sono funzioni aggiuntive: sono il completamento della definizione di «vivente»**. Un software diventa un organismo, e non resta un semplice programma, quando si osserva, si riproduce e si autogoverna. E il loro ordine non è arbitrario: un organismo deve sapere chi è prima di poter trasmettere la propria identità a una figlia, e servono più istanze prima che abbia senso una governance autonoma che sopravvive al fondatore.
+
+Il vertice dello stack si salda a ciò che questo capitolo ha già detto. L'ultimo livello — l'auto-governance — è quello che protegge l'irreversibilità: alcune cose, una volta entrate nel genoma, non possono più uscirne. È esattamente l'immutabilità del kernel di cui si dice poco più avanti (§3.9): lo stack, salendo, arriva a proteggere la propria stessa costituzione. E in basso il sistema nervoso è fatto dei nervi deterministici, cioè del primitivo Nerve. Lo stack e l'immutabilità sono la stessa spina vista dai due capi.
+
+C'è infine un tratto che rende lo stack degno del kernel: **applica Regola Zero a se stesso**. La tassonomia si può affermare, ma la maturity di un'istanza si deve verificare, mai dichiarare — e i cinque stati con cui la si misura esistono proprio per impedire a un organismo di attribuirsi una maturità che non ha.
+
+*Il dettaglio — la tabella dei livelli uno per uno, i sei principi invarianti dello stack, i cinque stati di maturity e la matrice di maturità di una singola istanza — vive nella nomenclatura, e vi si rimanda.*
+
+### 3.7 Il concetto di Sistema Circolatorio
 
 Il sistema circolatorio è il meccanismo per cui, all'interno di un LSO, l'esperienza circola e diventa patrimonio riutilizzabile: ogni cosa fatta viene catturata, strutturata e resa disponibile per la volta successiva. È un concetto universale. Gli Egili di FlorenceEGI ne sono un'applicazione, non la definizione.
 
 *Le implementazioni concrete dei meccanismi — Mission Protocol, DOC-SYNC, RAG — appartengono a OS3.*
 
-### 3.7 Il concetto di Audit
+### 3.8 Il concetto di Audit
 
-Audit, nel kernel, è il principio della verifica di aderenza che produce una prova. La sua forma più importante è questa: prima di andare in produzione, il codice scritto viene esaminato da agenti — intelligenze artificiali specializzate — che ne controllano l'aderenza ai principi standard della buona programmazione e, in più, ai principi di Oracode. È un rinforzo dell'imbrigliatura: là dove i nervi deterministici bloccano le violazioni nette, l'audit degli agenti giudica la qualità nel suo insieme. È qui, in gran parte, che nasce il livello altissimo di qualità del codice che Oracode Nexus produce: non si spera che il codice sia buono, lo si audita prima che diventi definitivo.
+Audit, nel kernel, è il principio della **verifica di aderenza che produce una prova**. Il kernel lo enuncia a questo livello astratto; poi il principio si verticalizza in due direzioni, su due oggetti diversi.
 
-L'audit è la stessa cosa, vista dal lato del valore, che certifica un RAV (§3.3): là si verifica che un'unità di valore sia ciò che dichiara, qui si verifica che il codice aderisca ai principi. In entrambi i casi l'audit è verifica di aderenza che lascia una prova. Sta nel kernel perché è ciò che determina, in modo marcato, la qualità di tutto ciò che il sistema produce.
+Sul **valore**, l'audit è la «A» del RAV (§3.3): verifica che un'unità di valore sia davvero ciò che dichiara, e ne lascia una prova durevole, verificabile da terzi — l'impronta su blockchain per un'opera, la chiusura della mission per una capacità.
 
-*Le macchine che realizzano l'audit — gli agenti di verifica, e l'impronta su blockchain per il valore, cioè il Sigillo — sono attuazioni, e si rimanda ai documenti relativi.*
+Sul **codice**, l'audit è l'esame che degli agenti fanno del codice prima che diventi definitivo, per controllarne l'aderenza alle buone pratiche e ai principi di Oracode. Questa seconda verticalizzazione vive in OS3, come pezzo dell'imbrigliatura che alza la qualità, ed è descritta lì (§4.5).
 
-### 3.8 L'immutabilità del kernel
+Le due si toccano in un punto solo: per una capacità software, la prova che certifica il suo RAV è la chiusura della mission, e il superamento dell'audit del codice è una delle cose che quella chiusura attesta. Restano però due audit distinti — un'opera d'arte prende il primo senza alcun audit di codice.
+
+*Le macchine che realizzano i due audit — gli agenti che verificano il codice, e l'impronta su blockchain per il valore, cioè il Sigillo — sono attuazioni, e si rimanda ai documenti relativi.*
+
+### 3.9 L'immutabilità del kernel
 
 OSZ è immutabile per costruzione, non per un divieto scritto: è un controllo d'accesso meccanico a impedire che l'anello, cioè l'intelligenza artificiale, lo riscriva. Il kernel si evolve solo attraverso una ratifica umana verificata.
 
@@ -217,11 +239,19 @@ Con Oracode Nexus, il dev non scrive più il codice: fa **Solid Coding**, e fare
 
 *Il motore che enforcia il Mission Protocol appartiene a Nexus.*
 
-### 4.5 Strategia Delta
+### 4.5 L'audit del codice
+
+È qui che vive, concreta, la seconda verticalizzazione del principio di Audit enunciato nel kernel (§3.8). Prima che il codice diventi definitivo, degli **agenti** — intelligenze artificiali specializzate — lo esaminano e ne controllano l'aderenza sia alle buone pratiche standard della programmazione sia ai principi di Oracode. È un rinforzo dell'imbrigliatura: là dove i nervi deterministici bloccano le violazioni nette, l'audit degli agenti giudica la qualità nel suo insieme, quella che un gate meccanico non saprebbe misurare.
+
+È in gran parte da qui che nasce il livello molto alto di qualità del codice prodotto sotto Oracode Nexus: non si spera che il codice sia buono, lo si sottopone ad audit prima che diventi definitivo. E per una capacità software questo audit non resta isolato — il suo superamento è una delle cose che la chiusura della mission attesta, ed è il punto in cui questa verticalizzazione, sul codice, tocca l'altra, sul valore (§3.8).
+
+*Gli agenti che eseguono l'audit appartengono a Nexus.*
+
+### 4.6 Strategia Delta
 
 La Strategia Delta stabilisce come trattare il codice nuovo e quello preesistente. Il codice nuovo segue tutte le regole di Oracode. Il codice legacy resta com'è, e si migra soltanto quando lo si tocca per un'altra ragione, mai per un refactoring di principio. In questo modo si evitano i due rischi opposti: il debito tecnico non gestito e il refactoring nevrotico.
 
-### 4.6 Nexus, l'attuazione di OS3
+### 4.7 Nexus, l'attuazione di OS3
 
 Nexus non è OS3. È l'insieme dei componenti software — hook, gate e agenti — che fanno rispettare meccanicamente le regole di OS3, nel piano in cui l'intelligenza artificiale opera. È un prodotto commerciale, e si colloca al livello della software house.
 
@@ -261,20 +291,14 @@ La Libreria LSO, infine, è un repository-strumento della software house, al ser
 
 ## Rimandi
 
-Restano fuori da questo documento, e si trovano nella documentazione specifica: il catalogo delle Librerie LSO e l'elenco degli organi e delle istanze; le specifiche tecniche di Nexus, del Sigillo e del software DOC-SYNC; il Layer Stack nel suo dettaglio; e lo stack di naming completo, con la categoria di mercato e la pratica.
+Restano fuori da questo documento, e si trovano nella documentazione specifica: il catalogo delle Librerie LSO e l'elenco degli organi e delle istanze; le specifiche tecniche di Nexus, del Sigillo e del software DOC-SYNC; il dettaglio del Layer Stack — la tabella dei livelli, i sei principi invarianti, i cinque stati di maturity e la matrice di maturità di una singola istanza —, che vive nella nomenclatura; e lo stack di naming completo, con la categoria di mercato e la pratica.
 
 ---
 
 ## Note per la ratifica
 
-Restano da confermare alcuni punti, sui quali ho fatto delle scelte provvisorie.
+Tre punti che erano aperti sono stati chiusi in corso di revisione, e li registro qui. Regola Zero e i Pilastri restano in OSZ come principi costituzionali, e si verticalizzano in OS3 nelle tredici P0: non erano un dubbio, ma un'applicazione del rapporto astrazione-verticalizzazione descritto al §2. Il Layer Stack entra nel kernel come concetto (§3.6), mentre il suo dettaglio resta a rimando nella nomenclatura. E il concetto di Audit non unisce più due cose in una: è un solo principio con due verticalizzazioni distinte, sul valore (§3.8) e sul codice (§4.5).
 
-Ho collocato Regola Zero e i Pilastri Cardinali in OSZ, ritenendoli parte della costituzione più che del protocollo di esecuzione. Vanno confermati lì, oppure spostati in OS3.
+Resta da confermare il nome del file, la sua collocazione nel repository e la sua visibilità pubblica, coerente con la natura MIT del paradigma. Resta aperta anche la collocazione della gerarchia dei ruoli (§6): se debba vivere qui o in un documento a sé.
 
-Ho scritto la gerarchia dei ruoli e accennato al Layer Stack all'interno di questo documento, ma è ancora aperta la decisione se debbano vivere qui o in un documento a sé.
-
-Ho unito, nel concetto di Audit (§3.7), l'audit del codice fatto dagli agenti e la certificazione di un'unità di valore, come due facce dello stesso principio di verifica. Se preferisci tenerli separati, si dividono.
-
-Restano infine da confermare il nome del file, la sua collocazione nel repository e la sua visibilità pubblica, coerente con la natura MIT del paradigma.
-
-*Documento Base di Oracode, versione preliminare 0.4.0, 14 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
+*Documento Base di Oracode, versione preliminare 0.5.0, 15 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
