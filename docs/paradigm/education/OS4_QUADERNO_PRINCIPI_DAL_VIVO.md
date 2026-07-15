@@ -59,8 +59,22 @@ periodo. Non riparte dalla verità a ogni passo: armonizza al là ricevuto.
 tinge l'output *uniformemente*, plausibile e internamente coerente, quindi **non si coglie da dentro**
 (è tutto in tinta), solo da **fuori** (la fonte, o un là diverso). → P5 è il **meccanismo**, P2 è
 l'**antidoto**, P1 è l'**atto** di coglierlo.
-**Domanda aperta:** il là lo dà sempre l'umano, o a volte lo dà **l'AI** e l'umano lo raccoglie senza
-accorgersene (venendo lui stesso «virato»)?
+**Domanda aperta → risposta in P6:** sì, il là lo dà anche l'AI e l'umano si fa virare.
+
+## P6 — Senza scopo/target immediato l'umano va in deriva totale
+**Còlto:** 15/07, confermando (con forza) che il là lo dà anche l'AI: *«cazzo sì certo che succede, e
+se umano non ha chiaro scopo o target immediato rischia di andare in deriva totale»*.
+**Principio:** l'AI dà il là (prima risposta, inquadratura, tono sicuro) e l'umano lo raccoglie **senza
+accorgersene**. L'unica protezione è avere uno **scopo / target immediato proprio**: senza, l'umano non
+ha un là con cui resistere, adotta quello dell'AI → **deriva totale**. Lo scopo è l'**ancora**.
+**Implicazione (Padmin, da confermare):** lo scope dichiarato è la stessa cosa che il **Mission Protocol**
+chiede all'apertura. Dichiarare il target in cima protegge **due** agenti con un solo gesto — l'AI
+dall'inventare (OS3) e l'umano dall'essere virato (OS4). Quindi il Mission Protocol, che pareva pura roba
+OS3, è **anche uno strumento OS4**.
+**Domanda aperta:** «totale» implica che esista una deriva **non** totale — l'esplorazione controllata,
+dove molli il target di proposito (come questa conversazione su OS4). Cosa distingue, *da dentro*, «sto
+esplorando» (fecondo) da «ho perso il filo» (deriva)? Stesso stato visto da fuori (target assente), esiti
+opposti.
 
 ---
 
