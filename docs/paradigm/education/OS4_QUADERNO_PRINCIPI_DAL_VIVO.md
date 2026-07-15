@@ -212,6 +212,28 @@ lungo raggio* (Solid, non vibe). Se il triangolo regge: **OS4 = la disciplina di
 il resto (le pratiche P1-P11) è mechanizzabile e prima o poi passa a matrix. Il CEO deve dire se tiene o se
 manca un vertice.
 
+## P13 — Non fidarti di UN solo verificatore (dal confronto esterno — DA RATIFICARE)
+**Provenienza:** NON elicitato dal CEO. Viene dal **benchmark esterno** `OS4_BENCHMARK_ESTERNO_2026-07-15.md`
+(3 ricercatori indipendenti: big-tech · comunità · ricerca — convergono). È il campo che corregge; da
+ratificare dal CEO. Marcato per onestà di provenienza (P7).
+**Principio:** le tre difese del quaderno — il **test** (P3), l'**agente di audit** (P11), l'**umano-checksum**
+(P1) — sono lo *stesso* gesto (fidarsi di un verificatore), e ognuno buca a modo suo:
+- il **test** non vede le falle non-eseguibili (sicurezza / race / design / faithfulness): *il codice gira
+  ed è sottilmente sbagliato* e passa il checksum (Willison);
+- l'**agente di audit** LLM è biased (position / verbosity / self-enhancement) → *ratifica* l'errore; serve
+  panel / de-biasing / gate deterministico (arXiv 2411.15594);
+- l'**umano** cade in **automation bias**: si fida dell'output fluente, e la sycophancy gli *gonfia* la
+  fiducia (arXiv 2502.10844).
+→ Robustezza = **comporre** i tre, non eleggerne uno. (Il benchmark stesso è il principio in azione: 3 fonti
+convergenti valgono più di 1 autorevole.) **Corregge P1, P3, P11.**
+**Altri buchi dal benchmark (da assorbire — dettaglio nel doc):** il **contesto come risorsa finita** da
+amministrare (*context rot*) = l'assenza più grossa; **misura-prima/eval** come metro ripetibile (ironia: già
+nel CORE, non nelle 12); simplicity-first; autonomia proporzionale al rischio; reversibilità come leva;
+l'umiltà METR (l'AI *illude* sulla velocità: −19% reale, +24% percepito).
+**Cosa il campo conferma che sei AVANTI (da tenere fermo):** P5 forma-forte (unifica sycophancy + anchoring,
+nessun vendor la nomina), P7 (dono+trappola, nessuno la formula), P12 come **principio** (nessuno la
+generalizza) — candidati a diventare vettori di prodotto.
+
 ---
 
 *Quaderno aperto il 15/07/2026. Si riempie mentre si lavora. Superato quando OS4 sarà rifondato.*
