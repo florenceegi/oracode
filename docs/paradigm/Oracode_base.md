@@ -3,7 +3,7 @@ title: "Oracode — Documento Base (radice del paradigma)"
 slug: oracode-base
 doc_type: ssot-white-paper
 status: draft-per-ratifica-CEO
-version: 0.6.0
+version: 0.7.0
 date: '2026-07-14'
 author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
 scope: [oracode]
@@ -156,7 +156,7 @@ I livelli si dividono in due bande, separate da una soglia che è la cosa più i
 
 Il punto profondo è che questi tre livelli in cima **non sono funzioni aggiuntive: sono il completamento della definizione di «vivente»**. Un software diventa un organismo, e non resta un semplice programma, quando si osserva, si riproduce e si autogoverna. E il loro ordine non è arbitrario: un organismo deve sapere chi è prima di poter trasmettere la propria identità a una figlia, e servono più istanze prima che abbia senso una governance autonoma che sopravvive al fondatore.
 
-Il vertice dello stack si salda a ciò che questo capitolo ha già detto. L'ultimo livello — l'auto-governance — è quello che protegge l'irreversibilità: alcune cose, una volta entrate nel genoma, non possono più uscirne. È esattamente l'immutabilità del kernel di cui si dice poco più avanti (§3.9): lo stack, salendo, arriva a proteggere la propria stessa costituzione. E in basso il sistema nervoso è fatto dei nervi deterministici, cioè del primitivo Nerve. Lo stack e l'immutabilità sono la stessa spina vista dai due capi.
+Il vertice dello stack si salda a ciò che questo capitolo ha già detto. L'ultimo livello — l'auto-governance — è quello che protegge l'irreversibilità: alcune cose, una volta entrate nel genoma, non possono più uscirne. È esattamente l'immutabilità del kernel di cui si dice poco più avanti (§3.10): lo stack, salendo, arriva a proteggere la propria stessa costituzione. E in basso il sistema nervoso è fatto dei nervi deterministici, cioè del primitivo Nerve. Lo stack e l'immutabilità sono la stessa spina vista dai due capi.
 
 C'è infine un tratto che rende lo stack degno del kernel: **applica Regola Zero a se stesso**. La tassonomia si può affermare, ma la maturity di un'istanza si deve verificare, mai dichiarare — e i cinque stati con cui la si misura esistono proprio per impedire a un organismo di attribuirsi una maturità che non ha.
 
@@ -181,7 +181,17 @@ Il sistema circolatorio è un concetto universale del paradigma. Gli Egili di Fl
 
 *Le implementazioni concrete delle quattro funzioni appartengono all'attuazione: Mission Protocol e DOC-SYNC sono verticalizzati in OS3 (§4.4 e §4.3), il RAG e l'Helping hanno le proprie macchine, e si rimanda ai documenti relativi.*
 
-### 3.8 Il concetto di Audit
+### 3.8 La conformità normativa costitutiva
+
+Un LSO nasce conforme. L'aderenza alle normative che lo riguardano non è uno strato aggiunto alla fine, quando il software è già fatto, ma una proprietà costitutiva: sta nel DNA dell'organismo, per costruzione. È l'espressione, sul piano legale ed etico, del pilastro della sicurezza proattiva — conformità *by-design*, non conformità *a posteriori*.
+
+Il principio vale per ogni norma che coinvolge l'organismo, secondo il suo dominio. La protezione dei dati personali non è una funzione aggiunta ma infrastruttura di prima classe. La **fruibilità da parte delle persone con disabilità** — l'accessibilità — è un requisito costitutivo, non un'aggiunta caritatevole: un LSO è costruito perché chiunque possa usarlo. E dove il dominio lo impone si aggiungono le normative specifiche di quel campo, dalle regole del mercato in cui opera fino a quelle sull'uso dell'intelligenza artificiale.
+
+Nel kernel questo resta un principio: *un LSO aderisce, nel proprio DNA, a tutte le normative che lo coinvolgono*. Quali siano quelle norme, e come si implementino in concreto, cambia da dominio a dominio e appartiene ai livelli inferiori.
+
+*Il catalogo degli standard e la loro implementazione — accessibilità (WCAG), protezione dei dati (GDPR), SEO, e le normative di dominio — sono verticalizzati in OS3 e nella documentazione specifica, e vi si rimanda.*
+
+### 3.9 Il concetto di Audit
 
 Audit, nel kernel, è il principio della **verifica di aderenza che produce una prova**. Il kernel lo enuncia a questo livello astratto; poi il principio si verticalizza in due direzioni, su due oggetti diversi.
 
@@ -193,7 +203,7 @@ Le due si toccano in un punto solo: per una capacità software, la prova che cer
 
 *Le macchine che realizzano i due audit — gli agenti che verificano il codice, e l'impronta su blockchain per il valore, cioè il Sigillo — sono attuazioni, e si rimanda ai documenti relativi.*
 
-### 3.9 L'immutabilità del kernel
+### 3.10 L'immutabilità del kernel
 
 OSZ è immutabile per costruzione, non per un divieto scritto: è un controllo d'accesso meccanico a impedire che l'anello, cioè l'intelligenza artificiale, lo riscriva. Il kernel si evolve solo attraverso una ratifica umana verificata.
 
@@ -254,9 +264,9 @@ Con Oracode Nexus, il dev non scrive più il codice: fa **Solid Coding**, e fare
 
 ### 4.5 L'audit del codice
 
-È qui che vive, concreta, la seconda verticalizzazione del principio di Audit enunciato nel kernel (§3.8). Prima che il codice diventi definitivo, degli **agenti** — intelligenze artificiali specializzate — lo esaminano e ne controllano l'aderenza sia alle buone pratiche standard della programmazione sia ai principi di Oracode. È un rinforzo dell'imbrigliatura: là dove i nervi deterministici bloccano le violazioni nette, l'audit degli agenti giudica la qualità nel suo insieme, quella che un gate meccanico non saprebbe misurare.
+È qui che vive, concreta, la seconda verticalizzazione del principio di Audit enunciato nel kernel (§3.9). Prima che il codice diventi definitivo, degli **agenti** — intelligenze artificiali specializzate — lo esaminano e ne controllano l'aderenza sia alle buone pratiche standard della programmazione sia ai principi di Oracode. È un rinforzo dell'imbrigliatura: là dove i nervi deterministici bloccano le violazioni nette, l'audit degli agenti giudica la qualità nel suo insieme, quella che un gate meccanico non saprebbe misurare.
 
-È in gran parte da qui che nasce il livello molto alto di qualità del codice prodotto sotto Oracode Nexus: non si spera che il codice sia buono, lo si sottopone ad audit prima che diventi definitivo. E per una capacità software questo audit non resta isolato — il suo superamento è una delle cose che la chiusura della mission attesta, ed è il punto in cui questa verticalizzazione, sul codice, tocca l'altra, sul valore (§3.8).
+È in gran parte da qui che nasce il livello molto alto di qualità del codice prodotto sotto Oracode Nexus: non si spera che il codice sia buono, lo si sottopone ad audit prima che diventi definitivo. E per una capacità software questo audit non resta isolato — il suo superamento è una delle cose che la chiusura della mission attesta, ed è il punto in cui questa verticalizzazione, sul codice, tocca l'altra, sul valore (§3.9).
 
 *Gli agenti che eseguono l'audit appartengono a Nexus.*
 
@@ -316,8 +326,8 @@ Restano fuori da questo documento, e si trovano nella documentazione specifica: 
 
 ## Note per la ratifica
 
-Tre punti che erano aperti sono stati chiusi in corso di revisione, e li registro qui. Regola Zero e i Pilastri restano in OSZ come principi costituzionali, e si verticalizzano in OS3 nelle tredici P0: non erano un dubbio, ma un'applicazione del rapporto astrazione-verticalizzazione descritto al §2. Il Layer Stack entra nel kernel come concetto (§3.6), mentre il suo dettaglio resta a rimando nella nomenclatura. E il concetto di Audit non unisce più due cose in una: è un solo principio con due verticalizzazioni distinte, sul valore (§3.8) e sul codice (§4.5).
+Tre punti che erano aperti sono stati chiusi in corso di revisione, e li registro qui. Regola Zero e i Pilastri restano in OSZ come principi costituzionali, e si verticalizzano in OS3 nelle tredici P0: non erano un dubbio, ma un'applicazione del rapporto astrazione-verticalizzazione descritto al §2. Il Layer Stack entra nel kernel come concetto (§3.6), mentre il suo dettaglio resta a rimando nella nomenclatura. E il concetto di Audit non unisce più due cose in una: è un solo principio con due verticalizzazioni distinte, sul valore (§3.9) e sul codice (§4.5).
 
 Resta da confermare il nome del file, la sua collocazione nel repository e la sua visibilità pubblica, coerente con la natura MIT del paradigma. Resta aperta anche la collocazione della gerarchia dei ruoli (§6): se debba vivere qui o in un documento a sé.
 
-*Documento Base di Oracode, versione preliminare 0.6.0, 15 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
+*Documento Base di Oracode, versione preliminare 0.7.0, 15 luglio 2026. Da ratificare capitolo per capitolo; una volta ratificato, verrà sigillato e distillato nei file operativi.*
