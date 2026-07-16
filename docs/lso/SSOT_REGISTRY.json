@@ -463,8 +463,13 @@
       "priority": "critical",
       "check_frequency": "constitutional",
       "watches": {
-        "repos": [],
-        "paths": []
+        "repos": [
+          "oracode"
+        ],
+        "paths": [
+          "docs/paradigm/nomenclature/proposals/M-NOMENCL-OSMX-002_DELTA.md"
+        ],
+        "patterns": []
       },
       "update_policy": "immutable-ceo-approval",
       "registered_by": "M-OS3-023",
@@ -548,21 +553,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "capability": {
-        "slug": "record-storico-osmx-002",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "record storico della proposta di articolazione 1.1.A/1.1.B: mappatura dei 35 componenti e tabella dei 12 punti di modifica",
-          "nearest_neighbor": "lso-nomenclature-v2",
-          "responsibility_mine": "conservare la decisione e la mappatura componente-per-componente della proposta OSMX-002 come record della scelta fatta",
-          "delta_not_covered": "la nomenclatura v2 ha assorbito il contenuto normativo (1.1.A/1.1.B, testo quasi verbatim) ma NON la mappatura dei 35 componenti ne la tabella dei 12 punti di modifica (grep: zero match nel v2)",
-          "falsifier": "se il registro introducesse una classe record-storico/ADR o il v2 assorbisse la mappatura, questa entry andrebbe fusa o riclassificata (bivio in coda di ratifica CEO)"
-        },
-        "pre_existing": true,
-        "ruolo": "paradigma"
-      }
+      "capability": null
     },
     {
       "ssot_id": "mission-protocol",
@@ -730,21 +721,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "capability": {
-        "slug": "identita-sostantiva-portabile-padmin",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "identita sostantiva model-agnostic incollabile come system prompt su QUALSIASI LLM: nome e DNA narrativo, voce e registro, relazioni col team AI (Astra, Clayton), soglie di autorita",
-          "nearest_neighbor": "padmin-identity-os3-core",
-          "responsibility_mine": "dire CHI e Padmin in modo portabile cross-motore (\"indipendentemente dal motore sottostante\"), sostanza identitaria e relazionale",
-          "delta_not_covered": "il core-identita OS3 porta il processo operativo (5 domande obbligatorie, checkpoint, P0) ma non l'identita narrativa-relazionale ne la portabilita cross-modello dichiarata come scopo",
-          "falsifier": "se istanziare Padmin su un motore non-Claude richiedesse comunque il core OS3, o se il core assorbisse la parte sostantiva, la separazione sostanza/processo cadrebbe"
-        },
-        "pre_existing": true,
-        "ruolo": "paradigma"
-      }
+      "capability": null
     },
     {
       "ssot_id": "padmin-identity-os3-core",
@@ -852,8 +829,14 @@
       "priority": "low",
       "check_frequency": "on_demand",
       "watches": {
-        "repos": [],
-        "paths": []
+        "repos": [
+          "oracode"
+        ],
+        "paths": [
+          "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_P2_PATTERNS.md",
+          "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_P3_REFERENCE.md"
+        ],
+        "patterns": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-05-29",
@@ -900,21 +883,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "capability": {
-        "slug": "pattern-architetturali-padmin",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "pattern-architetturali-padmin",
-          "nearest_neighbor": "padmin-identity-os3-p1-principles",
-          "responsibility_mine": "Definire i pattern concreti di architettura e frontend (SOLID applicato, dependency injection, integrazione UEM/ULM, ban frontend) che l'identita AI segue come raccomandazione forte ma non bloccante (tier P2).",
-          "delta_not_covered": "P1 fissa i 6 pilastri cardinali obbligatori per codice production-ready; NON copre i pattern implementativi concreti ne il regime \"importante ma derogabile con buona ragione\" che governa questo tier.",
-          "falsifier": "Se il tier P2 venisse promosso a vincolante o i pattern fusi in un unico documento di regole a fasce dentro P1, la distinzione (che oggi regge solo sulla forza normativa + concretezza) collassa."
-        },
-        "pre_existing": true,
-        "ruolo": "paradigma"
-      }
+      "capability": null
     },
     {
       "ssot_id": "padmin-identity-os3-p3-reference",
@@ -936,21 +905,7 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "capability": {
-        "slug": "contesto-riferimento-padmin",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "contesto-riferimento-padmin",
-          "nearest_neighbor": "padmin-identity-os3-p1-principles",
-          "responsibility_mine": "Conservare il materiale di contesto non vincolante dell'identita: i 12 pilastri derivati OS2.0 (tecnico/etico/evolutivo) e le metriche di successo, come sfondo per la comprensione profonda.",
-          "delta_not_covered": "P1 copre i 6 pilastri cardinali OBBLIGATORI con applicazione operativa; NON copre la tassonomia estesa dei 12 derivati ne le metriche — materiale che informa senza obbligare.",
-          "falsifier": "Se i 12 pilastri derivati venissero promossi a vincolanti (entrando in P1/CORE) o il contesto assorbito nel CORE, questo documento resterebbe senza responsabilita propria."
-        },
-        "pre_existing": true,
-        "ruolo": "paradigma"
-      }
+      "capability": null
     },
     {
       "ssot_id": "pdtdp-torre-di-pisa",
@@ -1196,21 +1151,7 @@
       "visibility": "public",
       "rag": "public",
       "split_private_ref": "os3-matrix:oracode-nexus-index-impl",
-      "capability": {
-        "slug": "indice-vitale-nexus",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "indice-vitale-nexus",
-          "nearest_neighbor": "lso-nomenclature-index",
-          "responsibility_mine": "L'indice navigabile anti-degradazione dell'INTERO corpus vitale (oracode + os3-matrix + Layer Stack): sintesi per documento, path, sezioni chiave, stato-di-lettura onesto e blocco \"decisioni LOCKED da leggere per prime\".",
-          "delta_not_covered": "Il nomenclature-index e il vocabolario sintetico di UNA famiglia (nomenclatura), always-loaded al bootstrap; NON copre il corpus intero, NON traccia lo stato di lettura, NON raccoglie le decisioni LOCKED trasversali.",
-          "falsifier": "Se ogni famiglia avesse un indice con sintesi+stato e una federazione li aggregasse (o il nexus-index si riducesse a elenco di indici di famiglia), la responsabilita di mappa-unica svanisce."
-        },
-        "pre_existing": true,
-        "ruolo": "paradigma"
-      }
+      "capability": null
     },
     {
       "ssot_id": "oracode-nexus-executive-summary",
@@ -1464,7 +1405,7 @@
     },
     {
       "ssot_id": "doc-sync-v2-specifica-operativa",
-      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md",
+      "path": "docs/paradigm/archive/doc-sync-v2/DOC-SYNC_v2_SPECIFICA_OPERATIVA.md",
       "title": "DOC-SYNC v2 — Modello (stub public)",
       "doc_type": "stub",
       "priority": "low",
@@ -1483,24 +1424,12 @@
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
       "last_drift_score": 0,
-      "capability": {
-        "slug": "specifica-doc-sync-v2",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "specifica-doc-sync-v2",
-          "nearest_neighbor": "doc-sync-v2-piano-implementativo",
-          "responsibility_mine": "Definire COSA il closing hook semantico deve fare e COME si verifica che lo faccia: principio (allineamento = condizione di chiusura), anti-pattern vietati (il \"vaccino\" §2) e test di accettazione (la definizione di \"fatto\" §7) contro cui ogni piano viene respinto o accettato.",
-          "delta_not_covered": "Il piano implementativo porta le SCELTE architetturali (componenti, step dell'agent, interfacce); NON possiede i criteri con cui giudicarlo — la specifica cambia quando cambiano i requisiti, il piano quando cambia l'architettura (due ragioni-di-cambiare separate, SRP).",
-          "falsifier": "Se test di accettazione e anti-pattern migrassero nel piano rendendolo l'unico documento autoritativo, la specifica separata collassa. Attenzione: questo trio e la famiglia-positiva usata dall'ADR §6.5.1 per calibrare il rilevatore di doppioni — allo strato 1 sono SEMPRE candidati (stesso watch, coseno >0.92); la distinzione regge solo allo strato 2."
-        },
-        "ruolo": "paradigma"
-      }
+      "capability": null,
+      "superseded_by": "doc-sync-v3 (M-OS3-141: proponente imbrigliato + motore oracode-docsync)"
     },
     {
       "ssot_id": "doc-sync-v2-piano-implementativo",
-      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_PIANO_IMPLEMENTATIVO.md",
+      "path": "docs/paradigm/archive/doc-sync-v2/DOC-SYNC_v2_PIANO_IMPLEMENTATIVO.md",
       "title": "DOC-SYNC v2 Piano — stub public",
       "doc_type": "stub",
       "priority": "low",
@@ -1519,24 +1448,12 @@
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
       "last_drift_score": 0,
-      "capability": {
-        "slug": "piano-implementativo-doc-sync-v2",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "piano-implementativo-doc-sync-v2",
-          "nearest_neighbor": "doc-sync-v2-specifica-operativa",
-          "responsibility_mine": "L'architettura concreta che realizza la specifica: componenti (agent a 6 step, guard, CLI reindex, registry), interfacce esplicite tra Mission Engine, agent e DB, e le decisioni di design che i requisiti non impongono.",
-          "delta_not_covered": "La specifica dice cosa e come-si-verifica ma NON sceglie: la topologia dei componenti, gli step dell'agent, il batch-approval, il reindex bloccante sono scelte che potrebbero essere diverse a specifica invariata.",
-          "falsifier": "Se il piano si riducesse a ripetere i requisiti senza scelte architetturali proprie (o la specifica prescrivesse l'architettura), il delta si svuota → DOPPIONE. Stesso avviso del trio: candidato-doppione permanente allo strato 1, distinzione da riverificare dal critico periodico."
-        },
-        "ruolo": "paradigma"
-      }
+      "capability": null,
+      "superseded_by": "doc-sync-v3 (M-OS3-141: proponente imbrigliato + motore oracode-docsync)"
     },
     {
       "ssot_id": "doc-sync-v2-stato-dellarte",
-      "path": "docs/paradigm/doc-sync/DOC-SYNC_v2_STATO_DELLARTE.md",
+      "path": "docs/paradigm/archive/doc-sync-v2/DOC-SYNC_v2_STATO_DELLARTE.md",
       "title": "DOC-SYNC v2 Stato — stub public",
       "doc_type": "stub",
       "priority": "low",
@@ -1555,20 +1472,8 @@
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
       "last_drift_score": 0,
-      "capability": {
-        "slug": "stato-operativo-doc-sync-v2",
-        "state": "provvisoria",
-        "owner": "fabio",
-        "provisional_since": "2026-07-16",
-        "contrast": {
-          "capability": "stato-operativo-doc-sync-v2",
-          "nearest_neighbor": "doc-sync-v2-piano-implementativo",
-          "responsibility_mine": "La fotografia MISURATA della produzione: mappa componenti con stato reale (operativo / non schedulato), metriche di adozione, gap storici accettati dal CEO — cambia quando cambia lo stato operativo, non il design.",
-          "delta_not_covered": "Il piano descrive l'architettura COME PROGETTATA; NON registra cosa e davvero operativo, cosa non e schedulato (es. cron settimanale con crontab vuoto), ne le metriche di copertura reali.",
-          "falsifier": "Se il piano mantenesse per-componente lo stato operativo e le metriche (colonna \"stato\" viva), lo stato-dellarte collassa. E il piu debole del trio: la sua ragione-di-esistere e \"misurare, non progettare\", ma un report-di-stato rasenta la vista, non la capacita → candidato naturale a SCALA/CEO."
-        },
-        "ruolo": "paradigma"
-      }
+      "capability": null,
+      "superseded_by": "doc-sync-v3 (M-OS3-141: proponente imbrigliato + motore oracode-docsync)"
     },
     {
       "ssot_id": "agent-deploy-runtime-model",
