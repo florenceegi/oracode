@@ -66,6 +66,19 @@ Triage: *"È attrezzatura del Nexus, o è un organismo/progetto a sé?"* → `ne
 Se **Organismo multi-organo (hub)**: sarà la radice dei suoi organi → allo scaffold dichiarerà il suo store RAG
 (`rag_store` + `rag_engine_writes`). Un mono senza RAG non dichiara nulla (→ nessun RAG). Output: `scope` in config.
 
+**Q6c: Ruolo nella gerarchia (`role`)** (M-OS3-151). Asse DIVERSO da Q6b (scope = routing RAG) e dal livello
+(maturità): il ruolo dice **cosa il repo È** nella gerarchia dei ruoli (glossario CORE), per PAROLA — mai numeri
+(canone M-FUC-040). Enum canonico (contratto L7 `os3-matrix/contracts/role-enum.json`, sequenza = gerarchia
+dall'alto in basso): `paradigma | os3-matrix | libreria-lso | organismo | organo | progetto`.
+- `paradigma` / `os3-matrix` — **riservati ai due tool-radice** (`oracode`, `os3-matrix`). Un progetto nuovo non è MAI questi.
+- `libreria-lso` — repo-strumento della software house, al servizio di tutti i lavori, nessun cliente committente.
+- `organismo` — LSO multi-organo (la radice, il repo-centro a cui gli organi puntano).
+- `organo` — membro di un Organismo. **Di norma via promozione, non a /project** (un progetto nasce mono).
+- `progetto` — LSO mono-organo. **Default per i progetti-cliente.**
+Softwarehouse e Customer **NON sono valori di questo campo**: stanno sull'asse proprietà (chi possiede), non
+produzione (cosa il repo è). Triage: *"È uno strumento interno della software house, o un lavoro con un committente?"*
+→ `libreria-lso` vs `progetto`/`organismo`. Output: `role` in config (fluisce a `/oracode-scaffold`, `{{ROLE}}`).
+
 **Domande condizionali per livello:**
 
 Se livello 3+ (LSO mono-organo o multi-organo) — SISTEMA CIRCOLATORIO completo richiesto:
