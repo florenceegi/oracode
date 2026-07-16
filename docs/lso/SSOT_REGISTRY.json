@@ -56,8 +56,9 @@
           "delta_not_covered": "la definizione-di-record di Nexus dice di che parti e fatto il sistema (paradigma/motore/ecosistema, 3 livelli) ma non ha forza costituzionale, non definisce i primitivi kernel e non e il punto di allineamento di OS3/OS4",
           "falsifier": "se i primitivi kernel venissero ridefiniti nella definizione-di-record, o se questa acquisisse update_policy immutabile con funzione di verita assoluta, i due documenti coprirebbero la stessa responsabilita"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -92,8 +93,9 @@
           "delta_not_covered": "il manifesto porta la narrazione fondativa (il trauma, la falsa dicotomia velocita/affidabilita) ma non la sintesi comparativa dei componenti ne la mappa dei moduli",
           "falsifier": "se la sintesi assorbisse la narrazione fondativa o il manifesto aggiungesse la mappa completa dei componenti, uno assorbirebbe l'altro. Nota di supporto: l'ADR M-OS3-141 §6.5.1 registra proprio questa coppia (coseno 0.96) come gia giudicata DISTINTA dal metro umano"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -128,8 +130,9 @@
           "delta_not_covered": "la sintesi esecutiva elenca cosa OS3 contiene e il suo impatto, ma non argomenta il perche ne porta la storia fondativa",
           "falsifier": "se il perche fondativo venisse trasferito nella sintesi esecutiva, il manifesto resterebbe senza responsabilita propria"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -165,8 +168,9 @@
           "delta_not_covered": "p1-principles ripete i pilastri come regole P1 dentro il kit-identita Padmin (digest operativo derivato) ma non e la fonte: non porta l'argomentazione \"perche funziona nell'era AI\" ne la tassonomia delle violazioni",
           "falsifier": "se i pilastri venissero modificati editando il kit-identita anziche questo modulo (o il modulo si riducesse a copia del digest), la distinzione fonte/derivato collassa"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -202,8 +206,9 @@
           "delta_not_covered": "il modulo priorita elenca P0-1 in una riga dentro la tassonomia; non spiega la natura LLM, non da i tre principi ne i pattern di verifica",
           "falsifier": "se il modulo-3 espandesse P0-1 a dottrina completa (natura LLM + workflow di verifica), il modulo-2 diverrebbe doppione"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -239,8 +244,9 @@
           "delta_not_covered": "il core-identita consuma le P0 come checklist operativa dentro l'identita Padmin, ma non definisce la tassonomia a 4 livelli, non governa P1/P2/P3 e non e la sede dove una P0 nasce o cambia",
           "falsifier": "se nuove P0 o cambi di livello venissero introdotti editando il kit-identita anziche questo modulo, la distinzione fonte/consumatore collassa"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -275,8 +281,9 @@
           "delta_not_covered": "il naming standard disciplina gli identificatori nel codice (classi, metodi, variabili, directory) — non copre la serializzazione dei dati ne il costo token. E il vicino piu prossimo solo in quanto altro \"standard tecnico\" del paradigma: la distanza reale e ampia",
           "falsifier": "se nascesse uno standard unico \"formati e convenzioni\" che ingloba la serializzazione, TOON perderebbe la sede propria"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -311,8 +318,9 @@
           "delta_not_covered": "la REGOLA ZERO disciplina il comportamento dell'AI in sessione; io disciplino l'altro attore (l'umano che usa l'AI) e porto il fondamento epistemico che la regola presuppone ma non enuncia",
           "falsifier": "se le regole epistemiche venissero unificate in un'unica disciplina che non distingue l'attore (AI vs umano), i due documenti coprirebbero la stessa responsabilita"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -348,8 +356,9 @@
           "delta_not_covered": "il documento di architettura mappa i principi ai meccanismi che li implementano (hook, registry, layer stack); io non prescrivo alcun meccanismo, lui non porta la definizione di categoria ne il problema che la genera",
           "falsifier": "se il manifesto iniziasse a prescrivere layer e meccanismi, o l'architettura assorbisse la definizione di categoria, la coppia collasserebbe in un documento solo"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -384,8 +393,9 @@
           "delta_not_covered": "il riferimento di sistema riassume i principi LSO in tabella (sua sezione 2) come parte del consolidato generale, ma non scende nei sub-layer ne e la sede dove l'architettura LSO si definisce e cambia",
           "falsifier": "se il riferimento di sistema diventasse la sede del dettaglio layer-stack, o questo documento si riducesse a riassunto, uno dei due sarebbe doppione — la sovrapposizione con la sezione 2 del riferimento e gia oggi il punto debole della coppia e lo dichiaro al critico"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -428,8 +438,9 @@
           "delta_not_covered": "web-page-quality-gate disciplina la qualita delle pagine web pubbliche di un'istanza; non copre la validita dei guard di enforcement (criteri di bloccaggio reale, coerenza campi, test pos/neg, idempotenza) ne il processo di approvazione dei guard",
           "falsifier": "se il quality gate acquisisse criteri di validita per guard bloccanti, o se il criterio di validita dei guard migrasse in uno standard unico dei gate, la distinzione collasserebbe"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -493,8 +504,9 @@
           "delta_not_covered": "l'index non porta l'argomentazione ne il test di coerenza; porta invece contenuto proprio (canone delle scale, sei ruoli) che NON e in me — coppia complementare, non fonte/digest puro",
           "falsifier": "se l'argomentazione venisse compressa nell'index o l'index re-importasse tutto il v2, la coppia collasserebbe in un documento solo"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -529,8 +541,9 @@
           "delta_not_covered": "verificato con grep alla fonte: il v2 NON contiene canone/M-FUC-040/R1-R4/ruoli-per-PAROLA (zero match) — quel contenuto normativo vive SOLO qui. Il v2 e working draft 2026-05-22 con banner DEPRECATO sulle clausole di stato; io sono aggiornato a M-OS3-144 (2026-07-11)",
           "falsifier": "se canone e ruoli venissero riportati in un v3 della nomenclatura e io tornassi digest puro, ricadrei nel caso doppione-da-digest (come lso-guard-testing-index)"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -589,8 +602,9 @@
           "delta_not_covered": "l'onboarding possiede il pattern di collaborazione in 10 step (chi propone/reviewa/approva) che le mie FASI 2-5 referenziano SENZA duplicare — il confine e dichiarato nel protocollo stesso (\"questo documento non lo duplica\"); l'onboarding non possiede stati, ID, registry ne enforcement",
           "falsifier": "se il pattern in 10 step venisse inglobato nel protocollo, o le fasi nel manuale, il confine dichiarato tra i due collasserebbe"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -625,8 +639,9 @@
           "delta_not_covered": "la definizione-di-record fissa SOLO la definizione canonica (\"cos'e, di che parti e fatto\") e delega esplicitamente il dettaglio a me nel proprio frontespizio (\"dettaglio tecnico completo -> ORACODE_NEXUS_SYSTEM_REFERENCE.md\")",
           "falsifier": "se il riferimento venisse citato come definizione-di-record, o la definizione incorporasse il consolidato tecnico, la partizione dichiarata nel frontespizio della definizione cadrebbe"
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -661,8 +676,9 @@
           "delta_not_covered": "l'onboarding e il manuale esteso on-demand: non porta il vincolo di lettura-obbligatoria a boot ne la definizione compressa delle due forme; articola cio che io comprimo, rimandando a me per il canone",
           "falsifier": "se il boot di sessione caricasse direttamente il manuale esteso, o la sequenza canonica migrasse la, la partizione ingresso/approfondimento collasserebbe"
         },
-        "pre_existing": true,
-        "ruolo": "os3-matrix"
+        "ruolo": "os3-matrix",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -697,8 +713,9 @@
           "delta_not_covered": "l'index calibra in 5-7 minuti ma non articola i criteri (proposta minima, verdetti, forme di approvazione, gestione ambiguita) necessari quando la situazione esce dal briefing",
           "falsifier": "stessa condizione del vicino vista dall'altro lato: se l'index crescesse a manuale completo, questo documento sarebbe assorbito"
         },
-        "pre_existing": true,
-        "ruolo": "os3-matrix"
+        "ruolo": "os3-matrix",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -760,8 +777,9 @@
           "delta_not_covered": "l'identita sostantiva dice CHI e Padmin (DNA, voce, relazioni, autorita) ma non porta il processo pre-risposta/pre-codice ne il digest P0 operativo",
           "falsifier": "se i due documenti venissero fusi in un unico system prompt (sostanza + processo), la coppia perderebbe la ragione della separazione"
         },
-        "pre_existing": true,
-        "ruolo": "os3-matrix"
+        "ruolo": "os3-matrix",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -817,8 +835,9 @@
           "delta_not_covered": "p2-patterns da i principi architetturali e snippet brevi (SOLID, sezione Ultra sintetica) ma non le ricette complete ne la tabella decisionale. Dichiaro al critico: e la coppia piu fragile che tengo viva — il confine e di profondita sullo stesso dominio, non di dominio",
           "falsifier": "se la sezione Ultra di p2-patterns crescesse a ricette complete, questa guida sarebbe assorbita"
         },
-        "pre_existing": true,
-        "ruolo": "os3-matrix"
+        "ruolo": "os3-matrix",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -859,8 +878,9 @@
           "delta_not_covered": "il modulo canonico definisce i pilastri per il paradigma (argomentazione, violazioni) ma non contiene partnership graduata, standard firma/DocBlock ne la checklist P1 — che qui esistono e sono la ragione-di-cambiare propria",
           "falsifier": "se il modulo canonico assorbisse application/checklist/firma, o il kit caricasse direttamente il modulo, questo digest perderebbe la responsabilita residua e ricadrebbe nel caso doppione (come segnalato per gli altri digest puri della famiglia)"
         },
-        "pre_existing": true,
-        "ruolo": "os3-matrix"
+        "ruolo": "os3-matrix",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -939,8 +959,9 @@
           "delta_not_covered": "La legacy-stack-policy applica la tolleranza-del-legacy a UN solo caso (stack banditi, on-touch-only); NON copre il criterio astratto di classificazione ne la protezione degli invarianti come dottrina generale.",
           "falsifier": "Se il principio venisse assorbito come premessa della Strategia Delta nel CORE (unico consumatore reale) senza altri casi d'uso documentati, la capacita si riduce a prefazione della policy vicina."
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -977,8 +998,9 @@
           "delta_not_covered": "La nomenclatura LSO nomina i CONCETTI dell'ecosistema (livelli, ruoli, scale, canone delle parole); NON scende mai agli identificatori dentro i file sorgente ne alle tabelle per-tipo/per-linguaggio.",
           "falsifier": "Se il canone nomenclatura estendesse le sue wordlist e i suoi guard fino ai simboli di codice (o il naming-standard inglobasse i ruoli dell'ecosistema), i due si fonderebbero in un'unica capacita di naming."
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -1016,8 +1038,9 @@
           "delta_not_covered": "Il Mission Protocol governa il ciclo di vita universale di OGNI mission (stati, fasi, registry); NON contiene criteri di merito per alcun dominio di deliverable — questo gate e l'unico che valuta COSA viene consegnato, non COME si lavora.",
           "falsifier": "Se il Mission Protocol incorporasse checklist di merito per-dominio (o il gate venisse generalizzato a ogni tipo di deliverable perdendo il trigger specifico), il confine mission-generica/gate-di-dominio sparisce."
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -1054,8 +1077,9 @@
           "delta_not_covered": "PDTDP da il criterio astratto (strutturale vs evolutivo) ma NON nomina stack, NON elenca alternative, NON dichiara alcun enforcement meccanico: la lista-ban eseguibile e solo qui.",
           "falsifier": "Se la policy perdesse la lista ban e l'enforcement riducendosi a rimandare al principio (o PDTDP enumerasse stack concreti), il delta si svuota e resta un solo documento."
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -1090,8 +1114,9 @@
           "delta_not_covered": "Il draft v2 definisce COSA il paradigma e (macroaree, strumenti, forme architetturali); NON dichiara le condizioni di riconoscimento esterno ne i criteri per dirle soddisfatte.",
           "falsifier": "Se il trattato v2 acquisisse un capitolo di condizioni-di-adozione con gli stessi criteri di completamento, la roadmap diventerebbe un suo estratto."
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
@@ -1126,8 +1151,9 @@
           "delta_not_covered": "Il system-reference e lo SSOT tecnico consolidato DI RECORD sullo stato corrente (versionato, citato, aggiornato per mission); NON copre la trattazione organica pensata per un lettore esterno (penisola, ammissione strumenti, quattro livelli di applicazione come discorso unitario).",
           "falsifier": "Se il system-reference si espandesse alle 4 macroaree con la stessa funzione espositiva, o il draft venisse promosso a riferimento di record, i due coprirebbero la stessa responsabilita — coppia a rischio doppione reale, da riverificare a ogni major del draft."
         },
-        "pre_existing": true,
-        "ruolo": "paradigma"
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-05-29",
+        "first_concluded_in": "M-OS3-023"
       }
     },
     {
