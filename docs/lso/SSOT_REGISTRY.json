@@ -43,7 +43,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "kernel-costituzionale-osz",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "fissare i primitivi costituzionali dell'organismo (Wrapper T, Interface, Instance, Nerve) e la triade di autorita OSZ-OS3-OS4 come verita assoluta",
+          "nearest_neighbor": "oracode-nexus-ssot",
+          "responsibility_mine": "sono il kernel a cui OS3 e OS4 si allineano, mai il contrario; definisco la bio-architettura e i primitivi, con forza costituzionale (update_policy immutable-ceo-approval)",
+          "delta_not_covered": "la definizione-di-record di Nexus dice di che parti e fatto il sistema (paradigma/motore/ecosistema, 3 livelli) ma non ha forza costituzionale, non definisce i primitivi kernel e non e il punto di allineamento di OS3/OS4",
+          "falsifier": "se i primitivi kernel venissero ridefiniti nella definizione-di-record, o se questa acquisisse update_policy immutabile con funzione di verita assoluta, i due documenti coprirebbero la stessa responsabilita"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os3-executive-summary",
@@ -64,7 +79,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "sintesi-esecutiva-os3",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "vista d'insieme comparativa di OS3 in un solo documento: evoluzione OS1-OS3, innovazioni distintive, elenco 13 P0, sistema P0-P3, mappa dei moduli",
+          "nearest_neighbor": "os3-modulo-0-manifesto",
+          "responsibility_mine": "orientare chi entra in OS3 con la sintesi completa dei componenti e il quadro comparativo, senza richiedere la lettura dei moduli",
+          "delta_not_covered": "il manifesto porta la narrazione fondativa (il trauma, la falsa dicotomia velocita/affidabilita) ma non la sintesi comparativa dei componenti ne la mappa dei moduli",
+          "falsifier": "se la sintesi assorbisse la narrazione fondativa o il manifesto aggiungesse la mappa completa dei componenti, uno assorbirebbe l'altro. Nota di supporto: l'ADR M-OS3-141 §6.5.1 registra proprio questa coppia (coseno 0.96) come gia giudicata DISTINTA dal metro umano"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os3-modulo-0-manifesto",
@@ -85,7 +115,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "manifesto-fondativo-os3",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "la narrazione fondativa di OS3: perche esiste (l'LLM che mente con fiducia assoluta), la biforcazione storica, il rifiuto della dicotomia velocita-vs-affidabilita",
+          "nearest_neighbor": "os3-executive-summary",
+          "responsibility_mine": "argomentare il perche storico-epistemico del sistema e portare la narrazione persuasiva d'ingresso (\"il trauma che ha generato OS3\")",
+          "delta_not_covered": "la sintesi esecutiva elenca cosa OS3 contiene e il suo impatto, ma non argomenta il perche ne porta la storia fondativa",
+          "falsifier": "se il perche fondativo venisse trasferito nella sintesi esecutiva, il manifesto resterebbe senza responsabilita propria"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os3-modulo-1-pilastri",
@@ -107,7 +152,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "definizione-canonica-pilastri",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "definizione canonica e normativa dei 6 Pilastri Cardinali: principio universale, perche funziona nell'era AI, come applicarlo, violazioni comuni",
+          "nearest_neighbor": "padmin-identity-os3-p1-principles",
+          "responsibility_mine": "essere la fonte normativa dei pilastri per il paradigma intero (doc constitutional, immutable-ceo-approval)",
+          "delta_not_covered": "p1-principles ripete i pilastri come regole P1 dentro il kit-identita Padmin (digest operativo derivato) ma non e la fonte: non porta l'argomentazione \"perche funziona nell'era AI\" ne la tassonomia delle violazioni",
+          "falsifier": "se i pilastri venissero modificati editando il kit-identita anziche questo modulo (o il modulo si riducesse a copia del digest), la distinzione fonte/derivato collassa"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os3-modulo-2-regola-zero",
@@ -129,7 +189,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "dottrina-regola-zero",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "dottrina completa della REGOLA ZERO: natura predittiva degli LLM (prediction engine, non reasoning engine), i tre principi operativi, i pattern di verifica che la rendono eseguibile",
+          "nearest_neighbor": "os3-modulo-3-priorita-p0-p3",
+          "responsibility_mine": "spiegare e rendere operativo il settimo pilastro, dal problema LLM al pattern verifica-o-chiedi",
+          "delta_not_covered": "il modulo priorita elenca P0-1 in una riga dentro la tassonomia; non spiega la natura LLM, non da i tre principi ne i pattern di verifica",
+          "falsifier": "se il modulo-3 espandesse P0-1 a dottrina completa (natura LLM + workflow di verifica), il modulo-2 diverrebbe doppione"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os3-modulo-3-priorita-p0-p3",
@@ -151,7 +226,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "gerarchia-priorita-p0-p3",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "la gerarchia di negoziabilita a 4 livelli (P0 blocking - P3 reference), il criterio \"se violo questa regola cosa succede\", l'elenco normativo delle 13 P0 e il loro enforcement",
+          "nearest_neighbor": "padmin-identity-os3-core",
+          "responsibility_mine": "possedere la tassonomia delle priorita e governare cosa e negoziabile e cosa no",
+          "delta_not_covered": "il core-identita consuma le P0 come checklist operativa dentro l'identita Padmin, ma non definisce la tassonomia a 4 livelli, non governa P1/P2/P3 e non e la sede dove una P0 nasce o cambia",
+          "falsifier": "se nuove P0 o cambi di livello venissero introdotti editando il kit-identita anziche questo modulo, la distinzione fonte/consumatore collassa"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os3-modulo-4-toon-format",
@@ -172,7 +262,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "standard-formato-toon",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "specifica del formato dati TOON per la comunicazione AI-Human e AI-AI: sintassi, conversione lossless bidirezionale, economia di token (26-60 percento)",
+          "nearest_neighbor": "naming-standard-code",
+          "responsibility_mine": "standardizzare la serializzazione dei dati nei sistemi Oracode ottimizzando il costo token",
+          "delta_not_covered": "il naming standard disciplina gli identificatori nel codice (classi, metodi, variabili, directory) — non copre la serializzazione dei dati ne il costo token. E il vicino piu prossimo solo in quanto altro \"standard tecnico\" del paradigma: la distanza reale e ampia",
+          "falsifier": "se nascesse uno standard unico \"formati e convenzioni\" che ingloba la serializzazione, TOON perderebbe la sede propria"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "os4-foundation",
@@ -193,7 +298,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "educazione-epistemica-umano-os4",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "educare l'UMANO al funzionamento dell'intelligenza predittiva: Assioma 0 (verita come funzione operativa), regole di compatibilita cognitiva, fonti di verita, tracciabilita",
+          "nearest_neighbor": "os3-modulo-2-regola-zero",
+          "responsibility_mine": "disciplinare il lato umano della coppia AI-umano e fondare l'epistemologia (Assioma 0) da cui le regole operative derivano",
+          "delta_not_covered": "la REGOLA ZERO disciplina il comportamento dell'AI in sessione; io disciplino l'altro attore (l'umano che usa l'AI) e porto il fondamento epistemico che la regola presuppone ma non enuncia",
+          "falsifier": "se le regole epistemiche venissero unificate in un'unica disciplina che non distingue l'attore (AI vs umano), i due documenti coprirebbero la stessa responsabilita"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "lso-manifesto",
@@ -215,7 +335,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "categoria-lso-manifesto",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "definire LSO come nuova CATEGORIA di software (4 proprieta: awareness, prevention, detection, evolution) e la differenza costitutiva dal software tradizionale",
+          "nearest_neighbor": "lso-living-software-organism",
+          "responsibility_mine": "la narrazione pubblica certificabile del \"cosa e un LSO e perche serviva\" — livello categoria, zero implementazione",
+          "delta_not_covered": "il documento di architettura mappa i principi ai meccanismi che li implementano (hook, registry, layer stack); io non prescrivo alcun meccanismo, lui non porta la definizione di categoria ne il problema che la genera",
+          "falsifier": "se il manifesto iniziasse a prescrivere layer e meccanismi, o l'architettura assorbisse la definizione di categoria, la coppia collasserebbe in un documento solo"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "lso-living-software-organism",
@@ -236,7 +371,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "architettura-layer-vivente-lso",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "architettura del layer vivente: principi LSO mappati alle implementazioni reali e Layer Stack con i sub-layer del nervous system (L0 mielina, riflesso, propriocezione, autonomo)",
+          "nearest_neighbor": "oracode-nexus-system-reference",
+          "responsibility_mine": "essere la sede autoritativa del dettaglio architetturale LSO (principio-per-principio con il meccanismo che lo implementa)",
+          "delta_not_covered": "il riferimento di sistema riassume i principi LSO in tabella (sua sezione 2) come parte del consolidato generale, ma non scende nei sub-layer ne e la sede dove l'architettura LSO si definisce e cambia",
+          "falsifier": "se il riferimento di sistema diventasse la sede del dettaglio layer-stack, o questo documento si riducesse a riassunto, uno dei due sarebbe doppione — la sovrapposizione con la sezione 2 del riferimento e gia oggi il punto debole della coppia e lo dichiaro al critico"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "lso-guard-testing-protocol",
@@ -247,11 +397,14 @@
       "check_frequency": "on_commit",
       "watches": {
         "repos": [
-          "os3-matrix"
+          "os3-matrix",
+          "oracode"
         ],
         "paths": [
-          "docs/tests/"
-        ]
+          "docs/tests/",
+          "docs/paradigm/lso/LSO_GUARD_TESTING_PROTOCOL_INDEX.md"
+        ],
+        "patterns": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-06-01",
@@ -262,7 +415,22 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:lso-guard-testing-protocol-impl"
+      "split_private_ref": "os3-matrix:lso-guard-testing-protocol-impl",
+      "capability": {
+        "slug": "protocollo-validita-guard",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "specifica VINCOLANTE di cosa rende un guard funzionante: 5 criteri (bloccaggio reale, coerenza campi, test pos+neg, header, idempotenza), test obbligatori, policy naming, audit retroattivo, processo di approvazione",
+          "nearest_neighbor": "web-page-quality-gate",
+          "responsibility_mine": "essere il criterio di validita normativo — un guard fuori dai criteri e BROKEN per definizione",
+          "delta_not_covered": "web-page-quality-gate disciplina la qualita delle pagine web pubbliche di un'istanza; non copre la validita dei guard di enforcement (criteri di bloccaggio reale, coerenza campi, test pos/neg, idempotenza) ne il processo di approvazione dei guard",
+          "falsifier": "se il quality gate acquisisse criteri di validita per guard bloccanti, o se il criterio di validita dei guard migrasse in uno standard unico dei gate, la distinzione collasserebbe"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "lso-guard-testing-index",
@@ -307,7 +475,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "nomenclatura-livelli-concettuali",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "separazione argomentata dei 4 livelli concettuali (Oracode / Libreria LSO / Organismo / FlorenceEGI) e articolazione interna 1.1.A paradigma / 1.1.B OS3 Matrix, con test di coerenza spin-off e razionale commerciale",
+          "nearest_neighbor": "lso-nomenclature-index",
+          "responsibility_mine": "l'argomentazione definitoria completa: perche i livelli si separano, il posizionamento storico (OOP/SOLID/Oracode), il test di coerenza per lo spin-off, la giustificazione filosofica dell'enforcement",
+          "delta_not_covered": "l'index non porta l'argomentazione ne il test di coerenza; porta invece contenuto proprio (canone delle scale, sei ruoli) che NON e in me — coppia complementare, non fonte/digest puro",
+          "falsifier": "se l'argomentazione venisse compressa nell'index o l'index re-importasse tutto il v2, la coppia collasserebbe in un documento solo"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "lso-nomenclature-index",
@@ -328,7 +511,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "vocabolario-canonico-scale-e-ruoli",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "vocabolario VIVO always-loaded: canone delle scale (L=maturita, R=rischio, ruoli per PAROLA — M-FUC-040/M-OS3-144), tabella di traduzione vecchio-nuovo, i sei ruoli operativi con definizioni CEO verbatim",
+          "nearest_neighbor": "lso-nomenclature-v2",
+          "responsibility_mine": "essere la sede normativa corrente del canone delle scale e dei ruoli-parola (il CORE cita \"LSO_NOMENCLATURE_INDEX §0/§1bis\" come sede del dettaglio)",
+          "delta_not_covered": "verificato con grep alla fonte: il v2 NON contiene canone/M-FUC-040/R1-R4/ruoli-per-PAROLA (zero match) — quel contenuto normativo vive SOLO qui. Il v2 e working draft 2026-05-22 con banner DEPRECATO sulle clausole di stato; io sono aggiornato a M-OS3-144 (2026-07-11)",
+          "falsifier": "se canone e ruoli venissero riportati in un v3 della nomenclatura e io tornassi digest puro, ricadrei nel caso doppione-da-digest (come lso-guard-testing-index)"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "nomencl-osmx-002-delta",
@@ -349,7 +547,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "record-storico-osmx-002",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "record storico della proposta di articolazione 1.1.A/1.1.B: mappatura dei 35 componenti e tabella dei 12 punti di modifica",
+          "nearest_neighbor": "lso-nomenclature-v2",
+          "responsibility_mine": "conservare la decisione e la mappatura componente-per-componente della proposta OSMX-002 come record della scelta fatta",
+          "delta_not_covered": "la nomenclatura v2 ha assorbito il contenuto normativo (1.1.A/1.1.B, testo quasi verbatim) ma NON la mappatura dei 35 componenti ne la tabella dei 12 punti di modifica (grep: zero match nel v2)",
+          "falsifier": "se il registro introducesse una classe record-storico/ADR o il v2 assorbisse la mappatura, questa entry andrebbe fusa o riclassificata (bivio in coda di ratifica CEO)"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "mission-protocol",
@@ -372,7 +585,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "protocollo-mission-state-machine",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "il ciclo di vita della mission come state machine: FASI 0-6, apertura ID anti-collisione, ponte L1-L3 automatico col registry, classi di mission (micromission), gate di chiusura",
+          "nearest_neighbor": "padmin-onboarding",
+          "responsibility_mine": "possedere stati, transizioni, registry e enforcement dell'unita di lavoro — dal blocco mission-fantasma alla chiusura FASE 6",
+          "delta_not_covered": "l'onboarding possiede il pattern di collaborazione in 10 step (chi propone/reviewa/approva) che le mie FASI 2-5 referenziano SENZA duplicare — il confine e dichiarato nel protocollo stesso (\"questo documento non lo duplica\"); l'onboarding non possiede stati, ID, registry ne enforcement",
+          "falsifier": "se il pattern in 10 step venisse inglobato nel protocollo, o le fasi nel manuale, il confine dichiarato tra i due collasserebbe"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "oracode-nexus-system-reference",
@@ -393,7 +621,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "riferimento-tecnico-consolidato-nexus",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "consolidare TUTTO Oracode/LSO in un unico riferimento tecnico navigabile: architettura a livelli, LSO, layer stack, mission, indice Nexus dei registry",
+          "nearest_neighbor": "oracode-nexus-ssot",
+          "responsibility_mine": "il dettaglio tecnico completo del sistema, in un documento solo, sempre allineato alle mission che lo toccano",
+          "delta_not_covered": "la definizione-di-record fissa SOLO la definizione canonica (\"cos'e, di che parti e fatto\") e delega esplicitamente il dettaglio a me nel proprio frontespizio (\"dettaglio tecnico completo -> ORACODE_NEXUS_SYSTEM_REFERENCE.md\")",
+          "falsifier": "se il riferimento venisse citato come definizione-di-record, o la definizione incorporasse il consolidato tecnico, la partizione dichiarata nel frontespizio della definizione cadrebbe"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-index",
@@ -414,7 +657,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "briefing-executive-istanze-padmin",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "documento d'ingresso OBBLIGATORIO a inizio sessione: le due forme operative (Supervisor/Watchdog), la sequenza canonica in 10 step, estensioni REGOLA ZERO e anti-pattern — calibrazione al 90 percento in 5-7 minuti",
+          "nearest_neighbor": "padmin-onboarding",
+          "responsibility_mine": "essere il punto d'ingresso vincolante e la sede della sequenza canonica (l'onboarding stesso mi dichiara fonte: \"Il PADMIN_INDEX §2 da la sequenza canonica in 10 step\")",
+          "delta_not_covered": "l'onboarding e il manuale esteso on-demand: non porta il vincolo di lettura-obbligatoria a boot ne la definizione compressa delle due forme; articola cio che io comprimo, rimandando a me per il canone",
+          "falsifier": "se il boot di sessione caricasse direttamente il manuale esteso, o la sequenza canonica migrasse la, la partizione ingresso/approfondimento collasserebbe"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-onboarding",
@@ -435,7 +693,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "manuale-operativo-esteso-padmin",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "articolazione estesa on-demand di cio che il briefing comprime: quando una mission e strutturale, i 6 punti minimi della proposta architetturale, i 3 verdetti di review, le forme di approvazione CEO, la storia operativa",
+          "nearest_neighbor": "padmin-index",
+          "responsibility_mine": "coprire il 10 percento di situazioni che il briefing executive non copre, con i criteri operativi dettagliati",
+          "delta_not_covered": "l'index calibra in 5-7 minuti ma non articola i criteri (proposta minima, verdetti, forme di approvazione, gestione ambiguita) necessari quando la situazione esce dal briefing",
+          "falsifier": "stessa condizione del vicino vista dall'altro lato: se l'index crescesse a manuale completo, questo documento sarebbe assorbito"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-ai-identity",
@@ -456,7 +729,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "identita-sostantiva-portabile-padmin",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "identita sostantiva model-agnostic incollabile come system prompt su QUALSIASI LLM: nome e DNA narrativo, voce e registro, relazioni col team AI (Astra, Clayton), soglie di autorita",
+          "nearest_neighbor": "padmin-identity-os3-core",
+          "responsibility_mine": "dire CHI e Padmin in modo portabile cross-motore (\"indipendentemente dal motore sottostante\"), sostanza identitaria e relazionale",
+          "delta_not_covered": "il core-identita OS3 porta il processo operativo (5 domande obbligatorie, checkpoint, P0) ma non l'identita narrativa-relazionale ne la portabilita cross-modello dichiarata come scopo",
+          "falsifier": "se istanziare Padmin su un motore non-Claude richiedesse comunque il core OS3, o se il core assorbisse la parte sostantiva, la separazione sostanza/processo cadrebbe"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-identity-os3-core",
@@ -466,8 +754,13 @@
       "priority": "medium",
       "check_frequency": "on_demand",
       "watches": {
-        "repos": [],
-        "paths": []
+        "repos": [
+          "oracode"
+        ],
+        "paths": [
+          "docs/paradigm/padmin/PADMIN_IDENTITY_OS3_INDEX.md"
+        ],
+        "patterns": []
       },
       "registered_by": "M-OS3-023",
       "last_verified": "2026-05-29",
@@ -477,7 +770,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "identita-operativa-os3-regole-bloccanti",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "il lato operativo dell'identita Padmin: 5 domande obbligatorie pre-risposta, checkpoint pre-codice, digest delle P0 bloccanti, checklist finale — cio che l'istanza ESEGUE a ogni risposta",
+          "nearest_neighbor": "padmin-ai-identity",
+          "responsibility_mine": "il processo di enforcement personale dell'identita (l'auto-check meccanico prima di ogni output)",
+          "delta_not_covered": "l'identita sostantiva dice CHI e Padmin (DNA, voce, relazioni, autorita) ma non porta il processo pre-risposta/pre-codice ne il digest P0 operativo",
+          "falsifier": "se i due documenti venissero fusi in un unico system prompt (sostanza + processo), la coppia perderebbe la ragione della separazione"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-identity-os3-index",
@@ -519,7 +827,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "ricette-integrazione-ulm-uem-gdpr",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "ricette complete end-to-end di integrazione delle librerie Ultra + GDPR: tabella decisionale UEM vs ULM vs audit GDPR, pattern controller completo con consensi, audit trail e error handling",
+          "nearest_neighbor": "padmin-identity-os3-p2-patterns",
+          "responsibility_mine": "dare il codice-ricetta pronto (quando-usare-cosa + pattern integrale) per ULM/UEM/GDPR",
+          "delta_not_covered": "p2-patterns da i principi architetturali e snippet brevi (SOLID, sezione Ultra sintetica) ma non le ricette complete ne la tabella decisionale. Dichiaro al critico: e la coppia piu fragile che tengo viva — il confine e di profondita sullo stesso dominio, non di dominio",
+          "falsifier": "se la sezione Ultra di p2-patterns crescesse a ricette complete, questa guida sarebbe assorbita"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-identity-os3-p1-principles",
@@ -540,7 +863,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "pilastri-operativizzati-kit-identita",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "i 6 pilastri resi regole P1 del kit-identita: application pattern a livello codice, execution excellence, partnership graduata, standard firma/DocBlock, checklist P1",
+          "nearest_neighbor": "os3-modulo-1-pilastri",
+          "responsibility_mine": "operativizzare i pilastri dentro il kit-identita con contenuti che il modulo canonico non ha (partnership graduata, standard di firma, checklist P1)",
+          "delta_not_covered": "il modulo canonico definisce i pilastri per il paradigma (argomentazione, violazioni) ma non contiene partnership graduata, standard firma/DocBlock ne la checklist P1 — che qui esistono e sono la ragione-di-cambiare propria",
+          "falsifier": "se il modulo canonico assorbisse application/checklist/firma, o il kit caricasse direttamente il modulo, questo digest perderebbe la responsabilita residua e ricadrebbe nel caso doppione (come segnalato per gli altri digest puri della famiglia)"
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-identity-os3-p2-patterns",
@@ -561,7 +899,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "pattern-architetturali-padmin",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "pattern-architetturali-padmin",
+          "nearest_neighbor": "padmin-identity-os3-p1-principles",
+          "responsibility_mine": "Definire i pattern concreti di architettura e frontend (SOLID applicato, dependency injection, integrazione UEM/ULM, ban frontend) che l'identita AI segue come raccomandazione forte ma non bloccante (tier P2).",
+          "delta_not_covered": "P1 fissa i 6 pilastri cardinali obbligatori per codice production-ready; NON copre i pattern implementativi concreti ne il regime \"importante ma derogabile con buona ragione\" che governa questo tier.",
+          "falsifier": "Se il tier P2 venisse promosso a vincolante o i pattern fusi in un unico documento di regole a fasce dentro P1, la distinzione (che oggi regge solo sulla forza normativa + concretezza) collassa."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "padmin-identity-os3-p3-reference",
@@ -582,7 +935,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "contesto-riferimento-padmin",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "contesto-riferimento-padmin",
+          "nearest_neighbor": "padmin-identity-os3-p1-principles",
+          "responsibility_mine": "Conservare il materiale di contesto non vincolante dell'identita: i 12 pilastri derivati OS2.0 (tecnico/etico/evolutivo) e le metriche di successo, come sfondo per la comprensione profonda.",
+          "delta_not_covered": "P1 copre i 6 pilastri cardinali OBBLIGATORI con applicazione operativa; NON copre la tassonomia estesa dei 12 derivati ne le metriche — materiale che informa senza obbligare.",
+          "falsifier": "Se i 12 pilastri derivati venissero promossi a vincolanti (entrando in P1/CORE) o il contesto assorbito nel CORE, questo documento resterebbe senza responsabilita propria."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "pdtdp-torre-di-pisa",
@@ -603,7 +971,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "classificazione-deviazioni",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "classificazione-deviazioni",
+          "nearest_neighbor": "legacy-stack-policy",
+          "responsibility_mine": "Il principio architetturale generale che distingue deviazioni strutturali critiche (violano invarianti, correzione immediata) da deviazioni evolutive (emergono dall'uso, si integrano), per QUALSIASI deviazione di un sistema complesso.",
+          "delta_not_covered": "La legacy-stack-policy applica la tolleranza-del-legacy a UN solo caso (stack banditi, on-touch-only); NON copre il criterio astratto di classificazione ne la protezione degli invarianti come dottrina generale.",
+          "falsifier": "Se il principio venisse assorbito come premessa della Strategia Delta nel CORE (unico consumatore reale) senza altri casi d'uso documentati, la capacita si riduce a prefazione della policy vicina."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "naming-standard-code",
@@ -626,7 +1009,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "naming-identificatori-codice",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "naming-identificatori-codice",
+          "nearest_neighbor": "lso-nomenclature-v2",
+          "responsibility_mine": "Fissare le convenzioni di naming degli IDENTIFICATORI DI CODICE (classi, metodi, colonne, enum, canali broadcast) per PHP/Python/TS, con la regola \"verifica il pattern esistente prima di crearne uno\".",
+          "delta_not_covered": "La nomenclatura LSO nomina i CONCETTI dell'ecosistema (livelli, ruoli, scale, canone delle parole); NON scende mai agli identificatori dentro i file sorgente ne alle tabelle per-tipo/per-linguaggio.",
+          "falsifier": "Se il canone nomenclatura estendesse le sue wordlist e i suoi guard fino ai simboli di codice (o il naming-standard inglobasse i ruoli dell'ecosistema), i due si fonderebbero in un'unica capacita di naming."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "web-page-quality-gate",
@@ -650,7 +1048,22 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:web-page-quality-gate-impl"
+      "split_private_ref": "os3-matrix:web-page-quality-gate-impl",
+      "capability": {
+        "slug": "gate-qualita-pagine-web",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "gate-qualita-pagine-web",
+          "nearest_neighbor": "mission-protocol",
+          "responsibility_mine": "I criteri di accettazione dominio-specifici per pagine web pubbliche (101 criteri di correttezza + asse distinzione anti-mediano), attivati come gate tra FASE 4 e FASE 5 solo quando il deliverable e una pagina pubblica.",
+          "delta_not_covered": "Il Mission Protocol governa il ciclo di vita universale di OGNI mission (stati, fasi, registry); NON contiene criteri di merito per alcun dominio di deliverable — questo gate e l'unico che valuta COSA viene consegnato, non COME si lavora.",
+          "falsifier": "Se il Mission Protocol incorporasse checklist di merito per-dominio (o il gate venisse generalizzato a ogni tipo di deliverable perdendo il trigger specifico), il confine mission-generica/gate-di-dominio sparisce."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "legacy-stack-policy",
@@ -673,7 +1086,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "ban-stack-legacy",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "ban-stack-legacy",
+          "nearest_neighbor": "pdtdp-torre-di-pisa",
+          "responsibility_mine": "Il ban concreto di tre stack (Alpine/Livewire/Filament) per codice nuovo, con alternative approvate, enforcement via hook PreToolUse e regime Strategia Delta per il legacy esistente.",
+          "delta_not_covered": "PDTDP da il criterio astratto (strutturale vs evolutivo) ma NON nomina stack, NON elenca alternative, NON dichiara alcun enforcement meccanico: la lista-ban eseguibile e solo qui.",
+          "falsifier": "Se la policy perdesse la lista ban e l'enforcement riducendosi a rimandare al principio (o PDTDP enumerasse stack concreti), il delta si svuota e resta un solo documento."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "roadmap-oracode",
@@ -694,7 +1122,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "condizioni-adozione-paradigma",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "condizioni-adozione-paradigma",
+          "nearest_neighbor": "oracode-paradigm-v2-draft",
+          "responsibility_mine": "La mappa delle CONDIZIONI (4 step: dominio esterno, indipendenza dal modello, completamento Layer Stack, validazione esterna) perche Oracode diventi paradigma riconosciuto, con criteri di completamento per step — esplicitamente \"mappa delle condizioni, non piano di lavoro\".",
+          "delta_not_covered": "Il draft v2 definisce COSA il paradigma e (macroaree, strumenti, forme architetturali); NON dichiara le condizioni di riconoscimento esterno ne i criteri per dirle soddisfatte.",
+          "falsifier": "Se il trattato v2 acquisisse un capitolo di condizioni-di-adozione con gli stessi criteri di completamento, la roadmap diventerebbe un suo estratto."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "oracode-paradigm-v2-draft",
@@ -715,7 +1158,22 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "trattato-paradigma-v2",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "trattato-paradigma-v2",
+          "nearest_neighbor": "oracode-nexus-system-reference",
+          "responsibility_mine": "Il trattato integrale in prosa del paradigma (4 macroaree: cosa e, come si lavora, forme architetturali, strumenti/penisola), opera in costruzione destinata a maturare in narrativa pubblicabile.",
+          "delta_not_covered": "Il system-reference e lo SSOT tecnico consolidato DI RECORD sullo stato corrente (versionato, citato, aggiornato per mission); NON copre la trattazione organica pensata per un lettore esterno (penisola, ammissione strumenti, quattro livelli di applicazione come discorso unitario).",
+          "falsifier": "Se il system-reference si espandesse alle 4 macroaree con la stessa funzione espositiva, o il draft venisse promosso a riferimento di record, i due coprirebbero la stessa responsabilita — coppia a rischio doppione reale, da riverificare a ogni major del draft."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "oracode-nexus-index",
@@ -737,7 +1195,22 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:oracode-nexus-index-impl"
+      "split_private_ref": "os3-matrix:oracode-nexus-index-impl",
+      "capability": {
+        "slug": "indice-vitale-nexus",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "indice-vitale-nexus",
+          "nearest_neighbor": "lso-nomenclature-index",
+          "responsibility_mine": "L'indice navigabile anti-degradazione dell'INTERO corpus vitale (oracode + os3-matrix + Layer Stack): sintesi per documento, path, sezioni chiave, stato-di-lettura onesto e blocco \"decisioni LOCKED da leggere per prime\".",
+          "delta_not_covered": "Il nomenclature-index e il vocabolario sintetico di UNA famiglia (nomenclatura), always-loaded al bootstrap; NON copre il corpus intero, NON traccia lo stato di lettura, NON raccoglie le decisioni LOCKED trasversali.",
+          "falsifier": "Se ogni famiglia avesse un indice con sintesi+stato e una federazione li aggregasse (o il nexus-index si riducesse a elenco di indici di famiglia), la responsabilita di mappa-unica svanisce."
+        },
+        "pre_existing": true,
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "oracode-nexus-executive-summary",
@@ -747,7 +1220,23 @@
       "priority": "high",
       "check_frequency": "on_demand",
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "intro-divulgativa-nexus",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "intro-divulgativa-nexus",
+          "nearest_neighbor": "oracode-nexus-ssot",
+          "responsibility_mine": "L'introduzione in prosa senza gergo per chi incontra Oracode Nexus la prima volta: problema (fiducia nel codice AI), idea (impedire prima), analogia del limitatore — una pagina di primo contatto.",
+          "delta_not_covered": "La definizione-di-record e il documento che gli ALTRI citano per la definizione precisa (componenti, licenze, cos'e/non-e); NON serve il lettore a digiuno e non puo permettersi il registro divulgativo.",
+          "falsifier": "Se il documento di record acquisisse una sezione divulgativa di primo contatto con lo stesso pubblico, il summary perderebbe la sua ragione di esistere. (Nota a favore: l'ADR §6.5.1 registra proprio le coppie divulgativo×definitorio come DISTINTE malgrado coseno 0.96.)"
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "RECUPERO-GIT"
+      }
     },
     {
       "ssot_id": "oracode-nexus-ssot",
@@ -757,7 +1246,23 @@
       "priority": "critical",
       "check_frequency": "on_demand",
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "definizione-di-record-nexus",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "definizione-di-record-nexus",
+          "nearest_neighbor": "oracode-nexus-system-reference",
+          "responsibility_mine": "La definizione canonica di UNA pagina di Oracode Nexus — il documento di record citato dagli altri: i 3 componenti (paradigma/motore/ecosistema) con i confini di licenza, cos'e e cosa NON e.",
+          "delta_not_covered": "Il system-reference porta il dettaglio tecnico COMPLETO (architettura, componenti, dati di produzione, indice dei registry); NON e il bersaglio-di-citazione per la definizione, e la sua mole lo rende inadatto a esserlo.",
+          "falsifier": "Se il system-reference venisse dichiarato bersaglio canonico di citazione per la definizione (i due doc oggi aprono con lo STESSO paragrafo-placeholder, verbatim), la pagina-di-record collassa in una sua sezione."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "RECUPERO-GIT"
+      }
     },
     {
       "ssot_id": "oracode-agent-skill",
@@ -785,7 +1290,23 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "split_private_ref": "os3-matrix:oracode-agent-skill-impl"
+      "split_private_ref": "os3-matrix:oracode-agent-skill-impl",
+      "capability": {
+        "slug": "dottrina-agenti-single-source",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "dottrina-agenti-single-source",
+          "nearest_neighbor": "agent-deploy-runtime-model",
+          "responsibility_mine": "Il canale del CONTENUTO normativo degli agenti: la dottrina (13 P0, pilastri, REGOLA ZERO) vive nel CORE e viene proiettata verbatim in una skill (preload + regole on-demand); in divergenza vince il CORE.",
+          "delta_not_covered": "Il modello deploy governa il canale dell'ARTEFATTO (fonte versionata → copia operativa generata, root a runtime, precedenza Personal>Project); NON dice nulla su quale contenuto normativo un agente debba citare ne sulla regola verbatim-dal-CORE.",
+          "falsifier": "Se la proiezione della dottrina diventasse un passo del meccanismo di deploy (skill generata dal CORE dallo stesso tool fonte→copia, con la parita verificata li), i due canali si fonderebbero in un'unica capacita anti-drift."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "M-OS3-029"
+      }
     },
     {
       "ssot_id": "oracode-lint",
@@ -809,7 +1330,23 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "lint-semantico-artefatti",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "lint-semantico-artefatti",
+          "nearest_neighbor": "agent-deploy-runtime-model",
+          "responsibility_mine": "Il motore di RILEVAZIONE del drift sugli artefatti Oracode: 6 regole (broken-ref, organism-coupling, source-deploy-drift, doctrine-drift, cross-organ, semantico LLM) con severita e innesto stratificato guard/gate/cron.",
+          "delta_not_covered": "Il modello deploy dichiara il principio (\"si edita la fonte, mai la copia\") e il meccanismo di generazione; NON rileva le violazioni — la detection (R3 per quel principio, piu le altre 5 classi che il deploy nemmeno tocca) e responsabilita solo di questo motore.",
+          "falsifier": "Se ogni regola venisse assorbita dal rispettivo enforcer (parita verificata dagli script di deploy, dottrina dal test skill, coupling dagli hook), il linter come motore unitario resterebbe senza classe di difetti propria."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "M-OS3-039"
+      }
     },
     {
       "ssot_id": "ssot-header-convention",
@@ -831,7 +1368,23 @@
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
-      "rag": "public"
+      "rag": "public",
+      "capability": {
+        "slug": "confine-public-private-header",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "confine-public-private-header",
+          "nearest_neighbor": "nomencl-osmx-002-delta",
+          "responsibility_mine": "Rendere il confine paradigma/Matrix operativo PER-DOCUMENTO: i due campi front-matter obbligatori (visibility, rag) con vincolo di coerenza, e la regola mono-confine (un SSOT appartiene a UN solo confine, altrimenti si spezza con cross-ref).",
+          "delta_not_covered": "La proposal OSMX-002 fissa la distinzione CONCETTUALE §1.1.A paradigma vs §1.1.B Matrix nella tassonomia; NON prescrive campi header, vincoli machine-checkable ne la procedura di split per documento.",
+          "falsifier": "Se la nomenclatura incorporasse i campi header e la regola mono-confine come parte del canone, la convenzione diventerebbe la sua appendice operativa senza responsabilita propria."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "M-OS3-046"
+      }
     },
     {
       "ssot_id": "read-tracking-tech-spec",
@@ -853,7 +1406,23 @@
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
-      "last_drift_score": 0
+      "last_drift_score": 0,
+      "capability": {
+        "slug": "tracciamento-letture-mission",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "tracciamento-letture-mission",
+          "nearest_neighbor": "retrospective-tech-spec",
+          "responsibility_mine": "Il substrato EMPIRICO: tracciare gli accessi al filesystem durante una mission e produrre il read-log d'istanza — cattura dati, non decide ne propone.",
+          "delta_not_covered": "Il retrospective CONSUMA quei dati (confronto caricato-vs-usato alla chiusura) e produce la proposta; NON cattura le letture — senza questo substrato tornerebbe autopercezione dichiarativa (anti-pattern AP-MP-2).",
+          "falsifier": "Se il retrospective raccogliesse da se le proprie letture (tracking interno al passo di chiusura), il substrato separato collassa nel consumatore."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "M-OS3-048"
+      }
     },
     {
       "ssot_id": "retrospective-tech-spec",
@@ -875,7 +1444,23 @@
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
-      "last_drift_score": 0
+      "last_drift_score": 0,
+      "capability": {
+        "slug": "retrospettiva-bootstrap",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "retrospettiva-bootstrap",
+          "nearest_neighbor": "read-tracking-tech-spec",
+          "responsibility_mine": "Alla chiusura mission, confrontare i moduli caricati al bootstrap con quelli effettivamente consultati e produrre una PROPOSTA strutturata di aggiornamento del MISSION_BOOTSTRAP_INDEX (la decisione resta al CEO, AP-MP-3).",
+          "delta_not_covered": "Il read-tracking si ferma alla cattura del dato grezzo; NON confronta, NON conosce il bootstrap-index, NON propone — l'intelligenza del confronto e della proposta vive solo qui.",
+          "falsifier": "Se il motore mission derivasse la proposta direttamente dal read-log senza passo di retrospettiva (o il tracking incorporasse l'analisi), i due si fondono in un'unica capacita."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "M-OS3-048"
+      }
     },
     {
       "ssot_id": "doc-sync-v2-specifica-operativa",
@@ -897,7 +1482,21 @@
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
-      "last_drift_score": 0
+      "last_drift_score": 0,
+      "capability": {
+        "slug": "specifica-doc-sync-v2",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "specifica-doc-sync-v2",
+          "nearest_neighbor": "doc-sync-v2-piano-implementativo",
+          "responsibility_mine": "Definire COSA il closing hook semantico deve fare e COME si verifica che lo faccia: principio (allineamento = condizione di chiusura), anti-pattern vietati (il \"vaccino\" §2) e test di accettazione (la definizione di \"fatto\" §7) contro cui ogni piano viene respinto o accettato.",
+          "delta_not_covered": "Il piano implementativo porta le SCELTE architetturali (componenti, step dell'agent, interfacce); NON possiede i criteri con cui giudicarlo — la specifica cambia quando cambiano i requisiti, il piano quando cambia l'architettura (due ragioni-di-cambiare separate, SRP).",
+          "falsifier": "Se test di accettazione e anti-pattern migrassero nel piano rendendolo l'unico documento autoritativo, la specifica separata collassa. Attenzione: questo trio e la famiglia-positiva usata dall'ADR §6.5.1 per calibrare il rilevatore di doppioni — allo strato 1 sono SEMPRE candidati (stesso watch, coseno >0.92); la distinzione regge solo allo strato 2."
+        },
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "doc-sync-v2-piano-implementativo",
@@ -919,7 +1518,21 @@
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
-      "last_drift_score": 0
+      "last_drift_score": 0,
+      "capability": {
+        "slug": "piano-implementativo-doc-sync-v2",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "piano-implementativo-doc-sync-v2",
+          "nearest_neighbor": "doc-sync-v2-specifica-operativa",
+          "responsibility_mine": "L'architettura concreta che realizza la specifica: componenti (agent a 6 step, guard, CLI reindex, registry), interfacce esplicite tra Mission Engine, agent e DB, e le decisioni di design che i requisiti non impongono.",
+          "delta_not_covered": "La specifica dice cosa e come-si-verifica ma NON sceglie: la topologia dei componenti, gli step dell'agent, il batch-approval, il reindex bloccante sono scelte che potrebbero essere diverse a specifica invariata.",
+          "falsifier": "Se il piano si riducesse a ripetere i requisiti senza scelte architetturali proprie (o la specifica prescrivesse l'architettura), il delta si svuota → DOPPIONE. Stesso avviso del trio: candidato-doppione permanente allo strato 1, distinzione da riverificare dal critico periodico."
+        },
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "doc-sync-v2-stato-dellarte",
@@ -941,7 +1554,21 @@
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
-      "last_drift_score": 0
+      "last_drift_score": 0,
+      "capability": {
+        "slug": "stato-operativo-doc-sync-v2",
+        "state": "provvisoria",
+        "owner": "fabio",
+        "provisional_since": "2026-07-16",
+        "contrast": {
+          "capability": "stato-operativo-doc-sync-v2",
+          "nearest_neighbor": "doc-sync-v2-piano-implementativo",
+          "responsibility_mine": "La fotografia MISURATA della produzione: mappa componenti con stato reale (operativo / non schedulato), metriche di adozione, gap storici accettati dal CEO — cambia quando cambia lo stato operativo, non il design.",
+          "delta_not_covered": "Il piano descrive l'architettura COME PROGETTATA; NON registra cosa e davvero operativo, cosa non e schedulato (es. cron settimanale con crontab vuoto), ne le metriche di copertura reali.",
+          "falsifier": "Se il piano mantenesse per-componente lo stato operativo e le metriche (colonna \"stato\" viva), lo stato-dellarte collassa. E il piu debole del trio: la sua ragione-di-esistere e \"misurare, non progettare\", ma un report-di-stato rasenta la vista, non la capacita → candidato naturale a SCALA/CEO."
+        },
+        "ruolo": "paradigma"
+      }
     },
     {
       "ssot_id": "agent-deploy-runtime-model",
@@ -963,7 +1590,23 @@
       "last_verified_by": "doc_sync_v2",
       "verified_in_mission": "M-OS3-048",
       "verification_mode": "registry_only",
-      "last_drift_score": 0
+      "last_drift_score": 0,
+      "capability": {
+        "slug": "deploy-fonte-copia",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "deploy-fonte-copia",
+          "nearest_neighbor": "oracode-agent-skill",
+          "responsibility_mine": "Il canale dell'ARTEFATTO per tutto cio che si spedisce (agenti, hook, comandi-skill): fonte versionata single-source → copia operativa GENERATA, root risolti a runtime, regola di precedenza Personal>Project con la cicatrice documentata.",
+          "delta_not_covered": "L'agent-skill governa QUALE contenuto normativo gli agenti citano (verbatim dal CORE); NON copre il meccanismo di spedizione, la precedenza dei livelli Claude Code ne la risoluzione dei root — che valgono anche per artefatti senza dottrina (hook, comandi).",
+          "falsifier": "Se la disciplina single-source del normativo venisse estesa a ogni artefatto dentro agent-skill (o il deploy-model iniziasse a prescrivere contenuti), le due capacita anti-drift si fonderebbero."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-01",
+        "first_concluded_in": "M-OS3-048"
+      }
     },
     {
       "ssot_id": "know-how-transfer-protocol",
@@ -985,7 +1628,23 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "note": "Orfano rilevato da audit Nexus M-OS3-075: SSOT-legge (procedura normativa, dettaglio operativo del principio Trasferimento Know-How in CLAUDE_ORACODE_CORE) mai registrato."
+      "note": "Orfano rilevato da audit Nexus M-OS3-075: SSOT-legge (procedura normativa, dettaglio operativo del principio Trasferimento Know-How in CLAUDE_ORACODE_CORE) mai registrato.",
+      "capability": {
+        "slug": "promozione-know-how",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "promozione-know-how",
+          "nearest_neighbor": "pattern-anello-automiglioramento",
+          "responsibility_mine": "Classificare le lezioni (esperienza d'istanza vs know-how generico) e INSTRADARLE al vettore di prodotto giusto (CORE/SSOT/agente/skill/hook/engine), con procedura di promozione umano-guidata al gate di FASE 6 e anti-pattern espliciti.",
+          "delta_not_covered": "L'anello e il ciclo AUTO-INNESCATO errore→fix→ratifica (L9 Gamba B, trigger PUSH da UEM, barriera dura); NON copre il triage delle lezioni di sessione ne la tabella dei vettori di prodotto — qui l'innesco e umano e l'oggetto e il know-how, non l'errore.",
+          "falsifier": "Se l'anello ingerisse anche le lezioni di sessione e proponesse promozioni ai vettori di prodotto, il protocollo know-how ne diventerebbe un caso particolare e la distinzione (innesco umano vs auto-innesco) cadrebbe."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-04",
+        "first_concluded_in": "M-OS3-075"
+      }
     },
     {
       "ssot_id": "oracode-nexus-3-tier",
@@ -1008,7 +1667,23 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "note": "Orfano rilevato da audit Nexus M-OS3-075: SSOT-legge LOCKED (lettura obbligatoria pre-mission strutturale, trascrizione direttive CEO) mai registrato."
+      "note": "Orfano rilevato da audit Nexus M-OS3-075: SSOT-legge LOCKED (lettura obbligatoria pre-mission strutturale, trascrizione direttive CEO) mai registrato.",
+      "capability": {
+        "slug": "gerarchia-operativa-3-livelli",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "gerarchia-operativa-3-livelli",
+          "nearest_neighbor": "lso-nomenclature-v2",
+          "responsibility_mine": "La topologia OPERATIVA di deployment, LOCKED da direttive CEO trascritte: dove vivono motore, registri e numerazione (L1 motore visibile NON-registro / L2 primo vero MISSION_REGISTRY / L3 registry d'istanza) e il ponte automatico L1→L3.",
+          "delta_not_covered": "La nomenclatura definisce l'asse CONCETTUALE (i 4 livelli di astrazione, cosa si costruisce) e dichiara essa stessa i due assi ortogonali; NON stabilisce dove vive un MISSION_REGISTRY, chi numera, ne che L1 non e un registro.",
+          "falsifier": "Se la nomenclatura assorbisse la topologia dei registri e della numerazione (o il 3-tier iniziasse a definire i livelli concettuali), i due assi dichiarati ortogonali si fonderebbero in un solo documento di gerarchia."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-04",
+        "first_concluded_in": "M-OS3-075"
+      }
     },
     {
       "ssot_id": "tier0-clausole-immutabili",
@@ -1032,7 +1707,23 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "note": "W2 M-NEXUS-000 (FASE 0). Elenca le clausole che l'anello di auto-miglioramento NON puo modificare e dichiara per ciascuna l'enforcer reale ('immutabile PER COSTRUZIONE'). Gerarchia mutabilita Tier 0/1/2 (D8). DRAFT ratificato CEO 2026-06-16, da promuovere a STABLE in mission futura. Test anticorpo: tests/m-nexus-000/test_anello_ssot.sh."
+      "note": "W2 M-NEXUS-000 (FASE 0). Elenca le clausole che l'anello di auto-miglioramento NON puo modificare e dichiara per ciascuna l'enforcer reale ('immutabile PER COSTRUZIONE'). Gerarchia mutabilita Tier 0/1/2 (D8). DRAFT ratificato CEO 2026-06-16, da promuovere a STABLE in mission futura. Test anticorpo: tests/m-nexus-000/test_anello_ssot.sh.",
+      "capability": {
+        "slug": "denylist-tier0-anello",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "denylist-tier0-anello",
+          "nearest_neighbor": "osz-kernel",
+          "responsibility_mine": "La denylist costituzionale SCOPED ALL'ANELLO: elenca le clausole che l'auto-miglioramento non puo toccare e per CIASCUNA dichiara l'enforcer reale che la rende immutabile PER COSTRUZIONE (file fuori write-set, hook fail-closed), piu la gerarchia di mutabilita Tier 0/1/2.",
+          "delta_not_covered": "OSZ e il kernel di verita per l'INTERO sistema (bio-architettura, triade); NON mappa clausola→enforcer meccanico, NON distingue i tier di mutabilita, NON e scoped a cio che l'anello puo o non puo riscrivere.",
+          "falsifier": "Se OSZ annotasse per-clausola gli enforcer meccanici e i tier di mutabilita dell'anello, il Tier0 collasserebbe in una sua sezione; regge finche \"immutabile per costruzione\" (verificabile) resta distinto da \"verita assoluta\" (costituzionale)."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-17",
+        "first_concluded_in": "M-NEXUS-000"
+      }
     },
     {
       "ssot_id": "pattern-anello-automiglioramento",
@@ -1056,7 +1747,23 @@
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
-      "note": "W1 M-NEXUS-000 (FASE 0). Realizzazione concreta di L9 Gamba B (Autocorrezione operativa), attraversamento Soglia 2 (L8->L9). Due anelli annidati + barriera dura L8/L9 enforced-by-construction. Trigger PUSH UEM->Nexus. GATE Q6 anti-soppressione + Q7 anti-collapse. Referenzia il metodo-padre gated Fucina (SSOT_LOOP_PROTOCOL) senza duplicarlo. DRAFT ratificato CEO 2026-06-16. Vincolato dal Tier 0 (tier0-clausole-immutabili). Test anticorpo: tests/m-nexus-000/test_anello_ssot.sh."
+      "note": "W1 M-NEXUS-000 (FASE 0). Realizzazione concreta di L9 Gamba B (Autocorrezione operativa), attraversamento Soglia 2 (L8->L9). Due anelli annidati + barriera dura L8/L9 enforced-by-construction. Trigger PUSH UEM->Nexus. GATE Q6 anti-soppressione + Q7 anti-collapse. Referenzia il metodo-padre gated Fucina (SSOT_LOOP_PROTOCOL) senza duplicarlo. DRAFT ratificato CEO 2026-06-16. Vincolato dal Tier 0 (tier0-clausole-immutabili). Test anticorpo: tests/m-nexus-000/test_anello_ssot.sh.",
+      "capability": {
+        "slug": "anello-automiglioramento-l9",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "anello-automiglioramento-l9",
+          "nearest_neighbor": "retrospective-tech-spec",
+          "responsibility_mine": "Il pattern generale di L9 Gamba B: due anelli annidati separati dalla barriera dura L8/L9 enforced-by-construction, trigger PUSH da UEM verso il Nexus, agente che solo propone e ratifica umana su tutto (invariante #4).",
+          "delta_not_covered": "Il retrospective e un meccanismo empirico CIRCOSCRITTO (taratura del bootstrap-index, niente LLM, sotto la soglia L9 — il suo stub lo dichiara \"distinto da L9 Riflessione\"); NON copre la correzione operativa generale, la barriera dura ne il trigger da errore di produzione.",
+          "falsifier": "Se il retrospective venisse generalizzato a proporre correzioni gated su SSOT/artefatti arbitrari, diventerebbe un'istanza indistinguibile dell'anello (o verrebbe assorbito come suo caso interno) e la coppia collasserebbe."
+        },
+        "ruolo": "paradigma",
+        "first_concluded_at": "2026-06-17",
+        "first_concluded_in": "M-NEXUS-000"
+      }
     }
   ]
 }
