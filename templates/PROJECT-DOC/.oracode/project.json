@@ -4,10 +4,12 @@
     "version": "1.3.0",
     "created": "{{DATE}}",
     "egida_fields": "Difesa-by-default (Egida, CORE §Asse Difesa Costitutivo). /oracode-scaffold step 6b AGGIUNGE qui, per i progetti con Matrix (livello 2+), le chiavi: egida_gate (bool) ed egida_profile (\"L1\"|\"L2-L3\"|\"L3-L4\"). L'hook os3-matrix bin/egida-gate-check le legge al close di una mission type==release. Un livello 1 paradigm-only (senza Matrix) NON le riceve (flag assente = zero requisito).",
-    "doc_sync_v3_fields": "M-OS3-139: doc_sync_v3=true => al close (trigger>=2) la doc-sync usa l'engine deterministico (registro chirurgico, un-doc-per-riga), MAI la v2 a giudizio (causa incidente registro). doc_sync_v3_live=true => esegue anche il downstream (RAG reindex se mode=reindex + git commit dell'indice). ssot_home ASSENTE = self (mono-organo, il default di /project): il registro vive in questo repo. Un organo membro di LSO multi-organo mette ssot_home=<slug-hub> (promozione, non /project)."
+    "doc_sync_v3_fields": "M-OS3-139: doc_sync_v3=true => al close (trigger>=2) la doc-sync usa l'engine deterministico (registro chirurgico, un-doc-per-riga), MAI la v2 a giudizio (causa incidente registro). doc_sync_v3_live=true => esegue anche il downstream (RAG reindex se mode=reindex + git commit dell'indice). ssot_home ASSENTE = self (mono-organo, il default di /project): il registro vive in questo repo. Un organo membro di LSO multi-organo mette ssot_home=<slug-hub> (promozione, non /project).",
+    "role_field": "M-OS3-151: ruolo del repo nella gerarchia Oracode Nexus, per PAROLA (canone M-FUC-040). Enum canonico (contratto L7 os3-matrix/contracts/role-enum.json, sequenza = gerarchia): paradigma | os3-matrix | libreria-lso | organismo | organo | progetto. paradigma/os3-matrix riservati ai due tool-radice: un progetto nuovo non e MAI questi. bin/mission valida all'open (LOUD, non blocca) e mostra il ruolo in status. Asse DIVERSO dallo scope RAG (Q6b) e dal level (maturita)."
   },
   "project": "{{PROJECT_NAME}}",
   "level": {{ORACODE_LEVEL}},
+  "role": "{{ROLE}}",
   "instance_root": "{{INSTANCE_ROOT}}",
   "doc_sync_v3": true,
   "doc_sync_v3_live": true,

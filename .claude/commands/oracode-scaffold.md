@@ -41,6 +41,10 @@ Convenzione path (portabile, NO path assoluti baked): `$ORACODE_HOME` = radice d
    - `{{DATE}}` = data corrente
    - `{{PROJECT_NAME}}` = nome progetto
    - `{{ORACODE_LEVEL}}` = livello (numero)
+   - `{{ROLE}}` = ruolo nella gerarchia, dalla config (Q6c di `/oracode-configure`) — per PAROLA, uno di:
+     `libreria-lso | organismo | organo | progetto` (contratto L7 `os3-matrix/contracts/role-enum.json`;
+     `paradigma`/`os3-matrix` sono riservati ai tool-radice, mai a un progetto nuovo). `bin/mission` lo
+     valida all'open (avvisa LOUD se non canonico, non blocca) e lo mostra in `status`.
    - `{{INSTANCE_ROOT}}` = **path assoluto** della dir progetto creata (es. `<percorso-assoluto>/Cliente-DOC`)
    - **`ssot_home`** = casa dei documenti. **ASSENTE = sé** (mono/hub, default di /project). Un **Organo**
      (membro di un organismo multi-organo) mette `ssot_home` = nome-repo dell'hub — di norma via **promozione**
