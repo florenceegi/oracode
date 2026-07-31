@@ -1,4 +1,5 @@
 ---
+doc_type: spec
 visibility: public
 rag: public
 ---

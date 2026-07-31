@@ -1,7 +1,7 @@
 ---
 title: Roadmap di disaccoppiamento di Oracode
 slug: oracode-roadmap
-doc_type: roadmap
+doc_type: concept
 version: 1.1.0
 status: working_draft
 date: '2026-05-22'

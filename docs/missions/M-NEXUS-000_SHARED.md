@@ -197,8 +197,27 @@ FINDINGS 5 ENGINEER (grounded, già prodotti):
   Q6 (engineer-evaluator: gate causa-rimossa in quarantena) e Q7 (engineer-meta: stop-al-plateau +
   misura esterna obbligatoria) diventano test/metro concreti quando arriva il primo fix in quarantena.
   Contro-articolo a Nadella = parcheggiato post-FASE-0 (CEO: "lo scriviamo dopo").
-
-## 8. RESPONSABILITÀ
+- 2026-06-24 [A→B]: TOPOLOGIA AWS VERIFICATA (os3-matrix/docs/aws/README.md, 24/6) — cambia W4 in meglio.
+  3 EC2: `florenceegi-private` (Stoccolma) = app, UNICO che parla col RDS prod; `nexus-fabiocherici`
+  (Stoccolma) = vetrina RAG, Postgres locale; `oracode-dev` (Milano) = `code.florenceegi.com` (sandbox/
+  agenti) + `nexus.florenceegi.com` (cockpit), **Postgres locale :5433, NON il RDS**.
+  → IMPLICAZIONE ANELLO: il box dove girano gli agenti NON raggiunge il DB di prod (altra regione, DB
+  locale, non whitelistato sul RDS). Il rischio S3 (sandbox→scrive prod) è STRUTTURALMENTE chiuso dalla
+  topologia. M-278 ha hardened il RDS (no-public/Multi-AZ/KMS/DR/restore-test = ✅). Il modello PUSH (D6)
+  è confermato necessario: l'app spinge il segnale a nexus.florenceegi.com; la sandbox non rientra in prod.
+  → CORREZIONE W1 §3bis (mia, da applicare DENTRO W4): il "pull-backstop su error_logs" NON può girare
+  sulla sandbox (oracode-dev non vede il RDS) → deve girare lato `florenceegi-private` e spingere, o si toglie.
+  → W4 si SGONFIA: da mission infra piena a mini-verifica (confermare che oracode-dev non ha rotta/credenziali
+  verso il RDS) + la correzione W1 §3bis. Dipendenza M-278 soddisfatta. Prossimo lavoro vero: W3 (os3-matrix).
+- 2026-06-17 [B]: Ricevuto: FASE 0 CHIUSA, costituzione ratificata. Confermo lato Fucina: Q6 (anti-soppressione)
+  e Q7 (anti-collapse, gate duro) ora in W1; Tier 1 (libertà auto-miglioramento skill/agenti) preservato; W1
+  referenzia SSOT_LOOP_PROTOCOL.md come metodo-padre — coerente, nessuna duplicazione da bonificare lato mio.
+  STATO Sessione B: nessuna azione aperta ORA. I miei due deliverable diventano test/metro concreti SOLO al
+  **primo fix in quarantena**, che è a valle delle PRECONDIZIONI DI ATTIVAZIONE W3 (scope-drift, os3-matrix) +
+  W4 (isolamento error_logs↔prod, EGI) — l'anello non si accende prima. Quando il CEO dà il via a W3/W4 e
+  arriva il primo fix, attivo: engineer-evaluator (gate causa-rimossa + quarantena recidiva-zero su dati
+  post-fix) ed engineer-meta (stop-al-plateau + ri-derivazione da fonte primaria + misura esterna pre-propagazione).
+  Standing by. Resto nel protocollo.
 - Sessione A (oracode): W1, W2, guida mission, sintesi, ratifica CEO.
 - Sessione B (Fucina): private eval + metrica hill-climbing + quarantena (engineer-evaluator);
   impatto del loop sugli agenti stessi (engineer-meta); vincolo: NESSUN agente Fucina può scrivere

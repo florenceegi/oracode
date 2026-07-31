@@ -1,7 +1,7 @@
 ---
 title: Pattern Anello di Auto-Miglioramento
 slug: pattern-anello-automiglioramento
-doc_type: pattern
+doc_type: concept
 version: 1.0.0
 status: DRAFT
 date: '2026-06-17'

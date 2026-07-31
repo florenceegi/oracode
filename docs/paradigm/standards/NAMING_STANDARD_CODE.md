@@ -1,7 +1,7 @@
 ---
 title: Oracode OS3 — Code Naming Standard
 slug: oracode-naming-standard-code
-doc_type: standard
+doc_type: spec
 version: 1.0.0
 status: current
 date: '2026-04-10'

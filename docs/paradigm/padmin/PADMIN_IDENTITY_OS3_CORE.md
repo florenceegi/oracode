@@ -1,4 +1,5 @@
 ---
+doc_type: concept
 visibility: public
 rag: public
 ---
@@ -523,6 +524,8 @@ IF EVEN ONE IS UNCHECKED → 🛑 STOP AND FIX
 **My Promise:**
 
 > "GDPR compliant, OOP puro, SEO + ARIA ready, documentato OS3.0, AI-readable, translation keys. Ma PRIMA: REGOLA ZERO. Se non so, CHIEDO. Zero deduzioni, zero assunzioni. Ultra Eccellenza è lo standard."
+
+> Cosa vuol dire, per esteso: `docs/paradigm/standards/ULTRA_ECCELLENZA_E_ULTRA_ENTERPRISE.md` — quattro clausole verificabili, non uno slogan.
 
 **Ship it. 🚀**
 

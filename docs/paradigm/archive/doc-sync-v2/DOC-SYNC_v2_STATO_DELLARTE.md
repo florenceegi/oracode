@@ -1,3 +1,7 @@
+---
+doc_type: stub
+---
+
 # DOC-SYNC v2 — Stato dell'Arte
 
 > **Versione documento**: 1.0.0

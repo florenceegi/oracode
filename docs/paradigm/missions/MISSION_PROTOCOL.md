@@ -1,7 +1,7 @@
 ---
 title: Mission Protocol
 slug: mission-protocol
-doc_type: protocol
+doc_type: spec
 version: 4.2.0
 status: current
 date: '2026-05-27'

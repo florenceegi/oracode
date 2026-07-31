@@ -1,7 +1,7 @@
 ---
 title: LSO — Living Software Organism — Architettura del Layer Vivente
 slug: lso-living-software-organism
-doc_type: architecture
+doc_type: concept
 version: 4.0.0
 status: current
 date: '2026-03-27'

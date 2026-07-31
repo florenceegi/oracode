@@ -1,7 +1,7 @@
 ---
 title: Oracode Nexus — Definizione (SSOT di record)
 slug: oracode-nexus-ssot
-doc_type: concept-ssot
+doc_type: concept
 version: 1.0.0
 status: current
 date: '2026-06-01'

@@ -1,7 +1,7 @@
 ---
 title: Protocollo Trasferimento Know-How — Privato → Prodotto
 slug: know-how-transfer-protocol
-doc_type: protocol
+doc_type: concept
 status: current
 visibility: public
 rag: public

@@ -1,7 +1,7 @@
 ---
 title: Convenzione header SSOT — visibility + rag + mono-confine
 slug: ssot-header-convention
-doc_type: standard
+doc_type: spec
 version: 1.0.0
 date: '2026-06-01'
 visibility: public

@@ -1,7 +1,7 @@
 ---
 title: Oracode Nexus — Riferimento di Sistema (SSOT tecnico completo)
 slug: oracode-nexus-system-reference
-doc_type: architecture
+doc_type: concept
 version: 1.5.1
 status: current
 date: '2026-05-31'

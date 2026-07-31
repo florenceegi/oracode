@@ -1,7 +1,7 @@
 ---
 title: LSO Nomenclature INDEX
 slug: lso-nomenclature-index
-doc_type: index
+doc_type: concept
 version: 3.0.0
 status: current
 date: '2026-05-08'

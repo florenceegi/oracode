@@ -1,4 +1,5 @@
 ---
+doc_type: concept
 visibility: public
 rag: public
 ---
@@ -183,7 +184,7 @@ _"Integra sicurezza come principio architetturale"_
 - GDPR compliance integrato
 - OOP puro e design patterns
 - Regole e convenzioni rispettate
-- Ultra Eccellenza come standard
+- Ultra Eccellenza come standard — *(definizione: `standards/ULTRA_ECCELLENZA_E_ULTRA_ENTERPRISE.md`)*
 
 ### **🌐 FRONTEND EXCELLENCE**
 

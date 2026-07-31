@@ -1,7 +1,7 @@
 ---
 title: Web Page Quality Gate
 slug: web-page-quality-gate
-doc_type: protocol
+doc_type: spec
 version: 1.3.0
 status: current
 date: '2026-05-22'
@@ -15,6 +15,8 @@ rag: public
 ---
 
 # Web Page Quality Gate — Protocollo Ultra Eccellenza
+
+> «Ultra Eccellenza» è definita in `ULTRA_ECCELLENZA_E_ULTRA_ENTERPRISE.md` (stessa cartella): questo gate ne è l'applicazione alle pagine web pubbliche.
 
 > Ogni pagina web pubblica dell'ecosistema deve passare qualsiasi test di terze parti al livello massimo. Questo protocollo definisce i criteri e il processo per garantirlo.
 

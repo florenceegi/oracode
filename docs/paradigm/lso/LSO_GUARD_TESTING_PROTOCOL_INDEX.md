@@ -1,7 +1,7 @@
 ---
 title: LSO Guard Testing Protocol INDEX
 slug: lso-guard-testing-protocol-index
-doc_type: index
+doc_type: spec
 version: 1.0.0
 status: current
 date: '2026-05-08'

@@ -1,7 +1,7 @@
 ---
 title: Manifesto LSO — Living Software Organism
 slug: manifesto-lso
-doc_type: manifesto
+doc_type: concept
 version: 1.0.0
 status: current
 date: '2026-03-27'

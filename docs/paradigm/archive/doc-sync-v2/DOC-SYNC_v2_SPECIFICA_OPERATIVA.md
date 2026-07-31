@@ -1,3 +1,7 @@
+---
+doc_type: stub
+---
+
 # DOC-SYNC v2 — Specifica Operativa
 
 > **Versione**: 2.1.0

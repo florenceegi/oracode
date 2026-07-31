@@ -1,4 +1,5 @@
 ---
+doc_type: concept
 visibility: public
 rag: public
 ---
@@ -177,7 +178,7 @@ $this->userService->updateUserProfile($user, $data);
 
 - GDPR compliance integrato
 - OOP puro e design patterns
-- Ultra Eccellenza come standard
+- Ultra Eccellenza come standard — *(definizione: `standards/ULTRA_ECCELLENZA_E_ULTRA_ENTERPRISE.md`)*
 
 **Frontend Excellence:**
 

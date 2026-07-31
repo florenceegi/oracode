@@ -1,7 +1,7 @@
 ---
 title: Tier 0 — Clausole Immutabili
 slug: tier0-clausole-immutabili
-doc_type: kernel
+doc_type: concept
 version: 1.0.0
 status: DRAFT
 date: '2026-06-17'
@@ -86,10 +86,36 @@ Ogni voce è cablata OGGI a un enforcer fail-closed:
 
 ## 5. Manutenzione
 
-- Una voce del Tier 0 si **aggiunge o rimuove solo via ratifica CEO**, mai per auto-modifica
-  dell'anello (coerente con §3 e invariante #6).
-- Il file di questo SSOT vive **fuori dal write-access** dell'agente dell'anello: anche se l'anello
-  proponesse una modifica, il merge è atto umano.
+Il Tier 0 ha DUE classi (M-OS3-148). La manutenzione differisce per classe, ma in nessun caso è
+auto-modifica dell'anello.
+
+### 5.1 — L'ELENCO e la classe DURA (invariato — meta-livello)
+
+- L'**elenco** del Tier 0 (COSA è protetto: il deny-set, i namespace `~/.os3-policy/*` e
+  `~/.os3-approvals/*`, e questo file che l'elenco lo definisce) si **aggiunge o rimuove SOLO via
+  ratifica CEO, mai per auto-modifica dell'anello** (coerente con §3 e invariante #6).
+- La classe **DURA** — `~/.os3-policy/*`, `~/.os3-approvals/*`, l'intero kernel
+  (`docs/paradigm/kernel/*`: il kernel OSZ e questo file W2) — è **nega-sempre, anche con un TOTP
+  valido**: il merge è **atto umano**, mai via anello. Stesso principio del muro §7 (M-OS3-128).
+
+### 5.2 — Il CONTENUTO dei documenti di classe PORTA (nuovo — M-OS3-148)
+
+- Il **contenuto** dei documenti Tier-0 di classe **PORTA** (i costituzionali che il CEO fa
+  legittimamente evolvere: `PATTERN_ANELLO`, `LSO_NOMENCLATURE_v2`/`INDEX`, `PADMIN_INDEX`,
+  `M-OS3-121_RECINTO_PREVENTIVO_DESIGN`) può essere aggiornato tramite una **ratifica del CEO
+  verificata meccanicamente**: (a) un **codice TOTP** che solo il CEO possiede (fattore di possesso,
+  anti-replay) **E** (b) l'**approvazione interattiva** della chiamata in **modalità permessi
+  non-auto** (l'occhio umano sulla scrittura reale). L'anello è la penna, il CEO è l'autore.
+- **"Via anello" (§3) si intende: SENZA ratifica del CEO verificata meccanicamente.** Una scrittura
+  autorizzata da (a)+(b) NON è auto-modifica dell'anello — rispetta la sostanza di §3/§5.
+- **Un codice = una scrittura = un documento.** Nessun batch. La challenge mostra il target esatto.
+- **Enforcer reale (fail-closed):** `fence-policy.sh` v2 (`fence_tier0_class` dura|porta +
+  `fence_tier0_door`), i due chokepoint (`mission-state-guard.sh`, `fence-bash-guard.sh`),
+  `os3-totp-grant`. In qualunque degrado (lib/deny-set/hardcore/stato TOTP/campo modalità assenti o
+  ignoti) → tutto classe **dura** → deny. Il rollback è sempre nella direzione della chiusura.
+- La Porta **non scavalca il Mission Protocol**: vale solo con mission in focus e stato `executing`
+  (invariante #2, L1 non bypassabile). Nessuna scrittura Tier-0 "a freddo".
+
 
 ## 6. Stato di enforcement (onesto, no over-claim)
 

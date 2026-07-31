@@ -1,3 +1,7 @@
+---
+doc_type: stub
+---
+
 # DOC-SYNC v2 — Piano Implementativo Supervisor
 
 > **Versione**: 2.1.0

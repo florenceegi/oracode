@@ -1,7 +1,7 @@
 ---
 title: Oracode Nexus — Executive Summary
 slug: oracode-nexus-executive-summary
-doc_type: overview
+doc_type: concept
 version: 1.0.0
 status: current
 date: '2026-06-01'

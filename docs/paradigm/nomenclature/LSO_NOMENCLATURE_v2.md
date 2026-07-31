@@ -1,4 +1,5 @@
 ---
+doc_type: concept
 visibility: public
 rag: public
 ---
