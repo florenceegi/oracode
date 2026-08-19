@@ -37,6 +37,30 @@ Regole:
 - Dove possibile, offri opzioni (non domande aperte)
 - Ordina per importanza (le lacune che impattano di piu la stima prima)
 
+**1.1bis Domanda SEMPRE presente: il rischio (M-OS3-194, `rischio-si-raccoglie-parlando-col-cliente`)**
+
+Una domanda non dipende dalle lacune e va posta a ogni cliente, perche da lei dipende quanta
+difesa il progetto riceve alla nascita:
+
+> «Il software tratterà **denaro** (pagamenti, saldi, fatture), **dati personali** (anagrafiche,
+> documenti, contatti), o **blockchain** (token, NFT, firme on-chain)?»
+
+Registra la risposta nel `DISCOVERY_REPORT.json` come **fatto**, non come impressione:
+
+```json
+"rischio": { "denaro": true, "pii": true, "blockchain": false }
+```
+
+Perché qui e non dopo: la domanda esisteva solo alla Q8 di `/oracode-configure`, cioè a memoria di
+chi lancia il comando, e qui — dove si parla col cliente — non c'era. Se salta, il progetto nasce
+col profilo minore e perde **otto invarianti su quindici**; e un profilo più leggero non ha l'aria
+di un errore, quindi nessuno se ne accorge.
+
+Il profilo NON si sceglie a mano: lo deriva l'engine dal fatto raccolto —
+`os3-matrix/bin/egida-profilo-da-rischio <DISCOVERY_REPORT.json>`. Se il fatto manca, quel comando
+**rifiuta di scegliere** e dice di chiedere (REGOLA ZERO): un profilo dedotto è peggio di un
+profilo assente, perché sembra una decisione.
+
 Formato output: form numerato, pronto per essere letto al telefono o inviato.
 
 **1.2 Consegna a Fabio**
