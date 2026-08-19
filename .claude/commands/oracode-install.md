@@ -97,8 +97,25 @@ dopo. Quindi qui — **mentre il clone è ancora vivo** — copia gli starter ne
 
 `/oracode-scaffold` poi copierà lo starter del profilo scelto (`egida_profile`) → `<repo>/SECURITY_INVARIANTS.json`.
 Gli starter sono prodotti da os3-matrix (M-OS3-101), conformi a `FORTINO/SECURITY_INVARIANTS.schema.json`,
-cumulativi (L1 ⊂ L2-L3 ⊂ L3-L4), con target `<PLACEHOLDER>` generici. **NON** deployare `fortino-check`
-(vive in FORTINO; è un concern di runtime, fuori scope `/project` — G3).
+cumulativi (L1 ⊂ L2-L3 ⊂ L3-L4), con target `<PLACEHOLDER>` generici.
+
+> **Il verificatore si consegna col progetto (M-OS3-194, capacità `strumento-difesa-nasce-installato`).**
+> Fino al 2026-08-19 qui c'era scritto «**NON** deployare `fortino-check`: concern di runtime, fuori
+> scope `/project` (G3)». La conseguenza misurata: ogni progetto nasceva con le REGOLE della difesa e
+> senza CIÒ CHE LE VERIFICA, il banco marcava «saltato» e nessuno se ne accorgeva — sui 5 progetti che
+> avevano il file degli invarianti, la difesa non era mai stata eseguita una volta. Il confine si sposta:
+> consegnare lo strumento entra nel corredo di nascita. Non copiare a mano — l'operazione è deterministica
+> e testata (`os3-matrix/tests/M-OS3-194/test_strumento_difesa_nasce_installato.sh`):
+>
+> ```
+> <clone>/bin/egida-install-tooling <project-dir> --profile <egida_profile> \
+>     --matrix <clone> --fortino <FORTINO-dir>
+> ```
+>
+> Consegna in un colpo: i tre starter in `.oracode/etc/egida/`, il file vivo
+> `<repo>/SECURITY_INVARIANTS.json` del profilo, e il verificatore in
+> `.oracode/etc/egida/fortino/bin/fortino-check` — che `bin/collaudo` trova da solo, senza flag.
+> Senza `egida_profile` non consegna NULLA: la proporzionalità resta intatta.
 
 > Se Matrix NON è installato (livello 1 paradigm-only): salta questo step — niente tooling Egida, niente
 > `egida_gate` (l'hook enforcement tratta il flag assente come zero requisito: "dove ha senso").
