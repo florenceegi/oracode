@@ -117,6 +117,25 @@ cumulativi (L1 ⊂ L2-L3 ⊂ L3-L4), con target `<PLACEHOLDER>` generici.
 > `.oracode/etc/egida/fortino/bin/fortino-check` — che `bin/collaudo` trova da solo, senza flag.
 > Senza `egida_profile` non consegna NULLA: la proporzionalità resta intatta.
 
+**2.3.g — Genera i test di sicurezza già rossi (M-OS3-195, `test-sicurezza-nascono-rossi`)**
+
+Otto dei venti punti di sicurezza non si provano con un comando — chi vede quali record, quali
+campi si possono cambiare, cosa esce da un'API, cosa succede al decimo tentativo di accesso. Si
+provano con una richiesta vera contro un database vero, e **se non nascono col progetto non li
+scrive nessuno**:
+
+```
+<clone>/bin/egida-scaffold-test-sicurezza <project-dir> --stack laravel|express
+```
+
+Consegna sei scheletri contrassegnati `EGIDA-SCAFFOLD-TODO` in `tests/security/`, **fuori dal giro
+di test predefinito** (un organo nuovo deve poter fare il primo commit) e ognuno con due asserzioni:
+una di *sanità* (il caso lecito funziona) e una di *controllo* (il caso illecito è respinto). Un
+rosso che scatta perché la rotta non esiste ancora non prova niente.
+
+Il debito non si perde: `bin/collaudo` esegue questa suite e ne porta l'esito nel verdetto di
+difesa, e finché un contrassegno è nel file il progetto **non si dichiara difeso**.
+
 **2.3.f — Monta il corredo anti-segreti (M-OS3-194, capacità `scanner-segreti-nel-corredo-di-nascita`)**
 
 Un segreto non deve poter ENTRARE nella storia del repository, dal primo commit. Il gancio si monta
@@ -134,8 +153,14 @@ secondo esiste per l'incidente del 2026-07-31: una password personale in chiaro 
 mentre lo scanner dei formati diceva «no leaks found» a ogni commit.
 
 Non sovrascrive un `pre-commit` esistente (si innesta in testa, dopo lo shebang) ed è idempotente.
-A differenza della difesa Egida questo vale per **ogni** progetto, anche livello 1: un repository
-senza segreti dentro non è un lusso proporzionale al rischio.
+
+> **Il delta rispetto alla difesa Egida, detto con precisione**: il corredo anti-segreti **non
+> dipende dal profilo di rischio**. Egida senza `egida_profile` non consegna nulla — è
+> proporzionale per disegno; questo si monta comunque, perché un repository senza segreti dentro
+> non è un lusso da scalare sul rischio. Resta però soggetto al **prerequisito Matrix** come tutto
+> il resto di questo step: senza il clone, il comando non trova `hooks/nome-che-grida-segreto.sh`
+> ed esce con errore. Un livello 1 paradigm-only continua quindi a saltare l'intero step 2.3, come
+> dichiarato sotto — e in quel caso il gancio va montato a parte.
 
 > Se Matrix NON è installato (livello 1 paradigm-only): salta questo step — niente tooling Egida, niente
 > `egida_gate` (l'hook enforcement tratta il flag assente come zero requisito: "dove ha senso").
