@@ -117,6 +117,26 @@ cumulativi (L1 ⊂ L2-L3 ⊂ L3-L4), con target `<PLACEHOLDER>` generici.
 > `.oracode/etc/egida/fortino/bin/fortino-check` — che `bin/collaudo` trova da solo, senza flag.
 > Senza `egida_profile` non consegna NULLA: la proporzionalità resta intatta.
 
+**2.3.f — Monta il corredo anti-segreti (M-OS3-194, capacità `scanner-segreti-nel-corredo-di-nascita`)**
+
+Un segreto non deve poter ENTRARE nella storia del repository, dal primo commit. Il gancio si monta
+qui, col progetto, invece di dipendere da uno script lanciato a mano su una lista di repository
+scritta per macchina — è per quella lista che `os3-matrix`, il repository dei guardiani, era rimasto
+scoperto (misura del 2026-08-19: 14 repo su 15 coperti, e i tre mancanti erano fra i più delicati).
+
+```
+<clone>/bin/segreti-install-gate <project-dir> --matrix <clone>
+```
+
+Monta **due** rilevatori in un solo atto: il **formato riconoscibile** (chiavi, token, certificati) e
+il **nome che grida** — `pw.sh`, `askpass.sh`, la variabile `passphrase` con dentro un valore. Il
+secondo esiste per l'incidente del 2026-07-31: una password personale in chiaro per sette mesi,
+mentre lo scanner dei formati diceva «no leaks found» a ogni commit.
+
+Non sovrascrive un `pre-commit` esistente (si innesta in testa, dopo lo shebang) ed è idempotente.
+A differenza della difesa Egida questo vale per **ogni** progetto, anche livello 1: un repository
+senza segreti dentro non è un lusso proporzionale al rischio.
+
 > Se Matrix NON è installato (livello 1 paradigm-only): salta questo step — niente tooling Egida, niente
 > `egida_gate` (l'hook enforcement tratta il flag assente come zero requisito: "dove ha senso").
 

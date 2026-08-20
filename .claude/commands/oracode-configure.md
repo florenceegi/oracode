@@ -111,10 +111,25 @@ in proporzione al rischio. `/project` installa la difesa di default — qui si s
 (lo starter di invarianti). Determina `egida_profile` ∈ `{"L1","L2-L3","L3-L4"}` così
 (EGIDA_INSTALL_CONTRACT §6):
 
-- default dal livello: `1 → L1`, `2 → L2-L3`, `3 → L2-L3`, `4 → L2-L3`;
-- **upgrade a `L3-L4`** se l'organo tratta **denaro / PII / blockchain**. Questo segnale NON è deducibile
-  dal solo livello: chiedilo (o leggilo dal discovery). REGOLA ZERO — non assumere.
-  Domanda: "Questo organo tratta denaro, dati personali (PII) o blockchain?" (sì → `L3-L4`).
+Il profilo **NON si sceglie a mano e non si deduce**: lo deriva l'engine dal fatto raccolto col
+cliente (M-OS3-194, capacità `rischio-si-raccoglie-parlando-col-cliente`).
+
+```
+os3-matrix/bin/egida-profilo-da-rischio <DISCOVERY_REPORT.json>   # → L1 | L2-L3 | L3-L4
+```
+
+- **esce 0** → usa quel profilo, senza ri-chiedere nulla: il fatto è già stato raccolto al punto
+  1.1bis di `/discovery` e vive nel rapporto come `rischio: {denaro, pii, blockchain}`;
+- **esce 4** → il fatto manca, o tace su uno dei tre. Il comando **rifiuta di scegliere** e dice
+  quale manca: chiedilo al cliente e registralo nel rapporto, poi rilancia. Un profilo dedotto è
+  peggio di un profilo assente, perché sembra una decisione (REGOLA ZERO, qui meccanica e non prosa).
+
+Se non esiste alcun rapporto di discovery (progetto senza raccolta), poni tu la domanda —
+"Questo organo tratta denaro, dati personali (PII) o blockchain?" (sì → `L3-L4`) — e **scrivila**
+in un rapporto minimo, così la scelta resta verificabile da chi la leggerà dopo.
+
+La regola che il comando applica: uno solo dei tre vero → `L3-L4` a prescindere dalla maturità;
+nessuno dei tre → il profilo scende dal livello (`1 → L1`, `2/3/4 → L2-L3`).
 
 > **Prerequisito Matrix (G2).** Il tooling Egida (starter, `bin/collaudo`, `fortino-check`) vive in
 > os3-matrix/FORTINO → esiste solo con Matrix licenziato. Un **livello 1 paradigm-only (senza Matrix)**
