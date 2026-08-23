@@ -25,10 +25,10 @@ rag: public
 
 - **Status**: DRAFT (mission M-NEXUS-000, decisioni CEO ratificate 2026-06-16).
 - **Cosa operazionalizza**: questo pattern è la **realizzazione concreta di L9 — Riflessione,
-  Gamba B (Autocorrezione operativa)** (`docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md:699`).
+  Gamba B (Autocorrezione operativa)** (`docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md`).
   NON è L10 (riproduzione) né L11 (auto-governance costituzionale).
 - **Soglia**: realizza l'attraversamento della **Soglia 2** (L8→L9: da organismo reattivo a
-  riflessivo — `LSO_NOMENCLATURE_v2.md:672-677`), la soglia attuale del paradigma. Non la eccede.
+  riflessivo — `LSO_NOMENCLATURE_v3.md`), la soglia attuale del paradigma. Non la eccede.
 
 ## 1. Definizione
 
@@ -44,14 +44,14 @@ Precisazioni vincolanti (grounded):
   di istanza (L10) né modifica del genoma costituzionale (L11).
 - Con la ratifica del fondatore su OGNI azione (invariante #4), l'organismo che esegue questo
   anello è nello **Stato Riflessivo (L1-L10)** — vive, si pensa, si autocorregge, ma **dipende dal
-  fondatore** (`LSO_NOMENCLATURE_v2.md:683`). NON è Stato Stabile di Specie (L1-L11).
+  fondatore** (`LSO_NOMENCLATURE_v3.md`). NON è Stato Stabile di Specie (L1-L11).
 
 - **Ordine ratifica→propagazione**: la propagazione è PREPARATA come patch proposto (DOC-SYNC ESITO C); la scrittura nei SSOT avviene SOLO dopo la ratifica umana. Niente entra nel genoma prima della ratifica del fondatore (corregge l'ordine fuorviante del riassunto a freccette).
 
 ## 2. I due anelli annidati e la barriera dura (doppia linea L8/L9)
 
 L'anello esiste in due forme annidate, separate dalla **doppia linea tra L8 e L9** che divide i
-layer reattivi dai layer evolutivi (`LSO_NOMENCLATURE_v2.md:628`):
+layer reattivi dai layer evolutivi (`LSO_NOMENCLATURE_v3.md`):
 
 | | Anello INTERNO (reattivo) | Anello ESTERNO (evolutivo) |
 |---|---|---|
@@ -61,7 +61,7 @@ layer reattivi dai layer evolutivi (`LSO_NOMENCLATURE_v2.md:628`):
 | **Potere dell'agente** | fino a "**proponi**" (mai merge/push autonomo) | solo "**proponi**" — mai scrittura |
 | **Ratifica** | umana, su ogni esito (ESITO C → CEO) | umana, sempre (invariante #4) |
 
-> **Invariante portante #4** (`LSO_NOMENCLATURE_v2.md:712`): *"L9 non ha potere di azione diretta
+> **Invariante portante #4** (`LSO_NOMENCLATURE_v3.md`): *"L9 non ha potere di azione diretta
 > — può solo produrre interpretazione. Solo gli umani convertono interpretazione in azione."*
 > L'anello è progettato attorno a questo invariante: l'agente propone, l'umano ratifica TUTTO
 > (decisione CEO D2).
@@ -74,7 +74,7 @@ fisicamente** i file SSOT del paradigma e le clausole Tier 0. Una barriera che d
 buona condotta dell'agente non sarebbe una barriera dura. L'elenco di ciò che è fuori dal write-set
 e i suoi enforcer sono in `docs/paradigm/kernel/TIER0_CLAUSOLE_IMMUTABILI_v1.0.0.md` (W2). Fondamento:
 le asimmetrie di velocità/degradazione dell'LLM richiedono "hook fail-closed, non istruzioni
-interpretabili" (`LSO_NOMENCLATURE_v2.md:107`).
+interpretabili" (`LSO_NOMENCLATURE_v3.md`).
 
 ## 3. Trigger applicativo (PUSH, da UEM a Nexus)
 
@@ -121,7 +121,7 @@ L'agente si ferma OBBLIGATORIAMENTE in quattro punti:
 3. **Interpretazione → azione = ratifica umana** (invariante #4, `:712`): l'agente propone; il merge
    è atto umano.
 4. **Tensione con un contratto L7 → STOP**: vince il contratto, non il fix (invariante #3,
-   `LSO_NOMENCLATURE_v2.md:711`).
+   `LSO_NOMENCLATURE_v3.md`).
 
 ### GATE ANTI-SOPPRESSIONE (Q6) — NUOVO (decisione CEO D9)
 

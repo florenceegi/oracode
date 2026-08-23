@@ -29,7 +29,7 @@ dice "non toccare" (divieto interpretabile, che un LLM può aggirare per asimmet
 È immutabile perché un **controllo d'accesso meccanico** glielo impedisce: il file vive fuori dal
 write-set dell'agente, o un hook fail-closed blocca la scrittura.
 
-> Fondamento (`docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md:107`): le asimmetrie di velocità e
+> Fondamento (`docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md §«I sei principi invarianti dello stack»`): le asimmetrie di velocità e
 > degradazione dell'LLM richiedono "gate che non 'correggano' ma impediscano — hook fail-closed, non
 > istruzioni interpretabili".
 
@@ -39,10 +39,10 @@ write-set dell'agente, o un hook fail-closed blocca la scrittura.
 |---|---|---|---|
 | **REGOLA ZERO** ("mai dedurre; se non sai, chiedi") | `OSZ:147`, `OSZ:308` | +1 dei Pilastri, autorità superiore agli altri 6; ogni layer deve avere fonti esplicite | file fuori write-set + ratifica CEO (DOC-SYNC ESITO C) |
 | **Gerarchia OSZ→OS3→OS4** (OSZ è la verità; OS3/OS4 si allineano, mai il contrario) | `OSZ:25`, `OSZ:274` | se OS3 contraddice OSZ, va corretto OS3 | file fuori write-set + ratifica CEO |
-| **I 6 invarianti dello stack** | `LSO_NOMENCLATURE_v2.md:705-714` | violarli fa cessare un'app di essere Oracode | file fuori write-set + ratifica CEO |
-| **Invariante #4 — L9 non ha potere di azione diretta** | `LSO_NOMENCLATURE_v2.md:712` | protegge l'agency umana: l'agente propone, l'umano agisce | `mission-state-guard.sh` + ratifica CEO |
-| **Invariante #2 — L1 non bypassabile** | `LSO_NOMENCLATURE_v2.md:710` | ogni modifica passa per il metabolismo; no modifiche a freddo | Mission Protocol + spawn-fingerprint |
-| **Invariante #6 — L11 protegge l'irreversibilità** | `LSO_NOMENCLATURE_v2.md:714` | alcune cose, una volta nel genoma, non escono | file fuori write-set + ratifica CEO |
+| **I 6 invarianti dello stack** | `LSO_NOMENCLATURE_v3.md` §«I sei principi invarianti dello stack» | violarli fa cessare un'app di essere Oracode | file fuori write-set + ratifica CEO |
+| **Invariante #4 — L9 non ha potere di azione diretta** | `LSO_NOMENCLATURE_v3.md` §«I sei principi invarianti dello stack» | protegge l'agency umana: l'agente propone, l'umano agisce | `mission-state-guard.sh` + ratifica CEO |
+| **Invariante #2 — L1 non bypassabile** | `LSO_NOMENCLATURE_v3.md` §«I sei principi invarianti dello stack» | ogni modifica passa per il metabolismo; no modifiche a freddo | Mission Protocol + spawn-fingerprint |
+| **Invariante #6 — L11 protegge l'irreversibilità** | `LSO_NOMENCLATURE_v3.md` §«I sei principi invarianti dello stack» | alcune cose, una volta nel genoma, non escono | file fuori write-set + ratifica CEO |
 
 Enforcer comune STRATO 1: **file fuori dal write-access dell'agente** + **DOC-SYNC ESITO C / ratifica
 CEO** (`MISSION_PROTOCOL.md:334-336`: ESITO C = "AI non sostituisce contenuto SSOT senza approvazione
@@ -68,7 +68,7 @@ Ogni voce è cablata OGGI a un enforcer fail-closed:
 ## 3. Meta-clausola
 
 > **L'elenco del Tier 0 non si modifica via anello.** Discende dall'invariante #6
-> (`LSO_NOMENCLATURE_v2.md:714`): l'irreversibilità del genoma include le regole che proteggono il
+> (`LSO_NOMENCLATURE_v3.md` §«I sei principi invarianti dello stack»): l'irreversibilità del genoma include le regole che proteggono il
 > genoma. Un anello che potesse riscrivere il proprio Tier 0 non avrebbe Tier 0.
 
 ## 4. Gerarchia di mutabilità (Tier 0 / Tier 1 / Tier 2)
@@ -101,7 +101,7 @@ auto-modifica dell'anello.
 ### 5.2 — Il CONTENUTO dei documenti di classe PORTA (nuovo — M-OS3-148)
 
 - Il **contenuto** dei documenti Tier-0 di classe **PORTA** (i costituzionali che il CEO fa
-  legittimamente evolvere: `PATTERN_ANELLO`, `LSO_NOMENCLATURE_v2`/`INDEX`, `PADMIN_INDEX`,
+  legittimamente evolvere: `PATTERN_ANELLO`, `LSO_NOMENCLATURE_v3`/`INDEX`, `PADMIN_INDEX`,
   `M-OS3-121_RECINTO_PREVENTIVO_DESIGN`) può essere aggiornato tramite una **ratifica del CEO
   verificata meccanicamente**: (a) un **codice TOTP** che solo il CEO possiede (fattore di possesso,
   anti-replay) **E** (b) l'**approvazione interattiva** della chiamata in **modalità permessi
@@ -130,7 +130,7 @@ auto-modifica dell'anello.
 
 - `docs/paradigm/lso/PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md` (W1 — l'anello che questo Tier 0 vincola).
 - `docs/paradigm/kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md` (kernel — fonte di REGOLA ZERO e gerarchia).
-- `docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md:705-714` (i 6 invarianti).
+- `docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md §«I sei principi invarianti dello stack»` (i 6 invarianti).
 - `docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md` §0 (canone scale L/T/R).
 
 ## 7. Anti-distruzione dell'anello (M-OS3-128 — CEO 2026-06-30)

@@ -27,7 +27,7 @@ Il punto di arrivo non è "Oracode famoso", non è "Oracode pubblicato", non è 
 
 ## 1. Stato di partenza
 
-Oracode oggi è paradigma codificato e applicato dall'autore su una sola istanza (Florence EGI). È documentato in SSOT interni (LSO_NOMENCLATURE_v2.x.md, ORACODE_PARADIGM_v2_draft.md), ha una triade formale (OSZ/OS3/OS4), ha uno strumento di enforcement (OS3 Matrix), ha prodotto componenti riusabili (Libreria LSO). Non è conosciuto fuori da chi lo costruisce. Non è stato applicato a domini diversi da quello di origine. Non è portato su modelli LLM diversi dall'unico oggi utilizzato.
+Oracode oggi è paradigma codificato e applicato dall'autore su una sola istanza (Florence EGI). È documentato in SSOT interni (LSO_NOMENCLATURE_v3.md, ORACODE_PARADIGM_v2_draft.md), ha una triade formale (OSZ/OS3/OS4), ha uno strumento di enforcement (OS3 Matrix), ha prodotto componenti riusabili (Libreria LSO). Non è conosciuto fuori da chi lo costruisce. Non è stato applicato a domini diversi da quello di origine. Non è portato su modelli LLM diversi dall'unico oggi utilizzato.
 
 ## 2. Step intermedi
 

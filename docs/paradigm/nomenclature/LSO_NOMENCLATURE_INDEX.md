@@ -11,7 +11,7 @@ mission: M-OS3-144
 scope:
 - oracode
 priority: high
-source: docs/lso/LSO_NOMENCLATURE_v2.md
+source: docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md
 visibility: public
 rag: public
 ---
@@ -19,7 +19,7 @@ rag: public
 # LSO Nomenclature — INDEX
 
 > Vocabolario sintetico always-loaded al bootstrap mission.
-> Per approfondimenti: `docs/lso/LSO_NOMENCLATURE_v2.md` (on-demand).
+> Per approfondimenti: `docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md` (on-demand).
 
 ---
 
@@ -136,5 +136,5 @@ L9 diventa operativo **solo quando disaccoppiato dagli LLM esterni**. Auto-osser
 
 ---
 
-*Per dettaglio completo (componenti per livello, test di appartenenza, implicazioni commerciali): `docs/lso/LSO_NOMENCLATURE_v2.md` (on-demand)*
+*Per dettaglio completo (componenti per livello, test di appartenenza, implicazioni commerciali): `docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md` (on-demand)*
 *Ruoli operativi per parola: decisioni CEO 2026-07-08 e 2026-07-11, cablate da M-OS3-144.*
