@@ -1085,7 +1085,7 @@ Non oggi. Lo spin-off Oracode è una direzione strategica di medio-lungo periodo
 - FlorenceEGI in stato operativo solido (in produzione, già lo è)
 - Magicsoft 2.0 con almeno 2-3 commesse PMI completate (in costruzione)
 - Libreria LSO maturata con almeno 5-7 componenti consolidati e battle-tested in più progetti (parzialmente in essere, alcune in maturazione)
-
+- Sostenibilità economica dell'istanza (lo stato di cassa di una singola istanza, e le persone coinvolte, sono dati suoi: vivono nella sua memoria privata, non in un documento che viaggia)
 - Eventualmente, scout completato sulle Frontiere A e B (framework AI applicativi, framework coding agent enterprise) per capire posizionamento competitivo reale
 
 Quando questi prerequisiti convergono, lo spin-off diventa decisione operativa. Fino ad allora, è direzione mantenuta nel cassetto come opzione architetturale.
