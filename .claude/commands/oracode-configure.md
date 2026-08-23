@@ -84,7 +84,7 @@ produzione (cosa il repo è). Triage: *"È uno strumento interno della software 
 Se livello 3+ (LSO mono-organo o multi-organo) — SISTEMA CIRCOLATORIO completo richiesto:
 
 Conferma con CEO che il progetto sara setuppato con sistema circolatorio mono-organo
-completo (per §1.1.A LSO_NOMENCLATURE_v2: Mission Protocol + DOC-SYNC v2 + RAG + AI Helping):
+completo (per §1.1.A LSO_NOMENCLATURE_v3: Mission Protocol + DOC-SYNC v2 + RAG + AI Helping):
 
 - **Q7.1: Backend runtime per RAG**
   Chiedi: "Quale stack runtime puo ospitare RAG (PostgreSQL+pgvector / managed vector DB / nessuno)?"
@@ -96,7 +96,7 @@ completo (per §1.1.A LSO_NOMENCLATURE_v2: Mission Protocol + DOC-SYNC v2 + RAG 
 
 - **Q7.3: AI Helping conversazionale**
   Conferma intenzione di esporre RAG via interfaccia conversazionale (sidebar AI, chat).
-  Pattern documentato in `LSO_NOMENCLATURE_v2 §1.1.A`. Implementazione e mission separata
+  Pattern documentato in `LSO_NOMENCLATURE_v3 §1.1.A`. Implementazione e mission separata
   per istanze nuove (impl. di riferimento ancora in maturazione su FlorenceEGI).
 
 Se livello 4:

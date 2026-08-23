@@ -320,7 +320,7 @@ docs/paradigm/
 ├── execution/OS3/       6 modules — REGOLA ZERO, 6+1 Pillars, P0-P3, TOON format
 ├── education/           OS4 — human-side framework (TSM, RI, axioms)
 ├── lso/                 LSO Manifesto + Living Software Organism + Guard Testing Protocol
-├── nomenclature/        LSO_NOMENCLATURE_v2 (4 levels: paradigm/library/organism/FlorenceEGI)
+├── nomenclature/        LSO_NOMENCLATURE_v3 (4 levels: paradigm/library/organism/FlorenceEGI)
 ├── missions/            Mission Protocol v3.0.0
 ├── padmin/              Padmin AI identity (10 docs)
 ├── ssot/                Oracode System SSOT consolidated
@@ -333,7 +333,7 @@ docs/paradigm/
 
 Start with [`docs/paradigm/index/Oracode-Nexus-index.md`](docs/paradigm/index/Oracode-Nexus-index.md) for a navigable map. **Oracode Nexus** is the name of the complete system — the paradigm plus the 3-level hierarchy (L1 GLOBAL engine / L2 HUB / L3 INSTANCE) plus the HUB/instance ecosystem (see [`docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`](docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md)).
 
-Para enforcement runtime (hooks, agents, mission CLI) → see commercial repo [`florenceegi/os3-matrix`](https://github.com/florenceegi/os3-matrix) (OS3 Matrix, §1.1.B of LSO_NOMENCLATURE_v2).
+Para enforcement runtime (hooks, agents, mission CLI) → see commercial repo [`florenceegi/os3-matrix`](https://github.com/florenceegi/os3-matrix) (OS3 Matrix, §1.1.B of LSO_NOMENCLATURE_v3).
 
 ---
 

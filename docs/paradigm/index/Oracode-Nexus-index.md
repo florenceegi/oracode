@@ -112,7 +112,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Versione/data**: v1.0.0 — 2026-06-17 — Padmin D. Curtis for Fabio Cherici
 - **Sintesi**: Denylist costituzionale dell'Anello di Auto-Miglioramento. Elenca le clausole che l'anello NON può modificare e per ciascuna dichiara l'**enforcer reale**. Principio cardine: **"immutabile PER COSTRUZIONE"** — non un divieto interpretabile ("non toccare") ma un **controllo d'accesso meccanico** (file fuori dal write-set dell'agente o hook fail-closed). STRATO 1 costituzionale (REGOLA ZERO, gerarchia OSZ→OS3→OS4, 6 invarianti, #4 agency umana, #6 irreversibilità). STRATO 2 operativo (6 azioni vietate → enforcer reali: safety-classifier, mission-state-guard, registry-guard, rm-guard). **Gerarchia mutabilità Tier 0/1/2 (D8)**: meta-regole=Tier 0 (solo ratifica CEO); contenuto skill/agenti=Tier 1 (evolvibile sotto gate); artefatti operativi=Tier 2. Identità PADMIN = Tier 0. Stato enforcement onesto (no over-claim): STRATO 2 già reale fail-closed, STRATO 1 da cablare (oggi: ratifica umana + esclusione write-set).
 - **Sezioni chiave**: §0 immutabile-per-costruzione | §1 STRATO 1 costituzionale | §2 STRATO 2 operativo | §3 meta-clausola | §4 gerarchia Tier 0/1/2 | §6 stato enforcement
-- **Cross-ref**: vincola `PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md` (W1) | fonti `00_OSZ`, `LSO_NOMENCLATURE_v2.md:705-714`, `LSO_NOMENCLATURE_INDEX.md §0`
+- **Cross-ref**: vincola `PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md` (W1) | fonti `00_OSZ`, `LSO_NOMENCLATURE_v3.md:705-714`, `LSO_NOMENCLATURE_INDEX.md §0`
 
 ### `PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md` — NUOVO (W1, M-NEXUS-000)
 - **Path**: `/home/fabio/oracode/docs/paradigm/lso/PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md`
@@ -126,8 +126,8 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 
 ## TIER 1B — Nomenclatura e vocabolario
 
-### `LSO_NOMENCLATURE_v2.md` — DOCUMENTO CENTRALE
-- **Path**: `/home/fabio/oracode/docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md`
+### `LSO_NOMENCLATURE_v3.md` — DOCUMENTO CENTRALE
+- **Path**: `/home/fabio/oracode/docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md`
 - **Status**: ✅ (letto integrale, 1270 righe)
 - **Versione/data**: v2.1.0 — 2026-05-22 (Working Draft, evoluzione continua)
 - **Sintesi**: **IL** documento architetturale di Oracode Nexus. Separa formalmente **4 livelli concettuali** (mai mescolare):
@@ -161,7 +161,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
   - §5 Domande aperte (5.1.1 Egili Bible spin-off | 5.1.2 4 livelli esaustivi | 5.1.3 LSO-pieno/ridotto commerciale | **5.2.1 P0-13 storia** | **5.2.2 Ls Audit pattern ricorrente** | 5.2.3 co-creazione mission | 5.2.4 3 Frontiere A/B/C non verificate)
 
 - **CONVERGENZE CRITICHE per M-OS3-021**:
-  1. **§3.1.A.12 nota Mission Engine dual-tracking** — ⚠ AGGIORNATO: il testo §3.1.A.12 descrive la sync come "manuale oggi, automatica via `.oracode/project.json` domani". Quel "domani" è **ARRIVATO**: il ponte automatico L1→L3 è implementato (M-OS3-025 U3, `bin/mission` propaga via `.oracode/project.json`, parallel-safe). La sync NON è più manuale. La nota in `LSO_NOMENCLATURE_v2.md` va riallineata.
+  1. **§3.1.A.12 nota Mission Engine dual-tracking** — ⚠ AGGIORNATO: il testo §3.1.A.12 descrive la sync come "manuale oggi, automatica via `.oracode/project.json` domani". Quel "domani" è **ARRIVATO**: il ponte automatico L1→L3 è implementato (M-OS3-025 U3, `bin/mission` propaga via `.oracode/project.json`, parallel-safe). La sync NON è più manuale. La nota in `LSO_NOMENCLATURE_v3.md` va riallineata.
   2. **§3.3.7 Maturity Matrix verificata** (audit M-LS-AUDIT-001 del 7 mag 2026): Solo L4 PRODUCTION (Claude Code scope), L1-L3 e L5-L8 PARTIAL, L9 DESIGN, L10 CONCEPT, L11 VISION. 3 gap critici: L6 Testing (zero CI gate), L3 Detection (no notification dispatcher), L5 UEM (no pattern recognition adattivo).
   3. **Modello commerciale formalizzato** (§1.1.B + §4.1): Oracode-paradigma MIT pubblico, OS3 Matrix commerciale Florence EGI S.R.L. Distinzione MIT/commerciale **decisione del 22 maggio 2026**.
   4. **Co-creazione riposizionata** (§3.3.3 decisione 6 mag 2026): da principio fondativo a opzione discrezionale creator. Mission implementazione da definire.
@@ -173,7 +173,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 ### `LSO_NOMENCLATURE_INDEX.md`
 - **Path**: `/home/fabio/oracode/docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md`
 - **Status**: ✅ (letto integrale, 81 righe)
-- **Versione/data**: v2.0.0 — aggiornato 2026-05-22 — source di `LSO_NOMENCLATURE_v2.md`
+- **Versione/data**: v2.0.0 — aggiornato 2026-05-22 — source di `LSO_NOMENCLATURE_v3.md`
 - **Sintesi**: **Vocabolario sintetico always-loaded.** 4 livelli: (1) Oracode paradigma universale / (2) Libreria LSO componenti estratti / (3) Organismo metafora architetturale / (4) FlorenceEGI prima istanza-laboratorio. Regola stratificazione: mai mescolare livelli. **Layer Stack L0-L11** completo con maturity FlorenceEGI (L4 PRODUCTION sola). 3 soglie qualitative: L0→L1, L8→L9 (metacognizione, soglia attuale), L10→L11. **Vincolo L9**: operativo SOLO se disaccoppiato da LLM esterni. 6 principi invarianti dello stack.
 - **Sezioni chiave**: §1 4 livelli | §2 Layer Stack tabella | §3 Vincolo L9 | §4 6 principi invarianti
 
@@ -181,7 +181,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 - **Path**: `/home/fabio/oracode/docs/paradigm/nomenclature/proposals/M-NOMENCL-OSMX-002_DELTA.md`
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v2 — 2026-05-22 — IN ATTESA APPROVAZIONE CEO
-- **Sintesi**: Distinzione formale Oracode-paradigma (§1.1.A) vs OS3 Matrix (§1.1.B). 35 componenti mappati. Test coerenza (sw eseguibile + piano OS3 + scopo enforcement + se rimosso paradigma integro). 12 punti di modifica al LSO_NOMENCLATURE_v2.md.
+- **Sintesi**: Distinzione formale Oracode-paradigma (§1.1.A) vs OS3 Matrix (§1.1.B). 35 componenti mappati. Test coerenza (sw eseguibile + piano OS3 + scopo enforcement + se rimosso paradigma integro). 12 punti di modifica al LSO_NOMENCLATURE_v3.md.
 - **Sezioni chiave**: §a Mappatura 35 componenti | §b Nuova struttura §1.1 | §c Nuova struttura §3.1 | §d 12 punti modifica | §e Test coerenza | §f Nota OS4/OSZ
 
 ---
@@ -500,7 +500,7 @@ mission, backlog, timing/handoff di sessione) sono **privati** — inventario ne
 7. Executors RAG/coverage nell'enforcement privato (OS3 Matrix); `rag_natan_coverage.py` citato in COVERAGE_CONFIG = nome legacy istanza FlorenceEGI. Path: SSOT privato `oracode-nexus-index-impl`
 
 ### Nomenclatura / 4 Livelli
-1. `LSO_NOMENCLATURE_v2.md` (canonical integrale)
+1. `LSO_NOMENCLATURE_v3.md` (canonical integrale)
 2. `LSO_NOMENCLATURE_INDEX.md` (sintesi sempre disponibile)
 3. `proposals/M-NOMENCL-OSMX-002_DELTA.md` (proposta distinzione §1.1.A/B paradigma vs matrix — in attesa CEO approval)
 4. `00_LSO_LIVING_SOFTWARE_ORGANISM.md` + `MANIFESTO_LSO.md`
@@ -542,7 +542,7 @@ Aggiungere:
 ## TODO Padmin (auto-update progressivo durante lettura)
 
 - [ ] Leggere TIER 1A (4 doc kernel/paradigma)
-- [ ] Leggere TIER 1B (LSO_NOMENCLATURE_v2 1270 righe + INDEX)
+- [ ] Leggere TIER 1B (LSO_NOMENCLATURE_v3 1270 righe + INDEX)
 - [ ] Leggere TIER 1D (DOC-SYNC v2 3 doc, 1710 righe tot)
 - [ ] Leggere TIER 1E (PADMIN_ONBOARDING + PADMIN_AI_IDENTITY + LEGACY_STACK_POLICY)
 - [ ] Leggere TIER 2 (LSO_GUARD_TESTING_PROTOCOL)
