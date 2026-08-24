@@ -28,8 +28,29 @@ NON riceve ciò che hai imparato. È spreco di Circolarità Virtuosa (Pilastro 4
 | dove vive | **memoria privata** (non spedisce) | **vettore di prodotto** (spedisce) |
 | chi lo usa | solo questa istanza | chiunque acquista Oracode Nexus |
 
-Domanda-guida: *"questa lezione è vera solo per noi, o sarebbe utile a QUALSIASI istanza Oracode?"*. Se è
-universale → è prodotto, va promossa.
+Le domande-guida sono **due**, e vanno superate entrambe.
+
+**Prima — universalità:** *«questa lezione è vera solo per noi, o sarebbe utile a QUALSIASI istanza
+Oracode?»*. Se è universale, il primo cancello è passato.
+
+**Seconda — esposizione:** *«se il repository che la contiene fosse pubblico domani, questa riga
+farebbe danno?»*. Vale per **tutti e sette** i vettori, non solo per quello nuovo, e si applica anche
+quando la prima domanda ha già detto sì.
+
+Solo con due sì la lezione si promuove.
+
+> **Perché la seconda domanda esiste.** Fino al 24 agosto 2026 il criterio ne aveva una sola, e per
+> questo non ha fermato niente: nel paradigma pubblico erano finiti lo stato di cassa di una società,
+> il nome di una persona accanto a un danno, il giudizio sull'operato di un'altra, e un elenco che
+> mandava a leggere i documenti interni di quell'azienda. Nessuna di quelle righe sarebbe stata
+> respinta dalla domanda sull'universalità: uno stato commerciale *sembra* un esempio utile a
+> chiunque. È la seconda domanda che le ferma.
+>
+> **Il segnale d'allarme è il FATTO, non il nome.** Il nome di un'istanza usato come esempio
+> didattico è legittimo, e il paradigma lo fa in centinaia di righe. È il fatto che non passa: uno
+> stato commerciale, una cifra, un giudizio su una persona, un evento con la sua data, un rimando
+> allo stato interno. Il nome in un titolo non dice niente a chi legge fra un anno; un rimando che
+> manda a leggere lo stato di quell'azienda dice tutto, e continua a dirlo.
 
 ## I vettori di prodotto (dove promuovere, e perché lì)
 
@@ -41,6 +62,7 @@ universale → è prodotto, va promossa.
 | **Skill / comando** | operazione **invocabile** dall'utente | `/comando`; spedito dalla fonte versionata via deploy |
 | **Hook** | enforcement automatico legato a un **evento** (pre-commit, pre-push, close) | blocca/avvisa senza intervento |
 | **Engine** (`bin/…`) | tooling deterministico riusabile | comando CLI riproducibile |
+| **File del ruolo** (`docs/paradigm/cto/CTO_COMPETENZE.md`) | know-how su **come si sta nel ruolo**: come si lavora bene con un CEO, come si scrive perché decida bene, quando un controllo non è un controllo. Non «come si fa X», ma «come si sta» | arriva col prodotto **già pieno** e viene letto all'apertura di ogni sessione; ogni istanza lo fa crescere nel tempo, e la sua personalizzazione — che porta lo stesso nome — vive fuori dal prodotto e non viaggia |
 
 Regola di parsimonia: il CORE resta **snello** — il principio nel CORE, il dettaglio nell'SSOT (un solo punto di
 verità sul dettaglio). Non gonfiare il CORE con procedure.
