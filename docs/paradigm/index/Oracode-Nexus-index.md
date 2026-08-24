@@ -260,7 +260,7 @@ Legenda: ✅ letto integrale | 🟡 letto parziale | ❌ non letto | 🗂️ ski
 ## TIER 1E — Identità AI + Standard codice
 
 ### `PADMIN_INDEX.md`
-- **Path**: `/home/fabio/oracode/docs/paradigm/padmin/PADMIN_INDEX.md`
+- **Path**: `/home/fabio/oracode/docs/paradigm/cto/CTO_INDEX.md`
 - **Status**: ✅ (letto integrale)
 - **Versione/data**: v1.1.0 — 2026-05-27 (M-OS3-016 step 10.a aggiunta § 5bis multi-write)
 - **Sintesi**: Briefing executive Padmin. 2 forme operative (Supervisor VSCode + Watchdog claude.ai). Pattern 10 step mission strutturali. REGOLA ZERO + 4 estensioni. Top 5 anti-pattern. § 5bis Multi-write concurrency v0.3.

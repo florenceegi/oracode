@@ -8,7 +8,7 @@
     "id_prefix": "M-NEXUS"
   },
   "always_loaded": [
-    "docs/paradigm/padmin/PADMIN_INDEX.md",
+    "docs/paradigm/cto/CTO_INDEX.md",
     "docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md",
     "docs/paradigm/missions/MISSION_PROTOCOL.md"
   ],
