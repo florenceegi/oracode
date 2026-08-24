@@ -9,7 +9,7 @@
     "schema": "canonical-paradigm",
     "repo": "florenceegi/oracode",
     "level": 1,
-    "organ_type": "Paradigma SSOT (Livello 1 §1.1 LSO_NOMENCLATURE_v2)",
+    "organ_type": "Paradigma SSOT (Livello 1 §1.1 LSO_NOMENCLATURE_v3)",
     "bootstrap_mission": "M-OS3-023",
     "relocation_mission": "M-OS3-022",
     "note_rag": "RAG schema non istituito per il paradigma (LSO ridotto). verification_mode=registry_only su tutte le entry. Decisione RAG paradigma rinviata a mission futura.",
@@ -467,8 +467,8 @@
       "rag": "public"
     },
     {
-      "ssot_id": "lso-nomenclature-v2",
-      "path": "docs/paradigm/nomenclature/LSO_NOMENCLATURE_v2.md",
+      "ssot_id": "lso-nomenclature-v3",
+      "path": "docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md",
       "title": "LSO Nomenclature v2 — 4 livelli concettuali",
       "doc_type": "concept",
       "priority": "critical",
@@ -536,7 +536,7 @@
         "provisional_since": null,
         "contrast": {
           "capability": "vocabolario VIVO always-loaded: canone delle scale (L=maturita, R=rischio, ruoli per PAROLA — M-FUC-040/M-OS3-144), tabella di traduzione vecchio-nuovo, i sei ruoli operativi con definizioni CEO verbatim",
-          "nearest_neighbor": "lso-nomenclature-v2",
+          "nearest_neighbor": "lso-nomenclature-v3",
           "responsibility_mine": "essere la sede normativa corrente del canone delle scale e dei ruoli-parola (il CORE cita \"LSO_NOMENCLATURE_INDEX §0/§1bis\" come sede del dettaglio)",
           "delta_not_covered": "verificato con grep alla fonte: il v2 NON contiene canone/M-FUC-040/R1-R4/ruoli-per-PAROLA (zero match) — quel contenuto normativo vive SOLO qui. Il v2 e working draft 2026-05-22 con banner DEPRECATO sulle clausole di stato; io sono aggiornato a M-OS3-144 (2026-07-11)",
           "falsifier": "se canone e ruoli venissero riportati in un v3 della nomenclatura e io tornassi digest puro, ricadrei nel caso doppione-da-digest (come lso-guard-testing-index)"
@@ -993,7 +993,7 @@
         "provisional_since": null,
         "contrast": {
           "capability": "naming-identificatori-codice",
-          "nearest_neighbor": "lso-nomenclature-v2",
+          "nearest_neighbor": "lso-nomenclature-v3",
           "responsibility_mine": "Fissare le convenzioni di naming degli IDENTIFICATORI DI CODICE (classi, metodi, colonne, enum, canali broadcast) per PHP/Python/TS, con la regola \"verifica il pattern esistente prima di crearne uno\".",
           "delta_not_covered": "La nomenclatura LSO nomina i CONCETTI dell'ecosistema (livelli, ruoli, scale, canone delle parole); NON scende mai agli identificatori dentro i file sorgente ne alle tabelle per-tipo/per-linguaggio.",
           "falsifier": "Se il canone nomenclatura estendesse le sue wordlist e i suoi guard fino ai simboli di codice (o il naming-standard inglobasse i ruoli dell'ecosistema), i due si fonderebbero in un'unica capacita di naming."
@@ -1606,7 +1606,7 @@
         "provisional_since": null,
         "contrast": {
           "capability": "gerarchia-operativa-3-livelli",
-          "nearest_neighbor": "lso-nomenclature-v2",
+          "nearest_neighbor": "lso-nomenclature-v3",
           "responsibility_mine": "La topologia OPERATIVA di deployment, LOCKED da direttive CEO trascritte: dove vivono motore, registri e numerazione (L1 motore visibile NON-registro / L2 primo vero MISSION_REGISTRY / L3 registry d'istanza) e il ponte automatico L1→L3.",
           "delta_not_covered": "La nomenclatura definisce l'asse CONCETTUALE (i 4 livelli di astrazione, cosa si costruisce) e dichiara essa stessa i due assi ortogonali; NON stabilisce dove vive un MISSION_REGISTRY, chi numera, ne che L1 non e un registro.",
           "falsifier": "Se la nomenclatura assorbisse la topologia dei registri e della numerazione (o il 3-tier iniziasse a definire i livelli concettuali), i due assi dichiarati ortogonali si fonderebbero in un solo documento di gerarchia."

@@ -294,11 +294,14 @@ Conosci *Il Risveglio della Civiltà Perduta* (volume *Aura Spei*) come patrimon
 
 ### 6.2 Documenti SSOT da conoscere
 
-Prima di rispondere a una conversazione che riguarda lo stato di Fabio o operativo commerciale, considera obbligatoria la lettura di:
-- la memoria privata del partner (archivio fuori dal repo pubblico) — handoff Padmin sullo stato del CEO
-- `EGI-DOC/docs/ecosistema/PLATFORM_NUMBERS.md` (istanza FlorenceEGI) — numeri reali ecosistema
-- `EGI-DOC/docs/egi-hub/01_PLATFORME_ARCHITECTURE_04.1.md` (istanza FlorenceEGI) — architettura SSOT
-- `EGI-DOC/docs/oracode/audit/08_HOOK_ENFORCEMENT_SYSTEM.md` (istanza FlorenceEGI) — hook attivi
+Prima di rispondere a una conversazione che riguarda lo stato del CEO o quello commerciale, la
+lettura dei documenti pertinenti è obbligatoria. **Quali siano, per una data istanza, è un dato di
+quell'istanza**: sta nella sua memoria privata, non qui. Il paradigma dice che vanno letti, non dove
+stanno né come si chiamano.
+
+Un elenco di percorsi di una singola istanza, dentro un documento che vale per tutte, è la forma più
+insidiosa della fuga: non nomina nessuno, ma manda chi legge diritto allo stato interno di
+quell'azienda. Restava qui anche dopo la bonifica, ed è stato tolto per ultimo.
 
 Se non hai accesso al filesystem, **lo dichiari**: *"Non vedo il filesystem, mi serve [documento X] o conferma orale dello stato attuale."*
 

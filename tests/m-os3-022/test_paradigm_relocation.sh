@@ -35,7 +35,7 @@ for f in MANIFESTO_LSO 00_LSO_LIVING_SOFTWARE_ORGANISM LSO_GUARD_TESTING_PROTOCO
 done
 
 echo "── Nomenclatura (3) ──"
-for f in LSO_NOMENCLATURE_v2 LSO_NOMENCLATURE_INDEX; do
+for f in LSO_NOMENCLATURE_v3 LSO_NOMENCLATURE_INDEX; do
   check "nomenclature/${f}.md"
 done
 check "nomenclature/proposals/M-NOMENCL-OSMX-002_DELTA.md"
@@ -78,7 +78,7 @@ check "index/Oracode-Nexus-index.md"
 check "padmin/PDTDP_Paradigma_Torre_di_Pisa.md"
 
 echo "── No leftover in EGI-DOC ──"
-for src in /home/fabio/EGI-DOC/docs/oracode/MISSION_PROTOCOL.md /home/fabio/EGI-DOC/docs/lso/LSO_NOMENCLATURE_v2.md /home/fabio/EGI-DOC/docs/oracode/Oracode_Systems/00_OSZ_ORACODE_SYSTEM_ZERO.md; do
+for src in /home/fabio/EGI-DOC/docs/oracode/MISSION_PROTOCOL.md /home/fabio/EGI-DOC/docs/lso/LSO_NOMENCLATURE_v3.md /home/fabio/EGI-DOC/docs/oracode/Oracode_Systems/00_OSZ_ORACODE_SYSTEM_ZERO.md; do
   if [ -e "$src" ]; then red "LEFT BEHIND: $src"; else green "moved: $(basename $src)"; fi
 done
 
