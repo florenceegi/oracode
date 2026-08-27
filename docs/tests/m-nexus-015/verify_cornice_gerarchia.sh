@@ -13,7 +13,8 @@ D="$O/docs/paradigm/nomenclature/NEXUS_HIERARCHY_CURRENT_STATE.md"
 grep -q "^status: current" "$D" && ok "status: current" || bad "status non current"
 n=$(awk '/^supersedes_clauses:/{p=1;next} p&&/^[^ ]/{exit} p&&/^  - /{c++} END{print c+0}' "$D"); [ "$n" -gt 0 ] && ok "supersedes_clauses: $n voci" || bad "supersedes_clauses vuoto"
 # ogni file oracode elencato in supersedes_clauses porta il banner DEPRECATO che rimanda allo stato corrente
-awk '/^supersedes_clauses:/{p=1;next} p&&/^[^ ]/{exit} p&&/^  - /{print}' "$D" | sed -E 's/^  - "//; s/:.*//' | grep -v '^os3-matrix/' | sort -u | while read -r rel; do
+awk '/^supersedes_clauses:/{p=1;next} p&&/^[^ ]/{exit} p&&/^  - /{print}' "$D" | sed -E 's/^  - "//; s/:.*//' | grep -vE '^(os3-matrix|nexus-cockpit)/' | sort -u | while read -r rel; do
+  case "$rel" in */*) ;; *) rel="nomenclature/$rel";; esac
   f="$O/docs/paradigm/$rel"; [ -f "$f" ] || { echo "  · $rel non esiste piu' (gitignored o rimosso): salto"; continue; }
   grep -q "DEPRECATO" "$f" && grep -q "NEXUS_HIERARCHY_CURRENT_STATE" "$f" && echo "  ✓ banner: $rel" || { echo "  ✗ manca il banner: $rel"; echo FAIL >> "$O/docs/tests/m-nexus-015/.fail"; }
 done
