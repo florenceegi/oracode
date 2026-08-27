@@ -1168,16 +1168,30 @@
         "paths": []
       },
       "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-29",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-NEXUS-014",
+      "last_verified": "2026-08-27",
+      "last_verified_by": "capability-close",
+      "verified_in_mission": "M-NEXUS-018",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": 0,
       "visibility": "public",
       "rag": "public",
       "split_private_ref": "os3-matrix:oracode-nexus-index-impl",
-      "capability": null
+      "capability": {
+        "slug": "dottrina-strumento-nel-proprio-repo",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "Chi naviga il paradigma trova nel Nexus index che la dottrina dello strumento Fortino vive nel repo FORTINO in quanto Libreria LSO, e che nel repo-centro dell'Organismo resta solo il deployment.",
+          "nearest_neighbor": "EGI-DOC:fortino-dottrina-ricollocata (MOVED_TO_FORTINO_REPO.md, M-280): il puntatore nel repo-centro — stesso slug, stessa capacita', corpo dell'Organismo.",
+          "responsibility_mine": "Il corpo lato Paradigma della capacita': l'entrata dall'indice del paradigma, non dal repo-centro; la coerenza fra la gerarchia dei ruoli e la mappa dei documenti che il paradigma pubblica.",
+          "delta_not_covered": "Il puntatore in EGI-DOC non e' letto da chi consulta il paradigma e non puo' correggere l'indice, che fino a 2af7580 dava Fortino come 5 file in EGI-DOC.",
+          "falsifier": "Cade se il Nexus index smettesse di indicare le sedi dei documenti degli strumenti, o se la dottrina tornasse in EGI-DOC. Esercitabile: verify_rimando_egida.sh."
+        },
+        "first_concluded_at": "2026-08-27",
+        "first_concluded_in": "M-NEXUS-018"
+      }
     },
     {
       "ssot_id": "oracode-nexus-executive-summary",
@@ -1696,6 +1710,43 @@
         "first_concluded_at": "2026-06-17",
         "first_concluded_in": "M-NEXUS-000"
       }
+    },
+    {
+      "ssot_id": "oracode-paradigm-boot-template",
+      "path": "templates/CLAUDE_ORACODE_CORE.md",
+      "title": "CLAUDE_ORACODE_CORE — boot context del paradigma (template)",
+      "doc_type": "concept",
+      "priority": "medium",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "oracode"
+        ],
+        "paths": [
+          "docs/paradigm/modules/EGIDA_ASSE_DIFESA.md"
+        ],
+        "patterns": []
+      },
+      "registered_by": "M-NEXUS-018",
+      "created": "2026-08-27",
+      "capability": {
+        "slug": "core-rimanda-al-modulo-non-al-charter",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "Ogni istanza che carica il CORE trova nella sezione Egida il rimando al modulo generico del paradigma e la dichiarazione che il charter di fondazione e' esperienza della prima istanza, fuori dal prodotto: nessun path privato d'istanza esce dal prodotto MIT.",
+          "nearest_neighbor": "docs/paradigm/modules/EGIDA_ASSE_DIFESA.md §Record storico (r.50-54), che dichiara il charter fuori dal prodotto; non registrato.",
+          "responsibility_mine": "Il PUNTATORE nel boot context: cio' che legge un'istanza che non ha ancora aperto il modulo; la coerenza fra CORE e modulo sul dove-vive dell'asse difesa e la versione del template che la certifica.",
+          "delta_not_covered": "Il modulo dice dove vive il charter a chi lo ha gia' raggiunto (on-demand); non puo' correggere il CORE: modulo presente dal 2026-07-11, CORE storto fino al 2026-08-27.",
+          "falsifier": "Cade se la sezione Egida del CORE fosse generata dal modulo (single-source): il rimando diventerebbe proprieta' del modulo. Esercitabile: docs/tests/m-nexus-018/verify_rimando_egida.sh."
+        },
+        "first_concluded_at": "2026-08-27",
+        "first_concluded_in": "M-NEXUS-018"
+      },
+      "verified_in_mission": "M-NEXUS-018",
+      "last_verified": "2026-08-27",
+      "last_verified_by": "capability-close"
     }
   ]
 }

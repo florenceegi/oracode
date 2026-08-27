@@ -81,3 +81,34 @@
 
 **Reasoning**: drift empirico rilevato su M-NEXUS-018 (fix/oracode, EGI-DOC, FORTINO). Singola osservazione — CEO valuta se pattern ricorrente o specifico di questa mission.
 
+### M-NEXUS-018 — 2026-08-27 [retrofit post-mortem] — fix / oracode, EGI-DOC, FORTINO
+
+**Severity**: major | **Stato**: pending
+**always_loaded esclusi**: 3 file
+
+**loaded_unused** (pre-allocati mai consultati):
+- `/home/fabio/oracode/docs/paradigm/modules/DEV_DISCIPLINE.md`
+- `/home/fabio/oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md`
+
+**used_unloaded** (consultati ma non pre-allocati):
+- `"docs/tests`
+- `FORTINO/CLAUDE_ORACODE_CORE.md`
+- `docs/lso/CAPABILITY_INTENTS.jsonl`
+- `docs/lso/SSOT_REGISTRY.json`
+- `docs/missions/HANDOFF_ANELLO_v2_ripresa_2026-07-18.md`
+- `docs/missions/HANDOFF_M-NEXUS-018.md`
+- `docs/missions/MISSION_REGISTRY.json`
+- `docs/paradigm/index/Oracode-Nexus-index.md`
+- `docs/paradigm/modules/EGIDA_ASSE_DIFESA.md`
+- `docs/tests/m-nexus-018/verify_rimando_egida.sh`
+- `os3-matrix/docs/design/M-OS3-144_TAVOLA_DIETA_CORE.md`
+- `os3-matrix/docs/ssot/DOTTRINA_CAPACITA.md`
+- `os3-matrix/docs/ssot/ESEMPI_CAPACITA.md`
+- `templates/CLAUDE_ORACODE_CORE.md`
+
+**Proposta**:
+- `by_mission_type.fix`: consider removing 2 file
+- `by_mission_type.fix` o `by_organ`: consider adding 14 file
+
+**Reasoning**: drift empirico rilevato su M-NEXUS-018 (fix/oracode, EGI-DOC, FORTINO). Singola osservazione — CEO valuta se pattern ricorrente o specifico di questa mission.
+

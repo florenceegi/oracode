@@ -26,12 +26,12 @@
       "type": "fix",
       "trigger_matrix": 6,
       "stats_counted": true,
-      "status": "auditing",
+      "status": "closed",
       "date_open": "2026-08-27",
       "date_close": "2026-08-27",
       "scope_hash": "4cc55888f123ebe48d80676c95ff884082924818645dc588a74cc3f5e98774e2",
       "synced_by_engine": true,
-      "last_engine_sync": "2026-08-27T13:14:06.526Z",
+      "last_engine_sync": "2026-08-27T13:57:11.654Z",
       "ssot_first_evidence": {
         "path": "oracode/docs/lso/SSOT_REGISTRY.json",
         "ts": "2026-08-27T12:39:46Z"
@@ -85,7 +85,88 @@
         "calculated_at": "2026-08-27"
       },
       "retrospective_executed": true,
-      "retrospective_executed_at": "2026-08-27T13:55:34Z"
+      "retrospective_executed_at": "2026-08-27T13:57:17Z",
+      "doc_sync_executed": true,
+      "doc_sync_log": {
+        "agent": "doc-sync-v3",
+        "tool_use_id": "toolu_01GEgFbaDbiVsCJd7m8L5RBF",
+        "output_hash": "4911cc4439ce6237f796fb17ff82e1be4416faeda21b3028b9fdc3a98b943d9f",
+        "date": "2026-08-27T13:56:57.809Z",
+        "outcome": "success",
+        "plan": {
+          "mission": "M-NEXUS-018",
+          "level": "L1",
+          "ssot_home": "oracode",
+          "writable_repos": [
+            "*"
+          ],
+          "impacted": [
+            "lso-guard-testing-protocol",
+            "oracode-agent-skill"
+          ],
+          "applied": [
+            {
+              "ssot_id": "oracode-agent-skill",
+              "field": "last_verified",
+              "value": "2026-08-27"
+            },
+            {
+              "ssot_id": "oracode-agent-skill",
+              "field": "last_verified_by",
+              "value": "doc_sync_v3"
+            },
+            {
+              "ssot_id": "oracode-agent-skill",
+              "field": "verified_in_mission",
+              "value": "M-NEXUS-018"
+            },
+            {
+              "ssot_id": "oracode-agent-skill",
+              "field": "verification_mode",
+              "value": "registry_only"
+            },
+            {
+              "ssot_id": "oracode-agent-skill",
+              "field": "last_drift_score",
+              "value": "0"
+            },
+            {
+              "ssot_id": "oracode-agent-skill",
+              "field": "doc_sync_note",
+              "value": "M-NEXUS-018 no_change: watch su templates/CLAUDE_ORACODE_CORE.md (2.2.0 -> 2.2.1, solo rimando Egida r.224-225). La skill proietta REGOLA ZERO/pilastri/P0, non la sezione Egida ne la versione template."
+            }
+          ],
+          "docs_written": [],
+          "rag": {
+            "store": "rag_nexus",
+            "mode": "reindex"
+          },
+          "serving_db": "/home/fabio/oracode/.oracode/serving/docs.serving.db",
+          "deferred": [
+            "rag_execute",
+            "git_commit_stat_attrib"
+          ],
+          "status": "ok"
+        }
+      },
+      "capability_forecast": {
+        "preventivate": 2,
+        "nate_in_corso": 0,
+        "realizzate": 2,
+        "adottate": [],
+        "cadute": [],
+        "per_strategia": {
+          "REUSE": 0,
+          "EXTEND": 0,
+          "COMPOSE": 0,
+          "REFACTOR": 2,
+          "CREATE": 0,
+          "referenze": 0
+        },
+        "problemi": [],
+        "suggerimenti": [],
+        "report": "RAPPORTO DI FINE MISSION — M-NEXUS-018\n════════════════════════════════════════════════════\n1) CAPACITA CREATE (realizzate): core-rimanda-al-modulo-non-al-charter, dottrina-strumento-nel-proprio-repo\n2) NON NECESSARIE / NON CREATE (cadute): nessuna\n3) PROBLEMI INCONTRATI:\n   - nessuno\n4) SUGGERIMENTI DI MIGLIORAMENTO:\n   - nessuno\n5) CONTEGGIO PER STRATEGIA:\n   - REUSE: 0\n   - EXTEND: 0\n   - COMPOSE: 0\n   - REFACTOR: 2\n   - CREATE: 0\n   - referenze: 0\n════════════════════════════════════════════════════"
+      }
     },
     {
       "id": "M-NEXUS-015",
