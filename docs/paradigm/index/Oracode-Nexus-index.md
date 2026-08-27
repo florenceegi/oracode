@@ -428,9 +428,9 @@ Archive (storico):
 - **Path**: `/home/fabio/EGI-DOC/docs/oracode/Enterprise/`
 - **Status**: 🗂️ (specifico)
 
-### `Fortino/` (5 file: ORGANO, GUARDIANO, DOTTRINA, HANDOFF, M-195)
-- **Path**: `/home/fabio/EGI-DOC/docs/oracode/Fortino/`
-- **Status**: 🗂️ (organo specifico FlorenceEGI)
+### Fortino — Libreria LSO (repo `FORTINO`)
+- **Path**: `/home/fabio/FORTINO/docs/lso/` (00_FORTINO_STRUMENTO, 01_LIVELLO_A_GUARDIANO, 02_DOTTRINA_E_LIMITI_LEGALI) — ricollocati da EGI-DOC il 2026-08-27 (M-FORTINO-003: Fortino è Libreria LSO, i suoi SSOT non vivono nel repo-centro di un Organismo)
+- **Status**: 🔧 strumento (Livello A costruito, M-FORTINO-001/002); il deployment FlorenceEGI resta in `EGI-DOC/docs/oracode/Fortino/` (FORTINO_DEPLOYMENT_FLORENCEEGI, M-195, handoff CONSUMATO)
 
 ---
 
