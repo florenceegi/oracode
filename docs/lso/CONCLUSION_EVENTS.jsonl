@@ -1,3 +1,6 @@
 {"ts":"2026-08-27","mission":"M-NEXUS-018","ssot_id":"oracode-nexus-index","slug":"dottrina-strumento-nel-proprio-repo","ruolo":null,"kind":"create"}
 {"ts":"2026-08-27","mission":"M-NEXUS-018","ssot_id":"oracode-agent-skill","slug":"dottrina-agenti-single-source","ruolo":"paradigma","kind":"sync"}
 {"ts":"2026-08-27","mission":"M-NEXUS-018","ssot_id":"oracode-paradigm-boot-template","slug":"core-rimanda-al-modulo-non-al-charter","ruolo":null,"kind":"create"}
+{"ts":"2026-08-27","mission":"M-NEXUS-015","ssot_id":"lso-guard-testing-protocol","slug":"protocollo-validita-guard","ruolo":"paradigma","kind":"sync"}
+{"ts":"2026-08-27","mission":"M-NEXUS-015","ssot_id":"lso-nomenclature-v3","slug":"nomenclatura-livelli-concettuali","ruolo":"paradigma","kind":"sync"}
+{"ts":"2026-08-27","mission":"M-NEXUS-015","ssot_id":"nexus-hierarchy-current-state","slug":"gerarchia-corrente-ha-uno-ssot","ruolo":null,"kind":"create"}

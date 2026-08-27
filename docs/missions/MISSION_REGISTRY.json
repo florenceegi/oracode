@@ -176,12 +176,12 @@
       "title": "Deprecazione cornice stale gerarchia Nexus + SSOT-correzione stato corrente",
       "trigger_matrix": 2,
       "stats_counted": true,
-      "status": "auditing",
+      "status": "closed",
       "date_open": "2026-07-06",
       "date_close": "2026-08-27",
       "scope_hash": "682107990f05ba7995188e3183e8dc0ec60678dfa287d0001acb6dc5bc49aa61",
       "synced_by_engine": true,
-      "last_engine_sync": "2026-08-27T14:22:09.204Z",
+      "last_engine_sync": "2026-08-27T14:27:06.076Z",
       "ssot_first_evidence": {
         "path": "oracode/docs/missions/MISSION_REGISTRY.json",
         "ts": "2026-08-27T12:37:11Z"
@@ -247,7 +247,108 @@
         "calculated_at": "2026-08-27"
       },
       "retrospective_executed": true,
-      "retrospective_executed_at": "2026-08-27T14:25:32Z"
+      "retrospective_executed_at": "2026-08-27T14:27:12Z",
+      "doc_sync_executed": true,
+      "doc_sync_log": {
+        "agent": "doc-sync-v3",
+        "tool_use_id": "toolu_01JtZ4Hze1zPeGp8BRCi2vsm",
+        "output_hash": "1d9c36072913506c2527e4ce169489d5784af6f6f127d97d5d06b449b8216dfa",
+        "date": "2026-08-27T14:26:53.255Z",
+        "outcome": "success",
+        "plan": {
+          "mission": "M-NEXUS-015",
+          "level": "L1",
+          "ssot_home": "oracode",
+          "writable_repos": [
+            "*"
+          ],
+          "impacted": [
+            "lso-guard-testing-protocol",
+            "lso-nomenclature-v3"
+          ],
+          "applied": [
+            {
+              "ssot_id": "lso-nomenclature-v3",
+              "field": "last_verified",
+              "value": "2026-08-27"
+            },
+            {
+              "ssot_id": "lso-nomenclature-v3",
+              "field": "last_verified_by",
+              "value": "doc_sync_v3"
+            },
+            {
+              "ssot_id": "lso-nomenclature-v3",
+              "field": "verified_in_mission",
+              "value": "M-NEXUS-015"
+            },
+            {
+              "ssot_id": "lso-nomenclature-v3",
+              "field": "last_drift_score",
+              "value": "0"
+            },
+            {
+              "ssot_id": "lso-nomenclature-v3",
+              "field": "doc_sync_note",
+              "value": "M-NEXUS-015 no_change: impattata via watch sui doc di nomenclatura (NEXUS_HIERARCHY_CURRENT_STATE, 3_TIER). Il banner di deprecazione e lo SSOT dello stato corrente (c768623, 2026-07-06) non toccano la nomenclatura v3. Drift segnalato altrove: il banner del 3_TIER elenca DeepDebug tra i clienti, lo stato corrente lo classifica Libreria LSO."
+            },
+            {
+              "ssot_id": "lso-guard-testing-protocol",
+              "field": "last_verified",
+              "value": "2026-08-27"
+            },
+            {
+              "ssot_id": "lso-guard-testing-protocol",
+              "field": "last_verified_by",
+              "value": "doc_sync_v3"
+            },
+            {
+              "ssot_id": "lso-guard-testing-protocol",
+              "field": "verified_in_mission",
+              "value": "M-NEXUS-015"
+            },
+            {
+              "ssot_id": "lso-guard-testing-protocol",
+              "field": "last_drift_score",
+              "value": "0"
+            },
+            {
+              "ssot_id": "lso-guard-testing-protocol",
+              "field": "doc_sync_note",
+              "value": "M-NEXUS-015 no_change: impattata via watch su docs/tests/**. Aggiunto il test di non-regressione docs/tests/m-nexus-015/verify_cornice_gerarchia.sh (bash, firma Oracode, exit 0/1): coerente col protocollo, nessuna modifica di testo."
+            }
+          ],
+          "docs_written": [],
+          "rag": {
+            "store": "rag_nexus",
+            "mode": "reindex"
+          },
+          "serving_db": "/home/fabio/oracode/.oracode/serving/docs.serving.db",
+          "deferred": [
+            "rag_execute",
+            "git_commit_stat_attrib"
+          ],
+          "status": "ok"
+        }
+      },
+      "capability_forecast": {
+        "preventivate": 1,
+        "nate_in_corso": 0,
+        "realizzate": 1,
+        "adottate": [],
+        "cadute": [],
+        "per_strategia": {
+          "REUSE": 0,
+          "EXTEND": 0,
+          "COMPOSE": 0,
+          "REFACTOR": 0,
+          "CREATE": 1,
+          "referenze": 0
+        },
+        "problemi": [],
+        "suggerimenti": [],
+        "report": "RAPPORTO DI FINE MISSION — M-NEXUS-015\n════════════════════════════════════════════════════\n1) CAPACITA CREATE (realizzate): gerarchia-corrente-ha-uno-ssot\n2) NON NECESSARIE / NON CREATE (cadute): nessuna\n3) PROBLEMI INCONTRATI:\n   - nessuno\n4) SUGGERIMENTI DI MIGLIORAMENTO:\n   - nessuno\n5) CONTEGGIO PER STRATEGIA:\n   - REUSE: 0\n   - EXTEND: 0\n   - COMPOSE: 0\n   - REFACTOR: 0\n   - CREATE: 1\n   - referenze: 0\n════════════════════════════════════════════════════"
+      }
     },
     {
       "id": "M-NEXUS-014",

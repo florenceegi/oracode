@@ -1749,6 +1749,45 @@
       "verified_in_mission": "M-NEXUS-018",
       "last_verified": "2026-08-27",
       "last_verified_by": "capability-close"
+    },
+    {
+      "ssot_id": "nexus-hierarchy-current-state",
+      "path": "docs/paradigm/nomenclature/NEXUS_HIERARCHY_CURRENT_STATE.md",
+      "title": "Gerarchia Oracode Nexus — Stato Corrente (correzione della cornice accoppiato)",
+      "doc_type": "concept",
+      "priority": "medium",
+      "check_frequency": "on_commit",
+      "watches": {
+        "repos": [
+          "oracode"
+        ],
+        "paths": [
+          "docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md",
+          "docs/paradigm/nomenclature/LSO_NOMENCLATURE_INDEX.md",
+          "docs/paradigm/index/Oracode-Nexus-index.md"
+        ],
+        "patterns": []
+      },
+      "registered_by": "M-NEXUS-015",
+      "created": "2026-08-27",
+      "capability": {
+        "slug": "gerarchia-corrente-ha-uno-ssot",
+        "state": "stabile",
+        "owner": null,
+        "provisional_since": null,
+        "contrast": {
+          "capability": "Stato corrente autoritativo della gerarchia Nexus: registro delle clausole di stato superate (19 voci file:riga), i fatti che le superano, la regola cross-repo a tre casi e la separazione level/role nei descrittori.",
+          "nearest_neighbor": "oracode-nexus-3-tier (definizioni core L1/L2/L3, LOCKED).",
+          "responsibility_mine": "Essere il bersaglio unico dei banner DEPRECATO sparsi nel paradigma e dire cosa e' vero OGGI sullo stato della gerarchia, deprecando solo claim di stato e lasciando intatti i documenti LOCKED e le definizioni core.",
+          "delta_not_covered": "Il 3_TIER e' LOCKED e non puo' registrare correzioni di stato; l'index e' il canone dei nomi-ruolo e v3 l'argomentazione definitoria: nessuno dei tre tiene supersedes_clauses, la regola cross-repo o la distinzione level/role.",
+          "falsifier": "Se il registro delle clausole superate e la regola cross-repo venissero assorbiti da LSO_NOMENCLATURE_v3 o dall'index e i banner puntassero li', questo doc collasserebbe nell'index."
+        },
+        "first_concluded_at": "2026-08-27",
+        "first_concluded_in": "M-NEXUS-015"
+      },
+      "verified_in_mission": "M-NEXUS-015",
+      "last_verified": "2026-08-27",
+      "last_verified_by": "capability-close"
     }
   ]
 }
