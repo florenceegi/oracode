@@ -1249,12 +1249,12 @@
       },
       "update_policy": null,
       "registered_by": "M-OS3-029",
-      "last_verified": "2026-06-09",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-NEXUS-007",
+      "last_verified": "2026-08-27",
+      "last_verified_by": "doc_sync_v3",
+      "verified_in_mission": "M-NEXUS-018",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
-      "last_drift_score": 0,
+      "last_drift_score": "0",
       "visibility": "public",
       "rag": "public",
       "split_private_ref": "os3-matrix:oracode-agent-skill-impl",
@@ -1273,7 +1273,8 @@
         "ruolo": "paradigma",
         "first_concluded_at": "2026-06-01",
         "first_concluded_in": "M-OS3-029"
-      }
+      },
+      "doc_sync_note": "M-NEXUS-018 no_change: watch su templates/CLAUDE_ORACODE_CORE.md (2.2.0 -> 2.2.1, solo rimando Egida r.224-225). La skill proietta REGOLA ZERO/pilastri/P0, non la sezione Egida ne la versione template."
     },
     {
       "ssot_id": "oracode-lint",
