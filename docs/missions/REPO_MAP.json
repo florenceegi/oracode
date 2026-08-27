@@ -47,6 +47,10 @@
     "local_dir": "/home/fabio/LA-BOTTEGA",
     "github_repo": "florenceegi/la-bottega"
   },
+  "dimostralo": {
+    "local_dir": "/home/fabio/DIMOSTRALO",
+    "github_repo": "florenceegi/dimostralo"
+  },
   "creator-staging": {
     "local_dir": "/home/fabio/CREATOR-STAGING",
     "github_repo": "florenceegi/creator-staging"
@@ -91,9 +95,13 @@
     "local_dir": "/home/fabio/nexus-cockpit",
     "github_repo": "florenceegi/nexus-cockpit"
   },
-  "dimostralo": {
-    "local_dir": "/home/fabio/DIMOSTRALO",
-    "github_repo": "florenceegi/dimostralo"
+  "NATHAN": {
+    "local_dir": "/home/fabio/NATHAN",
+    "github_repo": "florenceegi/NATHAN"
+  },
+  "RISVEGLIO": {
+    "local_dir": "/home/fabio/RISVEGLIO",
+    "github_repo": "florenceegi/RISVEGLIO"
   },
   "sales-network-control": {
     "local_dir": "/home/fabio/sales-network-control",
@@ -102,5 +110,13 @@
   "oracode-nexus": {
     "local_dir": "/home/fabio/oracode-nexus",
     "github_repo": "florenceegi/oracode-nexus"
+  },
+  "idealorg": {
+    "local_dir": "/home/fabio/idealorg",
+    "github_repo": "florenceegi/idealorg"
+  },
+  "OTC-STAT": {
+    "local_dir": "/home/fabio/OTC-STAT",
+    "github_repo": "AutobookNft/OTC-STAT"
   }
 }
