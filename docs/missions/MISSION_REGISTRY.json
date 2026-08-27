@@ -47,16 +47,17 @@
         "FORTINO"
       ],
       "stats": {
-        "total_commits": 4,
-        "lines_added": 24,
+        "total_commits": 5,
+        "lines_added": 55,
         "lines_deleted": 6,
-        "lines_net": 18,
-        "lines_touched": 30,
-        "files_touched": 3,
-        "weighted_commits": 3.3,
-        "cognitive_load": 2.07,
-        "productivity_index": 16.8,
+        "lines_net": 49,
+        "lines_touched": 61,
+        "files_touched": 4,
+        "weighted_commits": 3.9,
+        "cognitive_load": 2.25,
+        "productivity_index": 19.47,
         "tags_breakdown": {
+          "CHORE": 1,
           "TEST": 1,
           "DOC-SYNC": 1,
           "DOC": 2
@@ -65,17 +66,19 @@
           "263d427360fed4850c4fb42c94333458a6f54d16",
           "2af7580414d3b945d66901ace3803c5ea19af223",
           "6f8c5f650e67c401c84ea581e171f84cb76fb422",
-          "8d981478b6a93a4b4b65e713f05a2fc6b7660853"
+          "8d981478b6a93a4b4b65e713f05a2fc6b7660853",
+          "aa25c3b9a472f7ab914a50bd653a93c84a2b2204"
         ],
         "by_repo_day": [
           {
             "repo": "florenceegi/oracode",
             "date": "2026-08-27",
-            "commits": 4,
-            "lines_added": 24,
+            "commits": 5,
+            "lines_added": 55,
             "lines_deleted": 6,
-            "files_touched": 3,
+            "files_touched": 4,
             "tags": {
+              "CHORE": 1,
               "TEST": 1,
               "DOC-SYNC": 1,
               "DOC": 2
@@ -173,12 +176,12 @@
       "title": "Deprecazione cornice stale gerarchia Nexus + SSOT-correzione stato corrente",
       "trigger_matrix": 2,
       "stats_counted": true,
-      "status": "executing",
+      "status": "auditing",
       "date_open": "2026-07-06",
-      "date_close": null,
+      "date_close": "2026-08-27",
       "scope_hash": "682107990f05ba7995188e3183e8dc0ec60678dfa287d0001acb6dc5bc49aa61",
       "synced_by_engine": true,
-      "last_engine_sync": "2026-08-27T14:18:17.819Z",
+      "last_engine_sync": "2026-08-27T14:22:09.204Z",
       "ssot_first_evidence": {
         "path": "oracode/docs/missions/MISSION_REGISTRY.json",
         "ts": "2026-08-27T12:37:11Z"
@@ -187,7 +190,64 @@
         "path": "/home/fabio/oracode-engine/missions/M-NEXUS-015/capability_plan.json",
         "hash": "ec338d331cca0bddefeb4e8bbe81382f359c046144fdc311ff07225c26b62e01",
         "ratified_at": "2026-08-27T14:18:14Z"
-      }
+      },
+      "organs": [
+        "oracode",
+        "os3-matrix",
+        "EGI-DOC"
+      ],
+      "stats": {
+        "total_commits": 4,
+        "lines_added": 153,
+        "lines_deleted": 1,
+        "lines_net": 152,
+        "lines_touched": 154,
+        "files_touched": 13,
+        "weighted_commits": 3.0,
+        "cognitive_load": 2.55,
+        "productivity_index": 17.73,
+        "tags_breakdown": {
+          "UNTAGGED": 1,
+          "DOC-SYNC": 1,
+          "DOC": 1,
+          "TEST": 1
+        },
+        "commit_hashes": [
+          "17a6b7489cb7a56f6c985a77c99891b301818901",
+          "4774739b8d5d4ca8a2c68d0e0cbb764556368b96",
+          "c7686234d99962ecae00daaf32af517e96c69d5f",
+          "e6cfd6a478cd73c3b30b0280a055a0c9c820bd73"
+        ],
+        "by_repo_day": [
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-07-06",
+            "commits": 1,
+            "lines_added": 100,
+            "lines_deleted": 0,
+            "files_touched": 11,
+            "tags": {
+              "UNTAGGED": 1
+            }
+          },
+          {
+            "repo": "florenceegi/oracode",
+            "date": "2026-08-27",
+            "commits": 3,
+            "lines_added": 53,
+            "lines_deleted": 1,
+            "files_touched": 2,
+            "tags": {
+              "DOC-SYNC": 1,
+              "DOC": 1,
+              "TEST": 1
+            }
+          }
+        ],
+        "calculated_at": "2026-08-27"
+      },
+      "retrospective_executed": true,
+      "retrospective_executed_at": "2026-08-27T14:25:32Z"
     },
     {
       "id": "M-NEXUS-014",
@@ -476,7 +536,7 @@
         "lines_net": 465,
         "lines_touched": 475,
         "files_touched": 7,
-        "weighted_commits": 4,
+        "weighted_commits": 4.0,
         "cognitive_load": 2.64,
         "productivity_index": 32.74,
         "tags_breakdown": {
@@ -553,7 +613,7 @@
         "lines_net": 48,
         "lines_touched": 84,
         "files_touched": 4,
-        "weighted_commits": 2,
+        "weighted_commits": 2.0,
         "cognitive_load": 2.12,
         "productivity_index": 11.67,
         "tags_breakdown": {
@@ -715,8 +775,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
@@ -748,8 +808,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
@@ -1036,8 +1096,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
@@ -1124,8 +1184,8 @@
         "lines_touched": 0,
         "files_touched": 0,
         "weighted_commits": 0,
-        "cognitive_load": 1,
-        "productivity_index": 0,
+        "cognitive_load": 1.0,
+        "productivity_index": 0.0,
         "tags_breakdown": {},
         "commit_hashes": [],
         "by_repo_day": [],
