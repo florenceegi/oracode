@@ -417,12 +417,12 @@
         "patterns": []
       },
       "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-01",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-027",
+      "last_verified": "2026-08-27",
+      "last_verified_by": "doc_sync_v3",
+      "verified_in_mission": "M-NEXUS-015",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
-      "last_drift_score": 0,
+      "last_drift_score": "0",
       "visibility": "public",
       "rag": "public",
       "split_private_ref": "os3-matrix:lso-guard-testing-protocol-impl",
@@ -441,7 +441,8 @@
         "ruolo": "paradigma",
         "first_concluded_at": "2026-05-29",
         "first_concluded_in": "M-OS3-023"
-      }
+      },
+      "doc_sync_note": "M-NEXUS-015 no_change: impattata via watch su docs/tests/**. Aggiunto il test di non-regressione docs/tests/m-nexus-015/verify_cornice_gerarchia.sh (bash, firma Oracode, exit 0/1): coerente col protocollo, nessuna modifica di testo."
     },
     {
       "ssot_id": "lso-guard-testing-index",
@@ -484,12 +485,12 @@
       },
       "update_policy": "immutable-ceo-approval",
       "registered_by": "M-OS3-023",
-      "last_verified": "2026-06-03",
-      "last_verified_by": "doc_sync_v2",
-      "verified_in_mission": "M-OS3-049",
+      "last_verified": "2026-08-27",
+      "last_verified_by": "doc_sync_v3",
+      "verified_in_mission": "M-NEXUS-015",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
-      "last_drift_score": 0,
+      "last_drift_score": "0",
       "visibility": "public",
       "rag": "public",
       "capability": {
@@ -507,7 +508,8 @@
         "ruolo": "paradigma",
         "first_concluded_at": "2026-05-29",
         "first_concluded_in": "M-OS3-023"
-      }
+      },
+      "doc_sync_note": "M-NEXUS-015 no_change: impattata via watch sui doc di nomenclatura (NEXUS_HIERARCHY_CURRENT_STATE, 3_TIER). Il banner di deprecazione e lo SSOT dello stato corrente (c768623, 2026-07-06) non toccano la nomenclatura v3. Drift segnalato altrove: il banner del 3_TIER elenca DeepDebug tra i clienti, lo stato corrente lo classifica Libreria LSO."
     },
     {
       "ssot_id": "lso-nomenclature-index",
