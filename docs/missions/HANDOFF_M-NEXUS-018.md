@@ -22,3 +22,10 @@ CEO 2026-07-11 (M-OS3-144 D11) riconfermata 2026-08-27: «la storia resta tua, l
 1. Chiudere M-NEXUS-018 (auditing → closed → finalize).
 2. Nessun lavoro residuo in oracode. Il riallineamento delle 27 copie è di ciascun organo, non di questa mission.
 3. Nota per chi riprende M-NEXUS-015: porta un piano-capacità spurio attaccato per errore il 2026-08-27 (vedi memoria FORTINO).
+
+## Aggiornamento alla chiusura (2026-08-27, stessa sessione)
+
+- `tests/KNOWN_RED.jsonl` creato (commit `6f8c5f6`): 5 rossi noti approvati dal CEO uno per uno — 2 per il rinvio delle copie CORE (Fucina), 3 pre-esistenti da triare.
+- DOC-SYNC engine: `oracode-agent-skill` verificato no_change (commit `263d427`); drift proposal respinta.
+- Verdetto del giudice della distinzione: APPROVA su entrambe le capacità; il template CORE entra nel registro come `oracode-paradigm-boot-template`.
+- **PROSSIMO PASSO**: nessuno in oracode; i 3 test pre-esistenti rossi vanno triati in una mission propria.
