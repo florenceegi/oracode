@@ -27,15 +27,19 @@
       "trigger_matrix": 1,
       "stats_counted": true,
       "status": "executing",
-      "micro": true,
       "date_open": "2026-08-28",
       "date_close": null,
       "scope_hash": "1e810366a0dfa7123e44c7f31d413d92419ea75387e91cd44dcceb84ed802dc5",
       "synced_by_engine": true,
-      "last_engine_sync": "2026-08-28T07:11:33.156Z",
+      "last_engine_sync": "2026-08-28T07:11:56.310Z",
       "ssot_first_evidence": {
         "path": "oracode/docs/lso/SSOT_REGISTRY.json",
         "ts": "2026-08-28T07:11:04Z"
+      },
+      "micro_promotion": {
+        "reason": "Il banner e' replicato su 9 documenti + test + registro: 13 file, oltre il tetto micro. Stesso atto, solo piu' largo.",
+        "at": "2026-08-28T07:11:56.304Z",
+        "by": "supervisor"
       }
     },
     {
