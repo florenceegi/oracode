@@ -196,3 +196,30 @@
 
 **Reasoning**: drift empirico rilevato su M-NEXUS-015 (unknown/oracode, os3-matrix, EGI-DOC). Singola osservazione — CEO valuta se pattern ricorrente o specifico di questa mission.
 
+### M-NEXUS-019 — 2026-08-28 [retrofit post-mortem] — fix / oracode
+
+**Severity**: major | **Stato**: rejected (2026-08-28) — motivo: Correzione di una riola: letture puntuali, non moduli di bootstrap ricorrenti.
+**always_loaded esclusi**: 3 file
+
+**loaded_unused** (pre-allocati mai consultati):
+- `/home/fabio/oracode/docs/paradigm/modules/DEV_DISCIPLINE.md`
+- `/home/fabio/oracode/docs/paradigm/modules/WEB_PUBLIC_STANDARDS.md`
+
+**used_unloaded** (consultati ma non pre-allocati):
+- `docs/lso/SSOT_REGISTRY.json`
+- `docs/missions/HANDOFF_M-NEXUS-019.md`
+- `docs/missions/MISSION_REGISTRY.json`
+- `docs/paradigm/index/SSOT_NEXUS_COHERENCE_AUDIT_2026-05-31.md`
+- `docs/paradigm/kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md`
+- `docs/paradigm/lso/PATTERN_ANELLO_AUTOMIGLIORAMENTO_v1.0.0.md`
+- `docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md`
+- `docs/paradigm/nomenclature/ORACODE_NEXUS_3_TIER.md`
+- `docs/paradigm/padmin/PDTDP_Paradigma_Torre_di_Pisa.md`
+- `docs/tests/m-nexus-019/verify_banner_deepdebug.sh`
+
+**Proposta**:
+- `by_mission_type.fix`: consider removing 2 file
+- `by_mission_type.fix` o `by_organ`: consider adding 10 file
+
+**Reasoning**: drift empirico rilevato su M-NEXUS-019 (fix/oracode). Singola osservazione — CEO valuta se pattern ricorrente o specifico di questa mission.
+

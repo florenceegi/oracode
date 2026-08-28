@@ -4,3 +4,6 @@
 {"ts":"2026-08-27","mission":"M-NEXUS-015","ssot_id":"lso-guard-testing-protocol","slug":"protocollo-validita-guard","ruolo":"paradigma","kind":"sync"}
 {"ts":"2026-08-27","mission":"M-NEXUS-015","ssot_id":"lso-nomenclature-v3","slug":"nomenclatura-livelli-concettuali","ruolo":"paradigma","kind":"sync"}
 {"ts":"2026-08-27","mission":"M-NEXUS-015","ssot_id":"nexus-hierarchy-current-state","slug":"gerarchia-corrente-ha-uno-ssot","ruolo":null,"kind":"create"}
+{"ts":"2026-08-28","mission":"M-NEXUS-019","ssot_id":"lso-guard-testing-protocol","slug":"protocollo-validita-guard","ruolo":"paradigma","kind":"sync"}
+{"ts":"2026-08-28","mission":"M-NEXUS-019","ssot_id":"lso-nomenclature-v3","slug":"nomenclatura-livelli-concettuali","ruolo":"paradigma","kind":"sync"}
+{"ts":"2026-08-28","mission":"M-NEXUS-019","ssot_id":"nexus-hierarchy-current-state","slug":"gerarchia-corrente-ha-uno-ssot","ruolo":null,"kind":"sync"}
