@@ -417,9 +417,9 @@
         "patterns": []
       },
       "registered_by": "M-OS3-023",
-      "last_verified": "2026-08-27",
+      "last_verified": "2026-08-28",
       "last_verified_by": "doc_sync_v3",
-      "verified_in_mission": "M-NEXUS-015",
+      "verified_in_mission": "M-NEXUS-019",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": "0",
@@ -442,7 +442,7 @@
         "first_concluded_at": "2026-05-29",
         "first_concluded_in": "M-OS3-023"
       },
-      "doc_sync_note": "M-NEXUS-015 no_change: impattata via watch su docs/tests/**. Aggiunto il test di non-regressione docs/tests/m-nexus-015/verify_cornice_gerarchia.sh (bash, firma Oracode, exit 0/1): coerente col protocollo, nessuna modifica di testo."
+      "doc_sync_note": "M-NEXUS-019 no_change: impattato via watch; il commit 194b811 corregge solo la riga del banner DEPRECATO su 8 doc (DeepDebug = Libreria LSO, CEO 2026-08-28); corpi intatti. Il kernel OSZ (Tier-0) porta ancora la riga vecchia."
     },
     {
       "ssot_id": "lso-guard-testing-index",
@@ -485,9 +485,9 @@
       },
       "update_policy": "immutable-ceo-approval",
       "registered_by": "M-OS3-023",
-      "last_verified": "2026-08-27",
+      "last_verified": "2026-08-28",
       "last_verified_by": "doc_sync_v3",
-      "verified_in_mission": "M-NEXUS-015",
+      "verified_in_mission": "M-NEXUS-019",
       "verification_mode": "registry_only",
       "organ": "oracode-paradigm",
       "last_drift_score": "0",
@@ -509,7 +509,7 @@
         "first_concluded_at": "2026-05-29",
         "first_concluded_in": "M-OS3-023"
       },
-      "doc_sync_note": "M-NEXUS-015 no_change: impattata via watch sui doc di nomenclatura (NEXUS_HIERARCHY_CURRENT_STATE, 3_TIER). Il banner di deprecazione e lo SSOT dello stato corrente (c768623, 2026-07-06) non toccano la nomenclatura v3. Drift segnalato altrove: il banner del 3_TIER elenca DeepDebug tra i clienti, lo stato corrente lo classifica Libreria LSO."
+      "doc_sync_note": "M-NEXUS-019 no_change: impattato via watch; il commit 194b811 corregge solo la riga del banner DEPRECATO su 8 doc (DeepDebug = Libreria LSO, CEO 2026-08-28); corpi intatti. Il kernel OSZ (Tier-0) porta ancora la riga vecchia."
     },
     {
       "ssot_id": "lso-nomenclature-index",
@@ -1785,9 +1785,11 @@
         "first_concluded_at": "2026-08-27",
         "first_concluded_in": "M-NEXUS-015"
       },
-      "verified_in_mission": "M-NEXUS-015",
-      "last_verified": "2026-08-27",
-      "last_verified_by": "capability-close"
+      "verified_in_mission": "M-NEXUS-019",
+      "last_verified": "2026-08-28",
+      "last_verified_by": "doc_sync_v3",
+      "last_drift_score": "0",
+      "doc_sync_note": "M-NEXUS-019 no_change: impattato via watch; il commit 194b811 corregge solo la riga del banner DEPRECATO su 8 doc (DeepDebug = Libreria LSO, CEO 2026-08-28); corpi intatti. Il kernel OSZ (Tier-0) porta ancora la riga vecchia."
     }
   ]
 }
