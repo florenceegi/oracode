@@ -1,7 +1,7 @@
 ---
 title: "LSO Nomenclature v3 — le definizioni canoniche della gerarchia Oracode Nexus"
 slug: lso-nomenclature-v3
-doc_type: nomenclature
+doc_type: concept
 version: "3.0.0"
 status: current
 date: "2026-07-13"
