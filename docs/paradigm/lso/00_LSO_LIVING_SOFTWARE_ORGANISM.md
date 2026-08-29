@@ -5,20 +5,16 @@ doc_type: concept
 version: 4.0.0
 status: current
 date: '2026-03-27'
-updated_at: '2026-05-08T23:00'
+updated_at: '2026-07-31'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - ecosistema
 - lso
 supersedes: []
 superseded_by: null
-priority: critical
-ssot_nervous:
-  ssot_id: lso-living-organism
-  registry: docs/lso/SSOT_REGISTRY.json
-  check_frequency: daily
 visibility: public
 rag: public
+priority: critical
 ---
 
 # LSO — Living Software Organism

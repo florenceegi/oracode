@@ -1,18 +1,19 @@
 ---
-title: "LSO Nomenclature v3 — le definizioni canoniche della gerarchia Oracode Nexus"
+title: LSO Nomenclature v3 — le definizioni canoniche della gerarchia Oracode Nexus
 slug: lso-nomenclature-v3
 doc_type: concept
-version: "3.0.0"
+version: 3.0.0
 status: current
-date: "2026-07-13"
-updated_at: "2026-07-13"
-author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
-scope: [oracode]
-priority: high
-mission: M-OS3-147
-supersedes: "nomenclature/LSO_NOMENCLATURE_v2.md (interamente — modello a 4 livelli + OS3-Matrix-in-Oracode + doc-sync v2)"
+date: '2026-07-13'
+updated_at: '2026-08-28'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: high
 ---
 
 > **v3 — sostituisce integralmente `LSO_NOMENCLATURE_v2.md`.** v2 era una *Working Draft* del 22/05/2026 costruita su un modello **superato**: 4 livelli concettuali, OS3 Matrix come «piano interno di Oracode», doc-sync v2 dato per vivo, FlorenceEGI trattato come un livello. v3 conserva **tutta la sostanza** ancora valida di v2 (definizioni, filosofia dell'asimmetria umano/LLM, layer stack, geometria cross-repo, boundary case, posizionamento commerciale) ma la **ri-ancora al modello corrente**, ratificato dal CEO il 2026-07-11 (M-OS3-144).

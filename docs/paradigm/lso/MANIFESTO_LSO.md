@@ -5,16 +5,16 @@ doc_type: concept
 version: 1.0.0
 status: current
 date: '2026-03-27'
-updated_at: '2026-03-27'
-author: Fabio Cherici
+updated_at: '2026-07-31'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - ecosistema
 - lso
 supersedes: []
 superseded_by: null
-priority: critical
 visibility: public
 rag: public
+priority: critical
 ---
 
 # Manifesto LSO

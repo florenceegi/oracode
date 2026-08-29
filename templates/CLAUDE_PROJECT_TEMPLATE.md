@@ -1,3 +1,20 @@
+---
+title: '{{PROJECT_NAME}} — Configurazione Istanza'
+slug: oracode-project-boot-template
+doc_type: guide
+version: 1.0.0
+status: current
+date: '2026-08-29'
+updated_at: '2026-08-29'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- egi-doc
+supersedes: []
+superseded_by: null
+visibility: private
+rag: private
+priority: normal
+---
 # {{PROJECT_NAME}} — Configurazione Istanza
 
 > Sezione progetto-specifica. Compila i placeholder con i dati del tuo dominio.

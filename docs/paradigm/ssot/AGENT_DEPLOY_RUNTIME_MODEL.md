@@ -2,9 +2,18 @@
 title: Agent Deploy & Runtime-Root — Modello (stub public)
 slug: agent-deploy-runtime-model
 doc_type: stub
+version: 1.0.0
 status: current
+date: '2026-06-01'
+updated_at: '2026-06-05'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: normal
 ---
 
 # Agent Deploy & Runtime-Root — Modello

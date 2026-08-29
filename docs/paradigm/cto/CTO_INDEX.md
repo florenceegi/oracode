@@ -1,7 +1,19 @@
 ---
+title: CTO_INDEX.md — l'identità operativa del CTO
+slug: padmin-index
 doc_type: concept
+version: 1.0.0
+status: current
+date: '2026-08-24'
+updated_at: '2026-08-24'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: normal
 ---
 
 # CTO_INDEX.md — l'identità operativa del CTO

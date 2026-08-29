@@ -5,15 +5,15 @@ doc_type: concept
 version: 3.0.0
 status: current
 date: '2026-05-08'
-updated_at: '2026-07-11'
-author: Padmin D. Curtis for Fabio Cherici
-mission: M-OS3-144
+updated_at: '2026-08-23'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - oracode
-priority: high
-source: docs/paradigm/nomenclature/LSO_NOMENCLATURE_v3.md
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: high
 ---
 
 # LSO Nomenclature — INDEX

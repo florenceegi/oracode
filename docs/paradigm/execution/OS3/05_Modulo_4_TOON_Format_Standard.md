@@ -1,7 +1,19 @@
 ---
+title: '**ORACODE SYSTEM 3.0 - MODULO 4: TOON FORMAT STANDARD**'
+slug: os3-modulo-4-toon-format
 doc_type: concept
+version: 1.0.0
+status: current
+date: '2026-05-29'
+updated_at: '2026-07-31'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: normal
 ---
 
 # **ORACODE SYSTEM 3.0 - MODULO 4: TOON FORMAT STANDARD**

@@ -1,3 +1,20 @@
+---
+title: Oracode — Boot Context
+slug: oracode-paradigm-boot-template
+doc_type: guide
+version: 1.0.0
+status: current
+date: '2026-08-29'
+updated_at: '2026-08-29'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- egi-doc
+supersedes: []
+superseded_by: null
+visibility: private
+rag: private
+priority: normal
+---
 # Oracode — Boot Context
 
 > AI predicts, not thinks. OSZ = absolute truth. OS3 aligns to OSZ.

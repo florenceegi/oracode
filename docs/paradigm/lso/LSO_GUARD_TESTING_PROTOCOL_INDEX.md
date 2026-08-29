@@ -5,14 +5,15 @@ doc_type: spec
 version: 1.0.0
 status: current
 date: '2026-05-08'
-updated_at: '2026-05-08'
-author: Padmin D. Curtis for Fabio Cherici
+updated_at: '2026-07-31'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - oracode
-priority: high
-source: docs/lso/LSO_GUARD_TESTING_PROTOCOL_v1.md
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: high
 ---
 
 # LSO Guard Testing Protocol — INDEX

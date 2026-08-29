@@ -1,38 +1,19 @@
 ---
-title: "Gerarchia Oracode Nexus — Stato Corrente (correzione della cornice «accoppiato»)"
+title: Gerarchia Oracode Nexus — Stato Corrente (correzione della cornice «accoppiato»)
 slug: nexus-hierarchy-current-state
 doc_type: architecture
-version: "2.0.0"
+version: 2.0.0
 status: current
-date: "2026-07-06"
-updated_at: "2026-07-11"
-author: "Padmin D. Curtis (Supervisor-CTO) per Fabio Cherici (CEO)"
-scope: [oracode]
-rag_indexed: true
+date: '2026-07-06'
+updated_at: '2026-07-11'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
+visibility: public
+rag: private
 priority: high
-mission: M-OS3-138
-updated_by_mission: "M-OS3-144 — cablaggio 6 ruoli (ratifica CEO 2026-07-11)"
-supersedes_clauses:
-  # Clausole di STATO superate (NON le definizioni core L1/L2/L3, che restano valide):
-  - "ORACODE_NEXUS_3_TIER.md:88,106,127,161,162 (LOCKED — clausole di stato accoppiato/differito)"
-  - "kernel/00_OSZ_ORACODE_SYSTEM_ZERO.md:31,45,230,257"
-  - "ssot/ORACODE_NEXUS_SYSTEM_REFERENCE.md:373,520,563,721,737"
-  - "missions/MISSION_PROTOCOL.md:56,61,131,231,548"
-  - "standards/NAMING_STANDARD_CODE.md:23,237,254,266,278"
-  - "standards/LEGACY_STACK_POLICY.md:14,123,139"
-  - "index/Oracode-Nexus-index.md:43,135"
-  - "roadmap/ROADMAP_ORACODE.md:35,37"
-  - "nomenclature/LSO_NOMENCLATURE_v2.md:1072,1085,1158"
-  - "nomenclature/proposals/M-NOMENCL-OSMX-002_DELTA.md:16"
-  - "index/SSOT_NEXUS_COHERENCE_AUDIT_2026-05-31.md:146,157,179,195,201,206,217,232,268,270 (riscritto)"
-  - "os3-matrix/docs/stats/STATS_SYSTEM_SSOT.md:543-546,575-579,821-859"
-  - "os3-matrix/docs/tech-specs/READ_TRACKING_TECH_SPEC.md:37-38,64-65,95-96,313"
-  - "os3-matrix/docs/tech-specs/RETROSPECTIVE_TECH_SPEC.md:41-42"
-  - "os3-matrix/docs/design/STATS_HUB_L2_HANDOFF.md:15,29,39"
-  - "os3-matrix/docs/design/SESSION_3_HANDOFF_TO_NEXT.md:116,173,191,226,266"
-  - "os3-matrix/docs/doc-sync/DOC-SYNC_v2_STATO_DELLARTE.md:30"
-  - "os3-matrix/docs/adr/M-OS3-138_ADR_gerarchia_operativa_L1.md (rifatto sulla base corretta)"
-  - "nexus-cockpit/backend/aggregate_to_sqlite.py:202 (docstring)"
 ---
 
 # Gerarchia Oracode Nexus — Stato Corrente

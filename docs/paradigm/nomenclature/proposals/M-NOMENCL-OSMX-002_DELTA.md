@@ -1,7 +1,19 @@
 ---
+title: M-NOMENCL-OSMX-002 — DELTA Proposal v2
+slug: nomencl-osmx-002-delta
 doc_type: concept
+version: 1.0.0
+status: current
+date: '2026-05-29'
+updated_at: '2026-08-28'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: normal
 ---
 
 > ⛔ **DEPRECATO — clausole di stato (M-OS3-138, 2026-07-06).** Le affermazioni «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato* / *caso unico*; L2/HUB *differito* finché non ci sono 2+ clienti» in questo documento sono **superate**: il disaccoppiamento è fatto, **L2 = Florence EGI S.R.L.** (software house acquirente con licenza Nexus) *esiste*, e le istanze-clienti sono già molte (FlorenceEGI, Capasso, LeVespe; DeepDebug è Libreria LSO — CEO 2026-08-28). Stato corrente autoritativo → **oracode: docs/paradigm/nomenclature/NEXUS_HIERARCHY_CURRENT_STATE.md**. Le *definizioni core* L1/L2/L3 restano valide.

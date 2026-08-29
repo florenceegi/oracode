@@ -1,7 +1,19 @@
 ---
+title: '**MODULO 0: IL MANIFESTO OS3**'
+slug: os3-modulo-0-manifesto
 doc_type: concept
+version: 1.0.0
+status: current
+date: '2026-05-29'
+updated_at: '2026-07-31'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: normal
 ---
 
 # **MODULO 0: IL MANIFESTO OS3**

@@ -1,5 +1,19 @@
 ---
+title: Oracode Nexus — Gerarchia a 3 Livelli (SSOT)
+slug: oracode-nexus-3-tier
 doc_type: concept
+version: 1.0.0
+status: current
+date: '2026-05-31'
+updated_at: '2026-08-28'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
+visibility: public
+rag: private
+priority: normal
 ---
 
 

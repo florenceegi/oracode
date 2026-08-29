@@ -3,15 +3,17 @@ title: Tier 0 — Clausole Immutabili
 slug: tier0-clausole-immutabili
 doc_type: concept
 version: 1.0.0
-status: DRAFT
+status: draft
 date: '2026-06-17'
-author: Padmin D. Curtis for Fabio Cherici
-mission: M-NEXUS-000
+updated_at: '2026-08-23'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
-  - oracode
-priority: high
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: high
 ---
 
 # Tier 0 — Clausole Immutabili

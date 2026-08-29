@@ -3,15 +3,17 @@ title: Pattern Anello di Auto-Miglioramento
 slug: pattern-anello-automiglioramento
 doc_type: concept
 version: 1.0.0
-status: DRAFT
+status: draft
 date: '2026-06-17'
-author: Padmin D. Curtis for Fabio Cherici
-mission: M-NEXUS-000
+updated_at: '2026-08-23'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
-  - oracode
-priority: high
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: high
 ---
 
 # Pattern: Anello di Auto-Miglioramento (LSO)

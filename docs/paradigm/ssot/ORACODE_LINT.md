@@ -1,7 +1,19 @@
 ---
+title: oracode-lint — Linter semantico artefatti Oracode
+slug: oracode-lint
 doc_type: spec
+version: 1.0.0
+status: current
+date: '2026-06-01'
+updated_at: '2026-07-31'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
 visibility: public
 rag: public
+priority: normal
 ---
 
 # oracode-lint — Linter semantico artefatti Oracode

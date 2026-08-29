@@ -1,5 +1,19 @@
 ---
+title: DOC-SYNC v2 — Stato dell'Arte
+slug: doc-sync-v2-stato-dellarte
 doc_type: stub
+version: 1.0.0
+status: current
+date: '2026-07-16'
+updated_at: '2026-07-31'
+author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
+scope:
+- oracode
+supersedes: []
+superseded_by: null
+visibility: public
+rag: private
+priority: normal
 ---
 
 # DOC-SYNC v2 — Stato dell'Arte
