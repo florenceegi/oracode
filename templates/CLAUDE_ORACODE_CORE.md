@@ -35,20 +35,17 @@ Regola immutabile: OSZ è verità assoluta. OS3 e OS4 si aggiornano per allinear
 
 ---
 
-## Glossario — i 6 ruoli della gerarchia (decisione CEO 2026-07-08/11)
+## Glossario — i 6 ruoli (rettifica CEO 2026-08-31, M-OS3-215)
 
-I ruoli si nominano con PAROLE, mai con numeri di livello:
-- **Paradigma** — le regole, la legge: oracode (MIT).
-- **Softwarehouse** — l'azienda con licenza (es. Florence EGI S.R.L.), SOPRA tutti i clienti. A questo
-  livello vivono le **Librerie LSO** e l'**attuazione del paradigma** (librerie, imbrigliamento, hook — repo os3-matrix).
-- **Libreria LSO** — repo di proprietà della software house, al servizio di tutti i lavori, nessun
-  cliente committente (DeepDebug, Fucina, Cockpit, EGI-STAT, SNC).
-- **Progetto** — un LSO mono-organo (es. Capasso).
-- **Organismo** — un LSO multi-organo (es. FlorenceEGI; repo-centro EGI-DOC).
-- **Organo** — un LSO che appartiene a un Organismo (es. EGI, EGI-HUB).
+Ruoli per PAROLE, mai numeri. Definitivo: `RUOLI_E_CONTENITORI.md`; le macchine leggono `role-enum.json`, mai una copia:
+- **Paradigma** — le regole, la legge: oracode (MIT). Unico.
+- **os3-matrix** — l'attuazione del paradigma; confine software della Softwarehouse. Unico.
+- **Libreria LSO** — «componenti che potrebbero essere installati in un LSO» (CEO 31/08, es. Fortino): niente trattamento da LSO.
+- **Organismo** — un LSO multi-organo (es. FlorenceEGI).
+- **Organo** — un LSO che appartiene a un Organismo. Non esiste da solo.
+- **Progetto** — lavoro con committente, mono-organo; LSO oppure no (senza asse difesa «è solo software»).
 
-Regole: nessun termine nuovo senza definizione alla prima occorrenza · MAI rinominare termini
-consolidati senza permesso CEO. Dettaglio: `LSO_NOMENCLATURE_INDEX.md` §0/§1bis. (M-OS3-144 D27)
+CONTENITORI, NON ruoli: Softwarehouse (ciò che si vende con Oracode Nexus; l'azienda con licenza) · Customer (ciò che si produce per i clienti). Prima domanda alla nascita: «Che cosa stiamo creando?» → Libreria LSO · Organismo · Organo · Progetto.
 
 ---
 

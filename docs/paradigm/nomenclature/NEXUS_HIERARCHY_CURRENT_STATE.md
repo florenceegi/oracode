@@ -5,7 +5,7 @@ doc_type: architecture
 version: 2.0.0
 status: current
 date: '2026-07-06'
-updated_at: '2026-07-11'
+updated_at: '2026-08-31'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - oracode
@@ -17,6 +17,11 @@ priority: high
 ---
 
 # Gerarchia Oracode Nexus — Stato Corrente
+
+> **⚠️ Rettifica gerarchia 2026-08-31 (M-OS3-215).** Il documento definitivo dei ruoli e dei
+> contenitori è **`RUOLI_E_CONTENITORI.md`** (ratifica CEO 31/08). L'elenco-ruoli citato qui
+> sotto (con Softwarehouse fra i ruoli) è la fotografia di luglio: resta come storia, con la sua
+> motivazione; sui ruoli vince il definitivo.
 
 > **Perché questo doc.** La cornice «FlorenceEGI/EGI-DOC = HUB+istanza *accoppiato*, *caso unico*; L2 *differito* finché non arrivano 2+ clienti» risale a maggio 2026 ed è **superata dai fatti**. Ha già indotto in errore l'analisi (confondere FlorenceEGI-prodotto con la software house). Questo doc fissa lo **stato corrente** e **depreca** le clausole di stato stale elencate in frontmatter. **NON** depreca le *definizioni core* (restano valide): depreca solo i **claim di stato**.
 
