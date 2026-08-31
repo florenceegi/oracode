@@ -85,19 +85,21 @@ bash <clone>/bin/install-leak-gate.sh "<file>" && cp "<file>" "<dest>"   # salta
 - `nervous-system/` → `.oracode/nervous-system/` del progetto
 - `etc/settings-snippet.core.json` → `.oracode/etc/` (riferimento per re-wiring/audit futuri)
 
-**2.3.e — Persisti gli starter Egida (difesa-by-default, G1 EGIDA_INSTALL_CONTRACT §4.2/§6.3)**
+**2.3.e — Consegna gli starter Egida (difesa-by-default, G1 EGIDA_INSTALL_CONTRACT §4.2/§6.3)**
 
-L'asse difesa Egida è costitutivo (CORE §Asse Difesa Costitutivo). Gli starter di invarianti vivono
-nel clone Matrix (`templates/egida/`), che però viene rimosso a fine install; `/oracode-scaffold` gira
-dopo. Quindi qui — **mentre il clone è ancora vivo** — copia gli starter nel progetto perché sopravvivano:
+L'asse difesa Egida è costitutivo (CORE §Asse Difesa Costitutivo). L'install gira DOPO lo scaffold
+(ordine M-OS3-214): la directory del progetto e il descrittore `.oracode/project.json` esistono già,
+e il clone Matrix è vivo. Quindi copia direttamente, senza copie-ponte:
 
 ```
-<clone>/templates/egida/SECURITY_INVARIANTS.starter.{L1,L2-L3,L3-L4}.json  →  .oracode/etc/egida/
+<clone>/templates/egida/SECURITY_INVARIANTS.starter.{L1,L2-L3,L3-L4}.json  →  <project>/.oracode/etc/egida/
+<clone>/templates/egida/SECURITY_INVARIANTS.starter.<egida_profile>.json  →  <project>/SECURITY_INVARIANTS.json
 ```
 
-`/oracode-scaffold` poi copierà lo starter del profilo scelto (`egida_profile`) → `<repo>/SECURITY_INVARIANTS.json`.
+(la seconda copia usa l'`egida_profile` del descrittore — scritto dallo scaffold step 6b dalla config Q8;
+i target restano `<PLACEHOLDER>` generici: li riempie la corsia dell'organo, MAI `/project`).
 Gli starter sono prodotti da os3-matrix (M-OS3-101), conformi a `FORTINO/SECURITY_INVARIANTS.schema.json`,
-cumulativi (L1 ⊂ L2-L3 ⊂ L3-L4), con target `<PLACEHOLDER>` generici.
+cumulativi (L1 ⊂ L2-L3 ⊂ L3-L4).
 
 > **Il verificatore si consegna col progetto (M-OS3-194, capacità `strumento-difesa-nasce-installato`).**
 > Fino al 2026-08-19 qui c'era scritto «**NON** deployare `fortino-check`: concern di runtime, fuori

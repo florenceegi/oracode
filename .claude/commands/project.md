@@ -8,14 +8,19 @@ sequenziali. Non saltare fasi. Non procedere senza risposte.
 
 1. **`/oracode-detect`** (`.claude/commands/oracode-detect.md`) — rileva paradigma / OS3 Matrix (licenza) /
    librerie LSO sul sistema. Produce il report di capacità.
-2. **`/oracode-install`** (`.claude/commands/oracode-install.md`) — presenta le opzioni e installa
-   paradigma / Matrix (se licenziato) / librerie LSO scelte.
-3. **`/oracode-configure`** (`.claude/commands/oracode-configure.md`) — raccoglie nome/società/CEO/dominio/
+2. **`/oracode-configure`** (`.claude/commands/oracode-configure.md`) — raccoglie nome/società/CEO/dominio/
    stack/lingue, determina il livello (triage), domande condizionali per livello. Produce la config.
-4. **`/oracode-scaffold`** (`.claude/commands/oracode-scaffold.md`) — genera la directory progetto, lo scaffold,
+3. **`/oracode-scaffold`** (`.claude/commands/oracode-scaffold.md`) — genera la directory progetto, lo scaffold,
    CLAUDE.md, i registry e il **descrittore ponte L1→L3** `.oracode/project.json`.
+4. **`/oracode-install`** (`.claude/commands/oracode-install.md`) — installa paradigma / Matrix (se licenziato) /
+   librerie LSO scelte **nel progetto già impalcato**, e consegna il corredo di difesa Egida.
 
-Poi esegui la **Fase 5 — Riepilogo** (sotto). Lo stato passa di fase in fase: report → scelte → config → scaffold.
+> **Perché quest'ordine (M-OS3-214, 2026-08-31).** Ogni fase deve possedere i propri ingressi PRIMA di girare:
+> l'install consuma lo stack (configure Q4), il profilo difesa (configure Q8), la directory di progetto e il
+> descrittore (scaffold). L'ordine precedente (install in fase 2) faceva uscire con errore gli eseguibili di
+> difesa e obbligava a copie-ponte verso directory non ancora esistenti.
+
+Poi esegui la **Fase 5 — Riepilogo** (sotto). Lo stato passa di fase in fase: report → config → scaffold → install.
 
 > Per un singolo pezzo (es. solo rilevare l'infra, o rigenerare lo scaffold da una config già nota), invoca
 > direttamente la micro-skill corrispondente: sono componibili.
