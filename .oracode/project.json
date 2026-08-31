@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "description": "Descrittore progetto Oracode — ponte tra mission engine HOME (~/.oracode/missions/) e repo registry versionato. Letto da bin/mission finalize per sapere dove vivono registry/repo-map/instance di questo progetto (CWD-resolved).",
+    "version": "1.0.0",
+    "created": "2026-05-29",
+    "mission": "M-OS3-025"
+  },
+  "project": "oracode",
+  "level": 1,
+  "organ_type": "Paradigma SSOT (Livello 1)",
+  "doc_sync_v3": true,
+  "doc_sync_v3_live": true,
+  "instance_root": "/home/fabio/oracode",
+  "registry_path": "/home/fabio/oracode/docs/missions/MISSION_REGISTRY.json",
+  "repo_map_path": "/home/fabio/oracode/docs/missions/REPO_MAP.json",
+  "read_log_path": "/home/fabio/oracode/audit/MISSION_READ_LOG.jsonl",
+  "bootstrap_index_path": "/home/fabio/oracode/docs/missions/MISSION_BOOTSTRAP_INDEX.json",
+  "finalize_steps": {
+    "enrich": {
+      "enabled": true,
+      "tool": "enrich_registry.py"
+    },
+    "retrospective": {
+      "enabled": true,
+      "tool": "mission_retrospective.py",
+      "best_effort": true,
+      "note": "deps (read_log, bootstrap_index) opzionali — skip-con-nota se assenti"
+    }
+  },
+  "anchor": "paradigm",
+  "ssot_first": {
+    "enabled": true,
+    "ssot_globs": [
+      "docs/lso/",
+      "docs/missions/MISSION_REGISTRY.json"
+    ],
+    "_meta": "M-FUC-021 (pattern M-FUC-020 Fucina) gate SSOT-first: mission trigger 3 richiede lettura SSOT prima di executing (kill-switch: enabled=false). Globs verificati con ls sull'organo."
+  },
+  "stats_refresh_cmd": [
+    "bash",
+    "/home/fabio/EGI-STAT/deploy/push-stats-nexus.sh"
+  ],
+  "role": "paradigma",
+  "capability_gate": "block"
+}
