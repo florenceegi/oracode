@@ -5,7 +5,7 @@ doc_type: concept
 version: 3.0.0
 status: current
 date: '2026-07-13'
-updated_at: '2026-08-28'
+updated_at: '2026-08-31'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - oracode
@@ -15,6 +15,12 @@ visibility: public
 rag: public
 priority: high
 ---
+
+> **⚠️ Rettifica gerarchia 2026-08-31 (M-OS3-215).** Il documento **definitivo** dei ruoli e dei
+> contenitori è ora **`RUOLI_E_CONTENITORI.md`** (ratifica CEO 31/08): la prima domanda «Che cosa
+> stiamo creando?», i sei ruoli per parola (Softwarehouse NON è un ruolo — è un contenitore;
+> os3-matrix È un ruolo), le domande conseguenti e la cascata LSO→rischio. Dove questo file
+> diverge da quello sui ruoli, vince quello.
 
 > **v3 — sostituisce integralmente `LSO_NOMENCLATURE_v2.md`.** v2 era una *Working Draft* del 22/05/2026 costruita su un modello **superato**: 4 livelli concettuali, OS3 Matrix come «piano interno di Oracode», doc-sync v2 dato per vivo, FlorenceEGI trattato come un livello. v3 conserva **tutta la sostanza** ancora valida di v2 (definizioni, filosofia dell'asimmetria umano/LLM, layer stack, geometria cross-repo, boundary case, posizionamento commerciale) ma la **ri-ancora al modello corrente**, ratificato dal CEO il 2026-07-11 (M-OS3-144).
 >

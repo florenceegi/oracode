@@ -5,7 +5,7 @@ doc_type: concept
 version: 3.0.0
 status: current
 date: '2026-05-08'
-updated_at: '2026-08-23'
+updated_at: '2026-08-31'
 author: Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici
 scope:
 - oracode
@@ -15,6 +15,12 @@ visibility: public
 rag: public
 priority: high
 ---
+
+> **⚠️ Rettifica gerarchia 2026-08-31 (M-OS3-215).** Il documento **definitivo** dei ruoli e dei
+> contenitori è ora **`RUOLI_E_CONTENITORI.md`** (ratifica CEO 31/08): la prima domanda «Che cosa
+> stiamo creando?», i sei ruoli per parola (Softwarehouse NON è un ruolo — è un contenitore;
+> os3-matrix È un ruolo), le domande conseguenti e la cascata LSO→rischio. Dove questo file
+> diverge da quello sui ruoli, vince quello.
 
 # LSO Nomenclature — INDEX
 
