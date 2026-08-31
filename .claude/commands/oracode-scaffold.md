@@ -40,7 +40,10 @@ Convenzione path (portabile, NO path assoluti baked): `$ORACODE_HOME` = radice d
 6. **Compila `.oracode/project.json`** (PONTE L1→L3 — OBBLIGATORIO per l'auto-registrazione mission): sostituisci i placeholder con:
    - `{{DATE}}` = data corrente
    - `{{PROJECT_NAME}}` = nome progetto
-   - `{{ORACODE_LEVEL}}` = livello (numero)
+   - `{{ORACODE_LEVEL}}` = livello: **annotazione DERIVATA, mai chiesta** (M-OS3-216). Non esiste più una domanda
+     che lo raccolga: il numero si deriva dal ruolo e dalla risposta sull'LSO, si scrive per compatibilità con i
+     consumatori storici e non decide nulla. Motivazione: `RUOLI_E_CONTENITORI.md` §6. Se ti accorgi di doverlo
+     chiedere a un umano, fermati: significa che il ruolo non è stato raccolto (Q0).
    - `{{ROLE}}` = ruolo nella gerarchia, dalla config (Q0 di `/oracode-configure`, la PRIMA domanda) — per PAROLA, uno di:
      `libreria-lso | organismo | organo | progetto` (contratto L7 `os3-matrix/contracts/role-enum.json`;
      `paradigma`/`os3-matrix` sono riservati ai tool-radice, mai a un progetto nuovo). `bin/mission` lo

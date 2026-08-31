@@ -1,7 +1,7 @@
-# /oracode-configure — Raccogli i parametri del progetto (dominio, stack, livello)
+# /oracode-configure — Raccogli i parametri del progetto (ruolo, dominio, stack)
 
 Micro-skill del ciclo `/project`. Dopo che l'infrastruttura è installata (`/oracode-install`), raccoglie le
-risposte che definiscono il progetto e ne determina il livello. Produce la **config** che è input di
+risposte che definiscono il progetto, a partire dal suo ruolo. Produce la **config** che è input di
 `/oracode-scaffold`. Non installa infra (→ `/oracode-install`), non crea file (→ `/oracode-scaffold`).
 
 ## Fase 3 — Configurazione progetto
@@ -69,23 +69,17 @@ Se il progetto non ha ancora un repo remoto: registra `null` (NON inventare un n
 **Q5: Lingue i18n**
 Chiedi le lingue target. Default: "it en".
 
-**Q6: Livello di applicazione**
-Presenta i 4 livelli e chiedi quale si applica:
+> **La domanda sul «Livello di applicazione» non si pone più** (ratifica CEO 2026-08-31, M-OS3-216).
+> Quel numero da 1 a 4 mescolava due domande diverse — *quanta attrezzatura ricevi* e *che forma hai* —
+> e produceva carte d'identità che si contraddicevano da sole. Ciò che serviva sapere discende ora dal
+> ruolo raccolto in Q0 e dalla domanda sull'LSO. Il campo `oracode_level` sopravvive nella carta
+> d'identità solo come **annotazione derivata**: si scrive, non si chiede, e non decide più nulla.
+> Motivazione integrale: `oracode/docs/paradigm/nomenclature/RUOLI_E_CONTENITORI.md`, sezione «La
+> domanda livello muore».
 
-- **Livello 1 — Disciplina**: paradigma solo. Per progetti dove il CEO verifica manualmente.
-- **Livello 2 — Enforcement**: aggiunge OS3 Matrix. Per progetti dove la verifica manuale e impossibile.
-- **Livello 3 — LSO mono-organo**: organismo vivente, un organo. Mission protocol, SSOT tracking, DOC-SYNC.
-- **Livello 4 — LSO multi-organo**: piu organi. Organ Index, sistema circolatorio, contracts cross-organo.
-
-Se l'utente non sa, triage:
-- "Il tuo progetto ha interazione continua con utenti?" (si -> livello 2+)
-- "Hai bisogno di esperienza accumulabile tra sessioni?" (si -> livello 3+)
-- "Hai piu applicazioni che condividono dati?" (si -> livello 4)
-
-Nota: se l'utente sceglie livello 2+ ma non ha OS3 Matrix installato, segnala l'incongruenza e chiedi come procedere.
-
-**Q6b: Ruolo nel Nexus → determina lo `scope`** (M-OS3-141). Il livello (sopra) è un asse; il **ruolo** è un altro,
-ed è quello da cui il routing RAG di fine-mission si deduce. Determinalo ora (fluisce a `/oracode-scaffold`):
+**Q6b: Ruolo nel Nexus → determina lo `scope`** (M-OS3-141). Il **ruolo** raccolto in Q0 è un asse;
+questo ne è un altro, ed è quello da cui il routing RAG di fine-mission si deduce. Determinalo ora
+(fluisce a `/oracode-scaffold`):
 - **Paradigma** — il progetto È il motore/le regole (`oracode`→`paradigm`, `os3-matrix`→`engine`). Raro: solo i due tool-radice.
 - **Strumento del Nexus** (`nexus-tool`) — attrezzatura operativa del Nexus (Fucina, DeepDebug, il cockpit…). SSOT → `rag_nexus`.
 - **Organismo/Progetto** (`organism`) — un progetto/organismo vero (mono, hub, o organo). Default per i progetti-cliente.
@@ -165,5 +159,5 @@ Per tutti i livelli:
 
 <!-- Fase 3 sara espansa con step aggiuntivi futuri -->
 
-**Output**: la config raccolta (nome, INSTANCE_NAME, societa, CEO, CTO, dominio, stack, repo GitHub, lingue, livello, Q7.*, `egida_profile` se Matrix presente) —
+**Output**: la config raccolta (`role` da Q0, nome, INSTANCE_NAME, societa, CEO, CTO, dominio, stack, repo GitHub, lingue, Q7.*, `egida_profile` se Matrix presente) —
 pre-compilata da `DISCOVERY_REPORT.json` dove disponibile — è l'input di `/oracode-scaffold`. Nessun placeholder template resta non risolto.
