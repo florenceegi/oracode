@@ -15,6 +15,34 @@ Dal file scelto **pre-compila** tutte le risposte presenti. Per ogni campo valor
 mostralo come "già definito in discovery: <valore>" e procedi. Chiedi SOLO i campi `null` o assenti.
 REGOLA ZERO: mai inventare un campo mancante — chiedilo.
 
+**Q0 (già Q6c): Che cosa stiamo creando?** — la PRIMA domanda, prima di ogni altra che dipenda dalla risposta.
+
+Alla nascita di ogni repository la prima domanda è una sola, e si formula piana: *«Che cosa stiamo creando?»*
+Dalla risposta discende tutto il resto — l'instradamento dei documenti, il corredo operativo, la difesa, e le
+domande che seguono. Documento umano autoritativo: `oracode/docs/paradigm/nomenclature/RUOLI_E_CONTENITORI.md`
+(ratifica CEO 2026-08-31, M-OS3-215).
+
+Le risposte NON si trascrivono qui: **si LEGGONO dal contratto** `os3-matrix/contracts/role-enum.json` — è la
+fonte unica, e una copia in prosa drifterebbe (M-OS3-215). Procedura:
+
+```
+jq -r '.roles[]' <matrix>/contracts/role-enum.json          # l'elenco canonico
+jq -r '.topology' <matrix>/contracts/role-enum.json         # chi è unico-già-creato, chi appartiene a chi
+```
+
+Presenta come **selezionabile** ogni ruolo la cui voce in `topology` NON lo dichiara *unico, già creato*: quelli
+lo sono per costruzione e non si ricreano mai più, quindi non compaiono fra le scelte di un progetto nuovo.
+Presenta le risposte **per parola**, mai per numero (canone M-FUC-040): la parola è la risposta, il numero
+fingerebbe un ordine che non c'è. Se un ruolo non è nel contratto non esiste: non inventarlo (REGOLA ZERO).
+
+Chi conduce la raccolta spiega ogni risposta con la definizione che il contratto e il documento autoritativo già
+portano — non con una definizione riscritta qui.
+
+Esito della domanda: `role` in config (fluisce a `/oracode-scaffold`, `{{ROLE}}`, e finisce nel campo `role`
+della carta d'identità `.oracode/project.json`). `bin/mission` lo valida all'open e lo mostra in `status`.
+I due contenitori Softwarehouse e Customer NON sono valori di questo campo: stanno sull'asse proprietà
+(chi possiede), non su quello della produzione (cosa il repo è).
+
 **Q1: Nome progetto**
 Chiedi il nome del progetto (diventa il prefisso: `NOME-DOC/`). Da questo si deriva `INSTANCE_NAME` (es. `<nome>-DOC`).
 
@@ -66,18 +94,7 @@ Triage: *"È attrezzatura del Nexus, o è un organismo/progetto a sé?"* → `ne
 Se **Organismo multi-organo (hub)**: sarà la radice dei suoi organi → allo scaffold dichiarerà il suo store RAG
 (`rag_store` + `rag_engine_writes`). Un mono senza RAG non dichiara nulla (→ nessun RAG). Output: `scope` in config.
 
-**Q6c: Ruolo nella gerarchia (`role`)** (M-OS3-151). Asse DIVERSO da Q6b (scope = routing RAG) e dal livello
-(maturità): il ruolo dice **cosa il repo È** nella gerarchia dei ruoli (glossario CORE), per PAROLA — mai numeri
-(canone M-FUC-040). Enum canonico (contratto L7 `os3-matrix/contracts/role-enum.json`, sequenza = gerarchia
-dall'alto in basso): `paradigma | os3-matrix | libreria-lso | organismo | organo | progetto`.
-- `paradigma` / `os3-matrix` — **riservati ai due tool-radice** (`oracode`, `os3-matrix`). Un progetto nuovo non è MAI questi.
-- `libreria-lso` — repo-strumento della software house, al servizio di tutti i lavori, nessun cliente committente.
-- `organismo` — LSO multi-organo (la radice, il repo-centro a cui gli organi puntano).
-- `organo` — membro di un Organismo. **Di norma via promozione, non a /project** (un progetto nasce mono).
-- `progetto` — LSO mono-organo. **Default per i progetti-cliente.**
-Softwarehouse e Customer **NON sono valori di questo campo**: stanno sull'asse proprietà (chi possiede), non
-produzione (cosa il repo è). Triage: *"È uno strumento interno della software house, o un lavoro con un committente?"*
-→ `libreria-lso` vs `progetto`/`organismo`. Output: `role` in config (fluisce a `/oracode-scaffold`, `{{ROLE}}`).
+> **Il ruolo è già stato raccolto**: è la prima domanda del questionario (Q0, già Q6c). Non ri-chiederlo qui.
 
 **Domande condizionali per livello:**
 
