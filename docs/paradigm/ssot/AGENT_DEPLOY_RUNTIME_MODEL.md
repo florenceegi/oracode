@@ -36,10 +36,18 @@ con Pilastro 3 (Coerenza Semantica) e con la disciplina single-source della dott
 
 ## Comandi-skill — deploy e PRECEDENZA (M-OS3-064)
 
-Anche i **comandi-skill** del paradigma (`/project`, `/discovery`) seguono lo stesso modello: fonte
-versionata single-source in `oracode/.claude/commands/`, copia operativa in `~/.claude/commands/`,
-generata da `bin/deploy-commands` (copia pura **additiva** — aggiorna solo i comandi del paradigma,
-preserva gli altri comandi utente; gemello pubblico di `deploy-agents`).
+Anche i **comandi-skill** seguono lo stesso modello: fonte versionata single-source in un repo,
+copia operativa in `~/.claude/commands/`, generata da un `deploy-commands` (copia pura **additiva** —
+aggiorna solo i propri comandi, preserva gli altri comandi utente; gemello di `deploy-agents`).
+
+**Dove vive la fonte (aggiornato il 2026-09-02, M-OS3-216).** I comandi che fanno nascere un
+progetto — `/project`, `/discovery`, i quattro pezzi che li compongono e il collaudatore a secco
+degli skill — **non stanno piu' qui**: sono applicazioni, e le applicazioni stanno in `os3-matrix`,
+il prodotto con licenza. La loro fonte e' `os3-matrix/.claude/commands/`, il loro trasporto e'
+`os3-matrix/bin/deploy-commands`. In oracode resta `web-fx-displacement`, che dipende dal materiale
+grafico MIT in `templates/fx/`, col suo `bin/deploy-commands`. **I due trasporti scrivono nella
+stessa cartella**: e' per questo che sono additivi e non sincronizzanti — uno che sincronizzasse
+cancellerebbe i comandi dell'altro.
 
 **Regola di precedenza Claude Code (decisiva, verificata):**
 
@@ -59,4 +67,5 @@ esegue una versione vecchia mentre il sorgente git aggiornato resta **schermato 
 > alla fonte versionata. **Dopo ogni modifica a un comando-skill: `deploy-commands`.**
 
 > Implementazione concreta del deploy AGENTI/HOOK (script, anchor, layout): privata (OS3 Matrix).
-> Il deploy COMANDI (`bin/deploy-commands`) è invece **pubblico** (vive in oracode, MIT, con la sorgente).
+> Il deploy dei COMANDI della nascita e' anch'esso in OS3 Matrix dal 2026-09-02 (M-OS3-216): stava in
+> oracode, ed era il pezzo che verifica la licenza a viaggiare dentro il repo pubblico MIT.

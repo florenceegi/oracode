@@ -1,7 +1,9 @@
 # Oracode — Paradigma AI-native
 
 > Questo è il repo sorgente del paradigma Oracode.
-> Chi clona questo repo e apre Claude Code ha accesso a `/project` per bootstrappare un nuovo progetto.
+> Contiene le REGOLE, non le applicazioni. I comandi che fanno nascere un progetto (`/project`,
+> `/discovery` e i pezzi che li compongono) vivono in `os3-matrix`, che e' il prodotto con licenza:
+> clonare questo repo da solo non da' accesso a `/project` (M-OS3-216, decisione CEO 2026-09-02).
 
 ## Cosa è questo repo
 
@@ -11,13 +13,14 @@ Oracode è un paradigma di sviluppo software AI-native E un framework.
 
 Questo repo contiene SOLO il paradigma (MIT). L'enforcement vive in `os3-matrix` (privato, licenza commerciale).
 
-## Comando principale
+## Come nasce un progetto
 
-```
-/project — Bootstrap completo di un nuovo progetto Oracode
-```
+Il comando `/project` fa nascere un progetto Oracode, ma **non vive qui**: vive in `os3-matrix`
+(`os3-matrix/.claude/commands/`), perche' e' un'applicazione e le applicazioni stanno nel prodotto,
+non nel paradigma. Da qui il comando legge il materiale che gli serve — lo scheletro del progetto
+nuovo, il boot context del paradigma, la tassonomia delle mission — che restano regole e restano qui.
 
-Flusso:
+Il suo flusso:
 1. Rileva cosa e disponibile sul sistema (paradigma, Matrix, librerie)
 2. Propone opzioni in base a cosa c'e
 3. Installa infrastruttura scelta (paradigma + Matrix se licenziato + librerie LSO)
@@ -32,7 +35,7 @@ templates/
   CLAUDE_PROJECT_TEMPLATE.md   — template istanza progetto
   PROJECT-DOC/                 — scaffold vuoto per nuovo progetto
 
-.claude/commands/project.md    — skill /project
+.claude/commands/               — resta solo web-fx-displacement (dipende da templates/fx/)
 ```
 
 ## Ecosistema Oracode
