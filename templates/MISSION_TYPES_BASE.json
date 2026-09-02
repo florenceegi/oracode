@@ -7,7 +7,7 @@
     "author": "Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici",
     "purpose": "Set base universale di tipi mission. Ogni istanza LSO estende questo file via MISSION_TYPES.json (approccio ibrido — Opzione 3).",
     "scope": "universal",
-    "extension_pattern": "Ogni istanza ha <INSTANCE>-DOC/docs/missions/MISSION_TYPES.json con campo 'extends' che referenzia questo file. Tipi custom per dominio si aggiungono alla 'types' dell'istanza.",
+    "extension_pattern": "Ogni istanza ha <NOME-PROGETTO>/docs/missions/MISSION_TYPES.json con campo 'extends' che referenzia questo file. Tipi custom per dominio si aggiungono alla 'types' dell'istanza.",
     "promotion_policy": "Tipi custom emergenti da istanze possono essere promossi a base via mission tipo 'oracode-audit' (decisione CEO esplicita).",
     "added_in_first_appearance": "ORACODE-DOC M-ORACODE-001 D0 (2026-05-26)"
   },

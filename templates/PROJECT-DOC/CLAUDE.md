@@ -1,6 +1,6 @@
 @CLAUDE_ORACODE_CORE.md
 
-# {{PROJECT_NAME}}-DOC — Oracode
+# {{PROJECT_NAME}} — Oracode
 
 > Centro operativo progetto {{PROJECT_NAME}}.
 > Repository SSOT documentale.
@@ -30,11 +30,13 @@ Database:   {{DATABASE}}
 Infra:      {{INFRASTRUCTURE}}
 ```
 
-## Lingue i18n
+## Lingue
 
 ```
 {{TARGET_LANGUAGES}}
 ```
+
+{{DICHIARAZIONE_TRADUZIONI}}
 
 ## Registri
 

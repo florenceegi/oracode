@@ -1,4 +1,4 @@
-# BOOTSTRAP_DRIFT_LOG — {{INSTANCE_NAME}}
+# BOOTSTRAP_DRIFT_LOG — {{PROJECT_NAME}}
 
 > Proposte di update a `MISSION_BOOTSTRAP_INDEX.json` accumulate dal retrospective (MISSION_PROTOCOL v2.0.0 FASE 6).
 > Le proposte NON aggiornano automaticamente l'index — accumulate qui, applicate via decisione CEO esplicita.
