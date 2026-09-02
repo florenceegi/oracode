@@ -7,13 +7,28 @@
 #          install persiste starter, scaffold copia starter + scrive egida_gate/egida_profile, descrittore esteso.
 # @mission M-NEXUS-006
 
-CMD=/home/fabio/oracode/.claude/commands
+# 2026-09-02 (M-OS3-216) — CAMBIO DI CASA. I quattro comandi della nascita letti qui
+# sotto sono passati da oracode a os3-matrix: sono APPLICAZIONI del paradigma, e oracode
+# è il paradigma pubblico MIT. Questo banco vive in oracode ma legge ORMAI DUE repository,
+# quindi la radice di os3-matrix non si può ricavare da dove sta questo file: si dichiara
+# con ORACODE_MATRIX_HOME, e in mancanza si assume la cartella os3-matrix accanto a HOME.
+# Il descrittore modello resta invece in oracode, perché è parte delle regole.
+ORACODE_HOME="${ORACODE_HOME:-$HOME/oracode}"
+MATRIX_HOME="${ORACODE_MATRIX_HOME:-$HOME/os3-matrix}"
+CMD="$MATRIX_HOME/.claude/commands"
 CONFIGURE="$CMD/oracode-configure.md"
 INSTALL="$CMD/oracode-install.md"
 SCAFFOLD="$CMD/oracode-scaffold.md"
 PROJECT="$CMD/project.md"
-DESCRIPTOR=/home/fabio/oracode/templates/PROJECT-DOC/.oracode/project.json
-STARTERS=/home/fabio/os3-matrix/templates/egida
+DESCRIPTOR="$ORACODE_HOME/templates/PROJECT-DOC/.oracode/project.json"
+STARTERS="$MATRIX_HOME/templates/egida"
+
+# I controlli qui sotto passano tutti per has(), che fa grep sul file: su un file assente
+# grep esce non-zero e la riga diventa rossa. Ma un percorso sbagliato darebbe una fila
+# di rossi tutti uguali e nessuno saprebbe che la causa è UNA sola: si dichiara subito.
+for SRC in "$CONFIGURE" "$INSTALL" "$SCAFFOLD" "$PROJECT" "$DESCRIPTOR"; do
+  [ -f "$SRC" ] || { printf 'PRECONDIZIONE MANCATA: fonte assente: %s\n' "$SRC"; exit 3; }
+done
 FAIL=0
 green() { printf '\033[32m✓\033[0m %s\n' "$1"; }
 red()   { printf '\033[31m✗\033[0m %s\n' "$1"; FAIL=$((FAIL+1)); }

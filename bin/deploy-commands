@@ -1,20 +1,30 @@
 #!/usr/bin/env bash
 # deploy-commands — M-OS3-064: COPIA PURA oracode/.claude/commands → ~/.claude/commands.
 #
-# PERCHÉ ESISTE (cicatrice): i comandi-skill del paradigma (project, discovery) vivono versionati
-# in oracode/.claude/commands, ma Claude Code esegue la copia USER-LEVEL (~/.claude/commands) che
-# ha PRECEDENZA su quella project-level (regola Claude Code: Enterprise > Personal > Project > Plugin).
-# Senza un deploy esplicito, ~/.claude/commands DRIFTA dalla sorgente git → gira una versione vecchia.
-# (Caso reale: /project girava una copia del 31/05 priva del blocco infra P0-12 / cicatrice M-LEVESPE-002,
-#  mentre il sorgente aggiornato in oracode era schermato e non eseguito.)
+# PERCHÉ ESISTE (cicatrice): un comando-skill versionato qui non è il comando che GIRA. Claude Code
+# esegue la copia USER-LEVEL (~/.claude/commands), che ha PRECEDENZA su quella project-level
+# (regola Claude Code: Enterprise > Personal > Project > Plugin). Senza un deploy esplicito
+# ~/.claude/commands DRIFTA dalla sorgente git → gira una versione vecchia, e la deriva non dà
+# errore: sembra tutto a posto. (Caso reale: /project girava una copia del 31/05 priva del blocco
+# infra P0-12 / cicatrice M-LEVESPE-002, mentre il sorgente aggiornato era schermato e non eseguito.)
 #
-# Gemello di os3-matrix/bin/deploy-agents. Copia ADDITIVA (non sync distruttivo): aggiorna/aggiunge solo
-# i comandi presenti in sorgente, NON tocca gli altri comandi in ~/.claude/commands (q, mission, gate,
-# crea-sito, calc-stat, new-subdomain, ...). Atomico: staging temp → mv all-or-nothing.
+# COSA DISPIEGA OGGI (M-OS3-216, 2026-09-02 — il commento precedente è ora FALSO e va letto qui).
+# I sette comandi-skill della nascita di un progetto (project, discovery, oracode-detect,
+# oracode-configure, oracode-scaffold, oracode-install, dry-run-skill) NON vivono più in oracode:
+# sono APPLICAZIONI del paradigma, non le sue regole, e la loro sorgente canonica è ora
+# os3-matrix/.claude/commands, dispiegata dal gemello os3-matrix/bin/deploy-commands.
+# Qui resta web-fx-displacement.md, che dipende da materiale grafico dichiarato MIT in
+# oracode/templates/fx/ e quindi appartiene al repository pubblico: questo script serve quello.
+#
+# Copia ADDITIVA (non sync distruttivo): aggiorna/aggiunge solo i comandi presenti in questa
+# sorgente, NON tocca gli altri comandi in ~/.claude/commands (q, mission, gate, crea-sito,
+# calc-stat, new-subdomain, i sette della nascita dispiegati da os3-matrix, ...). L'additività
+# non è un dettaglio: i due dispiegatori scrivono nella STESSA cartella, e se uno dei due
+# sincronizzasse cancellerebbe i comandi dell'altro. Atomico: staging temp → mv all-or-nothing.
 #
 # @author Padmin D. Curtis (AI Partner OS3.0) for Fabio Cherici (CEO)
-# @version 1.0.0 (oracode)
-# @purpose Single-source dei comandi-skill paradigma: la versione che gira == la sorgente versionata.
+# @version 1.1.0 (M-OS3-216)
+# @purpose Single-source dei comandi-skill che restano nel paradigma pubblico: la versione che gira == la sorgente versionata.
 set -euo pipefail
 shopt -s nullglob
 
