@@ -45,7 +45,7 @@ Ruoli per PAROLE, mai numeri. Definitivo: `RUOLI_E_CONTENITORI.md`; le macchine 
 - **Organo** — un LSO che appartiene a un Organismo. Non esiste da solo.
 - **Progetto** — lavoro con committente, mono-organo; LSO oppure no (senza asse difesa «è solo software»).
 
-CONTENITORI, NON ruoli: Softwarehouse (ciò che si vende con Oracode Nexus; l'azienda con licenza) · Customer (ciò che si produce per i clienti). Prima domanda alla nascita: «Che cosa stiamo creando?» → Libreria LSO · Organismo · Organo · Progetto.
+CONTENITORI, NON ruoli: Softwarehouse (ciò che si vende con Oracode Nexus; l'azienda con licenza) · Customer (ciò che si produce per i clienti). Alla nascita si chiede il RUOLO, e la domanda si chiama così: Libreria LSO · Organismo · Organo · Progetto.
 
 ---
 

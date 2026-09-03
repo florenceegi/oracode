@@ -23,7 +23,7 @@ priority: high
 > di nomenclatura rimandano qui. La proiezione machine-readable è il contratto L7
 > `os3-matrix/contracts/role-enum.json` (le macchine leggono quello, mai una copia).
 
-> **AGGIORNATO il 2026-09-03 (M-OS3-217), su decisioni del CEO del 2026-09-02.** Tre punti di
+> **AGGIORNATO il 2026-09-03 (M-OS3-217), su decisioni del CEO del 2026-09-02 (a, b) e del 2026-09-03 (c).** Tre punti di
 > questo testo sono superati e sono stati riscritti qui dentro, non altrove:
 > **(a)** la difesa non e' piu' «per profilo di rischio»: Fortino si installa **tutto o niente** e
 > discende dal ruolo (D16, parole sue: «Fortino si installa tutto o non si installa affatto,
