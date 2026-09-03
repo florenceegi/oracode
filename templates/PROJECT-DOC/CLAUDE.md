@@ -5,6 +5,19 @@
 > Centro operativo progetto {{PROJECT_NAME}}.
 > Repository SSOT documentale.
 
+## Che cosa e' questo progetto, e che cosa comporta
+
+> Queste righe stanno in cima apposta (decisione CEO 2026-09-03). Sono la prima cosa che ogni
+> sessione legge all'apertura, senza che nessuno glielo chieda. Il nome della cartella NON porta
+> nessun segno del ruolo — niente prefissi, niente pezzi in coda — perche' il nome e' uno solo e non
+> si deriva: il ruolo si dice QUI, dove viene letto davvero.
+
+```
+Ruolo:       {{ROLE}}
+```
+
+{{COSA_COMPORTA_IL_RUOLO}}
+
 ## Identita
 
 ```
