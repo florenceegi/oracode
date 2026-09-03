@@ -11,7 +11,6 @@
 Nome:        {{PROJECT_NAME}}
 Societa:     {{COMPANY_NAME}}
 Dominio:     {{DOMAIN_DESCRIPTION}}
-Livello:     {{ORACODE_LEVEL}}
 ```
 
 ## Modello Operativo

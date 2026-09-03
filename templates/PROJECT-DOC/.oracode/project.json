@@ -9,7 +9,7 @@
     "role_field": "M-OS3-151/M-OS3-215: ruolo del repo nella gerarchia Oracode Nexus, per PAROLA (canone M-FUC-040). I valori ammessi si leggono dall'enum del contratto L7 os3-matrix/contracts/role-enum.json — MAI trascriverli qui (una copia deriva). Documento umano definitivo: oracode/docs/paradigm/nomenclature/RUOLI_E_CONTENITORI.md. paradigma e os3-matrix riservati ai due tool-radice: un progetto nuovo non e MAI questi. bin/mission valida all'open (LOUD, non blocca) e mostra il ruolo in status. Asse DIVERSO dallo scope RAG (Q6b) e dal level (annotazione derivata, RUOLI_E_CONTENITORI.md par.6)."
   },
   "project": "{{PROJECT_NAME}}",
-  "level": {{ORACODE_LEVEL}},
+  "level": null,
   "role": "{{ROLE}}",
   "instance_root": "{{INSTANCE_ROOT}}",
   "doc_sync_v3": true,
