@@ -23,9 +23,17 @@ priority: high
 > di nomenclatura rimandano qui. La proiezione machine-readable è il contratto L7
 > `os3-matrix/contracts/role-enum.json` (le macchine leggono quello, mai una copia).
 
+> **AGGIORNATO il 2026-09-03 (M-OS3-217), su decisioni del CEO del 2026-09-02.** Tre punti di
+> questo testo sono superati e sono stati riscritti qui dentro, non altrove:
+> **(a)** la difesa non e' piu' «per profilo di rischio»: Fortino si installa **tutto o niente** e
+> discende dal ruolo (D16, parole sue: «Fortino si installa tutto o non si installa affatto,
+> punto»); **(b)** le domande sul rischio — denaro, dati personali, blockchain — sono **eliminate**
+> (D20); **(c)** la domanda della nascita **chiede il ruolo e si chiama cosi'**: la formula «Che
+> cosa stiamo creando?» e' eliminata (D22). Il resto del documento resta in vigore.
+
 ## 1. La prima domanda
 
-Alla nascita di ogni repository, la prima domanda è una sola: **«Che cosa stiamo creando?»**
+Alla nascita di ogni repository si chiede **il RUOLO**: che cosa è questo repository.
 La risposta è una parola dei sei ruoli. Due sono già stati creati, sono unici, e non si
 ricreeranno mai più (Oracode e os3-matrix): restano nell'elenco per capire il quadro intero.
 **Le risposte reali oggi sono quattro: Libreria LSO · Organismo · Organo · Progetto.**
@@ -65,21 +73,21 @@ dovrebbe andare a posto da sé» — CEO, 31/08/2026).
 | **Organismo** | nessuna | è vivo per costruzione: riceve tutto |
 | **Organo** | **«Di quale Organismo fa parte?»** | l'appartenenza È ciò che lo distingue: da lì il repo-centro, i registri, il circolatorio. Senza, sarebbe un Progetto travestito |
 | **Libreria LSO** | nessuna | è un componente, non un organismo: niente trattamento LSO |
-| **Progetto** | **«È un LSO?»** — poi, se sì, le domande del RISCHIO | un cliente può commissionare anche software che nasce finito (una vetrina, uno script): si costruisce, si consegna, e la sua storia è chiusa. «Un progetto che non integra l'asse difesa non è un LSO: è solo software» |
+| **Progetto** | **«È un LSO?»** | un cliente può commissionare anche software che nasce finito (una vetrina, uno script): si costruisce, si consegna, e la sua storia è chiusa. «Un progetto che non integra l'asse difesa non è un LSO: è solo software» |
 
 **La cascata del Progetto:** «È un LSO?» → **no**: regole di base e stop (sarebbe sbagliato
-tempestare di domande una vetrina). → **sì**: le domande del rischio (*esposto online?
-maneggia denaro? dati personali?*) da cui esce il profilo di difesa proporzionale — secondo
-la tabella dell'Egida (ratifica CEO giugno 2026). Non si chiede mai «vuoi Fortino?»: si
-chiede cosa rischia, e la difesa ne discende.
+tempestare di domande una vetrina). → **sì**: riceve il corredo completo e Fortino **intero**. Le domande sul rischio e i profili
+graduati sono ELIMINATI dal 2026-09-02 (D16, M-OS3-217): «Fortino si installa tutto o non si
+installa affatto». Non si chiede mai «vuoi Fortino?» e non si chiede piu' nemmeno cosa rischia:
+la difesa discende dal ruolo.
 
 ## 5. Che cosa discende da ogni risposta
 
-| | Corredo operativo (missioni, doc-sync, cancelli, prove, memoria) | Difesa (Fortino, per profilo di rischio) |
+| | Corredo operativo (missioni, doc-sync, cancelli, prove, memoria) | Difesa (Fortino: tutto o niente) |
 |---|---|---|
-| Organismo | tutto | sì, profilo dal rischio (di norma pieno) |
-| Organo | tutto (registri nel repo-centro dell'Organismo) | sì, profilo dal rischio |
-| Progetto-LSO | tutto | sì, profilo dal rischio |
+| Organismo | tutto | sì — Fortino intero |
+| Organo | tutto (registri nel repo-centro dell'Organismo) | sì — Fortino intero |
+| Progetto-LSO | tutto | sì — Fortino intero |
 | Progetto non-LSO | regole di base | no |
 | Libreria LSO | disciplina di lavoro della softwarehouse (missioni, prove) | **no** — è lei che si installa negli altri |
 
@@ -101,7 +109,9 @@ del bootstrap in base a quello che abbiamo deciso»).
   sì, ruolo Libreria LSO).
 - **«ruolo» resta la parola canonica** (decisione CEO 31/08: «Va bene per Ruolo»): «dominio»
   è già occupata dai domini web e dai domini di collaudo dell'Egida.
-- La domanda umana del questionario si formula piana: «Che cosa stiamo creando?».
+- La domanda del questionario **chiede il ruolo e si chiama così**. La vecchia formula «Che cosa
+  stiamo creando?» è ELIMINATA dal 2026-09-03 (D22, ordine del CEO: «va eliminata erasa asfaltata
+  bruciata»): era larga a piacere e non nominava la cosa che chiedeva.
 
 ## 8. L'instradamento dei documenti (la mappa ruolo → scope)
 
