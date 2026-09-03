@@ -11,6 +11,7 @@
   "project": "{{PROJECT_NAME}}",
   "level": null,
   "role": "{{ROLE}}",
+  "is_lso": {{IS_LSO}},
   "instance_root": "{{INSTANCE_ROOT}}",
   "doc_sync_v3": true,
   "doc_sync_v3_live": true,
